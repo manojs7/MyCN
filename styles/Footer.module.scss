@@ -1,0 +1,150 @@
+.footer {
+    font-family: 'Raleway';
+    width: 100%;
+    height: auto;
+    padding: 3rem 0 5rem;
+    display: block;
+    position: relative;
+    background: #FFF;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .row {
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+
+.address {
+    display: inline-block;
+    text-align: start;
+    font-family: "Montserrat", sans-serif;
+    color: #534848;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 15px;
+}
+
+.footer_socials {
+    margin: 1rem  0 0 0;
+    .links {
+        display: flex;
+        gap: 50px;
+        list-style: none;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 0;
+        .icon {
+            color: #935052;
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
+
+.link {
+    text-align: start;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.heading {
+    width: 260px;
+    .text {
+        width: fit-content;
+        // margin: 0 auto;
+       
+    }
+
+    p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: block;
+        margin: 0;
+    }
+}
+
+.contact {
+    font-size: 0.8rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    font-family: "Montserrat", sans-serif;
+  
+    color: #534848;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 15px;
+   
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        width: 11px;
+        height: 14px;
+        margin-right: 10px;
+    }
+}
+
+.copyright{
+    display: flex;
+    justify-content: center;
+  
+}
+
+@media (max-width: 980px) {
+
+    .text {
+        margin-bottom: 2rem;
+
+        p {
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+    }
+
+    .link {
+        text-align: center;
+    }
+
+    .row {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .contact {
+        // padding-left: 20%;
+        justify-content: flex-start;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+      
+    }
+}
+@media (max-width: 576px) {
+.copyright{
+    
+    font-size: 12px;
+}
+
+.text {
+    margin-bottom: 0;
+
+   
+}
+}

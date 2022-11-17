@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "$lib": [
+                "lib"
+            ],
+            "$lib/*": [
+                "lib/*"
+            ],
+            "$styles": [
+                "styles"
+            ],
+            "$styles/*": [
+                "styles/*"
+            ],
+        }
+    },
+}

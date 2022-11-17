@@ -1,0 +1,126 @@
+.dot {
+    display: inline-block;
+    background: #F0C0C2;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dark {
+    background: #C22D2E;
+
+}
+
+.dot_wrapper {
+    width: 80%;
+    display: flex;
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.arrows {
+    color: #C22D2E;
+    font-size: 25px;
+}
+
+.nav_wrapper {
+    display: flex;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.header_center {
+    background-color: rgba($color: #FAFAFA, $alpha: 0.8) !important;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    width: 71%;
+    // min-height: 600px !important;
+    max-height: 600px!important;
+    box-sizing: border-box !important;
+    
+     min-height: fit-content;
+    // padding-bottom: 20px;
+}
+
+.description {
+    box-shadow: none !important;
+   
+
+    .header_title {
+        text-align: center;
+        font-weight: 500;
+        font-size: 44px;
+        color: var(--text-dark);
+        padding: 10px 0;
+        letter-spacing: -2px;
+
+        span {
+            color: var(--ninja-red);
+
+        }
+    }
+}
+
+@media (max-width: 939px) {
+    .header_center {
+        width: 90%;
+        max-width: 360px;
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        background: rgba(250, 250, 250, 0.8);
+        backdrop-filter: blur(10px);
+    }
+    .item {
+        padding: 0 !important;
+        
+        .image {
+            .description {
+                padding: 10px;
+                margin: 0 auto;
+                text-align: center;
+               
+                button {
+                    transform: scale(1.5);
+                }
+            }
+        }
+        .box {
+            left: 0;
+            margin-top: 47%;
+        }
+    }
+}
+
+.item {
+    background-color: transparent !important;
+    box-shadow: none;
+  
+    padding: 0;
+    .content {
+        padding: 0;
+        .title {
+            font-family: 'Alegreya sans', sans-serif;
+            font-style: italic;
+            font-size: 30px;
+            text-align: center;
+        }
+    }
+
+}
+
+.image {
+    box-shadow: none !important;
+    img {
+        box-shadow: none !important;
+    }
+}
+
+
+
+
+

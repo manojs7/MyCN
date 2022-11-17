@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+// Montserrat: numbers
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+// Rozha One
+@import url('https://fonts.googleapis.com/css2?family=Rozha+One&display=swap');
+
+//Raleway
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap');
+
+//Forum
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+
+//Alegreya Sans
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
+
+//Great vibes
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dadada;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #ebeaea;
+
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.inline {
+  display: inline-block;
+  margin: 10px;
+}
+
+.dashboard-container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  justify-content: baseline;
+  align-items: center;
+}
+
+h1 {
+  display: block;
+  width: fit-content;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 10px auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.button {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+h2 {
+  display: block;
+  width: fit-content;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 10px auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.add-page {
+  width: 360px;
+  padding: 2% 0 0;
+  margin: auto;
+}
+
+.signup-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+p {
+  display: inline-block;
+  margin: 10px;
+}
+
+.submit {
+  display: inline-block;
+
+  background-color: rgb(23, 206, 23);
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: rgba(35, 187, 35);
+  color: white;
+}
+
+.submit:active {
+  background-color: rgb(16, 151, 16);
+}
+
+a {
+  text-decoration: underline;
+  color: blue;
+}
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  background: #f1f1f1;
+  margin-bottom: 20px !important;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  background: #f1f1f1;
+  margin-bottom: 20px !important;
+}
+
+.hoverZoom {
+  transition: transform 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input[type=radio] {
+  display: inline-block;
+  width: fit-content;
+  margin: 0 1rem;
+}
+#city{
+  border: 1px solid rgba(246,243,243,.6);
+  box-shadow: 0 7px 6px -6px #777;
+  margin: 0 25px 0 0;
+  border-radius: 10px;
+}
+
+// search-component
+.search-component{
+  border: 0;
+}

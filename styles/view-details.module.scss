@@ -1,0 +1,322 @@
+.header {
+    background: url(../public/Frame37.png);
+    padding-top: 80px;
+    width: 100%;
+    min-height: fit-content;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .strip {
+        background: rgba($color: #FFFFFF, $alpha: 0.5);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 2rem 0;
+
+        .wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+            padding: 1.5rem;
+            text-align: start;
+            
+            h1 {
+                font-weight: 100;
+                margin: 0;
+                text-align: start;
+            }
+        }
+        
+        .wrapper2 {
+            padding: 1.5rem;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            width: 50%;
+            text-align: end;
+
+            .header_content {
+                font-size: 1rem;
+                font-style: italic;
+                font-weight: bold;
+            }
+        }
+
+    }
+}
+
+.header_title {
+    font-size: 4rem;
+
+    span {
+        color: #c22d2e;
+    }
+}
+
+.header_content {
+    margin: 0 !important;
+    width: 40%;
+}
+
+.container {
+    background: linear-gradient(166.25deg, #ECF1F4 18.65%, #F2F6F7 60.07%, #FFFFFF 101.11%);
+    padding-bottom: 4rem;
+
+    .header {
+        background: transparent;
+        backdrop-filter: none;
+        width: 80%;
+        height: fit-content;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5rem 0;
+
+        h1 {
+            width: fit-content !important;
+            margin: 0;
+
+            span {
+                color: #c22d2e;
+            }
+        }
+
+        .contain {
+            .city {
+                display: inline-block;
+                padding: 5px;
+                border: solid 1px black;
+            }
+        }
+    }
+
+    .package {
+        background-color: white;
+        width: 60%;
+        margin: 0 auto;
+        padding: 3rem;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+
+        .package_header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .right {
+            width: 300px;
+            height: 200px;
+            background-color: lightgrey;
+        }
+
+        .left {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            justify-content: space-between;
+
+            .wrapper {
+                .package_header_title {
+                    font-size: 20px;
+                    font-weight: bolder;
+                }
+
+                margin: 0.5rem 0;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .content {
+            .subsection {
+                h1 {
+                    font-size: 30px;
+                    font-weight: bolder;
+                }
+
+                .wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .item {
+                        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+                        width: 100%;
+                        margin: 1rem 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-direction: row;
+
+                        .img {
+                            width: 75px;
+                            height: 75px;
+                            background-color: lightgrey;
+                        }
+
+                        .title {
+                            h2 {
+                                font-size: 18px;
+                            }
+                        }
+
+                        .description {
+                            width: 35%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .wrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 60%;
+
+                .red {
+                    border: solid 2px #c22d2e;
+                    color: white;
+                    background-color: #c22d2e;
+                }
+
+                button {
+                    background-color: white;
+                    border: solid 2px lightgrey;
+                    border-radius: 20px;
+                    padding: 8px;
+                }
+            }
+
+            .wrapper2 {
+                margin-top: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                button {
+                    background-color: white;
+                    border: solid 2px lightgrey;
+                    border-radius: 20px;
+                    padding: 8px;
+
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 939px) {
+    .header {
+        height: fit-content;
+        padding-top: 80px;
+
+        .strip {
+            width: 100%;
+            height: fit-content;
+            flex-direction: column !important;
+            align-items: center;
+
+            .wrapper2 {
+                text-align: center !important;
+                align-items: center !important;
+
+                .header_content {
+                    width: 100% !important;
+                }
+            }
+
+            .wrapper {
+                width: 90% !important;
+                text-align: center !important;
+
+                h1 {
+                    text-align: center !important;
+                    margin: 1rem auto !important;
+
+                    span {
+                        color: #c22d2e !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .container {
+        padding-top: 2rem;
+
+        .header {
+            justify-content: center !important;
+        }
+
+        .package {
+            padding: 1rem;
+            width: 80%;
+            .package_header {
+                flex-direction: column !important;
+                .wrapper {
+                    justify-content: center;
+                    text-align: center;
+                    .package_header_title {
+                        font-size: 2.5rem !important;
+                    }
+                }
+                .right {
+                    width: 100% !important;
+                    height: fit-content !important;
+                    img {
+                        width: 100% !important;
+                        height: auto;
+                    }
+                }
+            }
+        }
+        .wrapper {
+            .item {
+                justify-content: space-between !important;
+                .title {
+                    width: 50%;
+                }
+                .description {
+                    width: 100% !important;
+                }
+                .img {
+                    width: 20% !important;
+                    height: auto !important;
+                    img {
+                        width: 100% !important;
+                    } 
+                }
+            }
+        }
+    }
+    .footer {
+        .wrapper {
+            flex-direction: column !important;
+            button {
+                margin-top: 1rem;
+            }
+        }
+    }
+}

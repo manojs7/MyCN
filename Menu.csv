@@ -1,0 +1,932 @@
+id,city,menu_label,name,quantity,cuisine,preference,mealtype,meal,selling_price
+1,bangalore,Breads,Pooris,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,92
+2,bangalore,Breads,Luchi,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,116
+3,bangalore,Breads,Chapati,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,106
+4,bangalore,Breads,Kachori-Masala Poori,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,106
+5,bangalore,Breads,RadhaBollabi,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,158
+6,bangalore,Breads,Wheat Paratha,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,158
+7,bangalore,Breads,Lachcha Paratha,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+8,bangalore,Breads,Pooris,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,86
+9,bangalore,Breads,Chapati,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,11633.5
+10,bangalore,Breads,Kachori-Masala Poori,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,106
+11,bangalore,Breads,Wheat Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,158
+12,bangalore,Breads,Lachcha Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,220
+13,bangalore,Breads,Assorted Stuufed Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,248
+14,bangalore,Breads,Pooris,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,86
+15,bangalore,Breads,Chapati,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,106
+16,bangalore,Breads,Kachori-Masala Poori,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,106
+17,bangalore,Breads,Wheat Paratha,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,158
+18,bangalore,Breads,Lachcha Paratha,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,220
+19,delhi,Breads,Chapati,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,109
+20,delhi,Breads,Lachcha Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+21,delhi,Breads,Pooris,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,87
+22,delhi,Breads,Kachori,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+23,delhi,Breads,Butter Naan,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+24,delhi,Breads,Butter Garlic Naan,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+25,gurgaon,Breads,Chapati,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,109
+26,gurgaon,Breads,Lachcha Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+27,gurgaon,Breads,Pooris,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,87
+28,gurgaon,Breads,Kachori,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+29,gurgaon,Breads,Butter Naan,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+30,gurgaon,Breads,Butter Garlic Naan,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,218
+31,mumbai,Breads,Pooris,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,86
+32,mumbai,Breads,Luchi,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,106
+33,mumbai,Breads,Chapati,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,106
+34,mumbai,Breads,Kachori-Masala Poori,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,106
+35,mumbai,Breads,RadhaBollabi,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,158
+36,mumbai,Breads,Wheat Paratha,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,158
+37,mumbai,Breads,Lachcha Paratha,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+38,mumbai,Breads,Pooris,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,86
+39,mumbai,Breads,Chapati,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,106
+40,mumbai,Breads,Kachori-Masala Poori,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,106
+41,mumbai,Breads,Wheat Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,158
+42,mumbai,Breads,Lachcha Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,220
+43,mumbai,Breads,Assorted Stuufed Paratha,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,248
+44,bangalore,Dessert,Chocolate Muffin,pcs,Continental,veg,Dessert,Lunch & Dinner,211
+45,bangalore,Dessert,Chocolate Brownie,pcs,Continental,veg,Dessert,Lunch & Dinner,462
+46,bangalore,Dessert,Gulab Jamun,pcs,Indian,veg,Dessert,Lunch & Dinner,106
+47,bangalore,Dessert,Rasgulla,pcs,Indian,veg,Dessert,Lunch & Dinner,211
+48,bangalore,Dessert,Rasmalai,pcs,Indian,veg,Dessert,Lunch & Dinner,231
+49,bangalore,Dessert,Carrot Halwa,kg,Indian,veg,Dessert,Lunch & Dinner,264
+50,bangalore,Dessert,Moong Dal Halwa,kg,Indian,veg,Dessert,Lunch & Dinner,264
+51,bangalore,Dessert,Angoori Gulab Jamun,kg,Indian,veg,Dessert,Lunch & Dinner,308
+52,bangalore,Dessert,Angoori Rasmalai,kg,Indian,veg,Dessert,Lunch & Dinner,308
+53,delhi,Dessert,Carrot Halwa,kg,Indian,veg,Main course,Lunch & Dinner,363
+54,delhi,Dessert,Moong Dal Halwa,kg,Indian,veg,Main course,Lunch & Dinner,363
+55,delhi,Dessert,Gulab Jamun,pcs,Indian,veg,Dessert,Lunch & Dinner,218
+56,delhi,Dessert,Rasgulla,pcs,Indian,veg,Dessert,Lunch & Dinner,218
+57,delhi,Dessert,Rasmalai,pcs,Indian,veg,Dessert,Lunch & Dinner,218
+58,delhi,Dessert,Chocolate Brownie,pcs,Continental,veg,Dessert,Lunch & Dinner,545
+59,gurgaon,Dessert,Carrot Halwa,kg,Indian,veg,Main course,Lunch & Dinner,363
+60,gurgaon,Dessert,Moong Dal Halwa,kg,Indian,veg,Main course,Lunch & Dinner,363
+61,gurgaon,Dessert,Gulab Jamun,pcs,Indian,veg,Dessert,Lunch & Dinner,218
+62,gurgaon,Dessert,Rasgulla,pcs,Indian,veg,Dessert,Lunch & Dinner,218
+63,gurgaon,Dessert,Rasmalai,pcs,Indian,veg,Dessert,Lunch & Dinner,218
+64,gurgaon,Dessert,Chocolate Brownie,pcs,Continental,veg,Dessert,Lunch & Dinner,545
+65,mumbai,Dessert,Chocolate Muffin,pcs,Continental,veg,Dessert,Lunch & Dinner,211
+66,mumbai,Dessert,Chocolate Brownie,pcs,Continental,veg,Dessert,Lunch & Dinner,462
+67,mumbai,Dessert,Gulab Jamun,pcs,Indian,veg,Dessert,Lunch & Dinner,106
+68,mumbai,Dessert,Rasgulla,pcs,Indian,veg,Dessert,Lunch & Dinner,211
+69,mumbai,Dessert,Rasmalai,pcs,Indian,veg,Dessert,Lunch & Dinner,231
+70,mumbai,Dessert,Carrot Halwa,kg,Indian,veg,Dessert,Lunch & Dinner,264
+71,mumbai,Dessert,Moong Dal Halwa,kg,Indian,veg,Dessert,Lunch & Dinner,264
+72,mumbai,Dessert,Angoori Gulab Jamun,kg,Indian,veg,Dessert,Lunch & Dinner,308
+73,mumbai,Dessert,Angoori Rasmalai,kg,Indian,veg,Dessert,Lunch & Dinner,308
+74,bangalore,Heavy Snack,Veg Chimichangas,pcs,Continental,veg,Main course,Lunch & Dinner,82568.75
+75,bangalore,Heavy Snack,Chicken Chimichangas,pcs,Continental,nonveg,Main course,Lunch & Dinner,105688
+76,bangalore,Heavy Snack,Veg Burritto,pcs,Continental,veg,Main course,Lunch & Dinner,99082.5
+77,bangalore,Heavy Snack,Chicken Burritto,pcs,Continental,nonveg,Main course,Lunch & Dinner,1210100.8333333
+78,bangalore,Heavy Snack,Veg Burger,pcs,Continental,veg,Main course,Lunch & Dinner,68857.29166667
+79,bangalore,Heavy Snack,Chicken Burger,pcs,Continental,nonveg,Main course,Lunch & Dinner,82568.75
+80,bangalore,Heavy Snack,Aloo Chana Roll,pcs,Indian,veg,Main course,Lunch & Dinner,110091.66666667
+81,bangalore,Heavy Snack,Veg Paneer Wrap,pcs,Indian,veg,Main course,Lunch & Dinner,1320110
+82,bangalore,Heavy Snack,Tandoori Paneer Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386115.5
+83,bangalore,Heavy Snack,Paneer Kathi Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386115.5
+84,bangalore,Heavy Snack,Pav Bhaji,kg,Indian,veg,Main course,Lunch & Dinner,572
+85,bangalore,Heavy Snack,American Chop Suey - Veg,kg,Pan Asian,veg,Main course,Lunch & Dinner,303
+86,bangalore,Heavy Snack,American Chop Suey-Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+87,bangalore,Heavy Snack,Chicken Kathi Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584132
+88,bangalore,Heavy Snack,Tandoori Chicken Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584132
+89,delhi,Heavy Snack,Veg Paneer Wrap,pcs,Indian,veg,Main course,Lunch & Dinner,1320110
+90,delhi,Heavy Snack,Aloo Chana Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1100
+91,delhi,Heavy Snack,Tandoori Paneer Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386
+92,delhi,Heavy Snack,Paneer Kathi Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386
+93,delhi,Heavy Snack,Chicken Kathi Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584
+94,delhi,Heavy Snack,Tandoori Chicken Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584
+95,gurgaon,Heavy Snack,Veg Paneer Wrap,pcs,Indian,veg,Main course,Lunch & Dinner,1320
+96,gurgaon,Heavy Snack,Aloo Chana Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1100
+97,gurgaon,Heavy Snack,Tandoori Paneer Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386
+98,gurgaon,Heavy Snack,Paneer Kathi Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386
+99,gurgaon,Heavy Snack,Chicken Kathi Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584
+100,gurgaon,Heavy Snack,Tandoori Chicken Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584
+101,mumbai,Heavy Snack,Veg Chimichangas,pcs,Continental,veg,Main course,Lunch & Dinner,825
+102,mumbai,Heavy Snack,Chicken Chimichangas,pcs,Continental,nonveg,Main course,Lunch & Dinner,1056
+103,mumbai,Heavy Snack,Veg Burritto,pcs,Continental,veg,Main course,Lunch & Dinner,990
+104,mumbai,Heavy Snack,Chicken Burritto,pcs,Continental,nonveg,Main course,Lunch & Dinner,1210
+105,mumbai,Heavy Snack,Veg Burger,pcs,Continental,veg,Main course,Lunch & Dinner,688
+106,mumbai,Heavy Snack,Chicken Burger,pcs,Continental,nonveg,Main course,Lunch & Dinner,825
+107,mumbai,Heavy Snack,Aloo Chana Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1100
+108,mumbai,Heavy Snack,Veg Paneer Wrap,pcs,Indian,veg,Main course,Lunch & Dinner,1320
+109,mumbai,Heavy Snack,Tandoori Paneer Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386
+110,mumbai,Heavy Snack,Paneer Kathi Roll,pcs,Indian,veg,Main course,Lunch & Dinner,1386
+111,mumbai,Heavy Snack,Pav Bhaji,kg,Indian,veg,Main course,Lunch & Dinner,572
+112,mumbai,Heavy Snack,American Chop Suey - Veg,kg,Pan Asian,veg,Main course,Lunch & Dinner,303
+113,mumbai,Heavy Snack,American Chop Suey-Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+114,mumbai,Heavy Snack,Chicken Kathi Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584
+115,mumbai,Heavy Snack,Tandoori Chicken Roll,pcs,Indian,nonveg,Main course,Lunch & Dinner,1584
+116,bangalore,Mains-Dal,Chanar Dal,kg,Bengali,veg,Main course,Lunch & Dinner,220
+117,bangalore,Mains-Dal,Chola Dal Narkel Diya,kg,Bengali,veg,Main course,Lunch & Dinner,220
+118,bangalore,Mains-Dal,Dal Fry,kg,Indian,veg,Main course,Lunch & Dinner,176
+119,bangalore,Mains-Dal,Tadkewali dal,kg,Indian,veg,Main course,Lunch & Dinner,176
+120,bangalore,Mains-Dal,Dal Pachmel,kg,Indian,veg,Main course,Lunch & Dinner,220
+121,bangalore,Mains-Dal,Dal bukhara,kg,Indian,veg,Main course,Lunch & Dinner,264
+122,bangalore,Mains-Dal,Dal Makhanni,kg,Indian,veg,Main course,Lunch & Dinner,264
+123,bangalore,Mains-Dal,Rasam pepper,kg,South Indian ,veg,Main course,Lunch & Dinner,132
+124,bangalore,Mains-Dal,Rasam Dhaniya,kg,South Indian ,veg,Main course,Lunch & Dinner,132
+125,bangalore,Mains-Dal,Rasam Tomato,kg,South Indian ,veg,Main course,Lunch & Dinner,132
+126,bangalore,Mains-Dal,Rasam Garlic,kg,South Indian ,veg,Main course,Lunch & Dinner,132
+127,bangalore,Mains-Dal,Tomato Dal,kg,South Indian ,veg,Main course,Lunch & Dinner,176
+128,bangalore,Mains-Dal,Pumpkin Sambar,kg,South Indian ,veg,Main course,Lunch & Dinner,198
+129,bangalore,Mains-Dal,Mix Veg Sambar,kg,South Indian ,veg,Main course,Lunch & Dinner,198
+130,bangalore,Mains-Dal,Drumstick Sambar,kg,South Indian ,veg,Main course,Lunch & Dinner,198
+131,bangalore,Mains-Dal,Beet Root Sambar,kg,South Indian ,veg,Main course,Lunch & Dinner,198
+132,delhi,Mains-Dal,Dal Fry,kg,Indian,veg,Main course,Lunch & Dinner,182
+133,delhi,Mains-Dal,Dal bukhara,kg,Indian,veg,Main course,Lunch & Dinner,227
+134,delhi,Mains-Dal,Tadkewali dal,kg,Indian,veg,Main course,Lunch & Dinner,182
+135,delhi,Mains-Dal,Dal Makhanni,kg,Indian,veg,Main course,Lunch & Dinner,227
+136,gurgaon,Mains-Dal,Dal Fry,kg,Indian,veg,Main course,Lunch & Dinner,182
+137,gurgaon,Mains-Dal,Dal bukhara,kg,Indian,veg,Main course,Lunch & Dinner,227
+138,gurgaon,Mains-Dal,Tadkewali dal,kg,Indian,veg,Main course,Lunch & Dinner,182
+139,gurgaon,Mains-Dal,Dal Makhanni,kg,Indian,veg,Main course,Lunch & Dinner,227
+140,mumbai,Mains-Dal,Chanar Dal,kg,Bengali,veg,Main course,Lunch & Dinner,220
+141,mumbai,Mains-Dal,Chola Dal Narkel Diya,kg,Bengali,veg,Main course,Lunch & Dinner,220
+142,mumbai,Mains-Dal,Dal Fry,kg,Indian,veg,Main course,Lunch & Dinner,176,,0,
+143,mumbai,Mains-Dal,Tadkewali dal,kg,Indian,veg,Main course,Lunch & Dinner,176
+144,mumbai,Mains-Dal,Dal Pachmel,kg,Indian,veg,Main course,Lunch & Dinner,220
+145,mumbai,Mains-Dal,Dal bukhara,kg,Indian,veg,Main course,Lunch & Dinner,264
+146,mumbai,Mains-Dal,Dal Makhanni,kg,Indian,veg,Main course,Lunch & Dinner,264
+147,bangalore,Mains-Dry,Begun Bhaja,kg,Bengali,veg,Main course,Lunch & Dinner,220
+148,bangalore,Mains-Dry,Jhurjhure aloo bhaja,kg,Bengali,veg,Main course,Lunch & Dinner,220
+149,bangalore,Mains-Dry,Aloo pulgobhi,kg,Bengali,veg,Main course,Lunch & Dinner,264
+150,bangalore,Mains-Dry,Mix Bhaja Platter,kg,Bengali,veg,Main course,Lunch & Dinner,264
+151,bangalore,Mains-Dry,Rajma Masala,kg,Indian,veg,Main course,Lunch & Dinner,220
+152,bangalore,Mains-Dry,Chole Masala,kg,Indian,veg,Main course,Lunch & Dinner,220
+153,bangalore,Mains-Dry,Aloo mutter,kg,Indian,veg,Main course,Lunch & Dinner,220
+154,bangalore,Mains-Dry,Aloo Gobhi Adraki,kg,Indian,veg,Main course,Lunch & Dinner,220
+155,bangalore,Mains-Dry,Bhindi fry,kg,Indian,veg,Main course,Lunch & Dinner,220
+156,bangalore,Mains-Dry,Jeera aloo,kg,Indian,veg,Main course,Lunch & Dinner,220
+157,bangalore,Mains-Dry,Mushroom Masala,kg,Indian,veg,Main course,Lunch & Dinner,352
+158,bangalore,Mains-Dry,Kung Pao Potato,kg,Pan Asian,veg,Main course,Lunch & Dinner,220
+159,bangalore,Mains-Dry,Honey Chilli Potato,kg,Pan Asian,veg,Main course,Lunch & Dinner,220
+160,bangalore,Mains-Dry,Veg Manchurian Dry,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+161,bangalore,Mains-Dry,Kung Pao Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+162,bangalore,Mains-Dry,Chilly Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+163,bangalore,Mains-Dry,Cheicken Manchurian Dry,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+164,bangalore,Mains-Dry,Lemon Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+165,bangalore,Mains-Dry,Baby corn pepper masala,kg,Pan Asian,veg,Main course,Lunch & Dinner,352
+166,bangalore,Mains-Dry,Aloo Finger chips Dry,kg,South Indian ,veg,Main course,Lunch & Dinner,198
+167,bangalore,Mains-Dry,Raw Banana Dry,kg,South Indian ,veg,Main course,Lunch & Dinner,198
+168,bangalore,Mains-Dry,Beetroot Palya,kg,South Indian ,veg,Main course,Lunch & Dinner,198
+169,bangalore,Mains-Dry,Gobhi kurma masala,kg,South Indian ,veg,Main course,Lunch & Dinner,220
+170,bangalore,Mains-Dry,Chana Sundal,kg,South Indian ,veg,Main course,Lunch & Dinner,220
+171,bangalore,Mains-Dry,Bhindi masala Fry,kg,South Indian ,veg,Main course,Lunch & Dinner,220
+172,bangalore,Mains-Dry,Aloo chettinad Dry,kg,South Indian ,veg,Main course,Lunch & Dinner,220
+173,bangalore,Mains-Dry,Chicken Ghee Roast,kg,South Indian ,nonveg,Main course,Lunch & Dinner,358
+174,bangalore,Mains-Dry,Chicken Sukka,kg,South Indian ,nonveg,Main course,Lunch & Dinner,358
+175,bangalore,Mains-Dry,Prawns ghee roast,kg,South Indian ,nonveg,Main course,Lunch & Dinner,413
+176,delhi,Mains-Dry,Mushroom Masala,kg,Indian,veg,Main course,Lunch & Dinner,363
+177,delhi,Mains-Dry,Rajma Masala,kg,Indian,veg,Main course,Lunch & Dinner,227
+178,delhi,Mains-Dry,Chole Masala,kg,Indian,veg,Main course,Lunch & Dinner,227
+179,delhi,Mains-Dry,Aloo mutter,kg,Indian,veg,Main course,Lunch & Dinner,272
+180,delhi,Mains-Dry,Aloo Gobhi Adraki,kg,Indian,veg,Main course,Lunch & Dinner,272
+181,delhi,Mains-Dry,Baigan ka Bartha,kg,Indian,veg,Main course,Lunch & Dinner,272
+182,delhi,Mains-Dry,Bhindi kurkure,kg,Indian,veg,Main course,Lunch & Dinner,272
+183,delhi,Mains-Dry,Jeera aloo,kg,Indian,veg,Main course,Lunch & Dinner,272
+184,delhi,Mains-Dry,Baby corn pepper masala,kg,Pan Asian,veg,Main course,Lunch & Dinner,363
+185,gurgaon,Mains-Dry,Mushroom Masala,kg,Indian,veg,Main course,Lunch & Dinner,363
+186,gurgaon,Mains-Dry,Rajma Masala,kg,Indian,veg,Main course,Lunch & Dinner,227
+187,gurgaon,Mains-Dry,Chole Masala,kg,Indian,veg,Main course,Lunch & Dinner,227
+188,gurgaon,Mains-Dry,Aloo mutter,kg,Indian,veg,Main course,Lunch & Dinner,272
+189,gurgaon,Mains-Dry,Aloo Gobhi Adraki,kg,Indian,veg,Main course,Lunch & Dinner,272
+190,gurgaon,Mains-Dry,Baigan ka Bartha,kg,Indian,veg,Main course,Lunch & Dinner,272
+191,gurgaon,Mains-Dry,Bhindi kurkure,kg,Indian,veg,Main course,Lunch & Dinner,272
+192,gurgaon,Mains-Dry,Jeera aloo,kg,Indian,veg,Main course,Lunch & Dinner,272
+193,gurgaon,Mains-Dry,Baby corn pepper masala,kg,Pan Asian,veg,Main course,Lunch & Dinner,363
+194,mumbai,Mains-Dry,Begun Bhaja,kg,Bengali,veg,Main course,Lunch & Dinner,220
+195,mumbai,Mains-Dry,Jhurjhure aloo bhaja,kg,Bengali,veg,Main course,Lunch & Dinner,220
+196,mumbai,Mains-Dry,Aloo pulgobhi,kg,Bengali,veg,Main course,Lunch & Dinner,264
+197,mumbai,Mains-Dry,Mix Bhaja Platter,kg,Bengali,veg,Main course,Lunch & Dinner,264
+198,mumbai,Mains-Dry,Rajma Masala,kg,Indian,veg,Main course,Lunch & Dinner,220
+199,mumbai,Mains-Dry,Chole Masala,kg,Indian,veg,Main course,Lunch & Dinner,220
+200,mumbai,Mains-Dry,Aloo mutter,kg,Indian,veg,Main course,Lunch & Dinner,220
+201,mumbai,Mains-Dry,Aloo Gobhi Adraki,kg,Indian,veg,Main course,Lunch & Dinner,220
+202,mumbai,Mains-Dry,Bhindi fry,kg,Indian,veg,Main course,Lunch & Dinner,220
+203,mumbai,Mains-Dry,Jeera aloo,kg,Indian,veg,Main course,Lunch & Dinner,220
+204,mumbai,Mains-Dry,Mushroom Masala,kg,Indian,veg,Main course,Lunch & Dinner,352
+205,mumbai,Mains-Dry,Kung Pao Potato,kg,Pan Asian,veg,Main course,Lunch & Dinner,220
+206,mumbai,Mains-Dry,Honey Chilli Potato,kg,Pan Asian,veg,Main course,Lunch & Dinner,220
+207,mumbai,Mains-Dry,Veg Manchurian Dry,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+208,mumbai,Mains-Dry,Kung Pao Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+209,mumbai,Mains-Dry,Chilly Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+210,mumbai,Mains-Dry,Cheicken Manchurian Dry,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+211,mumbai,Mains-Dry,Lemon Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+212,mumbai,Mains-Dry,Baby corn pepper masala,kg,Pan Asian,veg,Main course,Lunch & Dinner,352
+213,bangalore,Mains-Gravy,Potol Dalna,kg,Bengali,veg,Main course,Lunch & Dinner,264
+214,bangalore,Mains-Gravy,Chanar Dalna,kg,Bengali,veg,Main course,Lunch & Dinner,352
+215,bangalore,Mains-Gravy,Murgir Lal Jhol,kg,Bengali,nonveg,Main course,Lunch & Dinner,352
+216,bangalore,Mains-Gravy,Chicken Kosha (With Bone),kg,Bengali,nonveg,Main course,Lunch & Dinner,352
+217,bangalore,Mains-Gravy,Chicken Jhol,kg,Bengali,nonveg,Main course,Lunch & Dinner,358
+218,bangalore,Mains-Gravy,Rui Macher Kalia,kg,Bengali,nonveg,Main course,Lunch & Dinner,616
+219,bangalore,Mains-Gravy,Mutton Kosha (With Bone),kg,Bengali,nonveg,Main course,Lunch & Dinner,704
+220,bangalore,Mains-Gravy,Mutton Jhol (With Bone),kg,Bengali,nonveg,Main course,Lunch & Dinner,704
+221,bangalore,Mains-Gravy,Mutton Jhol (Boneless),kg,Bengali,nonveg,Main course,Lunch & Dinner,880
+222,bangalore,Mains-Gravy,Golda Chingri Malai Curry (1pc per person),kg,Bengali,nonveg,Main course,Lunch & Dinner,1980
+223,bangalore,Mains-Gravy,Veg kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,264
+224,bangalore,Mains-Gravy,Veg Jalfrezi,kg,Indian,veg,Main course,Lunch & Dinner,264
+225,bangalore,Mains-Gravy,Veg Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,308
+226,bangalore,Mains-Gravy,Dum Aloo Banarasi,kg,Indian,veg,Main course,Lunch & Dinner,308
+227,bangalore,Mains-Gravy,Dum Aloo Kashmiri,kg,Indian,veg,Main course,Lunch & Dinner,308
+228,bangalore,Mains-Gravy,Malai Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,352
+229,bangalore,Mains-Gravy,Chicken Banjara,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+230,bangalore,Mains-Gravy,Chicken Chatpata,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+231,bangalore,Mains-Gravy,Murgh Do Pyaza,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+232,bangalore,Mains-Gravy,Chicken Kolhapuri (With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,352
+233,bangalore,Mains-Gravy,Chicken Kadahi ,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+234,bangalore,Mains-Gravy,Punjabi Chicken Curry(With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,352
+235,bangalore,Mains-Gravy,Chicken Chettinad,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+236,bangalore,Mains-Gravy,Chicken Lababdar,kg,Indian,nonveg,Main course,Lunch & Dinner,396
+237,bangalore,Mains-Gravy,Chicken Tikka Masala,kg,Indian,nonveg,Main course,Lunch & Dinner,440
+238,bangalore,Mains-Gravy,Butter Chicken (Boneless),kg,Indian,nonveg,Main course,Lunch & Dinner,484
+239,bangalore,Mains-Gravy,Prawns goan curry,kg,Indian,nonveg,Main course,Lunch & Dinner,572
+240,bangalore,Mains-Gravy,Prawns kadhai,kg,Indian,nonveg,Main course,Lunch & Dinner,572
+241,bangalore,Mains-Gravy,Prawn masala,kg,Indian,nonveg,Main course,Lunch & Dinner,572
+242,bangalore,Mains-Gravy,Mutton Roganjosh,kg,Indian,nonveg,Main course,Lunch & Dinner,704
+243,bangalore,Mains-Gravy,Mutton do pyaaza,kg,Indian,nonveg,Main course,Lunch & Dinner,704
+244,bangalore,Mains-Gravy,Gosht banjara,kg,Indian,nonveg,Main course,Lunch & Dinner,704
+245,bangalore,Mains-Gravy,Veg manchurian Gravy,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+246,bangalore,Mains-Gravy,Wok tossed Veggies in choice of sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+247,bangalore,Mains-Gravy,Lemon Coriander vegetables,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+248,bangalore,Mains-Gravy,Lemon Coriander Chicken,kg,pan Asian,nonveg,Main course,Lunch & Dinner,352
+249,bangalore,Mains-Gravy,Chilli Garlic Chicken in Shchezwan  Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+250,bangalore,Mains-Gravy,Kung Pao Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+251,bangalore,Mains-Gravy,Chicken Manchurian Gravy,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+252,bangalore,Mains-Gravy,Thai Red Curry Chicken,kg,pan Asian,nonveg,Main course,Lunch & Dinner,440
+253,bangalore,Mains-Gravy,Thai GreenCurry -Chicken,kg,pan Asian,nonveg,Main course,Lunch & Dinner,440
+254,bangalore,Mains-Gravy,Fish In hunan Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,484
+255,bangalore,Mains-Gravy,Thai Red Curry -Prawns,kg,pan Asian,nonveg,Main course,Lunch & Dinner,528
+256,bangalore,Mains-Gravy,Thai Green Curry -Prawns,kg,pan Asian,nonveg,Main course,Lunch & Dinner,528
+257,bangalore,Mains-Gravy,Stir Fried prawns in Choice of Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,572
+258,bangalore,Mains-Gravy,Black chana gravy,kg,South Indian ,veg,Main course,Lunch & Dinner,220
+259,bangalore,Mains-Gravy,Guthi Venkaya Curry,kg,South Indian ,veg,Main course,Lunch & Dinner,264
+260,bangalore,Mains-Gravy,Malvani chicken curry ,kg,South Indian ,nonveg,Main course,Lunch & Dinner,352
+261,bangalore,Mains-Gravy,Andhra Style Chicken Curry,kg,South Indian ,nonveg,Main course,Lunch & Dinner,358
+262,bangalore,Mains-Gravy,Chettinad Chicken Curry,kg,South Indian ,nonveg,Main course,Lunch & Dinner,358
+263,bangalore,Mains-Gravy,Malvani fish curry,kg,South Indian ,nonveg,Main course,Lunch & Dinner,572
+264,delhi,Mains-Gravy,Malai Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,363
+265,delhi,Mains-Gravy,Veg kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,272
+266,delhi,Mains-Gravy,Veg Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,272
+267,delhi,Mains-Gravy,Veg Jalfrezi,kg,Indian,veg,Main course,Lunch & Dinner,272
+268,delhi,Mains-Gravy,Dum Aloo Banarasi,kg,Indian,veg,Main course,Lunch & Dinner,272
+269,delhi,Mains-Gravy,Veg manchurian Gravy,kg,Pan Asian,veg,Main course,Lunch & Dinner,272
+270,delhi,Mains-Gravy,Wok tossed Veggies in choice of sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,272
+271,delhi,Mains-Gravy,Lemon Coriander vegetables,kg,Pan Asian,veg,Main course,Lunch & Dinner,272
+272,delhi,Mains-Gravy,Thai Red Curry Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,454
+273,delhi,Mains-Gravy,Thai GreenCurry -Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,454
+274,delhi,Mains-Gravy,Lemon Coriander Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+275,delhi,Mains-Gravy,Chilli Garlic Chicken in Shchezwan  Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+276,delhi,Mains-Gravy,Kung Pao Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+277,delhi,Mains-Gravy,Chicken Manchurian Gravy,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+278,delhi,Mains-Gravy,Stir Fried prawns in Choice of Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,590
+279,delhi,Mains-Gravy,Fish Curry,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,590
+280,delhi,Mains-Gravy,Chicken Chatpata,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+281,delhi,Mains-Gravy,Murgh Do Pyaza,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+282,delhi,Mains-Gravy,Chicken Kolhapuri (With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,363
+283,delhi,Mains-Gravy,Butter Chicken (Boneless),kg,Indian,nonveg,Main course,Lunch & Dinner,408
+284,delhi,Mains-Gravy,Chicken Tikka Masala,kg,Indian,nonveg,Main course,Lunch & Dinner,408
+285,delhi,Mains-Gravy,Chicken Kadahi ,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+286,delhi,Mains-Gravy,Punjabi Chicken Curry(With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,363
+287,delhi,Mains-Gravy,Chicken Lababdar,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+288,delhi,Mains-Gravy,Prawns kadhai,kg,Indian,nonveg,Main course,Lunch & Dinner,545
+289,delhi,Mains-Gravy,Prawn masala,kg,Indian,nonveg,Main course,Lunch & Dinner,545
+290,delhi,Mains-Gravy,Mutton Roganjosh,kg,Indian,nonveg,Main course,Lunch & Dinner,681
+291,delhi,Mains-Gravy,Mutton do pyaaza,kg,Indian,nonveg,Main course,Lunch & Dinner,681
+292,delhi,Mains-Gravy,Gosht banjara,kg,Indian,nonveg,Main course,Lunch & Dinner,681
+293,gurgaon,Mains-Gravy,Malai Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,363
+294,gurgaon,Mains-Gravy,Veg kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,272
+295,gurgaon,Mains-Gravy,Veg Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,272
+296,gurgaon,Mains-Gravy,Veg Jalfrezi,kg,Indian,veg,Main course,Lunch & Dinner,272
+297,gurgaon,Mains-Gravy,Dum Aloo Banarasi,kg,Indian,veg,Main course,Lunch & Dinner,272
+298,gurgaon,Mains-Gravy,Veg manchurian Gravy,kg,Pan Asian,veg,Main course,Lunch & Dinner,272
+299,gurgaon,Mains-Gravy,Wok tossed Veggies in choice of sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,272
+300,gurgaon,Mains-Gravy,Lemon Coriander vegetables,kg,Pan Asian,veg,Main course,Lunch & Dinner,272
+301,gurgaon,Mains-Gravy,Thai Red Curry Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,454
+302,gurgaon,Mains-Gravy,Thai GreenCurry -Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,454
+303,gurgaon,Mains-Gravy,Lemon Coriander Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+304,gurgaon,Mains-Gravy,Chilli Garlic Chicken in Shchezwan  Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+305,gurgaon,Mains-Gravy,Kung Pao Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+306,gurgaon,Mains-Gravy,Chicken Manchurian Gravy,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,363
+307,gurgaon,Mains-Gravy,Stir Fried prawns in Choice of Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,590
+308,gurgaon,Mains-Gravy,Fish Curry,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,590
+309,gurgaon,Mains-Gravy,Chicken Chatpata,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+310,gurgaon,Mains-Gravy,Murgh Do Pyaza,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+311,gurgaon,Mains-Gravy,Chicken Kolhapuri (With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,363
+312,gurgaon,Mains-Gravy,Butter Chicken (Boneless),kg,Indian,nonveg,Main course,Lunch & Dinner,408
+313,gurgaon,Mains-Gravy,Chicken Tikka Masala,kg,Indian,nonveg,Main course,Lunch & Dinner,408
+314,gurgaon,Mains-Gravy,Chicken Kadahi ,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+315,gurgaon,Mains-Gravy,Punjabi Chicken Curry(With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,363
+316,gurgaon,Mains-Gravy,Chicken Lababdar,kg,Indian,nonveg,Main course,Lunch & Dinner,363
+317,gurgaon,Mains-Gravy,Prawns kadhai,kg,Indian,nonveg,Main course,Lunch & Dinner,545
+318,gurgaon,Mains-Gravy,Prawn masala,kg,Indian,nonveg,Main course,Lunch & Dinner,545
+319,gurgaon,Mains-Gravy,Mutton Roganjosh,kg,Indian,nonveg,Main course,Lunch & Dinner,681
+320,gurgaon,Mains-Gravy,Mutton do pyaaza,kg,Indian,nonveg,Main course,Lunch & Dinner,681
+321,gurgaon,Mains-Gravy,Gosht banjara,kg,Indian,nonveg,Main course,Lunch & Dinner,681
+322,mumbai,Mains-Gravy,Potol Dalna,kg,Bengali,veg,Main course,Lunch & Dinner,264
+323,mumbai,Mains-Gravy,Chanar Dalna,kg,Bengali,veg,Main course,Lunch & Dinner,352
+324,mumbai,Mains-Gravy,Murgir Lal Jhol,kg,Bengali,nonveg,Main course,Lunch & Dinner,352
+325,mumbai,Mains-Gravy,Chicken Kosha (With Bone),kg,Bengali,nonveg,Main course,Lunch & Dinner,352
+326,mumbai,Mains-Gravy,Chicken Jhol,kg,Bengali,nonveg,Main course,Lunch & Dinner,358
+327,mumbai,Mains-Gravy,Rui Macher Kalia,kg,Bengali,nonveg,Main course,Lunch & Dinner,616
+328,mumbai,Mains-Gravy,Mutton Kosha (With Bone),kg,Bengali,nonveg,Main course,Lunch & Dinner,704
+329,mumbai,Mains-Gravy,Mutton Jhol (With Bone),kg,Bengali,nonveg,Main course,Lunch & Dinner,704
+330,mumbai,Mains-Gravy,Mutton Jhol (Boneless),kg,Bengali,nonveg,Main course,Lunch & Dinner,880
+331,mumbai,Mains-Gravy,Golda Chingri Malai Curry (1pc per person),kg,Bengali,nonveg,Main course,Lunch & Dinner,1980
+332,mumbai,Mains-Gravy,Veg kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,264
+333,mumbai,Mains-Gravy,Veg Jalfrezi,kg,Indian,veg,Main course,Lunch & Dinner,264
+334,mumbai,Mains-Gravy,Veg Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,308
+335,mumbai,Mains-Gravy,Dum Aloo Banarasi,kg,Indian,veg,Main course,Lunch & Dinner,308
+336,mumbai,Mains-Gravy,Dum Aloo Kashmiri,kg,Indian,veg,Main course,Lunch & Dinner,308
+337,mumbai,Mains-Gravy,Malai Kofta Curry,kg,Indian,veg,Main course,Lunch & Dinner,352
+338,mumbai,Mains-Gravy,Chicken Banjara,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+339,mumbai,Mains-Gravy,Chicken Chatpata,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+340,mumbai,Mains-Gravy,Murgh Do Pyaza,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+341,mumbai,Mains-Gravy,Chicken Kolhapuri (With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,352
+342,mumbai,Mains-Gravy,Chicken Kadahi ,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+343,mumbai,Mains-Gravy,Punjabi Chicken Curry(With Bone),kg,Indian,nonveg,Main course,Lunch & Dinner,352
+344,mumbai,Mains-Gravy,Chicken Chettinad,kg,Indian,nonveg,Main course,Lunch & Dinner,352
+345,mumbai,Mains-Gravy,Chicken Lababdar,kg,Indian,nonveg,Main course,Lunch & Dinner,396
+346,mumbai,Mains-Gravy,Chicken Tikka Masala,kg,Indian,nonveg,Main course,Lunch & Dinner,440
+347,mumbai,Mains-Gravy,Butter Chicken (Boneless),kg,Indian,nonveg,Main course,Lunch & Dinner,484
+348,mumbai,Mains-Gravy,Prawns goan curry,kg,Indian,nonveg,Main course,Lunch & Dinner,572
+349,mumbai,Mains-Gravy,Prawns kadhai,kg,Indian,nonveg,Main course,Lunch & Dinner,572
+350,mumbai,Mains-Gravy,Prawn masala,kg,Indian,nonveg,Main course,Lunch & Dinner,572
+351,mumbai,Mains-Gravy,Mutton Roganjosh,kg,Indian,nonveg,Main course,Lunch & Dinner,704
+352,mumbai,Mains-Gravy,Mutton do pyaaza,kg,Indian,nonveg,Main course,Lunch & Dinner,704
+353,mumbai,Mains-Gravy,Gosht banjara,kg,Indian,nonveg,Main course,Lunch & Dinner,704
+354,mumbai,Mains-Gravy,Veg manchurian Gravy,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+355,mumbai,Mains-Gravy,Wok tossed Veggies in choice of sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+356,mumbai,Mains-Gravy,Lemon Coriander vegetables,kg,Pan Asian,veg,Main course,Lunch & Dinner,264
+357,mumbai,Mains-Gravy,Lemon Coriander Chicken,kg,pan Asian,nonveg,Main course,Lunch & Dinner,352
+358,mumbai,Mains-Gravy,Chilli Garlic Chicken in Shchezwan  Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+359,mumbai,Mains-Gravy,Kung Pao Chicken,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+360,mumbai,Mains-Gravy,Chicken Manchurian Gravy,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,352
+361,mumbai,Mains-Gravy,Thai Red Curry Chicken,kg,pan Asian,nonveg,Main course,Lunch & Dinner,440
+362,mumbai,Mains-Gravy,Thai GreenCurry -Chicken,kg,pan Asian,nonveg,Main course,Lunch & Dinner,440
+363,mumbai,Mains-Gravy,Fish In hunan Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,484
+364,mumbai,Mains-Gravy,Thai Red Curry -Prawns,kg,pan Asian,nonveg,Main course,Lunch & Dinner,528
+365,mumbai,Mains-Gravy,Thai Green Curry -Prawns,kg,pan Asian,nonveg,Main course,Lunch & Dinner,528
+366,mumbai,Mains-Gravy,Stir Fried prawns in Choice of Sauce,kg,Pan Asian,nonveg,Main course,Lunch & Dinner,572
+367,bangalore,Mains-Paneer,Paneer Makhanwala,kg,Indian,veg,Main course,Lunch & Dinner,352
+368,bangalore,Mains-Paneer,Paneer lababdar,kg,Indian,veg,Main course,Lunch & Dinner,352
+369,bangalore,Mains-Paneer,Paneer Tikka masala,kg,Indian,veg,Main course,Lunch & Dinner,352
+370,bangalore,Mains-Paneer,Paneer Kadhai,kg,Indian,veg,Main course,Lunch & Dinner,352
+371,bangalore,Mains-Paneer,Palak Paneer,kg,Indian,veg,Main course,Lunch & Dinner,352
+372,bangalore,Mains-Paneer,Paneer Mughlai,kg,Indian,veg,Main course,Lunch & Dinner,352
+373,bangalore,Mains-Paneer,Paneer Methi Chaman,kg,Indian,veg,Main course,Lunch & Dinner,352
+374,bangalore,Mains-Paneer,Mutter Paneer,kg,Indian,veg,Main course,Lunch & Dinner,352
+375,bangalore,Mains-Paneer,Shahi Paneer,kg,Indian,veg,Main course,Lunch & Dinner,352
+376,bangalore,Mains-Paneer,Paneer Tawa Masala,kg,Indian,veg,Main course,Lunch & Dinner,352
+377,bangalore,Mains-Paneer,Paneer kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,352
+378,bangalore,Mains-Paneer,Paneer in Scheswan sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,308
+379,bangalore,Mains-Paneer,Chilly Paneer in pepper Sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,308
+380,bangalore,Mains-Paneer,Paneer chettinad gravy,kg,South Indian ,veg,Main course,Lunch & Dinner,352
+381,delhi,Mains-Paneer,Paneer Makhanwala,kg,Indian,veg,Main course,Lunch & Dinner,363
+382,delhi,Mains-Paneer,Paneer lababdar,kg,Indian,veg,Main course,Lunch & Dinner,363
+383,delhi,Mains-Paneer,Paneer Tikka masala,kg,Indian,veg,Main course,Lunch & Dinner,363
+384,delhi,Mains-Paneer,Paneer Kadhai,kg,Indian,veg,Main course,Lunch & Dinner,363
+385,delhi,Mains-Paneer,Palak Paneer,kg,Indian,veg,Main course,Lunch & Dinner,363
+386,delhi,Mains-Paneer,Paneer Mughlai,kg,Indian,veg,Main course,Lunch & Dinner,363
+387,delhi,Mains-Paneer,Paneer Methi Chaman,kg,Indian,veg,Main course,Lunch & Dinner,363
+388,delhi,Mains-Paneer,Mutter Paneer,kg,Indian,veg,Main course,Lunch & Dinner,363
+389,delhi,Mains-Paneer,Shahi Paneer,kg,Indian,veg,Main course,Lunch & Dinner,363
+390,delhi,Mains-Paneer,Paneer Tawa Masala,kg,Indian,veg,Main course,Lunch & Dinner,363
+391,delhi,Mains-Paneer,Paneer kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,363
+392,delhi,Mains-Paneer,Paneer in Schezwan sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,363
+393,delhi,Mains-Paneer,Chilly Paneer in pepper Sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,363
+394,gurgaon,Mains-Paneer,Paneer Makhanwala,kg,Indian,veg,Main course,Lunch & Dinner,363
+395,gurgaon,Mains-Paneer,Paneer lababdar,kg,Indian,veg,Main course,Lunch & Dinner,363
+396,gurgaon,Mains-Paneer,Paneer Tikka masala,kg,Indian,veg,Main course,Lunch & Dinner,363
+397,gurgaon,Mains-Paneer,Paneer Kadhai,kg,Indian,veg,Main course,Lunch & Dinner,363
+398,gurgaon,Mains-Paneer,Palak Paneer,kg,Indian,veg,Main course,Lunch & Dinner,363
+399,gurgaon,Mains-Paneer,Paneer Mughlai,kg,Indian,veg,Main course,Lunch & Dinner,363
+400,gurgaon,Mains-Paneer,Paneer Methi Chaman,kg,Indian,veg,Main course,Lunch & Dinner,363
+401,gurgaon,Mains-Paneer,Mutter Paneer,kg,Indian,veg,Main course,Lunch & Dinner,363
+402,gurgaon,Mains-Paneer,Shahi Paneer,kg,Indian,veg,Main course,Lunch & Dinner,363
+403,gurgaon,Mains-Paneer,Paneer Tawa Masala,kg,Indian,veg,Main course,Lunch & Dinner,363
+404,gurgaon,Mains-Paneer,Paneer kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,363
+405,gurgaon,Mains-Paneer,Paneer in Schezwan sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,363
+406,gurgaon,Mains-Paneer,Chilly Paneer in pepper Sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,363
+407,mumbai,Mains-Paneer,Paneer Makhanwala,kg,Indian,veg,Main course,Lunch & Dinner,352
+408,mumbai,Mains-Paneer,Paneer lababdar,kg,Indian,veg,Main course,Lunch & Dinner,352
+409,mumbai,Mains-Paneer,Paneer Tikka masala,kg,Indian,veg,Main course,Lunch & Dinner,352
+410,mumbai,Mains-Paneer,Paneer Kadhai,kg,Indian,veg,Main course,Lunch & Dinner,352
+411,mumbai,Mains-Paneer,Palak Paneer,kg,Indian,veg,Main course,Lunch & Dinner,352
+412,mumbai,Mains-Paneer,Paneer Mughlai,kg,Indian,veg,Main course,Lunch & Dinner,352,,0,
+413,mumbai,Mains-Paneer,Paneer Methi Chaman,kg,Indian,veg,Main course,Lunch & Dinner,352
+414,mumbai,Mains-Paneer,Mutter Paneer,kg,Indian,veg,Main course,Lunch & Dinner,352
+415,mumbai,Mains-Paneer,Shahi Paneer,kg,Indian,veg,Main course,Lunch & Dinner,352
+416,mumbai,Mains-Paneer,Paneer Tawa Masala,kg,Indian,veg,Main course,Lunch & Dinner,352
+417,mumbai,Mains-Paneer,Paneer kolhapuri,kg,Indian,veg,Main course,Lunch & Dinner,352
+418,mumbai,Mains-Paneer,Paneer in Scheswan sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,308
+419,mumbai,Mains-Paneer,Chilly Paneer in pepper Sauce,kg,Pan Asian,veg,Main course,Lunch & Dinner,308
+420,bangalore,Mains-Thai,Thai Green Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,396
+421,bangalore,Mains-Thai,Thai Red Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,396
+422,bangalore,Mains-Thai,Mapo Tofu,kg,Pan Asian,veg,Main course,Lunch & Dinner,396
+423,delhi,Mains-Thai,Thai Green Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,408
+424,delhi,Mains-Thai,Thai Red Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,408
+425,gurgaon,Mains-Thai,Thai Green Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,408
+426,gurgaon,Mains-Thai,Thai Red Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,408
+427,mumbai,Mains-Thai,Thai Green Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,396
+428,mumbai,Mains-Thai,Thai Red Curry,kg,Pan Asian,veg,Main course,Lunch & Dinner,396
+429,mumbai,Mains-Thai,Mapo Tofu,kg,Pan Asian,veg,Main course,Lunch & Dinner,396
+430,bangalore,Noodle,Veg  Hakka Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,220
+431,bangalore,Noodle,Burnt Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+432,bangalore,Noodle,Chilli Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+433,bangalore,Noodle,Veg Singapore Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+434,bangalore,Noodle,Veg Sichuan Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+435,bangalore,Noodle,American Chop Suey,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,308
+436,bangalore,Noodle,Pad Thai Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,308
+437,bangalore,Noodle,Egg Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,264
+438,bangalore,Noodle,Chicken Hakka Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+439,bangalore,Noodle,Chicken Burnt Garlic Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+440,bangalore,Noodle,Chicken Chilli Garlic Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+441,bangalore,Noodle,Chicken Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+442,bangalore,Noodle,Chicken Singapore Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+443,bangalore,Noodle,Chicken Sichuan Noodles,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+444,delhi,Noodle,Veg  Hakka Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,227
+445,delhi,Noodle,Burnt Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+446,delhi,Noodle,Chilli Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+447,delhi,Noodle,Veg Singapore Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+448,delhi,Noodle,Veg Schezwan Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+449,delhi,Noodle,Chicken Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+450,delhi,Noodle,Egg Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,272
+451,delhi,Noodle,Chicken Singapore Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+452,delhi,Noodle,Chicken Schezwan Noodles,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+453,delhi,Noodle,American Chop Suey-Chicken,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+454,gurgaon,Noodle,Veg  Hakka Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,227
+455,gurgaon,Noodle,Burnt Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+456,gurgaon,Noodle,Chilli Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+457,gurgaon,Noodle,Veg Singapore Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+458,gurgaon,Noodle,Veg Schezwan Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+459,gurgaon,Noodle,Chicken Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+460,gurgaon,Noodle,Egg Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,272
+461,gurgaon,Noodle,Chicken Singapore Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+462,gurgaon,Noodle,Chicken Schezwan Noodles,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+463,gurgaon,Noodle,American Chop Suey-Chicken,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+464,mumbai,Noodle,Veg  Hakka Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,220
+465,mumbai,Noodle,Burnt Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+466,mumbai,Noodle,Chilli Garlic Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+467,mumbai,Noodle,Veg Singapore Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+468,mumbai,Noodle,Veg Sichuan Noodles,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+469,mumbai,Noodle,Egg Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,264
+470,mumbai,Noodle,Chicken Hakka Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+471,mumbai,Noodle,Chicken Burnt Garlic Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+472,mumbai,Noodle,Chicken Chilli Garlic Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+473,mumbai,Noodle,American Chop Suey,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,308
+474,mumbai,Noodle,Pad Thai Noodle,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,308
+475,mumbai,Noodle,Chicken Chowmein,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+476,mumbai,Noodle,Chicken Singapore Noodle,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+477,mumbai,Noodle,Chicken Sichuan Noodles,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,308
+478,bangalore,Pasta,Veg Blushing Sauce Pasta,kg,Continental,veg,Main course,Lunch & Dinner,308
+479,bangalore,Pasta,Pasta Arabiatta,kg,Continental,veg,Main course,Lunch & Dinner,352
+480,bangalore,Pasta,Mac N cheese,kg,Continental,veg,Main course,Lunch & Dinner,352
+481,bangalore,Pasta,Pasta Alfredo,kg,Continental,veg,Main course,Lunch & Dinner,352
+482,bangalore,Pasta,Pasta Carbonara,kg,Continental,veg,Main course,Lunch & Dinner,352
+483,bangalore,Pasta,Pasta Pesto,kg,Continental,veg,Main course,Lunch & Dinner,352
+484,bangalore,Pasta,Pasta Arabiatta - Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+485,bangalore,Pasta,Prawns Aglio Olio-Spaghetti,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+486,bangalore,Pasta,Pasta Alfredo- Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+487,bangalore,Pasta,Pasta Carbonara -Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+488,bangalore,Pasta,Chicken Blushing Sauce Pasta,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+489,bangalore,Pasta,Chicken Blushing Sauce Pasta,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+490,delhi,Pasta,Pasta Arabiatta,kg,Continental,veg,Main course,Lunch & Dinner,363
+491,delhi,Pasta,Pasta Alfredo,kg,Continental,veg,Main course,Lunch & Dinner,363
+492,delhi,Pasta,Pasta Pesto,kg,Continental,veg,Main course,Lunch & Dinner,363
+493,delhi,Pasta,Pasta Arabiatta - Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,454
+494,delhi,Pasta,Pasta Alfredo- Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,454
+495,delhi,Pasta,Chicken Blushing Sauce Pasta,kg,Continental,nonveg,Main course,Lunch & Dinner,454
+496,gurgaon,Pasta,Pasta Arabiatta,kg,Continental,veg,Main course,Lunch & Dinner,363
+497,gurgaon,Pasta,Pasta Alfredo,kg,Continental,veg,Main course,Lunch & Dinner,363
+498,gurgaon,Pasta,Pasta Pesto,kg,Continental,veg,Main course,Lunch & Dinner,363
+499,gurgaon,Pasta,Pasta Arabiatta - Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,454
+500,gurgaon,Pasta,Pasta Alfredo- Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,454
+501,gurgaon,Pasta,Chicken Blushing Sauce Pasta,kg,Continental,nonveg,Main course,Lunch & Dinner,454
+502,mumbai,Pasta,Veg Blushing Sauce Pasta,kg,Continental,veg,Main course,Lunch & Dinner,308
+503,mumbai,Pasta,Pasta Arabiatta,kg,Continental,veg,Main course,Lunch & Dinner,352
+504,mumbai,Pasta,Mac N cheese,kg,Continental,veg,Main course,Lunch & Dinner,352
+505,mumbai,Pasta,Pasta Alfredo,kg,Continental,veg,Main course,Lunch & Dinner,352
+506,mumbai,Pasta,Pasta Carbonara,kg,Continental,veg,Main course,Lunch & Dinner,352
+507,mumbai,Pasta,Pasta Pesto,kg,Continental,veg,Main course,Lunch & Dinner,352
+508,mumbai,Pasta,Pasta Arabiatta - Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+509,mumbai,Pasta,Prawns Aglio Olio-Spaghetti,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+510,mumbai,Pasta,Pasta Alfredo- Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+511,mumbai,Pasta,Pasta Carbonara -Chicken,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+512,mumbai,Pasta,Chicken Blushing Sauce Pasta,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+513,mumbai,Pasta,Chicken Blushing Sauce Pasta,kg,Continental,nonveg,Main course,Lunch & Dinner,440
+514,bangalore,Rice,Steamed Rice,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,176
+515,bangalore,Rice,Jeera Rice,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+516,bangalore,Rice,Veg Pulao,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+517,bangalore,Rice,Mint Pulao,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+518,bangalore,Rice,Peas Pulao,pcs,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+519,bangalore,Rice,Veg Biryani,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,2643kg
+520,bangalore,Rice,Egg Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,308
+521,bangalore,Rice,Murg Dum Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,352
+522,bangalore,Rice,Chicken Tikka Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,396
+523,bangalore,Rice,Butter Chicken Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,440
+524,bangalore,Rice,Mutton Dum Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,572
+525,bangalore,Rice,Veg Teg Mex Rice,kg,Continental,veg,Bread+Rice,Lunch & Dinner,264
+526,bangalore,Rice,Chicken Tex Mex Rice,kg,Continental,nonveg,Bread+Rice,Lunch & Dinner,352
+527,bangalore,Rice,Steamed Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,176
+528,bangalore,Rice,Jeera Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,220
+529,bangalore,Rice,Veg Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,220
+530,bangalore,Rice,Mint Pulao,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,220
+531,bangalore,Rice,Peas Pulao,pcs,Indian,veg,Bread+Rice,Lunch & Dinner,220
+532,bangalore,Rice,Veg Biryani,kg,Indian,veg,Bread+Rice,Lunch & Dinner,264
+533,bangalore,Rice,Egg Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,308
+534,bangalore,Rice,Murg Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,3524.5
+535,bangalore,Rice,Chicken Tikka Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,396
+536,bangalore,Rice,Butter Chicken Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,440
+537,bangalore,Rice,Mutton Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,572
+538,bangalore,Rice,Veg Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,220
+539,bangalore,Rice,Schezwan Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,220
+540,bangalore,Rice,Egg Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,220
+541,bangalore,Rice,Chilli Mushroom Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+542,bangalore,Rice,Chili Basil Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+543,bangalore,Rice,Burnt Garlic Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+544,bangalore,Rice,Fragrant Rice (Jasmine Rice),pcs,Pan Asian,veg,Bread+Rice,Lunch & Dinner,352
+545,bangalore,Rice,Chicken Basil Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+546,bangalore,Rice,Chicken Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+547,bangalore,Rice,Chicken Claypot Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+548,bangalore,Rice,Chicken Schezwan Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+549,bangalore,Rice,Steamed Rice,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,176
+550,bangalore,Rice,Puloigere,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,198
+551,bangalore,Rice,Ghee Rice,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,198
+552,bangalore,Rice,Bisibele Bhath,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,198
+553,bangalore,Rice,Pudina Rice,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,198
+554,bangalore,Rice,Lemon Rice,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,198
+555,bangalore,Rice,Jeera Rice,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,220
+556,bangalore,Rice,Veg Pulao,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,220
+557,bangalore,Rice,Mint Pulao,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,220
+558,bangalore,Rice,Peas Pulao,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,220
+559,bangalore,Rice,Coconut Rice,pcs,South Indian ,veg,Bread+Rice,Lunch & Dinner,220
+560,bangalore,Rice,Veg Biryani,kg,South Indian ,veg,Bread+Rice,Lunch & Dinner,264
+561,bangalore,Rice,Egg Biryani,kg,South Indian ,nonveg,Bread+Rice,Lunch & Dinner,308
+562,bangalore,Rice,Murg Dum Biryani,kg,South Indian ,nonveg,Bread+Rice,Lunch & Dinner,352
+563,bangalore,Rice,Chicken Tikka Biryani,kg,South Indian ,nonveg,Bread+Rice,Lunch & Dinner,396
+564,bangalore,Rice,Butter Chicken Biryani,kg,South Indian ,nonveg,Bread+Rice,Lunch & Dinner,440
+565,bangalore,Rice,Mutton Dum Biryani,kg,South Indian ,nonveg,Bread+Rice,Lunch & Dinner,572
+566,delhi,Rice,Steamed Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,182
+567,delhi,Rice,Jeera Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,227
+568,delhi,Rice,Veg Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,227
+569,delhi,Rice,Veg Biryani,kg,Indian,veg,Bread+Rice,Lunch & Dinner,272
+570,delhi,Rice,Peas Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,227
+571,delhi,Rice,Veg Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,227
+572,delhi,Rice,Chilli Mushroom Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+573,delhi,Rice,Schezwan Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,227
+574,delhi,Rice,Chili Basil Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+575,delhi,Rice,Burnt Garlic Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+576,delhi,Rice,Murg Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,408
+577,delhi,Rice,Egg Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,318
+578,delhi,Rice,Mutton Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,635
+579,delhi,Rice,Chicken Tikka Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,454
+580,delhi,Rice,Butter Chicken Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,454
+581,delhi,Rice,Egg Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,272
+582,delhi,Rice,Chicken Basil Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+583,delhi,Rice,Chicken Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+584,delhi,Rice,Chicken Schezwan Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+585,gurgaon,Rice,Steamed Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,182
+586,gurgaon,Rice,Jeera Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,227
+587,gurgaon,Rice,Veg Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,227
+588,gurgaon,Rice,Veg Biryani,kg,Indian,veg,Bread+Rice,Lunch & Dinner,272
+589,gurgaon,Rice,Peas Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,227
+590,gurgaon,Rice,Veg Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,227
+591,gurgaon,Rice,Chilli Mushroom Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+592,gurgaon,Rice,Schezwan Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,227
+593,gurgaon,Rice,Chili Basil Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+594,gurgaon,Rice,Burnt Garlic Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,272
+595,gurgaon,Rice,Murg Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,408
+596,gurgaon,Rice,Egg Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,318
+597,gurgaon,Rice,Mutton Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,635
+598,gurgaon,Rice,Chicken Tikka Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,454
+599,gurgaon,Rice,Butter Chicken Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,454
+600,gurgaon,Rice,Egg Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,272
+601,gurgaon,Rice,Chicken Basil Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+602,gurgaon,Rice,Chicken Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+603,gurgaon,Rice,Chicken Schezwan Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,363
+604,mumbai,Rice,Steamed Rice,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,176
+605,mumbai,Rice,Jeera Rice,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+606,mumbai,Rice,Veg Pulao,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+607,mumbai,Rice,Mint Pulao,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+608,mumbai,Rice,Peas Pulao,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,220
+609,mumbai,Rice,Veg Biryani,kg,Bengali,veg,Bread+Rice,Lunch & Dinner,264
+610,mumbai,Rice,Egg Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,308
+611,mumbai,Rice,Murg Dum Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,352
+612,mumbai,Rice,Chicken Tikka Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,396
+613,mumbai,Rice,Butter Chicken Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,440
+614,mumbai,Rice,Mutton Dum Biryani,kg,Bengali,nonveg,Bread+Rice,Lunch & Dinner,572
+615,mumbai,Rice,Veg Teg Mex Rice,kg,Continental,veg,Bread+Rice,Lunch & Dinner,264
+616,mumbai,Rice,Chicken Tex Mex Rice,kg,Continental,nonveg,Bread+Rice,Lunch & Dinner,352
+617,mumbai,Rice,Steamed Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,176
+618,mumbai,Rice,Jeera Rice,kg,Indian,veg,Bread+Rice,Lunch & Dinner,220
+619,mumbai,Rice,Veg Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,220
+620,mumbai,Rice,Mint Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,220
+621,mumbai,Rice,Peas Pulao,kg,Indian,veg,Bread+Rice,Lunch & Dinner,220
+622,mumbai,Rice,Veg Biryani,kg,Indian,veg,Bread+Rice,Lunch & Dinner,264
+623,mumbai,Rice,Egg Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,308
+624,mumbai,Rice,Murg Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,352
+625,mumbai,Rice,Chicken Tikka Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,396
+626,mumbai,Rice,Butter Chicken Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,440
+627,mumbai,Rice,Mutton Dum Biryani,kg,Indian,nonveg,Bread+Rice,Lunch & Dinner,572
+628,mumbai,Rice,Veg Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,220
+629,mumbai,Rice,Schezwan Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,220
+630,mumbai,Rice,Egg Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,220
+631,mumbai,Rice,Chilli Mushroom Fried Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+632,mumbai,Rice,Chili Basil Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+633,mumbai,Rice,Burnt Garlic Rice,kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,264
+634,mumbai,Rice,Fragrant Rice (Jasmine Rice),kg,Pan Asian,veg,Bread+Rice,Lunch & Dinner,352
+635,mumbai,Rice,Chicken Basil Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+636,mumbai,Rice,Chicken Fried Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+637,mumbai,Rice,Chicken Claypot Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+638,mumbai,Rice,Chicken Schezwan Rice,kg,Pan Asian,nonveg,Bread+Rice,Lunch & Dinner,352
+639,bangalore,Starters,Mini shingara,pcs,Bengali,veg,Starter,Lunch & Dinner,138
+640,bangalore,Starters,Veg Chops,pcs,Bengali,veg,Starter,Lunch & Dinner,209
+641,bangalore,Starters,Veg cutlet,pcs,Bengali,veg,Starter,Lunch & Dinner,209
+642,bangalore,Starters,Chicken lollipop,pcs,Bengali,nonveg,Starter,Lunch & Dinner,275
+643,bangalore,Starters,Bengali Fish Fingers ,pcs,Bengali,nonveg,Starter,Lunch & Dinner,374
+644,bangalore,Starters,Chicken Chop,pcs,Bengali,nonveg,Starter,Lunch & Dinner,385
+645,bangalore,Starters,Fish Chop,pcs,Bengali,nonveg,Starter,Lunch & Dinner,501
+646,bangalore,Starters,Cheese corn ball,pcs,Continental,veg,Starter,Lunch & Dinner,209
+647,bangalore,Starters,Veg Croquettes,pcs,Continental,veg,Starter,Lunch & Dinner,209
+648,bangalore,Starters,Cheese Rolls,pcs,Continental,veg,Starter,Lunch & Dinner,209
+649,bangalore,Starters,Cheese cigar rolls,pcs,Continental,veg,Starter,Lunch & Dinner,209
+650,bangalore,Starters,Pita Bread,pcs,Continental,veg,Starter,Lunch & Dinner,237
+651,bangalore,Starters,Falafel,pcs,Continental,veg,Starter,Lunch & Dinner,231
+652,bangalore,Starters,Garlic Bread,pcs,Continental,veg,Starter,Lunch & Dinner,237
+653,bangalore,Starters,Peri Peri Chicken Wings,pcs,Continental,nonveg,Starter,Lunch & Dinner,237
+654,bangalore,Starters,Buffalo Chicken Wings,pcs,Continental,nonveg,Starter,Lunch & Dinner,237
+655,bangalore,Starters,Chicken Cheese Balls,pcs,Continental,nonveg,Starter,Lunch & Dinner,237
+656,bangalore,Starters,Veg Sliders-Mini Burger,pcs,Continental,veg,Starter,Lunch & Dinner,275
+657,bangalore,Starters,Potato wedges,kg,Continental,veg,Starter,Lunch & Dinner,319
+658,bangalore,Starters,Baked Potato,pcs,Continental,veg,Starter,Lunch & Dinner,330
+659,bangalore,Starters,Cheese Garlic bread,pcs,Continental,veg,Starter,Lunch & Dinner,330
+660,bangalore,Starters,Fish Fingers,pcs,Continental,nonveg,Starter,Lunch & Dinner,374
+661,bangalore,Starters,Chicken Sliders-Mini Burger,pcs,Continental,nonveg,Starter,Lunch & Dinner,385
+662,bangalore,Starters,Butter Garlic Prawns,pcs,Continental,nonveg,Starter,Lunch & Dinner,440
+663,bangalore,Starters,Nachos with Bean Salsa,kg,Continental,veg,Starter,Lunch & Dinner,454
+664,bangalore,Starters,Hummus,kg,Continental,veg,Starter,Lunch & Dinner,454
+665,bangalore,Starters,Chicken Nachos with Bean Salsa,kg,Continental,nonveg,Starter,Lunch & Dinner,545
+666,bangalore,Starters,Tacos-Bean n Cheese,pcs,Continental,veg,Starter,Lunch & Dinner,660
+667,bangalore,Starters,Tacos-Bellpepper n Onion,pcs,Continental,veg,Starter,Lunch & Dinner,660
+668,bangalore,Starters,Tacos-BBQ Chickn Bellpepper n Onion,pcs,Continental,nonveg,Starter,Lunch & Dinner,759
+669,bangalore,Starters,Cocktail Samosa,pcs,Indian,veg,Starter,Lunch & Dinner,138
+670,bangalore,Starters,Beet Root Tikki,pcs,Indian,veg,Starter,Lunch & Dinner,138
+671,bangalore,Starters,Hare mutter ki tikki,pcs,Indian,veg,Starter,Lunch & Dinner,138
+672,bangalore,Starters,Tandoori Achari Aloo,pcs,Indian,veg,Starter,Lunch & Dinner,138
+673,bangalore,Starters,Tandoori Gobhi,pcs,Indian,veg,Starter,Lunch & Dinner,138
+674,bangalore,Starters,Dahi k kebab,pcs,Indian,veg,Starter,Lunch & Dinner,138
+675,bangalore,Starters,Rajma ki galouti,pcs,Indian,veg,Starter,Lunch & Dinner,138
+676,bangalore,Starters,Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+677,bangalore,Starters,Achari Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+678,bangalore,Starters,Paneer kalimirch tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+679,bangalore,Starters,Paneer chatpata,pcs,Indian,veg,Starter,Lunch & Dinner,209
+680,bangalore,Starters,Malai Paneer tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+681,bangalore,Starters,Paneer Pudina Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+682,bangalore,Starters,Veg cutlet,pcs,Indian,veg,Starter,Lunch & Dinner,209
+683,bangalore,Starters,Mushroom Kali Mirch,pcs,Indian,veg,Starter,Lunch & Dinner,209
+684,bangalore,Starters,Chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+685,bangalore,Starters,Malai chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+686,bangalore,Starters,Chicken angara,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+687,bangalore,Starters,Achari chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+688,bangalore,Starters,Chicken banjara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,237,,295.625,
+689,bangalore,Starters,Murg malai kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+690,bangalore,Starters,Murg angara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+691,bangalore,Starters,Dhaniya murg Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+692,bangalore,Starters,Chicken 65,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+693,bangalore,Starters,Chicken Pepper Masala Dry,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+694,bangalore,Starters,Reshmi chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,248
+695,bangalore,Starters,Jhinga Kali mirch,pcs,Indian,nonveg,Starter,Lunch & Dinner,440
+696,bangalore,Starters,Amritsari fish Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,440
+697,bangalore,Starters,Murg Tangdi Kabab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+698,bangalore,Starters,Mutton seekh kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+699,bangalore,Starters,Corriander Spiced Lamb Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+700,bangalore,Starters,Mutton Shami Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+701,bangalore,Starters,Mutton Gauloti Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+702,bangalore,Starters,Hara bhara kebab,pcs,Indian,veg,Starter,Lunch & Dinner,138
+703,bangalore,Starters,Veg Spring Roll,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+704,bangalore,Starters,Veg Manchurian Dry,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+705,bangalore,Starters,Baby Corn Manchurian,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+706,bangalore,Starters,kung Pao Baby Potato,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+707,bangalore,Starters,Gobhi Manchurian ,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+708,bangalore,Starters,Veg Manchurian ,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+709,bangalore,Starters,Veg Momo,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+710,bangalore,Starters,Mushroom Manchurian,pcs,Pan Asian,veg,Starter,Lunch & Dinner,165
+711,bangalore,Starters,Paneer in schezwan sauce,pcs,Pan Asian,veg,Starter,Lunch & Dinner,193
+712,bangalore,Starters,Golden Fried Baby Corn,pcs,Pan Asian,veg,Starter,Lunch & Dinner,193
+713,bangalore,Starters,Chilly Paneer,pcs,Pan Asian,veg,Starter,Lunch & Dinner,209
+714,bangalore,Starters,Sesame Chilly cottage cheese,pcs,Pan Asian,veg,Starter,Lunch & Dinner,209
+715,bangalore,Starters,Chilly tofu-Wok tossed,pcs,Pan Asian,veg,Starter,Lunch & Dinner,237
+716,bangalore,Starters,Chicken Manchurian Dry,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+717,bangalore,Starters,Sesame Chilly Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+718,bangalore,Starters,Chicken in garlc chilli sauce,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+719,bangalore,Starters,Chicken Momo,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+720,bangalore,Starters,Honey Chilli Potato,kg,Pan Asian,veg,Starter,Lunch & Dinner,231
+721,bangalore,Starters,Veg Spring Roll,pcs,Pan Asian,veg,Starter,Lunch & Dinner,231
+722,bangalore,Starters,Chilly Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+723,bangalore,Starters,Chicken Spring Rolls,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+724,bangalore,Starters,Hunan Chicken ,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+725,bangalore,Starters,Chilli Garlic Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+726,bangalore,Starters,Chicken lollypop,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,319
+727,bangalore,Starters,Fish chilly,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,319
+728,bangalore,Starters,Chicken Satay,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,545
+729,bangalore,Starters,Gobhi Manchurian ,pcs,South Indian ,veg,Starter,Lunch & Dinner,138
+730,bangalore,Starters,Dal Vada,pcs,South Indian ,veg,Starter,Lunch & Dinner,138
+731,bangalore,Starters,Veg Manchurian Dry,pcs,South Indian ,veg,Starter,Lunch & Dinner,138
+732,bangalore,Starters,Egg roast,pcs,South Indian ,nonveg,Starter,Lunch & Dinner,138
+733,bangalore,Starters,Paneer chilly ,pcs,South Indian ,veg,Starter,Lunch & Dinner,193
+734,bangalore,Starters,Mushroom Manchurian,pcs,South Indian ,veg,Starter,Lunch & Dinner,237
+735,bangalore,Starters,Chicken Kabab,pcs,South Indian ,nonveg,Starter,Lunch & Dinner,237
+736,bangalore,Starters,Pepper chicken dry,pcs,South Indian ,nonveg,Starter,Lunch & Dinner,237
+737,bangalore,Starters,Prawns pepper Dry,pcs,South Indian ,nonveg,Starter,Lunch & Dinner,385
+738,delhi,Starters,Hara bhara kebab,pcs,Indian,veg,Starter,Lunch & Dinner,163
+739,delhi,Starters,Cocktail Samosa,pcs,Indian,veg,Starter,Lunch & Dinner,163
+740,delhi,Starters,Cheese corn ball,pcs,Continental,veg,Starter,Lunch & Dinner,196
+741,delhi,Starters,Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+742,delhi,Starters,Achari Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+743,delhi,Starters,Paneer kalimirch tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+744,delhi,Starters,Paneer chatpata,pcs,Indian,veg,Starter,Lunch & Dinner,196
+745,delhi,Starters,Malai Paneer tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+746,delhi,Starters,Paneer Pudina Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+747,delhi,Starters,Veg cutlet,pcs,Indian,veg,Starter,Lunch & Dinner,163
+748,delhi,Starters,Veg Spring Roll,pcs,Pan Asian,veg,Starter,Lunch & Dinner,163
+749,delhi,Starters,Beet Root Tikki,pcs,Indian,veg,Starter,Lunch & Dinner,163
+750,delhi,Starters,Hare mutter ki tikki,pcs,Indian,veg,Starter,Lunch & Dinner,163
+751,delhi,Starters,Tandoori Achari Aloo,pcs,Indian,veg,Starter,Lunch & Dinner,163
+752,delhi,Starters,Mushroom Kali Mirch,pcs,Indian,veg,Starter,Lunch & Dinner,196
+753,delhi,Starters,Tandoori Gobhi,pcs,Indian,veg,Starter,Lunch & Dinner,163
+754,delhi,Starters,Cheese Rolls,pcs,Continental,veg,Starter,Lunch & Dinner,218
+755,delhi,Starters,Dahi k kebab,pcs,Indian,veg,Starter,Lunch & Dinner,163
+756,delhi,Starters,Rajma ki galouti,pcs,Indian,veg,Starter,Lunch & Dinner,163
+757,delhi,Starters,Veg Manchurian Dry,pcs,Pan Asian,veg,Starter,Lunch & Dinner,163
+758,delhi,Starters,Baby Corn Manchurian,pcs,Pan Asian,veg,Starter,Lunch & Dinner,163
+759,delhi,Starters,Honey Chilli Potato,kg,Pan Asian,veg,Starter,Lunch & Dinner,272
+760,delhi,Starters,Chilly Paneer,pcs,Indian,veg,Starter,Lunch & Dinner,196
+761,delhi,Starters,Falafel,pcs,Continental,veg,Starter,Lunch & Dinner,218
+762,delhi,Starters,Hummus,kg,Continental,veg,Starter,Lunch & Dinner,454
+763,delhi,Starters,Pita Bread,pcs,Continental,veg,Starter,Lunch & Dinner,218
+764,delhi,Starters,Pav Bhaji,kg,Indian,veg,Starter,Lunch & Dinner,681
+765,delhi,Starters,Chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+766,delhi,Starters,Malai chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+767,delhi,Starters,Chicken angara,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+768,delhi,Starters,Achari chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+769,delhi,Starters,Chicken lollypop,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+770,delhi,Starters,Reshmi chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+771,delhi,Starters,Chicken banjara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+772,delhi,Starters,Murg malai kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+773,delhi,Starters,Murg angara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+774,delhi,Starters,Dhaniya murg Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+775,delhi,Starters,Chilly Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+776,delhi,Starters,Chicken Pepper Masala Dry,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+777,delhi,Starters,Murg Tangdi Kabab,pcs,Indian,nonveg,Starter,Lunch & Dinner,681
+778,delhi,Starters,Chicken Satay,pcs,Indian,nonveg,Starter,Lunch & Dinner,590
+779,delhi,Starters,Peri Peri Chicken Wings,pcs,Continental,nonveg,Starter,Lunch & Dinner,240
+780,delhi,Starters,Chicken Spring Rolls,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+781,delhi,Starters,Chicken Cheese Balls,pcs,Continental,nonveg,Starter,Lunch & Dinner,240
+782,delhi,Starters,Hunan Chicken ,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+783,delhi,Starters,Chilli Garlic Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+784,delhi,Starters,Amritsari fish Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,381
+785,delhi,Starters,Butter Garlic Prawns,pcs,Continental,nonveg,Starter,Lunch & Dinner,436
+786,delhi,Starters,Mutton seekh kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+787,delhi,Starters,Corriander Spiced Lamb Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+788,delhi,Starters,Mutton Shami Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+789,delhi,Starters,Mutton Gauloti Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+790,gurgaon,Starters,Hara bhara kebab,pcs,Indian,veg,Starter,Lunch & Dinner,163
+791,gurgaon,Starters,Cocktail Samosa,pcs,Indian,veg,Starter,Lunch & Dinner,163
+792,gurgaon,Starters,Cheese corn ball,pcs,Continental,veg,Starter,Lunch & Dinner,196
+793,gurgaon,Starters,Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+794,gurgaon,Starters,Achari Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+795,gurgaon,Starters,Paneer kalimirch tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+796,gurgaon,Starters,Paneer chatpata,pcs,Indian,veg,Starter,Lunch & Dinner,196
+797,gurgaon,Starters,Malai Paneer tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+798,gurgaon,Starters,Paneer Pudina Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,196
+799,gurgaon,Starters,Veg cutlet,pcs,Indian,veg,Starter,Lunch & Dinner,163
+800,gurgaon,Starters,Veg Spring Roll,pcs,Pan Asian,veg,Starter,Lunch & Dinner,163
+801,gurgaon,Starters,Beet Root Tikki,pcs,Indian,veg,Starter,Lunch & Dinner,163
+802,gurgaon,Starters,Hare mutter ki tikki,pcs,Indian,veg,Starter,Lunch & Dinner,163
+803,gurgaon,Starters,Tandoori Achari Aloo,pcs,Indian,veg,Starter,Lunch & Dinner,163
+804,gurgaon,Starters,Mushroom Kali Mirch,pcs,Indian,veg,Starter,Lunch & Dinner,196
+805,gurgaon,Starters,Tandoori Gobhi,pcs,Indian,veg,Starter,Lunch & Dinner,163
+806,gurgaon,Starters,Cheese Rolls,pcs,Continental,veg,Starter,Lunch & Dinner,218
+807,gurgaon,Starters,Dahi k kebab,pcs,Indian,veg,Starter,Lunch & Dinner,163
+808,gurgaon,Starters,Rajma ki galouti,pcs,Indian,veg,Starter,Lunch & Dinner,163
+809,gurgaon,Starters,Veg Manchurian Dry,pcs,Pan Asian,veg,Starter,Lunch & Dinner,163
+810,gurgaon,Starters,Baby Corn Manchurian,pcs,Pan Asian,veg,Starter,Lunch & Dinner,163
+811,gurgaon,Starters,Honey Chilli Potato,kg,Pan Asian,veg,Starter,Lunch & Dinner,272
+812,gurgaon,Starters,Chilly Paneer,pcs,Indian,veg,Starter,Lunch & Dinner,196
+813,gurgaon,Starters,Falafel,pcs,Continental,veg,Starter,Lunch & Dinner,218
+814,gurgaon,Starters,Hummus,kg,Continental,veg,Starter,Lunch & Dinner,454
+815,gurgaon,Starters,Pita Bread,pcs,Continental,veg,Starter,Lunch & Dinner,218
+816,gurgaon,Starters,Pav Bhaji,kg,Indian,veg,Starter,Lunch & Dinner,681
+817,gurgaon,Starters,Chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+818,gurgaon,Starters,Malai chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+819,gurgaon,Starters,Chicken angara,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+820,gurgaon,Starters,Achari chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+821,gurgaon,Starters,Chicken lollypop,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+822,gurgaon,Starters,Reshmi chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+823,gurgaon,Starters,Chicken banjara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+824,gurgaon,Starters,Murg malai kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+825,gurgaon,Starters,Murg angara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+826,gurgaon,Starters,Dhaniya murg Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+827,gurgaon,Starters,Chilly Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+828,gurgaon,Starters,Chicken Pepper Masala Dry,pcs,Indian,nonveg,Starter,Lunch & Dinner,240
+829,gurgaon,Starters,Murg Tangdi Kabab,pcs,Indian,nonveg,Starter,Lunch & Dinner,681
+830,gurgaon,Starters,Chicken Satay,pcs,Indian,nonveg,Starter,Lunch & Dinner,590
+831,gurgaon,Starters,Peri Peri Chicken Wings,pcs,Continental,nonveg,Starter,Lunch & Dinner,240
+832,gurgaon,Starters,Chicken Spring Rolls,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+833,gurgaon,Starters,Chicken Cheese Balls,pcs,Continental,nonveg,Starter,Lunch & Dinner,240
+834,gurgaon,Starters,Hunan Chicken ,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+835,gurgaon,Starters,Chilli Garlic Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,240
+836,gurgaon,Starters,Amritsari fish Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,381
+837,gurgaon,Starters,Butter Garlic Prawns,pcs,Continental,nonveg,Starter,Lunch & Dinner,436
+838,gurgaon,Starters,Mutton seekh kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+839,gurgaon,Starters,Corriander Spiced Lamb Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+840,gurgaon,Starters,Mutton Shami Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+841,gurgaon,Starters,Mutton Gauloti Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,436
+842,mumbai,Starters,Mini shingara,pcs,Bengali,veg,Starter,Lunch & Dinner,138
+843,mumbai,Starters,Veg Chops,pcs,Bengali,veg,Starter,Lunch & Dinner,209
+844,mumbai,Starters,Veg cutlet,pcs,Bengali,veg,Starter,Lunch & Dinner,209
+845,mumbai,Starters,Chicken lollipop,pcs,Bengali,nonveg,Starter,Lunch & Dinner,275
+846,mumbai,Starters,Bengali Fish Fingers ,pcs,Bengali,nonveg,Starter,Lunch & Dinner,374
+847,mumbai,Starters,Chicken Chop,pcs,Bengali,nonveg,Starter,Lunch & Dinner,385
+848,mumbai,Starters,Fish Chop,pcs,Bengali,nonveg,Starter,Lunch & Dinner,501
+849,mumbai,Starters,Cheese corn ball,pcs,Continental,veg,Starter,Lunch & Dinner,209
+850,mumbai,Starters,Veg Croquettes,pcs,Continental,veg,Starter,Lunch & Dinner,209
+851,mumbai,Starters,Cheese Rolls,pcs,Continental,veg,Starter,Lunch & Dinner,209
+852,mumbai,Starters,Cheese cigar rolls,pcs,Continental,veg,Starter,Lunch & Dinner,209
+853,mumbai,Starters,Pita Bread,pcs,Continental,veg,Starter,Lunch & Dinner,237
+854,mumbai,Starters,Falafel,pcs,Continental,veg,Starter,Lunch & Dinner,231
+855,mumbai,Starters,Garlic Bread,pcs,Continental,veg,Starter,Lunch & Dinner,237
+856,mumbai,Starters,Peri Peri Chicken Wings,pcs,Continental,nonveg,Starter,Lunch & Dinner,237
+857,mumbai,Starters,Buffalo Chicken Wings,pcs,Continental,nonveg,Starter,Lunch & Dinner,237
+858,mumbai,Starters,Chicken Cheese Balls,pcs,Continental,nonveg,Starter,Lunch & Dinner,237
+859,mumbai,Starters,Veg Sliders-Mini Burger,pcs,Continental,veg,Starter,Lunch & Dinner,275
+860,mumbai,Starters,Potato wedges,kg,Continental,veg,Starter,Lunch & Dinner,319
+861,mumbai,Starters,Baked Potato,pcs,Continental,veg,Starter,Lunch & Dinner,330
+862,mumbai,Starters,Cheese Garlic bread,pcs,Continental,veg,Starter,Lunch & Dinner,330
+863,mumbai,Starters,Fish Fingers,pcs,Continental,nonveg,Starter,Lunch & Dinner,374
+864,mumbai,Starters,Chicken Sliders-Mini Burger,pcs,Continental,nonveg,Starter,Lunch & Dinner,385
+865,mumbai,Starters,Butter Garlic Prawns,pcs,Continental,nonveg,Starter,Lunch & Dinner,440
+866,mumbai,Starters,Nachos with Bean Salsa,kg,Continental,veg,Starter,Lunch & Dinner,454
+867,mumbai,Starters,Hummus,kg,Continental,veg,Starter,Lunch & Dinner,454
+868,mumbai,Starters,Chicken Nachos with Bean Salsa,kg,Continental,nonveg,Starter,Lunch & Dinner,545
+869,mumbai,Starters,Tacos-Bean n Cheese,pcs,Continental,veg,Starter,Lunch & Dinner,660
+870,mumbai,Starters,Tacos-Bellpepper n Onion,pcs,Continental,veg,Starter,Lunch & Dinner,660
+871,mumbai,Starters,Tacos-BBQ Chickn Bellpepper n Onion,pcs,Continental,nonveg,Starter,Lunch & Dinner,759
+872,mumbai,Starters,Cocktail Samosa,pcs,Indian,veg,Starter,Lunch & Dinner,138
+873,mumbai,Starters,Beet Root Tikki,pcs,Indian,veg,Starter,Lunch & Dinner,138
+874,mumbai,Starters,Hare mutter ki tikki,pcs,Indian,veg,Starter,Lunch & Dinner,138
+875,mumbai,Starters,Tandoori Achari Aloo,pcs,Indian,veg,Starter,Lunch & Dinner,138
+876,mumbai,Starters,Tandoori Gobhi,pcs,Indian,veg,Starter,Lunch & Dinner,138
+877,mumbai,Starters,Dahi k kebab,pcs,Indian,veg,Starter,Lunch & Dinner,138
+878,mumbai,Starters,Rajma ki galouti,pcs,Indian,veg,Starter,Lunch & Dinner,138
+879,mumbai,Starters,Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+880,mumbai,Starters,Achari Paneer Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209,,348.3333333,365.75
+881,mumbai,Starters,Paneer kalimirch tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+882,mumbai,Starters,Paneer chatpata,pcs,Indian,veg,Starter,Lunch & Dinner,209
+883,mumbai,Starters,Malai Paneer tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+884,mumbai,Starters,Paneer Pudina Tikka,pcs,Indian,veg,Starter,Lunch & Dinner,209
+885,mumbai,Starters,Veg cutlet,pcs,Indian,veg,Starter,Lunch & Dinner,209
+886,mumbai,Starters,Mushroom Kali Mirch,pcs,Indian,veg,Starter,Lunch & Dinner,209
+887,mumbai,Starters,Chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+888,mumbai,Starters,Malai chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+889,mumbai,Starters,Chicken angara,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+890,mumbai,Starters,Achari chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+891,mumbai,Starters,Chicken banjara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+892,mumbai,Starters,Murg malai kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+893,mumbai,Starters,Murg angara kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+894,mumbai,Starters,Dhaniya murg Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+895,mumbai,Starters,Chicken 65,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+896,mumbai,Starters,Chicken Pepper Masala Dry,pcs,Indian,nonveg,Starter,Lunch & Dinner,237
+897,mumbai,Starters,Reshmi chicken tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,248
+898,mumbai,Starters,Jhinga Kali mirch,pcs,Indian,nonveg,Starter,Lunch & Dinner,440
+899,mumbai,Starters,Amritsari fish Tikka,pcs,Indian,nonveg,Starter,Lunch & Dinner,440
+900,mumbai,Starters,Murg Tangdi Kabab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+901,mumbai,Starters,Mutton seekh kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+902,mumbai,Starters,Corriander Spiced Lamb Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+903,mumbai,Starters,Mutton Shami Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+904,mumbai,Starters,Mutton Gauloti Kebab,pcs,Indian,nonveg,Starter,Lunch & Dinner,545
+905,mumbai,Starters,Hara bhara kebab,pcs,Indian,veg,Starter,Lunch & Dinner,138
+906,mumbai,Starters,Veg Spring Roll,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+907,mumbai,Starters,Veg Manchurian Dry,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+908,mumbai,Starters,Baby Corn Manchurian,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+909,mumbai,Starters,kung Pao Baby Potato,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+910,mumbai,Starters,Gobhi Manchurian ,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+911,mumbai,Starters,Veg Manchurian ,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+912,mumbai,Starters,Veg Momo,pcs,Pan Asian,veg,Starter,Lunch & Dinner,138
+913,mumbai,Starters,Mushroom Manchurian,pcs,Pan Asian,veg,Starter,Lunch & Dinner,165
+914,mumbai,Starters,Paneer in schezwan sauce,pcs,Pan Asian,veg,Starter,Lunch & Dinner,193
+915,mumbai,Starters,Golden Fried Baby Corn,pcs,Pan Asian,veg,Starter,Lunch & Dinner,193
+916,mumbai,Starters,Chilly Paneer,pcs,Pan Asian,veg,Starter,Lunch & Dinner,209
+917,mumbai,Starters,Sesame Chilly cottage cheese,pcs,Pan Asian,veg,Starter,Lunch & Dinner,209
+918,mumbai,Starters,Chilly tofu-Wok tossed,pcs,Pan Asian,veg,Starter,Lunch & Dinner,237
+919,mumbai,Starters,Chicken Manchurian Dry,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+920,mumbai,Starters,Sesame Chilly Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+921,mumbai,Starters,Chicken in garlc chilli sauce,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+922,mumbai,Starters,Chicken Momo,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+923,mumbai,Starters,Honey Chilli Potato,kg,Pan Asian,veg,Starter,Lunch & Dinner,231
+924,mumbai,Starters,Veg Spring Roll,pcs,Pan Asian,veg,Starter,Lunch & Dinner,231
+925,mumbai,Starters,Chilly Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+926,mumbai,Starters,Chicken Spring Rolls,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+927,mumbai,Starters,Hunan Chicken ,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+928,mumbai,Starters,Chilli Garlic Chicken,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,237
+929,mumbai,Starters,Chicken lollypop,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,319
+930,mumbai,Starters,Fish chilly,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,319
+931,mumbai,Starters,Chicken Satay,pcs,Pan Asian,nonveg,Starter,Lunch & Dinner,545
