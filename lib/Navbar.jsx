@@ -22,18 +22,18 @@ export default function Navbar({ page }) {
   const [scrollUp, setScrollUp] = useState(true);
 
   const handleNavigation = useCallback((e) => {
-    
-      const window = e.currentTarget;
-      console.log('scroll',y,window.scrollY)
-      if ((y)> (window.scrollY)) {
-        console.log("scrolling up");
-        setScrollUp(true)
-      } else if (y < window.scrollY) {
-        console.log("scrolling down");
-    setScrollUp(false)
-      }
-      setY(window.scrollY);
-    },
+
+    const window = e.currentTarget;
+    console.log('scroll', y, window.scrollY)
+    if ((y) > (window.scrollY)) {
+      console.log("scrolling up");
+      setScrollUp(true)
+    } else if (y < window.scrollY) {
+      console.log("scrolling down");
+      setScrollUp(false)
+    }
+    setY(window.scrollY);
+  },
     [y]
   );
 
@@ -62,7 +62,9 @@ export default function Navbar({ page }) {
   }, []);
 
   function burger_click() {
+    debugger;
     let navigation_links = document.querySelectorAll(`#links > li > a`);
+    debugger;
     navigation_links.forEach((link, index) => {
       if (active) {
         setActive(!active);
@@ -124,12 +126,17 @@ export default function Navbar({ page }) {
             <a onClick={() => burger_click()}>Blog</a>
           </Link>
         </li>
+        <li className={styles.margin}>
+          <Link href="/newpage">
+            <a onClick={() => burger_click()}>New</a>
+          </Link>
+        </li>
       </ul>
     </nav>
   );
 
   const big = (
-    <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}`+` ${!scrollUp ? styles.hideNav : ""}`}>
+    <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}` + ` ${!scrollUp ? styles.hideNav : ""}`}>
       <div className="col-4">
         <ul className={styles.links} data-state={active.toString()} id="links">
           <li>
@@ -172,6 +179,16 @@ export default function Navbar({ page }) {
                 onClick={() => burger_click()}
               >
                 Blog
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/newpage">
+              <a
+                className={page == "/newpage" ? styles.current : null}
+                onClick={() => burger_click()}
+              >
+                <span style={{ color: "#BE2D30" }}>New</span>
               </a>
             </Link>
           </li>

@@ -3,7 +3,9 @@
   --text-light: #837275;
   --ninja-red: #c22d2e;
 }
-
+.our-services-box-hover .flip-card{
+  display: none;
+}
 // how-to-order
 .how-to-order-title{
   display: block;
@@ -56,7 +58,6 @@ align-items: center;
   border-radius: 5.85934px;
   transform-style: preserve-3d;
   margin-bottom: 110px;
-  
   // overflow: hidden;
 }
 .What-Make-Us-Special-container-card-font {
@@ -1626,7 +1627,50 @@ height: 23px !important;
       padding: 20px;
     }
   }
+  .header-button button{
+    margin-bottom: 20px !important;
+  }
+  .inner-slide{
+    width: 130px;
+  }
+  .inner-slide img{
+    object-fit: cover;
+  }
+  .ninja-box-carouserl{
+    margin-bottom: 50px;
+  }
+  .video-player {
+    height: 250px;
+    margin-top: 0px;
+  }
+  .ninja-header{
+    margin-top: 0px !important;
+  }
+  .our-services-box-hover .flip-card{
+    display: block;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    animation-name: bounce;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  @keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+    40% {transform: translateY(-20px);} 
+    60% {transform: translateY(-10px);} 
+ }
+  .our-services-box .title{
+    margin-left: 27px;
+  }
 
+  .What-Make-Us-Special-container-card{
+    margin-right: 3px;
+  }
+  .What-Make-Us-Special-container-card-back{
+    top: 70px;
+  }
   .our-services-box .buttons {
     // flex-direction: column;
   }
@@ -1682,13 +1726,19 @@ height: 23px !important;
     }
   }
 }
-
+@media (min-width: 421) and (max-width: 939px) {
+  .ninja-header {
+    margin-top: 80px !important;
+  }
+  .header-button button{
+    margin-bottom: none !important;
+  }
+}
 @media (max-width: 939px) {
   .ninja-header-left-container {
     display: none;
   }
   .ninja-header {
-    margin-top: 80px !important;
     height: fit-content !important;
     display: block;
     position: relative;

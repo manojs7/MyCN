@@ -1,0 +1,89 @@
+.side-menu-img-bg{
+    background-color: rgb(240, 224, 227);
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    padding: 10px;
+    margin: 10px;
+}
+.side-menu-img{
+    object-fit: contain;
+}
+.left-main-section{
+    position: relative;
+}
+.right-top-offer{
+    position: absolute;
+    right: -14px;
+    top: -14px;
+    border-radius: 100%;
+    background-image: url("https://images.unsplash.com/photo-1650803318792-6781b4884a20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmFjayUyMGdyb3VuZHxlbnwwfHwwfHJlZHw%3D&auto=format&fit=crop&w=500&q=60"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    width: 34px;
+    height: 34px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    margin: auto;
+}
+.right-top-offer-text{
+    color: rgb(252, 250, 250);
+    font-size: 10px;
+    font-weight: bold;
+}
+.newpage-container{
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    background-color: rgb(240, 224, 227);
+    margin: 0px;
+    padding: 0px;
+}
+.ninja-card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.ninja-card{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.ninja-card-img{
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    object-fit: cover;
+}
+.ninja-card-title{
+    font-size: 18px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ninja-card-weight{
+    font-size: 14px;
+}
+
+.ninja-card-price{
+    font-size:small;
+}
+
+.ninja-discount-price{
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 8px;
+}
+.ninja-card .add{
+    position: absolute;
+    right: 5px;
+    top: 150px;
+    background-color: #fff;
+    color: rgb(252, 92, 116);
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

@@ -1,5 +1,6 @@
 import "../styles/globals.scss";
 import "../styles/home/styles.scss";
+import "../styles/home/newpage.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
 import '@fortawesome/fontawesome-svg-core/styles.css';

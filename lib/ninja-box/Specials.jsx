@@ -17,7 +17,7 @@ const Specials = () => {
               <ul>
                 <li>Trendy Bulk Packaging</li>
                 <li>Premium BioFriendly Disposable</li>
-                <li>No Utensils &minus; Direct To Table</li>
+                <li>No Utensils &minus; Direct To Table</li> 
               </ul>
             </div>
           </div>

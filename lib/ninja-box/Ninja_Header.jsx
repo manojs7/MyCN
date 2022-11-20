@@ -11,8 +11,8 @@ const Ninja_Header = () => {
     "nijjabox3.png",
     "nijjabox4.png",
 
-  
-   
+
+
   ];
   const [isSmall, setIsSmall] = useState(false);
   const [photo, setPhoto] = useState(images[0]);
@@ -35,14 +35,14 @@ const Ninja_Header = () => {
     setIsChanged(true);
   };
 
-function clearIndexPhoto(){
-  setIndexPhoto(null)
-}
+  function clearIndexPhoto() {
+    setIndexPhoto(null)
+  }
 
-  useEffect(()=>{
-   const myTimeout= setTimeout(clearIndexPhoto, 10000);
+  useEffect(() => {
+    const myTimeout = setTimeout(clearIndexPhoto, 10000);
     // clearTimeout(myTimeout);
-  },[indexPhoto])
+  }, [indexPhoto])
 
 
 
@@ -128,38 +128,38 @@ function clearIndexPhoto(){
             }}
           /> */}
           {/* <img loader={'loading'} src={photo} alt='' height='100%' width='100%'/> */}
-         {indexPhoto===null&& <Carousel slide={true}>
-           {images.map((d,i)=> <Carousel.Item key={i} interval={2000}>
+          {indexPhoto === null && <Carousel slide={true}>
+            {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
               <img
                 className="d-block w-100"
                 src={d}
                 alt="Third slide"
               />
 
-       
+
             </Carousel.Item>)}
-          
+
 
 
           </Carousel>}
 
-          
 
-          {indexPhoto!==null&& <Carousel activeIndex={indexPhoto} slide={true}>
-           {images.map((d,i)=> <Carousel.Item key={i} interval={1000}>
+
+          {indexPhoto !== null && <Carousel activeIndex={indexPhoto} slide={true}>
+            {images.map((d, i) => <Carousel.Item key={i} interval={1000}>
               <img
                 className="d-block w-100"
                 src={d}
                 alt="Third slide"
               />
 
-       
+
             </Carousel.Item>)}
-          
+
 
 
           </Carousel>}
-        
+
         </div>
       </div>
       <div className="ninja-header-right-container">
@@ -176,7 +176,7 @@ function clearIndexPhoto(){
           </div>
 
           <div className="ninja-box-ninja-img">
-            <img src='ninja-box-ninja.png' alt=''/>
+            <img src='ninja-box-ninja.png' alt='' />
           </div>
           <div className="ninja-box-header-button">
             <button className="bg-red">Select Package</button>
@@ -187,57 +187,60 @@ function clearIndexPhoto(){
   );
 
   const small = (
-    <div className="ninja-header-right-container">
-      <div className="description">
-        <div className="header-title">
-          <span>ninja</span>Box
-        </div>
-        <div className="header-content">
-          Door Step Delivery in a Convenient Ready-to-Serve box for 10- 40
-          Guests
-        </div>
-        <div className="video-player">
-          <ReactImageMagnify
-            {...{
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                isFluidWidth: true,
-                src: photo,
-              },
-              largeImage: {
-                src: photo,
-                width: 100,
-                height: 200,
-              },
-            }}
-          />
-        </div>
-        <div className="header-button">
-          <button>Select Package</button>
-        </div>
-        <div className="ninja-box-carouserl">
-          <Slider {...settings}>
-            <div>
-              <div onClick={() => handlePhotoChange(0)} className="inner-slide">
-                <img src={images[0]} alt="" height="100%" width="100%" />
+    <div className="row">
+      <div className="ninja-header-right-container mt-auto">
+        <div className="description">
+          <div className="header-title">
+            <span>ninja</span>Box
+          </div>
+          <div className="header-content">
+            Door Step Delivery in a Convenient Ready-to-Serve box for 10- 40
+            Guests
+          </div>
+          <div className="video-player">
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: true,
+                  src: photo,
+                },
+                largeImage: {
+                  src: photo,
+                  width: 100,
+                  height: 200,
+                },
+              }}
+            />
+          </div>
+          <div className="header-button">
+            <button className="fs-6">Select Package</button>
+          </div>
+          <div className="ninja-box-carouserl">
+            {<Slider {...settings}>
+              <div>
+                <div>
+                  <div onClick={() => handlePhotoChange(0)} className="inner-slide">
+                    <img src={images[0]} alt="" height="100%" width="100%"/>
+                  </div>
+                </div>
+                <div>
+                  <div onClick={() => handlePhotoChange(1)} className="inner-slide">
+                    <img src={images[1]} alt="" height="100%" width="100%"/>
+                  </div>
+                </div>
+                <div>
+                  <div onClick={() => handlePhotoChange(2)} className="inner-slide">
+                    <img src={images[2]} alt="" height="100%" width="100%"/>
+                  </div>
+                </div>
+                <div>
+                  <div onClick={() => handlePhotoChange(3)} className="inner-slide">
+                    <img src={images[3]} alt="" height="100%" width="100%" />
+                  </div>
+                </div>
               </div>
-            </div>
-            <div>
-              <div onClick={() => handlePhotoChange(1)} className="inner-slide">
-                <img src={images[1]} alt="" height="100%" width="100%" />
-              </div>
-            </div>
-            <div>
-              <div onClick={() => handlePhotoChange(2)} className="inner-slide">
-                <img src={images[2]} alt="" height="100%" width="100%" />
-              </div>
-            </div>
-            <div>
-              <div onClick={() => handlePhotoChange(3)} className="inner-slide">
-                <img src={images[3]} alt="" height="100%" width="100%" />
-              </div>
-            </div>
-            <div>
+              {/* <div>
               <div onClick={() => handlePhotoChange(4)} className="inner-slide">
                 <img src={images[4]} alt="" height="100%" width="100%" />
               </div>
@@ -257,13 +260,15 @@ function clearIndexPhoto(){
                 <img src={images[7]} alt="" height="100%" width="100%" />
               </div>
             </div>
-            {/* <div>
+          <div>
               <div className="inner-slide">5</div>
             </div>
             <div>
               <div className="inner-slide">5</div>
-            </div> */}
-          </Slider>
+            </div>*/}
+            </Slider>}
+          </div>
+
         </div>
       </div>
     </div>

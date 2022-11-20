@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUp, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 const OurServices = () => {
   const [isSmall, setIsSmall] = useState(false);
@@ -66,7 +68,6 @@ const OurServices = () => {
                       <span> Ninja</span>
                       Box
                     </div>
-
                     <div className="image">
                       <img
                         src="fontPic.png"
@@ -332,6 +333,7 @@ const OurServices = () => {
                       <span> Ninja</span>
                       Gourmet
                     </div>
+                    
                     <div className="image">
                       <img
                         src="fontPic6.png"
@@ -383,11 +385,13 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
+                  <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  </div>
                   <div className="title">
                     <span> Ninja</span>
                     Box
                   </div>
-
                   <div className="image1">
                     <img src="fontPic.png" alt="" className="hoverZoom" />
                   </div>
@@ -439,6 +443,9 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
+                  <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  </div>
                   <div className="title">
                     <span> Ninja</span>
                     Buffet
@@ -493,6 +500,9 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
+                <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  </div>
                   <div className="title">
                     <span> Ninja</span>Classic
                   </div>
