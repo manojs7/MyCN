@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { AppMenuProvider } from "$lib/menuContext";
 import Float from "$lib/Float";
 import FloatNav from "$lib/FloatNav";
+import "../styles/home/specials.scss";
 
 function MyApp({ Component, pageProps }) {
   return (

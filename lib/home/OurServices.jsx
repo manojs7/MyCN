@@ -60,7 +60,7 @@ const OurServices = () => {
         </div>
         {!isSmall && (
           <div className="row mb-md-5 mb-0 our-service-box-container">
-            <div className="col-12 col-sm-6 col-md-4  mb-5">
+            <div className="col-12 col-sm-6 col-md-4 mb-5">
               <div className="our-services-box">
                 <div className="our-services-box-hover">
                   <div className="service-face service-face2">
@@ -102,13 +102,13 @@ const OurServices = () => {
                 <div className="buttons">
                   <button
                     onClick={() => (window.location.href = "/ninjabox")}
-                    className="view-details"
+                    className="view-details mt-4"
                   >
                     View Details
                   </button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing"
+                    className="sample-pricing mt-4"
                   >
                     Sample Pricing
                   </button>
@@ -159,10 +159,10 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button className="view-details mt-4">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing"
+                    className="sample-pricing mt-4"
                   >
                     Sample Pricing
                   </button>
@@ -211,10 +211,10 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button className="view-details mt-2">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing"
+                    className="sample-pricing mt-2"
                   >
                     Sample Pricing
                   </button>
@@ -264,10 +264,10 @@ const OurServices = () => {
                 </div>
 
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button className="view-details mt-3">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing"
+                    className="sample-pricing mt-3"
                   >
                     Sample Pricing
                   </button>
@@ -314,10 +314,10 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button className="view-details mt-4">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing"
+                    className="sample-pricing mt-4"
                   >
                     Sample Pricing
                   </button>
@@ -364,10 +364,10 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button className="view-details mt-5">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing"
+                    className="sample-pricing mt-5"
                   >
                     Sample Pricing
                   </button>
@@ -558,6 +558,9 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
+                <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  </div>
                   <div className="title">
                     <span> Ninja</span>
                     MealBox
@@ -609,6 +612,9 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
+                <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  </div>
                   <div className="title">
                     <span> Ninja</span>
                     SnackBox
@@ -659,6 +665,9 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
+                <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  </div>
                   <div className="title">
                     <span> Ninja</span>
                     Gourmet

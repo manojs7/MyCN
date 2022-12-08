@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import ReactImageMagnify from "react-image-magnify";
-import { Carousel } from "react-bootstrap";
+import { Carousel  } from "react-bootstrap";
+import { Carousel as BootstrapCarousel} from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
@@ -216,30 +217,28 @@ const Ninja_Header = () => {
           <div className="header-button">
             <button className="fs-6">Select Package</button>
           </div>
-          <div className="ninja-box-carouserl">
-            {<Slider {...settings}>
-              <div>
+          <div className="">
+            {<BootstrapCarousel {...settings}>
                 <div>
-                  <div onClick={() => handlePhotoChange(0)} className="inner-slide">
-                    <img src={images[0]} alt="" height="100%" width="100%"/>
+                  <div onClick={() => handlePhotoChange(0)} >
+                    <img src={images[0]} alt=""  style={{width: "200px", height: "100px"}}/>
                   </div>
                 </div>
                 <div>
-                  <div onClick={() => handlePhotoChange(1)} className="inner-slide">
-                    <img src={images[1]} alt="" height="100%" width="100%"/>
+                  <div onClick={() => handlePhotoChange(1)} >
+                    <img src={images[1]} alt="" style={{width: "200px", height: "100px"}}/>
                   </div>
                 </div>
                 <div>
-                  <div onClick={() => handlePhotoChange(2)} className="inner-slide">
-                    <img src={images[2]} alt="" height="100%" width="100%"/>
+                  <div onClick={() => handlePhotoChange(2)} >
+                    <img src={images[2]} alt=""  style={{width: "200px", height: "100px"}}/>
                   </div>
                 </div>
                 <div>
-                  <div onClick={() => handlePhotoChange(3)} className="inner-slide">
-                    <img src={images[3]} alt="" height="100%" width="100%" />
+                  <div onClick={() => handlePhotoChange(3)} >
+                    <img src={images[3]} alt="" style={{width: "200px", height: "100px"}}/>
                   </div>
                 </div>
-              </div>
               {/* <div>
               <div onClick={() => handlePhotoChange(4)} className="inner-slide">
                 <img src={images[4]} alt="" height="100%" width="100%" />
@@ -266,7 +265,7 @@ const Ninja_Header = () => {
             <div>
               <div className="inner-slide">5</div>
             </div>*/}
-            </Slider>}
+            </BootstrapCarousel>}
           </div>
 
         </div>

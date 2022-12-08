@@ -11,7 +11,6 @@ import TestimonialsTwo from "$lib/home/TestimonialsTwo";
 import WhatMakeUsSpecial from "$lib/home/WhatMakeUsSpecial";
 import Navbar from "$lib/Navbar";
 import Custom_Package from "$lib/ninja-box/Custom_Package";
-import NewPage from "pages/newpage";
 import Ninja_Header from "$lib/ninja-box/Ninja_Header";
 import Specials from "$lib/ninja-box/Specials";
 import Head from "next/head";
