@@ -102,13 +102,13 @@ const OurServices = () => {
                 <div className="buttons">
                   <button
                     onClick={() => (window.location.href = "/ninjabox")}
-                    className="view-details mt-4"
+                    className="view-details"
                   >
                     View Details
                   </button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing mt-4"
+                    className="sample-pricing"
                   >
                     Sample Pricing
                   </button>
@@ -159,10 +159,10 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details mt-4">View Details</button>
+                  <button className="view-details">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing mt-4"
+                    className="sample-pricing"
                   >
                     Sample Pricing
                   </button>
@@ -314,10 +314,10 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details mt-4">View Details</button>
+                  <button className="view-details">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
-                    className="sample-pricing mt-4"
+                    className="sample-pricing"
                   >
                     Sample Pricing
                   </button>

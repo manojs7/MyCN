@@ -63,14 +63,14 @@ const Header = () => {
   const rightHeader = (
     <div className="header-right-container">
       <div className="description">
-        <div className="header-title">
-          <img src="caterninja.png" height="auto" width="auto" alt="logo" />
+        <div className="header-title mt-4">
+          <img src="caterninja.png" height="auto" width="160" alt="logo" />
         </div>
-        <div className="header-title-two">
+        <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>
         </div>
         <div className="header-content">
-          <img src="chef.png" height="100%" width="100%" alt="logo" />
+          <img src="chef.png" height="330px" width="290px" alt="logo" />
           <div className="header-button">
             <button className="bg-red">Our Services</button>
           </div>

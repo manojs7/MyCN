@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import ReactImageMagnify from "react-image-magnify";
-import { Carousel  } from "react-bootstrap";
-import { Carousel as BootstrapCarousel} from 'react-responsive-carousel';
+import { Carousel } from "react-bootstrap";
+import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
@@ -165,18 +165,18 @@ const Ninja_Header = () => {
       </div>
       <div className="ninja-header-right-container">
         <div className="description">
-          <div className="ninja-box-header-logo">
-            <img src="caterninja.png" height="auto" width="100%" alt="" />
+          <div className="lgd-ninja-box-header-logo">
+            <img src="caterninja.png" height="auto" width="140px" alt="" />
           </div>
-          <div className="ninja-box-header-title">
-            Ninja <span>Box</span>
+          <div className="lgd-ninja-box-header-title">
+            Ninja<span>Box</span>
           </div>
-          <div className="ninja-box-header-content">
-            Door Step Delivery in a Convenient Ready-to-Serve box for 10- 40
-            Guests
+          <div className="lgd-ninja-box-header-content">
+          <span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
+                  Guests</span>
           </div>
 
-          <div className="ninja-box-ninja-img">
+          <div className="lgd-ninja-box-ninja-img">
             <img src='ninja-box-ninja.png' alt='' />
           </div>
           <div className="ninja-box-header-button">
@@ -191,12 +191,24 @@ const Ninja_Header = () => {
     <div className="row">
       <div className="ninja-header-right-container mt-auto">
         <div className="description">
-          <div className="header-title">
-            <span>ninja</span>Box
-          </div>
-          <div className="header-content">
-            Door Step Delivery in a Convenient Ready-to-Serve box for 10- 40
-            Guests
+          <div className="description mb-4">
+            <div className="ninja-box-header-logo ms-4">
+              <img src="caterninja.png" height="auto" width="100%" alt="" />
+            </div>
+            <div className="container d-flex">
+              <div className="col-6">
+                <div className="ninja-box-header-title">
+                  Ninja<span>Box</span>
+                </div>
+                <div className="ninja-box-header-content">
+                  <span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
+                  Guests</span>
+                </div>
+              </div>
+              <div className="col-6 ninja-box-ninja-img">
+                <img src='ninja-box-ninja.png' alt='' />
+              </div>
+            </div>
           </div>
           <div className="video-player">
             <ReactImageMagnify
@@ -214,32 +226,31 @@ const Ninja_Header = () => {
               }}
             />
           </div>
-          <div className="header-button">
-            <button className="fs-6">Select Package</button>
+        </div>
+      </div>
+      <div className="mt-2">
+        {<BootstrapCarousel {...settings}>
+          <div>
+            <div onClick={() => handlePhotoChange(0)} >
+              <img src={images[0]} alt="" style={{ width: "200px", height: "100px" }} />
+            </div>
           </div>
-          <div className="">
-            {<BootstrapCarousel {...settings}>
-                <div>
-                  <div onClick={() => handlePhotoChange(0)} >
-                    <img src={images[0]} alt=""  style={{width: "200px", height: "100px"}}/>
-                  </div>
-                </div>
-                <div>
-                  <div onClick={() => handlePhotoChange(1)} >
-                    <img src={images[1]} alt="" style={{width: "200px", height: "100px"}}/>
-                  </div>
-                </div>
-                <div>
-                  <div onClick={() => handlePhotoChange(2)} >
-                    <img src={images[2]} alt=""  style={{width: "200px", height: "100px"}}/>
-                  </div>
-                </div>
-                <div>
-                  <div onClick={() => handlePhotoChange(3)} >
-                    <img src={images[3]} alt="" style={{width: "200px", height: "100px"}}/>
-                  </div>
-                </div>
-              {/* <div>
+          <div>
+            <div onClick={() => handlePhotoChange(1)} >
+              <img src={images[1]} alt="" style={{ width: "200px", height: "100px" }} />
+            </div>
+          </div>
+          <div>
+            <div onClick={() => handlePhotoChange(2)} >
+              <img src={images[2]} alt="" style={{ width: "200px", height: "100px" }} />
+            </div>
+          </div>
+          <div>
+            <div onClick={() => handlePhotoChange(3)} >
+              <img src={images[3]} alt="" style={{ width: "200px", height: "100px" }} />
+            </div>
+          </div>
+          {/* <div>
               <div onClick={() => handlePhotoChange(4)} className="inner-slide">
                 <img src={images[4]} alt="" height="100%" width="100%" />
               </div>
@@ -265,10 +276,7 @@ const Ninja_Header = () => {
             <div>
               <div className="inner-slide">5</div>
             </div>*/}
-            </BootstrapCarousel>}
-          </div>
-
-        </div>
+        </BootstrapCarousel>}
       </div>
     </div>
   );

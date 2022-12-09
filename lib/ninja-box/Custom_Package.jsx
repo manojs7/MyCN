@@ -62,7 +62,7 @@ const Custom_Package = () => {
 
   return (
     <>
-      <section className="custom-package my-3">
+      <section className="custom-package">
         <div className="container">
           <div className="section-title">
             <h2>

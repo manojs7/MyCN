@@ -43,7 +43,7 @@
         list-style: none;
         justify-content: flex-start;
         align-items: center;
-        padding-left: 0;
+        padding-left: 40px;
         .icon {
             color: #935052;
             width: 32px;
@@ -113,6 +113,7 @@
 
     .text {
         margin-bottom: 2rem;
+        margin-left: 12px;
 
         p {
             display: inline-block;

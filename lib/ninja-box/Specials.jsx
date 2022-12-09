@@ -18,9 +18,9 @@ const Specials = () => {
   return (
     <div>
     { !isSmall && (<section className="specials">
-      <div className="container">
+      <div className="">
         <div className="section-title">
-          <h2>What Makes NinjaBox Special</h2>
+          <h2>What Makes <span>Ninja</span>Box Special</h2>
         </div>
         <div className="row special-scroller">
           <div className="col-lg-3 col-md-6 mb-lg-0 mb-4">
