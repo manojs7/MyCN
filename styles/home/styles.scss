@@ -92,6 +92,18 @@ align-items: center;
   position: absolute;
   bottom: 70%;
 }
+.what-makes-ninjabox-special-logo{
+  width: 46.87px;
+  height: 46.87px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffc31a;
+  box-shadow: 0px 2.34374px 2.34374px rgba(0, 0, 0, 0.25);
+  border-radius: 5.85934px;
+  position: absolute;
+  bottom: 70%;
+}
 .What-Make-Us-Special-container-card-font p {
   font-family: "Montserrat";
   font-style: normal;
@@ -136,13 +148,16 @@ align-items: center;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
-  font-size: 8.20308px;
-  line-height: 10px;
+  font-size: 10px;
+  line-height: 11px;
 
   color: #4d555b;
 }
+.What-Make-Us-Special-container-card-back p span {
+ font-weight: 900;
+}
 .What-Make-Us-Special-container-card:hover .What-Make-Us-Special-container-card-back ,.What-Make-Us-Special-container-card-font:hover .What-Make-Us-Special-container-card-back  {
-  // transform: translateY(555px);
+  //transform: translateY(555px);
   top: 70px;
 }
 
@@ -177,7 +192,6 @@ display: none;
 }
 // feedback
 .feed-back-container {
-  margin-top: 100px;
   width: 100%;
   height: 95px;
   background-color: #be2d30;
@@ -332,6 +346,16 @@ border-radius: 18.99px;
 .section-title {
   padding: 0 0 20px 0;
   margin-top: 60px;
+
+}
+.smd-section-title{
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+.smd-section-title h2 {
+  font-weight: 600;
+  font-size: 30px;
+  border-bottom: 3px solid var(--ninja-red);
 }
 
 .section-title h2 {
@@ -345,6 +369,9 @@ border-radius: 18.99px;
   margin-bottom: 30px;
 }
 .section-title h2 span {
+  color: var(--ninja-red);
+}
+.smd-section-title h2 span {
   color: var(--ninja-red);
 }
 
@@ -576,7 +603,8 @@ border-radius: 18.99px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+  
   border-radius: 50px;
   height: 100%;
 }
@@ -604,7 +632,7 @@ border-radius: 18.99px;
   text-align: left;
   letter-spacing: 3%;
   color: var(--text-light);
-  padding: 0 0 20px 0;
+  //padding: 0 0 20px 0;
   font-family: "Montserrat", sans-serif;
   text-align: center;
 }
@@ -659,6 +687,12 @@ border-radius: 18.99px;
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.smd-ninja-header-right-container{
+  background: #FFC31A;
+  padding-top: 50px;
+}
+
 .ninja-box-ninja-header{
   background-color: #FFF2F2;
 }
@@ -692,9 +726,8 @@ border-radius: 18.99px;
 }
 .ninja-box-header-title{
   margin-left: 0px;
-  font-family: 'Montserrat';
   font-style: normal;
-  font-weight: bolder;
+  font-weight: 900;
   font-size: 42px;
   line-height: 112%;
   /* or 62px */
@@ -706,9 +739,8 @@ border-radius: 18.99px;
 //FOR LAGRE DEVICE
 .lgd-ninja-box-header-title{
   margin-left: 0px;
-  font-family: 'Montserrat';
   font-style: normal;
-  font-weight: bolder;
+  font-weight: 900;
   font-size: 50px;
   line-height: 112%;
   /* or 62px */
@@ -820,7 +852,7 @@ height: 23px !important;
 }
 .ninja-box-ninja-img{
   margin-top: -10px;
-  margin-left: 30px;
+  margin-left: 24px;
 }
 //large device
 .lgd-ninja-box-ninja-img{
@@ -1080,6 +1112,7 @@ height: 23px !important;
     padding-bottom: 20px;
     text-align: center;
     font-weight: 500;
+    margin: auto;
   }
 
   ul {
@@ -1310,7 +1343,6 @@ height: 23px !important;
   // left: calc(50%-326px);
 }
 .banner-btn-container button {
-  font-family: "Montserrat";
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
@@ -1338,15 +1370,15 @@ height: 23px !important;
   width: 93px;
   height: 22.79px;
   position: absolute;
-  font-family: "Montserrat";
+  //font-family: "Montserrat";
   font-style: normal;
-  font-weight: 700;
-  font-size: 9.37548px;
+  font-weight: 400;
+  font-size: 10px;
   line-height: 11px;
   background: #e23d1c;
   box-shadow: 1.5071px 2.00946px 5.02365px rgba(0, 0, 0, 0.25);
   border-radius: 13.3127px;
-  right: 30px;
+  right: 20px;
   top: 87px;
   color: white;
 }
@@ -1832,7 +1864,8 @@ height: 23px !important;
     width: 100vw !important;
   }
   .video-player {
-    width: 100% !important;
+    //width: 100% !important;
+    width: 325px;
     display: block;
     position: relative;
   }

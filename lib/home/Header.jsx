@@ -177,7 +177,7 @@ const Header = () => {
         <div className="center-banner-btn">
           <button>
             {" "}
-            Ninja <span>Box .</span>{" "}
+            Ninja <span>Box</span>{" "}
           </button>
           <button>
             Ninja <span>Buffet</span>{" "}

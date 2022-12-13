@@ -333,7 +333,7 @@ const OurServices = () => {
                       <span> Ninja</span>
                       Gourmet
                     </div>
-                    
+
                     <div className="image">
                       <img
                         src="fontPic6.png"
@@ -379,172 +379,177 @@ const OurServices = () => {
         {/* for mobile */}
 
         {/* <Slider {...settings}> */}
-        <div className="mobile-card-container">
-          {/* card1 */}
-          <div className="">
-            <div className="our-services-box">
-              <div className="our-services-box-hover">
-                <div className="service-face service-face2">
-                  <div className="flip-card">
-                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
-                  </div>
-                  <div className="title">
-                    <span> Ninja</span>
-                    Box
-                  </div>
-                  <div className="image1">
-                    <img src="fontPic.png" alt="" className="hoverZoom" />
-                  </div>
-                  <div className="content">
-                    <p>
-                      {" "}
-                      Door Step Delivery in a <br/> Convenient{" "}
-                      <span>Ready-to-Serve</span> box
-                    </p>
+        <div className="mt-5">
+        {isSmall ?<div className="our-services-title">
+          <h2>Our Services</h2>
+        </div> :""}
+          <div className="mobile-card-container">
+            {/* card1 */}
+            <div className="">
+              <div className="our-services-box">
+                <div className="our-services-box-hover">
+                  <div className="service-face service-face2">
+                    <div className="flip-card">
+                      <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
+                    </div>
+                    <div className="title">
+                      <span> Ninja</span>
+                      Box
+                    </div>
+                    <div className="image1">
+                      <img src="fontPic.png" alt="" className="hoverZoom" />
+                    </div>
+                    <div className="content">
+                      <p>
+                        {" "}
+                        Door Step Delivery in a <br /> Convenient{" "}
+                        <span>Ready-to-Serve</span> box
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="service-back">
-                <p>
-                  {" "}
-                  ✅ No Mess in Kitchen <br />
-                  ✅ No Cleaning Required <br />
-                  ✅ Includes 🍃Disposables <br /> <br />
-                 
-                </p>
-              </div>
-              <div className="service-back-picmb">
-                <img
-                  src="mBa1.png"
-                  height="100%"
-                  width="100%"
-                  alt=""
-                  className="hoverZoom"
-                />
-              </div>
-              <div className="buttons">
-                <button
-                  onClick={() => (window.location.href = "/ninjabox")}
-                  className="view-details"
-                >
-                  View Details
-                </button>
-                <button
-                  onClick={() => (window.location.href = "/custom")}
-                  className="sample-pricing"
-                >
-                  Sample Pricing
-                </button>
+                <div className="service-back">
+                  <p>
+                    {" "}
+                    ✅ No Mess in Kitchen <br />
+                    ✅ No Cleaning Required <br />
+                    ✅ Includes 🍃Disposables <br /> <br />
+
+                  </p>
+                </div>
+                <div className="service-back-picmb">
+                  <img
+                    src="mBa1.png"
+                    height="100%"
+                    width="100%"
+                    alt=""
+                    className="hoverZoom"
+                  />
+                </div>
+                <div className="buttons">
+                  <button
+                    onClick={() => (window.location.href = "/ninjabox")}
+                    className="view-details"
+                  >
+                    View Details
+                  </button>
+                  <button
+                    onClick={() => (window.location.href = "/custom")}
+                    className="sample-pricing"
+                  >
+                    Sample Pricing
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          {/* card 2 */}
-          <div className="">
-            <div className="our-services-box">
-              <div className="our-services-box-hover">
-                <div className="service-face service-face2">
-                  <div className="flip-card">
-                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
-                  </div>
-                  <div className="title">
-                    <span> Ninja</span>
-                    Buffet
-                  </div>
+            {/* card 2 */}
+            <div className="">
+              <div className="our-services-box">
+                <div className="our-services-box-hover">
+                  <div className="service-face service-face2">
+                    <div className="flip-card">
+                      <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
+                    </div>
+                    <div className="title">
+                      <span> Ninja</span>
+                      Buffet
+                    </div>
 
-                  <div className="image2">
-                    <img
-                      src="fontPic2.png"
-                      alt=""
-                      className="img-fluid hoverZoom"
-                    />
-                  </div>
-                  <div className="content">
-                    <p>
-                      Our Ninja Caterer comes with <br/> a No-Mess{" "}
-                      <span>Quick-Setup</span>{" "}
-                    </p>
+                    <div className="image2">
+                      <img
+                        src="fontPic2.png"
+                        alt=""
+                        className="img-fluid hoverZoom"
+                      />
+                    </div>
+                    <div className="content">
+                      <p>
+                        Our Ninja Caterer comes with <br /> a No-Mess{" "}
+                        <span>Quick-Setup</span>{" "}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="service-back">
-                <p className="">
-                  {" "}
-                  ✅ 1-2 Trained Captains <br />
-                  ✅ Quick Setup - Clean up
-                  <br />
-                  ✅ Hassel Free Catering
-                  <br />✅ Hot and Delicious Food
-                </p>
-              </div>
-              <div className="service-back-picmb">
-                <img
-                  src="mBa2.png"
-                  alt=""
-                  className="img-fluid hoverZoom"
-                />
-              </div>
-              <div className="buttons">
-                <button className="view-details">View Details</button>
-                <button
-                  onClick={() => (window.location.href = "/custom")}
-                  className="sample-pricing"
-                >
-                  Sample Pricing
-                </button>
+                <div className="service-back">
+                  <p className="">
+                    {" "}
+                    ✅ 1-2 Trained Captains <br />
+                    ✅ Quick Setup - Clean up
+                    <br />
+                    ✅ Hassel Free Catering
+                    <br />✅ Hot and Delicious Food
+                  </p>
+                </div>
+                <div className="service-back-picmb">
+                  <img
+                    src="mBa2.png"
+                    alt=""
+                    className="img-fluid hoverZoom"
+                  />
+                </div>
+                <div className="buttons">
+                  <button className="view-details">View Details</button>
+                  <button
+                    onClick={() => (window.location.href = "/custom")}
+                    className="sample-pricing"
+                  >
+                    Sample Pricing
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* card 3 */}
-          <div className="">
-            <div className="our-services-box">
-              <div className="our-services-box-hover">
-                <div className="service-face service-face2">
-                <div className="flip-card">
-                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
-                  </div>
-                  <div className="title">
-                    <span> Ninja</span>Classic
-                  </div>
-                  <div className="image3">
-                    <img
-                      src="fontPic3.png"
-                      alt=""
-                      className="img-fluid hoverZoom"
-                    />
-                  </div>
-                  <div className="content">
-                    <p>
-                      Catering for <span> large gatherings </span> <br/> of 50+ guests
-                    </p>
+            {/* card 3 */}
+            <div className="">
+              <div className="our-services-box">
+                <div className="our-services-box-hover">
+                  <div className="service-face service-face2">
+                    <div className="flip-card">
+                      <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
+                    </div>
+                    <div className="title">
+                      <span> Ninja</span>Classic
+                    </div>
+                    <div className="image3">
+                      <img
+                        src="fontPic3.png"
+                        alt=""
+                        className="img-fluid hoverZoom"
+                      />
+                    </div>
+                    <div className="content">
+                      <p>
+                        Catering for <span> large gatherings </span> <br /> of 50+ guests
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="service-back">
-                <p>
-                  {" "}
-                  ✅ 1-2 Trained Captains <br />
-                  ✅ Outdoor Catering
-                  <br />
-                  ✅ Quick Setup - Clean up
-                  <br />✅ Hot and Delicious Food
-                </p>
-              </div>
-              <div className="service-back-picmb">
-                <img
-                  src="mBa3.png"
-                  alt=""
-                  className="img-fluid hoverZoom"
-                />
-              </div>
-              <div className="buttons">
-                <button className="view-details">View Details</button>
-                <button
-                  onClick={() => (window.location.href = "/custom")}
-                  className="sample-pricing"
-                >
-                  Sample Pricing
-                </button>
+                <div className="service-back">
+                  <p>
+                    {" "}
+                    ✅ 1-2 Trained Captains <br />
+                    ✅ Outdoor Catering
+                    <br />
+                    ✅ Quick Setup - Clean up
+                    <br />✅ Hot and Delicious Food
+                  </p>
+                </div>
+                <div className="service-back-picmb">
+                  <img
+                    src="mBa3.png"
+                    alt=""
+                    className="img-fluid hoverZoom"
+                  />
+                </div>
+                <div className="buttons">
+                  <button className="view-details">View Details</button>
+                  <button
+                    onClick={() => (window.location.href = "/custom")}
+                    className="sample-pricing"
+                  >
+                    Sample Pricing
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -558,8 +563,8 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
-                <div className="flip-card">
-                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
                   </div>
                   <div className="title">
                     <span> Ninja</span>
@@ -574,7 +579,7 @@ const OurServices = () => {
                   </div>
                   <div className="content">
                     <p>
-                      Individual <span>Boxed Meals/</span> <br/> Packed Lunches or{" "}
+                      Individual <span>Boxed Meals/</span> <br /> Packed Lunches or{" "}
                       <span> Dinners</span>
                     </p>
                   </div>
@@ -612,8 +617,8 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
-                <div className="flip-card">
-                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
                   </div>
                   <div className="title">
                     <span> Ninja</span>
@@ -628,7 +633,7 @@ const OurServices = () => {
                   </div>
                   <div className="content">
                     <p>
-                      Perfect box of healthy <span>delicious</span>  <br/>snacks and
+                      Perfect box of healthy <span>delicious</span>  <br />snacks and
                       beverages
                     </p>
                   </div>
@@ -665,8 +670,8 @@ const OurServices = () => {
             <div className="our-services-box">
               <div className="our-services-box-hover">
                 <div className="service-face service-face2">
-                <div className="flip-card">
-                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger"/>
+                  <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
                   </div>
                   <div className="title">
                     <span> Ninja</span>
@@ -681,7 +686,7 @@ const OurServices = () => {
                   </div>
                   <div className="content">
                     <p>
-                      Premium Buffet of High-end <br/> <span>Lavish Cuisine</span>{" "}
+                      Premium Buffet of High-end <br /> <span>Lavish Cuisine</span>{" "}
                     </p>
                   </div>
                 </div>

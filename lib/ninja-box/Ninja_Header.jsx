@@ -172,8 +172,8 @@ const Ninja_Header = () => {
             Ninja<span>Box</span>
           </div>
           <div className="lgd-ninja-box-header-content">
-          <span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
-                  Guests</span>
+            <span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
+              Guests</span>
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
@@ -189,9 +189,9 @@ const Ninja_Header = () => {
 
   const small = (
     <div className="row">
-      <div className="ninja-header-right-container mt-auto">
+      <div className="smd-ninja-header-right-container">
         <div className="description">
-          <div className="description mb-4">
+          <div className="description">
             <div className="ninja-box-header-logo ms-4">
               <img src="caterninja.png" height="auto" width="100%" alt="" />
             </div>
@@ -202,7 +202,7 @@ const Ninja_Header = () => {
                 </div>
                 <div className="ninja-box-header-content">
                   <span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
-                  Guests</span>
+                    Guests</span>
                 </div>
               </div>
               <div className="col-6 ninja-box-ninja-img">
@@ -210,7 +210,7 @@ const Ninja_Header = () => {
               </div>
             </div>
           </div>
-          <div className="video-player">
+          {/* <div className="video-player">
             <ReactImageMagnify
               {...{
                 smallImage: {
@@ -225,11 +225,47 @@ const Ninja_Header = () => {
                 },
               }}
             />
+          </div> */}
+          <div className="video-player">
+            {/* <ReactImageMagnify
+            {...{
+              smallImage: {
+                alt: "Wristwatch by Ted Baker London",
+                isFluidWidth: true,
+                src: photo,
+              },
+              largeImage: {
+                src: photo,
+                width: 600,
+                height: 800,
+              },
+            }}
+          /> */}
+            {/* <img loader={'loading'} src={photo} alt='' height='100%' width='100%'/> */}
+            {indexPhoto === null && <Carousel slide={true}>
+              {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
+                <img
+                  className="d-block"
+                  src={d}
+                  alt="Third slide"
+                  style={{height: "auto", width: "350px"}}
+                />
+              </Carousel.Item>)}
+            </Carousel>}
+            {indexPhoto !== null && <Carousel activeIndex={indexPhoto} slide={true}>
+              {images.map((d, i) => <Carousel.Item key={i} interval={1000}>
+                <img
+                  className="d-block"
+                  src={d}
+                  alt="Third slide"
+                />
+              </Carousel.Item>)}
+            </Carousel>}
           </div>
         </div>
       </div>
-      <div className="mt-2">
-        {<BootstrapCarousel {...settings}>
+      <div className="container mt-2">
+        {/*{<BootstrapCarousel {...settings}>
           <div>
             <div onClick={() => handlePhotoChange(0)} >
               <img src={images[0]} alt="" style={{ width: "200px", height: "100px" }} />
@@ -275,8 +311,28 @@ const Ninja_Header = () => {
             </div>
             <div>
               <div className="inner-slide">5</div>
-            </div>*/}
-        </BootstrapCarousel>}
+            </div>
+        </BootstrapCarousel>}*/}
+        <div className="d-flex">
+          <div className="ms-2 me-1">
+            <div onClick={() => handlePhotoChange(0)} >
+              <img src={images[0]} alt="" style={{ width: "90px", height: "auto" }} />
+            </div>
+          </div>
+          <div className="me-1">
+            <div onClick={() => handlePhotoChange(1)} >
+              <img src={images[1]} alt="" style={{ width: "90px", height: "auto" }} />
+            </div>
+          </div>
+          <div className="me-1">
+            <div onClick={() => handlePhotoChange(2)} >
+              <img src={images[2]} alt="" style={{ width: "90px", height: "auto" }} />
+            </div>
+          </div>
+          <div onClick={() => handlePhotoChange(3)} >
+            <img src={images[2]} alt="" style={{ width: "90px", height: "auto" }} />
+          </div>
+        </div>
       </div>
     </div>
   );

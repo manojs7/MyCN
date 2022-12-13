@@ -29,7 +29,7 @@ const Specials = () => {
                 <img src="../ninja-box/specials-1.png" alt="" className="img-fluid hoverZoom" />
               </div>
               <div className="item-title">Portable Bulk Food packaging</div>
-              <ul>
+              <ul className="mx-auto">
                 <li>Trendy Bulk Packaging</li>
                 <li>Premium BioFriendly Disposable</li>
                 <li>No Utensils &minus; Direct To Table</li> 
@@ -42,7 +42,7 @@ const Specials = () => {
                 <img src="../ninja-box/specials-2.png" alt="" className="img-fluid hoverZoom" />
               </div>
               <div className="item-title">Prepared with care and Hygiene</div>
-              <ul>
+              <ul className="mx-auto">
                 <li>Strict NinjaKitchen Protocols</li>
                 <li>Highest Safety Standards</li>
                 <li>Trained Chef &amp; Delivery Ninja</li>
@@ -55,7 +55,7 @@ const Specials = () => {
                 <img src="../ninja-box/specials-2.png" alt="" className="img-fluid hoverZoom" />
               </div>
               <div className="item-title">Complete Party Solution</div>
-              <ul>
+              <ul className="mx-auto">
                 <li>Large Cuisine Variety</li>
                 <li>Custom Choice Menu</li>
                 <li>Great Value for Money</li>
@@ -68,7 +68,7 @@ const Specials = () => {
                 <img src="../ninja-box/specials-4.png" alt="" className="img-fluid hoverZoom" />
               </div>
               <div className="item-title">Hassle Free Solution</div>
-              <ul>
+              <ul className="mx-auto">
                 <li>Convenient Ordering</li>
                 <li>Professional Support</li>
                 <li>On Time Delivery</li>
@@ -79,10 +79,10 @@ const Specials = () => {
       </div>
     </section>)}
     { isSmall && (<div>
-      <div className="section-title">
-        <h2>What Makes NinjaBox Special</h2>
+      <div className="smd-section-title text-center">
+        <h2>What Makes<br/>Ninja<span>Box</span> Special?</h2>
       </div>
-      <Carousel >
+      {/* <Carousel >
         <div className="specials-item me-2 pt-5">
           <div className="item-image">
             <img src="../ninja-box/specials-1.png" alt="" style={{width: "290px", height: "230px"}} />
@@ -127,7 +127,88 @@ const Specials = () => {
             <li>On Time Delivery</li>
           </ul>
         </div>
-      </Carousel>
+      </Carousel> */}
+      <div className="What-Make-Us-Special-card-container ">
+          {/* card 1 */}
+          <div className="What-Make-Us-Special-container-card ">
+            <div className="">
+              <div className="What-Make-Us-Special-container-card-font">
+                <div className="what-makes-ninjabox-special-logo">
+                  <img src="wmus1.png" alt="" />
+                </div>
+                <p>Portable Bulk Food Packaging</p>
+              </div>
+            </div>
+            <div className="What-Make-Us-Special-hover">
+              <div className="What-Make-Us-Special-container-card-back">
+                <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+                ✅ Trendy Bulk Packaging <br/>
+                ✅ BioFriendly Disposable<br/>
+                ✅ No Utensile - Direct To Table
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* card 2*/}
+          <div className="What-Make-Us-Special-container-card ">
+            <div className="What-Make-Us-Special-hover">
+              <div className="What-Make-Us-Special-container-card-font">
+                <div className="What-Make-Us-Special-icon">
+                  <img src="wmus2.png" alt="" />
+                </div>
+                <p>Complete Party Solution</p>
+              </div>
+            </div>
+            <div className="What-Make-Us-Special-container-card-back">
+            <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+                ✅ Large Cuisine Variety <br/>
+                ✅ Custom Choice Menu<br/>
+                ✅ Great Value for Money
+                </p>
+            </div>
+          </div>
+
+          {/* card 3 */}
+
+          <div className="What-Make-Us-Special-container-card ">
+            <div className="What-Make-Us-Special-hover">
+              <div className="What-Make-Us-Special-container-card-font">
+                <div className="What-Make-Us-Special-icon">
+                  <img src="wmus3.png" alt="" />
+                </div>
+                <p>Prepared with care and Hygiene</p>
+              </div>
+            </div>
+            <div className="What-Make-Us-Special-container-card-back">
+            <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+                ✅ Strict NinjaKitchen Protocols <br/>
+                ✅ Highest Safety Standards<br/>
+                ✅ Trained Chef & Delivery Ninja
+                </p>
+            </div>
+          </div>
+
+          {/* card 4 */}
+
+          <div className="What-Make-Us-Special-container-card ">
+            <div className="What-Make-Us-Special-hover">
+              <div className="What-Make-Us-Special-container-card-font">
+                <div className="What-Make-Us-Special-icon">
+                  <img src="wmus4.png" alt="" />
+                </div>
+                <p>Hassle Free Solution</p>
+              </div>
+            </div>
+            <div className="What-Make-Us-Special-container-card-back">
+            <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+                ✅ Convenient Ordering <br/>
+                ✅ Professional Support<br/>
+                ✅ On Time Delivery
+                </p>
+            </div>
+          </div>
+        </div>
     </div>)}
     </div>
   );

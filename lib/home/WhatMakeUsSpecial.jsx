@@ -13,7 +13,7 @@ export default function WhatMakeUsSpecial() {
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus-iocn1.png" alt="" />
+                  <img src="wmus-iocn1.png" alt=""/>
                 </div>
                 <p>Easy Online Ordering</p>
               </div>
@@ -21,7 +21,7 @@ export default function WhatMakeUsSpecial() {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back">
                 <p>
-                  Catering Experts Available Online For You, Call / Whatsapp Us,
+                  Catering Experts Available Online For You, <span>Call / Whatsapp</span> Us,
                   We Would Be Happy To Help You!
                 </p>
 
@@ -44,7 +44,7 @@ export default function WhatMakeUsSpecial() {
             </div>
             <div className="What-Make-Us-Special-container-card-back">
               <p>
-                Select Your Own Menu and Get Instant Price or Live Chat to Get
+                Select Your Own Menu and Get <span>Instant Price</span> or <span>Live Chat</span> to Get
                 Fixed Menu Packages
               </p>
 
@@ -67,8 +67,8 @@ export default function WhatMakeUsSpecial() {
             </div>
             <div className="What-Make-Us-Special-container-card-back">
               <p>
-                Compare Various Menu And Prices Without Speaking to Anyone. Your
-                Search Ends Here!
+                <span>Compare</span> Various Menu And <span>Prices</span> Without Speaking to Anyone. Your
+                <span>Search Ends Here!</span>
               </p>
 
               <div className="What-Make-Us-Special-container-card-back-img">
@@ -90,8 +90,8 @@ export default function WhatMakeUsSpecial() {
             </div>
             <div className="What-Make-Us-Special-container-card-back">
               <p>
-                Pre-Negotiated Prices For Bulk Order, Premium Restaurant Quality
-                Food at 50% Discounted Rates!
+                Pre-Negotiated Prices For <span>Bulk Order</span>, Premium Restaurant Quality
+                Food at <span>50% Discounted Rates!</span>
               </p>
 
               <div>

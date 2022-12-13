@@ -7,6 +7,7 @@ import HowToOrder from "$lib/home/HowToOrder";
 import News from "$lib/home/News";
 import OurServices from "$lib/home/OurServices";
 import Testimonials from "$lib/home/Testimonials";
+import TestimonialsThree from "$lib/home/TestimonialsThree";
 import TestimonialsTwo from "$lib/home/TestimonialsTwo";
 import WhatMakeUsSpecial from "$lib/home/WhatMakeUsSpecial";
 import Navbar from "$lib/Navbar";
@@ -22,16 +23,18 @@ export default function Home() {
   return (
     <div activeClass="active" to='footer-logo' spy={true} smooth={true} offset={50} duration={1000}>
        <Navbar />
+       <FeedBack/>
       <Header />
-      <FeedBack/>
       <OurServices />
       <WhatMakeUsSpecial/>
+      <TestimonialsThree/>
       <HowToOrder/>
       <HowItWorks />
 
       {/* <Testimonials /> */}
 
       {/* <TestimonialsTwo/> */}
+      
       <News />
       <Categories />
 
