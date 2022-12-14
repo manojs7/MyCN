@@ -653,6 +653,19 @@ border-radius: 18.99px;
   display: flex;
 }
 
+.ninja-header #smallninja-container{
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+.testimonial-section{
+  height: 12vh;
+  width: 96vw;
+  border-radius: 20px;
+  padding: 12px;
+  background-color: #ffb800;
+}
+
 // home right container
 .header-right-container{
   // padding: 50px 74px 26px 74px;

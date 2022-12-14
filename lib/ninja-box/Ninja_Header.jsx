@@ -188,7 +188,7 @@ const Ninja_Header = () => {
   );
 
   const small = (
-    <div className="row">
+    <div className="row" id="smallninja-container">
       <div className="smd-ninja-header-right-container">
         <div className="description">
           <div className="description">
@@ -314,7 +314,7 @@ const Ninja_Header = () => {
             </div>
         </BootstrapCarousel>}*/}
         <div className="d-flex">
-          <div className="ms-2 me-1">
+          <div className="me-1">
             <div onClick={() => handlePhotoChange(0)} >
               <img src={images[0]} alt="" style={{ width: "90px", height: "auto" }} />
             </div>

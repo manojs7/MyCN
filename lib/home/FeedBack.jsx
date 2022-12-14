@@ -76,7 +76,8 @@ export default function FeedBack() {
         {/* 1 */}
         <Carousel.Item interval={2000} >
           <div className="content-container">
-            <p>95% <span><FontAwesomeIcon icon={faStar}></FontAwesomeIcon></span> Ratings </p>
+            {/* <p>95% <span><FontAwesomeIcon icon={faStar}></FontAwesomeIcon></span> Ratings </p> */}
+            <p>95% <span><img style={{height: "auto", width: "130px", marginTop: "-5px"}} src="Star.svg" alt="" /></span> Ratings </p>
           </div>
         
         </Carousel.Item>
