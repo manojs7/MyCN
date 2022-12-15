@@ -5,6 +5,7 @@ import { faCircleUp, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 const OurServices = () => {
   const [isSmall, setIsSmall] = useState(false);
+ 
   const settings = {
     className: "center",
 
@@ -141,7 +142,7 @@ const OurServices = () => {
                     </div>
                   </div>
                 </div>
-                <div className="service-back">
+                <div className="service-back ">
                   <p className="">
                     {" "}
                     ✅ 1-2 Trained Captains <br />
@@ -193,7 +194,7 @@ const OurServices = () => {
                     </div>
                   </div>
                 </div>
-                <div className="service-back">
+                <div className="service-back ">
                   <p>
                     {" "}
                     ✅ 1-2 Trained Captains <br />
@@ -247,7 +248,7 @@ const OurServices = () => {
                     </div>
                   </div>
                 </div>
-                <div className="service-back">
+                <div className="service-back ">
                   <p>
                     {" "}
                     ✅ Huge Variety Of Menu <br />
@@ -298,7 +299,7 @@ const OurServices = () => {
                     </div>
                   </div>
                 </div>
-                <div className="service-back">
+                <div className="service-back ">
                   <p>
                     {" "}
                     ✅ No Cleaning Hassel <br />
@@ -348,7 +349,7 @@ const OurServices = () => {
                     </div>
                   </div>
                 </div>
-                <div className="service-back">
+                <div className="service-back ">
                   <p>
                     {" "}
                     ✅ 1-2 Trained Captains <br />

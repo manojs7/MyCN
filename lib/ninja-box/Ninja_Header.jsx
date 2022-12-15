@@ -206,7 +206,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-box-ninja-img">
-                <img src='ninja-box-ninja.png' alt='' />
+                <img src='ninja-box-ninja.png' alt='' style={{height: "auto", width: "140px"}}/>
               </div>
             </div>
           </div>
@@ -226,7 +226,7 @@ const Ninja_Header = () => {
               }}
             />
           </div> */}
-          <div className="video-player">
+          <div className="mb-5">
             {/* <ReactImageMagnify
             {...{
               smallImage: {
@@ -314,23 +314,23 @@ const Ninja_Header = () => {
             </div>
         </BootstrapCarousel>}*/}
         <div className="d-flex">
-          <div className="me-1">
+          <div className="mx-2">
             <div onClick={() => handlePhotoChange(0)} >
-              <img src={images[0]} alt="" style={{ width: "90px", height: "auto" }} />
+              <img src={images[0]} alt="" style={{ width: "80px", height: "auto" }} />
             </div>
           </div>
-          <div className="me-1">
+          <div className="me-2">
             <div onClick={() => handlePhotoChange(1)} >
-              <img src={images[1]} alt="" style={{ width: "90px", height: "auto" }} />
+              <img src={images[1]} alt="" style={{ width: "80px", height: "auto" }} />
             </div>
           </div>
-          <div className="me-1">
+          <div className="me-2">
             <div onClick={() => handlePhotoChange(2)} >
-              <img src={images[2]} alt="" style={{ width: "90px", height: "auto" }} />
+              <img src={images[2]} alt="" style={{ width: "80px", height: "auto" }} />
             </div>
           </div>
           <div onClick={() => handlePhotoChange(3)} >
-            <img src={images[2]} alt="" style={{ width: "90px", height: "auto" }} />
+            <img src={images[2]} alt="" style={{ width: "80px", height: "auto" }} />
           </div>
         </div>
       </div>

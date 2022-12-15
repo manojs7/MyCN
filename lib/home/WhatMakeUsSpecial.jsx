@@ -1,25 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function WhatMakeUsSpecial() {
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("scroll", reveal);
+  }, []);
   return (
     <div className="What-Make-Us-Special">
       <div className="container">
         <h3 className="What-Make-Us-Special-card-title">
           What Makes Us Special?
         </h3>
-        <div className="What-Make-Us-Special-card-container ">
+        <div className="What-Make-Us-Special-card-container">
           {/* card 1 */}
           <div className="What-Make-Us-Special-container-card ">
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus-iocn1.png" alt=""/>
+                  <img src="wmus-iocn1.png" alt="" />
                 </div>
                 <p>Easy Online Ordering</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-hover">
-              <div className="What-Make-Us-Special-container-card-back">
+              <div className="What-Make-Us-Special-container-card-back reveal">
                 <p>
                   Catering Experts Available Online For You, <span>Call / Whatsapp</span> Us,
                   We Would Be Happy To Help You!
@@ -42,7 +60,7 @@ export default function WhatMakeUsSpecial() {
                 <p>Select menu and Get price</p>
               </div>
             </div>
-            <div className="What-Make-Us-Special-container-card-back">
+            <div className="What-Make-Us-Special-container-card-back reveal">
               <p>
                 Select Your Own Menu and Get <span>Instant Price</span> or <span>Live Chat</span> to Get
                 Fixed Menu Packages
@@ -65,7 +83,7 @@ export default function WhatMakeUsSpecial() {
                 <p>Multiple Quotation Instantly</p>
               </div>
             </div>
-            <div className="What-Make-Us-Special-container-card-back">
+            <div className="What-Make-Us-Special-container-card-back reveal">
               <p>
                 <span>Compare</span> Various Menu And <span>Prices</span> Without Speaking to Anyone. Your
                 <span>Search Ends Here!</span>
@@ -88,7 +106,7 @@ export default function WhatMakeUsSpecial() {
                 <p>Guaranteed Best Price</p>
               </div>
             </div>
-            <div className="What-Make-Us-Special-container-card-back">
+            <div className="What-Make-Us-Special-container-card-back reveal">
               <p>
                 Pre-Negotiated Prices For <span>Bulk Order</span>, Premium Restaurant Quality
                 Food at <span>50% Discounted Rates!</span>

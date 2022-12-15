@@ -7,7 +7,26 @@ const Specials = () => {
 
   const [isSmall, setIsSmall] = useState(false);
 
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+  
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+  
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
+  }
+  
+
   useEffect(() => {
+    
+  window.addEventListener("scroll", reveal);
     setIsSmall(window.innerWidth <= 939);
     window.addEventListener("resize", () =>
       setIsSmall(window.innerWidth <= 939)
@@ -128,20 +147,20 @@ const Specials = () => {
           </ul>
         </div>
       </Carousel> */}
-      <div className="What-Make-Us-Special-card-container ">
+      <div className="What-Make-Us-Special-card-container">
           {/* card 1 */}
           <div className="What-Make-Us-Special-container-card ">
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="what-makes-ninjabox-special-logo">
-                  <img src="wmus1.png" alt="" />
+                  <img src="wmus1.png" alt="" style={{width: "23px"}}/>
                 </div>
                 <p>Portable Bulk Food Packaging</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-hover">
-              <div className="What-Make-Us-Special-container-card-back">
-                <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+              <div className="What-Make-Us-Special-container-card-back reveal">
+                <p className="mt-2" style={{fontSize: "8px", fontWeight: "600"}}>
                 ✅ Trendy Bulk Packaging <br/>
                 ✅ BioFriendly Disposable<br/>
                 ✅ No Utensile - Direct To Table
@@ -155,17 +174,19 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus2.png" alt="" />
+                  <img src="wmus2.png" alt="" style={{width: "35px"}}/>
                 </div>
                 <p>Complete Party Solution</p>
               </div>
             </div>
-            <div className="What-Make-Us-Special-container-card-back">
-            <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+            <div className="What-Make-Us-Special-hover">
+            <div className="What-Make-Us-Special-container-card-back reveal">
+            <p className="mt-2" style={{fontSize: "8px", fontWeight: "600"}}>
                 ✅ Large Cuisine Variety <br/>
                 ✅ Custom Choice Menu<br/>
                 ✅ Great Value for Money
                 </p>
+            </div>
             </div>
           </div>
 
@@ -175,17 +196,19 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus3.png" alt="" />
+                  <img src="wmus3.png" alt="" style={{width: "44px"}}/>
                 </div>
                 <p>Prepared with care and Hygiene</p>
               </div>
             </div>
-            <div className="What-Make-Us-Special-container-card-back">
-            <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+            <div className="What-Make-Us-Special-hover">
+            <div className="What-Make-Us-Special-container-card-back reveal">
+            <p className="mt-2" style={{fontSize: "8px", fontWeight: "600" }}>
                 ✅ Strict NinjaKitchen Protocols <br/>
                 ✅ Highest Safety Standards<br/>
                 ✅ Trained Chef & Delivery Ninja
                 </p>
+            </div>
             </div>
           </div>
 
@@ -195,18 +218,20 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus4.png" alt="" />
+                  <img src="wmus4.png" alt="" style={{width: "28px"}}/>
                 </div>
                 <p>Hassle Free Solution</p>
               </div>
             </div>
-            <div className="What-Make-Us-Special-container-card-back">
-            <p className="mt-1" style={{fontSize: "8px", fontWeight: "600"}}>
+            <div className="What-Make-Us-Special-hover">
+            <div className="What-Make-Us-Special-container-card-back reveal">
+            <p className="mt-2" style={{fontSize: "8px", fontWeight: "600"}}>
                 ✅ Convenient Ordering <br/>
                 ✅ Professional Support<br/>
                 ✅ On Time Delivery
                 </p>
             </div>
+          </div>
           </div>
         </div>
     </div>)}

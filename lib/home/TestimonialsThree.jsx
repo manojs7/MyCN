@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import CustomArrow from "./CustomArrow";
 
 export default function TestimonialsThree() {
     const [testimonials, setTestimonials] = useState([])
     const settings = {
         className: "center",
         dots: true,
+        nextArrow: <CustomArrow />,
+        prevArrow: <CustomArrow />,
         centerMode: true,
         infinite: true,
         centerPadding: "50px",
@@ -15,6 +18,7 @@ export default function TestimonialsThree() {
         cssEase: "linear",
         pauseOnHover: true,
         speed: 500,
+        
         responsive: [
             {
                 breakpoint: 1024,
@@ -47,22 +51,24 @@ export default function TestimonialsThree() {
     }, [])
     return (
         <div>
-            <div className="container" style={{ backgroundColor: "#2eb82e" }}>
-                <h2 className="text-center" style={{ borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "5px", paddingTop: "25px" }}>Testimonials</h2>
-                <div className="container-fluid">
+            <div className="" style={{ backgroundColor: "#2eb82e" }}>
+                <h2 className="text-center" style={{ borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "1px", paddingTop: "20px", marginBottom: "20px" }}>Testimonials</h2>
+                <div className="">
                     <div className="pb-4">
                         <Slider {...settings}>
                             {testimonials.map((data, index) => {
                                 return (
-                                    <div key={index} className="testimonial-section justify-content-center align-items-center d-flex">
-                                        <div className="img-section">
-                                            <img src="profile.png" style={{ height: "70px", width: "70px", borderRadius: "15px", margin: "-5px" }} />
-                                        </div>
-                                        <div className="review-section d-flex flex-column justify-content-center align-items-center">
-                                            <img src="Star.svg" style={{margin: "10px 0 2px -60px", height: "auto", width: "60px" }} /><br />
-                                            <p style={{ color: "#6699ff", margin: "-25px 40px 20px -40px", fontFamily: "Montserrat", fontWeight: "600", fontSize: "10px" }}>NAME</p> <br />
-                                            <p style={{ color: "#6699ff", marginTop: "-43px",marginLeft: "18px", fontFamily: "Montserrat", lineHeight: "10px", fontSize: "10px" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        </div>
+                                    <div className="" key={index}>
+                                            <div className="testimonial-section d-flex">
+                                                <div className="img-section">
+                                                    <img src="AvatarPic.jpg" style={{height: "auto", width: "80px", borderRadius: "25px"}}/>
+                                                </div>
+                                                <div className="review-section d-flex flex-column justify-content-center align-items-center">
+                                                    <img src="Star.svg" style={{ marginLeft: "-55px", height: "auto", width: "60px" }} /><br />
+                                                    <p style={{ color: "#6699ff", margin: "-22px 40px 20px -40px", fontFamily: "Montserrat", fontWeight: "600", fontSize: "10px" }}>NAME</p> <br />
+                                                    <p style={{ color: "#6699ff", marginTop: "-43px", marginLeft: "18px", fontFamily: "Montserrat", lineHeight: "10px", fontSize: "10px" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                                </div>
+                                            </div>
                                     </div>
                                 );
                             })}
