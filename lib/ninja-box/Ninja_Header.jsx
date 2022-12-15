@@ -206,7 +206,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-box-ninja-img">
-                <img src='ninja-box-ninja.png' alt='' style={{height: "auto", width: "140px"}}/>
+                <img src='ninja-box-ninja.png' alt='' style={{ height: "auto", width: "140px" }} />
               </div>
             </div>
           </div>
@@ -248,7 +248,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{height: "auto", width: "350px"}}
+                  style={{ height: "auto", width: "350px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}
@@ -264,7 +264,7 @@ const Ninja_Header = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-2">
+      <div className="mt-2">
         {/*{<BootstrapCarousel {...settings}>
           <div>
             <div onClick={() => handlePhotoChange(0)} >
@@ -313,8 +313,8 @@ const Ninja_Header = () => {
               <div className="inner-slide">5</div>
             </div>
         </BootstrapCarousel>}*/}
-        <div className="d-flex">
-          <div className="mx-2">
+        <div className="d-flex justify-content-between">
+          <div className="me-2">
             <div onClick={() => handlePhotoChange(0)} >
               <img src={images[0]} alt="" style={{ width: "80px", height: "auto" }} />
             </div>
@@ -329,8 +329,10 @@ const Ninja_Header = () => {
               <img src={images[2]} alt="" style={{ width: "80px", height: "auto" }} />
             </div>
           </div>
-          <div onClick={() => handlePhotoChange(3)} >
-            <img src={images[2]} alt="" style={{ width: "80px", height: "auto" }} />
+          <div>
+            <div  onClick={() => handlePhotoChange(3)} >
+              <img src={images[3]} alt="" style={{ width: "80px", height: "auto" }} />
+            </div>
           </div>
         </div>
       </div>
