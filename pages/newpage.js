@@ -11,37 +11,37 @@ export default function newpage() {
               <div className="side-menu-img-bg d-flex justify-content-center">
                 <img src="https://6375cce43936322f93948d65--loquacious-eclair-9e40c1.netlify.app/fontPic.png" alt="" className='rounded-circle side-menu-img img-fluid' />
               </div>
-              <h5 class="fs-6 text-center">Ninja Box</h5>
+              <h5 className="fs-6 text-center">Ninja Box</h5>
             </div>
             <div className="col-12 d-flex flex-column justify-content-center align-items-center mb-2">
               <div className="side-menu-img-bg d-flex justify-content-center">
                 <img src="https://6375cce43936322f93948d65--loquacious-eclair-9e40c1.netlify.app/fontPic2.png" alt="" className='rounded-circle side-menu-img img-fluid' />
               </div>
-              <h5 class="fs-6 text-center">Ninja Box</h5>
+              <h5 className="fs-6 text-center">Ninja Box</h5>
             </div>
             <div className="col-12 d-flex flex-column justify-content-center align-items-center mb-2">
               <div className="side-menu-img-bg d-flex justify-content-center">
                 <img src="https://6375cce43936322f93948d65--loquacious-eclair-9e40c1.netlify.app/fontPic3.png" alt="" className='rounded-circle side-menu-img img-fluid' />
               </div>
-              <h5 class="fs-6 text-center">Ninja Box</h5>
+              <h5 className="fs-6 text-center">Ninja Box</h5>
             </div>
             <div className="col-12 d-flex flex-column justify-content-center align-items-center mb-2">
               <div className="side-menu-img-bg d-flex justify-content-center">
                 <img src="https://6375cce43936322f93948d65--loquacious-eclair-9e40c1.netlify.app/fontPic4.png" alt="" className='rounded-circle side-menu-img img-fluid' />
               </div>
-              <h5 class="fs-6 text-center">Ninja Box</h5>
+              <h5 className="fs-6 text-center">Ninja Box</h5>
             </div>
             <div className="col-12 d-flex flex-column justify-content-center align-items-center mb-2">
               <div className="side-menu-img-bg d-flex justify-content-center">
                 <img src="https://6375cce43936322f93948d65--loquacious-eclair-9e40c1.netlify.app/fontPic5.png" alt="" className='rounded-circle side-menu-img img-fluid' />
               </div>
-              <h5 class="fs-6 text-center">Ninja Box</h5>
+              <h5 className="fs-6 text-center">Ninja Box</h5>
             </div>
             <div className="col-12 d-flex flex-column justify-content-center align-items-center mb-2">
               <div className="side-menu-img-bg d-flex justify-content-center">
                 <img src="https://6375cce43936322f93948d65--loquacious-eclair-9e40c1.netlify.app/fontPic6.png" alt="" className='rounded-circle side-menu-img img-fluid' />
               </div>
-              <h5 class="fs-6 text-center">Ninja Box</h5>
+              <h5 className="fs-6 text-center">Ninja Box</h5>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ export default function newpage() {
                 <div className="ninja-card-weight text-muted mb-2">500 g</div>
                 <strike className="ninja-card-price text-muted">₹999</strike>
                 <div className="ninja-discount-price">₹560</div>
-                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
               </div>
@@ -76,7 +76,7 @@ export default function newpage() {
                 <div className="ninja-card-weight text-muted mb-2">500 g</div>
                 <strike className="ninja-card-price text-muted">₹999</strike>
                 <div className="ninja-discount-price">₹560</div>
-                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
               </div>
@@ -110,7 +110,7 @@ export default function newpage() {
                 <div className="ninja-card-weight text-muted mb-2">500 g</div>
                 <strike className="ninja-card-price text-muted">₹999</strike>
                 <div className="ninja-discount-price">₹560</div>
-                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
               </div>
@@ -127,7 +127,7 @@ export default function newpage() {
                 <div className="ninja-card-weight text-muted mb-2">500 g</div>
                 <strike className="ninja-card-price text-muted">₹999</strike>
                 <div className="ninja-discount-price">₹560</div>
-                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
               </div>
@@ -144,7 +144,7 @@ export default function newpage() {
                 <div className="ninja-card-weight text-muted mb-2">500 g</div>
                 <strike className="ninja-card-price text-muted">₹999</strike>
                 <div className="ninja-discount-price">₹560</div>
-                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
               </div>
@@ -161,7 +161,7 @@ export default function newpage() {
                 <div className="ninja-card-weight text-muted mb-2">500 g</div>
                 <strike className="ninja-card-price text-muted">₹999</strike>
                 <div className="ninja-discount-price">₹560</div>
-                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
               </div>
@@ -178,7 +178,7 @@ export default function newpage() {
                 <div className="ninja-card-weight text-muted mb-2">500 g</div>
                 <strike className="ninja-card-price text-muted">₹999</strike>
                 <div className="ninja-discount-price">₹560</div>
-                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <button className="add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
               </div>

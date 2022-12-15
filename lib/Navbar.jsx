@@ -62,9 +62,7 @@ export default function Navbar({ page }) {
   }, []);
 
   function burger_click() {
-    debugger;
     let navigation_links = document.querySelectorAll(`#links > li > a`);
-    debugger;
     navigation_links.forEach((link, index) => {
       if (active) {
         setActive(!active);
