@@ -6,7 +6,7 @@ export default function HowToOrder() {
 
         <h3 className="how-to-order-title">How to order?</h3>
       <video width="100%" height="auto" controls>
-        <source src="flower.webm" type="video/webm" />
+        <source src="How to Order Video (1).mp4" type="video/webm" />
       </video>
     </div>
   );

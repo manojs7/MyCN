@@ -51,8 +51,8 @@ export default function TestimonialsThree() {
     }, [])
     return (
         <div>
-            <div className="" style={{ backgroundColor: "#2eb82e" }}>
-                <h2 className="text-center" style={{ borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "1px", paddingTop: "20px", marginBottom: "20px" }}>Testimonials</h2>
+            <div className="testimonialsContainer mt-2" style={{ backgroundColor: "#2eb82e" }}>
+                <h2 className="text-center" style={{ borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "1px", paddingTop: "20px", marginBottom: "23px" }}>Testimonials</h2>
                 <div className="">
                     <div className="pb-4">
                         <Slider {...settings}>
@@ -61,12 +61,12 @@ export default function TestimonialsThree() {
                                     <div className="" key={index}>
                                             <div className="testimonial-section d-flex">
                                                 <div className="img-section">
-                                                    <img src="AvatarPic.jpg" style={{height: "auto", width: "80px", borderRadius: "25px"}}/>
+                                                    <img src="AvatarPic.jpg"/>
                                                 </div>
                                                 <div className="review-section d-flex flex-column justify-content-center align-items-center">
-                                                    <img src="Star.svg" style={{ marginLeft: "-55px", height: "auto", width: "60px" }} /><br />
-                                                    <p style={{ color: "#6699ff", margin: "-22px 40px 20px -40px", fontFamily: "Montserrat", fontWeight: "600", fontSize: "10px" }}>NAME</p> <br />
-                                                    <p style={{ color: "#6699ff", marginTop: "-43px", marginLeft: "18px", fontFamily: "Montserrat", lineHeight: "10px", fontSize: "10px" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                                    <img src="Star.svg"/><br />
+                                                    <p id="title">NAME</p> <br />
+                                                    <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                                                 </div>
                                             </div>
                                     </div>
