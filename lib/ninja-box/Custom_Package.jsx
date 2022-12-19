@@ -1,42 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
 import Router from "next/router";
 import BookThisPackageModal from "./BookThisPackageModal";
+import { Carousel } from "react-bootstrap";
 
 const Custom_Package = () => {
+  const images = [
+    "nijjabox1.png",
+    "nijjabox2.png",
+    "nijjabox3.png",
+    "nijjabox4.png",]
   const [show, setShow] = useState(false);
   const [vegNonVeg, setVegNonVeg] = useState('Veg');
 
   const [vegGuest, setVegGuest] = useState(10);
   const [nonVegGuest, setNonVegGuest] = useState(10);
 
+  const [isSmall, setIsSmall] = useState(false);
+
+  const [indexPhoto, setIndexPhoto] = useState(null);
+
+  const handlePhotoChange = (index) => {
+    setPhoto(images[index]);
+    setIndexPhoto(index);
+    setIsChanged(true);
+  };
+
+  function clearIndexPhoto() {
+    setIndexPhoto(null)
+  }
+
+  useEffect(() => {
+    const myTimeout = setTimeout(clearIndexPhoto, 10000);
+    // clearTimeout(myTimeout);
+  }, [indexPhoto])
+
   const handleClose = (value) => {
-    if(value==='close'){
+    if (value === 'close') {
       setShow(false)
-    }else{
+    } else {
       window.location.href = "/view-details"
       setShow(false)
     }
-    
-  
+
+
   };
   const handleShow = () => setShow(true);
 
-//veg non-veg check
- const handleChange=(event)=>{
-  if (event.target.checked) {
-    setVegNonVeg('nonVeg')
-  } else {
-    setVegNonVeg('Veg')
-    console.log(' Checkbox is NOT checked');
+  //veg non-veg check
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      setVegNonVeg('nonVeg')
+    } else {
+      setVegNonVeg('Veg')
+      console.log(' Checkbox is NOT checked');
+    }
   }
- }
- const handleGuestAdd=(e)=>{
-  vegNonVeg==='nonVeg'?setNonVegGuest(e.target.value):setVegGuest(e.target.value)
-  console.log(vegGuest,nonVegGuest)
- }
+  const handleGuestAdd = (e) => {
+    vegNonVeg === 'nonVeg' ? setNonVegGuest(e.target.value) : setVegGuest(e.target.value)
+    console.log(vegGuest, nonVegGuest)
+  }
   function handleClick(index) {
     const starters = Ninja_Package_Data[index].starters;
     const mains = Ninja_Package_Data[index].mains;
@@ -60,9 +85,16 @@ const Custom_Package = () => {
     );
   }
 
+  useEffect(() => {
+    setIsSmall(window.innerWidth <= 939);
+    window.addEventListener("resize", () =>
+      setIsSmall(window.innerWidth <= 939)
+    );
+  }, []);
+
   return (
     <>
-      <section className="custom-package">
+      {!isSmall ? <section className="custom-package">
         <div className="container">
           <div className="section-title">
             <h2>
@@ -140,7 +172,7 @@ const Custom_Package = () => {
             </div>
             <div className="col-md-6 mb-md-0 mb-5 d-flex justify-content-md-center align-items-center flex-md-row flex-column">
               <label htmlFor="guests" >No: Of Guests</label>
-              <select onChange={handleGuestAdd} value={vegNonVeg==='Veg'?vegGuest:nonVegGuest} name="guests" id="guests">
+              <select onChange={handleGuestAdd} value={vegNonVeg === 'Veg' ? vegGuest : nonVegGuest} name="guests" id="guests">
                 <option value="10">10</option>
                 <option value="8">8</option>
                 <option value="6">6</option>
@@ -181,12 +213,12 @@ const Custom_Package = () => {
                     <button
                       className="bg-red my-2"
                       onClick={handleShow}
-                      // onClick={() => (window.location.href = "/view-details")}
+                    // onClick={() => (window.location.href = "/view-details")}
                     >
                       Book This Package
                     </button>
                     {/* modal */}
-                   
+
                     <button
                       className="bg-white my-2"
                       onClick={() => handleClick(index)}
@@ -198,6 +230,69 @@ const Custom_Package = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section> : ""}
+      {isSmall ?
+        <section>
+          <div className="custom-package-smallD text-center mb-5">
+            <h1>Ninja<span>Box</span></h1>
+            <h2>Packages</h2>
+            <h6>Select Your Ninja<span>Box</span> Package</h6>
+            <div className="checkbox-container my-4">
+              <input onChange={handleChange} type="checkbox" value='veg' name="Veg" id="" />
+            </div>
+            <div className="container">
+              <div className="dropdown-label row">
+                <div className="col-6">
+                  <p>City</p>
+                  <div>
+                    <select name="cityName" id="cities">
+                      <option value="mumbai">Mumbai</option>
+                      <option value="bengaluru">Bengaluru</option>
+                      <option value="delhi">Delhi</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <p>No: Of Guests</p>
+                  <div>
+                    <select name="guestNo" id="guestNo">
+                      <option value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                      <option value="40">40</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> : ""}
+      <section>
+        <div className="container packageNameSection text-center">
+          <h3>PACKAGE NAME</h3>
+          <div className="package-carousel mx-auto w-50">
+          {indexPhoto === null && <Carousel slide={true}>
+              {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
+                <img
+                  className="d-block"
+                  src={d}
+                  alt="Third slide"
+                  style={{ height: "auto", width: "200px" }}
+                />
+              </Carousel.Item>)}
+            </Carousel>}
+            {indexPhoto !== null && <Carousel activeIndex={indexPhoto} slide={true}>
+              {images.map((d, i) => <Carousel.Item key={i} interval={1000}>
+                <img
+                  className="d-block"
+                  src={d}
+                  alt="Third slide"
+                />
+              </Carousel.Item>)}
+            </Carousel>}
+          </div>
+
         </div>
       </section>
       <section className="custom-package-lower">
@@ -225,11 +320,11 @@ const Custom_Package = () => {
           </div>
         </div>
         <BookThisPackageModal
-                   handleClose={handleClose}
-                   show={show}
-                   vegGuest={vegGuest}
-                   nonVegGuest={nonVegGuest}
-                    />
+          handleClose={handleClose}
+          show={show}
+          vegGuest={vegGuest}
+          nonVegGuest={nonVegGuest}
+        />
       </section>
     </>
   );

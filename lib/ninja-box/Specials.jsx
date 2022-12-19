@@ -36,7 +36,7 @@ const Specials = () => {
 
   return (
     <div>
-    { !isSmall && (<section className="specials">
+    { !isSmall && (<section className=" specials">
       <div className="">
         <div className="section-title">
           <h2>What Makes <span>Ninja</span>Box Special</h2>
@@ -158,9 +158,9 @@ const Specials = () => {
                 <p>Portable Bulk Food Packaging</p>
               </div>
             </div>
-            <div className="What-Make-Us-Special-hover">
+            <div className="">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2" style={{fontSize: "8px", fontWeight: "600"}}>
+                <p className="mt-2 p-2 w-100" style={{fontSize: "6px", fontWeight: "600", backgroundColor: "#f1d07c", borderRadius: "10px"}}>
                 ✅ Trendy Bulk Packaging <br/>
                 ✅ BioFriendly Disposable<br/>
                 ✅ No Utensile - Direct To Table
@@ -181,7 +181,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
             <div className="What-Make-Us-Special-container-card-back reveal">
-            <p className="mt-2" style={{fontSize: "8px", fontWeight: "600"}}>
+            <p className="mt-2 p-2 w-100" style={{fontSize: "6px", fontWeight: "600", backgroundColor: "#f1d07c", borderRadius: "10px"}}>
                 ✅ Large Cuisine Variety <br/>
                 ✅ Custom Choice Menu<br/>
                 ✅ Great Value for Money
@@ -203,7 +203,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
             <div className="What-Make-Us-Special-container-card-back reveal">
-            <p className="mt-2" style={{fontSize: "8px", fontWeight: "600" }}>
+            <p className="mt-2 p-2 w-100" style={{fontSize: "6px", fontWeight: "600", backgroundColor: "#f1d07c", borderRadius: "10px" }}>
                 ✅ Strict NinjaKitchen Protocols <br/>
                 ✅ Highest Safety Standards<br/>
                 ✅ Trained Chef & Delivery Ninja
@@ -225,7 +225,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
             <div className="What-Make-Us-Special-container-card-back reveal">
-            <p className="mt-2" style={{fontSize: "8px", fontWeight: "600"}}>
+            <p className="mt-2 p-2 w-100" style={{fontSize: "6px", fontWeight: "600", backgroundColor: "#f1d07c", borderRadius: "10px"}}>
                 ✅ Convenient Ordering <br/>
                 ✅ Professional Support<br/>
                 ✅ On Time Delivery
