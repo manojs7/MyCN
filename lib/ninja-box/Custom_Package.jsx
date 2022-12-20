@@ -268,17 +268,17 @@ const Custom_Package = () => {
             </div>
           </div>
         </section> : ""}
-      <section>
-        <div className="container packageNameSection text-center">
+      {isSmall ? <section>
+        <div className="packageNameSection text-center">
           <h3>PACKAGE NAME</h3>
-          <div className="package-carousel mx-auto w-50">
-          {indexPhoto === null && <Carousel slide={true}>
+          <div className="package-carousel mx-auto">
+            {indexPhoto === null && <Carousel slide={true}>
               {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
                 <img
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "200px" }}
+                  style={{ height: "auto", width: "250px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}
@@ -292,10 +292,41 @@ const Custom_Package = () => {
               </Carousel.Item>)}
             </Carousel>}
           </div>
+          <div className="packagesName">
+            <h4>X Starters + X Mains + X Desserts</h4>
+            <h3>₹ <span>XXXXX</span></h3>
+            <p>(Per 10 Guests)</p>
+          </div>
+          <div className="d-flex justify-content-evenly">
+            <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+            <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+          </div>
 
         </div>
-      </section>
-      <section className="custom-package-lower">
+      </section> : ""}
+      {isSmall ? <section>
+        <div className="create-your-own-package">
+          <div className="row container">
+            <div className="col-4" id="leftside">
+              <img id="left-ninja-logo" src="ninja-box-ninja.png"></img>
+            </div>
+            <div className="col-8" id="rightside">
+              <img id="right-ninja-logo" src="caterninja.png"></img>
+              <h2>Ninja<span>Box</span></h2>
+              <p><span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10-40 Guests</span></p>
+            </div>
+          </div>
+          <div>
+            <p>Not Happy with the Packages?</p>
+            <h2>Create Your <span>Own</span></h2>
+            <h5>Curate your own flavour of party from variety of cusines</h5>
+            <div>
+              <button className="btn btn-danger">Create Your Own Package</button>
+            </div>
+          </div>
+        </div>
+      </section> : ""}
+      {!isSmall ? <section className="custom-package-lower">
         <div className="container">
           <div className="row">
             <div className="col-md-6 mb-md-0 mb-3 d-flex justify-content-center align-items-center">
@@ -325,7 +356,7 @@ const Custom_Package = () => {
           vegGuest={vegGuest}
           nonVegGuest={nonVegGuest}
         />
-      </section>
+      </section> : ""}
     </>
   );
 };

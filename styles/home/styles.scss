@@ -1785,6 +1785,7 @@
   background-color: #f2f2f2;
   padding-top: 25px;
   padding-bottom: 45px;
+  margin-bottom: 0%;
   h1{
     font-size: 60px;
     font-family: "Montserrat";
@@ -1948,6 +1949,97 @@
 
   .ninja-package-item {
     text-align: center;
+  }
+}
+
+.packageNameSection{
+  margin-top: 0%;
+  width: 350px;
+  margin: auto;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 20px 8px  #ffffb3;
+  border-radius: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-family: "Montserrat";
+  .carousel-control-prev-icon{
+    margin: 0px;
+    padding: 0%;
+    margin-right: 80px;
+    padding-right: 20px;
+  }
+  .carousel-control-next-icon{
+    margin: 0px;
+    padding: 0px;
+    margin-left: 80px;
+    padding-left: 20px;
+  }
+  .carousel-indicators button{
+    display: none !important;
+  }
+  h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: var(--ninja-red)
+  }
+  //select and customise Buttons
+  #selectBtn{
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: var(--ninja-red);
+  }
+  #customiseBtn{
+    border: 1px solid black;
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #FFC31A;
+  }
+}
+
+.packagesName h3{
+  color: black;
+  span{
+    color: #FFC31A;
+  }
+}
+
+//Package Carousel
+.package-carousel{
+  width: 250px;
+}
+
+//Create your ow package - Mobile device
+.create-your-own-package{
+  background-color: #FFC31A;
+  font-family: "Montserrat";
+  padding-top: 20px;
+  #rightside{
+    img{
+      margin-top: 45px;
+      margin-left: 60px;
+      width: 75px;
+    }
+    h2{
+      margin-left: 60px;
+      font-size: 30px;
+      font-weight: bolder;
+      span{
+        color: white;
+      }
+    }
+    p {
+      margin-left: 60px;
+      margin-top: -5px;
+      font-size: 9px;
+      span{
+        font-weight: bolder;
+      }
+    }
   }
 }
 
