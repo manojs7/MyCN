@@ -1782,12 +1782,12 @@
 //CUSTOM PACKAGE SECTION for Small Device
 .custom-package-smallD{
   text-align: center;
-  background-color: #f2f2f2;
+  background-color: #ffffe6;
   padding-top: 25px;
   padding-bottom: 45px;
   margin-bottom: 0%;
   h1{
-    font-size: 60px;
+    font-size: 50px;
     font-family: "Montserrat";
     font-weight: bolder;
     span {
@@ -1799,7 +1799,7 @@
     margin-top: -10px;
     font-family: "Montserrat";
     font-weight: 400;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   h6{
@@ -1894,6 +1894,76 @@
 
 }
 
+//Create your ow package - Mobile device
+.create-your-own-package{
+  background-color: #FFC31A;
+  font-family: "Montserrat";
+  padding-top: 25px;
+  padding-bottom: 25px;
+  #leftside img{
+    width: 165px;
+  }
+  #rightside{
+    img{
+      margin-top: 45px;
+      margin-left: 60px;
+      width: 75px;
+    }
+    h2{
+      margin-left: 60px;
+      font-size: 30px;
+      font-weight: bolder;
+      span{
+        color: white;
+      }
+    }
+    p {
+      font-weight: 500;
+      margin-left: 60px;
+      margin-top: -5px;
+      font-size: 9px;
+      span{
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+.btmSectnText{
+  font-family: "Montserrat";
+  p{
+    font-size: 15px;
+    color: white;
+    margin-top: 5px;
+    margin-left: 30px;
+  }
+  h2{
+    margin-top: -15px;
+    margin-left: 30px;
+    font-size: 30px;
+    font-weight: bolder;
+    span{
+      color: var(--ninja-red);
+    }
+  }
+  h6{
+    margin-top: -5px;
+    margin-left: 30px;
+    font-family: "Montserrat";
+    font-size: 13.5px;
+    font-weight: bold;
+  }
+  button{
+    background-color: var(--ninja-red);
+    color: white;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 190px;
+    box-shadow: 0px 3px 10px 0px black;
+  }
+}
+
 // bg for mobile header section
 @media screen and (max-width: 915px) {
 
@@ -1953,40 +2023,28 @@
 }
 
 .packageNameSection{
-  margin-top: 0%;
+  margin-top: 0;
   width: 350px;
   margin: auto;
   margin-bottom: 30px;
-  box-shadow: 0px 0px 20px 8px  #ffffb3;
+  box-shadow: 0px 0px 20px 10px  #fff0b3;
   border-radius: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
   font-family: "Montserrat";
-  .carousel-control-prev-icon{
-    margin: 0px;
-    padding: 0%;
-    margin-right: 80px;
-    padding-right: 20px;
-  }
-  .carousel-control-next-icon{
-    margin: 0px;
-    padding: 0px;
-    margin-left: 80px;
-    padding-left: 20px;
-  }
-  .carousel-indicators button{
-    display: none !important;
+  .packageImg img{
+    margin-right: 30px;
+    margin-left: 30px;
+    width: 220px;
   }
   h3 {
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 10px;
     color: var(--ninja-red)
   }
   //select and customise Buttons
   #selectBtn{
     color: white;
-    padding-left: 20px;
-    padding-right: 20px;
     font-size: 12px;
     font-weight: 400;
     background-color: var(--ninja-red);
@@ -1995,16 +2053,26 @@
     border: 1px solid black;
     font-size: 12px;
     font-weight: 500;
-    padding-left: 10px;
-    padding-right: 10px;
     background-color: #FFC31A;
   }
 }
 
-.packagesName h3{
+.packagesName {
+  h4{
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  h3{
+    margin-top: 20px;
+    margin-bottom: -10px;
   color: black;
   span{
     color: #FFC31A;
+  }
+  }
+  p{
+    font-size: 11px;
+    margin-bottom: 30px;
   }
 }
 
@@ -2013,35 +2081,23 @@
   width: 250px;
 }
 
-//Create your ow package - Mobile device
-.create-your-own-package{
-  background-color: #FFC31A;
-  font-family: "Montserrat";
-  padding-top: 20px;
-  #rightside{
-    img{
-      margin-top: 45px;
-      margin-left: 60px;
-      width: 75px;
-    }
-    h2{
-      margin-left: 60px;
-      font-size: 30px;
-      font-weight: bolder;
-      span{
-        color: white;
-      }
-    }
-    p {
-      margin-left: 60px;
-      margin-top: -5px;
-      font-size: 9px;
-      span{
-        font-weight: bolder;
-      }
-    }
-  }
+.packageContainer{
+  display: none;
+
 }
+.packageContainer {
+  overflow-x: scroll;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 20px;
+}
+
+.packageContainer::-webkit-scrollbar {
+  display: none;
+}
+
+
 
 //
 @media only screen and (max-width: 620px) {

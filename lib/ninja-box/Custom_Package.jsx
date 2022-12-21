@@ -94,7 +94,7 @@ const Custom_Package = () => {
 
   return (
     <>
-      {!isSmall ? <section className="custom-package">
+      {!isSmall ? <section className="custom-package py-5">
         <div className="container">
           <div className="section-title">
             <h2>
@@ -174,15 +174,19 @@ const Custom_Package = () => {
               <label htmlFor="guests" >No: Of Guests</label>
               <select onChange={handleGuestAdd} value={vegNonVeg === 'Veg' ? vegGuest : nonVegGuest} name="guests" id="guests">
                 <option value="10">10</option>
-                <option value="8">8</option>
-                <option value="6">6</option>
+                <option value="8">15</option>
+                <option value="6">20</option>
+                <option value="6">25</option>
+                <option value="6">30</option>
+                <option value="6">35</option>
+                <option value="6">40</option>
               </select>
             </div>
           </div>
           <div className="checkbox-container mb-5">
             <input onChange={handleChange} type="checkbox" value='veg' name="Veg" id="" />
           </div>
-          <div className="ninja-package-description">
+          {/* <div className="ninja-package-description">
             {Ninja_Package_Data.map((item, index) => (
               <div className="ninja-package-item" key={index}>
                 <div className="row mb-md-3 mb-0">
@@ -210,7 +214,7 @@ const Custom_Package = () => {
                     {/* <button className="bg-white mb-md-0 mb-2" onClick={() => window.location.href = '/view-details'}>
 											View Details
 										</button> */}
-                    <button
+          {/*<button
                       className="bg-red my-2"
                       onClick={handleShow}
                     // onClick={() => (window.location.href = "/view-details")}
@@ -219,7 +223,7 @@ const Custom_Package = () => {
                     </button>
                     {/* modal */}
 
-                    <button
+          {/*<button
                       className="bg-white my-2"
                       onClick={() => handleClick(index)}
                     >
@@ -229,6 +233,110 @@ const Custom_Package = () => {
                 </div>
               </div>
             ))}
+          </div> */}
+          <div>
+            <section>
+              <div className="d-flex">
+                <div className="packageNameSection text-center me-5">
+                  <h3>PACKAGE NAME</h3>
+                  <div className="packageImg">
+                    <img src="nijjabox1.png" />
+                  </div>
+                  <div className="packagesName">
+                    <h4>X Starters + X Mains + X Desserts</h4>
+                    <h3>₹ <span>XXXXX</span></h3>
+                    <p>(Per 10 Guests)</p>
+                  </div>
+                  <div className="d-flex justify-content-evenly">
+                    <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                    <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                  </div>
+
+                </div>
+                <div className="packageNameSection text-center me-5">
+                  <h3>PACKAGE NAME</h3>
+                  <div className="packageImg">
+                    <img src="nijjabox1.png" />
+                  </div>
+                  <div className="packagesName">
+                    <h4>X Starters + X Mains + X Desserts</h4>
+                    <h3>₹ <span>XXXXX</span></h3>
+                    <p>(Per 10 Guests)</p>
+                  </div>
+                  <div className="d-flex justify-content-evenly">
+                    <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                    <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                  </div>
+
+                </div>
+                <div className="packageNameSection text-center">
+                  <h3>PACKAGE NAME</h3>
+                  <div className="packageImg">
+                    <img src="nijjabox1.png" />
+                  </div>
+                  <div className="packagesName">
+                    <h4>X Starters + X Mains + X Desserts</h4>
+                    <h3>₹ <span>XXXXX</span></h3>
+                    <p>(Per 10 Guests)</p>
+                  </div>
+                  <div className="d-flex justify-content-evenly">
+                    <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                    <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                  </div>
+
+                </div>
+              </div>
+              <div className="d-flex">
+                <div className="packageNameSection text-center me-5">
+                  <h3>PACKAGE NAME</h3>
+                  <div className="packageImg">
+                    <img src="nijjabox1.png" />
+                  </div>
+                  <div className="packagesName">
+                    <h4>X Starters + X Mains + X Desserts</h4>
+                    <h3>₹ <span>XXXXX</span></h3>
+                    <p>(Per 10 Guests)</p>
+                  </div>
+                  <div className="d-flex justify-content-evenly">
+                    <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                    <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                  </div>
+
+                </div>
+                <div className="packageNameSection text-center me-5">
+                  <h3>PACKAGE NAME</h3>
+                  <div className="packageImg">
+                    <img src="nijjabox1.png" />
+                  </div>
+                  <div className="packagesName">
+                    <h4>X Starters + X Mains + X Desserts</h4>
+                    <h3>₹ <span>XXXXX</span></h3>
+                    <p>(Per 10 Guests)</p>
+                  </div>
+                  <div className="d-flex justify-content-evenly">
+                    <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                    <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                  </div>
+
+                </div>
+                <div className="packageNameSection text-center">
+                  <h3>PACKAGE NAME</h3>
+                  <div className="packageImg">
+                    <img src="nijjabox1.png" />
+                  </div>
+                  <div className="packagesName">
+                    <h4>X Starters + X Mains + X Desserts</h4>
+                    <h3>₹ <span>XXXXX</span></h3>
+                    <p>(Per 10 Guests)</p>
+                  </div>
+                  <div className="d-flex justify-content-evenly">
+                    <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                    <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                  </div>
+
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </section> : ""}
@@ -258,8 +366,11 @@ const Custom_Package = () => {
                   <div>
                     <select name="guestNo" id="guestNo">
                       <option value="10">10</option>
+                      <option value="10">15</option>
                       <option value="20">20</option>
-                      <option value="30">30</option>
+                      <option value="30">25</option>
+                      <option value="40">30</option>
+                      <option value="40">35</option>
                       <option value="40">40</option>
                     </select>
                   </div>
@@ -269,39 +380,105 @@ const Custom_Package = () => {
           </div>
         </section> : ""}
       {isSmall ? <section>
-        <div className="packageNameSection text-center">
-          <h3>PACKAGE NAME</h3>
-          <div className="package-carousel mx-auto">
-            {indexPhoto === null && <Carousel slide={true}>
-              {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
-                <img
-                  className="d-block"
-                  src={d}
-                  alt="Third slide"
-                  style={{ height: "auto", width: "250px" }}
-                />
-              </Carousel.Item>)}
-            </Carousel>}
-            {indexPhoto !== null && <Carousel activeIndex={indexPhoto} slide={true}>
-              {images.map((d, i) => <Carousel.Item key={i} interval={1000}>
-                <img
-                  className="d-block"
-                  src={d}
-                  alt="Third slide"
-                />
-              </Carousel.Item>)}
-            </Carousel>}
-          </div>
-          <div className="packagesName">
-            <h4>X Starters + X Mains + X Desserts</h4>
-            <h3>₹ <span>XXXXX</span></h3>
-            <p>(Per 10 Guests)</p>
-          </div>
-          <div className="d-flex justify-content-evenly">
-            <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
-            <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
-          </div>
+        <div className="packageContainer">
+          <div className="packageNameSection text-center ms-2 me-4">
+            <h3>PACKAGE NAME</h3>
+            <div className="packageImg">
+              <img src="nijjabox1.png" />
+            </div>
+            <div className="packagesName">
+              <h4>X Starters + X Mains + X Desserts</h4>
+              <h3>₹ <span>XXXXX</span></h3>
+              <p>(Per 10 Guests)</p>
+            </div>
+            <div className="d-flex justify-content-evenly">
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+            </div>
 
+          </div>
+          <div className="packageNameSection text-center me-3">
+            <h3>PACKAGE NAME</h3>
+            <div className="packageImg">
+              <img src="nijjabox1.png" />
+            </div>
+            <div className="packagesName">
+              <h4>X Starters + X Mains + X Desserts</h4>
+              <h3>₹ <span>XXXXX</span></h3>
+              <p>(Per 10 Guests)</p>
+            </div>
+            <div className="d-flex justify-content-evenly">
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+            </div>
+
+          </div>
+          <div className="packageNameSection text-center">
+            <h3>PACKAGE NAME</h3>
+            <div className="packageImg">
+              <img src="nijjabox1.png" />
+            </div>
+            <div className="packagesName">
+              <h4>X Starters + X Mains + X Desserts</h4>
+              <h3>₹ <span>XXXXX</span></h3>
+              <p>(Per 10 Guests)</p>
+            </div>
+            <div className="d-flex justify-content-evenly">
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+            </div>
+
+          </div>
+        </div>
+        <div className="packageContainer">
+          <div className="packageNameSection text-center ms-2 me-4">
+            <h3>PACKAGE NAME</h3>
+            <div className="packageImg">
+              <img src="nijjabox1.png" />
+            </div>
+            <div className="packagesName">
+              <h4>X Starters + X Mains + X Desserts</h4>
+              <h3>₹ <span>XXXXX</span></h3>
+              <p>(Per 10 Guests)</p>
+            </div>
+            <div className="d-flex justify-content-evenly">
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+            </div>
+
+          </div>
+          <div className="packageNameSection text-center me-3">
+            <h3>PACKAGE NAME</h3>
+            <div className="packageImg">
+              <img src="nijjabox1.png" />
+            </div>
+            <div className="packagesName">
+              <h4>X Starters + X Mains + X Desserts</h4>
+              <h3>₹ <span>XXXXX</span></h3>
+              <p>(Per 10 Guests)</p>
+            </div>
+            <div className="d-flex justify-content-evenly">
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+            </div>
+
+          </div>
+          <div className="packageNameSection text-center">
+            <h3>PACKAGE NAME</h3>
+            <div className="packageImg">
+              <img src="nijjabox1.png" />
+            </div>
+            <div className="packagesName">
+              <h4>X Starters + X Mains + X Desserts</h4>
+              <h3>₹ <span>XXXXX</span></h3>
+              <p>(Per 10 Guests)</p>
+            </div>
+            <div className="d-flex justify-content-evenly">
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+            </div>
+
+          </div>
         </div>
       </section> : ""}
       {isSmall ? <section>
@@ -316,12 +493,12 @@ const Custom_Package = () => {
               <p><span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10-40 Guests</span></p>
             </div>
           </div>
-          <div>
+          <div className="btmSectnText">
             <p>Not Happy with the Packages?</p>
             <h2>Create Your <span>Own</span></h2>
-            <h5>Curate your own flavour of party from variety of cusines</h5>
+            <h6>Curate your own flavour of party<br />from variety of cusines</h6>
             <div>
-              <button className="btn btn-danger">Create Your Own Package</button>
+              <button className="btn btn-sm">Create Your Own Package</button>
             </div>
           </div>
         </div>
