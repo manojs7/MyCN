@@ -336,7 +336,7 @@ const Custom_Package = () => {
           </div>
         </div>
       </section> : ""}
-      {!isSmall ? <section className="custom-package-lower">
+      {/* {!isSmall ? <section className="custom-package-lower">
         <div className="container">
           <div className="row">
             <div className="col-md-6 mb-md-0 mb-3 d-flex justify-content-center align-items-center">
@@ -366,7 +366,22 @@ const Custom_Package = () => {
           vegGuest={vegGuest}
           nonVegGuest={nonVegGuest}
         />
-      </section> : ""}
+      </section> : ""} */}
+      {!isSmall ? <secction>
+        <div className="create-your-own-package-lgd">
+          <div className="row">
+            <div className="col-6">
+              <img src="ninjaboxPackage.png" />
+            </div>
+            <div className="col-6 textSection-lgd">
+              <p>Not Happy with Packages?</p>
+              <h2>Create Your <span>Own</span></h2>
+              <h6>Curate your own flavour of party<br/><span>from variety of cuisines</span></h6>
+              <button className="btn btn-danger">Create Your Own Package</button>
+            </div>
+          </div>
+        </div>
+      </secction> : ""}
       {isSmall ?
         <section>
           <div className="custom-package-smallD text-center mb-5">

@@ -26,6 +26,13 @@
   margin-top: 50px;
 }
 
+@media (min-width: 992px) {
+  .videoXY video{
+    width: 70%;
+    margin-left: 150px;
+  }
+ }
+
 // WhatMakeUsSpecial
 
 .What-Make-Us-Special {
@@ -815,6 +822,48 @@
         margin-right: 0;
         line-height: 11px;
       }
+    }
+  }
+}
+
+//CREATE YOUR OWN PACKAGE FOR LARGE DEVICE
+.create-your-own-package-lgd{
+  background-color: #FFC31A;
+  .row{
+    margin-left: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .textSection-lgd{
+    font-family: Montserrat;
+    margin: auto;
+    text-align: center;
+    padding-right: 160px;
+    p{
+      color: white;
+      font-size: 22px;
+      margin-bottom: -20px;
+      font-style: italic;
+    }
+    h2{
+      font-weight: bolder;
+      font-size: 45px;
+      span{
+        color: var(--ninja-red);
+      }
+    }
+    h6{
+      font-size: 20px;
+      //margin: 0%;
+
+    }
+    button{
+      margin-top: 25px;
+      background-color: var(--ninja-red);
+      border-radius: 20px;
+      box-shadow: 0px 5px 10px 0px black;
+      font-weight: bold;
+
     }
   }
 }

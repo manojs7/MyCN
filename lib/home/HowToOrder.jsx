@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HowToOrder() {
   return (
-    <div className="container">
+    <div className="container videoXY">
 
         <h3 className="how-to-order-title">How to order?</h3>
       <video width="100%" height="auto" controls>
