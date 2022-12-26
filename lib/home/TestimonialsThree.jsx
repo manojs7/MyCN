@@ -84,7 +84,7 @@ export default function TestimonialsThree() {
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
                                         
-                                        <a target="_blank" href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><p id="title">Robin Max Almeida</p></a>
+                                        <a  href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><p id="title">Robin Max Almeida</p></a>
                                         <p id="description">Ordered food at the last moment for them and turned out be the best decision. Fistly punctuality and then is the quality of food. No regrets to hold people enjoyed every bit of it. Would definetely recommend them.</p>
                                     </div>
                                     
@@ -98,7 +98,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a target="_blank" href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="title">NARESH THAWAL</p></a>
+                                        <a  href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="title">NARESH THAWAL</p></a>
                                         <p id="description">Overall good experience with your team and cooperation.
                                             Food quality and arrangements are superb.
                                             Very punctual about timing.
@@ -114,7 +114,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a target="_blank" href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><p id="title">Hari om Gangwar</p></a>
+                                        <a  href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><p id="title">Hari om Gangwar</p></a>
                                         <p id="description">I had a snack box party for 90 kids with CaterNinja.
                                             It was delivered to me before time and the delivery person was friendly and helped me in keeping the boxes at my place.
                                             Kids loved the donuts, spring rolls and veg sliders a lot.
@@ -131,7 +131,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a target="_blank" href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><p id="title">Ananya Rai</p></a>
+                                        <a  href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><p id="title">Ananya Rai</p></a>
                                         <p id="description">I ordered ninja buffet service for the third time. This time food was best out of all 3 times. All my guests liked the food. There was no extra oil and masala. The food was like a home cooked meal. Dahi vadas we’re too good nice, soft and spongy. The service of servers was completely fuss free and excellent.</p>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a target="_blank" href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><p id="title">Aditi Shah</p></a>
+                                        <a  href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><p id="title">Aditi Shah</p></a>
                                         <p id="description">Food came hot in their nicely packed containers and packaging looked premium and very unique.
                                             It tasted very good, we kept the items for tomorrow and their containers were microwave friendly.
                                             Great initiative by company.</p>
@@ -159,7 +159,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a target="_blank" href="https://goo.gl/maps/s93Zi829wxXGyuH36"><p id="title">Sowmya Ravindranath</p></a>
+                                        <a  href="https://goo.gl/maps/s93Zi829wxXGyuH36"><p id="title">Sowmya Ravindranath</p></a>
                                         <p id="description">Myself and my guests enjoyed the food. The packaging was excellent and it was hassle free on my side. I could enjoy the party without any stress. 😊 Thank you very much for your wonderful service.</p>
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a target="_blank" href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="title">swati Singh</p></a>
+                                        <a  href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="title">swati Singh</p></a>
                                         <p id="description">We have ordered for 30 people , Fixed menu and we  must say It was very easy and time saving decision. Food was yummy, Packaging was very nice.
                                             Our overall experience was very good.</p>
                                     </div>
