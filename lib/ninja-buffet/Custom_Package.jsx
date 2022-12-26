@@ -22,11 +22,11 @@ const Custom_Package = () => {
 
   const [indexPhoto, setIndexPhoto] = useState(null);
 
-  const handlePhotoChange = (index) => {
-    setPhoto(images[index]);
-    setIndexPhoto(index);
-    setIsChanged(true);
-  };
+  // const handlePhotoChange = (index) => {
+  //   setPhoto(images[index]);
+  //   setIndexPhoto(index);
+  //   setIsChanged(true);
+  // };
 
   function clearIndexPhoto() {
     setIndexPhoto(null)
@@ -249,7 +249,6 @@ const Custom_Package = () => {
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
                 <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
-
             </div>
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
@@ -265,7 +264,6 @@ const Custom_Package = () => {
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
                 <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
-
             </div>
             <div className="packageNameSection text-center">
               <h3>PACKAGE NAME</h3>
@@ -281,7 +279,6 @@ const Custom_Package = () => {
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
                 <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
-
             </div>
           </div>
           <div className="d-flex">
@@ -299,7 +296,6 @@ const Custom_Package = () => {
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
                 <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
-
             </div>
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
@@ -315,7 +311,6 @@ const Custom_Package = () => {
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
                 <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
-
             </div>
             <div className="packageNameSection text-center">
               <h3>PACKAGE NAME</h3>
@@ -331,7 +326,6 @@ const Custom_Package = () => {
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
                 <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
-
             </div>
           </div>
         </div>
@@ -376,22 +370,21 @@ const Custom_Package = () => {
             <div className="col-6 textSection-lgd">
               <p>Not Happy with the Packages?</p>
               <h2>Create Your <span>Own</span></h2>
-              <h6>Curate your own flavour of party<br/><span>from variety of cuisines</span></h6>
+              <h6>Curate your own flavour of party<br /><span>from variety of cuisines</span></h6>
               <button className="btn btn-danger">Create Your Own Package</button>
             </div>
           </div>
         </div>
       </secction> : ""}
-      {isSmall ?
-        <section>
-          <div className="custom-package-smallD text-center mb-5">
-            <h1>Ninja<span>Buffet</span></h1>
-            <h2>Packages</h2>
-            <h6>Select Your Ninja<span>Buffet</span> Package</h6>
-            {/* <div className="checkbox-container my-4">
+      {isSmall ? <section>
+        <div className="custom-package-smallD text-center mb-5">
+          <h1>Ninja<span>Buffet</span></h1>
+          <h2>Packages</h2>
+          <h6>Select Your Ninja<span>Buffet</span> Package</h6>
+          {/* <div className="checkbox-container my-4">
               <input onChange={handleChange} type="checkbox" value='veg' name="Veg" id="" />
             </div> */}
-            {/*<div className="container">
+          {/*<div className="container">
               <div className="dropdown-label row">
                 <div className="col-6">
                   <p>City</p>
@@ -419,8 +412,8 @@ const Custom_Package = () => {
                 </div>
               </div>
             </div> */}
-          </div>
-        </section> : ""}
+        </div>
+      </section> : ""}
       {isSmall ? <section>
         <div className="packageContainer">
           <div className="packageNameSection text-center ms-2 me-4">
@@ -437,7 +430,6 @@ const Custom_Package = () => {
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
-
           </div>
           <div className="packageNameSection text-center me-3">
             <h3>PACKAGE NAME</h3>
@@ -453,7 +445,6 @@ const Custom_Package = () => {
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
-
           </div>
           <div className="packageNameSection text-center">
             <h3>PACKAGE NAME</h3>
@@ -469,7 +460,6 @@ const Custom_Package = () => {
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
-
           </div>
         </div>
         <div className="packageContainer">
@@ -487,7 +477,6 @@ const Custom_Package = () => {
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
-
           </div>
           <div className="packageNameSection text-center me-3">
             <h3>PACKAGE NAME</h3>
@@ -503,7 +492,6 @@ const Custom_Package = () => {
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
-
           </div>
           <div className="packageNameSection text-center">
             <h3>PACKAGE NAME</h3>

@@ -22,11 +22,11 @@ const Custom_Package = () => {
 
   const [indexPhoto, setIndexPhoto] = useState(null);
 
-  const handlePhotoChange = (index) => {
-    setPhoto(images[index]);
-    setIndexPhoto(index);
-    setIsChanged(true);
-  };
+  // const handlePhotoChange = (index) => {
+  //   setPhoto(images[index]);
+  //   setIndexPhoto(index);
+  //   setIsChanged(true);
+  // };
 
   function clearIndexPhoto() {
     setIndexPhoto(null)
@@ -50,18 +50,18 @@ const Custom_Package = () => {
   const handleShow = () => setShow(true);
 
   //veg non-veg check
-  const handleChange = (event) => {
-    if (event.target.checked) {
-      setVegNonVeg('nonVeg')
-    } else {
-      setVegNonVeg('Veg')
-      console.log(' Checkbox is NOT checked');
-    }
-  }
-  const handleGuestAdd = (e) => {
-    vegNonVeg === 'nonVeg' ? setNonVegGuest(e.target.value) : setVegGuest(e.target.value)
-    console.log(vegGuest, nonVegGuest)
-  }
+  // const handleChange = (event) => {
+  //   if (event.target.checked) {
+  //     setVegNonVeg('nonVeg')
+  //   } else {
+  //     setVegNonVeg('Veg')
+  //     console.log(' Checkbox is NOT checked');
+  //   }
+  // }
+  // const handleGuestAdd = (e) => {
+  //   vegNonVeg === 'nonVeg' ? setNonVegGuest(e.target.value) : setVegGuest(e.target.value)
+  //   console.log(vegGuest, nonVegGuest)
+  // }
   function handleClick(index) {
     const starters = Ninja_Package_Data[index].starters;
     const mains = Ninja_Package_Data[index].mains;
@@ -94,7 +94,7 @@ const Custom_Package = () => {
 
   return (
     <>
-      {!isSmall ? <section className="custom-package py-5">
+      { !isSmall ? <section className="custom-package py-5">
         <div className="container">
           <div className="section-title">
             <h2>
@@ -376,7 +376,7 @@ const Custom_Package = () => {
             <div className="col-6 textSection-lgd">
               <p>Not Happy with the Packages?</p>
               <h2>Create Your <span>Own</span></h2>
-              <h6>Curate your own flavour of party<br/><span>from variety of cuisines</span></h6>
+              <h6>Curate your own flavour of party<br /><span>from variety of cuisines</span></h6>
               <button className="btn btn-danger">Create Your Own Package</button>
             </div>
           </div>
@@ -469,7 +469,6 @@ const Custom_Package = () => {
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
-
           </div>
         </div>
         <div className="packageContainer">
