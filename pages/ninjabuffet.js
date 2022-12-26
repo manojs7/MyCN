@@ -13,7 +13,7 @@ export default function Ninja_Buffet()
         <FeedBack />
         <Ninja_Header />
         <Specials />
-        <NinjaBuffet_Video />
+        {/* <NinjaBuffet_Video /> */}
         <Custom_Package />
         <Footer />
     </>)
