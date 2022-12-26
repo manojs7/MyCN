@@ -13,7 +13,7 @@ export default function Ninja_Box()
         <FeedBack/>
         <Ninja_Header />
         <Specials />
-        {/* <NinjaBox_Video /> */}
+        <NinjaBox_Video />
         <Custom_Package />
         <Footer />
     </>)
