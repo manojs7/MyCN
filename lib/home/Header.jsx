@@ -17,10 +17,10 @@ const Header = () => {
 
   const bannerImages = [
     "mBanner1.png",
-    "mBanner2.png",
-    "mBanner3.png",
-    "mBanner4.png",
-    "mBanner5.png",
+    "ninjabox1.png",
+    "ninjabuffet.png",
+    "mealbox.png",
+    "ninjaclassic.png",
   ];
   const settings = {
     dots: true,
@@ -191,16 +191,16 @@ const Header = () => {
     <div className={"header-carousel3 " + styles.header_center}>
       <Slider ref={setSliderRef} afterChange={handleChange} {...settings}>
         <div className="image-container">
-          <img src="banner1.png" height="450px" width="100%" alt="logo" />
+          <img src="Group 1069.png" height="450px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="banner2.png" height="450px" width="100%" alt="logo" />
+          <img src="Group 823.png" height="458px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="banner3.png" height="450px" width="100%" alt="logo" />
+          <img src="Group 824.png" height="458px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="banner4.png" height="450px" width="100%" alt="logo" />
+          <img src="Group 825.png" height="458px" width="100%" alt="logo" />
         </div>
 
         {/* {Testimonials_Data.map((item, index) => (

@@ -57,7 +57,7 @@ const OurServices = () => {
     <section className="our-services mt-5">
       <div className="container">
         <div className="our-services-title">
-          <h2>Our Services</h2>
+          <h2 style={{fontSize: "41px"}}>Our Services</h2>
         </div>
         {!isSmall && (
           <div className="row mb-md-5 mb-0 our-service-box-container">

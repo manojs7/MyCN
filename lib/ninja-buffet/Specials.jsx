@@ -39,7 +39,7 @@ const Specials = () => {
     { !isSmall && (<section className=" specials">
       <div className="">
         <div className="section-title">
-          <h2>What Makes <span>Ninja</span>Box Special</h2>
+          <h2>What Makes <span>Ninja</span>Buffet Special</h2>
         </div>
         <div className="row special-scroller">
           <div className="col-lg-3 col-md-6 mb-lg-0 mb-4">
@@ -99,7 +99,7 @@ const Specials = () => {
     </section>)}
     { isSmall && (<div>
       <div className="smd-section-title text-center">
-        <h2>What Makes<br/>Ninja<span>Box</span> Special?</h2>
+        <h2>What Makes<br/>Ninja<span>Buffet</span> Special?</h2>
       </div>
       {/* <Carousel >
         <div className="specials-item me-2 pt-5">
@@ -160,7 +160,7 @@ const Specials = () => {
             </div>
             <div className="">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "Montserrat", fontSize: "8px", fontWeight: "bolder", backgroundColor: "#f1d07c", borderRadius: "5px", margin: "3px", marginBottom: "15px"}}>
+                <p className="mt-2 p-2 w-100" style={{fontSize: "8px", fontWeight: "bolder", backgroundColor: "#f1d07c", borderRadius: "5px", margin: "3px", marginBottom: "15px"}}>
                 ✅ Trendy Bulk Packaging <br/>
                 ✅ BioFriendly Disposable<br/>
                 ✅ No Utensile - Direct To Table

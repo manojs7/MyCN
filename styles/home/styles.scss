@@ -29,7 +29,10 @@
 @media (min-width: 992px) {
   .videoXY video{
     width: 70%;
-    margin-left: 150px;
+
+  }
+  .how-to-order-title{
+    font-size: 41px;
   }
  }
 
@@ -298,13 +301,29 @@
 //  ninja box
 .ninja-box-header-content {
   margin-top: 5px;
-  font-family: 'Montserrat';
+  margin-left: -23px;
+  //font-family: 'Montserrat';
   //font-style: normal;
   font-weight: 500;
   font-size: 10.8px;
   line-height: 15px;
   text-align: start;
   color: #363D42;
+}
+
+.ninja-buffet-header-content {
+  margin-top: 5px;
+  margin-left: -23px;
+  //font-family: 'Montserrat';
+  //font-style: normal;
+  font-weight: 500;
+  font-size: 10.9px;
+  line-height: 15px;
+  text-align: start;
+  color: #363D42;
+  span{
+    font-weight: 900;
+  }
 }
 
 .ninja-box-header-content span {
@@ -326,6 +345,19 @@
 
 .lgd-ninja-box-header-content span {
   font-weight: bold;
+}
+
+.lgd-ninja-buffet-header-content {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  text-align: center;
+  color: #363D42;
+  margin-top: 15px;
+  span{
+    font-weight: bolder;
+  }
 }
 
 .ninja-box-header-button {
@@ -752,9 +784,12 @@
 //CARD REVIEW
 .review-card{
   font-family: Montserrat;
-  background-color: #ffb800;
-  border-radius: 20px;
-  width: 260px;
+    background-color: white;
+    border-radius: 20px;
+    width: 260px;
+    //height: 230px;
+    box-shadow: 10px 10px 10px 0px #32373C ;
+    margin-bottom: 40px;
   .profile-img{
     img{
       margin-left: -10px;
@@ -765,32 +800,43 @@
     }
   }
   .text-section{
+    #img1{
+      width: 20px;
+      margin-left: 130px;
+      margin-bottom: -10px;
+    }
     img{
       width: 90px;
     }
     #title{
-      color: #3399ff;
+      color: #32373C;
       font-size: 12px;
       margin: 0;
       font-weight: bold;
     }
     #description{
-      color: #3399ff;
+      color: #32373C;
       font-size: 11px;
       margin: 0;
       margin-right: 0;
-      line-height: 11px;
+      line-height: 12px;
       font-weight: 100;
     }
   }
 }
 
 @media (min-width: 1200px) {
+  .testimonialsContainer{
+    padding-bottom: 30px;
+  }
   .review-card{
     font-family: Montserrat;
-    background-color: #ffb800;
+    background-color: white;
     border-radius: 20px;
     width: 500px;
+    height: 185px;
+    box-shadow: 10px 10px 10px 0px #32373C ;
+    margin-bottom: 20px;
     .profile-img{
       img{
         margin-left: 0px;
@@ -802,25 +848,38 @@
       }
     }
     .text-section{
-      margin-top: 5px;
-      margin-left: -30px;
+      // margin-top: 5px;
+      // margin-left: -30px;
+      margin: auto;
+      margin-top: -10px;
     }
     .text-section{
+      margin-left: -30px;
+      margin-top: -20px;
+      #img1{
+        width: 25px;
+        margin-left: 320px;
+        margin-right: 0%;
+        padding-top: 25px;
+        margin-bottom: -10px;
+      }
       img{
         width: 90px;
       }
       #title{
-        color: #3399ff;
-        font-size: 13px;
-        margin: 0;
+        color: #42484E;
+        font-size: 15px;
+        margin-top: 5px;
+        //margin: 0;
         font-weight: bold;
       }
       #description{
-        color: #3399ff;
-        font-size: 11px;
-        margin: 0;
-        margin-right: 0;
-        line-height: 11px;
+        color: #42484E;
+        font-size: 12px;
+        //margin: 0;
+        //margin-right: 0;
+        line-height: 15px;
+        font-weight: 400;
       }
     }
   }
@@ -969,7 +1028,7 @@
 }
 
 .ninja-box-header-title {
-  margin-left: 0px;
+  margin-left: -23px;
   font-style: normal;
   font-weight: 900;
   font-size: 42px;
@@ -980,6 +1039,19 @@
   color: #0A1622;
 }
 
+.ninja-buffet-header-title {
+  margin-left: -23px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 112%;
+  /* or 62px */
+  color: #0A1622;
+  span{
+    color: white;
+  }
+}
+
 //FOR LAGRE DEVICE
 .lgd-ninja-box-header-title {
   margin-left: 0px;
@@ -988,16 +1060,27 @@
   font-size: 50px;
   line-height: 112%;
   /* or 62px */
-
-
   color: #0A1622;
+}
+
+.lgd-ninja-buffet-header-title {
+  margin-left: -20px;
+  font-size: 50px;
+  line-height: 112%;
+  font-weight: 900;
+  span{
+    color: white;
+  }
 }
 
 .ninja-box-header-logo {
   width: 134px !important;
   height: 27px !important;
+  margin: 0;
+}
 
-  margin: 0 auto;
+.ninja-buffet-header-logo {
+  width: 120px !important;
 }
 
 // bootstrap carousel icon change
@@ -1023,7 +1106,9 @@
 }
 
 #smallninja-container .carousel-indicators {
-  margin-bottom: -20px;
+  //margin-bottom: -20px;
+  display: none;
+  margin: 0%;
 }
 
 .ninja-box-header-title span {
@@ -1087,6 +1172,12 @@
   z-index: 2;
 }
 
+.video-player{
+  .carousel-indicators button {
+    display: none;
+  }
+}
+
 .ninja-box-carouserl {
   margin-top: 30px;
 
@@ -1116,6 +1207,12 @@
 .ninja-box-ninja-img {
   margin-top: -14px;
   margin-left: 35px;
+}
+
+.ninja-buffet-ninja-img {
+ margin-top: -14px;
+  //margin-left: 35px;
+  padding-left: 60px;
 }
 
 //large device
@@ -2042,7 +2139,7 @@
 //Create your ow package - Mobile device
 .create-your-own-package{
   background-color: #FFC31A;
-  font-family: "Montserrat";
+  //font-family: "Montserrat";
   padding-top: 25px;
   padding-bottom: 25px;
   #leftside img{
@@ -2607,3 +2704,21 @@
   }
 
 }
+// @media (min-width: 992px) { 
+//   .ninjaBoxVideoSm{
+//     display: none;
+//   }
+//   .ninjaBoxVideoLg{
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+//   }
+//  }
+//  @media (min-width: 576px) { 
+//     .ninjaBoxVideoLg{
+//       display: none !important;
+//     }
+//     .ninjaBoxVideoSm{
+//       margin-top: 10px;
+//       margin-bottom: 10px;
+//     }
+//   }

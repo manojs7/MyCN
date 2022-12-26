@@ -110,7 +110,7 @@ export default function Navbar({ page }) {
           </Link>
         </li>
         <li className={styles.margin}>
-          <Link href="/nft">
+          <Link href="/ninjabuffet">
             <a onClick={() => burger_click()}>NinjaBuffet</a>
           </Link>
         </li>
@@ -151,9 +151,9 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/services">
+            <Link href="/ninjabuffet">
               <a
-                className={page == "services" ? styles.current : null}
+                className={page == "ninjabuffet" ? styles.current : null}
                 onClick={() => burger_click()}
               >
                 <span style={{ color: "#BE2D30" }}>Ninja </span>Buffet

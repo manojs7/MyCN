@@ -4,14 +4,13 @@ import Image from "next/image";
 import ReactImageMagnify from "react-image-magnify";
 import { Carousel } from "react-bootstrap";
 import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
-import YouTube from "react-youtube";
 
 const Ninja_Header = () => {
   const images = [
-    "nijjabox1.png",
-    "nijjabox2.png",
-    "nijjabox3.png",
-    "nijjabox4.png",
+    "buffetCr1.png",
+    "buffetCr2.png",
+    "buffetCr3.png",
+    "buffetCr4.png",
 
 
 
@@ -169,16 +168,15 @@ const Ninja_Header = () => {
           <div className="lgd-ninja-box-header-logo">
             <img src="caterninja.png" height="auto" width="140px" alt="" />
           </div>
-          <div className="lgd-ninja-box-header-title">
-            Ninja<span>Box</span>
+          <div className="lgd-ninja-buffet-header-title">Ninja<span>Buffet</span>
           </div>
-          <div className="lgd-ninja-box-header-content">
-            <span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
+          <div className="lgd-ninja-buffet-header-content">
+            <span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
               Guests</span>
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
-            <img src='ninja-box-ninja.png' alt='' />
+            <img src='buffetNinjaLogo.png' alt='' style={{width: "120px"}} />
           </div>
           <div className="ninja-box-header-button">
             <button className="bg-red">Select Package</button>
@@ -193,21 +191,21 @@ const Ninja_Header = () => {
       <div className="smd-ninja-header-right-container">
         <div className="description">
           <div className="description">
-            <div className="ninja-box-header-logo">
+            <div className="ninja-buffet-header-logo">
               <img src="caterninja.png" height="auto" width="100%" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
-                <div className="ninja-box-header-title">
-                  Ninja<span>Box</span>
+                <div className="ninja-buffet-header-title">
+                  Ninja<span>Buffet</span>
                 </div>
-                <div className="ninja-box-header-content">
-                  <span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
-                    Guests</span>
+                <div className="ninja-buffet-header-content">
+                <span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
+              Guests</span>
                 </div>
               </div>
-              <div className="col-6 ninja-box-ninja-img">
-                <img src='ninja-box-ninja.png' alt='' style={{ height: "auto", width: "140px" }} />
+              <div className="col-6 ninja-buffet-ninja-img">
+                <img src='buffetNinjaLogo.png' alt='' style={{ height: "auto", width: "110px" }} />
               </div>
             </div>
           </div>

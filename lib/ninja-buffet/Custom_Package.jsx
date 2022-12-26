@@ -98,7 +98,7 @@ const Custom_Package = () => {
         <div className="container">
           <div className="section-title">
             <h2>
-              Ninja<span>Box</span> Packages
+              Ninja<span>Buffet</span> Packages
             </h2>
           </div>
           {/* <div className="row mb-md-5 mb-0 filter">
@@ -238,7 +238,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="buffetCr3.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -254,7 +254,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="buffetCr3.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -270,7 +270,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="buffetCr3.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -288,7 +288,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="buffetCr3.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -304,7 +304,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="buffetCr3.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -320,7 +320,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="buffetCr3.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -385,9 +385,9 @@ const Custom_Package = () => {
       {isSmall ?
         <section>
           <div className="custom-package-smallD text-center mb-5">
-            <h1>Ninja<span>Box</span></h1>
+            <h1>Ninja<span>Buffet</span></h1>
             <h2>Packages</h2>
-            <h6>Select Your Ninja<span>Box</span> Package</h6>
+            <h6>Select Your Ninja<span>Buffet</span> Package</h6>
             {/* <div className="checkbox-container my-4">
               <input onChange={handleChange} type="checkbox" value='veg' name="Veg" id="" />
             </div> */}
@@ -426,7 +426,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="buffetCr3.png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -442,7 +442,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="buffetCr3.png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -458,7 +458,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="buffetCr3.png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -476,7 +476,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="buffetCr3.png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -492,7 +492,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="buffetCr3.png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -508,7 +508,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="buffetCr3.png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -526,12 +526,12 @@ const Custom_Package = () => {
         <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
-              <img id="left-ninja-logo" src="ninja-box-ninja.png"></img>
+              <img id="left-ninja-logo" src="buffetNinjaLogo.png"></img>
             </div>
             <div className="col-8" id="rightside">
               <img id="right-ninja-logo" src="caterninja.png"></img>
-              <h2>Ninja<span>Box</span></h2>
-              <p><span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10-40 Guests</span></p>
+              <h2>Ninja<span>Buffet</span></h2>
+              <p><span>Door Step</span> Delivery with Hassle Free Service by our Swift Ninjas For <span>10-40 Guests</span></p>
             </div>
           </div>
           <div className="btmSectnText">
