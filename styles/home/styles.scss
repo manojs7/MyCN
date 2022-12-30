@@ -15,7 +15,7 @@
 // how-to-order
 .how-to-order-title {
   display: block;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   margin-bottom: 63px;
@@ -43,7 +43,7 @@
 }
 
 .What-Make-Us-Special-card-title {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   margin-bottom: 63px;
@@ -69,6 +69,57 @@
 //   z-index: 1000;
 
 // }
+
+//LARGE DEVICE - NINJA BOX-WHAT MAKES NINJABOX SPECIAL
+.ninjaBox-Specials-LG{
+
+  .reveal {
+    position: relative;
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  
+  .reveal.active {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  .what-makes-ninjabox-special-logo{
+    width: 80px;
+    height: 75px;
+    margin-bottom: 10px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  }
+  .What-Make-Us-Special-container-card{
+    width: 250px;
+    //margin: auto;
+    margin-bottom: 150px;
+    p{
+      font-family: "Montserat", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+  }
+  .What-Make-Us-Special-container-card-font{
+    height: 90px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .What-Make-Us-Special-container-card-back {
+    //style={{ fontFamily: "Montserat", fontSize: "8px", fontWeight: "bolder", backgroundColor: "#f1d07c", borderRadius: "5px", margin: "3px", marginBottom: "15px" }}
+    p{
+      background-color: #f1d07c;
+      font-size: 11px;
+      font-style: italic;
+      font-weight: 600;
+      border-radius: 10px;
+    }
+  }
+
+}
+
 .What-Make-Us-Special-container-card {
   width: 160.62px;
   height: 100px;
@@ -128,7 +179,7 @@
 }
 
 .What-Make-Us-Special-container-card-font p {
-  font-family: "Montserrat";
+  font-family: "Montserat";
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -172,7 +223,7 @@
 }
 
 .What-Make-Us-Special-container-card-back p {
-  font-family: "Montserrat";
+  font-family: "Montserat";
   font-style: normal;
   font-weight: 500;
   font-size: 10px;
@@ -187,7 +238,7 @@
 .What-Make-Us-Special-container-card:hover .What-Make-Us-Special-container-card-back,
 .What-Make-Us-Special-container-card-font:hover .What-Make-Us-Special-container-card-back {
   //transform: translateY(555px);
-  top: 70px;
+  //top: 70px;
 }
 
 .our-services,
@@ -201,6 +252,23 @@
   // box-shadow: 0px 4px 4px 0px #00000040;
   font-family: "Alegreya Sans", sans-serif;
   // margin-bottom: 150px;
+}
+
+.ninjabox-Special{
+  margin-bottom: 0%;
+  .special-title{
+    padding: 40px;
+    h2{
+      font-family: "Montserat", sans-serif;
+      text-align: center;
+      font-weight: bold;
+      font-size: 41px;
+      border-bottom: 3px solid var(--ninja-red);
+      span{
+        color: var(--ninja-red);
+      }
+    }
+  }
 }
 
 .home-scroll {
@@ -237,7 +305,7 @@
 }
 
 .feed-back-container p {
-  font-family: "Montserrat";
+  font-family: "Montserat";
   font-style: normal;
   font-weight: 500;
   font-size: 22.1997px;
@@ -290,7 +358,7 @@
   text-align: center;
   font-weight: 600;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
 }
 
 .categories-item:hover p {
@@ -302,7 +370,7 @@
 .ninja-box-header-content {
   margin-top: 5px;
   margin-left: -23px;
-  //font-family: 'Montserrat';
+  //font-family: 'Montserat';
   //font-style: normal;
   font-weight: 500;
   font-size: 10.8px;
@@ -314,10 +382,26 @@
 .ninja-buffet-header-content {
   margin-top: 5px;
   margin-left: -23px;
-  //font-family: 'Montserrat';
+  //font-family: 'Montserat';
   //font-style: normal;
   font-weight: 500;
   font-size: 10.9px;
+  line-height: 15px;
+  text-align: start;
+  color: #363D42;
+  span{
+    font-weight: 900;
+  }
+}
+
+.meal-box-header-content {
+  font-family: "Montserat", sans-serif;
+  margin-top: 5px;
+  margin-left: -23px;
+  //font-family: 'Montserat';
+  //font-style: normal;
+  font-weight: 500;
+  font-size: 10.3px;
   line-height: 15px;
   text-align: start;
   color: #363D42;
@@ -333,7 +417,7 @@
 
 //for larger device
 .lgd-ninja-box-header-content {
-  font-family: 'Montserrat';
+  font-family: 'Montserat';
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
@@ -348,9 +432,22 @@
 }
 
 .lgd-ninja-buffet-header-content {
-  font-family: 'Montserrat';
+  font-family: 'Montserat';
   font-weight: 400;
   font-size: 15px;
+  line-height: 25px;
+  text-align: center;
+  color: #363D42;
+  margin-top: 15px;
+  span{
+    font-weight: bolder;
+  }
+}
+
+.lgd-meal-box-header-content {
+  font-family: "Montserat", sans-serif;
+  font-weight: 400;
+  font-size: 14.5px;
   line-height: 25px;
   text-align: center;
   color: #363D42;
@@ -376,7 +473,7 @@
   // border-radius: 6px !important;
   // font-weight: 800;
   padding: 15px 30px;
-  font-family: 'Montserrat';
+  font-family: 'Montserat';
   font-style: normal;
   font-weight: 700;
   font-size: 22.1997px;
@@ -400,7 +497,7 @@
 // }
 // .categories .section-title h2{
 // font-size: 41px;
-// font-family: "Montserrat", sans-serif;
+// font-family: "Montserat", sans-serif;
 // font-weight: 700;
 // line-height: 46;
 // color: #2C3338;
@@ -434,7 +531,7 @@
 
 .section-title h2 {
   // font-family: "Forum", cursive;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-weight: 600;
   font-size: 41px;
   text-align: center;
@@ -452,7 +549,7 @@
 }
 
 .our-services-title h2 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   margin-bottom: 35px;
@@ -541,7 +638,7 @@
 .service-back p {
   background: #f1d07c;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-style: italic;
   font-weight: 600;
   line-height: 20px;
@@ -570,7 +667,7 @@
   // padding: 20px;
   color: var(--text-dark);
   font-weight: 700;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-size: 38px;
   text-align: center;
   margin-top: 44px;
@@ -580,7 +677,7 @@
   // padding: 20px;
   color: var(--text-dark);
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-size: 30px;
   text-align: center;
 }
@@ -628,7 +725,7 @@
 
 .our-services-box .content p {
   max-width: 250px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-size: 15px;
   font-weight: 600;
 }
@@ -638,6 +735,7 @@
 }
 
 .our-services-box .buttons {
+  font-family: "Montserat", sans-serif;
   display: flex;
   padding: 15px;
   justify-content: center;
@@ -698,7 +796,7 @@
 
 .how-work-title {
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   font-size: 22px;
   text-align: center;
 }
@@ -721,7 +819,7 @@
   letter-spacing: 3%;
   color: var(--text-light);
   //padding: 0 0 20px 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserat", sans-serif;
   text-align: center;
 }
 
@@ -774,7 +872,7 @@
   color: #6699ff;
   margin-left: -45px;
   margin-top: -20px;
-  font-family: Montserrat;
+  font-family: Montserat;
   font-weight: 600;
   font-size: 10px;
   margin-bottom: 0%;
@@ -783,7 +881,7 @@
 
 //CARD REVIEW
 .review-card{
-  font-family: Montserrat;
+  font-family: "Montserat", sans-serif;
     background-color: white;
     border-radius: 20px;
     width: 260px;
@@ -825,12 +923,16 @@
   }
 }
 
+.testimonialsContainer{
+  font-family: "Montserat", sans-serif;
+}
+
 @media (min-width: 1200px) {
   .testimonialsContainer{
     padding-bottom: 30px;
   }
   .review-card{
-    font-family: Montserrat;
+    font-family: "Montserat", sans-serif;
     background-color: white;
     border-radius: 20px;
     width: 500px;
@@ -894,7 +996,7 @@
     padding-bottom: 30px;
   }
   .textSection-lgd{
-    font-family: Montserrat;
+    font-family: Montserat;
     margin: auto;
     text-align: center;
     padding-right: 160px;
@@ -927,7 +1029,7 @@
   }
 }
 
-//style={{ color: "#6699ff", marginTop: "-43px", marginLeft: "18px", fontFamily: "Montserrat", lineHeight: "10px", fontSize: "10px" }}
+//style={{ color: "#6699ff", marginTop: "-43px", marginLeft: "18px", fontFamily: "Montserat", lineHeight: "10px", fontSize: "10px" }}
 .review-section #description{
   color: 6699ff;
   // margin-top: -43px;
@@ -935,7 +1037,7 @@
   margin-right: 0%;
   margin-top: -20px;
   margin-bottom: 10px;
-  font-family: Montserrat;
+  font-family: Montserat;
   line-height: 10.5px;
   font-size: 10.5px;
 }
@@ -1028,6 +1130,7 @@
 }
 
 .ninja-box-header-title {
+  font-family: "Montserat", sans-serif;
   margin-left: -23px;
   font-style: normal;
   font-weight: 900;
@@ -1124,7 +1227,7 @@
   font-weight: 400;
   font-size: 18px;
   // height: 80px;
-  font-family: "Montserrat";
+  font-family: "Montserat";
   // width: 360px;
 
   margin: -15px auto;
@@ -1134,6 +1237,7 @@
 }
 
 .header-title-two p {
+  font-family: "Montserat", sans-serif;
   margin: 0 !important;
   text-align: center;
 }
@@ -1258,7 +1362,36 @@
     width: 200px;
     height: 56px;
     border: 0 !important;
-    font-family: "Montserrat";
+    font-family: "Montserat";
+    // box-shadow: 0px 4px 4px 0px #c22d2e ;
+    box-shadow: 6px 8px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 41px;
+    font-weight: 700;
+    font-size: 22px;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+
+    &:hover {
+      background-color: #c22d2e !important;
+      color: white !important;
+      border: 1px solid #c22d2e !important;
+      padding: 6px 18px !important;
+    }
+  }
+}
+
+.header-button {
+  a {
+    text-decoration: none;
+    background: #ffc31a !important;
+    padding: 6px 18px !important;
+    margin-left: 50px;
+    color: #363d42 !important;
+    width: 200px;
+    height: 50px;
+    border: 0 !important;
+    font-family: "Montserat", sans-serif;
     // box-shadow: 0px 4px 4px 0px #c22d2e ;
     box-shadow: 6px 8px 20px rgba(0, 0, 0, 0.25);
     border-radius: 41px;
@@ -1732,7 +1865,7 @@
 }
 
 .center-banner-btn {
-  font-family: "Montserrat";
+  font-family: "Montserat";
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -1751,7 +1884,7 @@
   width: 93px;
   height: 22.79px;
   position: absolute;
-  //font-family: "Montserrat";
+  //font-family: "Montserat";
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -2030,7 +2163,7 @@
   margin-bottom: 0%;
   h1{
     font-size: 50px;
-    font-family: "Montserrat";
+    font-family: "Montserat";
     font-weight: bolder;
     span {
       color: var(--ninja-red);
@@ -2039,14 +2172,14 @@
 
   h2{
     margin-top: -10px;
-    font-family: "Montserrat";
+    font-family: "Montserat";
     font-weight: 400;
     font-size: 25px;
   }
 
   h6{
     margin-top: 20px;
-    font-family: "Montserrat";
+    font-family: "Montserat";
     font-size: 19px;
     font-weight: 400;
     span {
@@ -2115,7 +2248,7 @@
   }
 
   .dropdown-label{
-    font-family: "Montserrat";
+    font-family: "Montserat";
     p{
       color: var(--ninja-red);
       font-weight: bolder;
@@ -2139,7 +2272,7 @@
 //Create your ow package - Mobile device
 .create-your-own-package{
   background-color: #FFC31A;
-  //font-family: "Montserrat";
+  //font-family: "Montserat";
   padding-top: 25px;
   padding-bottom: 25px;
   #leftside img{
@@ -2172,7 +2305,7 @@
 }
 
 .btmSectnText{
-  font-family: "Montserrat";
+  font-family: "Montserat";
   p{
     font-size: 15px;
     color: white;
@@ -2191,7 +2324,7 @@
   h6{
     margin-top: -5px;
     margin-left: 30px;
-    font-family: "Montserrat";
+    font-family: "Montserat";
     font-size: 13.5px;
     font-weight: bold;
   }
@@ -2274,7 +2407,7 @@
   border-radius: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
-  font-family: "Montserrat";
+  font-family: "Montserat";
   .packageImg img{
     margin-right: 30px;
     margin-left: 30px;
@@ -2309,7 +2442,7 @@
   border-radius: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
-  font-family: "Montserrat";
+  font-family: "Montserat";
   .packageImg img{
     margin-right: 30px;
     margin-left: 30px;

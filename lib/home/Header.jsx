@@ -72,7 +72,7 @@ const Header = () => {
         <div className="header-content">
           <img src="chef.png" height="330px" width="290px" alt="logo" />
           <div className="header-button">
-            <button className="bg-red">Our Services</button>
+            <a href="#ourServices" className="bg-red">Our Services</a>
           </div>
         </div>
       </div>

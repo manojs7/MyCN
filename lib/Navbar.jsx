@@ -115,6 +115,11 @@ export default function Navbar({ page }) {
           </Link>
         </li>
         <li className={styles.margin}>
+          <Link href="/mealbox">
+            <a onClick={() => burger_click()}>MealBox</a>
+          </Link>
+        </li>
+        <li className={styles.margin}>
           <Link href="/process">
             <a onClick={() => burger_click()}>About Us</a>
           </Link>
@@ -124,11 +129,11 @@ export default function Navbar({ page }) {
             <a onClick={() => burger_click()}>Blog</a>
           </Link>
         </li>
-        <li className={styles.margin}>
+        {/* <li className={styles.margin}>
           <Link href="/newpage">
             <a onClick={() => burger_click()}>New</a>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
@@ -153,10 +158,24 @@ export default function Navbar({ page }) {
           <li>
             <Link href="/ninjabuffet">
               <a
-                className={page == "ninjabuffet" ? styles.current : null}
+                className={
+                  router.pathname == "/ninjabuffet" ? styles.current : null
+                }
                 onClick={() => burger_click()}
               >
                 <span style={{ color: "#BE2D30" }}>Ninja </span>Buffet
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/mealbox">
+              <a
+                className={
+                  router.pathname == "/mealbox" ? styles.current : null
+                }
+                onClick={() => burger_click()}
+              >
+                <span style={{ color: "#BE2D30" }}>Meal </span>Box
               </a>
             </Link>
           </li>
@@ -180,7 +199,7 @@ export default function Navbar({ page }) {
               </a>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/newpage">
               <a
                 className={page == "/newpage" ? styles.current : null}
@@ -189,7 +208,7 @@ export default function Navbar({ page }) {
                 <span style={{ color: "#BE2D30" }}>New</span>
               </a>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div

@@ -18,7 +18,7 @@ export default function Float()
             </div>
             <div className={styles.item}>
             
-            <img src='floatLogo.png' color="white" alt=''/>
+            <img src='horizontal bar ninja and logo.png' color="white" alt='' style={{width: "120px"}}/>
                 {/* <FontAwesomeIcon icon={faWhatsapp} className={styles.icon} /> */}
             </div>
             <div className={styles.item}>

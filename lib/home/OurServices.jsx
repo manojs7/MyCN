@@ -5,7 +5,7 @@ import { faCircleUp, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 const OurServices = () => {
   const [isSmall, setIsSmall] = useState(false);
- 
+
   const settings = {
     className: "center",
 
@@ -54,10 +54,10 @@ const OurServices = () => {
   }, []);
 
   return (
-    <section className="our-services mt-5">
+    <section className="our-services mt-5" id="ourServices">
       <div className="container">
         <div className="our-services-title">
-          <h2 style={{fontSize: "41px"}}>Our Services</h2>
+          <h2 style={{ fontSize: "41px" }}>Our Services</h2>
         </div>
         {!isSmall && (
           <div className="row mb-md-5 mb-0 our-service-box-container">
@@ -160,7 +160,7 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button onClick={() => (window.location.href = "/ninjabuffet")} className="view-details">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
                     className="sample-pricing"
@@ -381,9 +381,9 @@ const OurServices = () => {
 
         {/* <Slider {...settings}> */}
         <div className="mt-5">
-        {isSmall ?<div className="our-services-title">
-          <h2>Our Services</h2>
-        </div> :""}
+          {isSmall ? <div className="our-services-title">
+            <h2>Our Services</h2>
+          </div> : ""}
           <div className="mobile-card-container">
             {/* card1 */}
             <div className="">
@@ -489,7 +489,10 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button
+                    onClick={() => (window.location.href = "/ninjabuffet")} className="view-details">
+                    View Details
+                  </button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
                     className="sample-pricing"
