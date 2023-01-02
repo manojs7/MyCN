@@ -167,6 +167,18 @@ export default function Navbar({ page }) {
               </a>
             </Link>
           </li>
+          {/* <li>
+            <Link href="/ninjaclassic">
+              <a
+                className={
+                  router.pathname == "/ninjaclassic" ? styles.current : null
+                }
+                onClick={() => burger_click()}
+              >
+                <span style={{ color: "#BE2D30" }}>Ninja </span>Classic
+              </a>
+            </Link>
+          </li> */}
           <li>
             <Link href="/mealbox">
               <a

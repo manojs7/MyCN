@@ -212,7 +212,9 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details mt-2">View Details</button>
+                  <button 
+                  onClick={() => (window.location.href = "/ninjaclassic")}
+                  className="view-details mt-2">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
                     className="sample-pricing mt-2"
@@ -265,7 +267,9 @@ const OurServices = () => {
                 </div>
 
                 <div className="buttons">
-                  <button className="view-details mt-3">View Details</button>
+                  <button
+                  onClick={() => (window.location.href = "/mealbox")}
+                  className="view-details mt-3">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
                     className="sample-pricing mt-3"
@@ -546,7 +550,9 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button
+                  onClick={() => (window.location.href = "/ninjaclassic")}
+                  className="view-details">View Details</button>
                   <button
                     onClick={() => (window.location.href = "/custom")}
                     className="sample-pricing"

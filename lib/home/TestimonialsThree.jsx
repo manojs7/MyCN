@@ -98,7 +98,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="title">NARESH THAWAL</p></a>
+                                        <a  href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="title">Naresh Thawal</p></a>
                                         <p id="description">Overall good experience with your team and cooperation.
                                             Food quality and arrangements are superb.
                                             Very punctual about timing.
@@ -172,7 +172,7 @@ export default function TestimonialsThree() {
                                     <div className="text-section col-9 ps-4">
                                         <img id="img1" src="google logo.png" />
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="title">swati Singh</p></a>
+                                        <a  href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="title">Swati Singh</p></a>
                                         <p id="description">We have ordered for 30 people , Fixed menu and we  must say It was very easy and time saving decision. Food was yummy, Packaging was very nice.
                                             Our overall experience was very good.</p>
                                     </div>
