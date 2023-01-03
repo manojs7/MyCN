@@ -108,7 +108,7 @@ const OurServices = () => {
                     View Details
                   </button>
                   <button
-                    onClick={() => (window.location.href = "/custom")}
+                    onClick={() => (window.location.href = "https://diy.caterninja.com/")}
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -162,7 +162,7 @@ const OurServices = () => {
                 <div className="buttons">
                   <button onClick={() => (window.location.href = "/ninjabuffet")} className="view-details">View Details</button>
                   <button
-                    onClick={() => (window.location.href = "/custom")}
+                    onClick={() => (window.location.href = "https://diy.caterninja.com/")}
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -271,7 +271,7 @@ const OurServices = () => {
                   onClick={() => (window.location.href = "/mealbox")}
                   className="view-details mt-3">View Details</button>
                   <button
-                    onClick={() => (window.location.href = "/custom")}
+                    onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                     className="sample-pricing mt-3"
                   >
                     Sample Pricing
@@ -319,9 +319,11 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details">View Details</button>
+                  <button 
+                  onClick={() => (window.location.href = "/snackbox")}
+                  className="view-details">View Details</button>
                   <button
-                    onClick={() => (window.location.href = "/custom")}
+                    onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -369,9 +371,11 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <button className="view-details mt-5">View Details</button>
+                  <button 
+                  onClick={() => (window.location.href = "/gourmet")}
+                  className="view-details mt-5">View Details</button>
                   <button
-                    onClick={() => (window.location.href = "/custom")}
+                    onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
                     className="sample-pricing mt-5"
                   >
                     Sample Pricing
@@ -614,7 +618,7 @@ const OurServices = () => {
               <div className="buttons">
                 <button className="view-details">View Details</button>
                 <button
-                  onClick={() => (window.location.href = "/custom")}
+                  onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                   className="sample-pricing"
                 >
                   Sample Pricing
@@ -665,9 +669,11 @@ const OurServices = () => {
                 />
               </div>
               <div className="buttons">
-                <button className="view-details">View Details</button>
+                <button 
+                onClick={() => (window.location.href = "/snackbox")}
+                className="view-details">View Details</button>
                 <button
-                  onClick={() => (window.location.href = "/custom")}
+                  onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                   className="sample-pricing"
                 >
                   Sample Pricing
@@ -717,9 +723,11 @@ const OurServices = () => {
                 />
               </div>
               <div className="buttons">
-                <button className="view-details">View Details</button>
+                <button 
+                onClick={() => (window.location.href = "/gourmet")}
+                className="view-details">View Details</button>
                 <button
-                  onClick={() => (window.location.href = "/custom")}
+                  onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
                   className="sample-pricing"
                 >
                   Sample Pricing

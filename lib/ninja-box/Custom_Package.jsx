@@ -95,7 +95,7 @@ const Custom_Package = () => {
   return (
     <>
       { !isSmall ? <section className="custom-package py-5">
-        <div className="container">
+        <div className="container" id="NBPkg">
           <div className="section-title">
             <h2>
               Ninja<span>Box</span> Packages

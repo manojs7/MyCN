@@ -395,19 +395,34 @@
   }
 }
 
+.ninja-gourmet-header-content {
+  margin-top: 5px;
+  margin-left: -23px;
+  //font-family: 'Montserrat';
+  //font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: start;
+  color: #363D42;
+  span{
+    font-weight: bolder;
+  }
+}
+
 .meal-box-header-content {
   font-family: sans-serif;
   margin-top: 5px;
   margin-left: -23px;
   //font-family: 'Montserrat';
   //font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 10.3px;
   line-height: 15px;
   text-align: start;
   color: #363D42;
   span{
-    font-weight: 900;
+    font-weight: bolder;
   }
 }
 
@@ -433,9 +448,22 @@
 }
 
 .lgd-ninja-buffet-header-content {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 15px;
+  line-height: 25px;
+  text-align: center;
+  color: #363D42;
+  margin-top: 15px;
+  span{
+    font-weight: bolder;
+  }
+}
+
+.lgd-ninja-gourmet-header-content {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14.5px;
   line-height: 25px;
   text-align: center;
   color: #363D42;
@@ -474,7 +502,7 @@
   // border-radius: 6px !important;
   // font-weight: 800;
   padding: 15px 30px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 22.1997px;
@@ -515,9 +543,9 @@
 }
 
 .section-title {
-  padding: 0 0 20px 0;
-  margin-top: 60px;
-
+  //padding: 0 0 20px 0;
+  //margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 .smd-section-title {
@@ -999,7 +1027,7 @@
     padding-bottom: 30px;
   }
   .textSection-lgd{
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     margin: auto;
     text-align: center;
     padding-right: 160px;
@@ -1158,6 +1186,19 @@
   }
 }
 
+.snack-box-header-title {
+  margin-left: -23px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 45px;
+  line-height: 112%;
+  /* or 62px */
+  color: #0A1622;
+  span{
+    color: white;
+  }
+}
+
 //FOR LAGRE DEVICE
 .lgd-ninja-box-header-title {
   font-family: sans-serif;
@@ -1173,6 +1214,17 @@
   font-family: sans-serif;
   margin-left: -20px;
   font-size: 50px;
+  line-height: 112%;
+  font-weight: 900;
+  span{
+    color: white;
+  }
+}
+
+.lgd-ninja-gourmet-header-title {
+  font-family: sans-serif;
+  margin-left: -25px;
+  font-size: 40px;
   line-height: 112%;
   font-weight: 900;
   span{
@@ -1410,7 +1462,7 @@
     width: 200px;
     height: 50px;
     border: 0 !important;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     // box-shadow: 0px 4px 4px 0px #c22d2e ;
     box-shadow: 6px 8px 20px rgba(0, 0, 0, 0.25);
     border-radius: 41px;
@@ -2182,7 +2234,7 @@
   padding-bottom: 10px;
   margin-bottom: 0%;
   h1{
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bolder;
     span {
       color: var(--ninja-red);

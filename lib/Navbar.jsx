@@ -179,7 +179,7 @@ export default function Navbar({ page }) {
               </a>
             </Link>
           </li> */}
-          <li>
+          {/* <li>
             <Link href="/mealbox">
               <a
                 className={
@@ -190,7 +190,7 @@ export default function Navbar({ page }) {
                 <span style={{ color: "#BE2D30" }}>Meal </span>Box
               </a>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/gallery">
               <a

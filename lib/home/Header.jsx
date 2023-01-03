@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Slider from "react-slick/lib/slider";
 import styles from "$styles/home/Home.module.scss";
+import Link from "next/link";
 
 const Header = () => {
   const [sliderRef, setSliderRef] = useState(null);
@@ -175,13 +176,13 @@ const Header = () => {
       </Slider>
       <div className="banner-btn-container">
         <div className="center-banner-btn">
-          <button>
+          <Link href="/ninjabox"><button>
             {" "}
             Ninja <span>Box</span>{" "}
-          </button>
-          <button>
+          </button></Link>
+          <Link href="/ninjabuffet"><button>
             Ninja <span>Buffet</span>{" "}
-          </button>
+          </button></Link>
         </div>
       </div>
     </div>

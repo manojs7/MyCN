@@ -1,12 +1,12 @@
 import Navbar from '$lib/Navbar';
 import FeedBack from "$lib/home/FeedBack";
-import Ninja_Header from '$lib/ninja-classic/Ninja_Header';
-import Specials from '$lib/ninja-classic/Specials';
-import Custom_Package from '$lib/ninja-classic/Custom_Package';
+import Ninja_Header from '$lib/snack-box/Ninja_Header';
+import Specials from '$lib/snack-box/Specials';
+import Custom_Package from '$lib/snack-box/Custom_Package';
 import Footer from "$lib/Footer";
-//import NinjaBuffet_Video from '$lib/ninja-classic/NinjaBuffet_Video';
+//import NinjaBuffet_Video from '$lib/snack-box/NinjaBuffet_Video';
 
-export default function Ninja_Classic()
+export default function Snack_Box()
 {
     return (<>
         <Navbar />

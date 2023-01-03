@@ -39,7 +39,7 @@ const Specials = () => {
       {!isSmall && (<section className="ninjabox-Special">
         <div className="">
           <div className="special-title">
-            <h2>What Makes Ninja<span>Classic</span> Special?</h2>
+            <h2>What Makes Snack<span>Box</span> Special?</h2>
           </div>
           <div className="ninjaBox-Specials-LG mt-5">
             <div className="d-flex justify-content-evenly">
@@ -188,7 +188,7 @@ const Specials = () => {
       </section>)}
       {isSmall && (<div>
         <div className="smd-section-title text-center">
-          <h2>What Makes<br />Ninja<span>Classic</span> Special?</h2>
+          <h2>What Makes<br />Snack<span>Box</span> Special?</h2>
         </div>
         {/* <Carousel >
         <div className="specials-item me-2 pt-5">

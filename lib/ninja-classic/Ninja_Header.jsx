@@ -7,10 +7,10 @@ import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
-    "buffetCr1.png",
-    "buffetCr2.png",
-    "buffetCr3.png",
-    "buffetCr4.png",
+    "1.png",
+    "2.png",
+    "3.png",
+    "4.png",
 
 
 
@@ -170,13 +170,12 @@ const Ninja_Header = () => {
           </div>
           <div className="lgd-ninja-classic-header-title">Ninja<span>Classic</span>
           </div>
-          <div className="lgd-ninja-buffet-header-content">
-            <span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
-              Guests</span>
+          <div className="lgd-ninja-box-header-content">
+            <span>Premium</span> Dining Experience for <span>50+ Guests</span> with finger Licking Yummy Food and <span>Crockery</span>
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
-            <img src='buffetNinjaLogo.png' alt='' style={{width: "120px"}} />
+            <img src='ninjawithTable.png' alt='' style={{width: "130px"}} />
           </div>
           <div className="ninja-box-header-button">
             <button className="bg-red">Select Package</button>
@@ -197,15 +196,14 @@ const Ninja_Header = () => {
             <div className="container d-flex">
               <div className="col-6">
                 <div className="ninja-buffet-header-title">
-                  Ninja<span>Buffet</span>
+                  Ninja<span>Classic</span>
                 </div>
                 <div className="ninja-buffet-header-content">
-                <span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
-              Guests</span>
+                <span>Premium</span> Dining Experience for <span>50+ Guests</span> with finger Licking Yummy Food and <span>Crockery</span>
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
-                <img src='buffetNinjaLogo.png' alt='' style={{ height: "auto", width: "110px" }} />
+                <img src='ninjawithtable.png' alt='' style={{ height: "auto", width: "110px" }} />
               </div>
             </div>
           </div>
