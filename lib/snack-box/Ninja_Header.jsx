@@ -90,7 +90,7 @@ const Ninja_Header = () => {
   const normal = (
     <>
       <div className="ninja-box-header-left-container">
-        <img src="Snackbox banner.png" style={{width: "700px"}}/>
+        <img src="Snackbox banner.png" style={{width: "700px"}} id="hoverzoom"/>
       </div>
       <div className="ninja-header-right-container">
         <div className="description">
@@ -168,7 +168,7 @@ const Ninja_Header = () => {
             }}
           /> */}
             {/* <img loader={'loading'} src={photo} alt='' height='100%' width='100%'/> */}
-            <img src="Snack Box Desktop.png" style={{width: "350px", marginTop: "20px", marginBottom: "-20px"}}/>
+            <img src="Snack Box Desktop.png" style={{width: "330px", marginTop: "20px", marginBottom: "-20px"}} id="smhover"/>
           </div>
         </div>
       </div>

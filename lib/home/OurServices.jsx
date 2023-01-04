@@ -616,7 +616,9 @@ const OurServices = () => {
               </div>
 
               <div className="buttons">
-                <button className="view-details">View Details</button>
+                <button 
+                onClick={() => (window.location.href = "/mealbox")}
+                className="view-details">View Details</button>
                 <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                   className="sample-pricing"

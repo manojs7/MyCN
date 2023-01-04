@@ -9,6 +9,7 @@ import {
 import Slider from "react-slick/lib/slider";
 import styles from "$styles/home/Home.module.scss";
 import Link from "next/link";
+import Image from 'next/image'
 
 const Header = () => {
   const [sliderRef, setSliderRef] = useState(null);
@@ -17,7 +18,7 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const bannerImages = [
-    "mBanner1.png",
+    "Component 7.png",
     "ninjabox1.png",
     "ninjabuffet.png",
     "mealbox.png",
@@ -65,7 +66,7 @@ const Header = () => {
     <div className="header-right-container">
       <div className="description">
         <div className="header-title mt-4">
-          <img src="caterninja.png" height="auto" width="160" alt="logo" />
+          <img src="/caterninja.png" height="auto" width="160" alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>

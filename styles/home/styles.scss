@@ -180,7 +180,7 @@
 }
 
 .What-Make-Us-Special-container-card-font p {
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -233,7 +233,7 @@
 }
 
 .What-Make-Us-Special-container-card-back p span {
-  font-weight: 900;
+  font-weight: bold;
 }
 
 .What-Make-Us-Special-container-card:hover .What-Make-Us-Special-container-card-back,
@@ -258,7 +258,7 @@
 .ninjabox-Special{
   margin-bottom: 0%;
   .special-title{
-    padding: 40px;
+    padding: 80px;
     h2{
       font-family: "Montserrat", sans-serif;
       text-align: center;
@@ -306,7 +306,7 @@
 }
 
 .feed-back-container p {
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 22.1997px;
@@ -371,10 +371,10 @@
 .ninja-box-header-content {
   margin-top: 5px;
   margin-left: -23px;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   //font-style: normal;
   font-weight: 500;
-  font-size: 10.8px;
+  font-size: 12px;
   line-height: 15px;
   text-align: start;
   color: #363D42;
@@ -411,7 +411,7 @@
 }
 
 .meal-box-header-content {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-top: 5px;
   margin-left: -23px;
   //font-family: 'Montserrat';
@@ -427,8 +427,7 @@
 }
 
 .ninja-box-header-content span {
-  font-weight: 900;
-  font-size: 10.8px;
+  font-weight: 800;
 }
 
 //for larger device
@@ -962,7 +961,7 @@
     padding-bottom: 30px;
   }
   .review-card{
-    //font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: white;
     border-radius: 20px;
     width: 500px;
@@ -1161,10 +1160,10 @@
 }
 
 .ninja-box-header-title {
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-left: -23px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 800;
   font-size: 42px;
   line-height: 112%;
   /* or 62px */
@@ -1201,7 +1200,7 @@
 
 //FOR LAGRE DEVICE
 .lgd-ninja-box-header-title {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-left: 0px;
   font-weight: 900;
   font-size: 50px;
@@ -1211,7 +1210,7 @@
 }
 
 .lgd-ninja-buffet-header-title {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-left: -20px;
   font-size: 50px;
   line-height: 112%;
@@ -1222,7 +1221,7 @@
 }
 
 .lgd-ninja-gourmet-header-title {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-left: -25px;
   font-size: 40px;
   line-height: 112%;
@@ -1233,7 +1232,7 @@
 }
 
 .lgd-ninja-classic-header-title{
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-left: -20px;
   font-size: 45px;
   line-height: 112%;
@@ -1294,7 +1293,7 @@
   font-weight: 400;
   font-size: 18px;
   // height: 80px;
-  font-family: "Montserat";
+  font-family: "Montserrat", sans-serif;
   // width: 360px;
 
   margin: -15px auto;
@@ -1433,7 +1432,7 @@
     width: 200px;
     height: 56px;
     border: 0 !important;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     // box-shadow: 0px 4px 4px 0px #c22d2e ;
     box-shadow: 6px 8px 20px rgba(0, 0, 0, 0.25);
     border-radius: 41px;
@@ -2317,7 +2316,7 @@
   }
 
   .dropdown-label{
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     p{
       color: var(--ninja-red);
       font-weight: bolder;
@@ -2341,7 +2340,7 @@
 //Create your ow package - Mobile device
 .create-your-own-package{
   background-color: #FFC31A;
-  //font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   padding-top: 25px;
   padding-bottom: 25px;
   #leftside img{
@@ -2393,7 +2392,7 @@
   h6{
     margin-top: -5px;
     margin-left: 30px;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-size: 13.5px;
     font-weight: bold;
   }
@@ -2476,7 +2475,7 @@
   border-radius: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   .packageImg img{
     margin-right: 30px;
     margin-left: 30px;
