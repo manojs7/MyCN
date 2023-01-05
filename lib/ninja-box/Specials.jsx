@@ -50,7 +50,7 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="wmus1.png" alt="" style={{ width: "33px" }} />
                     </div>
-                    <p>Portable Bulk<br/>Food Packaging</p>
+                    <p>Portable Bulk<br />Food Packaging</p>
                   </div>
                 </div>
                 <div className="">
@@ -71,7 +71,7 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="wmus2.png" alt="" style={{ width: "45px" }} />
                     </div>
-                    <p>Complete Party<br/>Solution</p>
+                    <p>Complete Party<br />Solution</p>
                   </div>
                 </div>
                 <div className="What-Make-Us-Special-hover">
@@ -93,7 +93,7 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="wmus3.png" alt="" style={{ width: "64px" }} />
                     </div>
-                    <p>Prepared with<br/>care and Hygiene</p>
+                    <p>Prepared with<br />care and Hygiene</p>
                   </div>
                 </div>
                 <div className="What-Make-Us-Special-hover">
@@ -115,7 +115,7 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="wmus4.png" alt="" style={{ width: "35px" }} />
                     </div>
-                    <p>Hassle Free<br/>Solution</p>
+                    <p>Hassle Free<br />Solution</p>
                   </div>
                 </div>
                 <div className="What-Make-Us-Special-hover">
@@ -249,10 +249,11 @@ const Specials = () => {
             </div>
             <div className="">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "Montserrat", fontSize: "8px", fontWeight: "bolder", backgroundColor: "#f1d07c", borderRadius: "5px", margin: "3px", marginBottom: "15px" }}>
-                  ✅ Trendy Bulk Packaging <br />
-                  ✅ BioFriendly Disposable<br />
-                  ✅ No Utensile - Direct To Table
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                  ✅ Trendy Bulk Packaging<br/>
+                  ✅ BioFriendly Disposable<br/>
+                  ✅ No Utensils - Direct To Table
+
                 </p>
               </div>
             </div>
@@ -270,7 +271,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontSize: "8px", fontWeight: "bolder", backgroundColor: "#f1d07c", borderRadius: "5px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
                   ✅ Large Cuisine Variety <br />
                   ✅ Custom Choice Menu<br />
                   ✅ Great Value for Money
@@ -292,7 +293,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontSize: "7.9px", fontWeight: "bolder", backgroundColor: "#f1d07c", borderRadius: "5px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
                   ✅ Strict NinjaKitchen Protocols <br />
                   ✅ Highest Safety Standards<br />
                   ✅ Trained Chef & Delivery Ninja
@@ -314,7 +315,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontSize: "8px", fontWeight: "bolder", backgroundColor: "#f1d07c", borderRadius: "5px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
                   ✅ Convenient Ordering <br />
                   ✅ Professional Support<br />
                   ✅ On Time Delivery

@@ -1,0 +1,126 @@
+.instantQuoteBody{
+    font-family: "Montserrat", sans-serif;
+}
+
+.instantContainer{
+    margin-top: 80px;
+}
+
+.header{
+    height: 258px;
+    background-color: #FFC31A;
+}
+
+.headerIcon{
+    text-align: center;
+    padding-top: 30px;
+    img{ 
+        height: 202px;
+        width: 1001px;
+    }
+}
+
+.secondContentBg{
+    background-color: #BE2D30;
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+
+.insidebg{
+    background-color: #F8F8F8;
+    padding-top: 60px;
+    text-align: center;
+    margin-inline: 220px;
+    padding-bottom: 80px;
+}
+
+.citycontainer{
+    h3{
+        font-size: 29;
+        font-weight: 600;
+    }
+}
+
+.cityIcon{
+    img{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 127px;
+        height: 120;
+        background-color: white;
+        border-radius: 10px;
+        margin-inline: 25px;
+        box-shadow: 0px 5px 10px 0px #BCBCBC;
+    }
+}
+
+.ocassion{
+    h3{
+        margin-top: 40px;
+        font-size: 29;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+}
+
+.fstbtn{
+    button{
+        margin-inline: 12px;
+        font-size: 16.94px;
+        font-weight: 600;
+        width: 203px;
+        height: 48px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 5px 10px 2px #BCBCBC;
+        margin-bottom: 20px;
+    }
+}
+
+.secbtn{
+    button{
+        margin-inline: 12px;
+        font-size: 16.94px;
+        font-weight: 600;
+        width: 203px;
+        height: 48px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 5px 10px 2px #BCBCBC;
+    }
+}
+
+.guestCount{
+    margin-top: 60px;
+    background-color: #F2F2F2;
+    margin-inline: 200px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 2px #BCBCBC;
+    h3{
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    button{
+        margin-inline: 10px;
+        width: 203px;
+        height: 48px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 5px 10px 0px #BCBCBC;
+        font-size: 16.94px;
+        color: #BCBCBC;
+        font-weight: 600;
+    }
+}
+
+.guestBtn1{
+    background-color: #4E810A;
+}
+.guestBtn2{
+    background-color: #BE2D30;
+}
+

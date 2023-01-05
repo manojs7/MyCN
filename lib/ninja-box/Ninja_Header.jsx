@@ -207,7 +207,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-box-ninja-img">
-                <img src='ninja-box-ninja.png' alt='' style={{ height: "auto", width: "140px" }} />
+                <img src='Group 924.png' alt='' style={{ height: "auto", width: "140px" }} />
               </div>
             </div>
           </div>

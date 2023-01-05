@@ -1,6 +1,7 @@
 import styles from '$styles/Float.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp,faInstagram } from '@fortawesome/free-brands-svg-icons';
+import Link from 'next/link';
 
 export default function Float()
 {
@@ -23,7 +24,7 @@ export default function Float()
             </div>
             <div className={styles.item}>
                
-                    <button className={styles.floatBtn}>
+                   <button onClick={() => (window.location.href = "/ninjaInstantQuote")} className={styles.floatBtn}>
                 <span>Custom Menu</span>
                 <br />Instant Price
                 

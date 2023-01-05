@@ -371,7 +371,7 @@ const Custom_Package = () => {
         <div className="create-your-own-package-lgd">
           <div className="row">
             <div className="col-6">
-              <img src="ninjaboxPackage.png" />
+              <img src="Group 924.png" />
             </div>
             <div className="col-6 textSection-lgd">
               <p>Not Happy with the Packages?</p>
