@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import styles from '$styles/InstantQuote/InstantQuote.module.scss';
+import styles from '$styles/instantQuote/InstantQuote.module.scss';
 import "react-datepicker/dist/react-datepicker.css";
 
 const InstantQuote = () => {
@@ -54,7 +54,6 @@ const InstantQuote = () => {
                                 <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}/>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
