@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import styles from '$styles/InstantQuote/InstantQuote.module.scss';
+import "react-datepicker/dist/react-datepicker.css";
 
 const InstantQuote = () => {
+
+    const [startDate, setStartDate] = useState(new Date());
+
     return (
         <div className={styles.instantQuoteBody}>
             <div className={styles.instantContainer}>
@@ -43,6 +48,13 @@ const InstantQuote = () => {
                                 <button className={styles.guestBtn2}>Non-Veg Guests</button>
                             </div>
                         </div>
+                        <div className={styles.eventDate}>
+                            <h3>Event Date</h3>
+                            <div className={styles.datePicker}>
+                                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}/>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
