@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import styles from '$styles/instantQuote/InstantQuote.module.scss';
 import "react-datepicker/dist/react-datepicker.css";
-
+import Image from "next/image";
 const InstantQuote = () => {
 
     const [startDate, setStartDate] = useState(new Date());
@@ -12,7 +12,7 @@ const InstantQuote = () => {
             <div className={styles.instantContainer}>
                 <div className={styles.header}>
                     <div className={styles.headerIcon}>
-                        <img src='Group 966.png' />
+                        <img src='instantQuoteHeader.png' />
                     </div>
                 </div>
                 <div className={styles.secondContentBg}>
@@ -51,7 +51,83 @@ const InstantQuote = () => {
                         <div className={styles.eventDate}>
                             <h3>Event Date</h3>
                             <div className={styles.datePicker}>
-                                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}/>
+                                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                            </div>
+                        </div>
+                        <div>
+                            <div className={styles.ocassion}>
+                                <h3>Cusine</h3>
+                                <div className=''>
+                                    <div className={styles.fstbtn}>
+                                        <button>North Indian</button>
+                                        <button>Pan Asian</button>
+                                        <button>Continental</button>
+                                    </div>
+                                    <div className={styles.secbtn}>
+                                        <button>Bengali</button>
+                                        <button>Indian Chinese</button>
+                                        <button>Multi Cuisine</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.menuContainer}>
+                        <h1>Create Your Menu</h1>
+                        <div className={styles.startersContainer}>
+                            <h5>Starters</h5>
+                            <div className={styles.starterItems}>
+                                <div className={styles.fstItem}>
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <div className={styles.itemDetailsContainer}>
+                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                                        <div>
+                                            <h4>Paneer Butter<br />Masala</h4>
+                                            <p>Classic Choice For Mains</p>
+                                        </div>
+                                        <div>
+                                            <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                        </div>
+                                        <div>
+                                            <div className={styles.quantityBtn}>
+                                                <button>-</button>
+                                                <h6>5.5 Kg</h6>
+                                                <button>+</button>
+                                            </div>
+                                            <p className={styles.recQnty}>Recommended Qt.</p>
+                                        </div>
+                                        <div>
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-3">
+                                    <div className={styles.fstItem}>
+                                        <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+                                        <div className={styles.itemDetailsContainer}>
+                                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+                                            <div>
+                                                <h4>Chicken<br />Tandoori</h4>
+                                                <p>Classic Choice For Mains</p>
+                                            </div>
+                                            <div>
+                                                <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                            </div>
+                                            <div>
+                                                <div className={styles.quantityBtn}>
+                                                    <button>-</button>
+                                                    <h6>50 Pcs</h6>
+                                                    <button>+</button>
+                                                </div>
+                                                <p className={styles.recQnty}>Recommended Qt.</p>
+                                            </div>
+                                            <div>
+                                                <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 className={styles.addStarterBtn}>+ Add Starter</h4>
                             </div>
                         </div>
                     </div>

@@ -1,32 +1,33 @@
-.instantQuoteBody{
+.instantQuoteBody {
     font-family: "Montserrat", sans-serif;
 }
 
-.instantContainer{
+.instantContainer {
     margin-top: 80px;
 }
 
-.header{
+.header {
     height: 258px;
     background-color: #FFC31A;
 }
 
-.headerIcon{
+.headerIcon {
     text-align: center;
     padding-top: 30px;
-    img{ 
+
+    img {
         height: 202px;
         width: 1001px;
     }
 }
 
-.secondContentBg{
+.secondContentBg {
     background-color: #BE2D30;
     padding-top: 60px;
     padding-bottom: 80px;
 }
 
-.insidebg{
+.insidebg {
     background-color: #F8F8F8;
     padding-top: 60px;
     text-align: center;
@@ -34,15 +35,15 @@
     padding-bottom: 80px;
 }
 
-.citycontainer{
-    h3{
+.citycontainer {
+    h3 {
         font-size: 29;
         font-weight: 600;
     }
 }
 
-.cityIcon{
-    img{
+.cityIcon {
+    img {
         margin-top: 20px;
         margin-bottom: 20px;
         width: 127px;
@@ -54,17 +55,17 @@
     }
 }
 
-.ocassion{
-    h3{
-        margin-top: 40px;
+.ocassion {
+    h3 {
+        margin-top: 60px;
         font-size: 29;
         font-weight: 600;
         margin-bottom: 30px;
     }
 }
 
-.fstbtn{
-    button{
+.fstbtn {
+    button {
         margin-inline: 12px;
         font-size: 16.94px;
         font-weight: 600;
@@ -78,8 +79,8 @@
     }
 }
 
-.secbtn{
-    button{
+.secbtn {
+    button {
         margin-inline: 12px;
         font-size: 16.94px;
         font-weight: 600;
@@ -92,19 +93,21 @@
     }
 }
 
-.guestCount{
-    margin-top: 60px;
+.guestCount {
+    margin-top: 100px;
     background-color: #F2F2F2;
     margin-inline: 200px;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 5px 10px 2px #BCBCBC;
-    h3{
+
+    h3 {
         font-size: 26px;
         font-weight: 600;
         margin-bottom: 20px;
     }
-    button{
+
+    button {
         margin-inline: 10px;
         width: 203px;
         height: 48px;
@@ -117,22 +120,147 @@
     }
 }
 
-.guestBtn1{
+.guestBtn1 {
     background-color: #4E810A;
 }
-.guestBtn2{
+
+.guestBtn2 {
     background-color: #BE2D30;
 }
 
-.eventDate{
-    margin-top: 60px;
-    h3{
+.eventDate {
+    margin-top: 80px;
+
+    h3 {
         font-size: 26px;
         font-weight: 600;
     }
-    .datePicker{
+
+    .datePicker {
         margin-inline: 320px;
-        
+
     }
 }
 
+.menuContainer {
+    background-color: white;
+    margin-inline: 220px;
+    padding-bottom: 80px;
+
+    h1 {
+        padding-top: 50px;
+        padding-bottom: 40px;
+        font-size: 44px;
+        font-weight: bold;
+    }
+
+    h5 {
+        text-align: center;
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+}
+
+.fstItem {
+    height: 106px;
+    width: 778px;
+    background-color: #F8F8F8;
+    margin: auto;
+    border-radius: 10px;
+    display: flex;
+
+    h4 {
+        font-size: 20.8px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: 0px;
+        margin-left: 0;
+        font-size: 12.8px;
+        font-style: italic;
+    }
+}
+
+.itemImage {
+    height: 106px;
+    width: 120px;
+    border-radius: 10px;
+}
+
+.vegLogo {
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 3px;
+    height: 19px;
+    width: 19px;
+}
+
+.itemDetailsContainer {
+    display: flex;
+    margin-top: 12px;
+}
+
+.downarrowLogo {
+    width: 23px;
+    height: 15px;
+    margin: 30px 0px 0px 50px;
+}
+
+.quantityBtn {
+    margin: auto;
+    margin-left: 120px;
+    margin-top: 10px;
+    display: flex;
+    width: 176px;
+    height: 48px;
+    background-color: white;
+
+    button {
+        height: 48px;
+        width: 48px;
+        background-color: #FFC31A;
+        border: none;
+        font-size: 26.68px;
+        font-weight: 600;
+        box-shadow: 0px 5.05263px 5.05263px rgba(0, 0, 0, 0.25);
+    }
+
+    h6 {
+        margin: auto;
+        font-size: 16.42px;
+        font-weight: 600;
+    }
+}
+
+.recQnty {
+    font-size: 12.8px;
+    font-style: italic;
+    color: #4E810A;
+    padding-left: 145px;
+    padding-top: 8px;
+}
+
+.trassLogo {
+    width: 17px;
+    height: 19px;
+    margin-left: 45px;
+}
+
+.addStarterBtn {
+    position: absolute;
+    width: 225px;
+    height: 41px;
+    left: calc(50% - 225px/2 + 282.53px);
+    top: 2123px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    color: #BE2D30;
+}
