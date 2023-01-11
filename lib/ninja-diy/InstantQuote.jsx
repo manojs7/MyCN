@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
-import styles from '$styles/instantQuote/InstantQuote.module.scss';
+import styles from '/styles/instantQuote/InstantQuote.module.scss';
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";
 const InstantQuote = () => {
 
+    const [isSmall, setIsSmall] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
+
+    useEffect(() => {
+        setIsSmall(window.innerWidth < 993);
+        window.addEventListener("resize", () =>
+            setIsSmall(window.innerWidth < 993)
+        );
+    }, []);
 
     return (
         <div className={styles.instantQuoteBody}>
             <div className={styles.instantContainer}>
                 <div className={styles.header}>
-                    <div className={styles.headerIcon}>
+                    {!isSmall ? <div className={styles.headerIcon}>
                         <img src='instantQuoteHeader.png' />
-                    </div>
+                    </div> : ""}
+                    {isSmall ? <div>
+                        <h1>Welcome To</h1>
+                        <img className={styles.ninjaTitleLogo} src="diy images/CaterNinja.png" />
+                        <h5>Get Instant Quote In Few Easy Steps</h5>
+                        <img className={styles.ninjaHeaderlogo} src="diy images/Group 961.png" />
+                    </div> : ""}
                 </div>
                 <div className={styles.secondContentBg}>
                     <div className={styles.insidebg}>
@@ -29,16 +43,24 @@ const InstantQuote = () => {
                         <div className={styles.ocassion}>
                             <h3>Occassion</h3>
                             <div className=''>
-                                <div className={styles.fstbtn}>
+                                {!isSmall ? <div className={styles.fstbtn}>
                                     <button>Birthday Party</button>
                                     <button>House-Party</button>
                                     <button>House Warmings</button>
-                                </div>
-                                <div className={styles.secbtn}>
+                                </div> : ""}
+                                {!isSmall ? <div className={styles.secbtn}>
                                     <button>Pre-Wedding</button>
                                     <button>Office-Party</button>
                                     <button>Other Occassion</button>
-                                </div>
+                                </div> : ""}
+                                {isSmall ? <div className={styles.occassionbtn}>
+                                    <button>Birthday Party</button>
+                                    <button>House-Party</button>
+                                    <button>House Warmings</button>
+                                    <button>Pre-Wedding</button>
+                                    <button>Office-Party</button>
+                                    <button>Other Occassion</button>
+                                </div> : ""}
                             </div>
                         </div>
                         <div className={styles.guestCount}>
@@ -305,17 +327,93 @@ const InstantQuote = () => {
                         <div className={styles.inputContainer}>
                             <h3>Details</h3>
                             <div className={styles.inputField}>
-                                <input placeholder="Name" type="text"/>
-                                <input placeholder="Number" type="number"/>
-                                <input placeholder="Email" type="email"/>
+                                <input placeholder="Name" type="text" />
+                                <input placeholder="Number" type="number" />
+                                <input placeholder="Email" type="email" />
                             </div>
                         </div>
                         <div className={styles.specialRestrictionContainer}>
                             <h6>Special Restrictions? Chef Note?</h6>
-                            <input type="text"/>
+                            <input type="text" />
                         </div>
                         <div>
                             <button>Get Instant Quote</button>
+                        </div>
+                    </div>
+                    <div className={styles.chooseYourServiceContainer}>
+                        <h4>Choose Your Service</h4>
+                        <div className={styles.serviceImg}>
+                            <img src="/diy images/Group 947.png" />
+                            <img src="/diy images/Group 944.png" />
+                        </div>
+                    </div>
+                    <div className={styles.pricingListContainer}>
+                        <div className={styles.discount}>
+                            <h4>Discount Coupon</h4>
+                            <div class={styles.inputBtn}>
+                                <input type="text" placeholder="Enter Code" />
+                                <button type="button">Apply</button>
+                            </div>
+                        </div>
+                        <div className={styles.pricing}>
+                            <div className={styles.optionCnt}>
+                                <div>
+                                    <select>
+                                        <option value="volvo">NinjaBox - Delivery (Free)</option>
+                                        <option value="saab">Buffet setup + 1 waiter (+Rs. 3500.00)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <p>0000</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div className={styles.pricingTitle1}>
+                                    <div>
+                                        <h4>Food Items Total</h4>
+                                    </div>
+                                    <div>
+                                        <p>0000</p>
+                                    </div>
+                                </div>
+                                <div className={styles.pricingTitle2}>
+                                    <div>
+                                        <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
+                                    </div>
+                                    <div>
+                                        <p>0000</p>
+                                    </div>
+                                </div>
+                                <hr className={styles.hr1} />
+                                <div className={styles.pricingTitle3}>
+                                    <div>
+                                        <h4>Coupon Value</h4>
+                                    </div>
+                                    <div>
+                                        <p>0000</p>
+                                    </div>
+                                </div>
+                                <div className={styles.pricingTitle4}>
+                                    <div>
+                                        <h4>GST</h4>
+                                    </div>
+                                    <div>
+                                        <p>0000</p>
+                                    </div>
+                                </div>
+                                <hr id={styles.hr2}/>
+                            </div>
+                            <div className={styles.grandTotal}>
+                                <div>
+                                    <h4>Grand Total</h4>
+                                </div>
+                                <div>
+                                    <p>0000</p>
+                                </div>
+                            </div>
+                            <div className={styles.orderBtn}>
+                                <button>Place Order</button>
+                            </div>
                         </div>
                     </div>
                 </div>

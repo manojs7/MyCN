@@ -10,6 +10,7 @@ import { AppMenuProvider } from "$lib/menuContext";
 import Float from "$lib/Float";
 import FloatNav from "$lib/FloatNav";
 import "../styles/home/specials.scss";
+import "../styles/instantQuote/InstantQuote.module.scss"
 
 function MyApp({ Component, pageProps }) {
   return (

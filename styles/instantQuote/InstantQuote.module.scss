@@ -1,6 +1,7 @@
 .instantQuoteBody {
     font-family: "Montserrat", sans-serif;
-    button:hover{
+
+    button:hover {
         background-color: #BE2D30;
         color: white;
     }
@@ -264,7 +265,7 @@
     margin-left: 45px;
 }
 
-.addStarterBtnContnr{
+.addStarterBtnContnr {
     display: flex;
     justify-content: flex-end;
     margin-right: 90px;
@@ -281,31 +282,34 @@
     color: #BE2D30;
 }
 
-.mainsTitle{
+.mainsTitle {
     margin-top: 60px;
 }
 
-.mainsContainer{
+.mainsContainer {
     margin-top: 60px;
 }
-.dessertsContainer{
+
+.dessertsContainer {
     margin-top: 60px;
 }
 
 //DETAILS CONTAINER
-.detailsContainer{
+.detailsContainer {
     margin-inline: 220px;
     background-color: #F8F8F8;
     text-align: center;
     padding-top: 80px;
     padding-bottom: 80px;
-    h3{
+
+    h3 {
         font-weight: 600;
         font-size: 26px;
         padding: 20px;
         letter-spacing: 0.05em;
     }
-    button{
+
+    button {
         margin-top: 50px;
         border: none;
         border-radius: 10px;
@@ -318,17 +322,20 @@
         letter-spacing: 0.03em;
     }
 }
-.inputContainer{
+
+.inputContainer {
     margin: auto;
     background-color: #FFC31A;
     width: 818px;
     height: 157px;
     border-radius: 20px;
 }
-.inputField{
+
+.inputField {
     display: flex;
     justify-content: center;
-    input{
+
+    input {
         width: 238px;
         height: 36px;
         margin-inline: 20px;
@@ -336,24 +343,316 @@
         font-size: 19px;
         border-radius: 10px;
     }
-    input::placeholder{
+
+    input::placeholder {
         color: #BE2D30;
         font-weight: 600;
         letter-spacing: 0.05em;
     }
 }
 
-.specialRestrictionContainer{
+.specialRestrictionContainer {
     margin-top: 80px;
-    h6{font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+
+    h6 {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
     }
-    input{
+
+    input {
         margin: auto;
         width: 549px;
         height: 69px;
         border-radius: 10px;
         border: none;
+    }
+}
+
+.chooseYourServiceContainer {
+    margin-inline: 220px;
+    background-color: #EEEBEB;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    h4 {
+        font-weight: 600;
+        font-size: 29px;
+        letter-spacing: 0.05em;
+        margin-bottom: 30px;
+    }
+
+    .serviceImg img {
+        width: 337.85px;
+        height: 223px;
+        margin-inline: 30px;
+    }
+}
+
+.pricingListContainer {
+    margin-inline: 220px;
+    background-color: #F9F9F9;
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    .discount {
+        display: flex;
+
+        h4 {
+            font-weight: 600;
+            font-size: 22px;
+            letter-spacing: 0.05em;
+            margin-left: 50px;
+            margin-right: 20px;
+        }
+
+        .inputBtn {
+            display: flex;
+            margin-top: -5px;
+        }
+
+        input {
+            width: 171px;
+            height: 40px;
+            background-color: #E9E9E9;
+            border-radius: 10PX;
+            padding-left: 15px;
+        }
+
+        input::placeholder {
+            font-size: 17px;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        button {
+            border: none;
+            width: 73px;
+            height: 40px;
+            background-color: #FFC31A;
+            font-weight: 500;
+            font-size: 17px;
+            letter-spacing: 0.05em;
+            margin-left: -10px;
+        }
+    }
+}
+
+.pricing {
+    margin-top: 50px;
+
+    h4 {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 33px;
+        letter-spacing: 0.05em;
+    }
+
+    select {
+        border-radius: 10px;
+        width: 380px;
+        height: 46px;
+        background-color: #BE2D30;
+        color: white;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 33px;
+        letter-spacing: 0.05em;
+        color: #000000;
+    }
+}
+
+.optionCnt {
+    margin-inline: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pricingTitle1 {
+    margin-top: 30px;
+    margin-inline: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pricingTitle2 {
+    margin-top: -10px;
+    margin-inline: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pricingTitle3 {
+    margin-inline: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pricingTitle4 {
+    margin-top: -10px;
+    margin-inline: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.grandTotal {
+    margin-top: 30px;
+    margin-inline: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hr1 {
+    margin-inline: 50px;
+    border: 1px dashed #4D555B;
+    background-color: white;
+}
+
+#hr2{
+    margin-inline: 50px;
+    border: 1px solid #000000;
+}
+
+.orderBtn{
+    margin-top: 20px;
+    text-align: center;
+    button{
+        border: none;
+        width: 233.73px;
+        height: 60.15px;
+        background-color: #FFC31A;
+        border-radius: 11.6558px;
+        font-size: 27.1501px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: #2C3338;
+    }
+}
+
+
+//*****************************  SMALL DEVICE  *****************************
+
+@media (max-width: 576px) {
+    .instantContainer {
+        margin-top: 0px;
+    }
+
+    .header {
+        padding-top: 30px;
+        text-align: center;
+        height: 420px;
+        margin: auto;
+
+        h1 {
+            font-size: 37.0245px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .ninjaTitleLogo {
+            width: 174.58px;
+        }
+
+        h5 {
+            color: #000000;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 15.6342px;
+        }
+
+        .ninjaHeaderlogo {
+            width: 187px;
+            height: 230.27px;
+        }
+    }
+
+    .secondContentBg {
+        background-color: white;
+    }
+
+    .insidebg {
+        padding-top: 0;
+        text-align: center;
+        margin-inline: 0;
+        padding-bottom: 0;
+    }
+
+    .secondContentBg {
+        margin: 0;
+        padding: 0;
+
+        h3 {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.05em;
+        }
+    }
+
+    .citycontainer {
+        margin: auto;
+        padding: 0;
+        text-align: center;
+        justify-content: center;
+
+        h3 {
+            padding: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.05em;
+        }
+    }
+
+    .cityIcon {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+
+        img {
+            margin: auto;
+            margin-inline: 10px;
+            width: 68px;
+            height: 64.85px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px 0px #BCBCBC;
+        }
+    }
+
+    .ocassion {
+        h3 {
+            font-size: 16px;
+        }
+
+        .occassionbtn button {
+            background-color: white;
+            border-radius: 5.51px;
+            border: none;
+            width: 111.88px;
+            height: 26.45px;
+            font-size: 9.33622px;
+            margin-inline: 7px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .fstbtn,
+        .secbtn {
+            button {
+                margin-inline: 8px;
+                width: 111.88px;
+                height: 26.45px;
+                font-size: 9.33622px;
+                margin-bottom: 0px;
+            }
+        }
     }
 }
