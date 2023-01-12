@@ -60,8 +60,7 @@ const Categories = () => {
         <div className="categories-item-container">
         {categories_1.map((item, index) => (
             <div className="categories-item" key={index}>
-              <img src={item.image} alt="" className="img-fluid " />
-
+              <img src={item.image} alt="" className="img-fluid "/>
               <p>{item.title}</p>
             </div>
           ))}

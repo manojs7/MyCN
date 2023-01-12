@@ -66,13 +66,14 @@ const Header = () => {
     <div className="header-right-container">
       <div className="description">
         <div className="header-title mt-4">
-          <img src="/caterninja.png" height="auto" width="160" alt="logo"/>
+          <img src="/caterninja.png" height="36.92px" width="183.88px" alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>
         </div>
         <div className="header-content">
-          <img src="chef.png" height="330px" width="290px" alt="logo" />
+          {/* height="330px" width="290px" */}
+          <img src="chef.png" height="313.89px" width="261.5px" alt="logo" />
           <div className="header-button">
             <a href="#ourServices" className="bg-red">Our Services</a>
           </div>
