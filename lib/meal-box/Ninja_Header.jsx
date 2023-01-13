@@ -193,7 +193,7 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-box-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="27px" width="134.46px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
