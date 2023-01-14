@@ -238,14 +238,14 @@ const Custom_Package = () => {
           </div> */}
           <div className="d-flex">
             <div className="packageNameSection text-center me-4">
-              <h3>NinjaBox - Punjabi</h3>
+              <h3>NinjaBox Punjabi</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="NBP-1.png" />
               </div>
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ <span>5,299</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h3>₹ 5,299/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -254,14 +254,14 @@ const Custom_Package = () => {
 
             </div>
             <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
+              <h3>NinjaBox Indian</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="NBP2.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
                 <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -270,14 +270,14 @@ const Custom_Package = () => {
 
             </div>
             <div className="packageNameSection text-center">
-              <h3>PACKAGE NAME</h3>
+              <h3>B'Day NinjaBox</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="NBP3.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
                 <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -288,14 +288,14 @@ const Custom_Package = () => {
           </div>
           <div className="d-flex">
             <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
+              <h3>NinjaBox Fusion</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="NBP4.png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
                 <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -304,14 +304,14 @@ const Custom_Package = () => {
 
             </div>
             <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
+              <h3>NinjaBox Asian</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="NBP5.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>3 Starters + 4 Mains + 1 Desserts</h4>
+                <h3>₹ 4199/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -320,14 +320,14 @@ const Custom_Package = () => {
 
             </div>
             <div className="packageNameSection text-center">
-              <h3>PACKAGE NAME</h3>
+              <h3>Cocktail Party</h3>
               <div className="packageImg">
-                <img src="nijjabox1.png" />
+                <img src="NBP6.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>6 Starters + 1 Mains</h4>
+                <h3>₹ 4199/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -433,7 +433,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
               <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -449,7 +449,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
               <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -465,7 +465,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
               <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -482,7 +482,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
               <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -498,7 +498,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
               <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -514,7 +514,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
               <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}

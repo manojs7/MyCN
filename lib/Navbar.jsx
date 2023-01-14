@@ -90,7 +90,7 @@ export default function Navbar({ page }) {
   const small = (
     <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}`}>
       <div className={styles.logo} onClick={() => (window.location.href = "/")}>
-        <img src="caterninja.png" alt="logo" />
+        <img src="CaterNinja (1).png" alt="logo" />
       </div>
       <div
         className={styles.burger + ` ${active ? styles.active : ""}`}
@@ -227,7 +227,7 @@ export default function Navbar({ page }) {
         className={styles.logo + " col-4"}
         onClick={() => (window.location.href = "/")}
       >
-        <img src="caterninja.png" alt="logo" />
+        <img src="CaterNinja (1).png" alt="logo" />
       </div>
       <div className={styles.nav_socials + " col-4"}>
         <ul className={styles.links}>

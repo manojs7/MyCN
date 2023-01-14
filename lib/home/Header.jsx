@@ -65,8 +65,8 @@ const Header = () => {
   const rightHeader = (
     <div className="header-right-container">
       <div className="description">
-        <div className="header-title mt-4">
-          <img src="/caterninja.png" height="36.92px" width="183.88px" alt="logo"/>
+        <div className="header-title" style={{marginTop: "35px"}}>
+          <img src="CaterNinja (1).png" height="36.92px" width="183.88px" alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>

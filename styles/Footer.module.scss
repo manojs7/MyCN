@@ -111,6 +111,12 @@
   }
 }
 
+.text img{
+    width: 250px;
+    //border: 1px solid red;
+    margin-left: 20px;
+}
+
 @media (max-width: 980px) {
 
     .text {
@@ -143,11 +149,19 @@
 .copyright{
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
+    font-weight: 500;
+}
+
+.text img{
+    width: 250px;
+    margin: 0%;
 }
 
 .text {
     margin-bottom: 0;
-
-   
 }
+.address, .contact {
+    font-weight: 500;
+}
+
 }

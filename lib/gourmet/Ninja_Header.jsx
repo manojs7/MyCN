@@ -166,7 +166,7 @@ const Ninja_Header = () => {
       <div className="ninja-header-right-container">
         <div className="description">
           <div className="lgd-ninja-box-header-logo">
-            <img src="caterninja.png" height="auto" width="140px" alt="" />
+            <img src="caterninja.png" height="27px" width="134.46px" alt="" />
           </div>
           <div className="lgd-ninja-gourmet-header-title">Ninja<span>Gourmet</span>
           </div>

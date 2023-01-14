@@ -53,7 +53,7 @@ export default function TestimonialsThree() {
     return (
         <div>
             <div className="testimonialsContainer mt-2">
-                <h2 className="text-center" style={{ fontFamily: "'Montserrat', sans-serif", borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "1px", paddingTop: "20px", marginBottom: "50px" }}>Testimonials</h2>
+                <h2 className="text-center">Testimonials</h2>
                 <div className="">
                     <div className="pb-4">
                         {/* <Slider {...settings}>
