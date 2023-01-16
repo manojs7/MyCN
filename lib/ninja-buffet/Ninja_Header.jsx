@@ -179,7 +179,7 @@ const Ninja_Header = () => {
             <img src='buffetNinjaLogo.png' alt='' style={{width: "120px"}} />
           </div>
           <div className="ninja-box-header-button">
-            <button href = "#NBuPkg" className="bg-red">Select Package</button>
+            <button onClick={() => (window.location.href = "#buffeyPkg")} className="bg-red">Select Package</button>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-buffet-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="21.49" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
@@ -205,7 +205,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
-                <img src='buffetNinjaLogo.png' alt='' style={{ height: "auto", width: "110px" }} />
+                <img src='buffetNinjaLogo.png' alt='' style={{ height: "118.57px", width: "105.22px" }} />
               </div>
             </div>
           </div>

@@ -191,11 +191,11 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-buffet-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="21.49px" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
-                <div className="ninja-buffet-header-title" style={{fontSize: "32px"}}>
+                <div className="ninja-buffet-header-title" style={{fontSize: "30.17px"}}>
                   Ninja<span>Gourmet</span>
                 </div>
                 <div className="ninja-gourmet-header-content">
@@ -203,7 +203,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
-                <img src='gourmet ninja.png' alt='' style={{ height: "auto", width: "120px" }} />
+                <img src='Group 1084.png' alt='' style={{ height: "97.44px", width: "94.5px" }} />
               </div>
             </div>
           </div>

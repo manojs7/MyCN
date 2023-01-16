@@ -219,7 +219,7 @@
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 11.4186px;
   line-height: 14px;
   text-align: center;
   letter-spacing: 0.05em;
@@ -425,71 +425,115 @@
 #wmusDescription{
   font-size: 11px;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 23px;
 }
 
 .ninja-box-header-content {
+  width: 212.22px;
+  height: 52px;
   margin-top: 5px;
-  margin-left: -23px;
+  margin-left: -10px;
   font-family: "Montserrat", sans-serif;
   //font-style: normal;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 13.2951px;
+  line-height: 16px;
   text-align: start;
   color: #363D42;
 }
 
 .ninja-buffet-header-content {
+  width: 212.22px;
+  height: 52px;
   margin-top: 5px;
-  margin-left: -23px;
-  //font-family: 'Montserrat';
+  margin-left: -15px;
+  font-family: "Montserrat", sans-serif;
   //font-style: normal;
-  font-weight: 500;
-  font-size: 10.9px;
-  line-height: 15px;
+  font-weight: 400;
+  font-size: 13.2951px;
+  line-height: 16px;
   text-align: start;
   color: #363D42;
 
   span {
-    font-weight: 900;
+    font-weight: 700;
+  }
+}
+
+.snack-box-header-content {
+  width: 220px;
+  height: 52px;
+  margin-top: 5px;
+  margin-left: -15px;
+  font-family: "Montserrat", sans-serif;
+  //font-style: normal;
+  font-weight: 400;
+  font-size: 14.3px;
+  line-height: 17px;
+  text-align: start;
+  color: #363D42;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+.ninja-classic-header-content {
+  width: 220px;
+  height: 52px;
+  margin-top: 5px;
+  margin-left: -15px;
+  font-family: "Montserrat", sans-serif;
+  //font-style: normal;
+  font-weight: 400;
+  font-size: 13.3px;
+  line-height: 16px;
+  text-align: start;
+  color: #363D42;
+
+  span {
+    font-weight: 700;
   }
 }
 
 .ninja-gourmet-header-content {
+  width: 220px;
+  height: 52px;
   margin-top: 5px;
-  margin-left: -23px;
+  margin-left: -15px;
   font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
+  font-size: 14.3px;
+  line-height: 17px;
   text-align: start;
   color: #363D42;
 
   span {
-    font-weight: bolder;
+    font-weight: 700;
   }
 }
 
 .meal-box-header-content {
+  width: 212.22px;
+  height: 52px;
   font-family: "Montserrat", sans-serif;
   margin-top: 5px;
-  margin-left: -23px;
+  margin-left: -10px;
   //font-family: 'Montserrat';
   //font-style: normal;
   font-weight: 400;
-  font-size: 10.3px;
-  line-height: 15px;
+  font-size: 13.2951px;
+  line-height: 16px;
   text-align: start;
   color: #363D42;
 
   span {
-    font-weight: bolder;
+    font-weight: 700;
   }
 }
 
 .ninja-box-header-content span {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 //for larger device
@@ -615,7 +659,11 @@
 // }
 
 .testimonialsContainer{
-  background: linear-gradient(180deg, #B70C10 27.3%, rgba(190, 45, 48, 0.54) 100%);
+  //background: linear-gradient(180deg, #B70C10 27.3%, rgba(190, 45, 48, 0.54) 100%);
+//   background: rgb(34,193,195);
+// background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+background: rgb(253,187,45);
+background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%);
   h2{
     //style={{ fontFamily: "'Montserrat', sans-serif", borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "1px", paddingTop: "20px", marginBottom: "50px", fontSize: "30px", fontWeight: "600", letterSpacing: "0.03em" }}
     font-size: 41px;
@@ -1156,7 +1204,6 @@
 //CREATE YOUR OWN PACKAGE FOR LARGE DEVICE
 .create-your-own-package-lgd {
   background-color: #FFC31A;
-
   .row {
     margin-left: 100px;
     padding-top: 30px;
@@ -1304,10 +1351,10 @@
 
 .ninja-box-header-title {
   font-family: 'Montserrat', sans-serif;
-  margin-left: -23px;
+  margin-left: -10px;
   font-style: normal;
   font-weight: 800;
-  font-size: 42px;
+  font-size: 41.6253px;
   line-height: 112%;
   /* or 62px */
 
@@ -1316,10 +1363,10 @@
 }
 
 .ninja-buffet-header-title {
-  margin-left: -23px;
+  margin-left: -15px;
   font-style: normal;
-  font-weight: 900;
-  font-size: 38px;
+  font-weight: 800;
+  font-size: 34.63px;
   line-height: 112%;
   /* or 62px */
   color: #0A1622;
@@ -1330,10 +1377,11 @@
 }
 
 .snack-box-header-title {
-  margin-left: -23px;
+  font-family: "Montserrat", sans-serif;
+  margin-left: -20px;
   font-style: normal;
-  font-weight: 900;
-  font-size: 45px;
+  font-weight: 800;
+  font-size: 41.17px;
   line-height: 112%;
   /* or 62px */
   color: #0A1622;
@@ -1396,10 +1444,12 @@
   width: 134px !important;
   height: 27px !important;
   margin: 0;
+  margin-left: 15px;
 }
 
 .ninja-buffet-header-logo {
-  width: 120px !important;
+  //width: 120px !important;
+  margin-left: 10px;
 }
 
 // bootstrap carousel icon change
@@ -1527,7 +1577,9 @@
 
 .ninja-box-ninja-img {
   margin-top: -14px;
-  margin-left: 35px;
+  //margin-left: 35px;
+  margin-left: 30px;
+  padding-left: 25px;
 }
 
 .ninja-buffet-ninja-img {
@@ -2514,36 +2566,44 @@
 .create-your-own-package {
   background-color: #FFC31A;
   font-family: "Montserrat", sans-serif;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  // padding-top: 25px;
+  // padding-bottom: 25px;
+  height: 330px;
 
   #leftside img {
-    width: 165px;
+    width: 147.67px;
+    height: 138px;
+    margin-top: 27px;
   }
 
   #rightside {
     img {
-      margin-top: 45px;
+      margin-top: 72px;
       margin-left: 60px;
-      width: 75px;
+      width: 69.93px;
+      height: 14.04px;
     }
 
     h2 {
       margin-left: 60px;
       font-size: 30px;
-      font-weight: bolder;
-
+      font-weight: 800;
+      font-size: 27.2024px;
+      line-height: 112%;
+      color: #0A1622;
       span {
         color: white;
       }
     }
 
     p {
+      width: 152.02px;
+      height: 37.25px;
       font-weight: 500;
       margin-left: 60px;
       margin-top: -5px;
-      font-size: 9px;
-
+      font-size: 9.52389px;
+      color: #0A1622;
       span {
         font-weight: bolder;
       }
@@ -2555,18 +2615,21 @@
   font-family: "Montserrat", sans-serif;
 
   p {
-    font-size: 15px;
+    font-size: 12.5591px;
     color: white;
-    margin-top: 5px;
+    margin-top: 20px;
     margin-left: 30px;
+    font-weight: 500;
+    line-height: 112%;
+    font-style: italic;
   }
 
   h2 {
     margin-top: -15px;
     margin-left: 30px;
-    font-size: 30px;
-    font-weight: bolder;
-
+    font-size: 25.7815px;
+    font-weight: 800;
+    line-height: 112%;
     span {
       color: var(--ninja-red);
     }
@@ -2576,18 +2639,23 @@
     margin-top: -5px;
     margin-left: 30px;
     font-family: "Montserrat", sans-serif;
-    font-size: 13.5px;
-    font-weight: bold;
+    font-size: 12.5591px;
+    font-weight: 500;
+    line-height: 112%;
+    color: #0A1622;
   }
 
   button {
+    width: 165.9px;
+    height: 26.91px;
     background-color: var(--ninja-red);
     color: white;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 500;
-    margin-left: 190px;
+    border-radius: 13.97px;
+    font-size: 10.6605px;
+    font-weight: 700;
+    margin-left: 180px;
     box-shadow: 0px 3px 10px 0px black;
+    line-height: 13px;
   }
 }
 

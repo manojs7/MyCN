@@ -238,7 +238,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="mealpkg.png" />
+                <img src="Card (1).png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -254,7 +254,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="mealpkg.png" />
+                <img src="Card (2).png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -270,7 +270,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="mealpkg.png" />
+                <img src="Card (3).png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -288,7 +288,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="mealpkg.png" />
+                <img src="Card (4).png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -304,7 +304,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="mealpkg.png" />
+                <img src="Card (5).png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -320,7 +320,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>PACKAGE NAME</h3>
               <div className="packageImg">
-                <img src="mealpkg.png" />
+                <img src="Card (6).png" />
               </div>
               <div className="packagesName">
                 <h4>X Starters + X Mains + X Desserts</h4>
@@ -426,7 +426,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="mealpkg.png" />
+              <img src="Card (1).png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -442,7 +442,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="mealpkg.png" />
+              <img src="Card (2).png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -458,7 +458,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="mealpkg.png" />
+              <img src="Card (3).png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -475,7 +475,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="mealpkg.png" />
+              <img src="Card (4).png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -491,7 +491,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="mealpkg.png" />
+              <img src="Card (5).png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
@@ -507,7 +507,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>PACKAGE NAME</h3>
             <div className="packageImg">
-              <img src="mealpkg.png" />
+              <img src="Card (6).png" />
             </div>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>

@@ -95,7 +95,7 @@ const Custom_Package = () => {
   return (
     <>
       {!isSmall ? <section className="custom-package py-5">
-        <div className="container" id="#NBuPkg">
+        <div className="container" id="buffeyPkg">
           <div className="section-title">
             <h2>
               Ninja<span>Buffet</span> Packages
@@ -236,95 +236,95 @@ const Custom_Package = () => {
           </div> */}
           <div className="d-flex">
             <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
+              <h3>Punjabi NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="buffetCr3.png" />
+                <img src="BuffetP1.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>3 Starters + 4 Mains + 1 Dessert</h4>
+                <h3>₹ 8,799/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
+              <h3>NinjaBuffet Indian</h3>
               <div className="packageImg">
-                <img src="buffetCr3.png" />
+                <img src="BuffetP2.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>2 Starters + 4 Mains + 1 Dessert</h4>
+                <h3>₹ 7,999/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
-              <h3>PACKAGE NAME</h3>
+              <h3>B'Day NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="buffetCr3.png" />
+                <img src="BuffetP3.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>1 Starter + 4 Mains + 1 Dessert</h4>
+                <h3>₹ 7,199/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
           <div className="d-flex">
             <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
+              <h3>Fusion NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="buffetCr3.png" />
+                <img src="BuffetP4.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>2 Starters + 3 Mains + 1 Dessert</h4>
+                <h3>₹ 9,499/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
+              <h3>Asian NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="buffetCr3.png" />
+                <img src="BuffetP5.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>3 Starters + 4 Mains + 1 Dessert</h4>
+                <h3>₹ 7,699/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
-              <h3>PACKAGE NAME</h3>
+              <h3>Cocktail Party</h3>
               <div className="packageImg">
-                <img src="buffetCr3.png" />
+                <img src="BuffetP6.png" />
               </div>
               <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
+                <h4>6 Starters + 1 Mains</h4>
+                <h3>₹ 7,699/-</h3>
+                <p>(For 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
@@ -371,7 +371,7 @@ const Custom_Package = () => {
               <p>Not Happy with the Packages?</p>
               <h2>Create Your <span>Own</span></h2>
               <h6>Curate your own flavour of party<br /><span>from variety of cuisines</span></h6>
-              <button className="btn btn-danger">Create Your Own Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} className="btn btn-danger">Create Your Own Package</button>
             </div>
           </div>
         </div>
@@ -417,95 +417,95 @@ const Custom_Package = () => {
       {isSmall ? <section>
         <div className="packageContainer">
           <div className="packageNameSection text-center ms-2 me-4">
-            <h3>PACKAGE NAME</h3>
+            <h3>Punjabi NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="buffetCr3.png" />
+              <img src="BuffetP1.png" />
             </div>
             <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <h4>3 Starters + 4 Mains + 1 Dessert</h4>
+              <h3>₹ 8,799/-</h3>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
-            <h3>PACKAGE NAME</h3>
+            <h3>NinjaBuffet Indian</h3>
             <div className="packageImg">
-              <img src="buffetCr3.png" />
+              <img src="BuffetP2.png" />
             </div>
             <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <h4>2 Starters + 4 Mains + 1 Dessert</h4>
+              <h3>₹ 7,999/-</h3>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
-            <h3>PACKAGE NAME</h3>
+            <h3>B'Day NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="buffetCr3.png" />
+              <img src="BuffetP3.png" />
             </div>
             <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <h4>1 Starter + 4 Mains + 1 Dessert</h4>
+              <h3>₹ 7,199/-</h3>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
         </div>
         <div className="packageContainer">
           <div className="packageNameSection text-center ms-2 me-4">
-            <h3>PACKAGE NAME</h3>
+            <h3>Fusion NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="buffetCr3.png" />
+              <img src="BuffetP4.png" />
             </div>
             <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <h4>2 Starters + 3 Mains + 1 Dessert</h4>
+              <h3>₹ 9,499/-</h3>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
-            <h3>PACKAGE NAME</h3>
+            <h3>Asian NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="buffetCr3.png" />
+              <img src="BuffetP5.png" />
             </div>
             <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <h4>3 Starters + 4 Mains + 1 Dessert</h4>
+              <h3>₹ 7,699</h3>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
-            <h3>PACKAGE NAME</h3>
+            <h3>Cocktail Party</h3>
             <div className="packageImg">
-              <img src="buffetCr3.png" />
+              <img src="BuffetP6.png" />
             </div>
             <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
+              <h4>1 Starter + 4 Mains + 1 Dessert</h4>
+              <h3>₹ 7,699</h3>
+              <p>(For 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
         </div>
@@ -514,7 +514,7 @@ const Custom_Package = () => {
         <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
-              <img id="left-ninja-logo" src="buffetNinjaLogo.png"></img>
+              <img id="left-ninja-logo" src="fontPic6.png"></img>
             </div>
             <div className="col-8" id="rightside">
               <img id="right-ninja-logo" src="caterninja.png"></img>
@@ -527,7 +527,7 @@ const Custom_Package = () => {
             <h2>Create Your <span>Own</span></h2>
             <h6>Curate your own flavour of party<br />from variety of cusines</h6>
             <div>
-              <button className="btn btn-sm">Create Your Own Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} className="btn btn-sm">Create Your Own Package</button>
             </div>
           </div>
         </div>

@@ -191,14 +191,14 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-buffet-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="21.49px" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
                 <div className="ninja-buffet-header-title">
                   Ninja<span>Classic</span>
                 </div>
-                <div className="ninja-buffet-header-content">
+                <div className="ninja-classic-header-content">
                 <span>Premium</span> Dining Experience for <span>50+ Guests</span> with finger Licking Yummy Food and <span>Crockery</span>
                 </div>
               </div>

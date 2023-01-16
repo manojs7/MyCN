@@ -514,11 +514,11 @@ const Custom_Package = () => {
         <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
-              <img id="left-ninja-logo" src="buffetNinjaLogo.png"></img>
+              <img width="139.17px" height= "141px" id="left-ninja-logo" src="buffetNinjaLogo.png"></img>
             </div>
             <div className="col-8" id="rightside">
               <img id="right-ninja-logo" src="caterninja.png"></img>
-              <h2 style={{fontSize: "25px"}}>Ninja<span>Gourmet</span></h2>
+              <h2 style={{fontSize: "22px"}}>Ninja<span>Gourmet</span></h2>
               <p style={{fontSize: "11px"}}><span>Super Premium Quality</span> Meals for Sophisticated <span>Corporate Meets!</span></p>
             </div>
           </div>

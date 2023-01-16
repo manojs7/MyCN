@@ -194,7 +194,7 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-box-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="21.49px" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
@@ -207,7 +207,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-box-ninja-img">
-                <img src='Group 924.png' alt='' style={{ height: "auto", width: "140px" }} />
+                <img src='Group 1065.png' alt='' style={{ height: "118.57px", width: "109.22px" }} />
               </div>
             </div>
           </div>
@@ -249,7 +249,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "350px" }}
+                  style={{ height: "auto", width: "360px", marginTop: "20px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}
