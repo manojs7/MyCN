@@ -137,57 +137,57 @@ export default function Custom() {
     );
 
     // if there is previous data
-    if (router.query.data) {
-      console.log(router.query.data);
-      const data = JSON.parse(router.query.data);
-      setVeg(data.veg);
-      setNonVeg(data.nonVeg);
-      var tempStarters = [];
-      var tempMain = [];
-      var tempDesserts = [];
-      data.starters.forEach((starter) => {
-        var obj = menu.starters.find((x) => x.name === starter.name);
-        tempStarters.push({
-          ...obj,
-          quantity: starter.quantity,
-        });
-      });
-      data.mains.forEach((main) => {
-        var obj = menu.mains.find((x) => x.name === main.name);
-        tempMain.push({
-          ...obj,
-          quantity: main.quantity,
-        });
-      });
-      data.desserts.forEach((dessert) => {
-        var obj = menu.desserts.find((x) => x.name === dessert.name);
-        tempDesserts.push({
-          ...obj,
-          quantity: dessert.quantity,
-        });
-      });
-      setStarters(tempStarters);
-      setMains(tempMain);
-      setDesserts(tempDesserts);
-      console.log("stater", router.query.data, starters);
-    }
+    // if (router.query.data) {
+    //   console.log(router.query.data);
+    //   const data = JSON.parse(router.query.data);
+    //   setVeg(data.veg);
+    //   setNonVeg(data.nonVeg);
+    //   var tempStarters = [];
+    //   var tempMain = [];
+    //   var tempDesserts = [];
+    //   data.starters.forEach((starter) => {
+    //     var obj = menu.starters.find((x) => x.name === starter.name);
+    //     tempStarters.push({
+    //       ...obj,
+    //       quantity: starter.quantity,
+    //     });
+    //   });
+    //   data.mains.forEach((main) => {
+    //     var obj = menu.mains.find((x) => x.name === main.name);
+    //     tempMain.push({
+    //       ...obj,
+    //       quantity: main.quantity,
+    //     });
+    //   });
+    //   data.desserts.forEach((dessert) => {
+    //     var obj = menu.desserts.find((x) => x.name === dessert.name);
+    //     tempDesserts.push({
+    //       ...obj,
+    //       quantity: dessert.quantity,
+    //     });
+    //   });
+    //   setStarters(tempStarters);
+    //   setMains(tempMain);
+    //   setDesserts(tempDesserts);
+    //   console.log("stater", router.query.data, starters);
+    // }
   }, []);
 
-  useEffect(() => {
-    if (knowMore[2] === "mobile") {
-      if (knowMore[1] === "starters") {
-        setModalTitle(starters[knowMore[0]].name);
-        setModalContent(starters[knowMore[0]].description);
-      } else if (knowMore[1] === "mains") {
-        setModalTitle(mains[knowMore[0]].name);
-        setModalContent(mains[knowMore[0]].description);
-      } else if (knowMore[1] === "desserts") {
-        setModalTitle(desserts[knowMore[0]].name);
-        setModalContent(desserts[knowMore[0]].description);
-      }
-      setShow(true);
-    }
-  }, [knowMore]);
+  // useEffect(() => {
+  //   if (knowMore[2] === "mobile") {
+  //     if (knowMore[1] === "starters") {
+  //       setModalTitle(starters[knowMore[0]].name);
+  //       setModalContent(starters[knowMore[0]].description);
+  //     } else if (knowMore[1] === "mains") {
+  //       setModalTitle(mains[knowMore[0]].name);
+  //       setModalContent(mains[knowMore[0]].description);
+  //     } else if (knowMore[1] === "desserts") {
+  //       setModalTitle(desserts[knowMore[0]].name);
+  //       setModalContent(desserts[knowMore[0]].description);
+  //     }
+  //     setShow(true);
+  //   }
+  // }, [knowMore]);
 
   // customer selected starter main, dessert
 
@@ -211,105 +211,105 @@ export default function Custom() {
     setBreadRice([]);
   };
 
-  useEffect(() => {
-    // starter value change after veg and non-veg guest change
-    if (veg === 0 && nonVeg === 0) return;
-    let temp = [...starters];
-    temp.map((data) => {
-      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-        if (data.Qtype === "pcs") {
-          data.quantity = (veg > 0 ? veg : nonVeg) * 2;
-        } else {
-          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
-        }
-      } else {
-        // if both guest is available
+  // useEffect(() => {
+  //   // starter value change after veg and non-veg guest change
+  //   if (veg === 0 && nonVeg === 0) return;
+  //   let temp = [...starters];
+  //   temp.map((data) => {
+  //     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+  //       if (data.Qtype === "pcs") {
+  //         data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+  //       } else {
+  //         data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
+  //       }
+  //     } else {
+  //       // if both guest is available
 
-        if (data.veg) {
-          if (data.Qtype === "pcs") {
-            data.quantity = (veg + nonVeg) * 1.5;
-          } else {
-            data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
-          }
-        } else {
-          if (data.Qtype === "pcs") {
-            data.quantity = nonVeg * 2;
-          } else {
-            data.quantity = (nonVeg * 0.1).toFixed(3);
-          }
-        }
-      }
-      setStarters(temp);
-    });
+  //       if (data.veg) {
+  //         if (data.Qtype === "pcs") {
+  //           data.quantity = (veg + nonVeg) * 1.5;
+  //         } else {
+  //           data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
+  //         }
+  //       } else {
+  //         if (data.Qtype === "pcs") {
+  //           data.quantity = nonVeg * 2;
+  //         } else {
+  //           data.quantity = (nonVeg * 0.1).toFixed(3);
+  //         }
+  //       }
+  //     }
+  //     setStarters(temp);
+  //   });
 
-    // main value change after veg anf=d non-veg guest change
-    let tempMain = [...mains];
+  //   // main value change after veg anf=d non-veg guest change
+  //   let tempMain = [...mains];
 
-    tempMain.map((data) => {
-      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-        // if not rice , bred, noodles
-        console.log("not rice , bred, noodles1");
-        if (data.Qtype === "pcs") {
-          data.quantity = (veg > 0 ? veg : nonVeg) * 1;
-        } else if (data.name === highestPrice.name) {
-          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(3);
-        } else {
-          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
-        }
-      } else {
-        console.log("not rice , bred, noodles2");
-        if (data.veg) {
-          if (data.Qtype === "pcs") {
-            data.quantity = veg * 1;
-          } else {
-            data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
-          }
-        } else {
-          console.log("not rice , bred, noodles3");
-          if (data.Qtype === "pcs") {
-            data.quantity = nonVeg * 1;
-          } else if (data.name === highestPrice.name) {
-            data.quantity = (nonVeg * 0.15).toFixed(3);
-          } else {
-            data.quantity = (nonVeg * 0.1).toFixed(3);
-          }
-        }
-      }
-    });
+  //   tempMain.map((data) => {
+  //     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+  //       // if not rice , bred, noodles
+  //       console.log("not rice , bred, noodles1");
+  //       if (data.Qtype === "pcs") {
+  //         data.quantity = (veg > 0 ? veg : nonVeg) * 1;
+  //       } else if (data.name === highestPrice.name) {
+  //         data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(3);
+  //       } else {
+  //         data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
+  //       }
+  //     } else {
+  //       console.log("not rice , bred, noodles2");
+  //       if (data.veg) {
+  //         if (data.Qtype === "pcs") {
+  //           data.quantity = veg * 1;
+  //         } else {
+  //           data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
+  //         }
+  //       } else {
+  //         console.log("not rice , bred, noodles3");
+  //         if (data.Qtype === "pcs") {
+  //           data.quantity = nonVeg * 1;
+  //         } else if (data.name === highestPrice.name) {
+  //           data.quantity = (nonVeg * 0.15).toFixed(3);
+  //         } else {
+  //           data.quantity = (nonVeg * 0.1).toFixed(3);
+  //         }
+  //       }
+  //     }
+  //   });
 
-    setMains(tempMain);
+  //   setMains(tempMain);
 
-    //  dessert value change after veg anf=d non-veg guest change
+  //   //  dessert value change after veg anf=d non-veg guest change
 
-    let tempDessert = [...desserts];
+  //   let tempDessert = [...desserts];
 
-    tempDessert.map((data) => {
-      if (data.Qtype === "pcs") {
-        data.quantity = (veg + nonVeg) * 1.5;
-      } else {
-        data.quantity = ((veg + nonVeg) * 0.075).toFixed(3);
-      }
-    });
+  //   tempDessert.map((data) => {
+  //     if (data.Qtype === "pcs") {
+  //       data.quantity = (veg + nonVeg) * 1.5;
+  //     } else {
+  //       data.quantity = ((veg + nonVeg) * 0.075).toFixed(3);
+  //     }
+  //   });
 
-    setDesserts(tempDessert);
-  }, [veg, nonVeg]);
+  //   setDesserts(tempDessert);
+  // }, [veg, nonVeg]);
 
-  useEffect(() => {
-    if (veg < 0) {
-      setVeg(0);
-    } else if (nonVeg < 0) {
-      setNonVeg(0);
-    } else if (typeof veg === NaN) {
-      setVeg(0);
-    } else if (typeof nonVeg === NaN) {
-      setNonVeg(0);
-    }
-  }, [veg, nonVeg]);
+  // useEffect(() => {
+  //   if (veg < 0) {
+  //     setVeg(0);
+  //   } else if (nonVeg < 0) {
+  //     setNonVeg(0);
+  //   } else if (typeof veg === NaN) {
+  //     setVeg(0);
+  //   } else if (typeof nonVeg === NaN) {
+  //     setNonVeg(0);
+  //   }
+  // }, [veg, nonVeg]);
 
-  useEffect(() => {
-    if (cuisine === 0) {
-    }
-  }, [cuisine, veg, nonVeg]);
+  // useEffect(() => {
+  //   if (cuisine === 0) {
+  //   }
+  // }, [cuisine, veg, nonVeg]);
 
   function handleClose() {
     setShow(false);
@@ -821,29 +821,29 @@ export default function Custom() {
   };
   console.log("desert", desserts);
   // cost calculation
-  useEffect(() => {
-    let starterPrice = 0;
-    let mainPrice = 0;
-    let dessertPrice = 0;
-    let bredRicePrice = 0;
+  // useEffect(() => {
+  //   let starterPrice = 0;
+  //   let mainPrice = 0;
+  //   let dessertPrice = 0;
+  //   let bredRicePrice = 0;
 
-    starters.map((d) => {
-      starterPrice += parseInt(d.quantity) * parseInt(d.selling_price);
-    });
+  //   starters.map((d) => {
+  //     starterPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+  //   });
 
-    mains.map((d) => {
-      mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
-    });
-    desserts.map((d) => {
-      dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
-    });
-    breadRice.map((d) => {
-      bredRicePrice += parseInt(d.quantity) * parseInt(d.selling_price);
-    });
+  //   mains.map((d) => {
+  //     mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+  //   });
+  //   desserts.map((d) => {
+  //     dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+  //   });
+  //   breadRice.map((d) => {
+  //     bredRicePrice += parseInt(d.quantity) * parseInt(d.selling_price);
+  //   });
 
-    setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
-  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
-  console.log("total price", totalPrice);
+  //   setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
+  // }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
+  // console.log("total price", totalPrice);
 
   const mobile = (
     <div className={styles.package}>
