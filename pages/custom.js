@@ -56,79 +56,79 @@ export default function Custom() {
   const [isDessertChange, setIsDessertChange] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
-  useEffect(() => {
-    allMenus.sort(function (a, b) {
-      const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
-      const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
+  // useEffect(() => {
+  //   allMenus.sort(function (a, b) {
+  //     const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
+  //     const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
+  //     if (nameA < nameB) {
+  //       return -1;
+  //     }
+  //     if (nameA > nameB) {
+  //       return 1;
+  //     }
 
-      // names must be equal
-      return 0;
-    });
+  //     // names must be equal
+  //     return 0;
+  //   });
 
-    // removing duplicate
-    const result =allMenus?.reduce((finalArray, current) => {
-      let obj = finalArray?.find((item) => item.name === current.name);
+  //   // removing duplicate
+  //   const result =allMenus?.reduce((finalArray, current) => {
+  //     let obj = finalArray?.find((item) => item.name === current.name);
   
-      console.log('duplicate',result)
-      if (obj) {
-        return finalArray;
-      }
-      return finalArray.concat([current]);
-    },[])
+  //     console.log('duplicate',result)
+  //     if (obj) {
+  //       return finalArray;
+  //     }
+  //     return finalArray.concat([current]);
+  //   },[])
 
-    setStartersData(result.filter((d) => d.mealType === "Starter"));
-    setStartersData2(result.filter((d) => d.mealType === "Starter"));
-    setMainData(result.filter((d) => d.mealType === "Main course"));
-    setMainData2(result.filter((d) => d.mealType === "Main course"));
-    setDessertData(result.filter((d) => d.mealType === "Dessert"));
-    setDessertData2(result.filter((d) => d.mealType === "Dessert"));
-    setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
-    setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
+  //   setStartersData(result.filter((d) => d.mealType === "Starter"));
+  //   setStartersData2(result.filter((d) => d.mealType === "Starter"));
+  //   setMainData(result.filter((d) => d.mealType === "Main course"));
+  //   setMainData2(result.filter((d) => d.mealType === "Main course"));
+  //   setDessertData(result.filter((d) => d.mealType === "Dessert"));
+  //   setDessertData2(result.filter((d) => d.mealType === "Dessert"));
+  //   setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
+  //   setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
 
-    const newMainData = allMenus.filter((d) => d.mealType === "Main course");
-    newMainData.sort(function (a, b) {
-      return parseInt(b.selling_price) - parseInt(a.selling_price);
-    });
-    setHighestPrice(newMainData[0]);
-  }, []);
-  console.log("main", mainData, highestPrice);
+  //   const newMainData = allMenus.filter((d) => d.mealType === "Main course");
+  //   newMainData.sort(function (a, b) {
+  //     return parseInt(b.selling_price) - parseInt(a.selling_price);
+  //   });
+  //   setHighestPrice(newMainData[0]);
+  // }, []);
+  // console.log("main", mainData, highestPrice);
 
-  // console.log(startersData, mainData, dessertData);
+  // // console.log(startersData, mainData, dessertData);
 
-  // filtering data according to cuisine
-  const handleCuisine = (index) => {
-    setCuisine(index);
-    if (cuisines[index] === "All") {
-      setStartersData(startersData2);
-      setMainData(mainData2);
-      setBreadRiceData(breadRiceData2);
-      setDessertData(dessertData2);
-    } else {
-      const filterStarter = startersData2.filter(
-        (d) => d.cuisine === cuisines[index]
-      );
-      setStartersData(filterStarter);
+  // // filtering data according to cuisine
+  // const handleCuisine = (index) => {
+  //   setCuisine(index);
+  //   if (cuisines[index] === "All") {
+  //     setStartersData(startersData2);
+  //     setMainData(mainData2);
+  //     setBreadRiceData(breadRiceData2);
+  //     setDessertData(dessertData2);
+  //   } else {
+  //     const filterStarter = startersData2.filter(
+  //       (d) => d.cuisine === cuisines[index]
+  //     );
+  //     setStartersData(filterStarter);
 
-      const filterMain = mainData2.filter((d) => d.cuisine === cuisines[index]);
-      setMainData(filterMain);
+  //     const filterMain = mainData2.filter((d) => d.cuisine === cuisines[index]);
+  //     setMainData(filterMain);
 
-      const filterBreadData = breadRiceData2.filter(
-        (d) => d.cuisine === cuisines[index]
-      );
-      setBreadRiceData(filterBreadData);
+  //     const filterBreadData = breadRiceData2.filter(
+  //       (d) => d.cuisine === cuisines[index]
+  //     );
+  //     setBreadRiceData(filterBreadData);
 
-      const filterDessertData = dessertData2.filter(
-        (d) => d.cuisine === cuisines[index]
-      );
-      setDessertData(filterDessertData);
-    }
-  };
+  //     const filterDessertData = dessertData2.filter(
+  //       (d) => d.cuisine === cuisines[index]
+  //     );
+  //     setDessertData(filterDessertData);
+  //   }
+  // };
 
   useEffect(() => {
     setIsSmall(window.innerWidth < 939);

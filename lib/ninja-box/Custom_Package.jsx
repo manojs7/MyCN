@@ -14,15 +14,15 @@ const Custom_Package = () => {
     "nijjabox2.png",
     "nijjabox3.png",
     "nijjabox4.png",]
-  const [show, setShow] = useState(false);
-  const [vegNonVeg, setVegNonVeg] = useState('Veg');
+  // const [show, setShow] = useState(false);
+  // const [vegNonVeg, setVegNonVeg] = useState('Veg');
 
-  const [vegGuest, setVegGuest] = useState(10);
-  const [nonVegGuest, setNonVegGuest] = useState(10);
+  // const [vegGuest, setVegGuest] = useState(10);
+  // const [nonVegGuest, setNonVegGuest] = useState(10);
 
   const [isSmall, setIsSmall] = useState(false);
 
-  const [indexPhoto, setIndexPhoto] = useState(null);
+  // const [indexPhoto, setIndexPhoto] = useState(null);
 
   // const handlePhotoChange = (index) => {
   //   setPhoto(images[index]);
@@ -30,26 +30,26 @@ const Custom_Package = () => {
   //   setIsChanged(true);
   // };
 
-  function clearIndexPhoto() {
-    setIndexPhoto(null)
-  }
+  // function clearIndexPhoto() {
+  //   setIndexPhoto(null)
+  // }
 
   // useEffect(() => {
   //   const myTimeout = setTimeout(clearIndexPhoto, 10000);
   //   // clearTimeout(myTimeout);
   // }, [indexPhoto])
 
-  const handleClose = (value) => {
-    if (value === 'close') {
-      setShow(false)
-    } else {
-      window.location.href = "/view-details"
-      setShow(false)
-    }
+  // const handleClose = (value) => {
+  //   if (value === 'close') {
+  //     setShow(false)
+  //   } else {
+  //     window.location.href = "/view-details"
+  //     setShow(false)
+  //   }
 
 
-  };
-  const handleShow = () => setShow(true);
+  // };
+  // const handleShow = () => setShow(true);
 
   //veg non-veg check
   // const handleChange = (event) => {
