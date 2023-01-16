@@ -32,10 +32,10 @@ const Custom_Package = () => {
     setIndexPhoto(null)
   }
 
-  // useEffect(() => {
-  //   const myTimeout = setTimeout(clearIndexPhoto, 10000);
-  //   // clearTimeout(myTimeout);
-  // }, [indexPhoto])
+  useEffect(() => {
+    const myTimeout = setTimeout(clearIndexPhoto, 10000);
+    // clearTimeout(myTimeout);
+  }, [indexPhoto])
 
   const handleClose = (value) => {
     if (value === 'close') {

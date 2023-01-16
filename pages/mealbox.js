@@ -14,7 +14,7 @@ export default function Meal_Box()
         <Ninja_Header />
         <Specials />
         <MealBox_Video />
-        <Custom_Package />
+        {/* <Custom_Package /> */}
         <Footer />
     </>)
 }

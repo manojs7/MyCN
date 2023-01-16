@@ -30,9 +30,9 @@ const Custom_Package = () => {
   //   setIsChanged(true);
   // };
 
-  // function clearIndexPhoto() {
-  //   setIndexPhoto(null)
-  // }
+  function clearIndexPhoto() {
+    setIndexPhoto(null)
+  }
 
   // useEffect(() => {
   //   const myTimeout = setTimeout(clearIndexPhoto, 10000);

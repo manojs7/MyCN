@@ -14,7 +14,7 @@ export default function Ninja_Classic()
         <Ninja_Header />
         <Specials />
         {/* <NinjaBuffet_Video /> */}
-        <Custom_Package />
+        {/* <Custom_Package /> */}
         <Footer />
     </>)
 }
