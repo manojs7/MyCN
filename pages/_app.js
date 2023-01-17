@@ -11,8 +11,11 @@ import Float from "$lib/Float";
 import FloatNav from "$lib/FloatNav";
 import "../styles/home/specials.scss";
 import "../styles/instantQuote/InstantQuote.module.scss"
+import Zoho from "$lib/bookChef/Zoho";
+
 
 function MyApp({ Component, pageProps }) {
+
   return (
     <>
       <Head>
@@ -21,6 +24,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <AppMenuProvider>
         <Component {...pageProps} />
+        <Zoho />
         <Float />
         <FloatNav/>
       </AppMenuProvider>
