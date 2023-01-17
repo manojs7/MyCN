@@ -87,55 +87,61 @@ export default function Navbar({ page }) {
     });
   }
 
+  // const small = (
+  //   <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}`}>
+  //     <div className={styles.logo} onClick={() => (window.location.href = "/")}>
+  //       <img src="CaterNinja (1).png" alt="logo" />
+  //     </div>
+  //     <div
+  //       className={styles.burger + ` ${active ? styles.active : ""}`}
+  //       onClick={() => {
+  //         burger_click();
+  //       }}
+  //       data-state={active.toString()}
+  //     >
+  //       <div className={styles.line1}></div>
+  //       <div className={styles.line2}></div>
+  //       <div className={styles.line3}></div>
+  //     </div>
+  //     <ul className={styles.links} data-state={active.toString()} id="links">
+  //       <li className={styles.margin}>
+  //         <Link href="/ninjabox">
+  //           <a onClick={() => burger_click()}>NinjaBox</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/ninjabuffet">
+  //           <a onClick={() => burger_click()}>NinjaBuffet</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/mealbox">
+  //           <a onClick={() => burger_click()}>MealBox</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/process">
+  //           <a onClick={() => burger_click()}>About Us</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/software">
+  //           <a onClick={() => burger_click()}>Blog</a>
+  //         </Link>
+  //       </li>
+  //       {/* <li className={styles.margin}>
+  //         <Link href="/newpage">
+  //           <a onClick={() => burger_click()}>New</a>
+  //         </Link>
+  //       </li> */}
+  //     </ul>
+  //   </nav>
+  // );
+
   const small = (
-    <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}`}>
-      <div className={styles.logo} onClick={() => (window.location.href = "/")}>
-        <img src="CaterNinja (1).png" alt="logo" />
-      </div>
-      <div
-        className={styles.burger + ` ${active ? styles.active : ""}`}
-        onClick={() => {
-          burger_click();
-        }}
-        data-state={active.toString()}
-      >
-        <div className={styles.line1}></div>
-        <div className={styles.line2}></div>
-        <div className={styles.line3}></div>
-      </div>
-      <ul className={styles.links} data-state={active.toString()} id="links">
-        <li className={styles.margin}>
-          <Link href="/ninjabox">
-            <a onClick={() => burger_click()}>NinjaBox</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/ninjabuffet">
-            <a onClick={() => burger_click()}>NinjaBuffet</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/mealbox">
-            <a onClick={() => burger_click()}>MealBox</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/process">
-            <a onClick={() => burger_click()}>About Us</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/software">
-            <a onClick={() => burger_click()}>Blog</a>
-          </Link>
-        </li>
-        {/* <li className={styles.margin}>
-          <Link href="/newpage">
-            <a onClick={() => burger_click()}>New</a>
-          </Link>
-        </li> */}
-      </ul>
-    </nav>
+    <div>
+      
+    </div>
   );
 
   const big = (

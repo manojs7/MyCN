@@ -22,19 +22,19 @@ import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scro
 export default function Home() {
   return (
     <div activeclass="active" to='footer-logo' spy="true" smooth="true" offset={50} duration={1000}>
-       <Navbar />
-       <FeedBack/>
+      <Navbar />
+      <FeedBack />
       <Header />
       <OurServices />
-      <WhatMakeUsSpecial/>
-      <TestimonialsThree/>
-      <HowToOrder/>
+      <WhatMakeUsSpecial />
+      <TestimonialsThree />
+      <HowToOrder />
       <HowItWorks />
 
       {/* <Testimonials /> */}
 
       {/* <TestimonialsTwo/> */}
-      
+
       <News />
       <Categories />
 

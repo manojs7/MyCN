@@ -525,7 +525,7 @@ const Custom_Package = () => {
         <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
-              <img id="left-ninja-logo" src="ninja-box-ninja.png"></img>
+              <img id="left-ninja-logo" src="Group 1065.png"></img>
             </div>
             <div className="col-8" id="rightside">
               <img id="right-ninja-logo" src="caterninja.png"></img>
