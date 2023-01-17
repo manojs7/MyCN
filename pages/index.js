@@ -42,7 +42,7 @@ export default function Home() {
 
       {/* <Ninja_Header /> */}
       {/* <Specials /> */}
-      <Custom_Package />
+      {/* <Custom_Package /> */}
 
 
 
