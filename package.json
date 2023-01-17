@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -48,10 +49,6 @@
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "eslint": "8.13.0",
-    "rules": {
-      "react/no-unescaped-entities": "off",
-      "@next/next/no-page-custom-font": "off"
-    },
     "eslint-config-next": "12.1.5",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23"
