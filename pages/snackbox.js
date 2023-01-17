@@ -14,7 +14,7 @@ export default function Snack_Box()
         <Ninja_Header />
         <Specials />
         {/* <NinjaBuffet_Video /> */}
-        {/* <Custom_Package /> */}
+        <Custom_Package />
         <Footer />
     </>)
 }

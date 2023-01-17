@@ -28,14 +28,14 @@ const Custom_Package = () => {
   //   setIsChanged(true);
   // };
 
-  function clearIndexPhoto() {
-    setIndexPhoto(null)
-  }
+  // function clearIndexPhoto() {
+  //   setIndexPhoto(null)
+  // }
 
-  useEffect(() => {
-    const myTimeout = setTimeout(clearIndexPhoto, 10000);
-    // clearTimeout(myTimeout);
-  }, [indexPhoto])
+  // useEffect(() => {
+  //   const myTimeout = setTimeout(clearIndexPhoto, 10000);
+  //   // clearTimeout(myTimeout);
+  // }, [indexPhoto])
 
   const handleClose = (value) => {
     if (value === 'close') {
@@ -93,7 +93,7 @@ const Custom_Package = () => {
   }, []);
 
   return (
-    <>
+    <div>
       {!isSmall ? <section className="custom-package py-5">
         <div className="container" id="buffeyPkg">
           <div className="section-title">
@@ -266,7 +266,7 @@ const Custom_Package = () => {
               </div>
             </div>
             <div className="packageNameSection text-center">
-              <h3>B'Day NinjaBuffet</h3>
+              <h3>B&apos;Day NinjaBuffet</h3>
               <div className="packageImg">
                 <img src="BuffetP3.png" />
               </div>
@@ -447,7 +447,7 @@ const Custom_Package = () => {
             </div>
           </div>
           <div className="packageNameSection text-center">
-            <h3>B'Day NinjaBuffet</h3>
+            <h3>B&apos;Day NinjaBuffet</h3>
             <div className="packageImg">
               <img src="BuffetP3.png" />
             </div>
@@ -532,7 +532,7 @@ const Custom_Package = () => {
           </div>
         </div>
       </section> : ""}
-    </>
+    </div>
   );
 };
 

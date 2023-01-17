@@ -272,11 +272,11 @@
   font-weight: bold;
 }
 
-.What-Make-Us-Special-container-card:hover .What-Make-Us-Special-container-card-back,
-.What-Make-Us-Special-container-card-font:hover .What-Make-Us-Special-container-card-back {
-  //transform: translateY(555px);
-  //top: 70px;
-}
+// .What-Make-Us-Special-container-card:hover .What-Make-Us-Special-container-card-back,
+// .What-Make-Us-Special-container-card-font:hover .What-Make-Us-Special-container-card-back {
+//   //transform: translateY(555px);
+//   //top: 70px;
+// }
 
 .our-services,
 .how-it-works,
@@ -1985,7 +1985,7 @@ background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%)
       width: 100% !important;
       height: 100%;
       margin-bottom: 0px !important;
-      -webkit-appearance: none !important;
+      //-webkit-appearance: none !important;
       border: 0;
       border-radius: 50px !important;
       background: #ffffff;
@@ -2488,7 +2488,7 @@ background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%)
       width: 100% !important;
       height: 100%;
       margin-bottom: 0px !important;
-      -webkit-appearance: none !important;
+      //-webkit-appearance: none !important;
       border: 0;
       border-radius: 50px !important;
       background: #ffffff;
@@ -2972,9 +2972,9 @@ background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%)
     top: 70px;
   }
 
-  .our-services-box .buttons {
-    // flex-direction: column;
-  }
+  // .our-services-box .buttons {
+  //   // flex-direction: column;
+  // }
 
   // .our-services-box .buttons button:first-child {
   //   margin-bottom: 10px;

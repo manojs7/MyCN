@@ -350,7 +350,7 @@ const InstantQuote = () => {
                     <div className={styles.pricingListContainer}>
                         <div className={styles.discount}>
                             <h4>Discount Coupon</h4>
-                            <div class={styles.inputBtn}>
+                            <div className={styles.inputBtn}>
                                 <input type="text" placeholder="Enter Code" />
                                 <button type="button">Apply</button>
                             </div>
