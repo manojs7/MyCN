@@ -180,7 +180,7 @@ const Ninja_Header = () => {
             <img src='desktop ninja.png' alt='' />
           </div>
           <div className="ninja-box-header-button">
-            <button className="bg-red">Select Package</button>
+            <button onClick={() => (window.location.href = "#MealPkg")} className="bg-red">Select Package</button>
           </div>
         </div>
       </div>

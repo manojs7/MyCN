@@ -8,8 +8,7 @@ export default function Float()
     return (
         <div className={styles.container}>
             <div className={styles.item}>
-            <button className={styles.floatBtn}>
-                
+            <button onClick={() => (window.open('tel:08047176666'))} className={styles.floatBtn}>
 
                     <span>Call a Ninja</span>
                     <br />Instant Order</button>
@@ -24,7 +23,7 @@ export default function Float()
             </div>
             <div className={styles.item}>
                
-                   <button onClick={() => (window.location.href = "/ninjaInstantQuote")} className={styles.floatBtn}>
+                   <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} className={styles.floatBtn}>
                 <span>Custom Menu</span>
                 <br />Instant Price
                 

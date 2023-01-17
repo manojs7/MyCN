@@ -1,3 +1,4 @@
+
 import Footer from "$lib/Footer";
 import Categories from "$lib/home/Categories";
 import FeedBack from "$lib/home/FeedBack";
@@ -11,6 +12,7 @@ import TestimonialsThree from "$lib/home/TestimonialsThree";
 import TestimonialsTwo from "$lib/home/TestimonialsTwo";
 import WhatMakeUsSpecial from "$lib/home/WhatMakeUsSpecial";
 import Navbar from "$lib/Navbar";
+import NewNavBar from "$lib/NewNavBar";
 import Custom_Package from "$lib/ninja-box/Custom_Package";
 import Ninja_Header from "$lib/ninja-box/Ninja_Header";
 import Specials from "$lib/ninja-box/Specials";
@@ -22,6 +24,7 @@ import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scro
 export default function Home() {
   return (
     <div activeclass="active" to='footer-logo' spy="true" smooth="true" offset={50} duration={1000}>
+      {/* <NewNavBar/> */}
       <Navbar />
       <FeedBack />
       <Header />
@@ -37,7 +40,6 @@ export default function Home() {
 
       <News />
       <Categories />
-
 
 
       {/* <Ninja_Header /> */}
