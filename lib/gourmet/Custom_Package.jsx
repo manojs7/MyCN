@@ -95,7 +95,7 @@ const Custom_Package = () => {
   return (
     <>
       {!isSmall ? <section className="custom-package py-5">
-        <div className="container" id="#NBuPkg">
+        <div className="container" id="gourmetPkg">
           <div className="section-title">
             <h2>
               Ninja<span>Gourmet</span> Packages
@@ -246,8 +246,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -261,8 +261,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -276,8 +276,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
@@ -293,8 +293,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -308,8 +308,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -323,8 +323,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
@@ -427,8 +427,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
@@ -442,8 +442,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
@@ -457,8 +457,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
         </div>
@@ -474,8 +474,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
@@ -489,8 +489,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
@@ -504,8 +504,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
         </div>

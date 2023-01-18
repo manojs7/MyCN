@@ -7,10 +7,10 @@ import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
-    "12.png",
-    "13.png",
-    "14.png",
-    "15.png",
+    "gdesk 1.png",
+    "gdesk 2.png",
+    "gdesk 3.png",
+    "gdesk 4.png"
 
 
 
@@ -178,7 +178,7 @@ const Ninja_Header = () => {
             <img src='Gourmet Ninja.png' alt='' style={{width: "180px"}} />
           </div>
           <div className="ninja-box-header-button">
-            <button href = "#NBuPkg" className="bg-red">Select Package</button>
+            <button onClick={() => (window.location.href = "#gourmetPkg")} className="bg-red">Select Package</button>
           </div>
         </div>
       </div>

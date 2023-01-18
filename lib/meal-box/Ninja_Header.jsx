@@ -8,10 +8,10 @@ import YouTube from "react-youtube";
 
 const Ninja_Header = () => {
   const images = [
-    "box 1.png",
-    "box 2.png",
-    "box 3.png",
-    "box 4.png",
+    "box 1 (1).png",
+    "box 2 (1).png",
+    "box 3 (1).png",
+    "box 4 (1).png",
 
 
 

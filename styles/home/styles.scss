@@ -665,19 +665,20 @@
   //background: linear-gradient(180deg, #B70C10 27.3%, rgba(190, 45, 48, 0.54) 100%);
 //   background: rgb(34,193,195);
 // background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-background: rgb(253,187,45);
-background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%);
+// background: rgb(253,187,45);
+// background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%);
+background: rgba(254, 186, 186, 0.2);
   h2{
     //style={{ fontFamily: "'Montserrat', sans-serif", borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "1px", paddingTop: "20px", marginBottom: "50px", fontSize: "30px", fontWeight: "600", letterSpacing: "0.03em" }}
     font-size: 41px;
     font-family: "Montserrat", sans-serif;
     border-bottom: 3px solid #ffb800;
-    color: white;
+    color: #2C3338;
     padding-bottom: 1px;
     padding-top: 20px;
     margin-bottom: 50px;
     font-size: 41px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.03em;
   }
 }
@@ -2799,6 +2800,25 @@ background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%)
   }
 }
 
+@media (max-width: 576px) { 
+  .packageNameSection{
+  #selectBtn {
+    color: white;
+    font-size: 10.5px;
+    font-weight: 400;
+    background-color: var(--ninja-red);
+    padding-inline: 20px;
+  }
+
+  #customiseBtn {
+    border: 1px solid black;
+    font-size: 10.5px;
+    font-weight: 600;
+    background-color: #FFC31A;
+  }
+}
+ }
+
 .packagesName {
   h4 {
     margin-top: 15px;
@@ -2808,10 +2828,10 @@ background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%)
   h3 {
     margin-top: 20px;
     margin-bottom: -10px;
-    color: black;
-
+    color: #2C3338;
+    letter-spacing: 0.03em;
     span {
-      color: #FFC31A;
+      font-size: 12px;
     }
   }
 
