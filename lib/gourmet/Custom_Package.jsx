@@ -235,19 +235,11 @@ const Custom_Package = () => {
             ))}
           </div> */}
           <div className="d-flex">
-            <div className="packageNameSection text-center me-4">
-              <h3>PACKAGE NAME</h3>
-              <div className="packageImg">
-                <img src="gourmet card.png" />
-              </div>
-              <div className="packagesName">
-                <h4>X Starters + X Mains + X Desserts</h4>
-                <h3>₹ <span>XXXXX</span></h3>
-                <p>(Per 10 Guests)</p>
-              </div>
+            <div className="gourmetPackageNameSection text-center me-4">
+              <img src="luxe NV 30 Pax (1).png"/>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Luxe%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Luxe%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -261,8 +253,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Fusion%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Fusion%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -276,8 +268,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Gold%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Luxe%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
@@ -293,8 +285,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Luxe%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Luxe%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -308,8 +300,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Fusion%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Fusion%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -323,8 +315,8 @@ const Custom_Package = () => {
                 <p>(Per 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Gold%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Gold%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
@@ -416,19 +408,16 @@ const Custom_Package = () => {
       </section> : ""}
       {isSmall ? <section>
         <div className="packageContainer">
-          <div className="packageNameSection text-center ms-2 me-4">
-            <h3>PACKAGE NAME</h3>
-            <div className="packageImg">
-              <img src="gourmet card.png" />
-            </div>
+          <div className="gourmetPackageNameSection text-center ms-2 me-4">
+            <img src="luxe NV 30 Pax (1).png"/>
             <div className="packagesName">
               <h4>X Starters + X Mains + X Desserts</h4>
               <h3>₹ <span>XXXXX</span></h3>
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
-              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+              <button  onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Luxe%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Luxe%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
@@ -442,8 +431,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
-              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Fusion%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Fusion%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
@@ -457,8 +446,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
-              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Gold%20Non-Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Luxe%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
         </div>
@@ -474,8 +463,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
-              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Luxe%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Luxe%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
@@ -489,8 +478,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
-              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Fusion%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Fusion%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
@@ -504,8 +493,8 @@ const Custom_Package = () => {
               <p>(Per 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
-              <button type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Gold%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Gold%20Veg%20Gourmet%20Package%20")} type="button" className="btn btn-sm" id="customiseBtn">Customise Package</button>
             </div>
           </div>
         </div>

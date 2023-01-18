@@ -2800,6 +2800,39 @@ background: rgba(254, 186, 186, 0.2);
   }
 }
 
+.gourmetPackageNameSection {
+  margin-top: 0%;
+  width: 350px;
+  margin: auto;
+  margin-bottom: 30px;
+  box-shadow: 0px 2.41247px 16.8873px rgba(255, 178, 14, 0.4);
+  border-radius: 13.87px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+
+  img{
+    width: 307.29px;
+    height: 307.14px;
+    margin-bottom: 10px;
+  }
+
+  //select and customise Buttons
+  #selectBtn {
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: var(--ninja-red);
+  }
+
+  #customiseBtn {
+    border: 1px solid black;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #FFC31A;
+  }
+}
+
 @media (max-width: 576px) { 
   .packageNameSection{
   #selectBtn {
