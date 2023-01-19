@@ -7,10 +7,10 @@ import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
-    "buffetCr1.png",
-    "buffetCr2.png",
-    "buffetCr3.png",
-    "buffetCr4.png",
+    "Frame 759.png",
+    "Frame 769.png",
+    "Frame 770.png",
+    "Frame 771.png",
 
 
 
@@ -200,8 +200,8 @@ const Ninja_Header = () => {
                   Ninja<span>Buffet</span>
                 </div>
                 <div className="ninja-buffet-header-content">
-                <span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
-              Guests</span>
+                <h2><span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
+              Guests</span></h2>
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
