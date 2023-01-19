@@ -188,7 +188,7 @@ const Specials = () => {
       </section>)}
       {isSmall && (<div>
         <div className="smd-section-title text-center">
-          <h2>What Makes<br />Ninja<span>Box</span> Special?</h2>
+          <h2 style={{fontFamily: "'Montserrat', sans-serif"}}>What Makes<br />Ninja<span>Box</span> Special?</h2>
         </div>
         {/* <Carousel >
         <div className="specials-item me-2 pt-5">
@@ -238,7 +238,7 @@ const Specials = () => {
       </Carousel> */}
         <div className="What-Make-Us-Special-card-container">
           {/* card 1 */}
-          <div className="What-Make-Us-Special-container-card ">
+          <div className="What-Make-Us-Special-container-card">
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="what-makes-ninjabox-special-logo">

@@ -188,7 +188,7 @@ const Specials = () => {
       </section>)}
       {isSmall && (<div>
         <div className="smd-section-title text-center">
-          <h2>What Makes<br />Ninja<span>Buffet</span> Special?</h2>
+          <h2 style={{fontFamily: "'Montserrat', sans-serif"}}>What Makes<br />Ninja<span>Buffet</span> Special?</h2>
         </div>
         {/* <Carousel >
         <div className="specials-item me-2 pt-5">
@@ -249,7 +249,7 @@ const Specials = () => {
             </div>
             <div className="">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
                   ✅ Trendy Bulk Packaging <br />
                   ✅ BioFriendly Disposable<br />
                   ✅ No Utensile - Direct To Table
@@ -270,7 +270,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
                   ✅ Large Cuisine Variety <br />
                   ✅ Custom Choice Menu<br />
                   ✅ Great Value for Money
@@ -292,7 +292,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
                   ✅ Strict NinjaKitchen Protocols <br />
                   ✅ Highest Safety Standards<br />
                   ✅ Trained Chef & Delivery Ninja
@@ -314,7 +314,7 @@ const Specials = () => {
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
                   ✅ Convenient Ordering <br />
                   ✅ Professional Support<br />
                   ✅ On Time Delivery

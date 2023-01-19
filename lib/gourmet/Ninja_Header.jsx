@@ -10,7 +10,8 @@ const Ninja_Header = () => {
     "gdesk 1.png",
     "gdesk 2.png",
     "gdesk 3.png",
-    "gdesk 4.png"
+    "gdesk 4.png",
+    "gdesk 5.png"
 
 
 
@@ -195,14 +196,14 @@ const Ninja_Header = () => {
             </div>
             <div className="container d-flex">
               <div className="col-6">
-                <div className="ninja-buffet-header-title" style={{fontSize: "30.17px"}}>
+                <div className="ninja-gourmet-header-title">
                   Ninja<span>Gourmet</span>
                 </div>
                 <div className="ninja-gourmet-header-content">
                 <span>Super Premium Quality</span> Meals for Sophisticated <span>Corporate Meets!</span>
                 </div>
               </div>
-              <div className="col-6 ninja-buffet-ninja-img">
+              <div className="col-6 ninja-gourmet-ninja-img">
                 <img src='Group 1084.png' alt='' style={{ height: "97.44px", width: "94.5px" }} />
               </div>
             </div>
@@ -223,7 +224,7 @@ const Ninja_Header = () => {
               }}
             />
           </div> */}
-          <div className="mb-5">
+          <div className="my-4">
             {/* <ReactImageMagnify
             {...{
               smallImage: {
@@ -245,7 +246,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "350px" }}
+                  style={{ height: "auto", width: "370px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}

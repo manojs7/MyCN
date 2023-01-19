@@ -7,10 +7,10 @@ import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
-    "1.png",
+    "1 (1).png",
     "2.png",
     "3.png",
-    "4.png",
+    "4 (1).png"
 
 
 
@@ -178,7 +178,7 @@ const Ninja_Header = () => {
             <img src='ninjawithTable.png' alt='' style={{width: "130px"}} />
           </div>
           <div className="ninja-box-header-button">
-            <button className="bg-red">Select Package</button>
+            <button onClick={() => (window.location.href = "#NCPkg")} className="bg-red">Select Package</button>
           </div>
         </div>
       </div>
@@ -195,7 +195,7 @@ const Ninja_Header = () => {
             </div>
             <div className="container d-flex">
               <div className="col-6">
-                <div className="ninja-buffet-header-title">
+                <div className="ninja-classic-header-title">
                   Ninja<span>Classic</span>
                 </div>
                 <div className="ninja-classic-header-content">
@@ -203,7 +203,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
-                <img src='ninjawithtable.png' alt='' style={{ height: "auto", width: "110px" }} />
+                <img src='ninjawithtable.png' alt='' style={{ height: "126px", width: "118.23px" }} />
               </div>
             </div>
           </div>
@@ -245,7 +245,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "350px" }}
+                  style={{ height: "auto", width: "370px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}

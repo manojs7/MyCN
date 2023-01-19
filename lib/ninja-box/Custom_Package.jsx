@@ -242,8 +242,8 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 5,299/-</h3>
-                <p>(For 10 Guests)</p>
+                <h3>₹ 5,299/-<span> Onwards</span></h3>
+                <p>(For 20 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -258,8 +258,8 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 4,499/-</h3>
-                <p>(For 10 Guests)</p>
+                <h3>₹ 4,499/-<span> Onwards</span></h3>
+                <p>(For 20 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -274,8 +274,8 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>1 Starter + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 3,699/-</h3>
-                <p>(For 10 Guests)</p>
+                <h3>₹ 3,699/-<span> Onwards</span></h3>
+                <p>(For 20 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -292,8 +292,8 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 3 Mains + 1 Dessert</h4>
-                <h3>₹ 5,999/-</h3>
-                <p>(For 10 Guests)</p>
+                <h3>₹ 5,999/-<span> Onwards</span></h3>
+                <p>(For 20 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -308,8 +308,8 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 4,199/-</h3>
-                <p>(For 10 Guests)</p>
+                <h3>₹ 4,199/-<span> Onwards</span></h3>
+                <p>(For 20 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -324,8 +324,8 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>6 Starters + 1 Mains</h4>
-                <h3>₹ 4,199/-</h3>
-                <p>(For 10 Guests)</p>
+                <h3>₹ 4,199/-<span> Onwards</span></h3>
+                <p>(For 20 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -430,8 +430,8 @@ const Custom_Package = () => {
             </div>
             <div className="packagesName">
               <h4>3 Starters + X4Mains + 1 Dessert</h4>
-              <h3>₹ 5,299/-</h3>
-              <p>(For 10 Guests)</p>
+              <h3>₹ 5,299/-<span> Onwards</span></h3>
+              <p>(For 20 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -446,8 +446,8 @@ const Custom_Package = () => {
             </div>
             <div className="packagesName">
               <h4>2 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 4,499/-</h3>
-              <p>(For 10 Guests)</p>
+              <h3>₹ 4,499/-<span> Onwards</span></h3>
+              <p>(For 20 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -462,8 +462,8 @@ const Custom_Package = () => {
             </div>
             <div className="packagesName">
               <h4>1 Starter + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 3,699/-</h3>
-              <p>(For 10 Guests)</p>
+              <h3>₹ 3,699/-<span> Onwards</span></h3>
+              <p>(For 20 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -479,8 +479,8 @@ const Custom_Package = () => {
             </div>
             <div className="packagesName">
               <h4>2 Starters + 3 Mains + 1 Dessert</h4>
-              <h3>₹ 5,999/-</h3>
-              <p>(For 10 Guests)</p>
+              <h3>₹ 5,999/-<span> Onwards</span></h3>
+              <p>(For 20 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -495,8 +495,8 @@ const Custom_Package = () => {
             </div>
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 4,199</h3>
-              <p>(For 10 Guests)</p>
+              <h3>₹ 4,199/-<span> Onwards</span></h3>
+              <p>(For 20 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -511,8 +511,8 @@ const Custom_Package = () => {
             </div>
             <div className="packagesName">
               <h4>6 Starters + 1 Mains</h4>
-              <h3>₹ 4,199/-</h3>
-              <p>(For 10 Guests)</p>
+              <h3>₹ 4,199/-<span> Onwards</span></h3>
+              <p>(For 20 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
