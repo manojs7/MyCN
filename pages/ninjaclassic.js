@@ -4,11 +4,13 @@ import Ninja_Header from '$lib/ninja-classic/Ninja_Header';
 import Specials from '$lib/ninja-classic/Specials';
 import Custom_Package from '$lib/ninja-classic/Custom_Package';
 import Footer from "$lib/Footer";
+import NewNavBar from '$lib/NewNavBar';
 //import NinjaBuffet_Video from '$lib/ninja-classic/NinjaBuffet_Video';
 
 export default function Ninja_Classic()
 {
     return (<>
+        <NewNavBar />
         <Navbar />
         <FeedBack />
         <Ninja_Header />

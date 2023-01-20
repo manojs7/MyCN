@@ -40,13 +40,13 @@
 }
 .float_nav_button {
   position: absolute;
-  width: 96% ;
+  width: 350px ;
   display: flex;
-  justify-content: space-between;
-  bottom: 62px;
+  justify-content: space-evenly;
+  bottom: 20px;
 // padding-left: 12px;
 // padding-right: 12px;
-left: 6px;
+left: -20px;
 right: 12px;
 }
 .float_nav_burger{
@@ -239,7 +239,7 @@ right: 12px;
     padding: 0 10px;
     width: 100vw;
 
-    height: 86px;
+    height: 56px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

@@ -245,7 +245,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "370px" }}
+                  style={{ height: "auto", width: "350px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}

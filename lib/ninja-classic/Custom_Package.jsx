@@ -416,46 +416,22 @@ const Custom_Package = () => {
       </section> : ""}
       {isSmall ? <section>
         <div className="packageContainer">
-          <div className="packageNameSection text-center ms-2 me-4">
-            <h3>PACKAGE NAME</h3>
-            <div className="packageImg">
-              <img src="card.png" />
-            </div>
-            <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
-            </div>
+          <div className="gourmetPackageNameSection text-center ms-2 me-3">
+            <img src="NCP1.png"/>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
-          <div className="packageNameSection text-center me-3">
-            <h3>PACKAGE NAME</h3>
-            <div className="packageImg">
-              <img src="card.png" />
-            </div>
-            <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
-            </div>
+          <div className="gourmetPackageNameSection text-center me-3">
+            <img src="NCP2.png"/>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
-          <div className="packageNameSection text-center">
-            <h3>PACKAGE NAME</h3>
-            <div className="packageImg">
-              <img src="card.png" />
-            </div>
-            <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
-            </div>
+          <div className="gourmetPackageNameSection text-center">
+            <img src="NCP3.png"/>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
@@ -463,46 +439,22 @@ const Custom_Package = () => {
           </div>
         </div>
         <div className="packageContainer">
-          <div className="packageNameSection text-center ms-2 me-4">
-            <h3>PACKAGE NAME</h3>
-            <div className="packageImg">
-              <img src="card.png" />
-            </div>
-            <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
-            </div>
+          <div className="gourmetPackageNameSection text-center ms-2 me-3">
+            <img src="NCP4.png"/>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
-          <div className="packageNameSection text-center me-3">
-            <h3>PACKAGE NAME</h3>
-            <div className="packageImg">
-              <img src="card.png" />
-            </div>
-            <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
-            </div>
+          <div className="gourmetPackageNameSection text-center me-3">
+            <img src="NCP5.png"/>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
             </div>
           </div>
-          <div className="packageNameSection text-center">
-            <h3>PACKAGE NAME</h3>
-            <div className="packageImg">
-              <img src="card.png" />
-            </div>
-            <div className="packagesName">
-              <h4>X Starters + X Mains + X Desserts</h4>
-              <h3>₹ <span>XXXXX</span></h3>
-              <p>(Per 10 Guests)</p>
-            </div>
+          <div className="gourmetPackageNameSection text-center">
+            <img src="NCP6.png"/>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
               <button type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>

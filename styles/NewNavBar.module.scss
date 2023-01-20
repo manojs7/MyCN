@@ -1,0 +1,54 @@
+#navContainer{
+    height: 55px;
+}
+
+#btn:active{
+    color: none;
+    border-radius: none;
+    color: none;
+    border: none;
+}
+
+#btn{
+    margin-left: -6px;
+}
+
+#hmbg{
+    margin-bottom: 5px;
+}
+
+#midLogo{
+    margin-left: -10px;
+}
+
+.contents{
+    padding-top: 12.5px;
+    display: flex;
+    margin-inline: 12px;
+    justify-content: space-between;
+}
+
+.navMenu{
+    height: 582px;
+    background-color: #FAFAFA;
+}
+
+#navImg{
+    margin-inline: 10px;
+}
+
+#navLink{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 25.8102px;
+    letter-spacing: -0.03em;
+    line-height: 31px;
+    color: #2C3338;
+    span{
+        color: #BE2D30;
+    }
+}
+
+.rightArrow{
+    
+}

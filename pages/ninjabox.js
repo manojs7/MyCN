@@ -6,6 +6,7 @@ import Custom_Package from '$lib/ninja-box/Custom_Package';
 import Footer from "$lib/Footer";
 import NinjaBox_Video from '$lib/ninja-box/NinjaBox_Video';
 import React, { useEffect, useState } from 'react'
+import NewNavBar from '$lib/NewNavBar';
 
 export default function Ninja_Box()
 {
@@ -27,6 +28,7 @@ export default function Ninja_Box()
     }, [])
 
     return (<>
+        <NewNavBar />
         <Navbar />
         <FeedBack/>
         <Ninja_Header />

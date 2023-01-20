@@ -227,7 +227,7 @@ const Custom_Package = () => {
                       className="bg-white my-2"
                       onClick={() => handleClick(index)}
                     >
-                      Customise Package
+                      Customise & Book Now
                     </button>
                   </div>
                 </div>
@@ -247,7 +247,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -262,7 +262,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -277,7 +277,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
             </div>
           </div>
@@ -294,7 +294,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -309,7 +309,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -324,7 +324,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
             </div>
           </div>
@@ -428,7 +428,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
@@ -443,7 +443,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
@@ -458,7 +458,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
             </div>
           </div>
         </div>
@@ -475,7 +475,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
             </div>
           </div>
           <div className="packageNameSection text-center me-3">
@@ -490,7 +490,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
             </div>
           </div>
           <div className="packageNameSection text-center">
@@ -505,7 +505,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
             </div>
           </div>
         </div>
