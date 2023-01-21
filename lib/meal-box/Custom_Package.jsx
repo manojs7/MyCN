@@ -435,7 +435,7 @@ const Custom_Package = () => {
               </div>
             <div className="d-flex justify-content-evenly">
               {/* <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Premium%20Meal%20box%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Premium%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Premium%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
             </div>
 
           </div>
@@ -451,7 +451,7 @@ const Custom_Package = () => {
               </div>
             <div className="d-flex justify-content-evenly">
               {/* <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Executive%20Meal%20box%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Executive%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Executive%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
             </div>
 
           </div>
@@ -467,7 +467,7 @@ const Custom_Package = () => {
               </div>
             <div className="d-flex justify-content-evenly">
               {/* <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Homely%20Meal%20box%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Homely%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Homely%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
             </div>
           </div>
         </div>
@@ -484,7 +484,7 @@ const Custom_Package = () => {
               </div>
             <div className="d-flex justify-content-evenly">
               {/* <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Indian%20Meal%20box%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Indian%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Indian%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
             </div>
 
           </div>
@@ -500,7 +500,7 @@ const Custom_Package = () => {
               </div>
             <div className="d-flex justify-content-evenly">
               {/* <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Asian%20Meal%20box%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Asian%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Asian%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
             </div>
 
           </div>
@@ -516,7 +516,7 @@ const Custom_Package = () => {
               </div>
             <div className="d-flex justify-content-evenly">
               {/* <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Biryani%20Meal%20box%20")} type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20Customize%20Biryani%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
+              <button onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Biryani%20Meal%20box%20")} type="button" className="btn btn-sm" id="customiseBtn">Chat & Place Order</button>
             </div>
           </div>
         </div>
