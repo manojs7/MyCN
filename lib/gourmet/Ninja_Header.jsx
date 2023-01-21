@@ -172,7 +172,7 @@ const Ninja_Header = () => {
           <div className="lgd-ninja-gourmet-header-title">Ninja<span>Gourmet</span>
           </div>
           <div className="lgd-ninja-gourmet-header-content">
-            <span>Super Premium Quality</span> Meals for Sophisticated <span>Corporate Meets!</span>
+            <span>Super Premium Quality</span> Meals for All Your Momentous <span>Events!</span>
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
@@ -200,7 +200,7 @@ const Ninja_Header = () => {
                   Ninja<span>Gourmet</span>
                 </div>
                 <div className="ninja-gourmet-header-content">
-                <span>Super Premium Quality</span> Meals for Sophisticated <span>Corporate Meets!</span>
+                <span>Super Premium Quality</span> Meals for All Your Momentous <span>Events!</span>
                 </div>
               </div>
               <div className="col-6 ninja-gourmet-ninja-img">

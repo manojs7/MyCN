@@ -213,13 +213,13 @@ const OurServices = () => {
                 </div>
                 <div className="buttons">
                   <Link href = "/ninjaclassic"><button
-                  className="view-details mt-2">View Details</button></Link>
-                  <button
+                  className="view-details mt-2 mx-auto">View Details</button></Link>
+                  {/* <button
                     onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
                     className="sample-pricing mt-2"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -267,13 +267,13 @@ const OurServices = () => {
 
                 <div className="buttons">
                   <Link href = "/mealbox"><button
-                  className="view-details mt-3">View Details</button></Link>
-                  <button
+                  className="view-details mt-3 mx-auto">View Details</button></Link>
+                  {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                     className="sample-pricing mt-3"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -318,13 +318,13 @@ const OurServices = () => {
                 </div>
                 <div className="buttons">
                   <Link href = "/snackbox"><button
-                  className="view-details">View Details</button></Link>
-                  <button
+                  className="view-details mx-auto">View Details</button></Link>
+                  {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -368,14 +368,14 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/gourmet"><button 
-                  className="view-details mt-5">View Details</button></Link>
-                  <button
+                  <Link href = "/gourmet"><button
+                  className="view-details mt-5 mx-auto">View Details</button></Link>
+                  {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
                     className="sample-pricing mt-5"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -549,13 +549,13 @@ const OurServices = () => {
                 </div>
                 <div className="buttons">
                   <Link href = "/ninjaclassic"><button
-                  className="view-details">View Details</button></Link>
-                  <button
+                  className="view-details mx-auto">View Details</button></Link>
+                  {/* <button
                     onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -610,13 +610,13 @@ const OurServices = () => {
 
               <div className="buttons">
                 <Link href = "/mealbox"><button 
-                className="view-details">View Details</button></Link>
-                <button
+                className="view-details mx-auto">View Details</button></Link>
+                {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                   className="sample-pricing"
                 >
                   Sample Pricing
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -664,13 +664,13 @@ const OurServices = () => {
               </div>
               <div className="buttons">
                 <Link href = "/snackbox"><button 
-                className="view-details">View Details</button></Link>
-                <button
+                className="view-details mx-auto">View Details</button></Link>
+                {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                   className="sample-pricing"
                 >
                   Sample Pricing
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -717,13 +717,13 @@ const OurServices = () => {
               </div>
               <div className="buttons">
                 <Link href = "/gourmet"><button
-                className="view-details">View Details</button></Link>
-                <button
+                className="view-details mx-auto">View Details</button></Link>
+                {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
                   className="sample-pricing"
                 >
                   Sample Pricing
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

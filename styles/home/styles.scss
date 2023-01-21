@@ -352,8 +352,8 @@
 .feed-back-container p {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 22.1997px;
+  font-weight: 500;
+  font-size: 20.1997px;
   line-height: 27px;
   text-align: center;
   color: white;
@@ -669,7 +669,7 @@
 // background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 // background: rgb(253,187,45);
 // background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(183,12,16,1) 100%);
-background: rgba(254, 186, 186, 0.2);
+  background: rgba(254, 186, 186, 0.2);
   h2{
     //style={{ fontFamily: "'Montserrat', sans-serif", borderBottom: "3px solid #ffb800", color: "white", paddingBottom: "1px", paddingTop: "20px", marginBottom: "50px", fontSize: "30px", fontWeight: "600", letterSpacing: "0.03em" }}
     font-size: 41px;
@@ -686,6 +686,9 @@ background: rgba(254, 186, 186, 0.2);
 }
 
 @media (max-width: 939px) {
+  .review-card{
+    margin-top: 15px !important;
+  }
   .section-title {
     h2 {
       font-size: 24.6592px !important;
@@ -698,6 +701,7 @@ background: rgba(254, 186, 186, 0.2);
     font-weight: 600;
     letter-spacing: -0.03em;
     color: #2C3338;
+    margin-bottom: 30px;
   }
 }
 
@@ -1135,6 +1139,42 @@ background: rgba(254, 186, 186, 0.2);
   }
 }
 
+//YOUTUBE IFRAME
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+
+@media (min-width: 992px) {
+  .video-responsive {
+    overflow: hidden;
+    //padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+  }
+  
+  .video-responsive iframe {
+    margin-left: 275px;
+    padding-bottom: 0%;
+    left: 0;
+    top: 0;
+    height: 60%;
+    width: 60%;
+    position: absolute;
+  }
+ }
+
 .testimonialsContainer {
   font-family: "Montserrat", sans-serif;
 }
@@ -1145,6 +1185,7 @@ background: rgba(254, 186, 186, 0.2);
   }
 
   .review-card {
+    margin-top: 20px !important;
     font-family: "Montserrat", sans-serif;
     background-color: white;
     border-radius: 20px;

@@ -285,7 +285,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>Asian SnackBox</h3>
               <div className="packageImg">
-              <img src="17.png" />
+              <img src="SBP4.png" />
               </div>
               <div className="packagesName">
                 <h4>4 Starters + 1 Desserts + 1 Beverage</h4>
@@ -315,7 +315,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>Basic SnackBox</h3>
               <div className="packageImg">
-              <img src="17.png" />
+              <img src="SBP6.png" />
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 1 Desserts + 1 Beverage</h4>
@@ -466,7 +466,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
           <h3>Asian SnackBox</h3>
               <div className="packageImg">
-              <img src="17.png" />
+              <img src="SBP4.png" />
               </div>
               <div className="packagesName">
                 <h4>4 Starters + 1 Desserts + 1 Beverage</h4>
@@ -496,7 +496,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
           <h3>Basic SnackBox</h3>
               <div className="packageImg">
-              <img src="17.png" />
+              <img src="SBP6.png" />
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 1 Desserts + 1 Beverage</h4>

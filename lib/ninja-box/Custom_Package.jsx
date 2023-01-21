@@ -429,7 +429,7 @@ const Custom_Package = () => {
               <img src="nijjabox1.png" />
             </div>
             <div className="packagesName">
-              <h4>3 Starters + 4Mains + 1 Dessert</h4>
+              <h4>3 Starters + 4 Mains + 1 Dessert</h4>
               <h3>₹ 5,299/-<span> Onwards</span></h3>
               <p>(Min. Order 10 Guests)</p>
             </div>

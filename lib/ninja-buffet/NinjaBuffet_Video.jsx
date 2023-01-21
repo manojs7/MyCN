@@ -10,7 +10,7 @@ export default function NinjaBuffet_Video() {
         height: "390",
         width: "640",
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
         },
       }
 
@@ -18,7 +18,7 @@ export default function NinjaBuffet_Video() {
         height: "190",
         width: "340",
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
         },
       }
 
@@ -28,14 +28,13 @@ export default function NinjaBuffet_Video() {
           setIsSmall(window.innerWidth <= 939)
         );
       }, []);
-
     return (
         <div className="container text-center">
             { isSmall ? <div className="ninjaBoxVideoSm">
-                <YouTube videoId="6e1uFuNF85c" opts={optsm}/>
+                <YouTube videoId="z_ZpvGxe5Xk" opts={optsm}/>
             </div> : ""}
             { !isSmall ?<div className="ninjaBoxVideoLg my-5">
-                <YouTube videoId="6e1uFuNF85c" opts={opts} />
+                <YouTube videoId="z_ZpvGxe5Xk" opts={opts} />
             </div> : ""}
         </div>
 

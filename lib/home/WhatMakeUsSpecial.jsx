@@ -33,7 +33,7 @@ export default function WhatMakeUsSpecial() {
                 <div className="What-Make-Us-Special-icon">
                   <img src="wmus-iocn1.png" alt="" />
                 </div>
-                <p>Easy Online Ordering</p>
+                <p>Easy Online<br/>Ordering</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-hover">
@@ -57,7 +57,7 @@ export default function WhatMakeUsSpecial() {
                 <div className="What-Make-Us-Special-icon">
                   <img src="wmus-iocn2.png" alt="" />
                 </div>
-                <p>Select menu and Get price</p>
+                <p>Select menu and<br/>Get price</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-container-card-back reveal">
