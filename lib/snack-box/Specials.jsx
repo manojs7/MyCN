@@ -249,7 +249,7 @@ const Specials = () => {
             </div>
             <div className="">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7px", lineHeight: "12px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "6.9px", lineHeight: "12px" }}>
                   ✅ Trendy Bulk Packaging <br />
                   ✅ BioFriendly Disposable<br />
                   ✅ No Utensile - Direct To Tablestyle
