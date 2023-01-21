@@ -198,8 +198,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/gallery">
-              <a
+            <Link href="https://www.caterninja.com/about-us">
+              <a target="_blank"
                 className={page == "gallery" ? styles.current : null}
                 onClick={() => burger_click()}
               >
@@ -208,8 +208,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/contact-us">
-              <a
+            <Link href="https://www.caterninja.com/blog/">
+              <a target="_blank"
                 className={page == "contact" ? styles.current : null}
                 onClick={() => burger_click()}
               >
@@ -238,8 +238,8 @@ export default function Navbar({ page }) {
       <div className={styles.nav_socials + " col-4"}>
         <ul className={styles.links}>
           <li>
-            <Link href="/">
-              <a>
+            <Link href="https://www.instagram.com/caterninja/">
+              <a target="_blank">
                 <FontAwesomeIcon
                   className={styles.icon}
                   icon={faInstagram}
@@ -248,8 +248,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a>
+            <Link href="https://www.facebook.com/CaterNinja/">
+              <a target="_blank">
                 <FontAwesomeIcon
                   className={styles.icon}
                   icon={faFacebook}
@@ -258,8 +258,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a>
+            <Link href="https://www.youtube.com/channel/UC_lMKzsQnJ6R2LaIR49fvSA">
+              <a target="_blank">
                 <FontAwesomeIcon
                   className={styles.icon}
                   icon={faYoutube}

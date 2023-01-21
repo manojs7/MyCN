@@ -39,15 +39,16 @@
     margin: 1rem  0 0 0;
     .links {
         display: flex;
-        gap: 50px;
+        gap: 20px;
         list-style: none;
-        justify-content: flex-start;
-        align-items: center;
-        padding-left: 40px;
+        //justify-content: flex-start;
+        //align-items: center;
+        //padding-left: 40px;
+        margin-left: -25px;
         .icon {
             color: #935052;
-            width: 32px;
-            height: 32px;
+            width: 25px;
+            height: 25px;
         }
     }
 }
@@ -67,7 +68,8 @@
     width: 260px;
     .text {
         width: fit-content;
-        // margin: 0 auto;
+        //margin: 0 auto;
+        margin-left: 0;
        
     }
 
@@ -105,7 +107,8 @@
 
 .copyright{
     display: flex;
-    justify-content: center;
+    //justify-content: center;
+    margin-left: 0%;
   p{
     font-family: "Montserrat", sans-serif;
   }
