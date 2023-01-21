@@ -243,7 +243,7 @@ const Custom_Package = () => {
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
                 <h3>₹ 8,799/-</h3>
-                <p>(For 10 Guests)</p>
+                <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -258,7 +258,7 @@ const Custom_Package = () => {
               <div className="packagesName">
                 <h4>2 Starters + 4 Mains + 1 Dessert</h4>
                 <h3>₹ 7,999/-</h3>
-                <p>(For 10 Guests)</p>
+                <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -273,7 +273,7 @@ const Custom_Package = () => {
               <div className="packagesName">
                 <h4>1 Starter + 4 Mains + 1 Dessert</h4>
                 <h3>₹ 7,199/-</h3>
-                <p>(For 10 Guests)</p>
+                <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -290,7 +290,7 @@ const Custom_Package = () => {
               <div className="packagesName">
                 <h4>2 Starters + 3 Mains + 1 Dessert</h4>
                 <h3>₹ 9,499/-</h3>
-                <p>(For 10 Guests)</p>
+                <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -305,7 +305,7 @@ const Custom_Package = () => {
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
                 <h3>₹ 7,699/-</h3>
-                <p>(For 10 Guests)</p>
+                <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -320,7 +320,7 @@ const Custom_Package = () => {
               <div className="packagesName">
                 <h4>6 Starters + 1 Mains</h4>
                 <h3>₹ 7,699/-</h3>
-                <p>(For 10 Guests)</p>
+                <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -424,7 +424,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
               <h3>₹ 8,799/-</h3>
-              <p>(For 10 Guests)</p>
+              <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -439,7 +439,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>2 Starters + 4 Mains + 1 Dessert</h4>
               <h3>₹ 7,999/-</h3>
-              <p>(For 10 Guests)</p>
+              <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -454,7 +454,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>1 Starter + 4 Mains + 1 Dessert</h4>
               <h3>₹ 7,199/-</h3>
-              <p>(For 10 Guests)</p>
+              <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -471,7 +471,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>2 Starters + 3 Mains + 1 Dessert</h4>
               <h3>₹ 9,499/-</h3>
-              <p>(For 10 Guests)</p>
+              <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -486,7 +486,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
               <h3>₹ 7,699</h3>
-              <p>(For 10 Guests)</p>
+              <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
@@ -501,7 +501,7 @@ const Custom_Package = () => {
             <div className="packagesName">
               <h4>1 Starter + 4 Mains + 1 Dessert</h4>
               <h3>₹ 7,699</h3>
-              <p>(For 10 Guests)</p>
+              <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
               {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}

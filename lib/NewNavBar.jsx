@@ -16,7 +16,7 @@ const NewNavBar = () => {
                     <button className="navbar-toggler" id={styles.btn} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <img id={styles.hmbg} src='hamburger.png' width="21.19px" height="11.91px" />
                     </button>
-                    <a href='/'><img id={styles.midLogo} src='CaterNinja (1).png' width="119px" height="24px" /></a>
+                    <Link href='/'><a><img id={styles.midLogo} src='CaterNinja (1).png' width="119px" height="24px" /></a></Link>
                     <img src='bottomNavLogo.png' width="29.64px" height="30.06px" />
                     {/* <a className="navbar-brand" href="#">Navbar</a> */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,39 +26,39 @@ const NewNavBar = () => {
                             </li> */}
                             <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='nav1.png' height="33px" width="52.8px" />
-                                <a href="/ninjabox" id={styles.navLink} className="nav-link">Ninja<span>Box</span></a>
+                                <Link href="/ninjabox"><a  id={styles.navLink} className="nav-link">Ninja<span>Box</span></a></Link>
                                 {/* <div className={styles.rightArrow}>
                                     <FontAwesomeIcon icon={faChevronRight}/>
                                 </div> */}
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='nav1.png' height="33px" width="52.8px" />
-                                <a id={styles.navLink} className="nav-link" href="/ninjabuffet">Ninja<span>Buffet</span></a>
+                                <Link href="/ninjabuffet"><a id={styles.navLink} className="nav-link" >Ninja<span>Buffet</span></a></Link>
                                 {/* <div className={styles.rightArrow}>
                                     <FontAwesomeIcon icon={faChevronRight}/>
                                 </div> */}
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='nav1.png' height="33px" width="52.8px" />
-                                <a id={styles.navLink} className="nav-link" href="/mealbox">Meal<span>Box</span></a>
+                                <Link href="/mealbox"><a id={styles.navLink} className="nav-link" >Meal<span>Box</span></a></Link>
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='nav1.png' height="33px" width="52.8px" />
-                                <a id={styles.navLink} className="nav-link" href="/snackbox">Snack<span>Box</span></a>
+                                <Link href="/snackbox"><a id={styles.navLink} className="nav-link" >Snack<span>Box</span></a></Link>
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='nav1.png' height="33px" width="52.8px" />
-                                <a id={styles.navLink} className="nav-link" href="/ninjaclassic">Ninja<span>Classic</span></a>
+                                <Link href="/ninjaclassic"><a id={styles.navLink} className="nav-link" >Ninja<span>Classic</span></a></Link>
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='nav1.png' height="33px" width="52.8px" />
-                                <a id={styles.navLink} className="nav-link" href="/gourmet">Ninja<span>Gourmet</span></a>
+                                <Link href="/gourmet"><a id={styles.navLink} className="nav-link" >Ninja<span>Gourmet</span></a></Link>
                             </li>
                             <li className="nav-item d-flex align-items-center">
-                                <a id={styles.navLink} className="nav-link" href="/https://www.caterninja.com/about-us" target="_blank">About<span>Us</span></a>
+                            <Link href="https://www.caterninja.com/about-us"><a id={styles.navLink} className="nav-link"  target="_blank">About<span>Us</span></a></Link>
                             </li>
                             <li className="nav-item d-flex align-items-center">
-                                <a id={styles.navLink} className="nav-link" href="https://www.caterninja.com/blog/" target="_blank">Blogs</a>
+                            <Link href="https://www.caterninja.com/blog/"><a id={styles.navLink} className="nav-link"  target="_blank">Blogs</a></Link>
                             </li>
                         </ul>
                     </div>
