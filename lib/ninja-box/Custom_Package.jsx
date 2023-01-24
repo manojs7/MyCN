@@ -426,7 +426,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>Punjabi NinjaBox</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="NBP1.png" />
             </div>
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -442,7 +442,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>NinjaBox Indian</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="222.png" />
             </div>
             <div className="packagesName">
               <h4>2 Starters + 4 Mains + 1 Dessert</h4>
@@ -458,7 +458,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>B&apos;Day NinjaBox</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="333.png" />
             </div>
             <div className="packagesName">
               <h4>1 Starter + 4 Mains + 1 Dessert</h4>
@@ -475,7 +475,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>Fusion NinjaBox</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="4444.png" />
             </div>
             <div className="packagesName">
               <h4>2 Starters + 3 Mains + 1 Dessert</h4>
@@ -491,7 +491,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>Asian NinjaBox</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="555.png" />
             </div>
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -507,7 +507,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>Cocktail Party</h3>
             <div className="packageImg">
-              <img src="nijjabox1.png" />
+              <img src="666.png" />
             </div>
             <div className="packagesName">
               <h4>6 Starters + 1 Mains</h4>

@@ -225,7 +225,7 @@ const Ninja_Header = () => {
               }}
             />
           </div> */}
-          <div className="mb-5">
+          <div className="mb-5 mt-2">
             {/* <ReactImageMagnify
             {...{
               smallImage: {
@@ -247,7 +247,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "360px" }}
+                  style={{ height: "auto", width: "390px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}

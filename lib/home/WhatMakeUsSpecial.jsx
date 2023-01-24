@@ -38,7 +38,7 @@ export default function WhatMakeUsSpecial() {
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p style={{fontWeight: "600", fontSize: "8.20308px", marginLeft: "16px", paddingBottom: "4px"}}>
+                <p style={{ fontFamily: "'Montserrat', sans-seraf", fontWeight: "600", fontSize: "8.20308px", marginLeft: "16px", paddingBottom: "4px"}}>
                   Catering Experts Available Online For You, <span>Call / Whatsapp</span> Us,
                   We Would Be Happy To Help You!
                 </p>

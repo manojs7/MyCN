@@ -42,12 +42,20 @@
   position: absolute;
   width: 350px ;
   display: flex;
-  justify-content: space-evenly;
-  bottom: 20px;
+  //justify-content: space-between;
+  bottom: 5px;
 // padding-left: 12px;
 // padding-right: 12px;
-left: -20px;
-right: 12px;
+// left: -20px;
+// right: 12px;
+}
+.bottomBtn{
+  display: flex;
+  //margin-left: 10px;
+  //margin: auto;
+  img{
+    margin-right: 15px;
+  }
 }
 .float_nav_burger{
   height:30px ;

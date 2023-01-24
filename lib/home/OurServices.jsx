@@ -424,9 +424,9 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-picmb">
                   <img
-                    src="mBa1.png"
+                    src="backpic.png"
                     height="100%"
-                    width="100%"
+                    width="90%"
                     alt=""
                     className="hoverZoom"
                   />
@@ -486,9 +486,12 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-picmb">
                   <img
-                    src="mBa2.png"
+                    src="backpic2.png"
+                    height="100%"
+                    width="90%"
                     alt=""
-                    className="img-fluid hoverZoom"
+                    className="hoverZoom"
+                    //className="img-fluid hoverZoom"
                   />
                 </div>
                 <div className="buttons">
@@ -542,7 +545,9 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-picmb">
                   <img
-                    src="mBa3.png"
+                    src="backpic3.png"
+                    height="100%"
+                    width="60%"
                     alt=""
                     className="img-fluid hoverZoom"
                   />
@@ -602,7 +607,9 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <img
-                  src="mBa4.png"
+                  src="backpic4.png"
+                  height="100%"
+                    width="90%"
                   alt=""
                   className="img-fluid hoverZoom"
                 />
@@ -657,7 +664,9 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <img
-                  src="mBa5.png"
+                  src="backpic5.png"
+                  height="100%"
+                  width="60%"
                   alt=""
                   className="img-fluid hoverZoom"
                 />
@@ -710,7 +719,9 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <img
-                  src="mBa6.png"
+                  src="backpic6.png"
+                  height="100%"
+                    width="65%"
                   alt=""
                   className="img-fluid hoverZoom"
                 />
