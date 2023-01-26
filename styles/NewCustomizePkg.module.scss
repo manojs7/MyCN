@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet');
+// .customizeMainContainer{
+//     font-family: "Montserrat", sans-serif;
+// }
+
+// .header{
+//     height: 505px;
+//     background-color: #FFC31A;
+// }
+
+// .headerContent{
+//     padding-inline: 20.47px;
+//     #ninjaLogo{
+//         margin-top: 49px;
+//         //margin-left: 20.47px;
+//     }
+// }
+
+// .textLogo{
+//     margin-top: 5px;
+//     display: flex;
+//     justify-content: space-between;
+//     h3{
+//         margin-top: 10px;
+//         font-size: 26.8px;
+//         line-height: 27.34px;
+//         font-weight: 600;
+//         margin-bottom: 0%;
+//         margin-right: 0%;
+//     }
+//     h2{
+//         margin: 0;
+//         font-size: 46.37px;
+//         font-weight: 900;
+//         span{
+//             color: white;
+//         }
+//     }
+//     h5{
+//         font-size: 16.1522px;
+//         font-weight: 400;
+//         line-height: 20px;
+//         // width: 275.22px;
+//         // height: 38.7px;
+//     }
+//     img{
+//         margin-top: 5px;
+//     }
+// }
+
+// .ninjabox{
+//     text-align: center;
+//     margin-top: 40px;
+// }
+
+// .cityContainer{
+//     background-color: #BE2D30;
+//     text-align: center;
+//     padding: 30px;
+//     h3{
+//         font-weight: 700;
+//         font-size: 26px;
+//         line-height: 32px;
+//         letter-spacing: 0.05em;
+//         color: #FFFFFF;
+//         margin-bottom: 10px;
+//     }
+//     select{
+//         width: 210px;
+//         height: 38px;
+//         border-radius: 10px;
+//         margin: auto;
+//         width: 150px;
+//     }
+// }
+
+// .packageName{
+//     text-align: center;
+//     margin-top: 50px;
+//     h3{
+//         font-weight: 600;
+//         font-size: 23px;
+//         line-height: 28px;
+//         letter-spacing: 0.02em;
+//     }
+//     h6{
+//         font-weight: 500;
+//         font-size: 17px;
+//         line-height: 21px;
+//         letter-spacing: 0.02em;
+//         margin-top: 5px;
+//     }
+//     #vegGuest{
+//         color: #4E810A;
+//         font-weight: 500;
+//         font-size: 15.4677px;
+//         line-height: 19px;
+//         span{
+//             color: black;
+//         }
+//     }
+//     #nonVeg{
+//         color: #BE2D30;
+//         font-weight: 500;
+//         font-size: 15.4677px;
+//         line-height: 19px;
+//         span{
+//             color: black;
+//         }
+//     }
+// }
+
+// //starter scss
+// .fstItem {
+//     height: 106px;
+//     width: 778px;
+//     background-color: #F8F8F8;
+//     margin: auto;
+//     border-radius: 10px;
+//     display: flex;
+
+//     h4 {
+//         font-size: 20.8px;
+//         font-weight: 600;
+//         margin-bottom: 0;
+//         letter-spacing: 0.05em;
+//     }
+
+//     p {
+//         margin-top: 0px;
+//         margin-left: 0;
+//         font-size: 12.8px;
+//         font-style: italic;
+//     }
+// }
+// .itemImage {
+//     height: 106px;
+//     width: 120px;
+//     border-radius: 10px;
+// }
+// .itemDetailsContainer {
+//     display: flex;
+//     margin-top: 12px;
+// }
+// .vegLogo {
+//     margin-left: 15px;
+//     margin-right: 10px;
+//     margin-top: 3px;
+//     height: 19px;
+//     width: 19px;
+// }
+// .downarrowLogo {
+//     width: 23px;
+//     height: 15px;
+//     margin: 30px 0px 0px 50px;
+// }
+// .quantityBtn {
+//     margin: auto;
+//     margin-left: 120px;
+//     margin-top: 10px;
+//     display: flex;
+//     width: 176px;
+//     height: 48px;
+//     background-color: white;
+
+//     button {
+//         height: 48px;
+//         width: 48px;
+//         background-color: #FFC31A;
+//         border: none;
+//         font-size: 26.68px;
+//         font-weight: 600;
+//         box-shadow: 0px 5.05263px 5.05263px rgba(0, 0, 0, 0.25);
+//     }
+
+//     h6 {
+//         margin: auto;
+//         font-size: 16.42px;
+//         font-weight: 600;
+//         letter-spacing: 0.05em;
+//     }
+// }
+// .recQnty {
+//     font-size: 12.8px;
+//     font-style: italic;
+//     color: #4E810A;
+//     padding-left: 145px;
+//     padding-top: 8px;
+//     letter-spacing: 0.05em;
+// }
+// .trassLogo {
+//     width: 17px;
+//     height: 19px;
+//     margin-left: 45px;
+// }
+
+// .startersContainer{
+//     margin-inline: 50px;
+// }
+
+.customizeMainContainer {
+    font-family: "Montserrat", sans-serif;
+}
+
+.header {
+    margin-top: 80px;
+    height: 444px;
+    background-color: #FFC31A;
+}
+
+.headerContent {
+    padding-left: 60px;
+    padding-top: 65px;
+    display: flex;
+    h2 {
+        padding-top: 20px;
+        margin: 0;
+        font-size: 77.1603px;
+        line-height: 102%;
+        font-weight: 600;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 94.66px;
+        line-height: 96.55px;
+        font-weight: 900;
+        span{
+            color: white;
+        }
+    }
+    p{
+        padding-top: 10px;
+        font-size: 32.9702px;
+        font-weight: 400;
+        line-height: 40px;
+    }
+    #ninja{
+        margin-top: 40px;
+        margin-left: 70px;
+    }
+    #pkgImg{
+        margin-top: 40px;
+    }
+}
+
+.packageContainer{
+    background-color: #BE2D30;
+}
+
+.cityContent{
+    display: flex;
+    justify-content: flex-end;
+    padding-block: 50px;
+    h3{
+        text-align: end;
+        color: white;
+        margin-right: 15px;
+    }
+    select{
+        text-align: center;
+        width: 210.5px;
+        height: 42.81px;
+        border-radius: 10px;
+    }
+}
+.page{
+    margin-inline: 220px;
+}
+
+.bgWhiteClr{
+    background-color: #FFFFFF;
+    padding: 80px;
+}
+
+.pkgDetails{
+    display: flex;
+    justify-content: space-between;
+    h3{
+        margin-top: 15px;
+        font-weight: 600;
+        font-size: 31px;
+        line-height: 38px;
+        letter-spacing: 0.02em;
+        color: #42484E;
+    }
+    h5{
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.03em;
+        color: #2C3338;
+    }
+    #vegGuest{
+        margin: 0%;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: #4E810A;
+        span{
+            color: black;
+        }
+    }
+    #nonVegGuest{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: #BE2D30;
+        span{
+            color: black;
+        }
+    }
+}
+
+
+.startersContainer{
+    margin-top: 50px;
+    h5{
+        text-align: center;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 32px;
+        letter-spacing: 0.05em;
+        color: #2C3338;
+    }
+    .fstItem {
+        margin: auto;
+        height: 106px;
+        width: 778px;
+        background-color: #F8F8F8;
+        border-radius: 10px;
+        display: flex;
+        border: 1px solid red;
+    
+        h4 {
+            font-size: 20.8px;
+            font-weight: 600;
+            margin-bottom: 0;
+            letter-spacing: 0.05em;
+        }
+    
+        p {
+            margin-top: 0px;
+            margin-left: 0;
+            font-size: 12.8px;
+            font-style: italic;
+        }
+    }
+    .itemImage {
+        height: 106px;
+        width: 120px;
+        border-radius: 10px;
+    }
+
+    .itemDetailsContainer {
+        display: flex;
+        margin-top: 12px;
+    }
+
+    .vegLogo {
+        margin-left: 15px;
+        margin-right: 10px;
+        margin-top: 3px;
+        height: 19px;
+        width: 19px;
+    }
+
+    .downarrowLogo {
+        width: 23px;
+        height: 15px;
+        margin: 30px 0px 0px 50px;
+    }
+}
+
+.quantityBtn {
+    margin: auto;
+    margin-left: 120px;
+    margin-top: 10px;
+    display: flex;
+    width: 176px;
+    height: 48px;
+    background-color: white;
+
+    button {
+        height: 48px;
+        width: 48px;
+        background-color: #FFC31A;
+        border: none;
+        font-size: 26.68px;
+        font-weight: 600;
+        box-shadow: 0px 5.05263px 5.05263px rgba(0, 0, 0, 0.25);
+    }
+
+    h6 {
+        margin: auto;
+        font-size: 16.42px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+}
+
+.recQnty {
+    font-size: 12.8px;
+    font-style: italic;
+    color: #4E810A;
+    padding-left: 145px;
+    padding-top: 8px;
+    letter-spacing: 0.05em;
+}
+
+.trassLogo {
+    width: 17px;
+    height: 19px;
+    margin-left: 45px;
+}
+
+.addStarterBtnContnr {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 90px;
+    margin-top: 20px;
+}
+
+.addStarterBtn {
+    border: none;
+    background-color: white;
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    color: #BE2D30;
+}
