@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const CustomizeNinjaBox = () => {
     return (
         <div className={styles.customizeMainContainer}>
-            {/* <div className={styles.customizeMainContainer}>
+            <div className={styles.customizeMainContainer}>
                 <div className={styles.header}>
                     <div className={styles.headerContent}>
                         <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
@@ -66,7 +66,9 @@ const CustomizeNinjaBox = () => {
                                                 <h6>5.5 Kg</h6>
                                                 <button>+</button>
                                             </div>
-                                            <p className={styles.recQnty}>Recommended Qt.</p>
+                                            <div className={styles.recQnty}>
+                                                <p>Recommended Qt.</p>
+                                            </div>
                                         </div>
                                         <div>
                                             <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
@@ -91,7 +93,9 @@ const CustomizeNinjaBox = () => {
                                                     <h6>50 Pcs</h6>
                                                     <button>+</button>
                                                 </div>
-                                                <p className={styles.recQnty}>Recommended Qt.</p>
+                                                <div className={styles.recQnty}>
+                                                    <p>Recommended Qt.</p>
+                                                </div>
                                             </div>
                                             <div>
                                                 <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
@@ -104,10 +108,190 @@ const CustomizeNinjaBox = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className={styles.startersContainer}>
+                            <h5>Mains</h5>
+                            <div className={styles.starterItems}>
+                                <div className={styles.fstItem}>
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <div className={styles.itemDetailsContainer}>
+                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                                        <div>
+                                            <h4>Paneer Butter<br />Masala</h4>
+                                            <p>Classic Choice For Mains</p>
+                                        </div>
+                                        <div>
+                                            <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                        </div>
+                                        <div>
+                                            <div className={styles.quantityBtn}>
+                                                <button>-</button>
+                                                <h6>5.5 Kg</h6>
+                                                <button>+</button>
+                                            </div>
+                                            <div className={styles.recQnty}>
+                                                <p>Recommended Qt.</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-3">
+                                    <div className={styles.fstItem}>
+                                        <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+                                        <div className={styles.itemDetailsContainer}>
+                                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+                                            <div>
+                                                <h4>Chicken<br />Tandoori</h4>
+                                                <p>Classic Choice For Mains</p>
+                                            </div>
+                                            <div>
+                                                <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                            </div>
+                                            <div>
+                                                <div className={styles.quantityBtn}>
+                                                    <button>-</button>
+                                                    <h6>50 Pcs</h6>
+                                                    <button>+</button>
+                                                </div>
+                                                <div className={styles.recQnty}>
+                                                    <p>Recommended Qt.</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-3">
+                                    <div className={styles.fstItem}>
+                                        <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+                                        <div className={styles.itemDetailsContainer}>
+                                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+                                            <div>
+                                                <h4>Chicken<br />Tandoori</h4>
+                                                <p>Classic Choice For Mains</p>
+                                            </div>
+                                            <div>
+                                                <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                            </div>
+                                            <div>
+                                                <div className={styles.quantityBtn}>
+                                                    <button>-</button>
+                                                    <h6>50 Pcs</h6>
+                                                    <button>+</button>
+                                                </div>
+                                                <div className={styles.recQnty}>
+                                                    <p>Recommended Qt.</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-3">
+                                    <div className={styles.fstItem}>
+                                        <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+                                        <div className={styles.itemDetailsContainer}>
+                                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+                                            <div>
+                                                <h4>Chicken<br />Tandoori</h4>
+                                                <p>Classic Choice For Mains</p>
+                                            </div>
+                                            <div>
+                                                <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                            </div>
+                                            <div>
+                                                <div className={styles.quantityBtn}>
+                                                    <button>-</button>
+                                                    <h6>50 Pcs</h6>
+                                                    <button>+</button>
+                                                </div>
+                                                <div className={styles.recQnty}>
+                                                    <p>Recommended Qt.</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.addStarterBtnContnr}>
+                                    <button className={styles.addStarterBtn}>+ Add Main</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.startersContainer}>
+                            <h5>Desserts</h5>
+                            <div className={styles.starterItems}>
+                                <div className={styles.fstItem}>
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <div className={styles.itemDetailsContainer}>
+                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                                        <div>
+                                            <h4>Paneer Butter<br />Masala</h4>
+                                            <p>Classic Choice For Mains</p>
+                                        </div>
+                                        <div>
+                                            <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                        </div>
+                                        <div>
+                                            <div className={styles.quantityBtn}>
+                                                <button>-</button>
+                                                <h6>5.5 Kg</h6>
+                                                <button>+</button>
+                                            </div>
+                                            <div className={styles.recQnty}>
+                                                <p>Recommended Qt.</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-3">
+                                    <div className={styles.fstItem}>
+                                        <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+                                        <div className={styles.itemDetailsContainer}>
+                                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+                                            <div>
+                                                <h4>Chicken<br />Tandoori</h4>
+                                                <p>Classic Choice For Mains</p>
+                                            </div>
+                                            <div>
+                                                <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+                                            </div>
+                                            <div>
+                                                <div className={styles.quantityBtn}>
+                                                    <button>-</button>
+                                                    <h6>50 Pcs</h6>
+                                                    <button>+</button>
+                                                </div>
+                                                <div className={styles.recQnty}>
+                                                    <p>Recommended Qt.</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.addStarterBtnContnr}>
+                                    <button className={styles.addStarterBtn}>+ Add Dessert</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div> */}
-            <div className={styles.header}>
+            </div>
+            {/* <div className={styles.header}>
                 <div className={styles.headerContent}>
                     <div>
                         <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="186.97px" height="39.79px" />
@@ -124,8 +308,8 @@ const CustomizeNinjaBox = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.packageContainer}>
+            </div> */}
+            {/* <div className={styles.packageContainer}>
                 <div className={styles.page}>
                     <div className={styles.cityContent}>
                         <div>
@@ -214,7 +398,7 @@ const CustomizeNinjaBox = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
