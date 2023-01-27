@@ -412,10 +412,12 @@
   font-family: "Montserrat", sans-serif;
 }
 
-// .categories-item:hover p {
-//   font-size: 20px;
-//   transition: 1s;
-// }
+.categories-item:hover p {
+  //font-size: 20px;
+  font-size: 17px;
+  transform: scale(1.1);
+  transition: 0.2s;
+}
 
 //  ninja box
 
@@ -756,7 +758,7 @@
   //box-shadow: 0px 4px 4px 0px #00000040;
   display: flex;
   justify-content: center;
-  // align-items: center;
+  //align-items: center;
   flex-direction: column;
   border-radius: 20px;
   // background: linear-gradient(
@@ -768,7 +770,7 @@
   background: #ffb800;
   // width: 374px;
   // height: 494px !important;
-  margin-left: 20px;
+  //margin-left: 20px;
   width: 344px;
   height: 484px !important;
   height: 100%;

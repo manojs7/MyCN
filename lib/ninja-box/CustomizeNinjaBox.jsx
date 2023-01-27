@@ -109,7 +109,7 @@ const CustomizeNinjaBox = () => {
                             </div>
                         </div>
                         <div className={styles.startersContainer}>
-                            <h5>Mains</h5>
+                            <h5 className='mt-5'>Mains</h5>
                             <div className={styles.starterItems}>
                                 <div className={styles.fstItem}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
@@ -227,7 +227,7 @@ const CustomizeNinjaBox = () => {
                             </div>
                         </div>
                         <div className={styles.startersContainer}>
-                            <h5>Desserts</h5>
+                            <h5 className='mt-5'>Desserts</h5>
                             <div className={styles.starterItems}>
                                 <div className={styles.fstItem}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
@@ -289,6 +289,19 @@ const CustomizeNinjaBox = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='mt-5'>
+                    <div className={styles.userInput}>
+                        <h4>Details*</h4>
+                        <div>
+                            <input placeholder='Name' />
+                            <input placeholder='Number' />
+                            <input placeholder='E-Mail' />
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.instantQuoteBtn}>
+                    <button>Get Instant Quote</button>
                 </div>
             </div>
             {/* <div className={styles.header}>

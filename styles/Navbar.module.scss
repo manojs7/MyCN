@@ -80,7 +80,7 @@
   --size: 1.1rem;
 
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   vertical-align: baseline;
   box-sizing: border-box;
   padding: var(--size) 0 var(--size) 0;
@@ -127,6 +127,7 @@
     vertical-align: middle;
     white-space: nowrap;
     z-index: 9000;
+    margin-left: 10px;
 
     img {
       width: 200px;
@@ -144,11 +145,12 @@
   display: none;
 }
 .nav_socials {
+  margin-left: 165px;
   .links {
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    justify-content: center;
+    justify-content: flex-end;
     font-family: "Poppins";
     z-index: 1002;
     margin-bottom: 0;

@@ -25,6 +25,9 @@ const NewNavBar = () => {
                                 <a className="nav-link active" aria-current="page" href="#">Home</a>
                             </li> */}
                             <li className="nav-item d-flex align-items-center">
+                                <Link href="/"><a id={styles.navLink} className="nav-link">Home</a></Link>
+                            </li>
+                            <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='nav1.png' height="33px" width="52.8px" />
                                 <Link href="/ninjabox"><a id={styles.navLink} className="nav-link">Ninja<span>Box</span></a></Link>
                                 {/* <div className={styles.rightArrow}>

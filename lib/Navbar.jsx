@@ -146,8 +146,21 @@ export default function Navbar({ page }) {
 
   const big = (
     <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}` + ` ${!scrollUp ? styles.hideNav : ""}`}>
-      <div className="col-4">
+      <div className="col-5">
         <ul className={styles.links} data-state={active.toString()} id="links">
+        <li>
+            <Link href="/">
+              <a
+                className={
+                  router.pathname == "/" ? styles.current : null
+                }
+                onClick={() => burger_click()}
+              >
+                {" "}
+                <span style={{ color: "#BE2D30" }}>Home</span>
+              </a>
+            </Link>
+          </li>
           <li>
             <Link href="/ninjabox">
               <a
@@ -235,7 +248,7 @@ export default function Navbar({ page }) {
       >
         <img src="CaterNinja (1).png" alt="logo" />
       </div>
-      <div className={styles.nav_socials + " col-4"}>
+      <div className={styles.nav_socials + " col-3"}>
         <ul className={styles.links}>
           <li>
             <Link href="https://www.instagram.com/caterninja/">
