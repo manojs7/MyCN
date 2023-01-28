@@ -300,8 +300,84 @@ const CustomizeNinjaBox = () => {
                         </div>
                     </div>
                 </div>
+                <div className={styles.chefNote}>
+                    <p>Special Restriction? Chef Note?</p>
+                    <input type="text" />
+                </div>
                 <div className={styles.instantQuoteBtn}>
                     <button>Get Instant Quote</button>
+                </div>
+                <div className={styles.applyCoupon}>
+                    <input type="text" placeholder='Enter Coupon Code' />
+                    <button>Apply</button>
+                </div>
+                <div className={styles.pricing}>
+                    <div>
+                        <div className={styles.pricingTitle1}>
+                            <div>
+                                <h4>Items Total</h4>
+                            </div>
+                            <div>
+                                <p>₹0000</p>
+                            </div>
+                        </div>
+                        <div className={styles.pricingTitle11}>
+                            <div>
+                                <h4>NinjaBox Service</h4>
+                            </div>
+                            <div>
+                                <p>₹0000</p>
+                            </div>
+                        </div>
+                        <div className={styles.pricingTitle2}>
+                            <div>
+                                <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
+                            </div>
+                            <div>
+                                <p>₹0000</p>
+                            </div>
+                        </div>
+                        <hr className={styles.hr1} />
+                        <div className={styles.pricingTitle3}>
+                            <div>
+                                <h4>Coupon Value</h4>
+                            </div>
+                            <div>
+                                <p>₹0000</p>
+                            </div>
+                        </div>
+                        <div className={styles.pricingTitle4}>
+                            <div>
+                                <h4>GST</h4>
+                            </div>
+                            <div>
+                                <p>₹0000</p>
+                            </div>
+                        </div>
+                        <hr id={styles.hr2} />
+                    </div>
+                    <div className={styles.grandTotal}>
+                        <div>
+                            <h4>Grand Total</h4>
+                        </div>
+                        <div>
+                            <p>₹0000</p>
+                        </div>
+                    </div>
+                    <div className={styles.orderBtn}>
+                        <button>Place Order</button>
+                    </div>
+                </div>
+                <div className={styles.createYourOwnPkg}>
+                    <div>
+                        <img src='Group 803.png' />
+                    </div>
+                    <div className='text-center mt-3'>
+                        <p>Not Happy with the Package?</p>
+                        <h2>Create Your<span>Own</span></h2>
+                        <h6>Curate your own flavour of party<br/>from variety of cuisines</h6>
+                        <button>Create Your Own Package</button>
+                    </div>
                 </div>
             </div>
             {/* <div className={styles.header}>
