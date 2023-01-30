@@ -203,7 +203,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
-                <img src='ninjawithtable.png' alt='' style={{ height: "126px", width: "118.23px" }} />
+                <img src='Group 1069 (1).png' alt='' style={{ height: "126px", width: "118.23px" }} />
               </div>
             </div>
           </div>

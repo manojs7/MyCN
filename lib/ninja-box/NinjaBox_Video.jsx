@@ -31,10 +31,10 @@ export default function NinjaBox_Video() {
     return (
         <div className="container text-center">
             { isSmall ? <div className="ninjaBoxVideoSm">
-                <YouTube videoId="oGA3bOrvcd4" opts={optsm}/>
+                <YouTube videoId="IVKx2SDeuSM" opts={optsm}/>
             </div> : ""}
             { !isSmall ?<div className="ninjaBoxVideoLg my-5">
-                <YouTube videoId="oGA3bOrvcd4" opts={opts}/>
+                <YouTube videoId="IVKx2SDeuSM" opts={opts}/>
             </div> : ""}
         </div>
     );

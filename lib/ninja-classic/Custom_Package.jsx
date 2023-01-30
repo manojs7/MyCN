@@ -418,7 +418,7 @@ const Custom_Package = () => {
         <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
-              <img id="left-ninja-logo" src="ninjawithtable.png" style={{width: "150px"}}></img>
+              <img id="left-ninja-logo" src="Group 1069 (1).png" style={{width: "150px"}}></img>
             </div>
             <div className="col-8" id="rightside">
               <img id="right-ninja-logo" src="caterninja.png"></img>

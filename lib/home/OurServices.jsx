@@ -386,7 +386,7 @@ const OurServices = () => {
         {/* <Slider {...settings}> */}
         <div className="mt-5">
           {isSmall ? <div className="our-services-title">
-            <h2>Our Services</h2>
+            <h2 id="ourservices">Our Services</h2>
           </div> : ""}
           <div className="mobile-card-container">
             {/* card1 */}

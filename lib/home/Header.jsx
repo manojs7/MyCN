@@ -171,7 +171,7 @@ const Header = () => {
             <img src={d} height="100%" width="100%" alt="logo" />
 
             {i !== 0 && (
-              <button className="see-more-below-btn">See More Below</button>
+              <button onClick={() => (window.location.href = "#ourservices")} className="see-more-below-btn">See More Below</button>
             )}
           </div>
         ))}
