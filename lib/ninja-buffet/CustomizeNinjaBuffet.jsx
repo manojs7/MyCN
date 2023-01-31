@@ -13,7 +13,7 @@ const CustomizeNinjaBuffet = () => {
                             <div>
                                 <h3>Customize your</h3>
                                 <h2 style={{fontSize: "38.37px"}}>Ninja<span>Buffet</span></h2>
-                                <h5>You can also customise your<br />package below!</h5>
+                                <h5>Get instant quote in just few<br />easy steps!</h5>
                             </div>
                             <div>
                                 <img src='/CustomizeImg/Group 267.png' width="102.33px" height="132.73px" />
