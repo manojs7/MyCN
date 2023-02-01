@@ -28,7 +28,7 @@ export default function Footer()
                     </div>
                 </div>
 
-                <div className={styles.copyright +  " col-md-4 copyright"}>
+                <div className={styles.copyright +  " col-lg-4 copyright"}>
                     <p>© 2022 CaterNinja. All Rights Reserved.</p>
 
                 </div>

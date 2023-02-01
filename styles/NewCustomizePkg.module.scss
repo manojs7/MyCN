@@ -10,6 +10,15 @@
         display: none;
     }
 
+    #ninjaBuffy{
+        width: 102.33px;
+    }
+
+    #ninjaBuffetTitle{
+        font-size: 38.37px;
+        font-weight: 900;
+    }
+
     .header {
         height: 505px;
         background-color: #FFC31A;
@@ -39,10 +48,6 @@
         }
 
         h2 {
-            margin: 0;
-            font-size: 46.37px;
-            font-weight: 900;
-
             span {
                 color: white;
             }
@@ -64,6 +69,11 @@
     .ninjabox {
         text-align: center;
         margin-top: 40px;
+    }
+
+    .ninjaBuffyHpkg {
+        text-align: center;
+        margin-top: 20px;
     }
 
     .cityContainer {
@@ -604,6 +614,14 @@
                 width: 376.9px;
             }
         }
+        .ninjaBuffyHpkg {
+            img {
+                margin-top: 60px;
+                margin-left: 20px;
+                height: 291.56px;
+                width: 376.9px;
+            }
+        }
     }
 
     .redBg {
@@ -1039,6 +1057,76 @@
             color: #2C3338;
             filter: drop-shadow(0px 5.43001px 5.43001px rgba(0, 0, 0, 0.25));
         }
+    }
+
+    .createYourOwnPkg {
+        padding-top: 10px;
+        padding-top: 30px;
+        height: 447px;
+        background-color: #FFC31A;
+        display: flex;
+        justify-content: space-evenly;
+
+        img {
+            width: 309.59px;
+            height: 381.23px;
+        }
+
+        p {
+            margin-top: 50px;
+            margin-bottom: 5px;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 23.6564px;
+            line-height: 112%;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 48.5623px;
+            line-height: 112%;
+            text-align: center;
+            color: #2C3338;
+
+            span {
+                color: #BE2D30;
+            }
+        }
+
+        h6 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 23.6564px;
+            line-height: 112%;
+            text-align: center;
+            color: #42484E;
+        }
+
+        button {
+            margin-top: 55px;
+            border: none;
+            background-color: #BE2D30;
+            width: 333.33px;
+            height: 54.07px;
+            border-radius: 28.06px;
+            font-weight: 700;
+            font-size: 21.4189px;
+            line-height: 26px;
+            text-align: center;
+            color: white;
+            box-shadow: 2.68128px 3.57504px 8.9376px #42484E;
+        }
+    }
+
+    #ninjaBuffy{
+        width: 180.37px;
+        height: 270.92px;
+        margin-left: 30px;
+        margin-right: 20px;
     }
 }
 
