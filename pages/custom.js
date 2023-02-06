@@ -56,79 +56,80 @@ export default function Custom() {
   const [isDessertChange, setIsDessertChange] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
-  // useEffect(() => {
-  //   allMenus.sort(function (a, b) {
-  //     const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
-  //     const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
-  //     if (nameA < nameB) {
-  //       return -1;
-  //     }
-  //     if (nameA > nameB) {
-  //       return 1;
-  //     }
+  useEffect(() => {
+    allMenus.sort(function (a, b) {
+      const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
+      const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
 
-  //     // names must be equal
-  //     return 0;
-  //   });
+      // names must be equal
+      return 0;
+    });
 
-  //   // removing duplicate
-  //   const result =allMenus?.reduce((finalArray, current) => {
-  //     let obj = finalArray?.find((item) => item.name === current.name);
+    // removing duplicate
+    const result =allMenus?.reduce((finalArray, current) => {
+      let obj = finalArray?.find((item) => item.name === current.name);
   
-  //     console.log('duplicate',result)
-  //     if (obj) {
-  //       return finalArray;
-  //     }
-  //     return finalArray.concat([current]);
-  //   },[])
+      // console.log('duplicate',result)
+      if (obj) {
+        return finalArray;
+      }
+      return finalArray.concat([current]);
+    },[])
+    
+    
+    setStartersData(result.filter((d) => d.mealType === "Starter"));
+    setStartersData2(result.filter((d) => d.mealType === "Starter"));
+    setMainData(result.filter((d) => d.mealType === "Main course"));
+    setMainData2(result.filter((d) => d.mealType === "Main course"));
+    setDessertData(result.filter((d) => d.mealType === "Dessert"));
+    setDessertData2(result.filter((d) => d.mealType === "Dessert"));
+    setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
+    setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
 
-  //   setStartersData(result.filter((d) => d.mealType === "Starter"));
-  //   setStartersData2(result.filter((d) => d.mealType === "Starter"));
-  //   setMainData(result.filter((d) => d.mealType === "Main course"));
-  //   setMainData2(result.filter((d) => d.mealType === "Main course"));
-  //   setDessertData(result.filter((d) => d.mealType === "Dessert"));
-  //   setDessertData2(result.filter((d) => d.mealType === "Dessert"));
-  //   setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
-  //   setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
+    const newMainData = allMenus.filter((d) => d.mealType === "Main course");
+    
+    newMainData.sort(function (a, b) {
+      return parseInt(b.selling_price) - parseInt(a.selling_price);
+    });
+    setHighestPrice(newMainData[0]);
+  }, []);
 
-  //   const newMainData = allMenus.filter((d) => d.mealType === "Main course");
-  //   newMainData.sort(function (a, b) {
-  //     return parseInt(b.selling_price) - parseInt(a.selling_price);
-  //   });
-  //   setHighestPrice(newMainData[0]);
-  // }, []);
-  // console.log("main", mainData, highestPrice);
 
-  // // console.log(startersData, mainData, dessertData);
+  
+  // filtering data according to cuisine
+  const handleCuisine = (index) => {
+    setCuisine(index);
+    if (cuisines[index] === "All") {
+      setStartersData(startersData2);
+      setMainData(mainData2);
+      setBreadRiceData(breadRiceData2);
+      setDessertData(dessertData2);
+    } else {
+      const filterStarter = startersData2.filter(
+        (d) => d.cuisine === cuisines[index]
+      );
+      setStartersData(filterStarter);
 
-  // // filtering data according to cuisine
-  // const handleCuisine = (index) => {
-  //   setCuisine(index);
-  //   if (cuisines[index] === "All") {
-  //     setStartersData(startersData2);
-  //     setMainData(mainData2);
-  //     setBreadRiceData(breadRiceData2);
-  //     setDessertData(dessertData2);
-  //   } else {
-  //     const filterStarter = startersData2.filter(
-  //       (d) => d.cuisine === cuisines[index]
-  //     );
-  //     setStartersData(filterStarter);
+      const filterMain = mainData2.filter((d) => d.cuisine === cuisines[index]);
+      setMainData(filterMain);
 
-  //     const filterMain = mainData2.filter((d) => d.cuisine === cuisines[index]);
-  //     setMainData(filterMain);
+      const filterBreadData = breadRiceData2.filter(
+        (d) => d.cuisine === cuisines[index]
+      );
+      setBreadRiceData(filterBreadData);
 
-  //     const filterBreadData = breadRiceData2.filter(
-  //       (d) => d.cuisine === cuisines[index]
-  //     );
-  //     setBreadRiceData(filterBreadData);
-
-  //     const filterDessertData = dessertData2.filter(
-  //       (d) => d.cuisine === cuisines[index]
-  //     );
-  //     setDessertData(filterDessertData);
-  //   }
-  // };
+      const filterDessertData = dessertData2.filter(
+        (d) => d.cuisine === cuisines[index]
+      );
+      setDessertData(filterDessertData);
+    }
+  };
 
   useEffect(() => {
     setIsSmall(window.innerWidth < 939);
@@ -137,57 +138,57 @@ export default function Custom() {
     );
 
     // if there is previous data
-    // if (router.query.data) {
-    //   console.log(router.query.data);
-    //   const data = JSON.parse(router.query.data);
-    //   setVeg(data.veg);
-    //   setNonVeg(data.nonVeg);
-    //   var tempStarters = [];
-    //   var tempMain = [];
-    //   var tempDesserts = [];
-    //   data.starters.forEach((starter) => {
-    //     var obj = menu.starters.find((x) => x.name === starter.name);
-    //     tempStarters.push({
-    //       ...obj,
-    //       quantity: starter.quantity,
-    //     });
-    //   });
-    //   data.mains.forEach((main) => {
-    //     var obj = menu.mains.find((x) => x.name === main.name);
-    //     tempMain.push({
-    //       ...obj,
-    //       quantity: main.quantity,
-    //     });
-    //   });
-    //   data.desserts.forEach((dessert) => {
-    //     var obj = menu.desserts.find((x) => x.name === dessert.name);
-    //     tempDesserts.push({
-    //       ...obj,
-    //       quantity: dessert.quantity,
-    //     });
-    //   });
-    //   setStarters(tempStarters);
-    //   setMains(tempMain);
-    //   setDesserts(tempDesserts);
-    //   console.log("stater", router.query.data, starters);
-    // }
+    if (router.query.data) {
+      console.log(router.query.data);
+      const data = JSON.parse(router.query.data);
+      setVeg(data.veg);
+      setNonVeg(data.nonVeg);
+      var tempStarters = [];
+      var tempMain = [];
+      var tempDesserts = [];
+      data.starters.forEach((starter) => {
+        var obj = menu.starters.find((x) => x.name === starter.name);
+        tempStarters.push({
+          ...obj,
+          quantity: starter.quantity,
+        });
+      });
+      data.mains.forEach((main) => {
+        var obj = menu.mains.find((x) => x.name === main.name);
+        tempMain.push({
+          ...obj,
+          quantity: main.quantity,
+        });
+      });
+      data.desserts.forEach((dessert) => {
+        var obj = menu.desserts.find((x) => x.name === dessert.name);
+        tempDesserts.push({
+          ...obj,
+          quantity: dessert.quantity,
+        });
+      });
+      setStarters(tempStarters);
+      setMains(tempMain);
+      setDesserts(tempDesserts);
+      console.log("stater", router.query.data, starters);
+    }
   }, []);
 
-  // useEffect(() => {
-  //   if (knowMore[2] === "mobile") {
-  //     if (knowMore[1] === "starters") {
-  //       setModalTitle(starters[knowMore[0]].name);
-  //       setModalContent(starters[knowMore[0]].description);
-  //     } else if (knowMore[1] === "mains") {
-  //       setModalTitle(mains[knowMore[0]].name);
-  //       setModalContent(mains[knowMore[0]].description);
-  //     } else if (knowMore[1] === "desserts") {
-  //       setModalTitle(desserts[knowMore[0]].name);
-  //       setModalContent(desserts[knowMore[0]].description);
-  //     }
-  //     setShow(true);
-  //   }
-  // }, [knowMore]);
+  useEffect(() => {
+    if (knowMore[2] === "mobile") {
+      if (knowMore[1] === "starters") {
+        setModalTitle(starters[knowMore[0]].name);
+        setModalContent(starters[knowMore[0]].description);
+      } else if (knowMore[1] === "mains") {
+        setModalTitle(mains[knowMore[0]].name);
+        setModalContent(mains[knowMore[0]].description);
+      } else if (knowMore[1] === "desserts") {
+        setModalTitle(desserts[knowMore[0]].name);
+        setModalContent(desserts[knowMore[0]].description);
+      }
+      setShow(true);
+    }
+  }, [knowMore]);
 
   // customer selected starter main, dessert
 
@@ -197,6 +198,7 @@ export default function Custom() {
   const [breadRice, setBreadRice] = useState([]);
 
   const handleVegNonVegGuest = (name, value) => {
+    
     // if(value<0 || !value){
     //   name === "veg" ? setVeg(0) : setNonVeg(0);
     // }else{
@@ -211,105 +213,342 @@ export default function Custom() {
     setBreadRice([]);
   };
 
-  // useEffect(() => {
-  //   // starter value change after veg and non-veg guest change
-  //   if (veg === 0 && nonVeg === 0) return;
-  //   let temp = [...starters];
-  //   temp.map((data) => {
-  //     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-  //       if (data.Qtype === "pcs") {
-  //         data.quantity = (veg > 0 ? veg : nonVeg) * 2;
-  //       } else {
-  //         data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
-  //       }
-  //     } else {
-  //       // if both guest is available
+  
+  useEffect(() => {
 
-  //       if (data.veg) {
-  //         if (data.Qtype === "pcs") {
-  //           data.quantity = (veg + nonVeg) * 1.5;
-  //         } else {
-  //           data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
-  //         }
-  //       } else {
-  //         if (data.Qtype === "pcs") {
-  //           data.quantity = nonVeg * 2;
-  //         } else {
-  //           data.quantity = (nonVeg * 0.1).toFixed(3);
-  //         }
-  //       }
-  //     }
-  //     setStarters(temp);
-  //   });
+    
+    // sendRequest();
+    // starter value change after veg and non-veg guest change
+    if (veg === 0 && nonVeg === 0) return;
+    let temp = [...starters];
+    if(veg>0 && nonVeg===0){
+      // showing only veg
+        setStartersData((prev) => prev.filter((d) => d.veg ===true));
+    }
+    else{
+      setStartersData((prev) => prev.filter((d) => d.veg ===true || d.veg===false));
+    }
+    
+    temp.map((data) => {
+      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+          data.quantity=12;
+        if (data.Qtype === "pcs") {
+          data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          if(data.quantity<12){
+              data.quantity=12;
+          }
+        } else {
+          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+        }
+      } else {
+        // if both guest is available
 
-  //   // main value change after veg anf=d non-veg guest change
-  //   let tempMain = [...mains];
+        if (data.veg) {
+          if (data.Qtype === "pcs") {
+            data.quantity = Math.round((veg*2 + nonVeg*(1)));
+            if(data.quantity<12){
+              data.quantity=12;
+            }
+          } else {
+            data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
+          }
+        } else {
+          if (data.Qtype === "pcs") {
+            data.quantity = nonVeg * 2;
+            if(data.quantity<12){
+              data.quantity=12;
+            }
+          } else {
+            data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          }
+        }
+      }
+      setStarters(temp);
+    });
 
-  //   tempMain.map((data) => {
-  //     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-  //       // if not rice , bred, noodles
-  //       console.log("not rice , bred, noodles1");
-  //       if (data.Qtype === "pcs") {
-  //         data.quantity = (veg > 0 ? veg : nonVeg) * 1;
-  //       } else if (data.name === highestPrice.name) {
-  //         data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(3);
-  //       } else {
-  //         data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
-  //       }
-  //     } else {
-  //       console.log("not rice , bred, noodles2");
-  //       if (data.veg) {
-  //         if (data.Qtype === "pcs") {
-  //           data.quantity = veg * 1;
-  //         } else {
-  //           data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
-  //         }
-  //       } else {
-  //         console.log("not rice , bred, noodles3");
-  //         if (data.Qtype === "pcs") {
-  //           data.quantity = nonVeg * 1;
-  //         } else if (data.name === highestPrice.name) {
-  //           data.quantity = (nonVeg * 0.15).toFixed(3);
-  //         } else {
-  //           data.quantity = (nonVeg * 0.1).toFixed(3);
-  //         }
-  //       }
-  //     }
-  //   });
+    // main value change after veg anf=d non-veg guest change
+    let tempMain = [...mains];
+    let nonVegPastaMainCount=0
+      let nonVegMainsGravyMainCount=0
+      let nonVegMainThaiMainCount=0
+      if (tempMain.find((item) => item.menu_label === "Pasta" && item.veg===false)) {
+        nonVegPastaMainCount+=1;
+      }
+      else if(tempMain.find((item) => item.menu_label === "Mains-Gravy" && item.veg===false)){
+        nonVegMainsGravyMainCount+=1;
+      }
+      else if(tempMain.find((item) => item.menu_label === "Mains-Thai" && item.veg===false)){
+        nonVegMainThaiMainCount+=1;
+      }
+    tempMain.map((data) => {
+      
+      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+        // if not rice , bred, noodles
+        console.log("not rice , bred, noodles1");
+        if (data.Qtype === "pcs") {
+          data.quantity = (veg > 0 ? veg : nonVeg) * 1;
+        } else if (data.name === highestPrice.name) {
+          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
+        } else {
+          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+        }
+      } else {
+        if (data.veg) {
 
-  //   setMains(tempMain);
+          //Heavy SNack
+          if(data.menu_label==="Heavy Snack"){
+            if (data.Qtype === "pcs") {
+              data.quantity = veg * 1;
+            } else {
+              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+            
+          }
+          //Pasta mains handelling
+            //check whether non veg pasta is selected, if non veg pasta selected then veg pasta data.quantity =veg*100g only else veg*100+nonVeg*100g
+  
+          else if(data.menu_label==="Pasta"){
+            if(nonVegPastaMainCount>0){
+              data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            }
+            else{
+              data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+            
+          }
+          //Mains-gravy : same logic as above 
+          else if(data.menu_label==="Main-Gravy"){
+            if(nonVegMainsGravyMainCount>0){
+              data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            }
+            else{
+              data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+  
+          }
+          //Main -Thai : same logic as above
+          else if(data.menu_label==="Main-Thai"){
+  
+            if(nonVegMainThaiMainCount>0){
+              data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            }
+            else{
+              data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+          }
+          //Mains-dry : veg data.quantity= veg*100+ nonveg*100  else non-veg data.quantity=non veg*100
+          else if(data.menu_label==="Main-dry"){
+  
+           
+              data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            
+  
+          }
+          else{
+            //manins dal same as mains dry
+            //for daal and rest
+            if (data.Qtype === "pcs") {
+              data.quantity = veg * 1;
+            } else {
+              data.quantity = (veg * 0.1+ nonVeg * 0.1).toFixed(1);
+            }
+          }
+          
+  
+          
+        } 
+        else {
+          console.log("not rice , bred, noodles3");
+          if (data.Qtype === "pcs") {
+            data.quantity = nonVeg * 1;
+          } else if (data.name === highestPrice.name) {
+            data.quantity = (nonVeg * 0.15).toFixed(1);
+          } else {
+            data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          }
+        }
+      }
+    });
 
-  //   //  dessert value change after veg anf=d non-veg guest change
+    setMains(tempMain);
 
-  //   let tempDessert = [...desserts];
+    //  dessert value change after veg anf=d non-veg guest change
 
-  //   tempDessert.map((data) => {
-  //     if (data.Qtype === "pcs") {
-  //       data.quantity = (veg + nonVeg) * 1.5;
-  //     } else {
-  //       data.quantity = ((veg + nonVeg) * 0.075).toFixed(3);
-  //     }
-  //   });
+    let tempDessert = [...desserts];
 
-  //   setDesserts(tempDessert);
-  // }, [veg, nonVeg]);
+    tempDessert.map((data) => {
+      if (data.Qtype === "pcs") {
+        if(data.cuisine=== 'Continental'){
+          data.quantity = Math.round((veg + nonVeg));
+        }
+        else{
+          data.quantity = Math.round((veg + nonVeg) * 1.5);
+        }
+      } else {
+        data.quantity = (Math.round(veg + nonVeg) * 0.075).toFixed(1);
+      }
+    });
 
-  // useEffect(() => {
-  //   if (veg < 0) {
-  //     setVeg(0);
-  //   } else if (nonVeg < 0) {
-  //     setNonVeg(0);
-  //   } else if (typeof veg === NaN) {
-  //     setVeg(0);
-  //   } else if (typeof nonVeg === NaN) {
-  //     setNonVeg(0);
-  //   }
-  // }, [veg, nonVeg]);
+    setDesserts(tempDessert);
+  }, [veg, nonVeg]);
 
-  // useEffect(() => {
-  //   if (cuisine === 0) {
-  //   }
-  // }, [cuisine, veg, nonVeg]);
+  function HandleCeilFloorValue(x){
+    var decimals = (x - Math.floor(x)).toFixed(1);
+    if(decimals<=0.4){
+      x=Math.floor(x);
+    }
+    else if(decimals>=0.6){
+      x=Math.floor(x);
+    }
+    return x;
+  }
+  //mains for testing logic
+  useEffect(()=>{
+     // main value change after veg anf=d non-veg guest change
+     let tempMain = [...mains];
+     let nonVegPastaMainCount=0
+       let nonVegMainsGravyMainCount=0
+       let nonVegMainThaiMainCount=0
+      //  console.log("here",JSON.stringify(tempMain).includes("Mains-Dal"))
+
+      if(_isContains(tempMain, "menu_label", "Pasta") && _isContains(tempMain, "veg", false)){
+        nonVegPastaMainCount+=1;
+      }
+      
+      else if(_isContains(tempMain, "menu_label", "Mains-Gravy") && _isContains(tempMain, "veg", false)){
+        nonVegMainsGravyMainCount+=1;
+      }
+      else if(_isContains(tempMain, "menu_label", "Mains-Thai") && _isContains(tempMain, "veg", false)){
+        nonVegMainThaiMainCount+=1;
+      }
+      
+     tempMain.map((data) => {
+       
+       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+         // if not rice , bred, noodles
+         console.log("not rice , bred, noodles1");
+         if (data.Qtype === "pcs") {
+           data.quantity = (veg > 0 ? veg : nonVeg) * 1;
+         } else if (data.name === highestPrice.name) {
+           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
+         } else {
+           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+         }
+       } else {
+         if (data.veg) {
+ 
+           //Heavy SNack
+           if(data.menu_label==="Heavy Snack"){
+             if (data.Qtype === "pcs") {
+               data.quantity = veg * 1;
+             } else {
+               data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+             }
+             
+           }
+           //Pasta mains handelling
+             //check whether non veg pasta is selected, if non veg pasta selected then veg pasta data.quantity =veg*100g only else veg*100+nonVeg*100g
+   
+           else if(data.menu_label==="Pasta"){
+             if(nonVegPastaMainCount>0){
+               data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1));
+             }
+             else{
+               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+             }
+             
+           }
+           //Mains-gravy : same logic as above 
+           else if(data.menu_label==="Mains-Gravy"){
+            console.log("in Mains-Gravy veg section");
+             if(nonVegMainsGravyMainCount>0){
+               data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+             }
+             else{
+               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+             }
+   
+           }
+           //Main -Thai : same logic as above
+           else if(data.menu_label==="Mains-Thai"){
+            console.log("in Mains-Thai veg section");
+   
+             if(nonVegMainThaiMainCount>0){
+               data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+             }
+             else{
+               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+             }
+           }
+           //Mains-dry : veg data.quantity= veg*100+ nonveg*100  else non-veg data.quantity=non veg*100
+           else if(data.menu_label==="Mains-dry"){
+   
+            
+               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+             
+   
+           }
+           else{
+             //manins dal same as mains dry
+             //for daal and rest
+             if (data.Qtype === "pcs") {
+               data.quantity = veg * 1;
+             } else {
+               data.quantity = HandleCeilFloorValue((veg * 0.1+ nonVeg * 0.1).toFixed(1));
+             }
+           }
+           
+   
+           
+         } 
+         else {
+           console.log("not rice , bred, noodles3");
+           if (data.Qtype === "pcs") {
+             data.quantity = nonVeg * 1;
+           } else if (data.name === highestPrice.name) {
+             data.quantity = (nonVeg * 0.15).toFixed(1);
+           } else {
+             data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+           }
+         }
+       }
+     });
+ 
+     setMains(tempMain);
+ 
+  }, [])
+
+  //Breads rice noodles logic for testing
+  //yet to come here
+
+  
+
+
+
+  useEffect(() => {
+    if (veg < 0) {
+      setVeg(0);
+    } else if (nonVeg < 0) {
+      setNonVeg(0);
+    } else if (typeof veg === NaN) {
+      setVeg(0);
+    } else if (typeof nonVeg === NaN) {
+      setNonVeg(0);
+    }
+  }, [veg, nonVeg]);
+
+  useEffect(() => {
+    if (cuisine === 0) {
+    }
+  }, [cuisine, veg, nonVeg]);
+
+  function _isContains(json, keyname, value) {
+
+    return Object.keys(json).some(key => {
+            return typeof json[key] === 'object' ? 
+            _isContains(json[key], keyname, value) : key === keyname && json[key] === value;
+        });
+    }
 
   function handleClose() {
     setShow(false);
@@ -416,13 +655,14 @@ export default function Custom() {
       setBreadRice(temp);
     }
   }
-  console.log("stater", starters, mains);
+  console.log("stater", starters);
 
-  // adding
+  // adding starters
 
   const handleStatersAdd = (item_name, id) => {
     setIsStarterChange(!isStarterChange);
     if (veg === 0 && nonVeg === 0) return;
+    
     let temp = [...starters];
     const starter = startersData.find((item) => item.id === item_name);
     // removing selected item
@@ -438,23 +678,32 @@ export default function Custom() {
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       if (starter.Qtype === "pcs") {
         quantity = (veg > 0 ? veg : nonVeg) * 2;
+        if(quantity<12){
+              quantity=12;
+          }
       } else {
-        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
+        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
       }
     } else {
       // if both guest is available
 
       if (starter.veg) {
         if (starter.Qtype === "pcs") {
-          quantity = (veg + nonVeg) * 1.5;
+          quantity = Math.round((veg + nonVeg) * 1.5);
+          if(quantity<12){
+              quantity=12;
+          }
         } else {
-          quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
+          quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
         }
       } else {
         if (starter.Qtype === "pcs") {
           quantity = nonVeg * 2;
+          if(quantity<12){
+              quantity=12;
+          }
         } else {
-          quantity = (nonVeg * 0.1).toFixed(3);
+          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
         }
       }
     }
@@ -478,44 +727,121 @@ export default function Custom() {
   // handle add main
 
   const handleMainAdd = (item_name, id) => {
+    
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
+    
     const main = mainData.find((item) => item.id === item_name);
     let quantity;
     if (temp.find((item) => item.id === item_name)) {
       return;
     }
-
+    let nonVegPastaMainCount=0
+    let nonVegMainsGravyMainCount=0
+    let nonVegMainThaiMainCount=0
+    if (temp.find((item) => item.menu_label === "Pasta" && item.veg===false)) {
+      nonVegPastaMainCount+=1;
+    }
+    else if(temp.find((item) => item.menu_label === "Mains-Gravy" && item.veg===false)){
+      nonVegMainsGravyMainCount+=1;
+    }
+    else if(temp.find((item) => item.menu_label === "Mains-Thai" && item.veg===false)){
+      nonVegMainThaiMainCount+=1;
+    }
+    
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       // if not rice , bred, noodles
       console.log("not rice , bred, noodles1");
       if (main.Qtype === "pcs") {
         quantity = (veg > 0 ? veg : nonVeg) * 1;
-      } else if (main.name === highestPrice.name) {
-        quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(3);
-      } else {
-        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
+      } 
+      else if (main.name === highestPrice.name) {
+        quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
+      } 
+      else {
+        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
       }
     } else {
-      console.log("not rice , bred, noodles2");
+      // if both are present
       if (main.veg) {
-        if (main.Qtype === "pcs") {
-          quantity = veg * 1;
-        } else {
-          quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
+
+        //Heavy SNack
+        alert(main.menu_label)
+        if(main.menu_label==="Heavy Snack"){
+          if (main.Qtype === "pcs") {
+            quantity = veg * 1;
+          } else {
+            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          }
+          
         }
-      } else {
-        console.log("not rice , bred, noodles3");
+        //Pasta mains handelling
+          //check whether non veg pasta is selected, if non veg pasta selected then veg pasta quantity =veg*100g only else veg*100+nonVeg*100g
+
+        else if(main.menu_label==="Pasta"){
+          if(nonVegPastaMainCount>0){
+            quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+          }
+          else{
+            quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          }
+          
+        }
+        //Mains-gravy : same logic as above 
+        else if(main.menu_label==="Mains-Gravy"){
+          if(nonVegMainsGravyMainCount>0){
+            quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+          }
+          else{
+            quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          }
+
+        }
+        //Main -Thai : same logic as above
+        else if(main.menu_label==="Mains-Thai"){
+
+          if(nonVegMainThaiMainCount>0){
+            quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+          }
+          else{
+            quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          }
+        }
+        //Mains-dry : veg quantity= veg*100+ nonveg*100  else non-veg quantity=non veg*100
+        else if(main.menu_label==="Mains-dry"){
+
+         
+            quantity=(veg * 0.1+ nonVeg * 0.1).toFixed(1);
+          
+
+        }
+        else{
+          //manins dal same as mains dry
+          //for daal and rest
+          if (main.Qtype === "pcs") {
+            quantity = veg * 1;
+          } else {
+            quantity = (veg * 0.1+ nonVeg * 0.1).toFixed(1);
+          }
+        }
+
+        
+      } 
+      //Non-Veg Mains Handelling
+      else {        
         if (main.Qtype === "pcs") {
-          quantity = nonVeg * 1;
-        } else if (main.name === highestPrice.name) {
-          quantity = (nonVeg * 0.15).toFixed(3);
-        } else {
-          quantity = (nonVeg * 0.1).toFixed(3);
+            quantity = nonVeg * 1;
+        } 
+        else if (main.name === highestPrice.name) {
+          quantity = (nonVeg * 0.15).toFixed(1);
+        } 
+        else {
+          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
         }
       }
     }
+    
     temp.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
@@ -528,9 +854,25 @@ export default function Custom() {
     });
 
     setMains(temp);
+    // handleAfterItemSelection(temp);
     setMainData((prev) => prev.filter((d) => d.id !== item_name));
   };
-  console.log("main", mains);
+  const handleAfterItemSelection=(mainssss)=>{
+    fetch("/api/diy_load",{
+        method:"POST",
+        body:JSON.stringify({
+            veg:veg,
+            nonVeg:nonVeg,
+            mainData:mainssss
+        }),
+        headers:{
+            "Content-Type":"application/json",
+        }
+    })
+    .then((res) => res.json())
+    .then((data)=>setMains(data));
+  }
+  console.log("mainssss", mains);
 
   const handleBreadRiceAdd = (item_name, id) => {
     setIsBreadChange(!isBreadChange);
@@ -576,7 +918,7 @@ export default function Custom() {
       temp.map((item) => {
         item.menu_label === "Breads" ? (bread += 1) : bread;
       });
-      console.log("naan");
+      // console.log("naan");
       if (bread === 1) {
         quantity = (veg + nonVeg) * 2;
       } else {
@@ -588,7 +930,7 @@ export default function Custom() {
         quantity = (veg + nonVeg) * 1;
       }
     } else if (filterBreadRice?.menu_label === "Noodle") {
-      console.log("naan");
+      // console.log("naan");
       veg > 0 && nonVeg === 0
         ? (quantity = veg)
         : veg === 0 && nonVeg > 0
@@ -653,142 +995,142 @@ export default function Custom() {
     setBreadRiceData((prev) => prev.filter((d) => d.id !== item_name));
   };
 
-  // function handleAdd(item_name, type, isChanged, index) {
-  //   console.log(item_name, type);
-  //   if (veg === 0 && nonVeg === 0) return;
-  //   // checking is the
-  //   let temp = [...mains];
-  //   const main = menu.mains.find((item) => item.name === item_name);
-  //   console.log(main);
-  //   let quantity;
-  //   if (temp.find((item) => item.name === item_name)) {
-  //     return;
-  //   }
-  //   if (main.isPoori) {
-  //     quantity = (veg + nonVeg) * 3;
+  function handleAdd(item_name, type, isChanged, index) {
+    console.log(item_name, type);
+    if (veg === 0 && nonVeg === 0) return;
+    // checking is the
+    let temp = [...mains];
+    const main = menu.mains.find((item) => item.name === item_name);
+    console.log(main);
+    let quantity;
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+    if (main.isPoori) {
+      quantity = (veg + nonVeg) * 3;
 
-  //     // checking for bread
-  //   } else if (!main.isPoori && main.isBread) {
-  //     console.log("naan");
-  //     quantity = (veg + nonVeg) * 2;
-  //   } else if (main.isRice) {
-  //     let count = 0;
-  //     console.log(count);
-  //     temp.forEach((item) => {
-  //       if (item.isRice) {
-  //         count++;
-  //       }
-  //     });
+      // checking for bread
+    } else if (!main.isPoori && main.isBread) {
+      console.log("naan");
+      quantity = (veg + nonVeg) * 2;
+    } else if (main.isRice) {
+      let count = 0;
+      console.log(count);
+      temp.forEach((item) => {
+        if (item.isRice) {
+          count++;
+        }
+      });
 
-  //     //
-  //     if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
-  //       let guests = veg > 0 ? veg : nonVeg;
-  //       if (mains.length > 0) {
-  //         if (count >= 1) {
-  //           quantity = 0.15 * guests;
-  //           temp.forEach((item) => {
-  //             if (item.isRice) {
-  //               item.quantity = 0.15 * guests;
-  //             }
-  //           });
-  //         } else {
-  //           quantity = 0.2 * guests;
-  //         }
-  //       } else {
-  //         if (count >= 1) {
-  //           quantity = 0.15;
-  //           temp.forEach((item) => {
-  //             if (item.isRice) {
-  //               item.quantity = 0.15 * guests;
-  //             }
-  //           });
-  //         } else {
-  //           quantity = 0.3 * guests;
-  //         }
-  //       }
-  //     } else {
-  //       if (main.veg) {
-  //         if (mains.length > 0) {
-  //           if (count >= 1) {
-  //             quantity = 0.15 * (veg + nonVeg);
-  //             temp.forEach((item) => {
-  //               if (item.isRice) {
-  //                 item.quantity = 0.15 * (veg + nonVeg);
-  //               }
-  //             });
-  //           } else {
-  //             quantity = 0.2 * (veg + nonVeg);
-  //           }
-  //         } else {
-  //           if (count >= 1) {
-  //             quantity = 0.15 * (veg + nonVeg);
-  //             temp.forEach((item) => {
-  //               if (item.isRice) {
-  //                 item.quantity = 0.15 * (veg + nonVeg);
-  //               }
-  //             });
-  //           } else {
-  //             quantity = 0.3 * (veg + nonVeg);
-  //           }
-  //         }
-  //       } else {
-  //         if (mains.length > 0) {
-  //           if (count >= 1) {
-  //             quantity = 0.15 * nonVeg;
-  //             temp.forEach((item) => {
-  //               if (item.isRice) {
-  //                 item.quantity = 0.15 * nonVeg;
-  //               }
-  //             });
-  //           } else {
-  //             quantity = 0.2 * nonVeg;
-  //           }
-  //         } else {
-  //           if (count >= 1) {
-  //             quantity = 0.15 * nonVeg;
-  //             temp.forEach((item) => {
-  //               if (item.isRice) {
-  //                 item.quantity = 0.15 * nonVeg;
-  //               }
-  //             });
-  //           } else {
-  //             quantity = 0.3 * nonVeg;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   } else if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-  //     // if not rice , bred, noodles
-  //     console.log("not rice , bred, noodles");
-  //     if (main.Qtype === "pcs") {
-  //       quantity = (veg > 0 ? veg : nonVeg) * 1;
-  //     } else {
-  //       quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(3);
-  //     }
-  //   } else {
-  //     if (main.veg) {
-  //       if (main.Qtype === "pcs") {
-  //         quantity = veg * 1;
-  //       } else {
-  //         quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(3);
-  //       }
-  //     } else {
-  //       if (main.Qtype === "pcs") {
-  //         quantity = nonVeg * 1;
-  //       } else {
-  //         quantity = (nonVeg * 0.1).toFixed(3);
-  //       }
-  //     }
-  //   }
-  //   temp.push({
-  //     name: main.name,
-  //     quantity: quantity,
-  //     Qtype: main.Qtype,
-  //     veg: main.veg,
-  //     description: main.description,
-  //   });
-  //   setMains(temp);
-  // }
+      //
+      if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+        let guests = veg > 0 ? veg : nonVeg;
+        if (mains.length > 0) {
+          if (count >= 1) {
+            quantity = 0.15 * guests;
+            temp.forEach((item) => {
+              if (item.isRice) {
+                item.quantity = 0.15 * guests;
+              }
+            });
+          } else {
+            quantity = 0.2 * guests;
+          }
+        } else {
+          if (count >= 1) {
+            quantity = 0.15;
+            temp.forEach((item) => {
+              if (item.isRice) {
+                item.quantity = 0.15 * guests;
+              }
+            });
+          } else {
+            quantity = 0.3 * guests;
+          }
+        }
+      } else {
+        if (main.veg) {
+          if (mains.length > 0) {
+            if (count >= 1) {
+              quantity = 0.15 * (veg + nonVeg);
+              temp.forEach((item) => {
+                if (item.isRice) {
+                  item.quantity = 0.15 * (veg + nonVeg);
+                }
+              });
+            } else {
+              quantity = 0.2 * (veg + nonVeg);
+            }
+          } else {
+            if (count >= 1) {
+              quantity = 0.15 * (veg + nonVeg);
+              temp.forEach((item) => {
+                if (item.isRice) {
+                  item.quantity = 0.15 * (veg + nonVeg);
+                }
+              });
+            } else {
+              quantity = 0.3 * (veg + nonVeg);
+            }
+          }
+        } else {
+          if (mains.length > 0) {
+            if (count >= 1) {
+              quantity = 0.15 * nonVeg;
+              temp.forEach((item) => {
+                if (item.isRice) {
+                  item.quantity = 0.15 * nonVeg;
+                }
+              });
+            } else {
+              quantity = 0.2 * nonVeg;
+            }
+          } else {
+            if (count >= 1) {
+              quantity = 0.15 * nonVeg;
+              temp.forEach((item) => {
+                if (item.isRice) {
+                  item.quantity = 0.15 * nonVeg;
+                }
+              });
+            } else {
+              quantity = 0.3 * nonVeg;
+            }
+          }
+        }
+      }
+    } else if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+      // if not rice , bred, noodles
+      console.log("not rice , bred, noodles");
+      if (main.Qtype === "pcs") {
+        quantity = (veg > 0 ? veg : nonVeg) * 1;
+      } else {
+        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+      }
+    } else {
+      if (main.veg) {
+        if (main.Qtype === "pcs") {
+          quantity = veg * 1;
+        } else {
+          quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
+        }
+      } else {
+        if (main.Qtype === "pcs") {
+          quantity = nonVeg * 1;
+        } else {
+          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+        }
+      }
+    }
+    temp.push({
+      name: main.name,
+      quantity: quantity,
+      Qtype: main.Qtype,
+      veg: main.veg,
+      description: main.description,
+    });
+    setMains(temp);
+  }
   // handle desert add
 
   const handleDesertsAdd = (item_name, id) => {
@@ -805,9 +1147,15 @@ export default function Custom() {
       return;
     }
     if (dessert.Qtype === "pcs") {
-      quantity = (veg + nonVeg) * 1.5;
+      // expensive desserts should go 1 piece
+      if(dessert.cuisine=== 'Continental'){
+        quantity = Math.round((veg + nonVeg));
+      }
+      else{
+        quantity = Math.round((veg + nonVeg) * 1.5);
+      }
     } else {
-      quantity = ((veg + nonVeg) * 0.075).toFixed(3);
+      quantity = Math.round((veg + nonVeg) * 0.075).toFixed(1);
     }
     temp.push({
       name: dessert.name,
@@ -821,29 +1169,30 @@ export default function Custom() {
   };
   console.log("desert", desserts);
   // cost calculation
-  // useEffect(() => {
-  //   let starterPrice = 0;
-  //   let mainPrice = 0;
-  //   let dessertPrice = 0;
-  //   let bredRicePrice = 0;
+  useEffect(() => {
+    let starterPrice = 0;
+    let mainPrice = 0;
+    let dessertPrice = 0;
+    let bredRicePrice = 0;
 
-  //   starters.map((d) => {
-  //     starterPrice += parseInt(d.quantity) * parseInt(d.selling_price);
-  //   });
+    starters.map((d) => {
+      starterPrice += parseInt(d.quantity) * parseInt((d.selling_price)/12);
+    });
+    console.log(starterPrice);
+    mains.map((d) => {
+      mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+    });
+    desserts.map((d) => {
+      dessertPrice += parseInt(d.quantity) * parseInt(100);
+    });
+    console.log(dessertPrice);
+    breadRice.map((d) => {
+      bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price)/12);
+    });
 
-  //   mains.map((d) => {
-  //     mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
-  //   });
-  //   desserts.map((d) => {
-  //     dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
-  //   });
-  //   breadRice.map((d) => {
-  //     bredRicePrice += parseInt(d.quantity) * parseInt(d.selling_price);
-  //   });
-
-  //   setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
-  // }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
-  // console.log("total price", totalPrice);
+    setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
+  console.log("total price", totalPrice);
 
   const mobile = (
     <div className={styles.package}>
@@ -1861,6 +2210,8 @@ export default function Custom() {
               <AutoSearch
                 value={mainData}
                 handleAdd={handleMainAdd}
+              
+                
                 label="Choose Main"
               />
             )}

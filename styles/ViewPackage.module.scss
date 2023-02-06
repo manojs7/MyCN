@@ -10,11 +10,11 @@
         display: none;
     }
 
-    #ninjaBuffy{
+    #ninjaBuffy {
         width: 102.33px;
     }
 
-    #ninjaBuffetTitle{
+    #ninjaBuffetTitle {
         font-size: 38.37px;
         font-weight: 900;
     }
@@ -39,18 +39,18 @@
         justify-content: space-between;
 
         h3 {
-            margin-top: 10px;
-            font-size: 26.8px;
-            line-height: 27.34px;
+            font-size: 37.8011px;
+            line-height: 102%;
             font-weight: 600;
             margin-bottom: 0%;
             margin-right: 0%;
         }
 
-        #ninjaBoxTitle{
+        #ninjaBoxTitle {
             font-size: 46.37px;
             font-weight: 900;
             line-height: 47.3px;
+
             span {
                 color: white;
             }
@@ -111,6 +111,20 @@
     .packageName {
         text-align: center;
         margin-top: 50px;
+
+        h5 {
+            margin: auto;
+            margin-top: 10px;
+            width: 120px;
+            padding: 5px;
+            border-radius: 8.38px;
+            background-color: #FFC31A;
+            font-weight: 400;
+            font-size: 16.7568px;
+            line-height: 20px;
+            letter-spacing: 0.03em;
+            color: #000000;
+        }
 
         h3 {
             font-weight: 600;
@@ -556,13 +570,123 @@
         }
     }
 
-    .pricingTitle2{
-        h4{
-            span{
+    .pricingTitle2 {
+        h4 {
+            span {
                 font-style: italic;
                 font-weight: 500;
                 color: #2C3338;
             }
+        }
+    }
+
+    .pkgCardHeader {
+        background-color: #FFFFFF;
+        width: 249px;
+        height: 249px;
+        border-radius: 15.93px;
+        text-align: center;
+        margin: auto;
+        margin-top: 20px;
+
+        h3 {
+            padding-top: 25px;
+            font-weight: 500;
+            font-size: 16.6211px;
+            line-height: 20px;
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: #BE2D30;
+        }
+
+        img {
+            width: 185.59px;
+            height: 115.99px;
+            margin-top: 10px;
+        }
+
+        h5 {
+            margin-top: 5px;
+            font-weight: 300;
+            font-size: 11.0807px;
+            line-height: 17px;
+            text-align: center;
+            color: #000000;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 13.8509px;
+            line-height: 21px;
+            letter-spacing: 0.03em;
+            color: #FFC31A;
+            margin-bottom: -15px;
+        }
+
+        p {
+            font-style: italic;
+            font-weight: 300;
+            font-size: 5.46276px;
+            line-height: 7px;
+            letter-spacing: 0.03em;
+            color: #000000;
+        }
+    }
+
+    .btnContnr {
+        margin-top: 50px;
+        text-align: center;
+        margin-bottom: 20px;
+
+        button {
+            border: none;
+            align-items: center;
+            width: 197.96px;
+            height: 38.6px;
+            border-radius: 7.56px;
+            gap: 1.76px;
+            filter: drop-shadow(0px 3.51999px 3.51999px rgba(0, 0, 0, 0.25));
+        }
+
+        #cnfrmPkg {
+            background-color: #BE2D30;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 17.5999px;
+            line-height: 21px;
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+
+        #custmPkg {
+            border: 1px solid black;
+            background-color: #FFFFFF;
+            font-weight: 500;
+            font-size: 16.8547px;
+            line-height: 21px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #000000;
+        }
+    }
+
+    .pcs {
+        margin-top: 5px;
+        margin-left: 40px;
+
+        p {
+            padding: 5px 10px 5px 10px;
+            border-radius: 4.87px;
+            background-color: #FFFFFF;
+            margin: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 7.99748px;
+            line-height: 10px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #000000;
         }
     }
 
@@ -633,6 +757,7 @@
                 width: 376.9px;
             }
         }
+
         .ninjaBuffyHpkg {
             img {
                 margin-top: 60px;
@@ -704,6 +829,22 @@
             line-height: 24px;
             letter-spacing: 0.03em;
             color: #2C3338;
+        }
+
+        h6 {
+            text-align: center;
+            margin: auto;
+            margin-top: 10px;
+            width: 170px;
+            height: 37px;
+            padding: 5px;
+            border-radius: 10px;
+            background-color: #FFC31A;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.03em;
+            color: #000000;
         }
 
         #vegGuest {
@@ -1141,20 +1282,126 @@
         }
     }
 
-    #ninjaBuffy{
+    #ninjaBuffy {
         width: 180.37px;
         height: 270.92px;
         margin-left: 30px;
         margin-right: 20px;
     }
 
-    .pricingTitle2{
-        h4{
-            span{
+    .pricingTitle2 {
+        h4 {
+            span {
                 font-style: italic;
                 font-weight: 500;
                 color: #2C3338;
             }
+        }
+    }
+
+    .pkgCardHeader {
+        background-color: #FFFFFF;
+        width: 379px;
+        height: 379px;
+        border-radius: 27.07px;
+        text-align: center;
+        margin-left: 150px;
+        margin-top: -15px;
+
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 28.2484px;
+            line-height: 34px;
+            letter-spacing: 0.02em;
+            color: #BE2D30;
+        }
+
+        img {
+            width: 282.48px;
+            height: 176.55px;
+        }
+
+        h5 {
+            font-weight: 400;
+            font-size: 18.8323px;
+            line-height: 28px;
+            color: #000000;
+            margin-top: 10px;
+        }
+
+        h4 {
+            font-weight: 300;
+            font-size: 23.5404px;
+            line-height: 35px;
+            letter-spacing: 0.03em;
+            margin-bottom: -10px;
+        }
+
+        p {
+            font-style: italic;
+            font-weight: 300;
+            font-size: 9.28424px;
+            line-height: 11px;
+            letter-spacing: 0.03em;
+        }
+    }
+
+    .pcs {
+        margin-left: 250px;
+        margin-top: 15px;
+
+        p {
+            padding: 15px 30px 15px 30px;
+            font-style: normal;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            font-weight: 600;
+            font-size: 16.4211px;
+            line-height: 20px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #000000;
+        }
+    }
+
+    .btnContnr {
+        margin-top: 80px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+
+        button {
+            border: none;
+            align-items: center;
+            width: 262.05px;
+            height: 54.74px;
+            border-radius: 10px;
+            filter: drop-shadow(0px 3.51999px 3.51999px rgba(0, 0, 0, 0.25));
+        }
+
+        #cnfrmPkg {
+            background-color: #BE2D30;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 23.2931px;
+            line-height: 28px;
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+
+        #custmPkg {
+            border: 1px solid black;
+            background-color: #FFFFFF;
+            font-weight: 500;
+            font-size: 23.2931px;
+            line-height: 28px;
+            text-align: center;
+            letter-spacing: 0.03em;
         }
     }
 }

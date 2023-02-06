@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from '/styles/NewCustomizePkg.module.scss';
+import styles from '/styles/ViewPackage.module.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const CustomizeNinjaBox = () => {
+const NinjaBoxViewPkg = () => {
     return (
         <div className={styles.customizeMainContainer}>
             <div className={styles.customizeMainContainer}>
@@ -11,17 +11,23 @@ const CustomizeNinjaBox = () => {
                         <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
                         <div className={styles.textLogo}>
                             <div>
-                                <h3>Customize your</h3>
+                                <h3>View your</h3>
                                 <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
-                                <h5>Get instant quote in just few<br />easy steps!</h5>
+                                <h5>You can also customise your<br />package below!</h5>
                             </div>
                             <div>
                                 <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
                             </div>
                         </div>
                     </div>
-                    <div className={styles.ninjabox}>
-                        <img src='NB.png' width="281.81px" height="218px" />
+                    <div className={styles.pkgCardHeader}>
+                        <div>
+                            <h3>PACKAGE NAME</h3>
+                            <img src='555.png'/>
+                            <h5>X Starters + X Mains + X Desserts</h5>
+                            <h4> XXXX</h4>
+                            <p>(For 20 Guests)</p>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.redBg}>
@@ -45,6 +51,7 @@ const CustomizeNinjaBox = () => {
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
                             </div>
+                            <h5>₹ 8,888</h5>
                         </div>
                         <div className={styles.pkgDetails}>
                             <div>
@@ -53,6 +60,9 @@ const CustomizeNinjaBox = () => {
                                 <div>
                                     <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                     <p id={styles.nonVegGuest}>Non Veg Guests<span>: 10</span></p>
+                                </div>
+                                <div>
+                                    <h6>₹ 8,888</h6>
                                 </div>
                             </div>
                             <div>
@@ -72,21 +82,8 @@ const CustomizeNinjaBox = () => {
                                                     <h4>Paneer Butter<br />Masala</h4>
                                                     <p>Classic Choice For Mains</p>
                                                 </div>
-                                                <div>
-                                                    <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                </div>
-                                                <div>
-                                                    <div className={styles.quantityBtn}>
-                                                        <button>-</button>
-                                                        <h6>5.5 Kg</h6>
-                                                        <button>+</button>
-                                                    </div>
-                                                    <div className={styles.recQnty}>
-                                                        <p>Recommended Qt.</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                                <div className={styles.pcs}>
+                                                    <p>000pcs</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,27 +96,11 @@ const CustomizeNinjaBox = () => {
                                                         <h4>Chicken<br />Tandoori</h4>
                                                         <p>Classic Choice For Mains</p>
                                                     </div>
-                                                    <div>
-                                                        <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                    </div>
-                                                    <div>
-                                                        <div className={styles.quantityBtn}>
-                                                            <button>-</button>
-                                                            <h6>50 Pcs</h6>
-                                                            <button>+</button>
-                                                        </div>
-                                                        <div className={styles.recQnty}>
-                                                            <p>Recommended Qt.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
-                                                    </div>
+                                                    <div className={styles.pcs}>
+                                                    <p>000pcs</p>
+                                                </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className={styles.addStarterBtnContnr}>
-                                            <button className={styles.addStarterBtn}>+ Add Starter</button>
                                         </div>
                                     </div>
                                 </div>
@@ -134,21 +115,8 @@ const CustomizeNinjaBox = () => {
                                                     <h4>Paneer Butter<br />Masala</h4>
                                                     <p>Classic Choice For Mains</p>
                                                 </div>
-                                                <div>
-                                                    <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                </div>
-                                                <div>
-                                                    <div className={styles.quantityBtn}>
-                                                        <button>-</button>
-                                                        <h6>5.5 Kg</h6>
-                                                        <button>+</button>
-                                                    </div>
-                                                    <div className={styles.recQnty}>
-                                                        <p>Recommended Qt.</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                                <div className={styles.pcs}>
+                                                    <p>000pcs</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,22 +129,9 @@ const CustomizeNinjaBox = () => {
                                                         <h4>Chicken<br />Tandoori</h4>
                                                         <p>Classic Choice For Mains</p>
                                                     </div>
-                                                    <div>
-                                                        <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                    </div>
-                                                    <div>
-                                                        <div className={styles.quantityBtn}>
-                                                            <button>-</button>
-                                                            <h6>50 Pcs</h6>
-                                                            <button>+</button>
-                                                        </div>
-                                                        <div className={styles.recQnty}>
-                                                            <p>Recommended Qt.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
-                                                    </div>
+                                                    <div className={styles.pcs}>
+                                                    <p>000pcs</p>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,22 +144,9 @@ const CustomizeNinjaBox = () => {
                                                         <h4>Chicken<br />Tandoori</h4>
                                                         <p>Classic Choice For Mains</p>
                                                     </div>
-                                                    <div>
-                                                        <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                    </div>
-                                                    <div>
-                                                        <div className={styles.quantityBtn}>
-                                                            <button>-</button>
-                                                            <h6>50 Pcs</h6>
-                                                            <button>+</button>
-                                                        </div>
-                                                        <div className={styles.recQnty}>
-                                                            <p>Recommended Qt.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
-                                                    </div>
+                                                    <div className={styles.pcs}>
+                                                    <p>000pcs</p>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,27 +159,11 @@ const CustomizeNinjaBox = () => {
                                                         <h4>Chicken<br />Tandoori</h4>
                                                         <p>Classic Choice For Mains</p>
                                                     </div>
-                                                    <div>
-                                                        <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                    </div>
-                                                    <div>
-                                                        <div className={styles.quantityBtn}>
-                                                            <button>-</button>
-                                                            <h6>50 Pcs</h6>
-                                                            <button>+</button>
-                                                        </div>
-                                                        <div className={styles.recQnty}>
-                                                            <p>Recommended Qt.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
-                                                    </div>
+                                                    <div className={styles.pcs}>
+                                                    <p>000pcs</p>
+                                                </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className={styles.addStarterBtnContnr}>
-                                            <button className={styles.addStarterBtn}>+ Add Main</button>
                                         </div>
                                     </div>
                                 </div>
@@ -252,21 +178,8 @@ const CustomizeNinjaBox = () => {
                                                     <h4>Paneer Butter<br />Masala</h4>
                                                     <p>Classic Choice For Mains</p>
                                                 </div>
-                                                <div>
-                                                    <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                </div>
-                                                <div>
-                                                    <div className={styles.quantityBtn}>
-                                                        <button>-</button>
-                                                        <h6>5.5 Kg</h6>
-                                                        <button>+</button>
-                                                    </div>
-                                                    <div className={styles.recQnty}>
-                                                        <p>Recommended Qt.</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+                                                <div className={styles.pcs}>
+                                                    <p>000pcs</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -279,33 +192,17 @@ const CustomizeNinjaBox = () => {
                                                         <h4>Chicken<br />Tandoori</h4>
                                                         <p>Classic Choice For Mains</p>
                                                     </div>
-                                                    <div>
-                                                        <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                                    </div>
-                                                    <div>
-                                                        <div className={styles.quantityBtn}>
-                                                            <button>-</button>
-                                                            <h6>50 Pcs</h6>
-                                                            <button>+</button>
-                                                        </div>
-                                                        <div className={styles.recQnty}>
-                                                            <p>Recommended Qt.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
-                                                    </div>
+                                                    <div className={styles.pcs}>
+                                                    <p>000pcs</p>
+                                                </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className={styles.addStarterBtnContnr}>
-                                            <button className={styles.addStarterBtn}>+ Add Dessert</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='mt-5'>
+                        {/* <div className='mt-5'>
                             <div className={styles.userInput}>
                                 <h4>Details*</h4>
                                 <div className={styles.detailsInputLg}>
@@ -313,6 +210,14 @@ const CustomizeNinjaBox = () => {
                                     <input placeholder='Number' />
                                     <input placeholder='E-Mail' />
                                 </div>
+                            </div>
+                        </div> */}
+                        <div className={styles.btnContnr}>
+                            <div>
+                                <button id={styles.cnfrmPkg}>Confirm Package</button>
+                            </div>
+                            <div>
+                                <button id={styles.custmPkg}>Customise Package</button>
                             </div>
                         </div>
                         <div className={styles.chefNote}>
@@ -509,4 +414,4 @@ const CustomizeNinjaBox = () => {
     )
 }
 
-export default CustomizeNinjaBox
+export default NinjaBoxViewPkg
