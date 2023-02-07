@@ -21,6 +21,7 @@ import Footer from "$lib/Footer";
 import { Modal } from "react-bootstrap";
 import { NameNumberModal } from "$lib/custom/NameNumberModal";
 import AutoSearch from "$lib/custom/AutoSearch";
+import NewFooter from "$lib/NewFooter";
 
 export default function Custom() {
   const { menu, cuisines, allMenus } = useAppMenu();
@@ -2568,7 +2569,8 @@ export default function Custom() {
                 {modalContent}
             </Modal.Body>
         </Modal> */}
-      <Footer />
+      {/* <Footer /> */}
+      <NewFooter />
     </>
   );
 }

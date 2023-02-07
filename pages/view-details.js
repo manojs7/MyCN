@@ -8,6 +8,7 @@ import Router from "next/router";
 import Ninja_Package_Data from '$lib/ninja-box/Ninja_Package_Data'
 import { Modal } from "react-bootstrap";
 import { NameNumberModal } from "$lib/custom/NameNumberModal";
+import NewFooter from "$lib/NewFooter";
 
 export default function ViewDetails()
 {
@@ -437,6 +438,7 @@ export default function ViewDetails()
                 {modalContent}
             </Modal.Body>
         </Modal> */}
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
     </>)
 }

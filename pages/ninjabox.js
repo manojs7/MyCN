@@ -8,6 +8,7 @@ import NinjaBox_Video from '$lib/ninja-box/NinjaBox_Video';
 import React, { useEffect, useState } from 'react'
 import NewNavBar from '$lib/NewNavBar';
 import NboxVd from '$lib/ninja-box/NboxVd';
+import NewFooter from '$lib/NewFooter';
 
 export default function Ninja_Box()
 {
@@ -37,6 +38,7 @@ export default function Ninja_Box()
         <NinjaBox_Video />
         {/* <NboxVd /> */}
         <Custom_Package />
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
     </>)
 }

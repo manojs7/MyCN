@@ -7,6 +7,7 @@ import Footer from "$lib/Footer";
 import NinjaBox_Video from '$lib/ninja-box/NinjaBox_Video';
 import InstantQuote from '$lib/ninja-diy/InstantQuote';
 import NewNavBar from '$lib/NewNavBar';
+import NewFooter from '$lib/NewFooter';
 
 export default function Ninja_Instant_Quote()
 {
@@ -14,6 +15,7 @@ export default function Ninja_Instant_Quote()
         <NewNavBar />
         <Navbar />
         <InstantQuote />
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
     </>)
 }

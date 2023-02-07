@@ -20,6 +20,7 @@ import Head from "next/head";
 import Image from "next/image";
 import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import NewFooter from '$lib/NewFooter';
 
 export default function Home() {
   const[url, setUrl] = useState("");
@@ -64,7 +65,8 @@ export default function Home() {
 
 
 
-      <Footer />
+      {/* <Footer /> */}
+      <NewFooter />
     </div>
   );
 }

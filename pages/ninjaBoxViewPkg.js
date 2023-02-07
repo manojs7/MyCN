@@ -12,6 +12,7 @@ import Script from 'next/script'
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NinjaBoxViewPkg from '$lib/ninja-box/NinjaBoxViewPkg';
+import NewFooter from '$lib/NewFooter';
 
 export default function Customize_Ninja_Box() {
     return (<>
@@ -23,6 +24,7 @@ export default function Customize_Ninja_Box() {
         <NewNavBar />
         <Navbar />
         <NinjaBoxViewPkg />
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
     </>)
 }

@@ -12,6 +12,7 @@ import Script from 'next/script'
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NinjaBuffetViewPkg from '$lib/ninja-buffet/NinjaBuffetViewPkg';
+import NewFooter from '$lib/NewFooter';
 
 export default function View_Ninja_Buffet_Package() {
     return (<>
@@ -23,6 +24,7 @@ export default function View_Ninja_Buffet_Package() {
         <NewNavBar />
         <Navbar />
         <NinjaBuffetViewPkg />
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
     </>)
 }

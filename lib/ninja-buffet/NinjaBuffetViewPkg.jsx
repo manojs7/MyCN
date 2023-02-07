@@ -20,7 +20,7 @@ const NinjaBuffetViewPkg = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.pkgCardHeader}>
+                    <div className={styles.pkgCardHeaderNbuffy}>
                         <div>
                             <h3>PACKAGE NAME</h3>
                             <img src='/CustomizeImg/Group 1012.png'/>
@@ -66,7 +66,7 @@ const NinjaBuffetViewPkg = () => {
                                 </div>
                             </div>
                             <div>
-                                <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
+                                <img id={styles.pkgImg} src='/CustomizeImg/Group 1035.png' width="366px" height="200px" />
                             </div>
                         </div>
                         <div>

@@ -12,6 +12,7 @@ import Script from 'next/script'
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import CustomizeNinjaBuffet from '$lib/ninja-buffet/CustomizeNinjaBuffet';
+import NewFooter from '$lib/NewFooter';
 
 export default function Customize_Ninja_Buffet() {
     return (<>
@@ -23,6 +24,7 @@ export default function Customize_Ninja_Buffet() {
         <NewNavBar />
         <Navbar />
         <CustomizeNinjaBuffet />
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
     </>)
 }
