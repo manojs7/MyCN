@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet');
+
+.diyMainContainer {
+    font-family: "Montserrat", sans-serif;
+    padding-bottom: 500px;
+}
+
+.header {
+    height: 154px;
+    text-align: center;
+    padding-top: 50px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    img {
+        width: 146.02px;
+        height: 29.32px;
+    }
+
+    h4 {
+        font-weight: 500;
+        font-size: 13.7567px;
+        line-height: 102%;
+        color: #4D555B;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+
+    .headerButtonsLines {
+        width: 256.79px;
+        height: 18.66px;
+        //border: 1px solid red;
+        display: flex;
+        margin: auto;
+
+        button {
+            border: 2px solid #CAC9C9;
+            width: 18.66px;
+            height: 18.66px;
+            border-radius: 100%;
+            background-color: white;
+            margin: auto;
+        }
+
+        #line1 {
+            margin: auto;
+            width: 63.09px;
+            height: 0;
+            border: 1.77706px solid #CAC9C9;
+
+        }
+
+    }
+
+    #btn1 {
+        background-color: #BE2D30;
+    }
+}
+
+.selectCity {
+    text-align: center;
+
+    h3 {
+        margin-top: 60px;
+        font-weight: 700;
+        font-size: 19.05px;
+        line-height: 23px;
+        letter-spacing: 0.05em;
+        text-transform: capitalize;
+        color: #2C3338;
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin: auto;
+        width: 194px;
+        border: 0.299738px dashed #42484E;
+        background-color: white;
+    }
+
+    .cityIcon {
+        margin-inline: 20px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            border: none;
+            width: 70px;
+            height: 65px;
+            border-radius: 4.96719px;
+            background-color: white;
+            filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+        }
+
+        button:hover {
+            background-color: #FFC31A;
+        }
+
+        img {
+            width: 60px;
+        }
+    }
+}
+
+.occasion {
+    text-align: center;
+
+    h3 {
+        margin-top: 60px;
+        font-weight: 700;
+        font-size: 19.05px;
+        line-height: 23px;
+        letter-spacing: 0.05em;
+        text-transform: capitalize;
+        color: #2C3338;
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin: auto;
+        width: 136px;
+        border: 0.299738px dashed #42484E;
+        background-color: white;
+        margin-bottom: 30px;
+    }
+
+    .occasionOptionBtn {
+        display: flex;
+        justify-content: space-around;
+        margin-inline: 40px;
+
+        button {
+            border: none;
+            margin-bottom: 15px;
+            width: 111.88px;
+            height: 26.45px;
+            border-radius: 5.51px;
+            background-color: white;
+            filter: drop-shadow(0px 1.2px 2.20458px rgba(0, 0, 0, 0.25));
+
+            font-weight: 600;
+            font-size: 9.33622px;
+            line-height: 11px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+
+            color: #000000;
+        }
+
+        button:active {
+            background-color: #FFC31A;
+        }
+    }
+}
+
+.eventDate {
+    text-align: center;
+
+    h3 {
+        margin-top: 60px;
+        font-weight: 700;
+        font-size: 19.05px;
+        line-height: 23px;
+        letter-spacing: 0.05em;
+        text-transform: capitalize;
+        color: #2C3338;
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin: auto;
+        width: 194px;
+        border: 0.299738px dashed #42484E;
+        background-color: white;
+        margin-bottom: 30px;
+    }
+
+    .datePicker {
+        width: 150px;
+        margin: auto;
+    }
+
+    .availableSlots {
+        margin: auto;
+        width: 257px;
+        height: 71px;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        text-align: center;
+
+        h5 {
+            padding-top: 5px;
+            font-weight: 600;
+            font-size: 10.05px;
+            line-height: 12px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #2C3338;
+        }
+    }
+}

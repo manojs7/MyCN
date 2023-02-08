@@ -39,7 +39,7 @@ const CustomizeNinjaBuffet = () => {
                     <div className={styles.whiteBg}>
                         <div className={styles.packageName}>
                             <h3>PACKAGE NAME</h3>
-                            <img src='555.png' height="150px" width="274.5px" />
+                            <img src='/CustomizeImg/Group 1035.png' height="150px" width="274.5px" />
                             <h6>Starters + X Mains + X Desserts</h6>
                             <div>
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
@@ -56,7 +56,7 @@ const CustomizeNinjaBuffet = () => {
                                 </div>
                             </div>
                             <div>
-                                <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
+                                <img id={styles.pkgImg} src='/CustomizeImg/Group 1035.png' width="366px" height="200px" />
                             </div>
                         </div>
                         <div>
