@@ -58,6 +58,76 @@ const NewDiy = () => {
                     <h5>Available Slots</h5>
                 </div>
             </div>
+            <div className={styles.guestCount}>
+                <h3>Guest Count</h3>
+                <hr />
+                <div>
+                    <div className={styles.vegSwitch}>
+                        <div>
+                            <p>Veg Only</p>
+                        </div>
+                        <div>
+                            <label className={styles.switch}>
+                                <input type="checkbox" />
+                                <span className={styles.slider}></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div className={styles.vegNonvegOptions}>
+                        <div>
+                            <select className="form-select" aria-label="Default select example">
+                                <option selected>Veg guest 10</option>
+                                <option value="1">Veg guest 10</option>
+                                <option value="2">Veg guest 10</option>
+                                <option value="3">Veg guest 10</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select className="form-select" aria-label="Default select example">
+                                <option selected>Non-Veg guest 10</option>
+                                <option value="1">Non-Veg guest 10</option>
+                                <option value="2">Non-Veg guest 10</option>
+                                <option value="3">Non-Veg guest 10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.cuisineContainer}>
+                <h3>Cuisine</h3>
+                <hr />
+                <div className={styles.cuisineBtn}>
+                    <div>
+                        <button>North Indian</button>
+                        <button>Bengali</button>
+                        <button>Contiental</button>
+                    </div>
+                    <div>
+                        <button>Pan Asian</button>
+                        <button>Indian Chinese</button>
+                        <button>Multi Cuisine</button>
+                    </div>
+                </div>
+            </div>
+            <hr id={styles.bottomLine} />
+            <div className={styles.backBtn}>
+                <button>back</button>
+            </div>
+            <div className={styles.createYourMenuContainer}>
+                <h3>Create Your Menu</h3>
+                <hr />
+                <div className={styles.startersContainer}>
+                    <div>
+                        <label className={styles.switch}>
+                            <input type="checkbox" />
+                            <span className={styles.slider}></span>
+                        </label>
+                    </div>
+                    <div>
+                    <h6>STARTERS -</h6>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
