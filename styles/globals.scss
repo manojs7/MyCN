@@ -274,17 +274,20 @@ textarea {
   margin-bottom: 20px !important;
 }
 
-.hoverZoom, #hoverzoom {
+.hoverZoom,
+#hoverzoom {
   transition: transform 0.5s;
+
   &:hover {
     transform: scale(1.1);
   }
 }
 
-#smhover{
-    transition: transform 0.25s ease;
-    cursor: zoom-in;
+#smhover {
+  transition: transform 0.25s ease;
+  cursor: zoom-in;
 }
+
 #smhover:active {
   //-webkit-transform: scale(0.8);
   transform: scale(1.1);
@@ -300,14 +303,70 @@ input[type=radio] {
   width: fit-content;
   margin: 0 1rem;
 }
-#city{
-  border: 1px solid rgba(246,243,243,.6);
+
+#city {
+  border: 1px solid rgba(246, 243, 243, .6);
   box-shadow: 0 7px 6px -6px #777;
   margin: 0 25px 0 0;
   border-radius: 10px;
 }
 
 // search-component
-.search-component{
+.search-component {
   border: 0;
 }
+
+//DIY STYLES
+// .starterMenuContainer{
+
+// }
+#starterOptions {
+  margin: auto;
+  width: 286.9px;
+
+    .searchWrapper {
+      border: none;
+      margin-bottom: -20px;
+    }
+
+    .optionListContainer {
+      box-shadow: 8.09291px 20.0824px 67.4409px rgba(0, 0, 0, 0.51);
+    }
+
+    input {
+      background-color: #EFEFEF;
+    }
+
+    .optionContainer {
+      li {
+        margin: 0%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 10.0002px;
+        line-height: 12px;
+        letter-spacing: 0.05em;
+        text-transform: capitalize;
+        color: #000000;
+      }
+
+      .checkbox {
+        margin: 0%;
+        padding: 0%;
+        margin-right: 0%;
+        padding-right: 0%;
+        width: 20px;
+      }
+    }
+
+    ::placeholder {
+      padding: 0%;
+      font-weight: 600;
+      font-size: 12.1784px;
+      line-height: 15px;
+      letter-spacing: 0.05em;
+      text-transform: capitalize;
+      color: #2C3338;
+    }
+  }
