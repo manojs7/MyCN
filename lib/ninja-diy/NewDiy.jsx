@@ -28,6 +28,12 @@ const NewDiy = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [selectedOptions, setSelectedOptions] = useState();
 
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [isDisabledStarter, setIsDisabledStarter] = useState(true);
+    const [isDisabledMains, setIsDisabledMains] = useState(true);
+    const [isDisabledBread, setIsDisabledBread] = useState(true);
+    const [isDisabledRice, setIsDisabledRice] = useState(true);
+
     const [isShown, setIsShown] = useState(false);
 
     const handleClick = event => {
@@ -77,17 +83,17 @@ const NewDiy = () => {
             <div className={styles.selectCity}>
                 <h3>Select Your City</h3>
                 <hr />
-                <div className={styles.cityIcon}>
-                    <button><img src='cities/mumbai.png' /></button>
-                    <button><img src='cities/bangalore.png' /></button>
-                    <button><img src='cities/delhi.png' /></button>
-                    <button><img src='cities/gurgaon.png' /></button>
+                <div className="btn-group" role="group" aria-label="Basic example" id={styles.cityIcon}>
+                    <button type='radio'><img src='cities/mumbai.png' /></button>
+                    <button type='radio'><img src='cities/bangalore.png' /></button>
+                    <button type='radio'><img src='cities/delhi.png' /></button>
+                    <button type='radio'><img src='cities/gurgaon.png' /></button>
                 </div>
             </div>
             <div className={styles.occasion}>
                 <h3>Occasion</h3>
                 <hr />
-                <div className={styles.occasionOptionBtn}>
+                <div className="btn-group" role="group" aria-label="Basic example" id={styles.occasionOptionBtn}>
                     <div>
                         <button>Birthday Party</button>
                         <button>Pre-Wedding</button>
@@ -120,7 +126,8 @@ const NewDiy = () => {
                         </div>
                         <div>
                             <label className={styles.switch}>
-                                <input type="checkbox" />
+                                <input type="checkbox" checked={isDisabled}
+                                    onChange={(e) => setIsDisabled(e.target.checked)} />
                                 <span className={styles.slider}></span>
                             </label>
                         </div>
@@ -128,14 +135,14 @@ const NewDiy = () => {
                     <div className={styles.vegNonvegOptions}>
                         <div>
                             <select className="form-select" aria-label="Default select example">
-                                <option selected>Veg guest 10</option>
+                                <option style={{ backgroundImage: "url(4444.png)"}} selected>Veg guest 10</option>
                                 <option value="1">Veg guest 10</option>
                                 <option value="2">Veg guest 10</option>
                                 <option value="3">Veg guest 10</option>
                             </select>
                         </div>
                         <div>
-                            <select className="form-select" aria-label="Default select example">
+                            <select className="form-select" aria-label="Default select example" disabled={isDisabled}>
                                 <option selected>Non-Veg guest 10</option>
                                 <option value="1">Non-Veg guest 10</option>
                                 <option value="2">Non-Veg guest 10</option>
@@ -172,7 +179,8 @@ const NewDiy = () => {
                     <div className={styles.startersContainer}>
                         <div>
                             <label className={styles.switch}>
-                                <input type="checkbox" />
+                                <input type="checkbox" checked={isDisabledStarter}
+                                    onChange={() => setIsDisabledStarter(!isDisabledStarter)}/>
                                 <span className={styles.slider}></span>
                             </label>
                         </div>
@@ -198,6 +206,7 @@ const NewDiy = () => {
                     </div>)} */}
                     <div className={styles.starterMenuContainer}>
                         <Multiselect
+                            disable={!isDisabledStarter}
                             id="starterOptions"
                             placeholder="Select Starter"
                             displayValue="key"
@@ -235,7 +244,8 @@ const NewDiy = () => {
                     <div className={styles.startersContainer}>
                         <div>
                             <label className={styles.switch}>
-                                <input type="checkbox" />
+                                <input type="checkbox" checked={isDisabledMains}
+                                    onChange={() => setIsDisabledMains(!isDisabledMains)}/>
                                 <span className={styles.slider}></span>
                             </label>
                         </div>
@@ -245,6 +255,7 @@ const NewDiy = () => {
                     </div>
                     <div>
                         <Multiselect
+                        disable={!isDisabledMains}
                             id="starterOptions"
                             placeholder="Select Mains"
                             displayValue="key"
@@ -282,7 +293,8 @@ const NewDiy = () => {
                     <div className={styles.startersContainer}>
                         <div>
                             <label className={styles.switch}>
-                                <input type="checkbox" />
+                                <input type="checkbox" checked={isDisabledBread}
+                                    onChange={() => setIsDisabledBread(!isDisabledBread)}/>
                                 <span className={styles.slider}></span>
                             </label>
                         </div>
@@ -292,6 +304,7 @@ const NewDiy = () => {
                     </div>
                     <div>
                         <Multiselect
+                            disable={!isDisabledBread}
                             id="starterOptions"
                             placeholder="Select Bread / Rice"
                             displayValue="key"
@@ -329,7 +342,8 @@ const NewDiy = () => {
                     <div className={styles.startersContainer}>
                         <div>
                             <label className={styles.switch}>
-                                <input type="checkbox" />
+                                <input type="checkbox" checked={isDisabledRice}
+                                    onChange={() => setIsDisabledRice(!isDisabledRice)}/>
                                 <span className={styles.slider}></span>
                             </label>
                         </div>
@@ -339,6 +353,7 @@ const NewDiy = () => {
                     </div>
                     <div>
                         <Multiselect
+                            disable={!isDisabledRice}
                             id="starterOptions"
                             placeholder="Select Dessert"
                             displayValue="key"
@@ -477,8 +492,28 @@ const NewDiy = () => {
                         <h6>Delivery Charges (As Per Actual)</h6>
                     </div>
                     <div>
-                        <p>₹ 0000</p>
-                        <p>₹ 0000</p>
+                        <h6>₹ 0000</h6>
+                        <h6>₹ 0000</h6>
+                    </div>
+                </div>
+                <hr id={styles.pricebtmHr} />
+                <div className={styles.itemtotalSectn}>
+                    <div>
+                        <h6>Coupon Value</h6>
+                        <h6>GST</h6>
+                    </div>
+                    <div>
+                        <h6>₹ 0000</h6>
+                        <h6>₹ 0000</h6>
+                    </div>
+                </div>
+                <hr id={styles.pricebtmHr} />
+                <div className={styles.grandTotalContainer}>
+                    <div>
+                        <h3>Grand Total</h3>
+                    </div>
+                    <div>
+                        <h3>₹ 0000</h3>
                     </div>
                 </div>
             </div>
