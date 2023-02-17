@@ -34,7 +34,10 @@ export const NameNumberModal = ({ handleClose, show,totalPrice }) => {
       </Modal.Header>
       <Modal.Body>
       {totalPrice<3000?"":<> 
-        <form onSubmit={handleSubmit}>
+      <h6>
+        Total Price  : {totalPrice}
+      </h6>
+        {/* <form onSubmit={handleSubmit}>
           <input
             onBlur={(e) => setName(e.target.value)}
             type="text"
@@ -53,7 +56,7 @@ export const NameNumberModal = ({ handleClose, show,totalPrice }) => {
           <Button variant="primary" onClick={handleSubmit}>
           Submit
         </Button>
-        </form>
+        </form> */}
         </>
     }
       </Modal.Body>

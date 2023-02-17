@@ -30,7 +30,7 @@
     "fontawesome-free": "^1.0.4",
     "googleapis": "^100.0.0",
     "jquery": "^3.6.0",
-    "next": "^12.1.0",
+    "next": "^12.3.4",
     "react": "18.0.0",
     "react-bootstrap": "^2.2.1",
     "react-datepicker": "^4.8.0",

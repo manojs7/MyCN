@@ -4394,7 +4394,7 @@
     {
         "id": "367",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Makhanwala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4406,7 +4406,7 @@
     {
         "id": "368",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer lababdar",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4418,7 +4418,7 @@
     {
         "id": "369",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tikka masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4430,7 +4430,7 @@
     {
         "id": "370",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Kadhai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4442,7 +4442,7 @@
     {
         "id": "371",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Palak Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4454,7 +4454,7 @@
     {
         "id": "372",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Mughlai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4466,7 +4466,7 @@
     {
         "id": "373",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Methi Chaman",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4478,7 +4478,7 @@
     {
         "id": "374",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Mutter Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4490,7 +4490,7 @@
     {
         "id": "375",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Shahi Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4502,7 +4502,7 @@
     {
         "id": "376",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tawa Masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4514,7 +4514,7 @@
     {
         "id": "377",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer kolhapuri",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4526,7 +4526,7 @@
     {
         "id": "378",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer in Scheswan sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
@@ -4538,7 +4538,7 @@
     {
         "id": "379",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Chilly Paneer in pepper Sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
@@ -4550,7 +4550,7 @@
     {
         "id": "380",
         "city": "bangalore",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer chettinad gravy",
         "Qtype": "kg",
         "cuisine": "South Indian ",
@@ -4562,7 +4562,7 @@
     {
         "id": "381",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Makhanwala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4574,7 +4574,7 @@
     {
         "id": "382",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer lababdar",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4586,7 +4586,7 @@
     {
         "id": "383",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tikka masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4598,7 +4598,7 @@
     {
         "id": "384",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Kadhai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4610,7 +4610,7 @@
     {
         "id": "385",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Palak Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4622,7 +4622,7 @@
     {
         "id": "386",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Mughlai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4634,7 +4634,7 @@
     {
         "id": "387",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Methi Chaman",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4646,7 +4646,7 @@
     {
         "id": "388",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Mutter Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4658,7 +4658,7 @@
     {
         "id": "389",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Shahi Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4670,7 +4670,7 @@
     {
         "id": "390",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tawa Masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4682,7 +4682,7 @@
     {
         "id": "391",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer kolhapuri",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4694,7 +4694,7 @@
     {
         "id": "392",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer in Schezwan sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
@@ -4706,7 +4706,7 @@
     {
         "id": "393",
         "city": "delhi",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Chilly Paneer in pepper Sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
@@ -4718,7 +4718,7 @@
     {
         "id": "394",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Makhanwala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4730,7 +4730,7 @@
     {
         "id": "395",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer lababdar",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4742,7 +4742,7 @@
     {
         "id": "396",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tikka masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4754,7 +4754,7 @@
     {
         "id": "397",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Kadhai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4766,7 +4766,7 @@
     {
         "id": "398",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Palak Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4778,7 +4778,7 @@
     {
         "id": "399",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Mughlai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4790,7 +4790,7 @@
     {
         "id": "400",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Methi Chaman",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4802,7 +4802,7 @@
     {
         "id": "401",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Mutter Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4814,7 +4814,7 @@
     {
         "id": "402",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Shahi Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4826,7 +4826,7 @@
     {
         "id": "403",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tawa Masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4838,7 +4838,7 @@
     {
         "id": "404",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer kolhapuri",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4850,7 +4850,7 @@
     {
         "id": "405",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer in Schezwan sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
@@ -4862,7 +4862,7 @@
     {
         "id": "406",
         "city": "gurgaon",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Chilly Paneer in pepper Sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
@@ -4874,7 +4874,7 @@
     {
         "id": "407",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Makhanwala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4886,7 +4886,7 @@
     {
         "id": "408",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer lababdar",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4898,7 +4898,7 @@
     {
         "id": "409",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tikka masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4910,7 +4910,7 @@
     {
         "id": "410",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Kadhai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4922,7 +4922,7 @@
     {
         "id": "411",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Palak Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4934,7 +4934,7 @@
     {
         "id": "412",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Mughlai",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4946,7 +4946,7 @@
     {
         "id": "413",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Methi Chaman",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4958,7 +4958,7 @@
     {
         "id": "414",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Mutter Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4970,7 +4970,7 @@
     {
         "id": "415",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Shahi Paneer",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4982,7 +4982,7 @@
     {
         "id": "416",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer Tawa Masala",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -4994,7 +4994,7 @@
     {
         "id": "417",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer kolhapuri",
         "Qtype": "kg",
         "cuisine": "Indian",
@@ -5006,7 +5006,7 @@
     {
         "id": "418",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Paneer in Scheswan sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
@@ -5018,7 +5018,7 @@
     {
         "id": "419",
         "city": "mumbai",
-        "menu_label": "Mains-Paneer",
+        "menu_label": "Mains-Gravy",
         "name": "Chilly Paneer in pepper Sauce",
         "Qtype": "kg",
         "cuisine": "Pan Asian",
