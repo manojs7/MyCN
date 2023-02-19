@@ -330,7 +330,7 @@ input[type=radio] {
     }
 
     .optionListContainer {
-      box-shadow: 8.09291px 20.0824px 67.4409px rgba(0, 0, 0, 0.51);
+      //box-shadow: 8.09291px 20.0824px 67.4409px rgba(0, 0, 0, 0.51);
     }
 
     input {
@@ -473,5 +473,19 @@ input[type=radio] {
 }
 .btn:hover {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+}
+
+
+// NEW START SEARCH LIST
+
+.multiSelectContainer ul {
+  max-height: 230px !important;
+  li{
+    height: 50px;
+  }
+}
+
+#starterOptions .optionContainer .checkbox{
+  width: 15px;
 }
 

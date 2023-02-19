@@ -28,13 +28,13 @@ const NewDiy = () => {
 
     const [startDate, setStartDate] = useState(new Date());
     const [selectedOptions, setSelectedOptions] = useState();
-
+    const [data, setData] = useState([])
     const [isDisabled, setIsDisabled] = useState(true);
     const [isDisabledStarter, setIsDisabledStarter] = useState(true);
     const [isDisabledMains, setIsDisabledMains] = useState(true);
     const [isDisabledBread, setIsDisabledBread] = useState(true);
     const [isDisabledRice, setIsDisabledRice] = useState(true);
-
+    const[showDropdown, setShowDropdown] = useState(true)
     const [isShown, setIsShown] = useState(false);
 
     const [state, setState] = useState({
@@ -43,19 +43,41 @@ const NewDiy = () => {
     });
 
     const handleDiv1Click = () => {
+
+        setShowSelectedMenu(true);
+        setShowDropdown(false)
+
         setState({
             showDiv1: false,
             showDiv2: true
         });
+        
+        const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+   
+        let selectedIds = [];
+        for(let i=0; i<results.length; i++){
+            selectedIds.push(results[i].id);
+        }
+        for(let j=0; j<filteredData.length; j++){
+            if(!(selectedIds.includes(filteredData[j].id))){
+                filteredData[j].checked='checked';
+            }
+        }
     };
 
     const handleCancelClick = () => {
+        
+        setShowSelectedMenu(false);
+        setShowDropdown(true);
         setState({
             showDiv1: true,
             showDiv2: false
         });
     };
 
+    const deleteMenu = (item)=>{
+        setCheckedValues(checkedValues.filter(v => v.id !== item.id));
+    }
     const handleClick = event => {
         // 👇️ toggle shown state
         setIsShown(current => !current);
@@ -76,12 +98,11 @@ const NewDiy = () => {
         setSelectedOptions(data);
     }
 
-
-
-
-
+    const [starter, setStarter] = useState([""]);
 
     useEffect(() => {
+
+        setData(itemList)
         const prevBtns = document.querySelectorAll(".btn-prev");
         const nextBtns = document.querySelectorAll(".btn-next");
         const progress = document.getElementById("progress");
@@ -105,8 +126,6 @@ const NewDiy = () => {
         });
 
         let formStepsNum = 0;
-
-
 
         function updateFormSteps() {
             formSteps.forEach((formStep) => {
@@ -132,6 +151,63 @@ const NewDiy = () => {
                 ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
         }
     }, [])
+
+    const itemList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Palak Paneer',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: ''
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Butter Paneer',
+            description: "cscscsecse",
+            checked: ''
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Matar Paneer',
+            description: "cscsecfesces",
+            checked: ''
+        },
+        {
+            id: 4,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chilie Paneer',
+            description: "csecfescfescfes",
+            checked: ''
+        },
+    ]
+
+    const [searchValue, setSearchValue] = React.useState('');
+    const [showSelectedMenu, setShowSelectedMenu] =  useState(false);
+
+    const searchStarter = (e) => {
+        setSearchValue(e.target.value);
+    };
+
+    const filteredData = data.filter((temp) =>
+        temp.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+
+    const [checkedValues, setCheckedValues] = React.useState([]);
+
+    const handleCheckboxChange = (e, item) => {
+        const value = item;
+        if (e.target.checked) {
+            value.checked = 'checked';
+            setCheckedValues([...checkedValues, value]);
+        } else {
+            value.checked = '';
+            setCheckedValues(checkedValues.filter(v => v.id !== value.id));
+        }
+
+    }
+
 
     return (
         <div className={styles.diyMainContainer}>
@@ -287,10 +363,36 @@ const NewDiy = () => {
                                     <h6>STARTERS -</h6>
                                 </div>
                             </div>
-                            {state.showDiv1 &&(<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
+                            <div className={styles.selectedStarterContainer}>
+                            {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles.fstItem} key={index}>
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <div className={styles.itemDetailsContainer}>
+                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                                        <div>
+                                            <h4>{item.name}</h4>
+                                            <p>{item.description}</p>
+                                        </div>
+                                        <div>
+                                            <div className={styles.quantityBtn}>
+                                                <button>-</button>
+                                                <h6>00pcs</h6>
+                                                <button>+</button>
+                                            </div>
+                                            <div className={styles.recQnty}>
+                                                <p>Recommended Qt.</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={()=>deleteMenu(item)} />
+                                        </div>
+                                    </div>
+                                </div> )) }
+                            </div>
+                            {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
                                 <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
                                 <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                            </div>)}
+                            </div>
+                            )}
                             {/* { isShown && (<div className={styles.starterMenuContainer}>
                         <Select
                             className={styles.selectDropdown}
@@ -303,8 +405,8 @@ const NewDiy = () => {
                         />
                         <div><button onClick={handleClick}>close</button></div>
                     </div>)} */}
-                            { state.showDiv2 && (<div className={styles.starterMenuContainer}>
-                                <Multiselect
+                            {showSelectedMenu && (<div className={styles.starterMenuContainer}>
+                                {/* <Multiselect
                                     disable={!isDisabledStarter}
                                     id="starterOptions"
                                     placeholder="Select Starter"
@@ -316,7 +418,8 @@ const NewDiy = () => {
                                     options={[
                                         {
                                             cat: 'Group 1',
-                                            key: 'Palak Paneer'
+                                            key: 'Palak Paneer',
+                                            image: "/666.png"
                                         },
                                         {
                                             cat: 'Group 1',
@@ -332,14 +435,94 @@ const NewDiy = () => {
                                         }
                                     ]}
                                     showCheckbox
-                                />
-                                <button className='mt-5' onClick={handleCancelClick}>Cancel</button>
+                                /> */}
+                                <div id={styles.starterSearchContent}>
+                                    {/* <Multiselect
+                                        disable={!isDisabledStarter}
+                                        id="starterOptions"
+                                        placeholder="Select Starter"
+                                        displayValue="key"
+                                        onKeyPressFn={function noRefCheck() { }}
+                                        onRemove={function noRefCheck() { }}
+                                        onSearch={function noRefCheck() { }}
+                                        onSelect={function noRefCheck() { }}
+                                        options={[
+                                            {
+                                                cat: 'Group 1',
+                                                key: 'Palak Paneer',
+                                            },
+                                            {
+                                                cat: 'Group 1',
+                                                key: 'Butter Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 1',
+                                                key: 'Muter Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 2',
+                                                key: 'Chilie Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 2',
+                                                key: 'Chilie Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 2',
+                                                key: 'Chilie Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 2',
+                                                key: 'Chilie Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 2',
+                                                key: 'Chilie Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 2',
+                                                key: 'Chilie Paneer'
+                                            },
+                                            {
+                                                cat: 'Group 2',
+                                                key: 'Chilie Paneer'
+                                            }
+                                        ]}
+                                        showCheckbox
+                                        Multiselect/> */}
+                                    <div>
+                                        <input type="text"
+                                            value={searchValue}
+                                            onChange={searchStarter}
+                                            placeholder="Search Starter" />
+                                        <div id={styles.starterList}>
+                                            <ul>
+                                                {filteredData.map((item, index) => (
+                                                    <li key={item.id}>
+                                                        <div className='d-flex justify-content-between'>
+                                                            <div id={styles.insideDivLi}>
+                                                                <img src={item.image} width="30.05px" height="26.54px" />
+                                                                <p>{item.name}<br /><span>{item.description}</span></p>
+                                                            </div>
+                                                            <div>
+                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e)=>handleCheckboxChange(e, item)} />
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div id={styles.listInsideBtn}>
+                                            <button onClick={handleCancelClick}>Done</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>)}
                             <div className={styles.starterBtmLine}>
                                 <hr />
                             </div>
                             <div className={styles.addMoreBtn}>
-                                <button>+ Add More</button>
+                                <button onClick={handleDiv1Click}>+ Add More</button>
                             </div>
                             <div className={styles.startersContainer}>
                                 <div>

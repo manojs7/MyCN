@@ -933,18 +933,317 @@ input:checked+.slider:before {
 #submitBtn {
     text-align: center;
     margin-top: 20px;
-    button{
-    border: none;
-    width: 116.87px;
-    height: 30px;
-    border-radius: 5.83px;
-    background-color: #BE2D30;
-    color: white;
-    font-weight: 600;
-    font-size: 13.575px;
-    line-height: 17px;
-    text-align: center;
-    letter-spacing: 0.03em;
-    filter: drop-shadow(0px 2.71501px 2.71501px rgba(0, 0, 0, 0.25));
+
+    button {
+        border: none;
+        width: 116.87px;
+        height: 30px;
+        border-radius: 5.83px;
+        background-color: #BE2D30;
+        color: white;
+        font-weight: 600;
+        font-size: 13.575px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        filter: drop-shadow(0px 2.71501px 2.71501px rgba(0, 0, 0, 0.25));
+    }
 }
+
+#starterSearchContent {
+    padding-top: 10px;
+    width: 326px;
+    height: 310.8px;
+    margin: auto;
+    background: #FFFFFF;
+    box-shadow: 8.09291px 20.0824px 67.4409px rgba(0, 0, 0, 0.51);
+
+    input {
+        margin: auto;
+        width: 286.99px;
+        height: 31.2px;
+        border-radius: 5.03px;
+        background-color: #EFEFEF;
+        font-weight: 600;
+        font-size: 12.2009px;
+        line-height: 15px;
+        letter-spacing: 0.05em;
+        text-transform: capitalize;
+        color: #ABABAB;
+    }
+
+    #starterList {
+        margin: auto;
+
+        ul::-webkit-scrollbar{
+            width: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0%;
+            overflow-y: auto;
+            height: 195px;
+            width: 300px;
+            margin: auto;
+            
+
+            li {
+                margin: auto;
+                text-align: center;
+                margin-bottom: 5px;
+                width: 276.59px;
+                height: 45px;
+                border-radius: 3.9px;
+                background-color: #F6F6F6;
+
+                #insideDivLi {
+                    margin-top: 5px;
+                    display: flex;
+
+                    p {
+                        font-weight: 500;
+                        font-size: 12px;
+                        letter-spacing: 0.05em;
+                        text-transform: capitalize;
+                        color: #000000;
+                        margin-bottom: -10px;
+                        text-align: start;
+                        line-height: 10px;
+
+                        span {
+                            margin-top: -10px;
+                            font-style: italic;
+                            font-weight: 400;
+                            font-size: 8px;
+                            letter-spacing: 0.05em;
+                            text-transform: capitalize;
+                            color: #4D555B;
+                        }
+                    }
+                    img{
+                        margin-top: 3px;
+                    }
+                }
+                input{
+                    margin-top: 7px;
+                    margin-right: 10px;
+                    width: 10px;
+                }
+            }
+        }
+    }
+}
+
+#listInsideBtn {
+    margin-top: 20px;
+    text-align: end;
+    margin-right: 20px;
+
+    button {
+        width: 53.05px;
+        height: 14.39px;
+        border-radius: 10.79px;
+        background: rgba(103, 103, 103, 0.1);
+        border: 0.372043px solid #BEBEBE;
+        border-radius: 10.7892px;
+        font-weight: 600;
+        font-size: 8.3457px;
+        line-height: 10px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        text-transform: capitalize;
+        color: #A4A4A4;
+    }
+}
+
+.selectedStarterContainer{
+    .fstItem {
+        height: 61.3px;
+        width: 315.17px;
+        background-color: #F8F8F8;
+        margin: auto;
+        border-radius: 4.87px;
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .itemImage {
+        height: 60.2px;
+        width: 68.15px;
+        border-radius: 5.68px;
+    }
+
+    .itemDetailsContainer {
+        display: flex;
+        margin-top: 10px;
+        text-align: start;
+
+        h4 {
+            //margin-left: -10px;
+            text-align: start;
+            font-weight: 600;
+            font-size: 11.81px;
+            line-height: 14px;
+            letter-spacing: 0.05em;
+            color: #2C3338;
+            margin-bottom: 1px;
+        }
+
+        P {
+            margin-top: 0%;
+            margin-left: 0%;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 7.26957px;
+            line-height: 8px;
+            letter-spacing: 0.05em;
+            color: #2C3338;
+        }
+    }
+
+    .vegLogo {
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 3px;
+        height: 10.79px;
+        width: 10.79px;
+    }
+
+    .downarrowLogo {
+        width: 12.27px;
+        height: 8px;
+        margin: 15px 0px 0px -5px;
+    }
+
+    .quantityBtn {
+        margin: auto;
+        margin-left: 10px;
+        margin-top: 11px;
+        display: flex;
+        width: 73.06px;
+        height: 19.92px;
+        background-color: white;
+        margin-bottom: -5px;
+
+        button {
+            height: 19.92px;
+            width: 19.92px;
+            background-color: #FFC31A;
+            border: none;
+            font-size: 11.0765px;
+            font-weight: 600;
+            box-shadow: 0px 2.09732px 2.09732px rgba(0, 0, 0, 0.25);
+        }
+
+        h6 {
+            margin: auto;
+            font-size: 6.81629px;
+            font-weight: 600;
+            line-height: 8PX;
+            letter-spacing: 0.05em;
+        }
+    }
+
+    .recQnty {
+        text-align: end;
+
+        p {
+            font-size: 5.34925px;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 7px;
+            color: #4E810A;
+            //padding-left: 11px;
+            // padding-top: 8px;
+            letter-spacing: 0.05em;
+            text-align: end;
+        }
+    }
+
+    .trassLogo {
+        width: 7.06px;
+        height: 7.89px;
+        margin-left: 10px;
+        margin-top: -25px;
+    }
+
+    .startersContainer {
+        //margin-inline: 50px;
+    }
+
+    .addStarterBtnContnr {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 30px;
+        margin-top: 10px;
+    }
+
+    .addStarterBtn {
+        border: none;
+        background-color: white;
+        font-weight: 600;
+        font-size: 11.8533px;
+        letter-spacing: 0.05em;
+        line-height: 14px;
+        text-transform: capitalize;
+        color: #BE2D30;
+    }
+
+    .userInput {
+        padding-top: 10px;
+        background-color: #FFC31A;
+        width: 226px;
+        height: 161px;
+        border-radius: 10px;
+        margin: auto;
+        padding: 10px;
+
+        h4 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16.5469px;
+            line-height: 20px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+        }
+
+        input {
+            width: 151.47px;
+            height: 22.91px;
+            border-radius: 6.36px;
+            background-color: white;
+            margin: auto;
+        }
+
+        input::placeholder {
+            font-weight: 600;
+            font-size: 12.092px;
+            line-height: 15px;
+            letter-spacing: 0.05em;
+            color: #BE2D30;
+        }
+    }
+
+    .chefNote {
+        text-align: center;
+        margin-top: 30px;
+
+        p {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 10.8163px;
+            line-height: 13px;
+            letter-spacing: 0.05em;
+        }
+
+        input {
+            margin: auto;
+            width: 263px;
+            height: 34px;
+            border-radius: 5.41px;
+            font-size: small;
+        }
+    }
 }
