@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import Slider from "react-slick";
 import { categories_1 } from "./Categories_Data";
@@ -60,8 +61,8 @@ const Categories = () => {
         <div className="categories-item-container">
         {categories_1.map((item, index) => (
             <div className="categories-item" key={index}>
-              <img src={item.image} alt="" className="img-fluid"/>
-              <p>{item.title}</p>
+              <Link href="https://caterninja.com/shop/catering"><img src={item.image} alt="" className="img-fluid"/></Link>
+              <Link href="https://caterninja.com/shop/catering"><p>{item.title}</p></Link>
             </div>
           ))}
 
@@ -69,8 +70,8 @@ const Categories = () => {
         <div className="categories-item-container"> */}
         {categories_2.map((item, index) => (
             <div className="categories-item" key={index}>
-              <img src={item.image} alt="" className="img-fluid " />
-              <p>{item.title}</p>
+              <Link href="https://caterninja.com/shop/catering"><img src={item.image} alt="" className="img-fluid " /></Link>
+              <Link href="https://caterninja.com/shop/catering"><p>{item.title}</p></Link>
             </div>
           ))}
 

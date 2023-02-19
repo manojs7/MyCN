@@ -50,15 +50,15 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="HomeCard1.png" alt="" style={{ width: "33px" }} />
                     </div>
-                    <p id="cardHeadTitle">Portable Bulk<br/>Food Packaging</p>
+                    <p id="cardHeadTitle">Get Free<br />Ninja Help</p>
                   </div>
                 </div>
                 <div className="">
                   <div className="What-Make-Us-Special-container-card-back reveal">
                     <p id="wmusDescription" className="mt-2 p-2 w-100">
-                      ✅ Trendy Bulk Packaging <br />
-                      ✅ Premium BioFriendly Disposable<br />
-                      ✅ No Utensile - Direct To Table
+                      ✅ Speak to a Catering Ninja <br />
+                      ✅ Place Your Request<br />
+                      ✅ Get Custom Designed Menu
                     </p>
                   </div>
                 </div>
@@ -71,7 +71,7 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="HomeCard2.png" alt="" style={{ width: "45px" }} />
                     </div>
-                    <p id="cardHeadTitle">Complete Party<br/>Solution</p>
+                    <p id="cardHeadTitle">Complete Party<br />Solution</p>
                   </div>
                 </div>
                 <div className="What-Make-Us-Special-hover">
@@ -93,7 +93,7 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="HomeCard3.png" alt="" style={{ width: "64px" }} />
                     </div>
-                    <p id="cardHeadTitle">Prepared with<br/>care and Hygiene</p>
+                    <p id="cardHeadTitle">Prepared with<br />care and Hygiene</p>
                   </div>
                 </div>
                 <div className="What-Make-Us-Special-hover">
@@ -115,7 +115,7 @@ const Specials = () => {
                     <div className="what-makes-ninjabox-special-logo">
                       <img src="HomeCard4.png" alt="" style={{ width: "35px" }} />
                     </div>
-                    <p id="cardHeadTitle">Hassle Free<br/>Solution</p>
+                    <p id="cardHeadTitle">Hassle Free<br />Solution</p>
                   </div>
                 </div>
                 <div className="What-Make-Us-Special-hover">
@@ -188,7 +188,7 @@ const Specials = () => {
       </section>)}
       {isSmall && (<div>
         <div className="smd-section-title text-center">
-          <h2>What Makes<br />Ninja<span>Classic</span> Special?</h2>
+          <h2 style={{ fontFamily: "'Montserrat', sans-serif" }}>What Makes<br />Ninja<span>Classic</span> Special?</h2>
         </div>
         {/* <Carousel >
         <div className="specials-item me-2 pt-5">
@@ -242,17 +242,17 @@ const Specials = () => {
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="what-makes-ninjabox-special-logo">
-                  <img src="wmus1.png" alt="" style={{ width: "23px" }} />
+                  <img src="HomeCard1.png" alt="" style={{ width: "23px" }} />
                 </div>
-                <p>Portable Bulk Food Packaging</p>
+                <p>Get Free Ninja<br/>Help</p>
               </div>
             </div>
             <div className="">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
-                  ✅ Trendy Bulk Packaging <br />
-                  ✅ BioFriendly Disposable<br />
-                  ✅ No Utensile - Direct To Table
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
+                  ✅ Speak to a Catering Ninja <br />
+                  ✅ Place Your Request<br />
+                  ✅ Get Custom Designed Menu
                 </p>
               </div>
             </div>
@@ -263,14 +263,14 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus2.png" alt="" style={{ width: "35px" }} />
+                  <img src="HomeCard2.png" alt="" style={{ width: "35px" }} />
                 </div>
                 <p>Complete Party Solution</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
                   ✅ Large Cuisine Variety <br />
                   ✅ Custom Choice Menu<br />
                   ✅ Great Value for Money
@@ -285,14 +285,14 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus3.png" alt="" style={{ width: "44px" }} />
+                  <img src="HomeCard3.png" alt="" style={{ width: "44px" }} />
                 </div>
                 <p>Prepared with care and Hygiene</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
                   ✅ Strict NinjaKitchen Protocols <br />
                   ✅ Highest Safety Standards<br />
                   ✅ Trained Chef & Delivery Ninja
@@ -307,14 +307,14 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="wmus4.png" alt="" style={{ width: "28px" }} />
+                  <img src="HomeCard4.png" alt="" style={{ width: "28px" }} />
                 </div>
-                <p>Hassle Free Solution</p>
+                <p>Hassle Free<br />Solution</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "600", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px" }}>
+                <p className="mt-2 p-2 w-100" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: "italic", fontSize: "7.13px", fontWeight: "700", backgroundColor: "#F1D07C", borderRadius: "4.34368px", margin: "3px", marginBottom: "15px", fontSize: "7.13px", lineHeight: "12px" }}>
                   ✅ Convenient Ordering <br />
                   ✅ Professional Support<br />
                   ✅ On Time Delivery

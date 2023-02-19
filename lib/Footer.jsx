@@ -16,19 +16,19 @@ export default function Footer()
                     <div className={styles.footer_socials}>
                         <ul className={styles.links} >
                             <li>
-                                <Link href='/' ><a><FontAwesomeIcon className={styles.icon} icon={faInstagram}></FontAwesomeIcon></a></Link>
+                                <Link href='https://www.instagram.com/caterninja/' ><a><FontAwesomeIcon className={styles.icon} icon={faInstagram}></FontAwesomeIcon></a></Link>
                             </li>
                             <li>
-                                <Link href='/' ><a><FontAwesomeIcon className={styles.icon} icon={faFacebook}></FontAwesomeIcon></a></Link>
+                                <Link href='https://www.facebook.com/CaterNinja/' ><a><FontAwesomeIcon className={styles.icon} icon={faFacebook}></FontAwesomeIcon></a></Link>
                             </li>
                             <li>
-                                <Link href='/' ><a><FontAwesomeIcon className={styles.icon} icon={faYoutube}></FontAwesomeIcon></a></Link>
+                                <Link href='https://www.youtube.com/channel/UC_lMKzsQnJ6R2LaIR49fvSA' ><a><FontAwesomeIcon className={styles.icon} icon={faYoutube}></FontAwesomeIcon></a></Link>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className={styles.copyright +  " col-md-4 copyright"}>
+                <div className={styles.copyright +  " col-lg-4 copyright"}>
                     <p>© 2022 CaterNinja. All Rights Reserved.</p>
 
                 </div>

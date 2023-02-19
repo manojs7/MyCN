@@ -97,7 +97,7 @@ const Ninja_Header = () => {
           <div className="lgd-ninja-box-header-logo">
             <img src="caterninja.png" height="27px" width="134.46px" alt="" />
           </div>
-          <div className="lgd-ninja-buffet-header-title">Snack<span>Box</span>
+          <div className="lgd-ninja-buffet-header-title ps-3">Snack<span>Box</span>
           </div>
           <div className="lgd-snack-box-header-content">
             Perfect Party Takeway Boxes For <span>All Occasions</span> and <span>Events</span>
@@ -120,14 +120,14 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-buffet-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="21.49" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
                 <div className="snack-box-header-title">
                   Snack<span>Box</span>
                 </div>
-                <div className="ninja-buffet-header-content">
+                <div className="snack-box-header-content">
                 Perfect Party Takeway Boxes For <span>All Occasions</span> and <span>Events</span>
                 </div>
               </div>

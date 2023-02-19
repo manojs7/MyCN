@@ -8,10 +8,10 @@ import YouTube from "react-youtube";
 
 const Ninja_Header = () => {
   const images = [
-    "box 1.png",
-    "box 2.png",
-    "box 3.png",
-    "box 4.png",
+    "box 1 (1).png",
+    "box 2 (1).png",
+    "box 3 (1).png",
+    "box 4 (1).png",
 
 
 
@@ -180,7 +180,7 @@ const Ninja_Header = () => {
             <img src='desktop ninja.png' alt='' />
           </div>
           <div className="ninja-box-header-button">
-            <button className="bg-red">Select Package</button>
+            <button onClick={() => (window.location.href = "#MealPkg")} className="bg-red">Select Package</button>
           </div>
         </div>
       </div>
@@ -193,7 +193,7 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-box-header-logo">
-              <img src="caterninja.png" height="auto" width="140px" alt="" />
+              <img src="caterninja.png" height="21.49px" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
@@ -205,7 +205,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-box-ninja-img">
-                <img src='desktop ninja.png' alt='' style={{ height: "auto", width: "140px" }} />
+                <img src='Group 1065 (1).png' alt='' style={{ height: "118.57px", width: "105.72px" }} />
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@ const Ninja_Header = () => {
               }}
             />
           </div> */}
-          <div className="mb-5">
+          <div className="mb-5 mt-2">
             {/* <ReactImageMagnify
             {...{
               smallImage: {
@@ -247,7 +247,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "350px" }}
+                  style={{ height: "auto", width: "390px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}

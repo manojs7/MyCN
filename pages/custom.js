@@ -21,6 +21,7 @@ import Footer from "$lib/Footer";
 import { Modal } from "react-bootstrap";
 import { NameNumberModal } from "$lib/custom/NameNumberModal";
 import AutoSearch from "$lib/custom/AutoSearch";
+import NewFooter from "$lib/NewFooter";
 
 export default function Custom() {
   const { menu, cuisines, allMenus } = useAppMenu();
@@ -391,134 +392,6 @@ export default function Custom() {
 
     setDesserts(tempDessert);
   }, [veg, nonVeg]);
-
-  function HandleCeilFloorValue(x){
-    var decimals = (x - Math.floor(x)).toFixed(1);
-    if(decimals<=0.4){
-      x=Math.floor(x);
-    }
-    else if(decimals>=0.6){
-      x=Math.floor(x);
-    }
-    return x;
-  }
-  //mains for testing logic
-  useEffect(()=>{
-     // main value change after veg anf=d non-veg guest change
-      let tempMain = [...mains];
-      let nonVegPastaMainCount=0
-      let nonVegMainsGravyMainCount=0
-      let nonVegMainThaiMainCount=0
-      //  console.log("here",JSON.stringify(tempMain).includes("Mains-Dal"))
-
-      if(_isContains(tempMain, "menu_label", "Pasta") && _isContains(tempMain, "veg", false)){
-        nonVegPastaMainCount+=1;
-      }
-      
-      else if(_isContains(tempMain, "menu_label", "Mains-Gravy") && _isContains(tempMain, "veg", false)){
-        nonVegMainsGravyMainCount+=1;
-      }
-      else if(_isContains(tempMain, "menu_label", "Mains-Thai") && _isContains(tempMain, "veg", false)){
-        nonVegMainThaiMainCount+=1;
-      }
-      
-     tempMain.map((data) => {
-       
-       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-         // if not rice , bred, noodles
-         console.log("not rice , bred, noodles1");
-         if (data.Qtype === "pcs") {
-           data.quantity = (veg > 0 ? veg : nonVeg) * 1;
-         } else if (data.name === highestPrice.name) {
-           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
-         } else {
-           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
-         }
-       } else {
-         if (data.veg) {
- 
-           //Heavy SNack
-           if(data.menu_label==="Heavy Snack"){
-             if (data.Qtype === "pcs") {
-               data.quantity = veg * 1;
-             } else {
-               data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-             }
-             
-           }
-           //Pasta mains handelling
-             //check whether non veg pasta is selected, if non veg pasta selected then veg pasta data.quantity =veg*100g only else veg*100+nonVeg*100g
-   
-           else if(data.menu_label==="Pasta"){
-             if(nonVegPastaMainCount>0){
-               data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1));
-             }
-             else{
-               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-             }
-             
-           }
-           //Mains-gravy : same logic as above 
-           else if(data.menu_label==="Mains-Gravy"){
-            console.log("in Mains-Gravy veg section");
-             if(nonVegMainsGravyMainCount>0){
-               data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
-             }
-             else{
-               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-             }
-   
-           }
-           //Main -Thai : same logic as above
-           else if(data.menu_label==="Mains-Thai"){
-            console.log("in Mains-Thai veg section");
-   
-             if(nonVegMainThaiMainCount>0){
-               data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
-             }
-             else{
-               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-             }
-           }
-           //Mains-dry : veg data.quantity= veg*100+ nonveg*100  else non-veg data.quantity=non veg*100
-           else if(data.menu_label==="Mains-dry"){
-   
-            
-               data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-             
-   
-           }
-           else{
-             //manins dal same as mains dry
-             //for daal and rest
-             if (data.Qtype === "pcs") {
-               data.quantity = veg * 1;
-             } else {
-               data.quantity = HandleCeilFloorValue((veg * 0.1+ nonVeg * 0.1).toFixed(1));
-             }
-           }
-           
-   
-           
-         } 
-         else {
-           console.log("not rice , bred, noodles3");
-           if (data.Qtype === "pcs") {
-             data.quantity = nonVeg * 1;
-           } else if (data.name === highestPrice.name) {
-             data.quantity = (nonVeg * 0.15).toFixed(1);
-           } else {
-             data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-           }
-         }
-       }
-     });
- 
-     setMains(tempMain);
- 
-  }, [])
-
-
 
   useEffect(() => {
     if (veg < 0) {
@@ -933,36 +806,14 @@ export default function Custom() {
         });
         quantity = (veg + nonVeg) * 1;
       }
-    } 
-    //Noodles
-    else if (filterBreadRice?.menu_label === "Noodle") {
-      let nonVegNoodleCount=0
-
-      temp.forEach((item) => {
-        if (item.menu_label === "Noodle" && item.veg===false) {
-          nonVegNoodleCount+=1;
-        }    
-      })
-      // console.log("naan");
-      filterBreadRice.veg === true && filterBreadRice.menu_label==="Noodle" && nonVegNoodleCount>0
-          ? (quantity = veg * 0.2)
-          : (quantity = (veg + nonVeg) * 0.1);
-      filterBreadRice.veg === false && filterBreadRice.menu_label==="Noodle" && nonVegNoodleCount>0
-          ? (quantity = nonVeg * 0.15)
-          : (quantity =  nonVeg * 0.2);
-     
-      temp.forEach((item) => {
-        item.veg === true && item.menu_label==="Noodle" && nonVegNoodleCount>0
-          ? (item.quantity = veg * 0.2)
-          : (item.quantity = (veg + nonVeg) * 0.1);
-        item.veg === false && item.menu_label==="Noodle" && nonVegNoodleCount>0
-          ? (item.quantity = nonVeg * 0.15)
-          : (item.quantity =  nonVeg * 0.2);
-      });
-        
-      
-    } 
-    else if (filterBreadRice?.menu_label === "Rice") {
+    } else if (filterBreadRice?.menu_label === "Noodle") {
+      console.log("naan");
+      veg > 0 && nonVeg === 0
+        ? (quantity = veg)
+        : veg === 0 && nonVeg > 0
+        ? (quantity = nonVeg)
+        : (quantity = veg + nonVeg);
+    } else if (filterBreadRice?.menu_label === "Rice") {
       let count = 1;
       let isVeg = false;
       let isNonVeg = false;
@@ -1217,12 +1068,7 @@ export default function Custom() {
     });
     console.log(dessertPrice);
     breadRice.map((d) => {
-      if(d.Qtype==='pcs'){
-        bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price)/12);
-      }
-      else{
-        bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price));
-      }
+      bredRicePrice += parseInt(d.quantity) * parseInt(d.selling_price);
     });
 
     setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
@@ -2603,7 +2449,8 @@ export default function Custom() {
                 {modalContent}
             </Modal.Body>
         </Modal> */}
-      <Footer />
+      {/* <Footer /> */}
+      <NewFooter />
     </>
   );
 }

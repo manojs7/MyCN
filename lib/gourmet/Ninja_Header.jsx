@@ -7,10 +7,11 @@ import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
-    "12.png",
-    "13.png",
-    "14.png",
-    "15.png",
+    "gdesk 1.png",
+    "gdesk 2.png",
+    "gdesk 3.png",
+    "gdesk 4.png",
+    "gdesk 5.png"
 
 
 
@@ -171,14 +172,14 @@ const Ninja_Header = () => {
           <div className="lgd-ninja-gourmet-header-title">Ninja<span>Gourmet</span>
           </div>
           <div className="lgd-ninja-gourmet-header-content">
-            <span>Super Premium Quality</span> Meals for Sophisticated <span>Corporate Meets!</span>
+            <span>Super Premium Quality</span> Meals for All Your Momentous <span>Events!</span>
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
             <img src='Gourmet Ninja.png' alt='' style={{width: "180px"}} />
           </div>
           <div className="ninja-box-header-button">
-            <button href = "#NBuPkg" className="bg-red">Select Package</button>
+            <button onClick={() => (window.location.href = "#gourmetPkg")} className="bg-red">Select Package</button>
           </div>
         </div>
       </div>
@@ -191,19 +192,19 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-buffet-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="21.49px" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
-                <div className="ninja-buffet-header-title" style={{fontSize: "32px"}}>
+                <div className="ninja-gourmet-header-title">
                   Ninja<span>Gourmet</span>
                 </div>
                 <div className="ninja-gourmet-header-content">
-                <span>Super Premium Quality</span> Meals for Sophisticated <span>Corporate Meets!</span>
+                <span>Super Premium Quality</span> Meals for All Your Momentous <span>Events!</span>
                 </div>
               </div>
-              <div className="col-6 ninja-buffet-ninja-img">
-                <img src='gourmet ninja.png' alt='' style={{ height: "auto", width: "120px" }} />
+              <div className="col-6 ninja-gourmet-ninja-img">
+                <img src='Group 1084.png' alt='' style={{ height: "97.44px", width: "94.5px" }} />
               </div>
             </div>
           </div>
@@ -223,7 +224,7 @@ const Ninja_Header = () => {
               }}
             />
           </div> */}
-          <div className="mb-5">
+          <div className="my-4">
             {/* <ReactImageMagnify
             {...{
               smallImage: {

@@ -87,61 +87,80 @@ export default function Navbar({ page }) {
     });
   }
 
+  // const small = (
+  //   <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}`}>
+  //     <div className={styles.logo} onClick={() => (window.location.href = "/")}>
+  //       <img src="CaterNinja (1).png" alt="logo" />
+  //     </div>
+  //     <div
+  //       className={styles.burger + ` ${active ? styles.active : ""}`}
+  //       onClick={() => {
+  //         burger_click();
+  //       }}
+  //       data-state={active.toString()}
+  //     >
+  //       <div className={styles.line1}></div>
+  //       <div className={styles.line2}></div>
+  //       <div className={styles.line3}></div>
+  //     </div>
+  //     <ul className={styles.links} data-state={active.toString()} id="links">
+  //       <li className={styles.margin}>
+  //         <Link href="/ninjabox">
+  //           <a onClick={() => burger_click()}>NinjaBox</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/ninjabuffet">
+  //           <a onClick={() => burger_click()}>NinjaBuffet</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/mealbox">
+  //           <a onClick={() => burger_click()}>MealBox</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/process">
+  //           <a onClick={() => burger_click()}>About Us</a>
+  //         </Link>
+  //       </li>
+  //       <li className={styles.margin}>
+  //         <Link href="/software">
+  //           <a onClick={() => burger_click()}>Blog</a>
+  //         </Link>
+  //       </li>
+  //       {/* <li className={styles.margin}>
+  //         <Link href="/newpage">
+  //           <a onClick={() => burger_click()}>New</a>
+  //         </Link>
+  //       </li> */}
+  //     </ul>
+  //   </nav>
+  // );
+
   const small = (
-    <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}`}>
-      <div className={styles.logo} onClick={() => (window.location.href = "/")}>
-        <img src="CaterNinja (1).png" alt="logo" />
-      </div>
-      <div
-        className={styles.burger + ` ${active ? styles.active : ""}`}
-        onClick={() => {
-          burger_click();
-        }}
-        data-state={active.toString()}
-      >
-        <div className={styles.line1}></div>
-        <div className={styles.line2}></div>
-        <div className={styles.line3}></div>
-      </div>
-      <ul className={styles.links} data-state={active.toString()} id="links">
-        <li className={styles.margin}>
-          <Link href="/ninjabox">
-            <a onClick={() => burger_click()}>NinjaBox</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/ninjabuffet">
-            <a onClick={() => burger_click()}>NinjaBuffet</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/mealbox">
-            <a onClick={() => burger_click()}>MealBox</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/process">
-            <a onClick={() => burger_click()}>About Us</a>
-          </Link>
-        </li>
-        <li className={styles.margin}>
-          <Link href="/software">
-            <a onClick={() => burger_click()}>Blog</a>
-          </Link>
-        </li>
-        {/* <li className={styles.margin}>
-          <Link href="/newpage">
-            <a onClick={() => burger_click()}>New</a>
-          </Link>
-        </li> */}
-      </ul>
-    </nav>
+    <div>
+      
+    </div>
   );
 
   const big = (
     <nav className={styles.nav + ` ${sticky ? styles.sticky : ""}` + ` ${!scrollUp ? styles.hideNav : ""}`}>
-      <div className="col-4">
+      <div className="col-5">
         <ul className={styles.links} data-state={active.toString()} id="links">
+        <li>
+            <Link href="/">
+              <a
+                className={
+                  router.pathname == "/" ? styles.current : null
+                }
+                onClick={() => burger_click()}
+              >
+                {" "}
+                <span style={{ color: "#BE2D30" }}>Home</span>
+              </a>
+            </Link>
+          </li>
           <li>
             <Link href="/ninjabox">
               <a
@@ -192,8 +211,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/gallery">
-              <a
+            <Link href="https://www.caterninja.com/about-us">
+              <a target="_blank"
                 className={page == "gallery" ? styles.current : null}
                 onClick={() => burger_click()}
               >
@@ -202,8 +221,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/contact-us">
-              <a
+            <Link href="https://www.caterninja.com/blog/">
+              <a target="_blank"
                 className={page == "contact" ? styles.current : null}
                 onClick={() => burger_click()}
               >
@@ -229,11 +248,11 @@ export default function Navbar({ page }) {
       >
         <img src="CaterNinja (1).png" alt="logo" />
       </div>
-      <div className={styles.nav_socials + " col-4"}>
+      <div className={styles.nav_socials + " col-3"}>
         <ul className={styles.links}>
           <li>
-            <Link href="/">
-              <a>
+            <Link href="https://www.instagram.com/caterninja/">
+              <a target="_blank">
                 <FontAwesomeIcon
                   className={styles.icon}
                   icon={faInstagram}
@@ -242,8 +261,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a>
+            <Link href="https://www.facebook.com/CaterNinja/">
+              <a target="_blank">
                 <FontAwesomeIcon
                   className={styles.icon}
                   icon={faFacebook}
@@ -252,8 +271,8 @@ export default function Navbar({ page }) {
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a>
+            <Link href="https://www.youtube.com/channel/UC_lMKzsQnJ6R2LaIR49fvSA">
+              <a target="_blank">
                 <FontAwesomeIcon
                   className={styles.icon}
                   icon={faYoutube}

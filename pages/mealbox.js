@@ -5,16 +5,20 @@ import Specials from '$lib/meal-box/Specials';
 import Custom_Package from '$lib/meal-box/Custom_Package';
 import Footer from "$lib/Footer";
 import MealBox_Video from '$lib/meal-box/MealBox_Video';
+import NewNavBar from '$lib/NewNavBar';
+import NewFooter from '$lib/NewFooter';
 
 export default function Meal_Box()
 {
     return (<>
+        <NewNavBar />
         <Navbar />
         <FeedBack />
         <Ninja_Header />
         <Specials />
         <MealBox_Video />
         <Custom_Package />
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
     </>)
 }

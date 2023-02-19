@@ -7,10 +7,10 @@ import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
-    "buffetCr1.png",
-    "buffetCr2.png",
-    "buffetCr3.png",
-    "buffetCr4.png",
+    "Frame 759.png",
+    "Frame 769.png",
+    "Frame 770.png",
+    "Frame 771.png",
 
 
 
@@ -179,7 +179,7 @@ const Ninja_Header = () => {
             <img src='buffetNinjaLogo.png' alt='' style={{width: "120px"}} />
           </div>
           <div className="ninja-box-header-button">
-            <button href = "#NBuPkg" className="bg-red">Select Package</button>
+            <button onClick={() => (window.location.href = "#buffeyPkg")} className="bg-red">Select Package</button>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-buffet-header-logo">
-              <img src="caterninja.png" height="auto" width="100%" alt="" />
+              <img src="caterninja.png" height="21.49" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
@@ -200,12 +200,12 @@ const Ninja_Header = () => {
                   Ninja<span>Buffet</span>
                 </div>
                 <div className="ninja-buffet-header-content">
-                <span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
-              Guests</span>
+                <h2><span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
+              Guests</span></h2>
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
-                <img src='buffetNinjaLogo.png' alt='' style={{ height: "auto", width: "110px" }} />
+                <img src='buffetNinjaLogo.png' alt='' style={{ height: "118.57px", width: "105.22px" }} />
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@ const Ninja_Header = () => {
               }}
             />
           </div> */}
-          <div className="mb-5">
+          <div className="my-4">
             {/* <ReactImageMagnify
             {...{
               smallImage: {
@@ -247,7 +247,7 @@ const Ninja_Header = () => {
                   className="d-block"
                   src={d}
                   alt="Third slide"
-                  style={{ height: "auto", width: "350px" }}
+                  style={{ height: "auto", width: "370px" }}
                 />
               </Carousel.Item>)}
             </Carousel>}

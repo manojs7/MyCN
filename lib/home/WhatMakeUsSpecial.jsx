@@ -33,12 +33,12 @@ export default function WhatMakeUsSpecial() {
                 <div className="What-Make-Us-Special-icon">
                   <img src="wmus-iocn1.png" alt="" />
                 </div>
-                <p>Easy Online Ordering</p>
+                <p>Easy Online<br/>Ordering</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-back reveal">
-                <p style={{fontWeight: "500", fontSize: "8.20308px", marginLeft: "16px", paddingBottom: "4px"}}>
+                <p style={{ fontFamily: "'Montserrat', sans-seraf", fontWeight: "600", fontSize: "8.20308px", marginLeft: "16px", paddingBottom: "4px"}}>
                   Catering Experts Available Online For You, <span>Call / Whatsapp</span> Us,
                   We Would Be Happy To Help You!
                 </p>
@@ -57,11 +57,11 @@ export default function WhatMakeUsSpecial() {
                 <div className="What-Make-Us-Special-icon">
                   <img src="wmus-iocn2.png" alt="" />
                 </div>
-                <p>Select menu and Get price</p>
+                <p>Select menu and<br/>Get price</p>
               </div>
             </div>
             <div className="What-Make-Us-Special-container-card-back reveal">
-              <p style={{fontWeight: "500", fontSize: "8.20308px", marginLeft: "16px"}}>
+              <p style={{fontWeight: "600", fontSize: "8.20308px", marginLeft: "16px"}}>
                 Select Your Own Menu and Get <span>Instant Price</span> or <span>Live Chat</span> to Get
                 Fixed Menu Packages
               </p>
@@ -83,7 +83,7 @@ export default function WhatMakeUsSpecial() {
               </div>
             </div>
             <div className="What-Make-Us-Special-container-card-back reveal">
-              <p style={{fontWeight: "500", fontSize: "8.20308px", marginLeft: "16px"}}>
+              <p style={{fontWeight: "600", fontSize: "8.20308px", marginLeft: "16px"}}>
                 <span>Compare</span> Various Menu And <span>Prices</span> Without Speaking to Anyone. Your
                 <span>Search Ends Here!</span>
               </p>
@@ -106,7 +106,7 @@ export default function WhatMakeUsSpecial() {
               </div>
             </div>
             <div className="What-Make-Us-Special-container-card-back reveal">
-              <p style={{fontWeight: "500", fontSize: "8.20308px", marginLeft: "16px"}}>
+              <p style={{fontWeight: "600", fontSize: "8.20308px", marginLeft: "16px"}}>
                 Pre-Negotiated Prices For <span>Bulk Order</span>, Premium Restaurant Quality
                 Food at <span>50% Discounted Rates!</span>
               </p>

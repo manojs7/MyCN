@@ -40,14 +40,22 @@
 }
 .float_nav_button {
   position: absolute;
-  width: 96% ;
+  width: 350px ;
   display: flex;
-  justify-content: space-between;
-  bottom: 62px;
+  //justify-content: space-between;
+  bottom: 5px;
 // padding-left: 12px;
 // padding-right: 12px;
-left: 6px;
-right: 12px;
+// left: -20px;
+// right: 12px;
+}
+.bottomBtn{
+  display: flex;
+  //margin-left: 10px;
+  //margin: auto;
+  img{
+    margin-right: 15px;
+  }
 }
 .float_nav_burger{
   height:30px ;
@@ -72,7 +80,7 @@ right: 12px;
   --size: 1.1rem;
 
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   vertical-align: baseline;
   box-sizing: border-box;
   padding: var(--size) 0 var(--size) 0;
@@ -119,6 +127,7 @@ right: 12px;
     vertical-align: middle;
     white-space: nowrap;
     z-index: 9000;
+    margin-left: 10px;
 
     img {
       width: 200px;
@@ -136,11 +145,12 @@ right: 12px;
   display: none;
 }
 .nav_socials {
+  margin-left: 165px;
   .links {
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    justify-content: center;
+    justify-content: flex-end;
     font-family: "Poppins";
     z-index: 1002;
     margin-bottom: 0;
@@ -239,7 +249,7 @@ right: 12px;
     padding: 0 10px;
     width: 100vw;
 
-    height: 86px;
+    height: 56px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

@@ -76,29 +76,29 @@ export default function TestimonialsThree() {
                         </Slider> */}
                         <Slider {...settings}>
                             <div className="">
-                            <div className="review-card row p-2">
+                                <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                    <a  href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><img src="https://lh3.googleusercontent.com/a-/AD5-WCmmUr9Vtx6TbYVjrPmlJNl-3OQz-uTJQxs8CvQrGck=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><img src="https://lh3.googleusercontent.com/a-/AD5-WCmmUr9Vtx6TbYVjrPmlJNl-3OQz-uTJQxs8CvQrGck=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                    <a  href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        
-                                        <a  href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><p id="title">Robin Max Almeida</p></a>
-                                        <a  href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><p id="description">Ordered food at the last moment for them and turned out be the best decision. Fistly punctuality and then is the quality of food. No regrets to hold people enjoyed every bit of it. Would definetely recommend them.</p></a>
+
+                                        <a href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><p id="title">Robin Max Almeida</p></a>
+                                        <a href="https://goo.gl/maps/hLUoXjyE4yGQdjUH7"><p id="description">Ordered food at the last moment for them and turned out be the best decision. Fistly punctuality and then is the quality of food. No regrets to hold people enjoyed every bit of it. Would definetely recommend them.</p></a>
                                     </div>
                                 </div>
                             </div>
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                    <a  href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><img src="https://lh3.googleusercontent.com/a-/AD5-WCnbK8B8AsuYm9zlzWAwXwT7Sq3n3CtaRj1lMDEdcQ=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><img src="https://lh3.googleusercontent.com/a-/AD5-WCnbK8B8AsuYm9zlzWAwXwT7Sq3n3CtaRj1lMDEdcQ=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                    <a  href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="title">Naresh Thawal</p></a>
-                                        <a  href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="description">Overall good experience with your team and cooperation.
+                                        <a href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="title">Naresh Thawal</p></a>
+                                        <a href="https://goo.gl/maps/ozRLQGGgoRqfcyy69"><p id="description">Overall good experience with your team and cooperation.
                                             Food quality and arrangements are superb.
                                             Very punctual about timing.
                                             Would like to work in future best of luck 🤞</p></a>
@@ -108,13 +108,13 @@ export default function TestimonialsThree() {
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                    <a  href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><img src="https://lh3.googleusercontent.com/a-/AD5-WClycg2JiOEDl3Yntgm2GM8qt-HpCFdC3fgn5fRzJQ=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><img src="https://lh3.googleusercontent.com/a-/AD5-WClycg2JiOEDl3Yntgm2GM8qt-HpCFdC3fgn5fRzJQ=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                    <a  href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><p id="title">Hari om Gangwar</p></a>
-                                        <a  href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><p id="description">I had a snack box party for 90 kids with CaterNinja.
+                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><p id="title">Hari om Gangwar</p></a>
+                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9"><p id="description">I had a snack box party for 90 kids with CaterNinja.
                                             It was delivered to me before time and the delivery person was friendly and helped me in keeping the boxes at my place.
                                             Kids loved the donuts, spring rolls and veg sliders a lot.
                                             Hassle free and best experience for me.
@@ -125,26 +125,26 @@ export default function TestimonialsThree() {
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                    <a  href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><img src="https://lh3.googleusercontent.com/a-/AD5-WCn6Oz63RVaH6MtoCWEkp_Mo2loMC-yvqQFW7ywTETw=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><img src="https://lh3.googleusercontent.com/a-/AD5-WCn6Oz63RVaH6MtoCWEkp_Mo2loMC-yvqQFW7ywTETw=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                    <a  href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><p id="title">Ananya Rai</p></a>
-                                        <a  href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><p id="description">I ordered ninja buffet service for the third time. This time food was best out of all 3 times. All my guests liked the food. There was no extra oil and masala. The food was like a home cooked meal. Dahi vadas we’re too good nice, soft and spongy. The service of servers was completely fuss free and excellent.</p></a>
+                                        <a href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><p id="title">Ananya Rai</p></a>
+                                        <a href="https://goo.gl/maps/aWFj7rH5y167e2ZT9"><p id="description">I ordered ninja buffet service for the third time. This time food was best out of all 3 times. All my guests liked the food. There was no extra oil and masala. The food was like a home cooked meal. Dahi vadas we’re too good nice, soft and spongy. The service of servers was completely fuss free and excellent.</p></a>
                                     </div>
                                 </div>
                             </div>
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                    <a  href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><img src="https://lh3.googleusercontent.com/a-/AD5-WCkS3_VMomayA5xpyA8L2Jr2g3BIKxCIyACmgnWy=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><img src="https://lh3.googleusercontent.com/a-/AD5-WCkS3_VMomayA5xpyA8L2Jr2g3BIKxCIyACmgnWy=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                    <a  href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><p id="title">Aditi Shah</p></a>
-                                        <a  href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><p id="description">Food came hot in their nicely packed containers and packaging looked premium and very unique.
+                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><p id="title">Aditi Shah</p></a>
+                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8"><p id="description">Food came hot in their nicely packed containers and packaging looked premium and very unique.
                                             It tasted very good, we kept the items for tomorrow and their containers were microwave friendly.
                                             Great initiative by company.</p></a>
                                     </div>
@@ -153,26 +153,26 @@ export default function TestimonialsThree() {
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                    <a  href="https://goo.gl/maps/s93Zi829wxXGyuH36"><img src="https://lh3.googleusercontent.com/a-/AD5-WCm1bU5qWaR52q02TXVX0-BsWPl-P84gS8pO0JKhcw=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://goo.gl/maps/s93Zi829wxXGyuH36"><img src="https://lh3.googleusercontent.com/a-/AD5-WCm1bU5qWaR52q02TXVX0-BsWPl-P84gS8pO0JKhcw=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                    <a  href="https://goo.gl/maps/s93Zi829wxXGyuH36"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://goo.gl/maps/s93Zi829wxXGyuH36"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/s93Zi829wxXGyuH36"><p id="title">Sowmya Ravindranath</p></a>
-                                        <a  href="https://goo.gl/maps/s93Zi829wxXGyuH36"><p id="description">Myself and my guests enjoyed the food. The packaging was excellent and it was hassle free on my side. I could enjoy the party without any stress. 😊 Thank you very much for your wonderful service.</p></a>
+                                        <a href="https://goo.gl/maps/s93Zi829wxXGyuH36"><p id="title">Sowmya Ravindranath</p></a>
+                                        <a href="https://goo.gl/maps/s93Zi829wxXGyuH36"><p id="description">Myself and my guests enjoyed the food. The packaging was excellent and it was hassle free on my side. I could enjoy the party without any stress. 😊 Thank you very much for your wonderful service.</p></a>
                                     </div>
                                 </div>
                             </div>
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                    <a  href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><img src="https://lh3.googleusercontent.com/a-/AD5-WCnUB65nzQv8Ljg2xSs_OwLU5VotOzaQ5fXMc6qi=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><img src="https://lh3.googleusercontent.com/a-/AD5-WCnUB65nzQv8Ljg2xSs_OwLU5VotOzaQ5fXMc6qi=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                    <a  href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a  href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="title">Swati Singh</p></a>
-                                        <a  href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="description">We have ordered for 30 people , Fixed menu and we  must say It was very easy and time saving decision. Food was yummy, Packaging was very nice.
+                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="title">Swati Singh</p></a>
+                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8"><p id="description">We have ordered for 30 people , Fixed menu and we  must say It was very easy and time saving decision. Food was yummy, Packaging was very nice.
                                             Our overall experience was very good.</p></a>
                                     </div>
                                 </div>
