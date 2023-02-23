@@ -57,6 +57,16 @@
             }
         }
 
+        #ninjaBuffyTitle{
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 47.3px;
+
+            span {
+                color: white;
+            }
+        }
+
         h2 {
             span {
                 color: white;
@@ -77,8 +87,10 @@
     }
 
     .ninjabox {
-        text-align: center;
         margin-top: 40px;
+        img{
+            margin: auto;
+        }
     }
 
     .ninjaBuffyHpkg {
@@ -200,6 +212,22 @@
             line-height: 18px;
             letter-spacing: 0.05em;
         }
+
+        .createYourMenuHead {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+
+            h3 {
+                font-weight: 700;
+                font-size: 19px;
+                line-height: 23px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #2C3338;
+            }
+        }
     }
 
     .fstItem {
@@ -209,6 +237,7 @@
         margin: auto;
         border-radius: 4.87px;
         display: flex;
+        margin-bottom: 10px;
     }
 
     .itemImage {
@@ -222,10 +251,11 @@
         margin-top: 10px;
 
         h4 {
+            width: 115px;
             font-weight: 600;
             font-size: 11.81px;
             line-height: 14px;
-            letter-spacing: 0.05em;
+            //letter-spacing: 0.05em;
             color: #2C3338;
             margin-bottom: -10px;
         }
@@ -309,7 +339,19 @@
     }
 
     .startersContainer {
+
         //margin-inline: 50px;
+        h5 {
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+
+            color: #2C3338;
+
+        }
     }
 
     .addStarterBtnContnr {
@@ -602,6 +644,53 @@
         }
     }
 
+    .starterSearchBtn {
+        margin: auto;
+        width: 315px;
+        height: 31.15px;
+        border-radius: 5.02px;
+        background-color: #EFEFEF;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            margin: auto;
+            font-weight: 600;
+            font-size: 12.1784px;
+            line-height: 15px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #2C3338;
+        }
+
+        span {
+            margin: auto;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 7.49443px;
+            line-height: 9px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #4D555B;
+        }
+    }
+
+    .mainsContainer {
+        h5 {
+            margin-top: 50px;
+        }
+    }
+
+    .MenuHr {
+        margin: auto;
+        width: 326.71px;
+        height: 0px;
+
+        border: 0.4px dashed #42484E;
+        margin-top: 40px;
+        background-color: white;
+    }
+
 }
 
 .customizeMainContainer {
@@ -696,6 +785,7 @@
         justify-content: center;
         padding-top: 30px;
         padding-bottom: 30px;
+
         //margin-inline: 220px;
         p {
             margin-left: 0%;
@@ -707,22 +797,25 @@
             color: #FFFFFF;
             margin-bottom: 5px;
         }
-        input{
+
+        input {
             width: 200px;
             background-color: white;
         }
 
-        select{
+        select {
             width: 200px;
         }
 
-        .cityContent{
+        .cityContent {
             margin-bottom: 20px;
         }
-        .cuisineContainer{
+
+        .cuisineContainer {
             margin-bottom: 20px !important;
         }
-        .vegContainer{
+
+        .vegContainer {
             margin-bottom: 20px !important;
         }
     }

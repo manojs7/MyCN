@@ -526,6 +526,7 @@ import { useAppMenu } from "$lib/menuContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import Slider from "react-slick/lib/slider";
 
 
 
@@ -557,25 +558,25 @@ const CustomizeNinjaBox = () => {
   const [isDisabledMains, setIsDisabledMains] = useState(true);
   const [isDisabledBread, setIsDisabledBread] = useState(true);
   const [isDisabledRice, setIsDisabledRice] = useState(true);
-  const[showDropdown, setShowDropdown] = useState(true)
-  const[showDropdown2, setShowDropdown2] = useState(true)
-  const[showDropdown3, setShowDropdown3] = useState(true)
-  const[showDropdown4, setShowDropdown4] = useState(true)
+  const [showDropdown, setShowDropdown] = useState(true)
+  const [showDropdown2, setShowDropdown2] = useState(true)
+  const [showDropdown3, setShowDropdown3] = useState(true)
+  const [showDropdown4, setShowDropdown4] = useState(true)
 
   const [isShown, setIsShown] = useState(false);
 
   const [state, setState] = useState({
-      showDiv1: true,
-      showDiv2: false
+    showDiv1: true,
+    showDiv2: false
   });
   const [startersData, setStartersData] = useState([]);
-const [startersData2, setStartersData2] = useState([]);
-const [mainData, setMainData] = useState([]);
-const [mainData2, setMainData2] = useState([]);
-const [dessertData, setDessertData] = useState([]);
-const [dessertData2, setDessertData2] = useState([]);
-const [breadRiceData, setBreadRiceData] = useState([]);
-const [breadRiceData2, setBreadRiceData2] = useState([]);
+  const [startersData2, setStartersData2] = useState([]);
+  const [mainData, setMainData] = useState([]);
+  const [mainData2, setMainData2] = useState([]);
+  const [dessertData, setDessertData] = useState([]);
+  const [dessertData2, setDessertData2] = useState([]);
+  const [breadRiceData, setBreadRiceData] = useState([]);
+  const [breadRiceData2, setBreadRiceData2] = useState([]);
 
   const [starters, setStarters] = useState([]);
   const [mains, setMains] = useState([]);
@@ -591,6 +592,17 @@ const [breadRiceData2, setBreadRiceData2] = useState([]);
   const [isBreadChange, setIsBreadChange] = useState(false);
   const [isDessertChange, setIsDessertChange] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -608,17 +620,17 @@ const [breadRiceData2, setBreadRiceData2] = useState([]);
     });
 
     // removing duplicate
-    const result =allMenus?.reduce((finalArray, current) => {
+    const result = allMenus?.reduce((finalArray, current) => {
       let obj = finalArray?.find((item) => item.name === current.name);
-  
+
       // console.log('duplicate',result)
       if (obj) {
         return finalArray;
       }
       return finalArray.concat([current]);
-    },[])
-    
-    
+    }, [])
+
+
     setStartersData(result.filter((d) => d.mealType === "Starter"));
     setStartersData2(result.filter((d) => d.mealType === "Starter"));
     setMainData(result.filter((d) => d.mealType === "Main course"));
@@ -629,7 +641,7 @@ const [breadRiceData2, setBreadRiceData2] = useState([]);
     setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
 
     const newMainData = allMenus.filter((d) => d.mealType === "Main course");
-    
+
     newMainData.sort(function (a, b) {
       return parseInt(b.selling_price) - parseInt(a.selling_price);
     });
@@ -637,7 +649,7 @@ const [breadRiceData2, setBreadRiceData2] = useState([]);
   }, []);
 
 
-  
+
   // filtering data according to cuisine
   const handleCuisine = (index) => {
     setCuisine(index);
@@ -668,7 +680,7 @@ const [breadRiceData2, setBreadRiceData2] = useState([]);
   };
 
   const handleVegNonVegGuest = (name, value) => {
-    
+
     // if(value<0 || !value){
     //   name === "veg" ? setVeg(0) : setNonVeg(0);
     // }else{
@@ -683,62 +695,62 @@ const [breadRiceData2, setBreadRiceData2] = useState([]);
     // setBreadRice([]);
   };
   const [searchValue, setSearchValue] = React.useState('');
-    const [showSelectedMenu, setShowSelectedMenu] =  useState(false);
-    const [showSelectedMenu2, setShowSelectedMenu2] =  useState(false);
-    const [showSelectedMenu3, setShowSelectedMenu3] =  useState(false);
-    const [showSelectedMenu4, setShowSelectedMenu4] =  useState(false);
+  const [showSelectedMenu, setShowSelectedMenu] = useState(false);
+  const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
+  const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
+  const [showSelectedMenu4, setShowSelectedMenu4] = useState(false);
 
-    const searchStarter = (e) => {
-        setSearchValue(e.target.value);
-    };
+  const searchStarter = (e) => {
+    setSearchValue(e.target.value);
+  };
 
-    const filteredData = data.filter((temp) =>
-        temp.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
+  const filteredData = data.filter((temp) =>
+    temp.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
-    const handleDiv1Click = () => {
+  const handleDiv1Click = () => {
 
-        setShowSelectedMenu(true);
-        setShowDropdown(false)
+    setShowSelectedMenu(true);
+    setShowDropdown(false)
 
-        setState({
-            showDiv1: false,
-            showDiv2: true
-        });
-        
-        const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
-   
-        let selectedIds = [];
-        for(let i=0; i<results.length; i++){
-            selectedIds.push(results[i].id);
-        }
-        for(let j=0; j<filteredData.length; j++){
-            if(!(selectedIds.includes(filteredData[j].id))){
-                filteredData[j].checked='checked';
-            }
-        }
-    };
-    const handleDiv2Click = () => {
+    setState({
+      showDiv1: false,
+      showDiv2: true
+    });
 
-      setShowSelectedMenu2(true);
-      setShowDropdown2(false)
+    const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
 
-      setState({
-          showDiv1: false,
-          showDiv2: true
-      });
-      
-      const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
- 
-      let selectedIds = [];
-      for(let i=0; i<results.length; i++){
-          selectedIds.push(results[i].id);
+    let selectedIds = [];
+    for (let i = 0; i < results.length; i++) {
+      selectedIds.push(results[i].id);
+    }
+    for (let j = 0; j < filteredData.length; j++) {
+      if (!(selectedIds.includes(filteredData[j].id))) {
+        filteredData[j].checked = 'checked';
       }
-      for(let j=0; j<filteredData.length; j++){
-          if(!(selectedIds.includes(filteredData[j].id))){
-              filteredData[j].checked='checked';
-          }
+    }
+  };
+  const handleDiv2Click = () => {
+
+    setShowSelectedMenu2(true);
+    setShowDropdown2(false)
+
+    setState({
+      showDiv1: false,
+      showDiv2: true
+    });
+
+    const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+
+    let selectedIds = [];
+    for (let i = 0; i < results.length; i++) {
+      selectedIds.push(results[i].id);
+    }
+    for (let j = 0; j < filteredData.length; j++) {
+      if (!(selectedIds.includes(filteredData[j].id))) {
+        filteredData[j].checked = 'checked';
       }
+    }
   };
   const handleDiv3Click = () => {
 
@@ -746,296 +758,296 @@ const [breadRiceData2, setBreadRiceData2] = useState([]);
     setShowDropdown3(false)
 
     setState({
-        showDiv1: false,
-        showDiv2: true
+      showDiv1: false,
+      showDiv2: true
     });
-    
+
     const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
 
     let selectedIds = [];
-    for(let i=0; i<results.length; i++){
-        selectedIds.push(results[i].id);
+    for (let i = 0; i < results.length; i++) {
+      selectedIds.push(results[i].id);
     }
-    for(let j=0; j<filteredData.length; j++){
-        if(!(selectedIds.includes(filteredData[j].id))){
-            filteredData[j].checked='checked';
-        }
+    for (let j = 0; j < filteredData.length; j++) {
+      if (!(selectedIds.includes(filteredData[j].id))) {
+        filteredData[j].checked = 'checked';
+      }
     }
-};
-const handleDiv4Click = () => {
+  };
+  const handleDiv4Click = () => {
 
-  setShowSelectedMenu4(true);
-  setShowDropdown4(false)
+    setShowSelectedMenu4(true);
+    setShowDropdown4(false)
 
-  setState({
+    setState({
       showDiv1: false,
       showDiv2: true
-  });
-  
-  const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+    });
 
-  let selectedIds = [];
-  for(let i=0; i<results.length; i++){
+    const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+
+    let selectedIds = [];
+    for (let i = 0; i < results.length; i++) {
       selectedIds.push(results[i].id);
-  }
-  for(let j=0; j<filteredData.length; j++){
-      if(!(selectedIds.includes(filteredData[j].id))){
-          filteredData[j].checked='checked';
+    }
+    for (let j = 0; j < filteredData.length; j++) {
+      if (!(selectedIds.includes(filteredData[j].id))) {
+        filteredData[j].checked = 'checked';
       }
+    }
+  };
+
+  const handleCancelClick = () => {
+
+    setShowSelectedMenu(false);
+    setShowDropdown(true);
+    setShowSelectedMenu2(false);
+    setShowDropdown2(true);
+    setShowSelectedMenu3(false);
+    setShowDropdown3(true);
+    setShowSelectedMenu4(false);
+    setShowDropdown4(true);
+    setState({
+      showDiv1: true,
+      showDiv2: false
+    });
+  };
+
+  const deleteMenu = (item) => {
+    setCheckedValues(checkedValues.filter(v => v.name !== item.name));
   }
-};
 
-    const handleCancelClick = () => {
-        
-        setShowSelectedMenu(false);
-        setShowDropdown(true);
-        setShowSelectedMenu2(false);
-        setShowDropdown2(true);
-        setShowSelectedMenu3(false);
-        setShowDropdown3(true);
-        setShowSelectedMenu4(false);
-        setShowDropdown4(true);
-        setState({
-            showDiv1: true,
-            showDiv2: false
-        });
-    };
+  const [checkedValues, setCheckedValues] = React.useState([]);
 
-    const deleteMenu = (item)=>{
-        setCheckedValues(checkedValues.filter(v => v.name !== item.name));
+  const handleCheckboxChange = (e, item) => {
+    handleStatersAdd(item.name, item.id)
+    const value = item;
+    if (e.target.checked) {
+      value.checked = 'checked';
+      setCheckedValues([...checkedValues, value]);
+    } else {
+      value.checked = '';
+      setCheckedValues(checkedValues.filter(v => v.id !== value.id));
     }
 
-    const [checkedValues, setCheckedValues] = React.useState([]);
+  }
+  useEffect(() => {
 
-    const handleCheckboxChange = (e, item) => {
-        handleStatersAdd(item.name,item.id)
-        const value = item;
-        if (e.target.checked) {
-            value.checked = 'checked';
-            setCheckedValues([...checkedValues, value]);
+
+    // sendRequest();
+    // starter value change after veg and non-veg guest change
+    if (veg === 0 && nonVeg === 0) return;
+    let temp = [...starters];
+    if (veg > 0 && nonVeg === 0) {
+      // showing only veg
+      setStartersData((prev) => prev.filter((d) => d.veg === true));
+    }
+    else {
+      setStartersData((prev) => prev.filter((d) => d.veg === true || d.veg === false));
+    }
+
+    temp.map((data) => {
+      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+        data.quantity = 12;
+        if (data.Qtype === "pcs") {
+          data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          if (data.quantity < 12) {
+            data.quantity = 12;
+          }
         } else {
-            value.checked = '';
-            setCheckedValues(checkedValues.filter(v => v.id !== value.id));
+          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
         }
+      } else {
+        // if both guest is available
 
-    }
-    useEffect(() => {
-
-    
-        // sendRequest();
-        // starter value change after veg and non-veg guest change
-        if (veg === 0 && nonVeg === 0) return;
-        let temp = [...starters];
-        if(veg>0 && nonVeg===0){
-          // showing only veg
-            setStartersData((prev) => prev.filter((d) => d.veg ===true));
-        }
-        else{
-          setStartersData((prev) => prev.filter((d) => d.veg ===true || d.veg===false));
-        }
-        
-        temp.map((data) => {
-          if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-              data.quantity=12;
-            if (data.Qtype === "pcs") {
-              data.quantity = (veg > 0 ? veg : nonVeg) * 2;
-              if(data.quantity<12){
-                  data.quantity=12;
-              }
-            } else {
-              data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
-            }
-          } else {
-            // if both guest is available
-    
-            if (data.veg) {
-              if (data.Qtype === "pcs") {
-                data.quantity = Math.round((veg*2 + nonVeg*(1)));
-                if(data.quantity<12){
-                  data.quantity=12;
-                }
-              } else {
-                data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
-              }
-            } else {
-              if (data.Qtype === "pcs") {
-                data.quantity = nonVeg * 2;
-                if(data.quantity<12){
-                  data.quantity=12;
-                }
-              } else {
-                data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-              }
-            }
-          }
-          setStarters(temp);
-        });
-    
-        // main value change after veg anf=d non-veg guest change
-        let tempMain = [...mains];
-        let nonVegPastaMainCount=0
-          let nonVegMainsGravyMainCount=0
-          let nonVegMainThaiMainCount=0
-          if (tempMain.find((item) => item.menu_label === "Pasta" && item.veg===false)) {
-            nonVegPastaMainCount+=1;
-          }
-          else if(tempMain.find((item) => item.menu_label === "Mains-Gravy" && item.veg===false)){
-            nonVegMainsGravyMainCount+=1;
-          }
-          else if(tempMain.find((item) => item.menu_label === "Mains-Thai" && item.veg===false)){
-            nonVegMainThaiMainCount+=1;
-          }
-        tempMain.map((data) => {
-          
-          if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-            // if not rice , bred, noodles
-            console.log("not rice , bred, noodles1");
-            if (data.Qtype === "pcs") {
-              data.quantity = (veg > 0 ? veg : nonVeg) * 1;
-            } else if (data.name === highestPrice.name) {
-              data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
-            } else {
-              data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
-            }
-          } else {
-            if (data.veg) {
-    
-              //Heavy SNack
-              if(data.menu_label==="Heavy Snack"){
-                if (data.Qtype === "pcs") {
-                  data.quantity = veg * 1;
-                } else {
-                  data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-                }
-                
-              }
-              //Pasta mains handelling
-                //check whether non veg pasta is selected, if non veg pasta selected then veg pasta data.quantity =veg*100g only else veg*100+nonVeg*100g
-      
-              else if(data.menu_label==="Pasta"){
-                if(nonVegPastaMainCount>0){
-                  data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
-                }
-                else{
-                  data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-                }
-                
-              }
-              //Mains-gravy : same logic as above 
-              else if(data.menu_label==="Main-Gravy"){
-                if(nonVegMainsGravyMainCount>0){
-                  data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
-                }
-                else{
-                  data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-                }
-      
-              }
-              //Main -Thai : same logic as above
-              else if(data.menu_label==="Main-Thai"){
-      
-                if(nonVegMainThaiMainCount>0){
-                  data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
-                }
-                else{
-                  data.quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-                }
-              }
-              //Mains-dry : veg data.quantity= veg*100+ nonveg*100  else non-veg data.quantity=non veg*100
-              else if(data.menu_label==="Main-dry"){
-      
-               
-                  data.quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
-                
-      
-              }
-              else{
-                //manins dal same as mains dry
-                //for daal and rest
-                if (data.Qtype === "pcs") {
-                  data.quantity = veg * 1;
-                } else {
-                  data.quantity = (veg * 0.1+ nonVeg * 0.1).toFixed(1);
-                }
-              }
-              
-      
-              
-            } 
-            else {
-              console.log("not rice , bred, noodles3");
-              if (data.Qtype === "pcs") {
-                data.quantity = nonVeg * 1;
-              } else if (data.name === highestPrice.name) {
-                data.quantity = (nonVeg * 0.15).toFixed(1);
-              } else {
-                data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-              }
-            }
-          }
-        });
-    
-        setMains(tempMain);
-    
-        //  dessert value change after veg anf=d non-veg guest change
-    
-        let tempDessert = [...desserts];
-    
-        tempDessert.map((data) => {
+        if (data.veg) {
           if (data.Qtype === "pcs") {
-            if(data.cuisine=== 'Continental'){
-              data.quantity = Math.round((veg + nonVeg));
-            }
-            else{
-              data.quantity = Math.round((veg + nonVeg) * 1.5);
+            data.quantity = Math.round((veg * 2 + nonVeg * (1)));
+            if (data.quantity < 12) {
+              data.quantity = 12;
             }
           } else {
-            data.quantity = (Math.round(veg + nonVeg) * 0.075).toFixed(1);
+            data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
           }
-        });
-    
-        setDesserts(tempDessert);
-      }, [veg, nonVeg]);
-    function HandleCeilFloorValue(x){
-        var decimals = (x - Math.floor(x)).toFixed(1);
-        if(decimals<=0.4){
-          x=Math.floor(x);
+        } else {
+          if (data.Qtype === "pcs") {
+            data.quantity = nonVeg * 2;
+            if (data.quantity < 12) {
+              data.quantity = 12;
+            }
+          } else {
+            data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          }
         }
-        else if(decimals>=0.6){
-          x=Math.floor(x);
-        }
-        return x;
       }
-      useEffect(() => {
-        if (veg < 0) {
-          setVeg(0);
-        } else if (nonVeg < 0) {
-          setNonVeg(0);
-        } else if (typeof veg === NaN) {
-          setVeg(0);
-        } else if (typeof nonVeg === NaN) {
-          setNonVeg(0);
+      setStarters(temp);
+    });
+
+    // main value change after veg anf=d non-veg guest change
+    let tempMain = [...mains];
+    let nonVegPastaMainCount = 0
+    let nonVegMainsGravyMainCount = 0
+    let nonVegMainThaiMainCount = 0
+    if (tempMain.find((item) => item.menu_label === "Pasta" && item.veg === false)) {
+      nonVegPastaMainCount += 1;
+    }
+    else if (tempMain.find((item) => item.menu_label === "Mains-Gravy" && item.veg === false)) {
+      nonVegMainsGravyMainCount += 1;
+    }
+    else if (tempMain.find((item) => item.menu_label === "Mains-Thai" && item.veg === false)) {
+      nonVegMainThaiMainCount += 1;
+    }
+    tempMain.map((data) => {
+
+      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+        // if not rice , bred, noodles
+        console.log("not rice , bred, noodles1");
+        if (data.Qtype === "pcs") {
+          data.quantity = (veg > 0 ? veg : nonVeg) * 1;
+        } else if (data.name === highestPrice.name) {
+          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
+        } else {
+          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
         }
-      }, [veg, nonVeg]);
-    
-      useEffect(() => {
-        if (cuisine === 0) {
+      } else {
+        if (data.veg) {
+
+          //Heavy SNack
+          if (data.menu_label === "Heavy Snack") {
+            if (data.Qtype === "pcs") {
+              data.quantity = veg * 1;
+            } else {
+              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+
+          }
+          //Pasta mains handelling
+          //check whether non veg pasta is selected, if non veg pasta selected then veg pasta data.quantity =veg*100g only else veg*100+nonVeg*100g
+
+          else if (data.menu_label === "Pasta") {
+            if (nonVegPastaMainCount > 0) {
+              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            }
+            else {
+              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+
+          }
+          //Mains-gravy : same logic as above 
+          else if (data.menu_label === "Main-Gravy") {
+            if (nonVegMainsGravyMainCount > 0) {
+              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            }
+            else {
+              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+
+          }
+          //Main -Thai : same logic as above
+          else if (data.menu_label === "Main-Thai") {
+
+            if (nonVegMainThaiMainCount > 0) {
+              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            }
+            else {
+              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            }
+          }
+          //Mains-dry : veg data.quantity= veg*100+ nonveg*100  else non-veg data.quantity=non veg*100
+          else if (data.menu_label === "Main-dry") {
+
+
+            data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+
+
+          }
+          else {
+            //manins dal same as mains dry
+            //for daal and rest
+            if (data.Qtype === "pcs") {
+              data.quantity = veg * 1;
+            } else {
+              data.quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+            }
+          }
+
+
+
         }
-      }, [cuisine, veg, nonVeg]);
-    
-      function _isContains(json, keyname, value) {
-    
-        return Object.keys(json).some(key => {
-                return typeof json[key] === 'object' ? 
-                _isContains(json[key], keyname, value) : key === keyname && json[key] === value;
-            });
+        else {
+          console.log("not rice , bred, noodles3");
+          if (data.Qtype === "pcs") {
+            data.quantity = nonVeg * 1;
+          } else if (data.name === highestPrice.name) {
+            data.quantity = (nonVeg * 0.15).toFixed(1);
+          } else {
+            data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          }
         }
-    // adding starters
+      }
+    });
+
+    setMains(tempMain);
+
+    //  dessert value change after veg anf=d non-veg guest change
+
+    let tempDessert = [...desserts];
+
+    tempDessert.map((data) => {
+      if (data.Qtype === "pcs") {
+        if (data.cuisine === 'Continental') {
+          data.quantity = Math.round((veg + nonVeg));
+        }
+        else {
+          data.quantity = Math.round((veg + nonVeg) * 1.5);
+        }
+      } else {
+        data.quantity = (Math.round(veg + nonVeg) * 0.075).toFixed(1);
+      }
+    });
+
+    setDesserts(tempDessert);
+  }, [veg, nonVeg]);
+  function HandleCeilFloorValue(x) {
+    var decimals = (x - Math.floor(x)).toFixed(1);
+    if (decimals <= 0.4) {
+      x = Math.floor(x);
+    }
+    else if (decimals >= 0.6) {
+      x = Math.floor(x);
+    }
+    return x;
+  }
+  useEffect(() => {
+    if (veg < 0) {
+      setVeg(0);
+    } else if (nonVeg < 0) {
+      setNonVeg(0);
+    } else if (typeof veg === NaN) {
+      setVeg(0);
+    } else if (typeof nonVeg === NaN) {
+      setNonVeg(0);
+    }
+  }, [veg, nonVeg]);
+
+  useEffect(() => {
+    if (cuisine === 0) {
+    }
+  }, [cuisine, veg, nonVeg]);
+
+  function _isContains(json, keyname, value) {
+
+    return Object.keys(json).some(key => {
+      return typeof json[key] === 'object' ?
+        _isContains(json[key], keyname, value) : key === keyname && json[key] === value;
+    });
+  }
+  // adding starters
 
   const handleStatersAdd = (item_name, id) => {
     setIsStarterChange(!isStarterChange);
     if (veg === 0 && nonVeg === 0) return;
-    
+
     let temp = [...starters];
     const starter = startersData.find((item) => item.name === item_name);
     // removing selected item
@@ -1051,9 +1063,9 @@ const handleDiv4Click = () => {
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       if (starter.Qtype === "pcs") {
         quantity = (veg > 0 ? veg : nonVeg) * 2;
-        if(quantity<12){
-              quantity=12;
-          }
+        if (quantity < 12) {
+          quantity = 12;
+        }
       } else {
         quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
       }
@@ -1063,8 +1075,8 @@ const handleDiv4Click = () => {
       if (starter.veg) {
         if (starter.Qtype === "pcs") {
           quantity = Math.round((veg + nonVeg) * 1.5);
-          if(quantity<12){
-              quantity=12;
+          if (quantity < 12) {
+            quantity = 12;
           }
         } else {
           quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
@@ -1072,8 +1084,8 @@ const handleDiv4Click = () => {
       } else {
         if (starter.Qtype === "pcs") {
           quantity = nonVeg * 2;
-          if(quantity<12){
-              quantity=12;
+          if (quantity < 12) {
+            quantity = 12;
           }
         } else {
           quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
@@ -1081,10 +1093,10 @@ const handleDiv4Click = () => {
       }
     }
     temp.push({
-      id:starter.id,
-      city:starter.city,
-      cuisine:starter.cuisine,
-      menu_label:starter.menu_label,
+      id: starter.id,
+      city: starter.city,
+      cuisine: starter.cuisine,
+      menu_label: starter.menu_label,
       name: starter.name,
       quantity: quantity,
       Qtype: starter.Qtype,
@@ -1096,39 +1108,39 @@ const handleDiv4Click = () => {
 
     console.log("starters", starters);
   };
-   const handleMainAdd = (item_name, id) => {
-    
+  const handleMainAdd = (item_name, id) => {
+
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
-    
+
     const main = mainData.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
-    let nonVegPastaMainCount=0
-    let nonVegMainsGravyMainCount=0
-    let nonVegMainThaiMainCount=0
-    if (temp.find((item) => item.menu_label === "Pasta" && item.veg===false)) {
-      nonVegPastaMainCount+=1;
+    let nonVegPastaMainCount = 0
+    let nonVegMainsGravyMainCount = 0
+    let nonVegMainThaiMainCount = 0
+    if (temp.find((item) => item.menu_label === "Pasta" && item.veg === false)) {
+      nonVegPastaMainCount += 1;
     }
-    else if(temp.find((item) => item.menu_label === "Mains-Gravy" && item.veg===false)){
-      nonVegMainsGravyMainCount+=1;
+    else if (temp.find((item) => item.menu_label === "Mains-Gravy" && item.veg === false)) {
+      nonVegMainsGravyMainCount += 1;
     }
-    else if(temp.find((item) => item.menu_label === "Mains-Thai" && item.veg===false)){
-      nonVegMainThaiMainCount+=1;
+    else if (temp.find((item) => item.menu_label === "Mains-Thai" && item.veg === false)) {
+      nonVegMainThaiMainCount += 1;
     }
-    
+
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       // if not rice , bred, noodles
       console.log("not rice , bred, noodles1");
       if (main.Qtype === "pcs") {
         quantity = (veg > 0 ? veg : nonVeg) * 1;
-      } 
+      }
       else if (main.name === highestPrice.name) {
         quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
-      } 
+      }
       else {
         quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
       }
@@ -1138,80 +1150,80 @@ const handleDiv4Click = () => {
 
         //Heavy SNack
         // alert(main.menu_label)
-        if(main.menu_label==="Heavy Snack"){
+        if (main.menu_label === "Heavy Snack") {
           if (main.Qtype === "pcs") {
             quantity = veg * 1;
           } else {
             quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
           }
-          
+
         }
         //Pasta mains handelling
-          //check whether non veg pasta is selected, if non veg pasta selected then veg pasta quantity =veg*100g only else veg*100+nonVeg*100g
+        //check whether non veg pasta is selected, if non veg pasta selected then veg pasta quantity =veg*100g only else veg*100+nonVeg*100g
 
-        else if(main.menu_label==="Pasta"){
-          if(nonVegPastaMainCount>0){
-            quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+        else if (main.menu_label === "Pasta") {
+          if (nonVegPastaMainCount > 0) {
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
           }
-          else{
-            quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          else {
+            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
           }
-          
+
         }
         //Mains-gravy : same logic as above 
-        else if(main.menu_label==="Mains-Gravy"){
-          if(nonVegMainsGravyMainCount>0){
-            quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+        else if (main.menu_label === "Mains-Gravy") {
+          if (nonVegMainsGravyMainCount > 0) {
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
           }
-          else{
-            quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          else {
+            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
           }
 
         }
         //Main -Thai : same logic as above
-        else if(main.menu_label==="Mains-Thai"){
+        else if (main.menu_label === "Mains-Thai") {
 
-          if(nonVegMainThaiMainCount>0){
-            quantity=HandleCeilFloorValue((veg * 0.1).toFixed(1))
+          if (nonVegMainThaiMainCount > 0) {
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
           }
-          else{
-            quantity=HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          else {
+            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
           }
         }
         //Mains-dry : veg quantity= veg*100+ nonveg*100  else non-veg quantity=non veg*100
-        else if(main.menu_label==="Mains-dry"){
+        else if (main.menu_label === "Mains-dry") {
 
-         
-            quantity=(veg * 0.1+ nonVeg * 0.1).toFixed(1);
-          
+
+          quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+
 
         }
-        else{
+        else {
           //manins dal same as mains dry
           //for daal and rest
           if (main.Qtype === "pcs") {
             quantity = veg * 1;
           } else {
-            quantity = (veg * 0.1+ nonVeg * 0.1).toFixed(1);
+            quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
           }
         }
 
-        
-      } 
+
+      }
       //Non-Veg Mains Handelling
-      else {        
+      else {
         if (main.Qtype === "pcs") {
-            quantity = nonVeg * 1;
-        } 
+          quantity = nonVeg * 1;
+        }
         else if (main.name === highestPrice.name) {
           quantity = (nonVeg * 0.15).toFixed(1);
-        } 
+        }
         else {
           quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
         }
       }
     }
-    
+
     temp.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
@@ -1228,24 +1240,24 @@ const handleDiv4Click = () => {
     setMainData((prev) => prev.filter((d) => d.name !== item_name));
   };
 
-  function increment(value, index, type, item){
-      if(item.Qtype==='pcs'){
-        value = value + 5;
-      }
-      else{
-        value= value+ 0.5
-      }
-    handleChange(value,index, type);
+  function increment(value, index, type, item) {
+    if (item.Qtype === 'pcs') {
+      value = value + 5;
+    }
+    else {
+      value = value + 0.5
+    }
+    handleChange(value, index, type);
   }
-  function decrement(value, index, type, item){
-    if(item.Qtype==='pcs'){
+  function decrement(value, index, type, item) {
+    if (item.Qtype === 'pcs') {
       value = value - 5;
     }
-    else{
-      value= value - 0.5
+    else {
+      value = value - 0.5
     }
-  handleChange(value,index, type);
-}
+    handleChange(value, index, type);
+  }
   function handleChange(value, index, type) {
     if (type === "starters") {
       let newStarters = [...starters];
@@ -1343,7 +1355,7 @@ const handleDiv4Click = () => {
   }
   const handleBreadRiceAdd = (item_name, id) => {
 
-    
+
     setIsBreadChange(!isBreadChange);
     console.log(item_name);
     if (veg === 0 && nonVeg === 0) return;
@@ -1377,13 +1389,13 @@ const handleDiv4Click = () => {
           item.name === "Pooris"
             ? (item.quantity = (veg + nonVeg) * 2)
             : (item.quantity = (veg + nonVeg) * 1);
-          
+
         });
         quantity = (veg + nonVeg) * 2;
       }
       // checking for bread
-    } 
-    
+    }
+
     //Breads but not Pooris
     else if (
       filterBreadRice?.menu_label === "Breads" &&
@@ -1405,35 +1417,35 @@ const handleDiv4Click = () => {
         });
         quantity = (veg + nonVeg) * 1;
       }
-    } 
+    }
     //Noodles
     else if (filterBreadRice?.menu_label === "Noodle") {
-      let nonVegNoodleCount=0
+      let nonVegNoodleCount = 0
 
       temp.forEach((item) => {
-        if (item.menu_label === "Noodle" && item.veg===false) {
-          nonVegNoodleCount+=1;
-        }    
+        if (item.menu_label === "Noodle" && item.veg === false) {
+          nonVegNoodleCount += 1;
+        }
       })
       // console.log("naan");
-      filterBreadRice.veg === true && filterBreadRice.menu_label==="Noodle" && nonVegNoodleCount>0
-          ? (quantity = veg * 0.2)
-          : (quantity = (veg + nonVeg) * 0.1);
-      filterBreadRice.veg === false && filterBreadRice.menu_label==="Noodle" && nonVegNoodleCount>0
-          ? (quantity = nonVeg * 0.15)
-          : (quantity =  nonVeg * 0.2);
-     
+      filterBreadRice.veg === true && filterBreadRice.menu_label === "Noodle" && nonVegNoodleCount > 0
+        ? (quantity = veg * 0.2)
+        : (quantity = (veg + nonVeg) * 0.1);
+      filterBreadRice.veg === false && filterBreadRice.menu_label === "Noodle" && nonVegNoodleCount > 0
+        ? (quantity = nonVeg * 0.15)
+        : (quantity = nonVeg * 0.2);
+
       temp.forEach((item) => {
-        item.veg === true && item.menu_label==="Noodle" && nonVegNoodleCount>0
+        item.veg === true && item.menu_label === "Noodle" && nonVegNoodleCount > 0
           ? (item.quantity = veg * 0.2)
           : (item.quantity = (veg + nonVeg) * 0.1);
-        item.veg === false && item.menu_label==="Noodle" && nonVegNoodleCount>0
+        item.veg === false && item.menu_label === "Noodle" && nonVegNoodleCount > 0
           ? (item.quantity = nonVeg * 0.15)
-          : (item.quantity =  nonVeg * 0.2);
+          : (item.quantity = nonVeg * 0.2);
       });
-        
-      
-    } 
+
+
+    }
     else if (filterBreadRice?.menu_label === "Rice") {
       let count = 1;
       let isVeg = false;
@@ -1468,10 +1480,10 @@ const handleDiv4Click = () => {
         if (count >= 2) {
           quantity = 0.15 * guests;
           temp.forEach((item) => {
-            if (item.menu_label === "Rice" && item.veg===true) {
+            if (item.menu_label === "Rice" && item.veg === true) {
               item.quantity = 0.15 * guests;
             }
-            if (item.menu_label === "Rice" && item.veg===false) {
+            if (item.menu_label === "Rice" && item.veg === false) {
               item.quantity = 0.15 * nonVeg;
             }
           });
@@ -1511,10 +1523,10 @@ const handleDiv4Click = () => {
     }
     if (dessert.Qtype === "pcs") {
       // expensive desserts should go 1 piece
-      if(dessert.cuisine=== 'Continental'){
+      if (dessert.cuisine === 'Continental') {
         quantity = Math.round((veg + nonVeg));
       }
-      else{
+      else {
         quantity = Math.round((veg + nonVeg) * 1.5);
       }
     } else {
@@ -1539,21 +1551,21 @@ const handleDiv4Click = () => {
     let bredRicePrice = 0;
 
     starters.map((d) => {
-      starterPrice += parseInt(d.quantity) * parseInt((d.selling_price)/12);
+      starterPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
     });
-    console.log("starterPrice",starterPrice);
+    console.log("starterPrice", starterPrice);
     mains.map((d) => {
       mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
     });
     desserts.map((d) => {
       dessertPrice += parseInt(d.quantity) * parseInt(100);
     });
-    console.log("dessertPrice",dessertPrice);
+    console.log("dessertPrice", dessertPrice);
     breadRice.map((d) => {
-      if(d.Qtype==='pcs'){
-        bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price)/12);
+      if (d.Qtype === 'pcs') {
+        bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
       }
-      else{
+      else {
         bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price));
       }
     });
@@ -1601,7 +1613,7 @@ const handleDiv4Click = () => {
       // dessert:this.state.dessert
     };
     console.log(data);
-    
+
     axios
       .post("/api/forma", data)
       .then((res) => {
@@ -1618,31 +1630,51 @@ const handleDiv4Click = () => {
         console.log(error);
       });
   };
-    return (
-        <div className={styles.customizeMainContainer}>
-            <div className={styles.customizeMainContainer}>
-                <div className={styles.header}>
-                    <div className={styles.headerContent}>
-                        <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
-                        <div className={styles.textLogo}>
-                            <div>
-                                <h3>Customize your</h3>
-                                <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
-                                <h5>Get instant quote in just few<br />easy steps!</h5>
-                            </div>
-                            <div>
-                                <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.ninjabox}>
-                        <img src='NB.png' width="281.81px" height="218px" />
-                    </div>
-                </div>
-                <form onSubmit={(e) =>formSubmit()}>
-                <div className={styles.redBg}>
-                
-        {/* <div className={styles2.eventDate}>
+  return (
+    <div className={styles.customizeMainContainer}>
+      <div className={styles.customizeMainContainer}>
+        <Slider {...settings}>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+            <div className={styles.textLogo}>
+              <div>
+                <h3>Customize your</h3>
+                <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
+                <h5>Get instant quote in just few<br />easy steps!</h5>
+              </div>
+              <div>
+                <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
+              </div>
+            </div>
+          </div>
+          <div className={styles.ninjabox}>
+            <img src='NB.png' width="281.81px" height="218px" />
+          </div>
+        </div>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+            <div className={styles.textLogo}>
+              <div>
+                <h3>Customize your</h3>
+                <h2 id={styles.ninjaBuffyTitle}>Ninja<span>Buffet</span></h2>
+                <h5>Get instant quote in just few<br />easy steps!</h5>
+              </div>
+              <div>
+                <img id={styles.ninja} src='/CustomizeImg/NinjaBuffy.png' width="83.41px" height="132.73px" />
+              </div>
+            </div>
+          </div>
+          <div className={styles.ninjabox}>
+            <img src='fontPic2.png' width="281.81px" height="218px" />
+          </div>
+        </div>
+        </Slider>
+        <form onSubmit={(e) => formSubmit()}>
+          <div className={styles.redBg}>
+
+            {/* <div className={styles2.eventDate}>
             <h3>Event Date &amp; Time</h3>
             <hr />
             <div className={styles2.datePicker}>
@@ -1653,483 +1685,488 @@ const handleDiv4Click = () => {
             </div>
             
         </div> */}
-        <div className={styles.inputDetails}>
-                            <div>
-                                <div className={styles.cityContent}>
-                                    <p>City</p>
-                                    <select className="form-select" name='city' aria-label="Default select example" onChange={(city) => setCity(city)}>
-                                        <option value="" selected>Select City</option>
-                                        <option value="Mumbai">Mumbai</option>
-                                        <option value="Bangalore">Bangalore</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Gurgaon">Gurgaon</option>
-                                    </select>
-                                </div>
+            <div className={styles.inputDetails}>
+              <div>
+                <div className={styles.cityContent}>
+                  <p>City</p>
+                  <select className="form-select" name='city' aria-label="Default select example" onChange={(city) => setCity(city)}>
+                    <option value="" selected>Select City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Gurgaon">Gurgaon</option>
+                  </select>
+                </div>
 
-                                <div className={styles.eventDate}>
-                                    <p>Event Date</p>
-                                    <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} />
-                                </div>
-                                <div>
-                                    <p>Delivery Time</p>
-                                    <input type="time" name='event_time'></input>
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{marginBottom: "40px"}}>
-                                    <p>Cuisine</p>
-                                    <select className="form-select" name='cuisine' onChange={handleCuisine}  aria-label="Default select example">
+                <div className={styles.eventDate}>
+                  <p>Event Date</p>
+                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} />
+                </div>
+                <div>
+                  <p>Delivery Time</p>
+                  <input type="time" name='event_time'></input>
+                </div>
+              </div>
+              <div>
+                <div style={{ marginBottom: "40px" }}>
+                  <p>Cuisine</p>
+                  <select className="form-select" name='cuisine' onChange={handleCuisine} aria-label="Default select example">
 
-                                    {cuisines.map((item, index) => {
-                                      return (
+                    {cuisines.map((item, index) => {
+                      return (
 
-                                        <option key={index} value={item}>{item}</option>
-                                        
-                                      )
-                                    })}
-                                    </select>
-                                      
-                                        {/* <option value="" selected>Select Cuisine</option>
+                        <option key={index} value={item}>{item}</option>
+
+                      )
+                    })}
+                  </select>
+
+                  {/* <option value="" selected>Select Cuisine</option>
                                         <option value="All">All</option>
                                         <option value="Indian">Indian</option>
                                         <option value="Bengali">Bengali</option> */}
-                                    
-                                </div>
-                                <div style={{marginBottom: "40px"}}>
-                                    <p>Veg Guest</p>
-                                    <input
-                                      type="number"
-                                      onBlur={(e) =>
-                                        handleVegNonVegGuest("veg", parseInt(e.target.value))
-                                      }
-                                      min="0"
-                                      defaultValue={veg}
-                                    />
-                                </div>
-                                <div>
-                                    <p>Non Veg Guest</p>
-                                    <input
-                                      type="number"
-                                      onBlur={(e) =>
-                                        handleVegNonVegGuest("nonVeg", parseInt(e.target.value))
-                                      }
-                                      min="0"
-                                      defaultValue={nonVeg}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    
 
-                    {/* Display Starters, mains etc count */}
-                    <div className={styles.whiteBg}>
-                        <div className={styles.packageName}>
-                            <h3>PACKAGE NAME</h3>
-                            <img src='555.png' height="150px" width="274.5px" />
-                            <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
-                            
-                        </div>
-                        <div className={styles.pkgDetails}>
-                            <div>
-                                <h3>PACKAGE NAME</h3>
-                                <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
-                                
-                            </div>
-                            <div>
-                                <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
-                            </div>
-                        </div>
-                        <div>
-
-
-                            <div className={styles.menuContainer}>
-
-                                {/* starters add */}
-                                <div className={styles.startersContainer}>
-                                    <h5>Starters</h5>
-                                    <div className={styles.selectedStarterContainer}>
-                            {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
-                                    <div className={styles.itemDetailsContainer}>
-                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                        <div>
-                                            <h4>{item.name}</h4>
-                                            <p>{item.description}</p>
-                                        </div>
-                                        <div>
-                                            <div className={styles.quantityBtn}>
-                                            <button onClick={(e) =>
-                                                    decrement(item.quantity, index, "starters", item)
-                                                }>-</button>
-                                                <h6>{item.quantity}{item.Qtype}</h6>
-                                                <button onClick={(e) =>
-                                                    increment(item.quantity, index, "starters", item)
-                                                }>+</button>
-                                                
-                                            </div>
-                                            <div className={styles.recQnty}>
-                                                <p>Recommended Qt.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={()=>handleDelete(index,"starters")} />
-                                        </div>
-                                    </div>
-                                </div> )) }
-                            </div>
-                            {showDropdown && (<div onClick={handleDiv1Click} className={styles2.starterSearchBtn} id="srchbr">
-                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
-                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                            </div>
-                            )}
-                            {showSelectedMenu && (<div className={styles2.starterMenuContainer}>
-                                <div id={styles2.starterSearchContent}>
-                                    <div>
-                                        <input type="text"
-                                            value={searchValue}
-                                            onChange={searchStarter}
-                                            placeholder="Search Starter" />
-                                        <div id={styles2.starterList}>
-                                            <ul>
-                                                {startersData.map((item, index) => (
-                                                    <li key={item.id}>
-                                                        <div className='d-flex justify-content-between'>
-                                                            <div id={styles2.insideDivLi}>
-                                                                <img src={item.image} width="30.05px" height="26.54px" />
-                                                                <p>{item.name}<br /><span>{item.description}</span></p>
-                                                            </div>
-                                                            <div>
-                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e)=>handleStatersAdd(item.name,e)} />
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div id={styles2.listInsideBtn}>
-                                            <button onClick={handleCancelClick}>Done</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>)}
-                                </div>
-
-                                {/* mains add */}
-                                <div className={styles.mainsContainer}>
-                                    <h5>Mains</h5>
-                                    <div className={styles.selectedMainsContainer}>
-                            {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
-                                    <div className={styles.itemDetailsContainer}>
-                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                        <div>
-                                            <h4>{item.name}</h4>
-                                            <p>{item.description}</p>
-                                        </div>
-                                        <div>
-                                            <div className={styles.quantityBtn}>
-                                                <button onClick={(e) =>
-                                                    decrement(item.quantity, index, "mains", item)
-                                                }>-</button>
-                                                <h6>{item.quantity}{item.Qtype}</h6>
-                                                <button onClick={(e) =>
-                                                    increment(item.quantity, index, "mains", item)
-                                                }>+</button>
-                                                
-                                            </div>
-                                            <div className={styles.recQnty}>
-                                                <p>Recommended Qt.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={()=>handleDelete(index,"mains")} />
-                                        </div>
-                                    </div>
-                                </div> )) }
-                            </div>
-                            {showDropdown2 && (<div onClick={handleDiv2Click} className={styles2.starterSearchBtn} id="srchbr2">
-                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Mains</p>
-                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                            </div>
-                            )}
-                            {showSelectedMenu2 && (<div className={styles2.starterMenuContainer}>
-                                <div id={styles2.starterSearchContent}>
-                                    <div>
-                                        <input type="text"
-                                            value={searchValue}
-                                            onChange={searchStarter}
-                                            placeholder="Search Mains" />
-                                        <div id={styles2.starterList}>
-                                            <ul>
-                                                {mainData.map((item, index) => (
-                                                    <li key={item.id}>
-                                                        <div className='d-flex justify-content-between'>
-                                                            <div id={styles2.insideDivLi}>
-                                                                <img src={item.image} width="30.05px" height="26.54px" />
-                                                                <p>{item.name}<br /><span>{item.description}</span></p>
-                                                            </div>
-                                                            <div>
-                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e)=>handleMainAdd(item.name, e)} />
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div id={styles2.listInsideBtn}>
-                                            <button onClick={handleCancelClick}>Done</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>)}
-                                </div>
-                                
-
-                                {/* Bread rice noodles */}
-                                <div className={styles.mainsContainer}>
-                                    <h5>Bread Rice and Noodles</h5>
-                                    <div className={styles.selectedMainsContainer}>
-                            {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
-                                    <div className={styles.itemDetailsContainer}>
-                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                        <div>
-                                            <h4>{item.name}</h4>
-                                            <p>{item.description}</p>
-                                        </div>
-                                        <div>
-                                            <div className={styles.quantityBtn}>
-                                                <button onClick={(e) =>
-                                                    decrement(item.quantity, index, "Bread+Rice", item)
-                                                }>-</button>
-                                                <h6>{item.quantity}{item.Qtype}</h6>
-                                                <button onClick={(e) =>
-                                                    increment(item.quantity, index, "Bread+Rice", item)
-                                                }>+</button>
-                                                
-                                            </div>
-                                            <div className={styles.recQnty}>
-                                                <p>Recommended Qt.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={()=>handleDelete(index,"Bread+Rice")} />
-                                        </div>
-                                    </div>
-                                </div> )) }
-                            </div>
-                            {showDropdown3 && (<div onClick={handleDiv3Click} className={styles2.starterSearchBtn} id="srchbr2">
-                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Breads Rice </p>
-                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                            </div>
-                            )}
-                            {showSelectedMenu3 && (<div className={styles2.starterMenuContainer}>
-                                <div id={styles2.starterSearchContent}>
-                                    <div>
-                                        <input type="text"
-                                            value={searchValue}
-                                            onChange={searchStarter}
-                                            placeholder="Search Bread Rice Noodles" />
-                                        <div id={styles2.starterList}>
-                                            <ul>
-                                                {breadRiceData.map((item, index) => (
-                                                    <li key={item.id}>
-                                                        <div className='d-flex justify-content-between'>
-                                                            <div id={styles2.insideDivLi}>
-                                                                <img src={item.image} width="30.05px" height="26.54px" />
-                                                                <p>{item.name}<br /><span>{item.description}</span></p>
-                                                            </div>
-                                                            <div>
-                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e)=>handleBreadRiceAdd(item.name, e)} />
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div id={styles2.listInsideBtn}>
-                                            <button onClick={handleCancelClick}>Done</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>)}
-                                </div>
-                                {/* dessert add */}
-                                <div className={styles.mainsContainer}>
-                                    <h5>Desserts</h5>
-                                    <div className={styles.selectedMainsContainer}>
-                            {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
-                                    <div className={styles.itemDetailsContainer}>
-                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                        <div>
-                                            <h4>{item.name}</h4>
-                                            <p>{item.description}</p>
-                                        </div>
-                                        <div>
-                                            <div className={styles.quantityBtn}>
-                                                <button onClick={(e) =>
-                                                    decrement(item.quantity, index, "desserts", item)
-                                                }>-</button>
-                                                <h6>{item.quantity}{item.Qtype}</h6>
-                                                <button onClick={(e) =>
-                                                    increment(item.quantity, index, "desserts", item)
-                                                }>+</button>
-                                                
-                                            </div>
-                                            <div className={styles.recQnty}>
-                                                <p>Recommended Qt.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={()=>handleDelete(index,"desserts")} />
-                                        </div>
-                                    </div>
-                                </div> )) }
-                            </div>
-                            {showDropdown4 && (<div onClick={handleDiv4Click} className={styles2.starterSearchBtn} id="srchbr2">
-                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Desserts </p>
-                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                            </div>
-                            )}
-                            {showSelectedMenu4 && (<div className={styles2.starterMenuContainer}>
-                                <div id={styles2.starterSearchContent}>
-                                    <div>
-                                        <input type="text"
-                                            value={searchValue}
-                                            onChange={searchStarter}
-                                            placeholder="Search Desserts" />
-                                        <div id={styles2.starterList}>
-                                            <ul>
-                                                {dessertData.map((item, index) => (
-                                                    <li key={item.id}>
-                                                        <div className='d-flex justify-content-between'>
-                                                            <div id={styles2.insideDivLi}>
-                                                                <img src={item.image} width="30.05px" height="26.54px" />
-                                                                <p>{item.name}<br /><span>{item.description}</span></p>
-                                                            </div>
-                                                            <div>
-                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e)=>handleDesertsAdd(item.name, e)} />
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div id={styles2.listInsideBtn}>
-                                            <button onClick={handleCancelClick}>Done</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>)}
-                                </div>
-                            </div>
-                        </div>
-                        <div className='mt-5'>
-                            <div className={styles.userInput}>
-                                <h4>Details*</h4>
-                                <div className={styles.detailsInputLg}>
-                                    <input placeholder='Name' onBlur={(e) => setName(e.target.value)}  required/>
-                                    <input placeholder='mobileno' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required  />
-                                    <input placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)}  required />
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className={styles.chefNote}>
-                            <p>Special Restriction? Chef Note?</p>
-                            <input type="text" />
-                        </div>
-                        <div className={styles.instantQuoteBtn}>
-                            <button onClick={formSubmit}>Get Instant Quote</button>
-                        </div>
-                        <div className={styles.applyCoupon}>
-                            <input type="text" placeholder='Enter Coupon Code' />
-                            <button>Apply</button>
-                        </div>
-                        <div className={styles2.finalPriceSection}>
-                        <div className="d-flex justify-content-between">
-                            <select className="form-select" aria-label="Default select example">
-                                <option value="1">NinjaBox Delivery (Free)</option>
-                                <option value="2">Buffet setup + 1 waiter</option>
-                            </select>
-                            <p>₹ 0000</p>
-                        </div>
-                        </div>
-                        <div className={styles.pricing}>
-                            <div>
-                                <div className={styles.pricingTitle1}>
-                                    <div>
-                                        <h4>Items Total</h4>
-                                    </div>
-                                    <div>
-                                        <p>₹{totalPrice}</p>
-                                    </div>
-                                </div>
-                                <div className={styles.pricingTitle11}>
-                                    <div>
-                                        <h4>NinjaBox Service</h4>
-                                    </div>
-                                    <div>
-                                        <p>₹0000</p>
-                                    </div>
-                                </div>
-                                <div className={styles.pricingTitle2}>
-                                    <div>
-                                        <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
-                                    </div>
-                                    <div>
-                                        <p>₹0000</p>
-                                    </div>
-                                </div>
-                                <hr className={styles.hr1} />
-                                <div className={styles.pricingTitle3}>
-                                    <div>
-                                        <h4>Coupon Value</h4>
-                                    </div>
-                                    <div>
-                                        <p>₹0000</p>
-                                    </div>
-                                </div>
-                                <div className={styles.pricingTitle4}>
-                                    <div>
-                                        <h4>GST</h4>
-                                    </div>
-                                    <div>
-                                        <p>₹0000</p>
-                                    </div>
-                                </div>
-                                <hr id={styles.hr2} />
-                            </div>
-                            <div className={styles.grandTotal}>
-                                <div>
-                                    <h4>Grand Total</h4>
-                                </div>
-                                <div>
-                                    <p>₹0000</p>
-                                </div>
-                            </div>
-                            <div className={styles.orderBtn}>
-                                <button>Place Order</button>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
-                </form>
-                <div className={styles.createYourOwnPkg}>
-                    <div>
-                        <img src='Group 803.png' />
-                    </div>
-                    <div className='text-center mt-3'>
-                        <p>Not Happy with the Package?</p>
-                        <h2>Create Your<span>Own</span></h2>
-                        <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
-                        <button>Create Your Own Package</button>
-                    </div>
+                <div style={{ marginBottom: "40px" }}>
+                  <p>Veg Guest</p>
+                  <input
+                    type="number"
+                    onBlur={(e) =>
+                      handleVegNonVegGuest("veg", parseInt(e.target.value))
+                    }
+                    min="0"
+                    defaultValue={veg}
+                  />
                 </div>
+                <div>
+                  <p>Non Veg Guest</p>
+                  <input
+                    type="number"
+                    onBlur={(e) =>
+                      handleVegNonVegGuest("nonVeg", parseInt(e.target.value))
+                    }
+                    min="0"
+                    defaultValue={nonVeg}
+                  />
+                </div>
+              </div>
             </div>
-            {/* <div className={styles.header}>
+
+
+            {/* Display Starters, mains etc count */}
+            <div className={styles.whiteBg}>
+              <div className={styles.packageName}>
+                <h3>PACKAGE NAME</h3>
+                <img src='555.png' height="150px" width="274.5px" />
+                <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
+
+              </div>
+              <div className={styles.pkgDetails}>
+                <div>
+                  <h3>PACKAGE NAME</h3>
+                  <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
+
+                </div>
+                <div>
+                  <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
+                </div>
+              </div>
+              <div>
+
+
+                <div className={styles.menuContainer}>
+                  <div className={styles.createYourMenuHead}>
+                    <h3>Create Your Menu</h3>
+                  </div>
+
+                  {/* starters add */}
+                  <div className={styles.startersContainer}>
+                    <h5>Starters</h5>
+                    <div className={styles.selectedStarterContainer}>
+                      {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div>
+                            <div className={styles.quantityBtn}>
+                              <button onClick={(e) =>
+                                decrement(item.quantity, index, "starters", item)
+                              }>-</button>
+                              <h6>{item.quantity}{item.Qtype}</h6>
+                              <button onClick={(e) =>
+                                increment(item.quantity, index, "starters", item)
+                              }>+</button>
+
+                            </div>
+                            <div className={styles.recQnty}>
+                              <p>Recommended Qt.</p>
+                            </div>
+                          </div>
+                          <div>
+                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "starters")} />
+                          </div>
+                        </div>
+                      </div>))}
+                    </div>
+                    {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
+                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                    </div>
+                    )}
+                    {showSelectedMenu && (<div className={styles2.starterMenuContainer}>
+                      <div id={styles2.starterSearchContent}>
+                        <div>
+                          <input type="text"
+                            value={searchValue}
+                            onChange={searchStarter}
+                            placeholder="Search Starter" />
+                          <div id={styles2.starterList}>
+                            <ul>
+                              {startersData.map((item, index) => (
+                                <li key={item.id}>
+                                  <div className='d-flex justify-content-between'>
+                                    <div id={styles2.insideDivLi}>
+                                      <img src={item.image} width="30.05px" height="26.54px" />
+                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                    </div>
+                                    <div>
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleStatersAdd(item.name, e)} />
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div id={styles2.listInsideBtn}>
+                            <button onClick={handleCancelClick}>Done</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>)}
+                  </div>
+                  <hr className={styles.MenuHr} />
+                  {/* mains add */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Mains</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div>
+                            <div className={styles.quantityBtn}>
+                              <button onClick={(e) =>
+                                decrement(item.quantity, index, "mains", item)
+                              }>-</button>
+                              <h6>{item.quantity}{item.Qtype}</h6>
+                              <button onClick={(e) =>
+                                increment(item.quantity, index, "mains", item)
+                              }>+</button>
+
+                            </div>
+                            <div className={styles.recQnty}>
+                              <p>Recommended Qt.</p>
+                            </div>
+                          </div>
+                          <div>
+                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "mains")} />
+                          </div>
+                        </div>
+                      </div>))}
+                    </div>
+                    {showDropdown2 && (<div onClick={handleDiv2Click} className={styles.starterSearchBtn} id="srchbr2">
+                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Mains</p>
+                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                    </div>
+                    )}
+                    {showSelectedMenu2 && (<div className={styles2.starterMenuContainer}>
+                      <div id={styles2.starterSearchContent}>
+                        <div>
+                          <input type="text"
+                            value={searchValue}
+                            onChange={searchStarter}
+                            placeholder="Search Mains" />
+                          <div id={styles2.starterList}>
+                            <ul>
+                              {mainData.map((item, index) => (
+                                <li key={item.id}>
+                                  <div className='d-flex justify-content-between'>
+                                    <div id={styles2.insideDivLi}>
+                                      <img src={item.image} width="30.05px" height="26.54px" />
+                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                    </div>
+                                    <div>
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleMainAdd(item.name, e)} />
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div id={styles2.listInsideBtn}>
+                            <button onClick={handleCancelClick}>Done</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>)}
+                  </div>
+
+                  <hr className={styles.MenuHr} />
+                  {/* Bread rice noodles */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Bread Rice and Noodles</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div>
+                            <div className={styles.quantityBtn}>
+                              <button onClick={(e) =>
+                                decrement(item.quantity, index, "Bread+Rice", item)
+                              }>-</button>
+                              <h6>{item.quantity}{item.Qtype}</h6>
+                              <button onClick={(e) =>
+                                increment(item.quantity, index, "Bread+Rice", item)
+                              }>+</button>
+
+                            </div>
+                            <div className={styles.recQnty}>
+                              <p>Recommended Qt.</p>
+                            </div>
+                          </div>
+                          <div>
+                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "Bread+Rice")} />
+                          </div>
+                        </div>
+                      </div>))}
+                    </div>
+                    {showDropdown3 && (<div onClick={handleDiv3Click} className={styles.starterSearchBtn} id="srchbr2">
+                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Breads Rice </p>
+                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                    </div>
+                    )}
+                    {showSelectedMenu3 && (<div className={styles2.starterMenuContainer}>
+                      <div id={styles2.starterSearchContent}>
+                        <div>
+                          <input type="text"
+                            value={searchValue}
+                            onChange={searchStarter}
+                            placeholder="Search Bread Rice Noodles" />
+                          <div id={styles2.starterList}>
+                            <ul>
+                              {breadRiceData.map((item, index) => (
+                                <li key={item.id}>
+                                  <div className='d-flex justify-content-between'>
+                                    <div id={styles2.insideDivLi}>
+                                      <img src={item.image} width="30.05px" height="26.54px" />
+                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                    </div>
+                                    <div>
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleBreadRiceAdd(item.name, e)} />
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div id={styles2.listInsideBtn}>
+                            <button onClick={handleCancelClick}>Done</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>)}
+                  </div>
+                  <hr className={styles.MenuHr} />
+                  {/* dessert add */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Desserts</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div>
+                            <div className={styles.quantityBtn}>
+                              <button onClick={(e) =>
+                                decrement(item.quantity, index, "desserts", item)
+                              }>-</button>
+                              <h6>{item.quantity}{item.Qtype}</h6>
+                              <button onClick={(e) =>
+                                increment(item.quantity, index, "desserts", item)
+                              }>+</button>
+
+                            </div>
+                            <div className={styles.recQnty}>
+                              <p>Recommended Qt.</p>
+                            </div>
+                          </div>
+                          <div>
+                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "desserts")} />
+                          </div>
+                        </div>
+                      </div>))}
+                    </div>
+                    {showDropdown4 && (<div onClick={handleDiv4Click} className={styles.starterSearchBtn} id="srchbr2">
+                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Desserts </p>
+                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                    </div>
+                    )}
+                    {showSelectedMenu4 && (<div className={styles2.starterMenuContainer}>
+                      <div id={styles2.starterSearchContent}>
+                        <div>
+                          <input type="text"
+                            value={searchValue}
+                            onChange={searchStarter}
+                            placeholder="Search Desserts" />
+                          <div id={styles2.starterList}>
+                            <ul>
+                              {dessertData.map((item, index) => (
+                                <li key={item.id}>
+                                  <div className='d-flex justify-content-between'>
+                                    <div id={styles2.insideDivLi}>
+                                      <img src={item.image} width="30.05px" height="26.54px" />
+                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                    </div>
+                                    <div>
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleDesertsAdd(item.name, e)} />
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div id={styles2.listInsideBtn}>
+                            <button onClick={handleCancelClick}>Done</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>)}
+                  </div>
+                </div>
+              </div>
+              <hr className={styles.MenuHr} />
+              <div className='mt-5'>
+                <div className={styles.userInput}>
+                  <h4>Details*</h4>
+                  <div className={styles.detailsInputLg}>
+                    <input placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
+                    <input placeholder='mobileno' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
+                    <input placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.chefNote}>
+                <p>Special Restriction? Chef Note?</p>
+                <input type="text" />
+              </div>
+              <div className={styles.instantQuoteBtn}>
+                <button onClick={formSubmit}>Get Instant Quote</button>
+              </div>
+              <div className={styles.applyCoupon}>
+                <input type="text" placeholder='Enter Coupon Code' />
+                <button>Apply</button>
+              </div>
+              <div className={styles2.finalPriceSection}>
+                <div className="d-flex justify-content-between">
+                  <select className="form-select" aria-label="Default select example">
+                    <option value="1">NinjaBox Delivery (Free)</option>
+                    <option value="2">Buffet setup + 1 waiter</option>
+                  </select>
+                  <p>₹ 0000</p>
+                </div>
+              </div>
+              <div className={styles.pricing}>
+                <div>
+                  <div className={styles.pricingTitle1}>
+                    <div>
+                      <h4>Items Total</h4>
+                    </div>
+                    <div>
+                      <p>₹{totalPrice}</p>
+                    </div>
+                  </div>
+                  <div className={styles.pricingTitle11}>
+                    <div>
+                      <h4>NinjaBox Service</h4>
+                    </div>
+                    <div>
+                      <p>₹0000</p>
+                    </div>
+                  </div>
+                  <div className={styles.pricingTitle2}>
+                    <div>
+                      <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
+                    </div>
+                    <div>
+                      <p>₹0000</p>
+                    </div>
+                  </div>
+                  <hr className={styles.hr1} />
+                  <div className={styles.pricingTitle3}>
+                    <div>
+                      <h4>Coupon Value</h4>
+                    </div>
+                    <div>
+                      <p>₹0000</p>
+                    </div>
+                  </div>
+                  <div className={styles.pricingTitle4}>
+                    <div>
+                      <h4>GST</h4>
+                    </div>
+                    <div>
+                      <p>₹0000</p>
+                    </div>
+                  </div>
+                  <hr id={styles.hr2} />
+                </div>
+                <div className={styles.grandTotal}>
+                  <div>
+                    <h4>Grand Total</h4>
+                  </div>
+                  <div>
+                    <p>₹0000</p>
+                  </div>
+                </div>
+                <div className={styles.orderBtn}>
+                  <button>Place Order</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+        <div className={styles.createYourOwnPkg}>
+          <div>
+            <img src='Group 803.png' />
+          </div>
+          <div className='text-center mt-3'>
+            <p>Not Happy with the Package?</p>
+            <h2>Create Your<span>Own</span></h2>
+            <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
+            <button>Create Your Own Package</button>
+          </div>
+        </div>
+      </div>
+      {/* <div className={styles.header}>
                 <div className={styles.headerContent}>
                     <div>
                         <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="186.97px" height="39.79px" />
@@ -2147,7 +2184,7 @@ const handleDiv4Click = () => {
                     </div>
                 </div>
             </div> */}
-            {/* <div className={styles.packageContainer}>
+      {/* <div className={styles.packageContainer}>
                 <div className={styles.page}>
                     <div className={styles.cityContent}>
                         <div>
@@ -2237,8 +2274,8 @@ const handleDiv4Click = () => {
                     </div>
                 </div>
             </div> */}
-        </div>
-    )
+    </div>
+  )
 }
 
 export default CustomizeNinjaBox
