@@ -34,7 +34,7 @@ const NewDiy = () => {
     const [isDisabledMains, setIsDisabledMains] = useState(true);
     const [isDisabledBread, setIsDisabledBread] = useState(true);
     const [isDisabledRice, setIsDisabledRice] = useState(true);
-    const[showDropdown, setShowDropdown] = useState(true)
+    const [showDropdown, setShowDropdown] = useState(true)
     const [isShown, setIsShown] = useState(false);
 
     const [state, setState] = useState({
@@ -51,22 +51,22 @@ const NewDiy = () => {
             showDiv1: false,
             showDiv2: true
         });
-        
+
         const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
-   
+
         let selectedIds = [];
-        for(let i=0; i<results.length; i++){
+        for (let i = 0; i < results.length; i++) {
             selectedIds.push(results[i].id);
         }
-        for(let j=0; j<filteredData.length; j++){
-            if(!(selectedIds.includes(filteredData[j].id))){
-                filteredData[j].checked='checked';
+        for (let j = 0; j < filteredData.length; j++) {
+            if (!(selectedIds.includes(filteredData[j].id))) {
+                filteredData[j].checked = 'checked';
             }
         }
     };
 
     const handleCancelClick = () => {
-        
+
         setShowSelectedMenu(false);
         setShowDropdown(true);
         setState({
@@ -75,7 +75,7 @@ const NewDiy = () => {
         });
     };
 
-    const deleteMenu = (item)=>{
+    const deleteMenu = (item) => {
         setCheckedValues(checkedValues.filter(v => v.id !== item.id));
     }
     const handleClick = event => {
@@ -164,27 +164,27 @@ const NewDiy = () => {
             id: 2,
             image: '/diy images/starter/image 23.png',
             name: 'Butter Paneer',
-            description: "cscscsecse",
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: ''
         },
         {
             id: 3,
             image: '/diy images/starter/image 23.png',
             name: 'Matar Paneer',
-            description: "cscsecfesces",
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: ''
         },
         {
             id: 4,
             image: '/diy images/starter/image 23.png',
             name: 'Chilie Paneer',
-            description: "csecfescfescfes",
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: ''
         },
     ]
 
     const [searchValue, setSearchValue] = React.useState('');
-    const [showSelectedMenu, setShowSelectedMenu] =  useState(false);
+    const [showSelectedMenu, setShowSelectedMenu] = useState(false);
 
     const searchStarter = (e) => {
         setSearchValue(e.target.value);
@@ -205,7 +205,6 @@ const NewDiy = () => {
             value.checked = '';
             setCheckedValues(checkedValues.filter(v => v.id !== value.id));
         }
-
     }
 
 
@@ -247,11 +246,25 @@ const NewDiy = () => {
                     <div className={styles.selectCity}>
                         <h3>Select Your City</h3>
                         <hr />
-                        <div className="btn-group" role="group" aria-label="Basic example" id={styles.cityIcon}>
-                            <button type='radio'><img src='cities/mumbai.png' /></button>
-                            <button type='radio'><img src='cities/bangalore.png' /></button>
-                            <button type='radio'><img src='cities/delhi.png' /></button>
-                            <button type='radio'><img src='cities/gurgaon.png' /></button>
+                        {/* <div className="btn-group" role="group" aria-label="Basic example" id={styles.cityIcon}>
+                            <button type='button'><img src='cities/mumbai.png' /></button>
+                            <button type='button'><img src='cities/bangalore.png' /></button>
+                            <button type='button'><img src='cities/delhi.png' /></button>
+                            <button type='button'><img src='cities/gurgaon.png' /></button>
+                        </div> */}
+                        <div className={styles.cityDropdown}>
+                            <select className="form-select" aria-label="Default select example">
+                                <option value="0" selected>Mumbai</option>
+                                <option value="1">Navi Mumbai</option>
+                                <option value="2">Thane</option>
+                                <option value="3">Delhi</option>
+                                <option value="3">Gurgaon</option>
+                                <option value="3">Noida</option>
+                                <option value="3">Bangalore</option>
+                                <option value="3">Pune</option>
+                                <option value="3">Hyderabad</option>
+                                <option value="3">Chennai</option>
+                            </select>
                         </div>
                     </div>
                     <div className={styles.occasion}>
@@ -283,6 +296,17 @@ const NewDiy = () => {
                         </div>
                         <div className={styles.availableSlots}>
                             <h5>Available Slots</h5>
+                            <div className={styles.breakfastContainer}>
+                                <h6>Breakfast</h6>
+                                <p>NinjaBox</p>
+                                <div>
+                                    <a>8:00</a>
+                                    <a>8:30</a>
+                                    <a>9:00</a>
+                                    <a>9:30</a>
+                                    <a>9:30</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.guestCount}>
@@ -364,7 +388,7 @@ const NewDiy = () => {
                                 </div>
                             </div>
                             <div className={styles.selectedStarterContainer}>
-                            {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles.fstItem} key={index}>
+                                {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles.fstItem} key={index}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
                                         <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
@@ -383,10 +407,11 @@ const NewDiy = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={()=>deleteMenu(item)} />
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu(item)} />
                                         </div>
                                     </div>
-                                </div> )) }
+                                </div>
+                                ))}
                             </div>
                             {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
                                 <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
@@ -505,7 +530,7 @@ const NewDiy = () => {
                                                                 <p>{item.name}<br /><span>{item.description}</span></p>
                                                             </div>
                                                             <div>
-                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e)=>handleCheckboxChange(e, item)} />
+                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, item)} />
                                                             </div>
                                                         </div>
                                                     </li>
@@ -678,7 +703,7 @@ const NewDiy = () => {
                     </div> */}
                     <div className="btns-group" id={styles.nextPrevBtn2}>
                         <a href="#" className="btn btn-prev"><FontAwesomeIcon icon={faArrowLeftLong} /> Back</a>
-                        <a href="#" className="btn btn-next">Check Price <FontAwesomeIcon icon={faArrowRightLong} /></a>
+                        <button href="#" className="btn btn-next ms-3" id={styles.checkPriceBtn}>Check Price</button>
                     </div>
                 </div>
                 <div className="form-step">
@@ -755,9 +780,6 @@ const NewDiy = () => {
                         </div>
                     </div>
                     <hr id={styles.pricebtmHr} />
-                    <div className="btns-group" id={styles.nextPrevBtn2}>
-                        <a href="#" className="btn btn-prev"><FontAwesomeIcon icon={faArrowLeftLong} /> Back To Menu</a>
-                    </div>
                     <div className={styles.finalPriceSection}>
                         <div className="d-flex justify-content-between">
                             <select className="form-select" aria-label="Default select example">
@@ -806,8 +828,9 @@ const NewDiy = () => {
                             </div>
                         </div>
                     </div>
-                    <div id={styles.submitBtn}>
-                        <button>Check Price</button>
+                    <div className="btns-group" id={styles.submitBtn}>
+                        <a href="#" className="btn btn-prev"><FontAwesomeIcon icon={faArrowLeftLong} /> Back To Menu</a>
+                        <button>Place Order</button>
                         {/* <input type="submit" value="Submit" className="btn" /> */}
                     </div>
                 </div>

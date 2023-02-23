@@ -10,11 +10,11 @@
         display: none;
     }
 
-    #ninjaBuffy{
+    #ninjaBuffy {
         width: 102.33px;
     }
 
-    #ninjaBuffetTitle{
+    #ninjaBuffetTitle {
         font-size: 38.37px;
         font-weight: 900;
     }
@@ -47,10 +47,11 @@
             margin-right: 0%;
         }
 
-        #ninjaBoxTitle{
+        #ninjaBoxTitle {
             font-size: 46.37px;
             font-weight: 900;
             line-height: 47.3px;
+
             span {
                 color: white;
             }
@@ -83,6 +84,41 @@
     .ninjaBuffyHpkg {
         text-align: center;
         margin-top: 20px;
+    }
+
+    .inputDetails {
+        background-color: #BE2D30;
+        display: flex;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        padding-inline: 10px;
+
+        p {
+            margin-left: 0%;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 165px;
+            background-color: white;
+        }
+
+        select {
+            width: 165px;
+        }
+
+        .cityContent {
+            margin-bottom: 40px;
+        }
+
+        .eventDate {
+            margin-bottom: 20px;
+        }
+
     }
 
     .cityContainer {
@@ -556,9 +592,9 @@
         }
     }
 
-    .pricingTitle2{
-        h4{
-            span{
+    .pricingTitle2 {
+        h4 {
+            span {
                 font-style: italic;
                 font-weight: 500;
                 color: #2C3338;
@@ -633,6 +669,7 @@
                 width: 376.9px;
             }
         }
+
         .ninjaBuffyHpkg {
             img {
                 margin-top: 60px;
@@ -652,6 +689,42 @@
         background-color: white;
         margin-inline: 220px;
         padding-bottom: 50px;
+    }
+
+    .inputDetails {
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        //margin-inline: 220px;
+        p {
+            margin-left: 0%;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 32px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+        input{
+            width: 200px;
+            background-color: white;
+        }
+
+        select{
+            width: 200px;
+        }
+
+        .cityContent{
+            margin-bottom: 20px;
+        }
+        .cuisineContainer{
+            margin-bottom: 20px !important;
+        }
+        .vegContainer{
+            margin-bottom: 20px !important;
+        }
     }
 
     .cityContainer {
@@ -1141,16 +1214,16 @@
         }
     }
 
-    #ninjaBuffy{
+    #ninjaBuffy {
         width: 180.37px;
         height: 270.92px;
         margin-left: 30px;
         margin-right: 20px;
     }
 
-    .pricingTitle2{
-        h4{
-            span{
+    .pricingTitle2 {
+        h4 {
+            span {
                 font-style: italic;
                 font-weight: 500;
                 color: #2C3338;
