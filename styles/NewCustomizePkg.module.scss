@@ -711,14 +711,121 @@
             text-align: center;
             letter-spacing: 0.02em;
             color: #42484E;
-            span{
+
+            span {
                 color: #BE2D30;
             }
         }
 
-        img{
+        img {
             margin: auto;
             text-align: center;
+        }
+    }
+
+    .finalPriceSection {
+        margin-top: 40px;
+        margin-inline: 20px;
+
+        select {
+            width: 160px;
+            height: 24px;
+            border-radius: 4.78px;
+            font-weight: 600;
+            font-size: 8.13043px;
+            line-height: 10px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            background-color: #BE2D30;
+            color: white;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 11.17px;
+            line-height: 16px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #000000;
+        }
+
+        .couponSection {
+            display: flex;
+            justify-content: space-between;
+
+            h5 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 33px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+
+            input {
+                width: 86.24px;
+                height: 20.17px;
+                border-radius: 5.04px;
+                background-color: #F2F2F2;
+                margin-right: -20px;
+            }
+
+            button {
+                background-color: #BE2D30;
+                border: none;
+                width: 36.81px;
+                height: 20.17px;
+                border-radius: 2px;
+                font-weight: 500;
+                font-size: 8.57328px;
+                line-height: 10px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #FFFFFF;
+            }
+
+            .coupon {
+                display: flex;
+            }
+        }
+
+        .itemtotalSectn {
+
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+            h6 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #363D42;
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+        }
+
+        .grandTotalContainer {
+            display: flex;
+            justify-content: space-between;
+
+            h3 {
+                font-weight: 600;
+                font-size: 14.17px;
+                line-height: 17px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
         }
     }
 
@@ -800,8 +907,168 @@
         }
     }
 
-    .selfService{
+    .MenuHr {
+        margin: auto;
+        width: 326.71px;
+        height: 0px;
+
+        border: 0.4px dashed #42484E;
+        margin-top: 40px;
+        background-color: white;
+    }
+
+    .selfService {
         display: none;
+    }
+
+    .mainsContainer {
+        h5 {
+            margin-top: 50px;
+        }
+    }
+
+    .cityContent {
+        select {
+            margin-bottom: 40px;
+        }
+    }
+
+    .starterSearchBtn {
+        margin: auto;
+        width: 315px;
+        height: 31.15px;
+        border-radius: 5.02px;
+        background-color: #EFEFEF;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            margin: auto;
+            font-weight: 600;
+            font-size: 12.1784px;
+            line-height: 15px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #2C3338;
+        }
+
+        span {
+            margin: auto;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 7.49443px;
+            line-height: 9px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #4D555B;
+        }
+    }
+
+    .finalPriceSection {
+        margin-top: 40px;
+        margin-inline: 40px;
+
+        select {
+            width: 315px;
+            height: 46px;
+            border-radius: 4.78px;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 21px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            background-color: #BE2D30;
+            color: white;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 33px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+
+            color: #000000;
+        }
+
+        .couponSection {
+            display: flex;
+            justify-content: space-between;
+
+            h5 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 33px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+
+            input {
+                width: 86.24px;
+                height: 20.17px;
+                border-radius: 5.04px;
+                background-color: #F2F2F2;
+                margin-right: -20px;
+            }
+
+            button {
+                background-color: #BE2D30;
+                border: none;
+                width: 36.81px;
+                height: 20.17px;
+                border-radius: 2px;
+                font-weight: 500;
+                font-size: 8.57328px;
+                line-height: 10px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #FFFFFF;
+            }
+
+            .coupon {
+                display: flex;
+            }
+        }
+
+        .itemtotalSectn {
+
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+            h6 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #363D42;
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+        }
+
+        .grandTotalContainer {
+            display: flex;
+            justify-content: space-between;
+
+            h3 {
+                font-weight: 600;
+                font-size: 14.17px;
+                line-height: 17px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+        }
     }
 
     .redBg {
@@ -942,6 +1209,22 @@
             letter-spacing: 0.05em;
             text-transform: capitalize;
             margin-bottom: 20px;
+        }
+
+        .createYourMenuHead {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+
+            h3 {
+                font-weight: 700;
+                font-size: 19px;
+                line-height: 23px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #2C3338;
+            }
         }
     }
 
@@ -1358,6 +1641,24 @@
             }
         }
     }
+
+    .startersContainer,
+    .mainsContainer {
+
+        //margin-inline: 50px;
+        h5 {
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+
+            color: #2C3338;
+
+        }
+    }
+
 }
 
 // .header {

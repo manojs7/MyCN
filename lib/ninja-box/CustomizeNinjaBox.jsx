@@ -2098,8 +2098,8 @@ const CustomizeNinjaBox = () => {
                 <input type="text" placeholder='Enter Coupon Code' />
                 <button>Apply</button>
               </div>
-              <div className={styles2.finalPriceSection}>
-                <div className="d-flex justify-content-between" style={{ marginInline: "-10px" }}>
+              <div className={styles.finalPriceSection}>
+                <div className="d-flex justify-content-between">
                   <select className="form-select" aria-label="Default select example">
                     <option value="1">NinjaBox Delivery (Free)</option>
                     <option value="2">Buffet setup + 1 waiter</option>
