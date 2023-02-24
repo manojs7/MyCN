@@ -1668,7 +1668,7 @@ const CustomizeNinjaBox = () => {
               </div>
             </div>
             <div className={styles.ninjabox}>
-              <img src='fontPic2.png' width="281.81px" height="218px" />
+              <img src='fontPic2.png' width="256px" height="225.57px" />
             </div>
           </div>
         </Slider>
@@ -1698,14 +1698,21 @@ const CustomizeNinjaBox = () => {
                     <option value="Gurgaon">Gurgaon</option>
                   </select>
                 </div>
-
+                <div style={{ marginBottom: "40px" }}>
+                  <p>Veg Guest</p>
+                  <input
+                    type="number"
+                    onBlur={(e) =>
+                      handleVegNonVegGuest("veg", parseInt(e.target.value))
+                    }
+                    min="0"
+                    defaultValue={veg}
+                  />
+                </div>
+                
                 <div className={styles.eventDate}>
                   <p>Event Date</p>
                   <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} />
-                </div>
-                <div>
-                  <p>Delivery Time</p>
-                  <input type="time" name='event_time'></input>
                 </div>
               </div>
               <div>
@@ -1727,17 +1734,7 @@ const CustomizeNinjaBox = () => {
                                         <option value="Bengali">Bengali</option> */}
 
                 </div>
-                <div style={{ marginBottom: "40px" }}>
-                  <p>Veg Guest</p>
-                  <input
-                    type="number"
-                    onBlur={(e) =>
-                      handleVegNonVegGuest("veg", parseInt(e.target.value))
-                    }
-                    min="0"
-                    defaultValue={veg}
-                  />
-                </div>
+                
                 <div>
                   <p>Non Veg Guest</p>
                   <input
@@ -1748,6 +1745,10 @@ const CustomizeNinjaBox = () => {
                     min="0"
                     defaultValue={nonVeg}
                   />
+                </div>
+                <div style={{marginTop: "40px"}}>
+                  <p>Delivery Time</p>
+                  <input type="time" name='event_time'></input>
                 </div>
               </div>
             </div>
@@ -1786,6 +1787,7 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.menuContainer}>
                   <div className={styles.createYourMenuHead}>
                     <h3>Create Your Menu</h3>
+                    <hr style={{border: "0.4px dashed #42484E", margin: "auto", width: "196px", backgroundColor: "white"}}/>
                   </div>
 
                   {/* starters add */}
@@ -2078,9 +2080,9 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
                   <div className={styles.detailsInputLg}>
-                    <input placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
-                    <input placeholder='Mob. No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
-                    <input placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
+                    <input type="text" placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
+                    <input type="text" placeholder='Mob. No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
+                    <input type="email" placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
                   </div>
                 </div>
               </div>

@@ -203,7 +203,7 @@
     //starter scss
 
     .menuContainer {
-        margin-top: 30px;
+        margin-top: 50px;
 
         h5 {
             text-align: center;
@@ -462,6 +462,7 @@
             height: 20px;
             background: #E9E9E9;
             border-radius: 5px;
+            font-size: 8.5px;
         }
 
         input::placeholder {
@@ -797,6 +798,10 @@
                 width: 376.9px;
             }
         }
+    }
+
+    .selfService{
+        display: none;
     }
 
     .redBg {
