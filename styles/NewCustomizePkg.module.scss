@@ -57,7 +57,7 @@
             }
         }
 
-        #ninjaBuffyTitle{
+        #ninjaBuffyTitle {
             font-size: 40px;
             font-weight: 900;
             line-height: 47.3px;
@@ -88,7 +88,8 @@
 
     .ninjabox {
         margin-top: 40px;
-        img{
+
+        img {
             margin: auto;
         }
     }
@@ -375,13 +376,15 @@
     .userInput {
         padding-top: 10px;
         background-color: #FFC31A;
-        width: 226px;
+        width: 261px;
         height: 161px;
         border-radius: 10px;
         margin: auto;
         padding: 10px;
 
         h4 {
+            margin-top: 10px;
+            margin-bottom: 15px;
             font-style: normal;
             font-weight: 600;
             font-size: 16.5469px;
@@ -397,6 +400,7 @@
             border-radius: 6.36px;
             background-color: white;
             margin: auto;
+            margin-bottom: 8px !important;
         }
 
         input::placeholder {
@@ -689,6 +693,32 @@
         border: 0.4px dashed #42484E;
         margin-top: 40px;
         background-color: white;
+    }
+
+    .selfService {
+        height: 272px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        text-align: center;
+
+        h3 {
+            padding-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 23px;
+            line-height: 28px;
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: #42484E;
+            span{
+                color: #BE2D30;
+            }
+        }
+
+        img{
+            margin: auto;
+            text-align: center;
+        }
     }
 
 }

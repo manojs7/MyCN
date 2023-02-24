@@ -527,6 +527,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
+import { Settings } from '@mui/icons-material';
 
 
 
@@ -1634,42 +1635,42 @@ const CustomizeNinjaBox = () => {
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
         <Slider {...settings}>
-        <div className={styles.header}>
-          <div className={styles.headerContent}>
-            <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
-            <div className={styles.textLogo}>
-              <div>
-                <h3>Customize your</h3>
-                <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
-                <h5>Get instant quote in just few<br />easy steps!</h5>
-              </div>
-              <div>
-                <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
-              </div>
-            </div>
-          </div>
-          <div className={styles.ninjabox}>
-            <img src='NB.png' width="281.81px" height="218px" />
-          </div>
-        </div>
-        <div className={styles.header}>
-          <div className={styles.headerContent}>
-            <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
-            <div className={styles.textLogo}>
-              <div>
-                <h3>Customize your</h3>
-                <h2 id={styles.ninjaBuffyTitle}>Ninja<span>Buffet</span></h2>
-                <h5>Get instant quote in just few<br />easy steps!</h5>
-              </div>
-              <div>
-                <img id={styles.ninja} src='/CustomizeImg/NinjaBuffy.png' width="83.41px" height="132.73px" />
+          <div className={styles.header}>
+            <div className={styles.headerContent}>
+              <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+              <div className={styles.textLogo}>
+                <div>
+                  <h3>Customize your</h3>
+                  <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
+                  <h5>Get instant quote in just few<br />easy steps!</h5>
+                </div>
+                <div>
+                  <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
+                </div>
               </div>
             </div>
+            <div className={styles.ninjabox}>
+              <img src='NB.png' width="281.81px" height="218px" />
+            </div>
           </div>
-          <div className={styles.ninjabox}>
-            <img src='fontPic2.png' width="281.81px" height="218px" />
+          <div className={styles.header}>
+            <div className={styles.headerContent}>
+              <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+              <div className={styles.textLogo}>
+                <div>
+                  <h3>Customize your</h3>
+                  <h2 id={styles.ninjaBuffyTitle}>Ninja<span>Buffet</span></h2>
+                  <h5>Get instant quote in just few<br />easy steps!</h5>
+                </div>
+                <div>
+                  <img id={styles.ninja} src='/CustomizeImg/NinjaBuffy.png' width="83.41px" height="132.73px" />
+                </div>
+              </div>
+            </div>
+            <div className={styles.ninjabox}>
+              <img src='fontPic2.png' width="281.81px" height="218px" />
+            </div>
           </div>
-        </div>
         </Slider>
         <form onSubmit={(e) => formSubmit()}>
           <div className={styles.redBg}>
@@ -1714,7 +1715,6 @@ const CustomizeNinjaBox = () => {
 
                     {cuisines.map((item, index) => {
                       return (
-
                         <option key={index} value={item}>{item}</option>
 
                       )
@@ -1755,11 +1755,20 @@ const CustomizeNinjaBox = () => {
 
             {/* Display Starters, mains etc count */}
             <div className={styles.whiteBg}>
-              <div className={styles.packageName}>
+              {/* <div className={styles.packageName}>
                 <h3>PACKAGE NAME</h3>
                 <img src='555.png' height="150px" width="274.5px" />
-                <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
 
+              </div> */}
+              <div className={styles.selfService}>
+                { <Slider {...settings}> <div>
+                  <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
+                  <img src='555.png' height="150px" width="274.5px" />
+                </div>
+                <div>
+                  <h3>SETUP + SERVICE<br />NINJA<span>BUFFET</span></h3>
+                  <img src='Frame 769.png' height="150px" width="274.5px" />
+                </div></Slider>}
               </div>
               <div className={styles.pkgDetails}>
                 <div>
@@ -2062,12 +2071,15 @@ const CustomizeNinjaBox = () => {
                 </div>
               </div>
               <hr className={styles.MenuHr} />
+              <div className='text-center mt-3'>
+                <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
+              </div>
               <div className='mt-5'>
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
                   <div className={styles.detailsInputLg}>
                     <input placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
-                    <input placeholder='mobileno' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
+                    <input placeholder='Mob. No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
                     <input placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
                   </div>
                 </div>
@@ -2085,7 +2097,7 @@ const CustomizeNinjaBox = () => {
                 <button>Apply</button>
               </div>
               <div className={styles2.finalPriceSection}>
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between" style={{ marginInline: "-10px" }}>
                   <select className="form-select" aria-label="Default select example">
                     <option value="1">NinjaBox Delivery (Free)</option>
                     <option value="2">Buffet setup + 1 waiter</option>
