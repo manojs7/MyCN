@@ -1184,7 +1184,7 @@ const CustomizeNinjaBox = () => {
               </div>
             </div>
             <div className={styles.ninjabox}>
-              <img src='NB.png' width="281.81px" height="218px" />
+              <img src='Group 1016.png' width="281.81px" height="218px" />
             </div>
           </div>
           <div className={styles.header}>
@@ -1201,8 +1201,8 @@ const CustomizeNinjaBox = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.ninjabox}>
-              <img src='fontPic2.png' width="256px" height="225.57px" />
+            <div className={styles.ninjabuffy}>
+              <img src='Group 1247.png' width="256px" height="225.57px" />
             </div>
           </div>
         </Slider>
