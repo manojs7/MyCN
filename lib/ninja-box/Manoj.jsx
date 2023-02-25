@@ -1,3 +1,516 @@
+// import React from 'react'
+// import styles from '/styles/NewCustomizePkg.module.scss';
+// import 'bootstrap/dist/css/bootstrap.css';
+
+// const CustomizeNinjaBox = () => {
+//     return (
+//         <div className={styles.customizeMainContainer}>
+//             <div className={styles.customizeMainContainer}>
+//                 <div className={styles.header}>
+//                     <div className={styles.headerContent}>
+//                         <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+//                         <div className={styles.textLogo}>
+//                             <div>
+//                                 <h3>Customize your</h3>
+//                                 <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
+//                                 <h5>Get instant quote in just few<br />easy steps!</h5>
+//                             </div>
+//                             <div>
+//                                 <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
+//                             </div>
+//                         </div>
+//                     </div>
+//                     <div className={styles.ninjabox}>
+//                         <img src='NB.png' width="281.81px" height="218px" />
+//                     </div>
+//                 </div>
+//                 <div className={styles.redBg}>
+//                     <div className={styles.cityContainer}>
+//                         <div className={styles.cityflexLg}>
+//                             <h3>City</h3>
+//                             <select className="form-select" aria-label="Default select example">
+//                                 <option selected>Mumbai</option>
+//                                 <option value="1">Bangalore</option>
+//                                 <option value="2">Delhi</option>
+//                                 <option value="3">Gurgaon</option>
+//                             </select>
+//                         </div>
+//                     </div>
+//                     <div className={styles.whiteBg}>
+//                         <div className={styles.packageName}>
+//                             <h3>PACKAGE NAME</h3>
+//                             <img src='555.png' height="150px" width="274.5px" />
+//                             <h6>Starters + X Mains + X Desserts</h6>
+//                             <div>
+//                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
+//                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
+//                             </div>
+//                         </div>
+//                         <div className={styles.pkgDetails}>
+//                             <div>
+//                                 <h3>PACKAGE NAME</h3>
+//                                 <h5>X Starters + X Mains + X Desserts</h5>
+//                                 <div>
+//                                     <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
+//                                     <p id={styles.nonVegGuest}>Non Veg Guests<span>: 10</span></p>
+//                                 </div>
+//                             </div>
+//                             <div>
+//                                 <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
+//                             </div>
+//                         </div>
+//                         <div>
+//                             <div className={styles.menuContainer}>
+//                                 <div className={styles.startersContainer}>
+//                                     <h5>Starters</h5>
+//                                     <div className={styles.starterItems}>
+//                                         <div className={styles.fstItem}>
+//                                             <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+//                                             <div className={styles.itemDetailsContainer}>
+//                                                 <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+//                                                 <div>
+//                                                     <h4>Paneer Butter<br />Masala</h4>
+//                                                     <p>Classic Choice For Mains</p>
+//                                                 </div>
+//                                                 <div>
+//                                                     <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                 </div>
+//                                                 <div>
+//                                                     <div className={styles.quantityBtn}>
+//                                                         <button>-</button>
+//                                                         <h6>5.5 Kg</h6>
+//                                                         <button>+</button>
+//                                                     </div>
+//                                                     <div className={styles.recQnty}>
+//                                                         <p>Recommended Qt.</p>
+//                                                     </div>
+//                                                 </div>
+//                                                 <div>
+//                                                     <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className="mt-3">
+//                                             <div className={styles.fstItem}>
+//                                                 <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+//                                                 <div className={styles.itemDetailsContainer}>
+//                                                     <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+//                                                     <div>
+//                                                         <h4>Chicken<br />Tandoori</h4>
+//                                                         <p>Classic Choice For Mains</p>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                     </div>
+//                                                     <div>
+//                                                         <div className={styles.quantityBtn}>
+//                                                             <button>-</button>
+//                                                             <h6>50 Pcs</h6>
+//                                                             <button>+</button>
+//                                                         </div>
+//                                                         <div className={styles.recQnty}>
+//                                                             <p>Recommended Qt.</p>
+//                                                         </div>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                     </div>
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className={styles.addStarterBtnContnr}>
+//                                             <button className={styles.addStarterBtn}>+ Add Starter</button>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div className={styles.startersContainer}>
+//                                     <h5 className='mt-5'>Mains</h5>
+//                                     <div className={styles.starterItems}>
+//                                         <div className={styles.fstItem}>
+//                                             <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+//                                             <div className={styles.itemDetailsContainer}>
+//                                                 <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+//                                                 <div>
+//                                                     <h4>Paneer Butter<br />Masala</h4>
+//                                                     <p>Classic Choice For Mains</p>
+//                                                 </div>
+//                                                 <div>
+//                                                     <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                 </div>
+//                                                 <div>
+//                                                     <div className={styles.quantityBtn}>
+//                                                         <button>-</button>
+//                                                         <h6>5.5 Kg</h6>
+//                                                         <button>+</button>
+//                                                     </div>
+//                                                     <div className={styles.recQnty}>
+//                                                         <p>Recommended Qt.</p>
+//                                                     </div>
+//                                                 </div>
+//                                                 <div>
+//                                                     <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className="mt-3">
+//                                             <div className={styles.fstItem}>
+//                                                 <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+//                                                 <div className={styles.itemDetailsContainer}>
+//                                                     <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+//                                                     <div>
+//                                                         <h4>Chicken<br />Tandoori</h4>
+//                                                         <p>Classic Choice For Mains</p>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                     </div>
+//                                                     <div>
+//                                                         <div className={styles.quantityBtn}>
+//                                                             <button>-</button>
+//                                                             <h6>50 Pcs</h6>
+//                                                             <button>+</button>
+//                                                         </div>
+//                                                         <div className={styles.recQnty}>
+//                                                             <p>Recommended Qt.</p>
+//                                                         </div>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                     </div>
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className="mt-3">
+//                                             <div className={styles.fstItem}>
+//                                                 <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+//                                                 <div className={styles.itemDetailsContainer}>
+//                                                     <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+//                                                     <div>
+//                                                         <h4>Chicken<br />Tandoori</h4>
+//                                                         <p>Classic Choice For Mains</p>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                     </div>
+//                                                     <div>
+//                                                         <div className={styles.quantityBtn}>
+//                                                             <button>-</button>
+//                                                             <h6>50 Pcs</h6>
+//                                                             <button>+</button>
+//                                                         </div>
+//                                                         <div className={styles.recQnty}>
+//                                                             <p>Recommended Qt.</p>
+//                                                         </div>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                     </div>
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className="mt-3">
+//                                             <div className={styles.fstItem}>
+//                                                 <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+//                                                 <div className={styles.itemDetailsContainer}>
+//                                                     <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+//                                                     <div>
+//                                                         <h4>Chicken<br />Tandoori</h4>
+//                                                         <p>Classic Choice For Mains</p>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                     </div>
+//                                                     <div>
+//                                                         <div className={styles.quantityBtn}>
+//                                                             <button>-</button>
+//                                                             <h6>50 Pcs</h6>
+//                                                             <button>+</button>
+//                                                         </div>
+//                                                         <div className={styles.recQnty}>
+//                                                             <p>Recommended Qt.</p>
+//                                                         </div>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                     </div>
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className={styles.addStarterBtnContnr}>
+//                                             <button className={styles.addStarterBtn}>+ Add Main</button>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div className={styles.startersContainer}>
+//                                     <h5 className='mt-5'>Desserts</h5>
+//                                     <div className={styles.starterItems}>
+//                                         <div className={styles.fstItem}>
+//                                             <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+//                                             <div className={styles.itemDetailsContainer}>
+//                                                 <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+//                                                 <div>
+//                                                     <h4>Paneer Butter<br />Masala</h4>
+//                                                     <p>Classic Choice For Mains</p>
+//                                                 </div>
+//                                                 <div>
+//                                                     <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                 </div>
+//                                                 <div>
+//                                                     <div className={styles.quantityBtn}>
+//                                                         <button>-</button>
+//                                                         <h6>5.5 Kg</h6>
+//                                                         <button>+</button>
+//                                                     </div>
+//                                                     <div className={styles.recQnty}>
+//                                                         <p>Recommended Qt.</p>
+//                                                     </div>
+//                                                 </div>
+//                                                 <div>
+//                                                     <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className="mt-3">
+//                                             <div className={styles.fstItem}>
+//                                                 <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+//                                                 <div className={styles.itemDetailsContainer}>
+//                                                     <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+//                                                     <div>
+//                                                         <h4>Chicken<br />Tandoori</h4>
+//                                                         <p>Classic Choice For Mains</p>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                                     </div>
+//                                                     <div>
+//                                                         <div className={styles.quantityBtn}>
+//                                                             <button>-</button>
+//                                                             <h6>50 Pcs</h6>
+//                                                             <button>+</button>
+//                                                         </div>
+//                                                         <div className={styles.recQnty}>
+//                                                             <p>Recommended Qt.</p>
+//                                                         </div>
+//                                                     </div>
+//                                                     <div>
+//                                                         <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                                     </div>
+//                                                 </div>
+//                                             </div>
+//                                         </div>
+//                                         <div className={styles.addStarterBtnContnr}>
+//                                             <button className={styles.addStarterBtn}>+ Add Dessert</button>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div className='mt-5'>
+//                             <div className={styles.userInput}>
+//                                 <h4>Details*</h4>
+//                                 <div className={styles.detailsInputLg}>
+//                                     <input placeholder='Name' />
+//                                     <input placeholder='Number' />
+//                                     <input placeholder='E-Mail' />
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div className={styles.chefNote}>
+//                             <p>Special Restriction? Chef Note?</p>
+//                             <input type="text" />
+//                         </div>
+//                         <div className={styles.instantQuoteBtn}>
+//                             <button>Get Instant Quote</button>
+//                         </div>
+//                         <div className={styles.applyCoupon}>
+//                             <input type="text" placeholder='Enter Coupon Code' />
+//                             <button>Apply</button>
+//                         </div>
+//                         <div className={styles.pricing}>
+//                             <div>
+//                                 <div className={styles.pricingTitle1}>
+//                                     <div>
+//                                         <h4>Items Total</h4>
+//                                     </div>
+//                                     <div>
+//                                         <p>₹0000</p>
+//                                     </div>
+//                                 </div>
+//                                 <div className={styles.pricingTitle11}>
+//                                     <div>
+//                                         <h4>NinjaBox Service</h4>
+//                                     </div>
+//                                     <div>
+//                                         <p>₹0000</p>
+//                                     </div>
+//                                 </div>
+//                                 <div className={styles.pricingTitle2}>
+//                                     <div>
+//                                         <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
+//                                     </div>
+//                                     <div>
+//                                         <p>₹0000</p>
+//                                     </div>
+//                                 </div>
+//                                 <hr className={styles.hr1} />
+//                                 <div className={styles.pricingTitle3}>
+//                                     <div>
+//                                         <h4>Coupon Value</h4>
+//                                     </div>
+//                                     <div>
+//                                         <p>₹0000</p>
+//                                     </div>
+//                                 </div>
+//                                 <div className={styles.pricingTitle4}>
+//                                     <div>
+//                                         <h4>GST</h4>
+//                                     </div>
+//                                     <div>
+//                                         <p>₹0000</p>
+//                                     </div>
+//                                 </div>
+//                                 <hr id={styles.hr2} />
+//                             </div>
+//                             <div className={styles.grandTotal}>
+//                                 <div>
+//                                     <h4>Grand Total</h4>
+//                                 </div>
+//                                 <div>
+//                                     <p>₹0000</p>
+//                                 </div>
+//                             </div>
+//                             <div className={styles.orderBtn}>
+//                                 <button>Place Order</button>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div className={styles.createYourOwnPkg}>
+//                     <div>
+//                         <img src='Group 803.png' />
+//                     </div>
+//                     <div className='text-center mt-3'>
+//                         <p>Not Happy with the Package?</p>
+//                         <h2>Create Your<span>Own</span></h2>
+//                         <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
+//                         <button>Create Your Own Package</button>
+//                     </div>
+//                 </div>
+//             </div>
+//             {/* <div className={styles.header}>
+//                 <div className={styles.headerContent}>
+//                     <div>
+//                         <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="186.97px" height="39.79px" />
+//                         <h2>Customise Your</h2>
+//                         <h1>Ninja<span>Box</span></h1>
+//                         <p>Get instant quote in just few<br />easy steps!</p>
+//                     </div>
+//                     <div className='d-flex'>
+//                         <div>
+//                             <img id={styles.ninja} src='/CustomizeImg/Group 267.png' width="208.89px" height="270.92px" />
+//                         </div>
+//                         <div>
+//                             <img id={styles.pkgImg} src='NB.png' width="376.91px" height="291.56px" />
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div> */}
+//             {/* <div className={styles.packageContainer}>
+//                 <div className={styles.page}>
+//                     <div className={styles.cityContent}>
+//                         <div>
+//                             <h3>City</h3>
+//                         </div>
+//                         <div>
+//                             <select className="form-select" aria-label="Default select example">
+//                                 <option selected>Mumbai</option>
+//                                 <option value="1">Bangalore</option>
+//                                 <option value="2">Delhi</option>
+//                                 <option value="3">Gurgaon</option>
+//                             </select>
+//                         </div>
+//                     </div>
+//                     <div className={styles.bgWhiteClr}>
+//                         <div className={styles.pkgDetails}>
+//                             <div>
+//                                 <h3>PACKAGE NAME</h3>
+//                                 <h5>X Starters + X Mains + X Desserts</h5>
+//                                 <div>
+//                                     <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
+//                                     <p id={styles.nonVegGuest}>Non Veg Guests<span>: 10</span></p>
+//                                 </div>
+//                             </div>
+//                             <div>
+//                                 <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
+//                             </div>
+//                         </div>
+//                         <div className={styles.startersContainer}>
+//                             <h5>Starters</h5>
+//                             <div className={styles.starterItems}>
+//                                 <div className={styles.fstItem}>
+//                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+//                                     <div className={styles.itemDetailsContainer}>
+//                                         <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+//                                         <div>
+//                                             <h4>Paneer Butter<br />Masala</h4>
+//                                             <p>Classic Choice For Mains</p>
+//                                         </div>
+//                                         <div>
+//                                             <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                         </div>
+//                                         <div>
+//                                             <div className={styles.quantityBtn}>
+//                                                 <button>-</button>
+//                                                 <h6>5.5 Kg</h6>
+//                                                 <button>+</button>
+//                                             </div>
+//                                             <p className={styles.recQnty}>Recommended Qt.</p>
+//                                         </div>
+//                                         <div>
+//                                             <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div className="mt-3">
+//                                     <div className={styles.fstItem}>
+//                                         <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+//                                         <div className={styles.itemDetailsContainer}>
+//                                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />
+//                                             <div>
+//                                                 <h4>Chicken<br />Tandoori</h4>
+//                                                 <p>Classic Choice For Mains</p>
+//                                             </div>
+//                                             <div>
+//                                                 <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
+//                                             </div>
+//                                             <div>
+//                                                 <div className={styles.quantityBtn}>
+//                                                     <button>-</button>
+//                                                     <h6>50 Pcs</h6>
+//                                                     <button>+</button>
+//                                                 </div>
+//                                                 <p className={styles.recQnty}>Recommended Qt.</p>
+//                                             </div>
+//                                             <div>
+//                                                 <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
+//                                             </div>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div className={styles.addStarterBtnContnr}>
+//                                     <button className={styles.addStarterBtn}>+ Add Starter</button>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div> */}
+//         </div>
+//     )
+// }
+
+// export default CustomizeNinjaBox
+
 import React from 'react'
 import { useEffect, useState } from "react";
 // import styles from "$styles/Customize.module.scss";
@@ -14,6 +527,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
+import { Settings } from '@mui/icons-material';
 
 
 
@@ -21,14 +535,14 @@ import Slider from "react-slick/lib/slider";
 const CustomizeNinjaBox = () => {
 
 
-  const { menu, cuisines, allMenus, cities } = useAppMenu();
+  const { menu, cuisines, allMenus } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
   const router = useRouter();
   const [veg, setVeg] = useState(10);
   const [nonVeg, setNonVeg] = useState(10);
-  const [cuisine, setCuisine] = useState(cuisines[0].value);
+  const [cuisine, setCuisine] = useState(0);
   const [knowMore, setKnowMore] = useState([]);
   const [isSmall, setIsSmall] = useState(false);
   const [name, setName] = useState("");
@@ -72,7 +586,7 @@ const CustomizeNinjaBox = () => {
   const [highestPrice, setHighestPrice] = useState([]);
   const [totalPrice, setTotalPrice] = useState([]);
   const [grandTotal, setgrandTotal] = useState([]);
-  const [buffet, setbuffet] = useState();
+  const [buffet, setbuffet] = useState([]);
 
   const [isStarterChange, setIsStarterChange] = useState(false);
   const [isMainChange, setIsMainChange] = useState(false);
@@ -140,54 +654,30 @@ const CustomizeNinjaBox = () => {
   // filtering data according to cuisine
   const handleCuisine = (index) => {
     setCuisine(index);
-    if (index === "All") {
+    if (cuisines[index] === "All") {
       setStartersData(startersData2);
       setMainData(mainData2);
       setBreadRiceData(breadRiceData2);
       setDessertData(dessertData2);
     } else {
       const filterStarter = startersData2.filter(
-        (d) => d.cuisine === index
+        (d) => d.cuisine === cuisines[index]
       );
       setStartersData(filterStarter);
 
-      const filterMain = mainData2.filter((d) => d.cuisine === index);
+      const filterMain = mainData2.filter((d) => d.cuisine === cuisines[index]);
       setMainData(filterMain);
 
       const filterBreadData = breadRiceData2.filter(
-        (d) => d.cuisine === index
+        (d) => d.cuisine === cuisines[index]
       );
       setBreadRiceData(filterBreadData);
 
       const filterDessertData = dessertData2.filter(
-        (d) => d.cuisine === index
+        (d) => d.cuisine === cuisines[index]
       );
       setDessertData(filterDessertData);
     }
-  };
-
-  const handleCity = (city) => {
-    setCity(city);
-
-
-    const filterStarter = startersData2.filter(
-      (d) => d.city === city
-    );
-    setStartersData(filterStarter);
-
-    const filterMain = mainData2.filter((d) => d.city === city);
-    setMainData(filterMain);
-
-    const filterBreadData = breadRiceData2.filter(
-      (d) => d.city === city
-    );
-    setBreadRiceData(filterBreadData);
-
-    const filterDessertData = dessertData2.filter(
-      (d) => d.city === city
-    );
-    setDessertData(filterDessertData);
-
   };
 
   const handleVegNonVegGuest = (name, value) => {
@@ -330,20 +820,8 @@ const CustomizeNinjaBox = () => {
 
   const [checkedValues, setCheckedValues] = React.useState([]);
 
-  const handleCheckboxChange = (e, index, item, type) => {
-    if (type === "starters") {
-      handleStatersAdd(item.name, item.id)
-    }
-    if (type === "mains") {
-      handleMainAdd(item.name, item.id)
-    }
-    if (type === "desserts") {
-      handleDesertsAdd(item.name, item.id)
-    }
-    if (type === "Bread+Rice") {
-      handleBreadRiceAdd(item.name, item.id)
-    }
-
+  const handleCheckboxChange = (e, item) => {
+    handleStatersAdd(item.name, item.id)
     const value = item;
     if (e.target.checked) {
       value.checked = 'checked';
@@ -351,7 +829,6 @@ const CustomizeNinjaBox = () => {
     } else {
       value.checked = '';
       setCheckedValues(checkedValues.filter(v => v.id !== value.id));
-      handleDelete(index, type)
     }
 
   }
@@ -575,7 +1052,7 @@ const CustomizeNinjaBox = () => {
     let temp = [...starters];
     const starter = startersData.find((item) => item.name === item_name);
     // removing selected item
-    // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
+    setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
@@ -761,24 +1238,24 @@ const CustomizeNinjaBox = () => {
 
     setMains(temp);
     // handleAfterItemSelection(temp);
-    // setMainData((prev) => prev.filter((d) => d.name !== item_name));
+    setMainData((prev) => prev.filter((d) => d.name !== item_name));
   };
 
   function increment(value, index, type, item) {
     if (item.Qtype === 'pcs') {
-      value += 5;
+      value = value + 5;
     }
     else {
-      value = parseFloat(value) + 0.5
+      value = value + 0.5
     }
     handleChange(value, index, type);
   }
   function decrement(value, index, type, item) {
     if (item.Qtype === 'pcs') {
-      value = parseInt(value) - 5;
+      value = value - 5;
     }
     else {
-      value = parseFloat(value) - 0.5;
+      value = value - 0.5
     }
     handleChange(value, index, type);
   }
@@ -1030,7 +1507,7 @@ const CustomizeNinjaBox = () => {
       // description: main.description,
     });
     setBreadRice(temp);
-    // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
+    setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   };
   const handleDesertsAdd = (item_name, id) => {
     setIsDessertChange(!isDessertChange);
@@ -1082,7 +1559,7 @@ const CustomizeNinjaBox = () => {
       mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
     });
     desserts.map((d) => {
-      dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+      dessertPrice += parseInt(d.quantity) * parseInt(100);
     });
     console.log("dessertPrice", dessertPrice);
     breadRice.map((d) => {
@@ -1097,17 +1574,6 @@ const CustomizeNinjaBox = () => {
     setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
   console.log("total price", totalPrice);
-
-  function handleBuffet(value) {
-
-    setbuffet(value);
-    if (value !== '') {
-      setgrandTotal(totalPrice + parseInt(value))
-    }
-    else {
-      setgrandTotal(totalPrice);
-    }
-  }
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -1224,20 +1690,13 @@ const CustomizeNinjaBox = () => {
               <div>
                 <div className={styles.cityContent}>
                   <p>City</p>
-
-                  <select className="form-select" name='cuisine' aria-label="Default select example" value={city} onChange={e => handleCity(e.target.value)}>
-
-                    {cities.map((item, index) => {
-                      return (
-                        <option key={index} value={item} >{item}</option>
-                      )
-                    })}
+                  <select className="form-select" name='city' aria-label="Default select example" onChange={(city) => setCity(city)}>
+                    <option value="" selected>Select City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Gurgaon">Gurgaon</option>
                   </select>
-                </div>
-
-                <div className={styles.eventDate}>
-                  <p>Event Date</p>
-                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} />
                 </div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Veg Guest</p>
@@ -1250,25 +1709,33 @@ const CustomizeNinjaBox = () => {
                     defaultValue={veg}
                   />
                 </div>
-
+                
+                <div className={styles.eventDate}>
+                  <p>Event Date</p>
+                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} />
+                </div>
               </div>
               <div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Cuisine</p>
-                  <select className="form-select" name='cuisine' aria-label="Default select example" value={cuisine} onChange={e => handleCuisine(e.target.value)}>
+                  <select className="form-select" name='cuisine' onChange={handleCuisine} aria-label="Default select example">
 
                     {cuisines.map((item, index) => {
                       return (
-                        <option key={index} value={item} >{item}</option>
+                        <option key={index} value={item}>{item}</option>
+
                       )
                     })}
                   </select>
+
+                  {/* <option value="" selected>Select Cuisine</option>
+                                        <option value="All">All</option>
+                                        <option value="Indian">Indian</option>
+                                        <option value="Bengali">Bengali</option> */}
+
                 </div>
+                
                 <div>
-                  <p>Delivery Time</p>
-                  <input type="time" name='event_time'></input>
-                </div>
-                <div style={{marginTop: "40px"}}>
                   <p>Non Veg Guest</p>
                   <input
                     type="number"
@@ -1279,26 +1746,29 @@ const CustomizeNinjaBox = () => {
                     defaultValue={nonVeg}
                   />
                 </div>
+                <div style={{marginTop: "40px"}}>
+                  <p>Delivery Time</p>
+                  <input type="time" name='event_time'></input>
+                </div>
               </div>
             </div>
 
 
             {/* Display Starters, mains etc count */}
             <div className={styles.whiteBg}>
-              {/* MANOJ <div className={styles.packageName}>
-                                <h3>PACKAGE NAME</h3>
-                                <img src='555.png' height="150px" width="274.5px" />
-                                <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
-                            </div> */}
+              {/* <div className={styles.packageName}>
+                <h3>PACKAGE NAME</h3>
+                <img src='555.png' height="150px" width="274.5px" />
+              </div> */}
               <div className={styles.selfService}>
-                {<Slider {...settings}> <div>
+                { <Slider {...settings}> <div>
                   <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
                   <img src='555.png' height="150px" width="274.5px" />
                 </div>
-                  <div>
-                    <h3>SETUP + SERVICE<br />NINJA<span>BUFFET</span></h3>
-                    <img src='Frame 769.png' height="150px" width="274.5px" />
-                  </div></Slider>}
+                <div>
+                  <h3>SETUP + SERVICE<br />NINJA<span>BUFFET</span></h3>
+                  <img src='Frame 769.png' height="150px" width="274.5px" />
+                </div></Slider>}
               </div>
               <div className={styles.pkgDetails}>
                 <div>
@@ -1316,7 +1786,7 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.menuContainer}>
                   <div className={styles.createYourMenuHead}>
                     <h3>Create Your Menu</h3>
-                    <hr style={{ border: "0.4px dashed #42484E", margin: "auto", width: "196px", backgroundColor: "white" }} />
+                    <hr style={{border: "0.4px dashed #42484E", margin: "auto", width: "196px", backgroundColor: "white"}}/>
                   </div>
 
                   {/* starters add */}
@@ -1333,11 +1803,11 @@ const CustomizeNinjaBox = () => {
                           </div>
                           <div>
                             <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 decrement(item.quantity, index, "starters", item)
                               }>-</button>
                               <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 increment(item.quantity, index, "starters", item)
                               }>+</button>
 
@@ -1370,11 +1840,11 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.img} width="30.05px" height="26.54px" />
+                                      <img src={item.image} width="30.05px" height="26.54px" />
                                       <p>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "starters")} />
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleStatersAdd(item.name, e)} />
                                     </div>
                                   </div>
                                 </li>
@@ -1403,11 +1873,11 @@ const CustomizeNinjaBox = () => {
                           </div>
                           <div>
                             <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 decrement(item.quantity, index, "mains", item)
                               }>-</button>
                               <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 increment(item.quantity, index, "mains", item)
                               }>+</button>
 
@@ -1422,7 +1892,7 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>))}
                     </div>
-                    {showDropdown2 && (<div onClick={handleDiv2Click} className={styles2.starterSearchBtn} id="srchbr2">
+                    {showDropdown2 && (<div onClick={handleDiv2Click} className={styles.starterSearchBtn} id="srchbr2">
                       <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Mains</p>
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
@@ -1444,7 +1914,7 @@ const CustomizeNinjaBox = () => {
                                       <p>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "mains")} />
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleMainAdd(item.name, e)} />
                                     </div>
                                   </div>
                                 </li>
@@ -1474,11 +1944,11 @@ const CustomizeNinjaBox = () => {
                           </div>
                           <div>
                             <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 decrement(item.quantity, index, "Bread+Rice", item)
                               }>-</button>
                               <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 increment(item.quantity, index, "Bread+Rice", item)
                               }>+</button>
 
@@ -1493,7 +1963,7 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>))}
                     </div>
-                    {showDropdown3 && (<div onClick={handleDiv3Click} className={styles2.starterSearchBtn} id="srchbr2">
+                    {showDropdown3 && (<div onClick={handleDiv3Click} className={styles.starterSearchBtn} id="srchbr2">
                       <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Breads Rice </p>
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
@@ -1515,7 +1985,7 @@ const CustomizeNinjaBox = () => {
                                       <p>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "Bread+Rice")} />
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleBreadRiceAdd(item.name, e)} />
                                     </div>
                                   </div>
                                 </li>
@@ -1544,11 +2014,11 @@ const CustomizeNinjaBox = () => {
                           </div>
                           <div>
                             <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 decrement(item.quantity, index, "desserts", item)
                               }>-</button>
                               <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
+                              <button onClick={(e) =>
                                 increment(item.quantity, index, "desserts", item)
                               }>+</button>
 
@@ -1563,7 +2033,7 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>))}
                     </div>
-                    {showDropdown4 && (<div onClick={handleDiv4Click} className={styles2.starterSearchBtn} id="srchbr2">
+                    {showDropdown4 && (<div onClick={handleDiv4Click} className={styles.starterSearchBtn} id="srchbr2">
                       <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Desserts </p>
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
@@ -1585,7 +2055,7 @@ const CustomizeNinjaBox = () => {
                                       <p>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "desserts")} />
+                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleDesertsAdd(item.name, e)} />
                                     </div>
                                   </div>
                                 </li>
@@ -1609,9 +2079,9 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
                   <div className={styles.detailsInputLg}>
-                    <input placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
-                    <input placeholder='Phone No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
-                    <input placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
+                    <input type="text" placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
+                    <input type="text" placeholder='Mob. No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
+                    <input type="email" placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
                   </div>
                 </div>
               </div>
@@ -1629,12 +2099,11 @@ const CustomizeNinjaBox = () => {
               </div>
               <div className={styles.finalPriceSection}>
                 <div className="d-flex justify-content-between">
-                  <select className="form-select" aria-label="Default select example" value={buffet} onChange={e => handleBuffet(e.target.value)}>
-                    <option value="" selected>Ninjabox - Delivery (Free)</option>
-                    <option value="3500">Buffet setup + 1 waiter (+ ₹ 3,500.00)</option>
-                    <option value="4500">Buffet setup + 2 waiter (+ ₹ 4,500.00)</option>
+                  <select className="form-select" aria-label="Default select example">
+                    <option value="1">NinjaBox Delivery (Free)</option>
+                    <option value="2">Buffet setup + 1 waiter</option>
                   </select>
-                  <p>{buffet}</p>
+                  <p>₹ 0000</p>
                 </div>
               </div>
               <div className={styles.pricing}>
@@ -1657,7 +2126,7 @@ const CustomizeNinjaBox = () => {
                   </div>
                   <div className={styles.pricingTitle2}>
                     <div>
-                      <h4>Delivery Charges <span></span></h4>
+                      <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
                     </div>
                     <div>
                       <p>₹0000</p>
@@ -1687,7 +2156,7 @@ const CustomizeNinjaBox = () => {
                     <h4>Grand Total</h4>
                   </div>
                   <div>
-                    <p>{grandTotal}</p>
+                    <p>₹0000</p>
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
