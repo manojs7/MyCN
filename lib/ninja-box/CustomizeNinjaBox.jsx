@@ -86,6 +86,8 @@ const CustomizeNinjaBox = () => {
   const [isDessertChange, setIsDessertChange] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
+  const [showPriceList, setShowPriceList] = useState(false);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -1177,6 +1179,7 @@ const CustomizeNinjaBox = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
+    setShowPriceList(!showPriceList)
     if(!checkFirstValidation()){
       return false;
     }
@@ -1242,7 +1245,7 @@ const CustomizeNinjaBox = () => {
             sent: true,
           },
           this.resetForm(),
-          console.log("sent")
+          console.log("sent"),
         );
       })
       .catch((error) => {
@@ -1427,7 +1430,8 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                        { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1472,7 +1476,7 @@ const CustomizeNinjaBox = () => {
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
                                       <img src={item.img} width="30.05px" height="26.54px" />
-                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "starters")} />
@@ -1497,7 +1501,8 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1511,7 +1516,6 @@ const CustomizeNinjaBox = () => {
                               <button type='button' onClick={(e) =>
                                 increment(item.quantity, index, "mains", item)
                               }>+</button>
-
                             </div>
                             <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
@@ -1523,7 +1527,7 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>))}
                     </div>
-                    {showDropdown2 && (<div onClick={handleDiv2Click} className={styles2.starterSearchBtn} id="srchbr2">
+                    {showDropdown2 && (<div onClick={handleDiv2Click} className={styles.starterSearchBtn} id="srchbr2">
                       <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Mains</p>
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
@@ -1542,7 +1546,7 @@ const CustomizeNinjaBox = () => {
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
                                       <img src={item.image} width="30.05px" height="26.54px" />
-                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "mains")} />
@@ -1568,7 +1572,8 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                        { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1594,7 +1599,7 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>))}
                     </div>
-                    {showDropdown3 && (<div onClick={handleDiv3Click} className={styles2.starterSearchBtn} id="srchbr2">
+                    {showDropdown3 && (<div onClick={handleDiv3Click} className={styles.starterSearchBtn} id="srchbr2">
                       <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Breads Rice </p>
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
@@ -1613,7 +1618,7 @@ const CustomizeNinjaBox = () => {
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
                                       <img src={item.image} width="30.05px" height="26.54px" />
-                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "Bread+Rice")} />
@@ -1638,7 +1643,8 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                        { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1664,7 +1670,7 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>))}
                     </div>
-                    {showDropdown4 && (<div onClick={handleDiv4Click} className={styles2.starterSearchBtn} id="srchbr2">
+                    {showDropdown4 && (<div onClick={handleDiv4Click} className={styles.starterSearchBtn} id="srchbr2">
                       <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Desserts </p>
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
@@ -1683,7 +1689,7 @@ const CustomizeNinjaBox = () => {
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
                                       <img src={item.image} width="30.05px" height="26.54px" />
-                                      <p>{item.name}<br /><span>{item.description}</span></p>
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "desserts")} />
@@ -1847,7 +1853,7 @@ const CustomizeNinjaBox = () => {
                   <p>{buffet}</p>
                 </div>
               </div>
-              <div className={styles.pricing}>
+              { showPriceList && <div className={styles.pricing}>
                 <div>
                   <div className={styles.pricingTitle1}>
                     <div>
@@ -1904,7 +1910,7 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.orderBtn}>
                   <button>Place Order</button>
                 </div>
-              </div>
+              </div>}
             </div>
 
           </div>
