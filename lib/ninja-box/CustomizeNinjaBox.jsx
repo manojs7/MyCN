@@ -79,6 +79,7 @@ const CustomizeNinjaBox = () => {
   const [deliveryCharge,setDeliveryCharge]=useState(0);
   const [grandTotal, setgrandTotal] = useState([]);
   const [buffet, setbuffet] = useState();
+  const [GST, setGST] = useState();
 
   const [isStarterChange, setIsStarterChange] = useState(false);
   const [isMainChange, setIsMainChange] = useState(false);
@@ -1141,16 +1142,29 @@ const CustomizeNinjaBox = () => {
     let bredRicePrice = 0;
 
     starters.map((d) => {
-      starterPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+      if (d.Qtype === 'pcs') {
+        bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+      }
+      else {
+        starterPrice += parseInt(d.quantity) * parseInt((d.selling_price));
+      }
     });
-    console.log("starterPrice", starterPrice);
     mains.map((d) => {
-      mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+      if (d.Qtype === 'pcs') {
+        mainPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+      }
+      else {
+        mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+      }
     });
     desserts.map((d) => {
-      dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+      if (d.Qtype === 'pcs') {
+        dessertPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+      }
+      else {
+        dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+      }
     });
-    console.log("dessertPrice", dessertPrice);
     breadRice.map((d) => {
       if (d.Qtype === 'pcs') {
         bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
@@ -1160,9 +1174,9 @@ const CustomizeNinjaBox = () => {
       }
     });
 
+    console.log(starterPrice + mainPrice + dessertPrice + bredRicePrice);
     setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
-  console.log("total price", totalPrice);
 
   function handleBuffet(value) {
 
@@ -1193,7 +1207,8 @@ const CustomizeNinjaBox = () => {
     }
     return false;
   }
-    setgrandTotal(totalPrice + buffet + deliveryCharge);
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge));
+    setGST(totalPrice * (5/100))
     
     // e.preventDefault();
 
@@ -1888,7 +1903,7 @@ const CustomizeNinjaBox = () => {
                       <h4>GST</h4>
                     </div>
                     <div>
-                      <p>₹0000</p>
+                      <p>₹{GST}</p>
                     </div>
                   </div>
                   <hr id={styles.hr2} />
