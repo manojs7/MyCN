@@ -145,6 +145,18 @@
         img {
             width: 60px;
         }
+
+
+    }
+}
+
+.cityDropdown {
+
+
+    select {
+        margin: auto;
+        margin-top: 30px;
+        width: 200px;
     }
 }
 
@@ -229,8 +241,7 @@
 
     .availableSlots {
         margin: auto;
-        width: 257px;
-        height: 71px;
+        width: 280px;
         background: #FFFFFF;
         box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
         border-radius: 7px;
@@ -239,11 +250,26 @@
         h5 {
             padding-top: 5px;
             font-weight: 600;
-            font-size: 10.05px;
+            font-size: 14px;
             line-height: 12px;
             letter-spacing: 0.05em;
             text-transform: capitalize;
             color: #2C3338;
+        }
+
+        .breakfastContainer {
+            text-align: start;
+            margin-left: 10px;
+
+            h6 {
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            p {
+                font-size: 11px;
+                font-weight: 500;
+            }
         }
     }
 }
@@ -587,10 +613,11 @@ input:checked+.slider:before {
 }
 
 .starterBtmLine hr {
-    margin-top: 80px;
+    margin-top: 40px;
     width: 327.31px;
     border: 0.299738px dashed #42484E;
     background-color: white;
+    margin-bottom: 5px;
 }
 
 .addMoreBtn {
@@ -801,7 +828,7 @@ input:checked+.slider:before {
 
     select {
         width: 160px;
-        height: 22px;
+        height: 24px;
         border-radius: 4.78px;
         font-weight: 600;
         font-size: 8.13043px;
@@ -918,6 +945,10 @@ input:checked+.slider:before {
 }
 
 #nextPrevBtn2 {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 20px;
+
     a {
         color: #BE2D30;
         font-weight: 600;
@@ -933,6 +964,9 @@ input:checked+.slider:before {
 #submitBtn {
     text-align: center;
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 20px;
 
     button {
         border: none;
@@ -948,6 +982,32 @@ input:checked+.slider:before {
         letter-spacing: 0.03em;
         filter: drop-shadow(0px 2.71501px 2.71501px rgba(0, 0, 0, 0.25));
     }
+
+    a {
+        color: #BE2D30;
+        font-weight: 600;
+        font-size: 11.8622px;
+        line-height: 14px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        text-transform: capitalize;
+    }
+}
+
+#checkPriceBtn {
+    text-align: center;
+    border: none;
+    width: 116.87px;
+    height: 30px;
+    border-radius: 5.83px;
+    background-color: #BE2D30;
+    color: white !important;
+    font-weight: 600;
+    font-size: 13.575px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    filter: drop-shadow(0px 2.71501px 2.71501px rgba(0, 0, 0, 0.25));
 }
 
 #starterSearchContent {
@@ -975,7 +1035,7 @@ input:checked+.slider:before {
     #starterList {
         margin: auto;
 
-        ul::-webkit-scrollbar{
+        ul::-webkit-scrollbar {
             width: 5px;
         }
 
@@ -986,7 +1046,7 @@ input:checked+.slider:before {
             height: 195px;
             width: 300px;
             margin: auto;
-            
+
 
             li {
                 margin: auto;
@@ -1021,11 +1081,13 @@ input:checked+.slider:before {
                             color: #4D555B;
                         }
                     }
-                    img{
+
+                    img {
                         margin-top: 3px;
                     }
                 }
-                input{
+
+                input {
                     margin-top: 7px;
                     margin-right: 10px;
                     width: 10px;
@@ -1043,9 +1105,8 @@ input:checked+.slider:before {
     button {
         width: 53.05px;
         height: 14.39px;
-        border-radius: 10.79px;
-        background: rgba(103, 103, 103, 0.1);
-        border: 0.372043px solid #BEBEBE;
+        background: rgba(190, 45, 48, 0.1);
+        border: 0.372043px solid #BE2D30;
         border-radius: 10.7892px;
         font-weight: 600;
         font-size: 8.3457px;
@@ -1053,11 +1114,11 @@ input:checked+.slider:before {
         text-align: center;
         letter-spacing: 0.05em;
         text-transform: capitalize;
-        color: #A4A4A4;
+        color: #BE2D30;
     }
 }
 
-.selectedStarterContainer{
+.selectedStarterContainer {
     .fstItem {
         height: 61.3px;
         width: 315.17px;

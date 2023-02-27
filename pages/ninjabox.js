@@ -9,6 +9,8 @@ import React, { useEffect, useState } from 'react'
 import NewNavBar from '$lib/NewNavBar';
 import NboxVd from '$lib/ninja-box/NboxVd';
 import NewFooter from '$lib/NewFooter';
+import Zoho from '$lib/bookChef/Zoho';
+import FloatNav from '$lib/FloatNav';
 
 export default function Ninja_Box()
 {
@@ -40,5 +42,7 @@ export default function Ninja_Box()
         <Custom_Package />
         {/* <Footer /> */}
         <NewFooter />
+        <FloatNav/>
+        <Zoho/>
     </>)
 }

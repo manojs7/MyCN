@@ -7,6 +7,8 @@ import Footer from "$lib/Footer";
 import MealBox_Video from '$lib/meal-box/MealBox_Video';
 import NewNavBar from '$lib/NewNavBar';
 import NewFooter from '$lib/NewFooter';
+import Zoho from '$lib/bookChef/Zoho';
+import FloatNav from '$lib/FloatNav';
 
 export default function Meal_Box()
 {
@@ -20,5 +22,7 @@ export default function Meal_Box()
         <Custom_Package />
         {/* <Footer /> */}
         <NewFooter />
+        <FloatNav/>
+        <Zoho/>
     </>)
 }

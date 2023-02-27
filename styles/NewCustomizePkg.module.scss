@@ -10,11 +10,11 @@
         display: none;
     }
 
-    #ninjaBuffy{
+    #ninjaBuffy {
         width: 102.33px;
     }
 
-    #ninjaBuffetTitle{
+    #ninjaBuffetTitle {
         font-size: 38.37px;
         font-weight: 900;
     }
@@ -47,10 +47,21 @@
             margin-right: 0%;
         }
 
-        #ninjaBoxTitle{
+        #ninjaBoxTitle {
             font-size: 46.37px;
             font-weight: 900;
             line-height: 47.3px;
+
+            span {
+                color: white;
+            }
+        }
+
+        #ninjaBuffyTitle {
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 47.3px;
+
             span {
                 color: white;
             }
@@ -76,13 +87,59 @@
     }
 
     .ninjabox {
-        text-align: center;
         margin-top: 40px;
+
+        img {
+            margin: auto;
+        }
+    }
+
+    .ninjabuffy {
+        margin-top: 20px;
+
+        img {
+            margin: auto;
+        }
     }
 
     .ninjaBuffyHpkg {
         text-align: center;
         margin-top: 20px;
+    }
+
+    .inputDetails {
+        background-color: #BE2D30;
+        display: flex;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        padding-inline: 10px;
+
+        p {
+            margin-left: 0%;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 165px;
+            background-color: white;
+        }
+
+        select {
+            width: 165px;
+        }
+
+        .cityContent {
+            margin-bottom: 40px;
+        }
+
+        .eventDate {
+            margin-bottom: 20px;
+        }
+
     }
 
     .cityContainer {
@@ -154,7 +211,7 @@
     //starter scss
 
     .menuContainer {
-        margin-top: 30px;
+        margin-top: 50px;
 
         h5 {
             text-align: center;
@@ -163,6 +220,22 @@
             font-size: 15px;
             line-height: 18px;
             letter-spacing: 0.05em;
+        }
+
+        .createYourMenuHead {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+
+            h3 {
+                font-weight: 700;
+                font-size: 19px;
+                line-height: 23px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #2C3338;
+            }
         }
     }
 
@@ -173,6 +246,7 @@
         margin: auto;
         border-radius: 4.87px;
         display: flex;
+        margin-bottom: 10px;
     }
 
     .itemImage {
@@ -186,10 +260,11 @@
         margin-top: 10px;
 
         h4 {
+            width: 115px;
             font-weight: 600;
             font-size: 11.81px;
             line-height: 14px;
-            letter-spacing: 0.05em;
+            //letter-spacing: 0.05em;
             color: #2C3338;
             margin-bottom: -10px;
         }
@@ -273,7 +348,19 @@
     }
 
     .startersContainer {
+
         //margin-inline: 50px;
+        h5 {
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+
+            color: #2C3338;
+
+        }
     }
 
     .addStarterBtnContnr {
@@ -297,13 +384,15 @@
     .userInput {
         padding-top: 10px;
         background-color: #FFC31A;
-        width: 226px;
+        width: 261px;
         height: 161px;
         border-radius: 10px;
         margin: auto;
         padding: 10px;
 
         h4 {
+            margin-top: 10px;
+            margin-bottom: 15px;
             font-style: normal;
             font-weight: 600;
             font-size: 16.5469px;
@@ -319,6 +408,7 @@
             border-radius: 6.36px;
             background-color: white;
             margin: auto;
+            margin-bottom: 8px !important;
         }
 
         input::placeholder {
@@ -380,6 +470,7 @@
             height: 20px;
             background: #E9E9E9;
             border-radius: 5px;
+            font-size: 8.5px;
         }
 
         input::placeholder {
@@ -556,12 +647,192 @@
         }
     }
 
-    .pricingTitle2{
-        h4{
-            span{
+    .pricingTitle2 {
+        h4 {
+            span {
                 font-style: italic;
                 font-weight: 500;
                 color: #2C3338;
+            }
+        }
+    }
+
+    .starterSearchBtn {
+        margin: auto;
+        width: 315px;
+        height: 31.15px;
+        border-radius: 5.02px;
+        background-color: #EFEFEF;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            margin: auto;
+            font-weight: 600;
+            font-size: 12.1784px;
+            line-height: 15px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #2C3338;
+        }
+
+        span {
+            margin: auto;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 7.49443px;
+            line-height: 9px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #4D555B;
+        }
+    }
+
+    .mainsContainer {
+        h5 {
+            margin-top: 50px;
+        }
+    }
+
+    .MenuHr {
+        margin: auto;
+        width: 326.71px;
+        height: 0px;
+
+        border: 0.4px dashed #42484E;
+        margin-top: 40px;
+        background-color: white;
+    }
+
+    .selfService {
+        height: 272px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        text-align: center;
+
+        h3 {
+            padding-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 23px;
+            line-height: 28px;
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: #42484E;
+
+            span {
+                color: #BE2D30;
+            }
+        }
+
+        img {
+            margin: auto;
+            text-align: center;
+        }
+    }
+
+    .finalPriceSection {
+        margin-top: 10px;
+        margin-inline: 20px;
+
+        select {
+            width: 160px;
+            height: 24px;
+            border-radius: 4.78px;
+            font-weight: 600;
+            font-size: 8.13043px;
+            line-height: 10px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            background-color: #BE2D30;
+            color: white;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 11.17px;
+            line-height: 16px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #000000;
+        }
+
+        .couponSection {
+            display: flex;
+            justify-content: space-between;
+
+            h5 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 33px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+
+            input {
+                width: 86.24px;
+                height: 20.17px;
+                border-radius: 5.04px;
+                background-color: #F2F2F2;
+                margin-right: -20px;
+            }
+
+            button {
+                background-color: #BE2D30;
+                border: none;
+                width: 36.81px;
+                height: 20.17px;
+                border-radius: 2px;
+                font-weight: 500;
+                font-size: 8.57328px;
+                line-height: 10px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #FFFFFF;
+            }
+
+            .coupon {
+                display: flex;
+            }
+        }
+
+        .itemtotalSectn {
+
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+            h6 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #363D42;
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+        }
+
+        .grandTotalContainer {
+            display: flex;
+            justify-content: space-between;
+
+            h3 {
+                font-weight: 600;
+                font-size: 14.17px;
+                line-height: 17px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
             }
         }
     }
@@ -633,12 +904,177 @@
                 width: 376.9px;
             }
         }
+
         .ninjaBuffyHpkg {
             img {
                 margin-top: 60px;
                 margin-left: 20px;
                 height: 291.56px;
                 width: 376.9px;
+            }
+        }
+    }
+
+    .MenuHr {
+        margin: auto;
+        width: 326.71px;
+        height: 0px;
+
+        border: 0.4px dashed #42484E;
+        margin-top: 40px;
+        background-color: white;
+    }
+
+    .selfService {
+        display: none;
+    }
+
+    .mainsContainer {
+        h5 {
+            margin-top: 50px;
+        }
+    }
+
+    .cityContent {
+        select {
+            margin-bottom: 40px;
+        }
+    }
+
+    .starterSearchBtn {
+        margin: auto;
+        width: 315px;
+        height: 31.15px;
+        border-radius: 5.02px;
+        background-color: #EFEFEF;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            margin: auto;
+            font-weight: 600;
+            font-size: 12.1784px;
+            line-height: 15px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #2C3338;
+        }
+
+        span {
+            margin: auto;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 7.49443px;
+            line-height: 9px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            color: #4D555B;
+        }
+    }
+
+    .finalPriceSection {
+        margin-top: 40px;
+        margin-inline: 40px;
+
+        select {
+            width: 315px;
+            height: 46px;
+            border-radius: 4.78px;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 21px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+            background-color: #BE2D30;
+            color: white;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 33px;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+
+            color: #000000;
+        }
+
+        .couponSection {
+            display: flex;
+            justify-content: space-between;
+
+            h5 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 33px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+
+            input {
+                width: 86.24px;
+                height: 20.17px;
+                border-radius: 5.04px;
+                background-color: #F2F2F2;
+                margin-right: -20px;
+            }
+
+            button {
+                background-color: #BE2D30;
+                border: none;
+                width: 36.81px;
+                height: 20.17px;
+                border-radius: 2px;
+                font-weight: 500;
+                font-size: 8.57328px;
+                line-height: 10px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #FFFFFF;
+            }
+
+            .coupon {
+                display: flex;
+            }
+        }
+
+        .itemtotalSectn {
+
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+            h6 {
+                font-weight: 600;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #363D42;
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 11.17px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
+            }
+        }
+
+        .grandTotalContainer {
+            display: flex;
+            justify-content: space-between;
+
+            h3 {
+                font-weight: 600;
+                font-size: 14.17px;
+                line-height: 17px;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #000000;
             }
         }
     }
@@ -652,6 +1088,46 @@
         background-color: white;
         margin-inline: 220px;
         padding-bottom: 50px;
+    }
+
+    .inputDetails {
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+        //margin-inline: 220px;
+        p {
+            margin-left: 0%;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 32px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 200px;
+            background-color: white;
+        }
+
+        select {
+            width: 200px;
+        }
+
+        .cityContent {
+            margin-bottom: 20px;
+        }
+
+        .cuisineContainer {
+            margin-bottom: 20px !important;
+        }
+
+        .vegContainer {
+            margin-bottom: 20px !important;
+        }
     }
 
     .cityContainer {
@@ -741,6 +1217,22 @@
             letter-spacing: 0.05em;
             text-transform: capitalize;
             margin-bottom: 20px;
+        }
+
+        .createYourMenuHead {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+
+            h3 {
+                font-weight: 700;
+                font-size: 19px;
+                line-height: 23px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #2C3338;
+            }
         }
     }
 
@@ -1141,22 +1633,44 @@
         }
     }
 
-    #ninjaBuffy{
+    #ninjaBuffy {
         width: 180.37px;
         height: 270.92px;
         margin-left: 30px;
         margin-right: 20px;
     }
 
-    .pricingTitle2{
-        h4{
-            span{
+    .pricingTitle2 {
+        h4 {
+            span {
                 font-style: italic;
                 font-weight: 500;
                 color: #2C3338;
             }
         }
     }
+
+    .startersContainer,
+    .mainsContainer {
+
+        //margin-inline: 50px;
+        h5 {
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: capitalize;
+
+            color: #2C3338;
+
+        }
+    }
+
+    .eventDate{
+        margin-bottom: 20px;
+    }
+
 }
 
 // .header {

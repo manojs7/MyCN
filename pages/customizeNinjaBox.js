@@ -13,6 +13,8 @@ import Script from 'next/script'
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NewFooter from '$lib/NewFooter';
+import Zoho from '$lib/bookChef/Zoho';
+import FloatNav2 from '$lib/FloatNav2';
 
 export default function Customize_Ninja_Box() {
     return (<>
@@ -25,6 +27,7 @@ export default function Customize_Ninja_Box() {
         <Navbar />
         <CustomizeNinjaBox />
         {/* <Footer /> */}
+        <FloatNav2 />
         <NewFooter />
     </>)
 }
