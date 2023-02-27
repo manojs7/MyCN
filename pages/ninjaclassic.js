@@ -6,6 +6,8 @@ import Custom_Package from '$lib/ninja-classic/Custom_Package';
 import Footer from "$lib/Footer";
 import NewNavBar from '$lib/NewNavBar';
 import NewFooter from '$lib/NewFooter';
+import Zoho from '$lib/bookChef/Zoho';
+import FloatNav from '$lib/FloatNav';
 //import NinjaBuffet_Video from '$lib/ninja-classic/NinjaBuffet_Video';
 
 export default function Ninja_Classic()
@@ -20,5 +22,7 @@ export default function Ninja_Classic()
         <Custom_Package />
         {/* <Footer /> */}
         <NewFooter />
+        <FloatNav/>
+        <Zoho/>
     </>)
 }

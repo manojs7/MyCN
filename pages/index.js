@@ -21,6 +21,8 @@ import Image from "next/image";
 import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import NewFooter from '$lib/NewFooter';
+import Zoho from '$lib/bookChef/Zoho';
+import FloatNav from '$lib/FloatNav';
 
 export default function Home() {
   const[url, setUrl] = useState("");
@@ -67,6 +69,8 @@ export default function Home() {
 
       {/* <Footer /> */}
       <NewFooter />
+      <FloatNav />
+      <Zoho />
     </div>
   );
 }
