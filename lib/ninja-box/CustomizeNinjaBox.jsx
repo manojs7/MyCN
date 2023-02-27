@@ -1179,7 +1179,6 @@ const CustomizeNinjaBox = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    setShowPriceList(!showPriceList)
     if(!checkFirstValidation()){
       return false;
     }
@@ -1197,6 +1196,7 @@ const CustomizeNinjaBox = () => {
     return false;
   }
     setgrandTotal(totalPrice + buffet + deliveryCharge);
+    setShowPriceList(!showPriceList)
     
     // e.preventDefault();
 
@@ -1245,7 +1245,7 @@ const CustomizeNinjaBox = () => {
             sent: true,
           },
           this.resetForm(),
-          console.log("sent"),
+          console.log("sent")
         );
       })
       .catch((error) => {
