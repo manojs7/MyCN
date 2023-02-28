@@ -1464,7 +1464,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
                         { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1511,7 +1511,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      {/* <img src={item.img} width="30.05px" height="26.54px" /> */}
+                                      <img src={item.img} width="30.05px" height="26.54px" />
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1535,7 +1535,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
                           { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1581,7 +1581,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
+                                      <img src={item.image} width="30.05px" height="26.54px" />
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1606,7 +1606,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
                         { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1653,7 +1653,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
+                                      <img src={item.image} width="30.05px" height="26.54px" />
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1677,7 +1677,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
+                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
                         { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1724,7 +1724,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
+                                      <img src={item.image} width="30.05px" height="26.54px" />
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -2014,7 +2014,7 @@ const CustomizeNinjaBox = () => {
                             <h5>Starters</h5>
                             <div className={styles.starterItems}>
                                 <div className={styles.fstItem}>
-                                    // <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
                                         <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                                         <div>
