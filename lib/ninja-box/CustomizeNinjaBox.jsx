@@ -30,7 +30,7 @@ const CustomizeNinjaBox = () => {
   const [nonVeg, setNonVeg] = useState(10);
   const [people, setPeople] = useState(20);
 
-  const [cuisine, setCuisine] = useState(cuisines[0].value);
+  const [cuisine, setCuisine] = useState('All');
   const [knowMore, setKnowMore] = useState([]);
   const [isSmall, setIsSmall] = useState(false);
   const [name, setName] = useState("");
@@ -75,11 +75,11 @@ const CustomizeNinjaBox = () => {
   const [desserts, setDesserts] = useState([]);
   const [breadRice, setBreadRice] = useState([]);
   const [highestPrice, setHighestPrice] = useState([]);
-  const [totalPrice, setTotalPrice] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [deliveryCharge,setDeliveryCharge]=useState(0);
-  const [grandTotal, setgrandTotal] = useState([]);
-  const [buffet, setbuffet] = useState();
-  const [GST, setGST] = useState();
+  const [grandTotal, setgrandTotal] = useState(0);
+  const [buffet, setbuffet] = useState(0);
+  const [GST, setGST] = useState(0);
 
   const [isStarterChange, setIsStarterChange] = useState(false);
   const [isMainChange, setIsMainChange] = useState(false);
@@ -185,8 +185,6 @@ const CustomizeNinjaBox = () => {
 
   const handleCity = (city) => {
     setCity(city);
-    getDeliveryCharge(people);
-
 
     const filterStarter = startersData2.filter(
       (d) => d.city === city
@@ -239,39 +237,7 @@ const CustomizeNinjaBox = () => {
     // setDesserts([]);
     // setBreadRice([]);
   };
-  function getDeliveryCharge(people){
-    if(!city){
-      checkFirstValidation();
-    }
-    if(city==='mumbai' || city==='banglore'){
-      if(people<=25 ){
-        setDeliveryCharge(0);
-      }
-      else if(people>25 && people<=40){
-        setDeliveryCharge(0);
-      }
-      else if(people>=41 && people<=60){
-        setDeliveryCharge(1499);
-      }
-      else if(people>=61 && people<=99){
-        setDeliveryCharge(1999);
-      }
-    }
-    if(city==='delhi' || city==='gurgaon'){
-      if(people<=25 ){
-        setDeliveryCharge(0);
-      }
-      else if(people>25 && people<=40){
-        setDeliveryCharge(999);
-      }
-      else if(people>=41 && people<=60){
-        setDeliveryCharge(1499);
-      }
-      else if(people>=61 && people<=99){
-        setDeliveryCharge(1999);
-      }
-    }
-  }
+  
   const [searchValue, setSearchValue] = React.useState('');
   const [showSelectedMenu, setShowSelectedMenu] = useState(false);
   const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
@@ -428,6 +394,7 @@ const CustomizeNinjaBox = () => {
 
 
     // sendRequest();
+
     // starter value change after veg and non-veg guest change
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...starters];
@@ -835,7 +802,7 @@ const CustomizeNinjaBox = () => {
 
   function increment(value, index, type, item) {
     if (item.Qtype === 'pcs') {
-      value += 5;
+      value += 6;
     }
     else {
       value = parseFloat(value) + 0.5
@@ -844,12 +811,61 @@ const CustomizeNinjaBox = () => {
   }
   function decrement(value, index, type, item) {
     if (item.Qtype === 'pcs') {
-      value = parseInt(value) - 5;
+      value = parseInt(value) - 6;
     }
     else {
       value = parseFloat(value) - 0.5;
     }
     handleChange(value, index, type);
+  }
+  function checkFirstValidation(){
+    if(!city || !startTime){
+      if(!city){
+        alert("Fill the City please");
+      }
+      else if(!startTime){
+        alert("Fill the Event time please");
+      }
+      return false;
+    }
+    else{
+      return true;
+    }
+    
+  };
+  function getDeliveryCharge(people){
+    if(!city){
+      // checkFirstValidation();
+      return false;
+    }
+    else if(city==='mumbai' || city==='banglore'){
+      if(people<=25 ){
+        setDeliveryCharge(0);
+      }
+      else if(people>25 && people<=40){
+        setDeliveryCharge(0);
+      }
+      else if(people>=41 && people<=60){
+        setDeliveryCharge(1499);
+      }
+      else if(people>=61 && people<=99){
+        setDeliveryCharge(1999);
+      }
+    }
+    else if(city==='delhi' || city==='gurgaon'){
+      if(people<=25 ){
+        setDeliveryCharge(0);
+      }
+      else if(people>25 && people<=40){
+        setDeliveryCharge(999);
+      } 
+      else if(people>=41 && people<=60){
+        setDeliveryCharge(1499);
+      }
+      else if(people>=61 && people<=99){
+        setDeliveryCharge(1999);
+      }
+    }
   }
   function handleChange(value, index, type) {
     if (type === "starters") {
@@ -1126,18 +1142,33 @@ const CustomizeNinjaBox = () => {
       quantity = Math.round((veg + nonVeg) * 0.075).toFixed(1);
     }
     temp.push({
+      // name: dessert.name,
+      // quantity: quantity,
+      // Qtype: dessert.Qtype,
+      // veg: dessert.veg,
+      // description: dessert.description,
+      id: dessert.id,
+      city: dessert.city,
+      cuisine: dessert.cuisine,
+      menu_label: dessert.menu_label,
       name: dessert.name,
       quantity: quantity,
       Qtype: dessert.Qtype,
       veg: dessert.veg,
-      description: dessert.description,
+      selling_price: dessert.selling_price,
     });
     setDesserts(temp);
-    setDessertData((prev) => prev.filter((d) => d.id !== item_name));
+    // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
   console.log("desert", desserts);
   // cost calculation
   useEffect(() => {
+
+    if(setShowPriceList){
+      setShowPriceList(!showPriceList)
+
+    }
+
     let starterPrice = 0;
     let mainPrice = 0;
     let dessertPrice = 0;
@@ -1161,12 +1192,13 @@ const CustomizeNinjaBox = () => {
     });
     desserts.map((d) => {
       if (d.Qtype === 'pcs') {
-        dessertPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+        dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price)/12);
       }
       else {
         dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
       }
     });
+    console.log(dessertPrice)
     breadRice.map((d) => {
       if (d.Qtype === 'pcs') {
         bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
@@ -1176,19 +1208,20 @@ const CustomizeNinjaBox = () => {
       }
     });
 
-    console.log(starterPrice + mainPrice + dessertPrice + bredRicePrice);
     setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
+    getDeliveryCharge(people);
+    setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+    setShowPriceList(!showPriceList)
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
 
+  
   function handleBuffet(value) {
 
     setbuffet(value);
-    if (value !== '') {
-      setgrandTotal(totalPrice + parseInt(value))
-    }
-    else {
-      setgrandTotal(totalPrice);
-    }
+    
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+    
   }
 
   const formSubmit = (e) => {
@@ -1196,6 +1229,7 @@ const CustomizeNinjaBox = () => {
     if(!checkFirstValidation()){
       return false;
     }
+    
 
   if(name.length=='' || email.length=='' || mobileno.length==''){
     if(name.length==''){
@@ -1209,8 +1243,11 @@ const CustomizeNinjaBox = () => {
     }
     return false;
   }
-    setgrandTotal(totalPrice + buffet + deliveryCharge);
+  getDeliveryCharge(people);
+  setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+  setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
     setShowPriceList(!showPriceList)
+    
     
     // e.preventDefault();
 
@@ -1267,21 +1304,7 @@ const CustomizeNinjaBox = () => {
         console.log(error);
       });
   };
-  function checkFirstValidation(){
-    if(!city || !startTime){
-      if(!city){
-        alert("Fill the City please");
-      }
-      else if(!startTime){
-        alert("Fill the Event time please");
-      }
-      return false;
-    }
-    else{
-      return true;
-    }
-    
-  };
+  
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -1374,10 +1397,9 @@ const CustomizeNinjaBox = () => {
                 <div style={{ marginBottom: "40px" }}>
                   <p>Cuisine</p>
                   <select className="form-select" name='cuisine' aria-label="Default select example" value={cuisine} onChange={e => handleCuisine(e.target.value)} required>
-                    <option value='' selected>Select Cuisine</option>
                     {cuisines.map((item, index) => {
                       return (
-                        <option key={index} value={item} >{item}</option>
+                        <option key={index} value={item}>{item}</option>
                       )
                     })}
                   </select>
@@ -1442,7 +1464,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
                         <div className={styles.itemDetailsContainer}>
                         { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1489,7 +1511,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.img} width="30.05px" height="26.54px" />
+                                      {/* <img src={item.img} width="30.05px" height="26.54px" /> */}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1513,7 +1535,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
                         <div className={styles.itemDetailsContainer}>
                           { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1559,7 +1581,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.image} width="30.05px" height="26.54px" />
+                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1584,7 +1606,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
                         <div className={styles.itemDetailsContainer}>
                         { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1631,7 +1653,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.image} width="30.05px" height="26.54px" />
+                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1655,7 +1677,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        {/* <img className={styles.itemImage} src="/diy images/starter/image 23.png" /> */}
                         <div className={styles.itemDetailsContainer}>
                         { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1702,7 +1724,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.image} width="30.05px" height="26.54px" />
+                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1730,9 +1752,9 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
                   <div className={styles.detailsInputLg}>
-                    <input placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
-                    <input placeholder='Phone No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
-                    <input placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
+                    <input placeholder='Name' onInput={(e) => setName(e.target.value)} required />
+                    <input placeholder='Phone No.' name='mobileno' onInput={(e) => setPhone(e.target.value)} maxLength='10' required />
+                    <input placeholder='Email' name='email' onInput={(e) => setEmail(e.target.value)} required />
                   </div>
                 </div>
               </div>
@@ -1992,7 +2014,7 @@ const CustomizeNinjaBox = () => {
                             <h5>Starters</h5>
                             <div className={styles.starterItems}>
                                 <div className={styles.fstItem}>
-                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    // <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
                                         <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                                         <div>
