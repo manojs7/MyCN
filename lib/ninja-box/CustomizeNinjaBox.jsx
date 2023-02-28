@@ -56,6 +56,10 @@ const CustomizeNinjaBox = () => {
   const[refURL, setRefURL]=useState();
 
   const [isShown, setIsShown] = useState(false);
+  const [hideRecommenedQnty, setHideRecommenedQnty] = useState(false);
+  const [hideMainsRecommenedQnty, setHideMainsRecommenedQnty] = useState(false);
+  const [hideBreadRecommenedQnty, setHideBreadRecommenedQnty] = useState(false);
+  const [hideDessertRecommenedQnty, setHideDessertRecommenedQnty] = useState(false);
 
   const [state, setState] = useState({
     showDiv1: true,
@@ -310,6 +314,9 @@ const CustomizeNinjaBox = () => {
     }
   };
   const handleDiv2Click = () => {
+    if(!checkFirstValidation()){
+      return false;
+    }
 
     setShowSelectedMenu2(true);
     setShowDropdown2(false)
@@ -332,6 +339,9 @@ const CustomizeNinjaBox = () => {
     }
   };
   const handleDiv3Click = () => {
+    if(!checkFirstValidation()){
+      return false;
+    }
 
     setShowSelectedMenu3(true);
     setShowDropdown3(false)
@@ -354,6 +364,9 @@ const CustomizeNinjaBox = () => {
     }
   };
   const handleDiv4Click = () => {
+    if(!checkFirstValidation()){
+      return false;
+    }
 
     setShowSelectedMenu4(true);
     setShowDropdown4(false)
@@ -833,6 +846,10 @@ const CustomizeNinjaBox = () => {
   };
 
   function increment(value, index, type, item) {
+    setHideRecommenedQnty(true);
+    setHideMainsRecommenedQnty(true);
+    setHideBreadRecommenedQnty(true);
+    setHideDessertRecommenedQnty(true);
     if (item.Qtype === 'pcs') {
       value += 5;
     }
@@ -842,6 +859,10 @@ const CustomizeNinjaBox = () => {
     handleChange(value, index, type);
   }
   function decrement(value, index, type, item) {
+    setHideRecommenedQnty(true);
+    setHideMainsRecommenedQnty(true);
+    setHideBreadRecommenedQnty(true);
+    setHideDessertRecommenedQnty(true);
     if (item.Qtype === 'pcs') {
       value = parseInt(value) - 5;
     }
@@ -1447,9 +1468,9 @@ const CustomizeNinjaBox = () => {
                               }>+</button>
 
                             </div>
-                            <div className={styles.recQnty}>
+                            { !hideRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
-                            </div>
+                            </div>}
                           </div>
                           <div>
                             <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "starters")} />
@@ -1517,9 +1538,9 @@ const CustomizeNinjaBox = () => {
                                 increment(item.quantity, index, "mains", item)
                               }>+</button>
                             </div>
-                            <div className={styles.recQnty}>
+                            { !hideMainsRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
-                            </div>
+                            </div>}
                           </div>
                           <div>
                             <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "mains")} />
@@ -1589,9 +1610,9 @@ const CustomizeNinjaBox = () => {
                               }>+</button>
 
                             </div>
-                            <div className={styles.recQnty}>
+                            { !hideBreadRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
-                            </div>
+                            </div>}
                           </div>
                           <div>
                             <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "Bread+Rice")} />
@@ -1660,9 +1681,9 @@ const CustomizeNinjaBox = () => {
                               }>+</button>
 
                             </div>
-                            <div className={styles.recQnty}>
+                            { !hideDessertRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
-                            </div>
+                            </div>}
                           </div>
                           <div>
                             <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "desserts")} />
@@ -1716,9 +1737,9 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
                   <div className={styles.detailsInputLg}>
-                    <input placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
-                    <input placeholder='Phone No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
-                    <input placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
+                    <input type="text" placeholder='Name' onBlur={(e) => setName(e.target.value)} required />
+                    <input type="text" placeholder='Phone No.' name='mobileno' onBlur={(e) => setPhone(e.target.value)} maxLength='10' required />
+                    <input type="email" placeholder='Email' name='email' onBlur={(e) => setEmail(e.target.value)} required />
                   </div>
                 </div>
               </div>
