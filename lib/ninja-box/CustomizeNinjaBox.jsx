@@ -835,10 +835,26 @@ const CustomizeNinjaBox = () => {
     setHideBreadRecommenedQnty(true);
     setHideDessertRecommenedQnty(true);
     if (item.Qtype === 'pcs') {
-      value = parseInt(value) - 6;
+      if(value<12){
+        value=12
+        handleChange(value, index, type);
+        return false;
+      }
+      else{
+        value = parseInt(value) - 6; 
+      }
+      
     }
     else {
-      value = parseFloat(value) - 0.5;
+      if(value<1){
+        value=1
+        handleChange(value, index, type);
+        return false;
+      }
+      else{
+        value = parseFloat(value) - 0.5;
+      }
+      
     }
     handleChange(value, index, type);
   }
@@ -858,11 +874,7 @@ const CustomizeNinjaBox = () => {
     
   };
   function getDeliveryCharge(people){
-    if(!city){
-      // checkFirstValidation();
-      return false;
-    }
-    else if(city==='mumbai' || city==='banglore'){
+    if(city==='mumbai' || city==='banglore'){
       if(people<=25 ){
         setDeliveryCharge(0);
       }
@@ -1232,14 +1244,16 @@ const CustomizeNinjaBox = () => {
       }
     });
 
-    setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
+    setTotalPrice(parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice));
     getDeliveryCharge(people);
-    setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+    setGST(getGst());
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
     // setShowPriceList(!showPriceList)
-  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
 
-  
+  function getGst(){
+    return parseInt((totalPrice+buffet+deliveryCharge)* 5/100)
+  }
   function handleBuffet(value) {
 
     setbuffet(value);
@@ -1268,9 +1282,10 @@ const CustomizeNinjaBox = () => {
     return false;
   }
   getDeliveryCharge(people);
-  setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+  // setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+  setGST(getGst())
   setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-    setShowPriceList(!showPriceList)
+  setShowPriceList(!showPriceList)
     
     
     // e.preventDefault();
@@ -1311,22 +1326,31 @@ const CustomizeNinjaBox = () => {
       // breadRice:breadRice,
       // dessert:dessert
     };
-    console.log(data);
-    axios
-      .post("/api/forma", data)
-      .then((res) => {
-        this.setState(
-          {
-            sent: true,
-          },
-          this.resetForm(),
-          console.log("sent")
-        );
-      })
-      .catch((error) => {
-        console.log("message not sent");
-        console.log(error);
-      });
+    // console.log(data);
+    // axios
+    //   .post("/api/forma", data)
+    //   .then((res) => {
+    //     this.setState(
+    //       {
+    //         sent: true,
+    //       },
+    //       this.resetForm(),
+    //       console.log("sent")
+    //     );
+    //   })
+    //   .catch((error) => {
+    //     console.log("message not sent");
+    //     console.log(error);
+    //   });
+    fetch("/api/forma", {
+      method: "POST",
+      body: {"name":name},
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+    }).then((res) => {
+      if (!res.ok) console.log("Failed to send message");
+      return res.json();
+    });
+  
   };
   
 
