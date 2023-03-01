@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 export default function Navbar({ page }) {
   const router = useRouter();
-  // console.log(router.pathname);
+  //console.log(router.pathname);
   const [sticky, setSticky] = useState(false);
   const [active, setActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -24,12 +24,12 @@ export default function Navbar({ page }) {
   const handleNavigation = useCallback((e) => {
 
     const window = e.currentTarget;
-    // console.log('scroll', y, window.scrollY)
+    //console.log('scroll', y, window.scrollY)
     if ((y) > (window.scrollY)) {
-      // console.log("scrolling up");
+      //console.log("scrolling up");
       setScrollUp(true)
     } else if (y < window.scrollY) {
-      // console.log("scrolling down");
+      //console.log("scrolling down");
       setScrollUp(false)
     }
     setY(window.scrollY);
