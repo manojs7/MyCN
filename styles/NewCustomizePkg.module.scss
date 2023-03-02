@@ -6,6 +6,70 @@
 
 @media (max-width: 576px) {
 
+    #starterList {
+        margin: auto;
+
+        ul::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0%;
+            overflow-y: auto;
+            height: 195px;
+            width: 300px;
+            margin: auto;
+
+
+            li {
+                margin: auto;
+                text-align: center;
+                margin-bottom: 5px;
+                width: 276.59px;
+                height: 45px;
+                border-radius: 3.9px;
+                background-color: #F6F6F6;
+
+                #insideDivLi {
+                    margin-top: 5px;
+                    display: flex;
+
+                    p {
+                        font-weight: 500;
+                        font-size: 12px;
+                        letter-spacing: 0.05em;
+                        text-transform: capitalize;
+                        color: #000000;
+                        margin-bottom: -10px;
+                        text-align: start;
+                        line-height: 10px;
+
+                        span {
+                            margin-top: -10px;
+                            font-style: italic;
+                            font-weight: 400;
+                            font-size: 8px;
+                            letter-spacing: 0.05em;
+                            text-transform: capitalize;
+                            color: #4D555B;
+                        }
+                    }
+
+                    img {
+                        margin-top: 3px;
+                    }
+                }
+
+                input {
+                    margin-top: 7px;
+                    margin-right: 10px;
+                    width: 10px;
+                }
+            }
+        }
+    }
+
     .pkgDetails {
         display: none;
     }
@@ -839,6 +903,18 @@
         }
     }
 
+    .ninjaboxLg {
+        display: none;
+    }
+
+    .ninjaboxLg {
+        display: none;
+    }
+
+    .pkgSliderContainerLG {
+        display: none;
+    }
+
 }
 
 .customizeMainContainer {
@@ -854,6 +930,10 @@
         display: flex;
         height: 444px;
         padding: 50px;
+
+        .ninjabuffy {
+            display: none;
+        }
 
         .headerContent {
             //margin-inline: 40px;
@@ -892,19 +972,29 @@
                 height: 270.92px;
                 margin-left: 25px;
             }
+
+            #ninjaB {
+                width: 180.37px;
+                height: 270.92px;
+                margin-left: 25px;
+            }
         }
 
         .textLogo {
             display: flex;
         }
 
-        .ninjabox {
+        .ninjaboxLg {
             img {
-                margin-top: 60px;
+                //margin-top: 60px;
                 margin-left: 20px;
                 height: 291.56px;
                 width: 376.9px;
             }
+        }
+
+        .ninjabox {
+            display: none;
         }
 
         .ninjaBuffyHpkg {
@@ -917,18 +1007,110 @@
         }
     }
 
+    #starterList {
+        margin: auto;
+
+        ul::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0%;
+            overflow-y: auto;
+            height: 195px;
+            width: 300px;
+            margin: auto;
+
+
+            li {
+                margin: auto;
+                text-align: center;
+                margin-bottom: 5px;
+                width: 276.59px;
+                height: 45px;
+                border-radius: 3.9px;
+                background-color: #F6F6F6;
+
+                #insideDivLi {
+                    margin-top: 5px;
+                    display: flex;
+
+                    p {
+                        font-weight: 500;
+                        font-size: 12px;
+                        letter-spacing: 0.05em;
+                        text-transform: capitalize;
+                        color: #000000;
+                        margin-bottom: -10px;
+                        text-align: start;
+                        line-height: 10px;
+
+                        span {
+                            margin-top: -10px;
+                            font-style: italic;
+                            font-weight: 400;
+                            font-size: 8px;
+                            letter-spacing: 0.05em;
+                            text-transform: capitalize;
+                            color: #4D555B;
+                        }
+                    }
+
+                    img {
+                        margin-top: 3px;
+                    }
+                }
+
+                input {
+                    margin-top: 7px;
+                    margin-right: 10px;
+                    width: 10px;
+                }
+            }
+        }
+    }
+
     .MenuHr {
         margin: auto;
-        width: 326.71px;
+        width: 800px;
         height: 0px;
-
         border: 0.4px dashed #42484E;
-        margin-top: 40px;
+        margin-top: 90px;
         background-color: white;
     }
 
     .selfService {
         display: none;
+    }
+
+    .pkgSliderContainerLG {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .pkgSlider {
+        display: flex !important;
+        justify-content: space-evenly;
+        padding-block: 20px;
+
+        h3 {
+            text-align: center;
+            margin-block: auto;
+            font-weight: 600;
+            font-size: 31px;
+            line-height: 38px;
+            letter-spacing: 0.02em;
+            color: #42484E;
+
+            span {
+                color: #BE2D30;
+            }
+        }
+
+        img {
+            width: 366px;
+            height: 200px;
+        }
     }
 
     .mainsContainer {
@@ -945,8 +1127,8 @@
 
     .starterSearchBtn {
         margin: auto;
-        width: 315px;
-        height: 31.15px;
+        width: 778px;
+        height: 50px;
         border-radius: 5.02px;
         background-color: #EFEFEF;
         display: flex;
@@ -955,7 +1137,7 @@
         p {
             margin: auto;
             font-weight: 600;
-            font-size: 12.1784px;
+            font-size: 20px;
             line-height: 15px;
             letter-spacing: 0.05em;
             text-transform: capitalize;
@@ -966,7 +1148,7 @@
             margin: auto;
             font-style: italic;
             font-weight: 400;
-            font-size: 7.49443px;
+            font-size: 15px;
             line-height: 9px;
             letter-spacing: 0.05em;
             text-transform: capitalize;
@@ -1227,13 +1409,15 @@
             margin-top: 10px;
 
             h3 {
-                font-weight: 700;
-                font-size: 19px;
-                line-height: 23px;
-                text-align: center;
-                letter-spacing: 0.05em;
-                text-transform: capitalize;
-                color: #2C3338;
+                font-weight: 600;
+                font-size: 31px;
+                line-height: 38px;
+                letter-spacing: 0.02em;
+                color: #42484E;
+            }
+
+            hr{
+                width: 320px !important;
             }
         }
     }
@@ -1245,6 +1429,7 @@
         margin: auto;
         border-radius: 10px;
         display: flex;
+        margin-bottom: 15px;
     }
 
     .itemImage {
@@ -1258,6 +1443,7 @@
         margin-top: 15px;
 
         h4 {
+            width: 240px;
             font-weight: 600;
             font-size: 20.8px;
             line-height: 25px;
@@ -1303,6 +1489,7 @@
         background-color: white;
 
         button {
+            cursor: pointer;
             height: 48px;
             width: 48px;
             background-color: #FFC31A;
@@ -1310,6 +1497,10 @@
             font-size: 26.6842px;
             font-weight: 600;
             box-shadow: 0px 5.05263px 5.05263px rgba(0, 0, 0, 0.25);
+        }
+        button:hover{
+            background-color: #BE2D30;
+            color: white;
         }
 
         h6 {
@@ -1338,6 +1529,7 @@
     }
 
     .trassLogo {
+        cursor: pointer;
         width: 17px;
         height: 19px;
         margin-left: 40px;
@@ -1654,22 +1846,21 @@
 
     .startersContainer,
     .mainsContainer {
+        margin-top: 60px;
 
         //margin-inline: 50px;
         h5 {
             font-weight: 600;
-            font-size: 15px;
-            line-height: 18px;
+            font-size: 26px;
+            line-height: 32px;
             text-align: center;
             letter-spacing: 0.05em;
-            text-transform: capitalize;
-
             color: #2C3338;
 
         }
     }
 
-    .eventDate{
+    .eventDate {
         margin-bottom: 20px;
     }
 

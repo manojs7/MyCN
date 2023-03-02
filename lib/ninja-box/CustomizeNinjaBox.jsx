@@ -54,7 +54,7 @@ const CustomizeNinjaBox = () => {
   const [showDropdown2, setShowDropdown2] = useState(true)
   const [showDropdown3, setShowDropdown3] = useState(true)
   const [showDropdown4, setShowDropdown4] = useState(true)
-  const[refURL, setRefURL]=useState();
+  const [refURL, setRefURL] = useState();
 
   const [isShown, setIsShown] = useState(false);
   const [hideRecommenedQnty, setHideRecommenedQnty] = useState(false);
@@ -81,7 +81,7 @@ const CustomizeNinjaBox = () => {
   const [breadRice, setBreadRice] = useState([]);
   const [highestPrice, setHighestPrice] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [deliveryCharge,setDeliveryCharge]=useState(0);
+  const [deliveryCharge, setDeliveryCharge] = useState(0);
   const [grandTotal, setgrandTotal] = useState(0);
   const [buffet, setbuffet] = useState(0);
   const [GST, setGST] = useState(0);
@@ -212,19 +212,19 @@ const CustomizeNinjaBox = () => {
   };
 
   const handleVegNonVegGuest = (name, value) => {
-    if(value<0 || !value){
+    if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
-    }else{
+    } else {
 
     }
     name === "veg" ? setVeg(value) : setNonVeg(value);
     console.log("guest", veg, nonVeg);
-    people=veg + nonVeg;
+    people = veg + nonVeg;
     setPeople(people);
 
     if (veg > 0 && nonVeg === 0) {
       // showing only veg
-      
+
       setStartersData((prev) => prev.filter((d) => d.veg === true));
       setMainData((prev) => prev.filter((d) => d.veg === true));
       setBreadRiceData((prev) => prev.filter((d) => d.veg === true));
@@ -242,7 +242,7 @@ const CustomizeNinjaBox = () => {
     // setDesserts([]);
     // setBreadRice([]);
   };
-  
+
   const [searchValue, setSearchValue] = React.useState('');
   const [searchMainsValue, setSearchMainsValue] = React.useState('');
   const [searchBreadValue, setSearchBreadValue] = React.useState('');
@@ -290,7 +290,7 @@ const CustomizeNinjaBox = () => {
 
 
   const handleDiv1Click = () => {
-    if(!checkFirstValidation()){
+    if (!checkFirstValidation()) {
       return false;
     }
     setShowSelectedMenu(true);
@@ -315,7 +315,7 @@ const CustomizeNinjaBox = () => {
   };
   const handleDiv2Click = () => {
 
-    if(!checkFirstValidation()){
+    if (!checkFirstValidation()) {
       return false;
     }
 
@@ -341,7 +341,7 @@ const CustomizeNinjaBox = () => {
   };
   const handleDiv3Click = () => {
 
-    if(!checkFirstValidation()){
+    if (!checkFirstValidation()) {
       return false;
     }
 
@@ -367,7 +367,7 @@ const CustomizeNinjaBox = () => {
   };
   const handleDiv4Click = () => {
 
-    if(!checkFirstValidation()){
+    if (!checkFirstValidation()) {
       return false;
     }
 
@@ -875,9 +875,9 @@ const CustomizeNinjaBox = () => {
     }
     handleChange(value, index, type);
   }
-  function checkFirstValidation(){
-    if(!city || !startTime){
-      if(!city){
+  function checkFirstValidation() {
+    if (!city || !startTime) {
+      if (!city) {
         Swal.fire({
           text: 'Please select your City',
           icon: 'warning',
@@ -885,7 +885,7 @@ const CustomizeNinjaBox = () => {
         })
         // alert("Fill the City please");
       }
-      else if(!startTime){
+      else if (!startTime) {
         Swal.fire({
           text: 'Please fill the delivery time',
           icon: 'warning',
@@ -895,41 +895,41 @@ const CustomizeNinjaBox = () => {
       }
       return false;
     }
-    else{
+    else {
       return true;
     }
-    
+
   };
-  function getDeliveryCharge(people){
-    if(!city){
+  function getDeliveryCharge(people) {
+    if (!city) {
       // checkFirstValidation();
       return false;
     }
-    else if(city==='mumbai' || city==='banglore'){
-      if(people<=25 ){
+    else if (city === 'mumbai' || city === 'banglore') {
+      if (people <= 25) {
         setDeliveryCharge(0);
       }
-      else if(people>25 && people<=40){
+      else if (people > 25 && people <= 40) {
         setDeliveryCharge(0);
       }
-      else if(people>=41 && people<=60){
+      else if (people >= 41 && people <= 60) {
         setDeliveryCharge(1499);
       }
-      else if(people>=61 && people<=99){
+      else if (people >= 61 && people <= 99) {
         setDeliveryCharge(1999);
       }
     }
-    else if(city==='delhi' || city==='gurgaon'){
-      if(people<=25 ){
+    else if (city === 'delhi' || city === 'gurgaon') {
+      if (people <= 25) {
         setDeliveryCharge(0);
       }
-      else if(people>25 && people<=40){
+      else if (people > 25 && people <= 40) {
         setDeliveryCharge(999);
-      } 
-      else if(people>=41 && people<=60){
+      }
+      else if (people >= 41 && people <= 60) {
         setDeliveryCharge(1499);
       }
-      else if(people>=61 && people<=99){
+      else if (people >= 61 && people <= 99) {
         setDeliveryCharge(1999);
       }
     }
@@ -1259,7 +1259,7 @@ const CustomizeNinjaBox = () => {
     });
     desserts.map((d) => {
       if (d.Qtype === 'pcs') {
-        dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price)/12);
+        dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price) / 12);
       }
       else {
         dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
@@ -1277,60 +1277,60 @@ const CustomizeNinjaBox = () => {
 
     setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
     getDeliveryCharge(people);
-    setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+    setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5 / 100));
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
     // setShowPriceList(!showPriceList)
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
 
-  
+
   function handleBuffet(value) {
 
     setbuffet(value);
-    
+
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-    
+
   }
 
   const formSubmit = (e) => {
     e.preventDefault();
-    if(!checkFirstValidation()){
+    if (!checkFirstValidation()) {
       return false;
     }
-    
 
-  if(name.length=='' || email.length=='' || mobileno.length==''){
-    if(name.length==''){
-      Swal.fire({
-        text: 'Please enter your Name',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      })
-      //alert("Fill the name please");
+
+    if (name.length == '' || email.length == '' || mobileno.length == '') {
+      if (name.length == '') {
+        Swal.fire({
+          text: 'Please enter your Name',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the name please");
+      }
+      else if (email.length == '') {
+        Swal.fire({
+          text: 'Please enter your Email',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the Email please");
+      }
+      else if (mobileno.length == '') {
+        Swal.fire({
+          text: 'Please enter your mob. no.',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the Mobile No please");
+      }
+      return false;
     }
-    else if(email.length==''){
-      Swal.fire({
-        text: 'Please enter your Email',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      })
-      //alert("Fill the Email please");
-    }
-    else if(mobileno.length==''){
-      Swal.fire({
-        text: 'Please enter your mob. no.',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      })
-      //alert("Fill the Mobile No please");
-    }
-    return false;
-  }
-  getDeliveryCharge(people);
-  setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
-  setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+    getDeliveryCharge(people);
+    setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5 / 100));
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
     setShowPriceList(!showPriceList)
-    
-    
+
+
     // e.preventDefault();
 
     let data = {
@@ -1386,7 +1386,7 @@ const CustomizeNinjaBox = () => {
         console.log(error);
       });
   };
-  
+
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -1404,6 +1404,9 @@ const CustomizeNinjaBox = () => {
                 <div>
                   <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
                 </div>
+                <div className={styles.ninjaboxLg}>
+                  <img src='Group 1016.png' width="281.81px" height="218px" />
+                </div>
               </div>
             </div>
             <div className={styles.ninjabox}>
@@ -1420,7 +1423,10 @@ const CustomizeNinjaBox = () => {
                   <h5>Get instant quote in just few<br />easy steps!</h5>
                 </div>
                 <div>
-                  <img id={styles.ninja} src='/CustomizeImg/NinjaBuffy.png' width="83.41px" height="132.73px" />
+                  <img id={styles.ninjaB} src='/CustomizeImg/NinjaBuffy.png' width="83.41px" height="132.73px" />
+                </div>
+                <div className={styles.ninjaboxLg}>
+                  <img src='Group 1247.png' width="256px" height="225.57px" />
                 </div>
               </div>
             </div>
@@ -1449,7 +1455,7 @@ const CustomizeNinjaBox = () => {
                   <p>City</p>
 
                   <select className="form-select" name='city' aria-label="Default select example" value={city} onChange={e => handleCity(e.target.value)} required>
-                  <option value='' selected>Select City</option>
+                    <option value='' selected>Select City</option>
                     {cities.map((item, index) => {
                       return (
                         <option key={index} value={item} >{item}</option>
@@ -1460,7 +1466,7 @@ const CustomizeNinjaBox = () => {
 
                 <div className={styles.eventDate}>
                   <p>Event Date</p>
-                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} required/>
+                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} required />
                 </div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Veg Guest</p>
@@ -1490,7 +1496,7 @@ const CustomizeNinjaBox = () => {
                   <p>Delivery Time</p>
                   <input type="time" name='event_time' onChange={(time) => setstartTime(time)} required></input>
                 </div>
-                <div style={{marginTop: "40px"}}>
+                <div style={{ marginTop: "40px" }}>
                   <p>Non Veg Guest</p>
                   <input
                     type="number"
@@ -1522,7 +1528,17 @@ const CustomizeNinjaBox = () => {
                     <img src='Frame 769.png' height="150px" width="274.5px" />
                   </div></Slider>}
               </div>
-              <div className={styles.pkgDetails}>
+              <div className={styles.pkgSliderContainerLG}>
+              {<Slider {...settings}><div className={styles.pkgSlider}>
+                    <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
+                    <img src='555.png' />
+              </div>
+              <div className={styles.pkgSlider}>
+                    <h3>SELF - SERVICE<br />NINJA<span>BUFFET</span></h3>
+                    <img src='Frame 769.png'/>
+              </div></Slider>}
+              </div>
+              {/* <div className={styles.pkgDetails}>
                 <div>
                   <h3>PACKAGE NAME</h3>
                   <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
@@ -1531,7 +1547,7 @@ const CustomizeNinjaBox = () => {
                 <div>
                   <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
                 </div>
-              </div>
+              </div> */}
               <div>
 
 
@@ -1548,7 +1564,7 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                        { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
@@ -1565,7 +1581,7 @@ const CustomizeNinjaBox = () => {
                               }>+</button>
 
                             </div>
-                            { !hideRecommenedQnty && <div className={styles.recQnty}>
+                            {!hideRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
                             </div>}
                           </div>
@@ -1619,7 +1635,7 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                          { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
@@ -1635,7 +1651,7 @@ const CustomizeNinjaBox = () => {
                                 increment(item.quantity, index, "mains", item)
                               }>+</button>
                             </div>
-                            { !hideMainsRecommenedQnty && <div className={styles.recQnty}>
+                            {!hideMainsRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
                             </div>}
                           </div>
@@ -1690,7 +1706,7 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                        { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
@@ -1707,7 +1723,7 @@ const CustomizeNinjaBox = () => {
                               }>+</button>
 
                             </div>
-                            { !hideBreadRecommenedQnty && <div className={styles.recQnty}>
+                            {!hideBreadRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
                             </div>}
                           </div>
@@ -1761,7 +1777,7 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
                         <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles.itemDetailsContainer}>
-                        { item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> : 
+                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
                           <div>
                             <h4>{item.name}</h4>
@@ -1778,7 +1794,7 @@ const CustomizeNinjaBox = () => {
                               }>+</button>
 
                             </div>
-                            { !hideDessertRecommenedQnty && <div className={styles.recQnty}>
+                            {!hideDessertRecommenedQnty && <div className={styles.recQnty}>
                               <p>Recommended Qt.</p>
                             </div>}
                           </div>
@@ -1860,118 +1876,118 @@ const CustomizeNinjaBox = () => {
                     <option value="4500">Buffet setup + 2 waiter (+ ₹ 4,500.00)</option>
                   </select> */}
                   <select
-                          aria-label="Default select example"
-                          className="form-select"
-                          id="fontR"
-                          name="buffet"
-                          value={buffet}
-                          onChange={e => handleBuffet(e.target.value)}
-                        >
-                          {(city === "mumbai" ||
-                            city === "bangalore") &&
-                          people < 26 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox - Delivery (Free)
-                              </option>
-                              <option value="3500">
-                                Buffet setup + 1 waiter (+ ₹ 3,500.00)
-                              </option>
-                            </>
-                          ) : (city === "mumbai" ||
-                              city === "bangalore") &&
-                            people > 25 &&
-                            people < 41 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox - Delivery (Free)
-                              </option>
-                              <option value="4500">
-                                Buffet setup + 2 waiter (+ ₹ 4,500.00)
-                              </option>
-                            </>
-                          ) : (city === "mumbai" ||
-                              city === "bangalore") &&
-                            people > 40 &&
-                            people < 61 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox - Delivery Only
-                              </option>
-                              <option value="6000">
-                                Buffet setup + Service (+ ₹ 6,000.00)
-                              </option>
-                            </>
-                          ) : (city === "mumbai" ||
-                              city === "bangalore") &&
-                            people > 60 &&
-                            people < 100 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox - Delivery Only
-                              </option>
-                              <option value="7500">
-                                Buffet setup + Service (+ ₹ 7,500.00)
-                              </option>
-                            </>
-                          ) : null}
+                    aria-label="Default select example"
+                    className="form-select"
+                    id="fontR"
+                    name="buffet"
+                    value={buffet}
+                    onChange={e => handleBuffet(e.target.value)}
+                  >
+                    {(city === "mumbai" ||
+                      city === "bangalore") &&
+                      people < 26 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery (Free)
+                        </option>
+                        <option value="3500">
+                          Buffet setup + 1 waiter (+ ₹ 3,500.00)
+                        </option>
+                      </>
+                    ) : (city === "mumbai" ||
+                      city === "bangalore") &&
+                      people > 25 &&
+                      people < 41 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery (Free)
+                        </option>
+                        <option value="4500">
+                          Buffet setup + 2 waiter (+ ₹ 4,500.00)
+                        </option>
+                      </>
+                    ) : (city === "mumbai" ||
+                      city === "bangalore") &&
+                      people > 40 &&
+                      people < 61 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="6000">
+                          Buffet setup + Service (+ ₹ 6,000.00)
+                        </option>
+                      </>
+                    ) : (city === "mumbai" ||
+                      city === "bangalore") &&
+                      people > 60 &&
+                      people < 100 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="7500">
+                          Buffet setup + Service (+ ₹ 7,500.00)
+                        </option>
+                      </>
+                    ) : null}
 
-                          {/* ------------------------------------- */}
+                    {/* ------------------------------------- */}
 
-                          {(city === "delhi" ||
-                            city === "gurgaon") &&
-                          people < 26 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox - Bulk Food Delivery
-                              </option>
-                              <option value="3500">
-                                Buffet setup + 1 waiter (+ ₹ 3,500.00)
-                              </option>
-                            </>
-                          ) : (city === "delhi" ||
-                              city === "gurgaon") &&
-                            people > 25 &&
-                            people < 41 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox - Bulk Food Delivery
-                              </option>
-                              <option value="4500">
-                                Buffet setup + 2 waiter (+ ₹ 4,500.00)
-                              </option>
-                            </>
-                          ) : (city === "delhi" ||
-                              city === "gurgaon") &&
-                            people > 40 &&
-                            people < 61 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox -Bulk Food Delivery
-                              </option>
-                              <option value="6000">
-                                Buffet setup + Service (+ ₹ 6,000.00)
-                              </option>
-                            </>
-                          ) : (city === "delhi" ||
-                              city === "gurgaon") &&
-                            people > 60 &&
-                            people < 100 ? (
-                            <>
-                              <option value="0" defaultValue>
-                                Ninjabox -Bulk Food Delivery
-                              </option>
-                              <option value="7500">
-                                Buffet setup + Service (+ ₹ 7,500.00)
-                              </option>
-                            </>
-                          ) : null}
-                        </select>
+                    {(city === "delhi" ||
+                      city === "gurgaon") &&
+                      people < 26 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Bulk Food Delivery
+                        </option>
+                        <option value="3500">
+                          Buffet setup + 1 waiter (+ ₹ 3,500.00)
+                        </option>
+                      </>
+                    ) : (city === "delhi" ||
+                      city === "gurgaon") &&
+                      people > 25 &&
+                      people < 41 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Bulk Food Delivery
+                        </option>
+                        <option value="4500">
+                          Buffet setup + 2 waiter (+ ₹ 4,500.00)
+                        </option>
+                      </>
+                    ) : (city === "delhi" ||
+                      city === "gurgaon") &&
+                      people > 40 &&
+                      people < 61 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox -Bulk Food Delivery
+                        </option>
+                        <option value="6000">
+                          Buffet setup + Service (+ ₹ 6,000.00)
+                        </option>
+                      </>
+                    ) : (city === "delhi" ||
+                      city === "gurgaon") &&
+                      people > 60 &&
+                      people < 100 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox -Bulk Food Delivery
+                        </option>
+                        <option value="7500">
+                          Buffet setup + Service (+ ₹ 7,500.00)
+                        </option>
+                      </>
+                    ) : null}
+                  </select>
 
                   <p>{buffet}</p>
                 </div>
               </div>
-              { showPriceList && <div className={styles.pricing}>
+              {showPriceList && <div className={styles.pricing}>
                 <div>
                   <div className={styles.pricingTitle1}>
                     <div>
@@ -1994,9 +2010,9 @@ const CustomizeNinjaBox = () => {
                       <h4>Delivery Charges <span></span></h4>
                     </div>
                     <div>
-                        <p>₹{deliveryCharge}</p>
+                      <p>₹{deliveryCharge}</p>
                     </div>
-                    
+
                   </div>
                   <hr className={styles.hr1} />
                   <div className={styles.pricingTitle3}>
