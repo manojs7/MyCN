@@ -14,7 +14,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
-import JSAlert from 'js-alert'
 
 
 
@@ -846,10 +845,10 @@ const CustomizeNinjaBox = () => {
   function checkFirstValidation(){
     if(!city || !startTime){
       if(!city){
-        JSAlert.alert("Please select your city");
+        alert("Fill the City please");
       }
       else if(!startTime){
-        JSAlert.alert("Please enter your delivery time");
+        alert("Fill the Event time please");
       }
       return false;
     }
@@ -1258,13 +1257,13 @@ const CustomizeNinjaBox = () => {
 
   if(name.length=='' || email.length=='' || mobileno.length==''){
     if(name.length==''){
-      JSAlert.alert("Please enter your name");
+      alert("Fill the name please");
     }
     else if(email.length==''){
-      JSAlert.alert("Please enter your email");
+      alert("Fill the Email please");
     }
     else if(mobileno.length==''){
-      JSAlert.alert("Please enter your mob. no.");
+      alert("Fill the Mobile No please");
     }
     return false;
   }
