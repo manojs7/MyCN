@@ -246,18 +246,50 @@ const CustomizeNinjaBox = () => {
   };
   
   const [searchValue, setSearchValue] = React.useState('');
+  const [searchMainsValue, setSearchMainsValue] = React.useState('');
+  const [searchBreadValue, setSearchBreadValue] = React.useState('');
+  const [searchDessertValue, setSearchDessertValue] = React.useState('');
   const [showSelectedMenu, setShowSelectedMenu] = useState(false);
   const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
   const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
   const [showSelectedMenu4, setShowSelectedMenu4] = useState(false);
 
+  //search Starter
   const searchStarter = (e) => {
     setSearchValue(e.target.value);
   };
 
-  const filteredData = data.filter((temp) =>
+  const filteredData = startersData.filter((temp) =>
     temp.name.toLowerCase().includes(searchValue.toLowerCase())
   );
+
+  //search Mains
+  const searchMains = (e) => {
+    setSearchMainsValue(e.target.value);
+  };
+
+  const filteredMainsData = mainData.filter((temp) =>
+    temp.name.toLowerCase().includes(searchMainsValue.toLowerCase())
+  );
+
+  //search Bread
+  const searchBread = (e) => {
+    setSearchBreadValue(e.target.value);
+  };
+
+  const filteredBreadData = breadRiceData.filter((temp) =>
+    temp.name.toLowerCase().includes(searchBreadValue.toLowerCase())
+  );
+
+  //search Dessert
+  const searchDessert = (e) => {
+    setSearchDessertValue(e.target.value);
+  };
+
+  const filteredDessertData = dessertData.filter((temp) =>
+    temp.name.toLowerCase().includes(searchDessertValue.toLowerCase())
+  );
+
 
   const handleDiv1Click = () => {
     if(!checkFirstValidation()){
@@ -1586,7 +1618,7 @@ const CustomizeNinjaBox = () => {
                             placeholder="Search Starter" />
                           <div id={styles2.starterList}>
                             <ul>
-                              {startersData.map((item, index) => (
+                              {filteredData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
@@ -1651,12 +1683,12 @@ const CustomizeNinjaBox = () => {
                       <div id={styles2.starterSearchContent}>
                         <div>
                           <input type="text"
-                            value={searchValue}
-                            onChange={searchStarter}
+                            value={searchMainsValue}
+                            onChange={searchMains}
                             placeholder="Search Mains" />
                           <div id={styles2.starterList}>
                             <ul>
-                              {mainData.map((item, index) => (
+                              {filteredMainsData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
@@ -1723,12 +1755,12 @@ const CustomizeNinjaBox = () => {
                       <div id={styles2.starterSearchContent}>
                         <div>
                           <input type="text"
-                            value={searchValue}
-                            onChange={searchStarter}
+                            value={searchBreadValue}
+                            onChange={searchBread}
                             placeholder="Search Bread Rice Noodles" />
                           <div id={styles2.starterList}>
                             <ul>
-                              {breadRiceData.map((item, index) => (
+                              {filteredBreadData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
@@ -1794,12 +1826,12 @@ const CustomizeNinjaBox = () => {
                       <div id={styles2.starterSearchContent}>
                         <div>
                           <input type="text"
-                            value={searchValue}
-                            onChange={searchStarter}
+                            value={searchDessertValue}
+                            onChange={searchDessert}
                             placeholder="Search Desserts" />
                           <div id={styles2.starterList}>
                             <ul>
-                              {dessertData.map((item, index) => (
+                              {filteredDessertData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
