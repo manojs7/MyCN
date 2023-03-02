@@ -1638,8 +1638,8 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.img} width="30.05px" height="26.54px" />
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {/* <img src={item.img} width="30.05px" height="26.54px" /> */}
+                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "starters")} />
@@ -1708,8 +1708,8 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.image} width="30.05px" height="26.54px" />
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
+                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "mains")} />
@@ -1780,8 +1780,8 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.image} width="30.05px" height="26.54px" />
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
+                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "Bread+Rice")} />
@@ -1851,8 +1851,8 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
-                                      <img src={item.image} width="30.05px" height="26.54px" />
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
+                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "desserts")} />
