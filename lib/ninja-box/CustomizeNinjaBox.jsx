@@ -14,6 +14,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
+import Swal from 'sweetalert2'
 
 
 
@@ -845,10 +846,20 @@ const CustomizeNinjaBox = () => {
   function checkFirstValidation(){
     if(!city || !startTime){
       if(!city){
-        alert("Fill the City please");
+        Swal.fire({
+          text: 'Please select your City',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        // alert("Fill the City please");
       }
       else if(!startTime){
-        alert("Fill the Event time please");
+        Swal.fire({
+          text: 'Please fill the delivery time',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the Event time please");
       }
       return false;
     }
@@ -1257,13 +1268,28 @@ const CustomizeNinjaBox = () => {
 
   if(name.length=='' || email.length=='' || mobileno.length==''){
     if(name.length==''){
-      alert("Fill the name please");
+      Swal.fire({
+        text: 'Please enter your Name',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the name please");
     }
     else if(email.length==''){
-      alert("Fill the Email please");
+      Swal.fire({
+        text: 'Please enter your Email',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the Email please");
     }
     else if(mobileno.length==''){
-      alert("Fill the Mobile No please");
+      Swal.fire({
+        text: 'Please enter your mob. no.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the Mobile No please");
     }
     return false;
   }
