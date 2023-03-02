@@ -14,7 +14,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
-import JSAlert from 'js-alert'
+// import JSAlert from 'js-alert'
 
 
 
@@ -37,7 +37,7 @@ const CustomizeNinjaBox = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileno, setPhone] = useState("");
-  const [city, setCity] = useState();
+  const [city, setCity] = useState("");
 
 
   const [startDate, setStartDate] = useState(new Date());
@@ -837,9 +837,9 @@ const CustomizeNinjaBox = () => {
     setHideDessertRecommenedQnty(true);
     if (item.Qtype === 'pcs') {
       if(value<12){
-        value=12
+        value=12  
         handleChange(value, index, type);
-        return false;
+        // return false;
       }
       else{
         value = parseInt(value) - 6; 
@@ -850,7 +850,7 @@ const CustomizeNinjaBox = () => {
       if(value<1){
         value=1
         handleChange(value, index, type);
-        return false;
+        // return false;
       }
       else{
         value = parseFloat(value) - 0.5;
@@ -862,10 +862,10 @@ const CustomizeNinjaBox = () => {
   function checkFirstValidation(){
     if(!city || !startTime){
       if(!city){
-        JSAlert.alert("Please select your city");
+        alert("Please select your city");
       }
       else if(!startTime){
-        JSAlert.alert("Please enter your delivery time");
+        alert("Please enter your delivery time");
       }
       return false;
     }
@@ -1272,13 +1272,13 @@ const CustomizeNinjaBox = () => {
 
   if(name.length=='' || email.length=='' || mobileno.length==''){
     if(name.length==''){
-      JSAlert.alert("Please enter your name");
+      alert("Please enter your name");
     }
     else if(email.length==''){
-      JSAlert.alert("Please enter your email");
+      alert("Please enter your email");
     }
     else if(mobileno.length==''){
-      JSAlert.alert("Please enter your mob. no.");
+      alert("Please enter your mob. no.");
     }
     return false;
   }
@@ -1291,7 +1291,7 @@ const CustomizeNinjaBox = () => {
     
     // e.preventDefault();
 
-    let data = {
+    const data = {
       name: name,
       email: email,
       mobileno: mobileno,
@@ -1345,11 +1345,16 @@ const CustomizeNinjaBox = () => {
     //   });
     fetch("/api/forma", {
       method: "POST",
-      body: {"name":name},
+      body:  data,
       headers: { "Content-Type": "application/json", Accept: "application/json" },
     }).then((res) => {
-      if (!res.ok) console.log("Failed to send message");
-      return res.json();
+      if (res.success){
+        console.log("message sent");
+      } 
+      else{
+        console.log("Failed to send message");
+
+      }
     });
   
   };

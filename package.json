@@ -31,7 +31,6 @@
     "fontawesome-free": "^1.0.4",
     "googleapis": "^100.0.0",
     "jquery": "^3.6.0",
-    "js-alert": "^2.0.0",
     "multiselect-react-dropdown": "^2.0.25",
     "next": "^12.3.4",
     "nodemailer": "^6.9.1",
@@ -50,6 +49,7 @@
     "sass": "^1.49.9",
     "scss-loader": "^0.0.1",
     "slick-carousel": "^1.8.1",
+    "slider": "^1.0.4",
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.7.3"
   },
@@ -57,6 +57,7 @@
     "autoprefixer": "^10.4.4",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
+    "js-alert": "^2.0.0",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23"
   }

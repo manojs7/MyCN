@@ -1,5 +1,4 @@
-import { mailOptions, transporter } from "../../lib/config/nodemailer";
-
+let nodemailer = require('nodemailer')
 const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
   email: "Email",
@@ -7,42 +6,195 @@ const CONTACT_MESSAGE_FIELDS = {
   message: "Message",
 };
 
-const generateEmailContent = (data) => {
-  const stringData = Object.entries(data).reduce(
-    (str, [key, val]) =>
-      (str += `${CONTACT_MESSAGE_FIELDS[key]}: \n${val} \n \n`),
-    ""
-  );
-  const htmlData = Object.entries(data).reduce((str, [key, val]) => {
-    return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${val}</p>`);
-  }, "");
-
-  return {
-    text: stringData,
-    html: `<!DOCTYPE html><html> <head> <title></title> <meta charset="utf-8"/> <meta name="viewport" content="width=device-width, initial-scale=1"/> <meta http-equiv="X-UA-Compatible" content="IE=edge"/> <style type="text/css"> body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}table{border-collapse: collapse !important;}body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}@media screen and (max-width: 525px){.wrapper{width: 100% !important; max-width: 100% !important;}.responsive-table{width: 100% !important;}.padding{padding: 10px 5% 15px 5% !important;}.section-padding{padding: 0 15px 50px 15px !important;}}.form-container{margin-bottom: 24px; padding: 20px; border: 1px dashed #ccc;}.form-heading{color: #2a2a2a; font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; font-weight: 400; text-align: left; line-height: 20px; font-size: 18px; margin: 0 0 8px; padding: 0;}.form-answer{color: #2a2a2a; font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; font-weight: 300; text-align: left; line-height: 20px; font-size: 16px; margin: 0 0 24px; padding: 0;}div[style*="margin: 16px 0;"]{margin: 0 !important;}</style> </head> <body style="margin: 0 !important; padding: 0 !important; background: #fff"> <div style=" display: none; font-size: 1px; color: #fefefe; line-height: 1px;  max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; " ></div><table border="0" cellpadding="0" cellspacing="0" width="100%"> <tr> <td bgcolor="#ffffff" align="center" style="padding: 10px 15px 30px 15px" class="section-padding" > <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px" class="responsive-table" > <tr> <td> <table width="100%" border="0" cellspacing="0" cellpadding="0"> <tr> <td> <table width="100%" border="0" cellspacing="0" cellpadding="0" > <tr> <td style=" padding: 0 0 0 0; font-size: 16px; line-height: 25px; color: #232323; " class="padding message-content" > <h2>New Contact Message</h2> <div class="form-container">${htmlData}</div></td></tr></table> </td></tr></table> </td></tr></table> </td></tr></table> </body></html>`,
-  };
-};
-
 export default function handler(req, res) {
   if (req.method === "POST") {
     const data =req.body;
     console.log(data);
-    // if (!data || !data.name || !data.email || !data.subject || !data.message) {
-    //   return res.status(400).send({ message: "Bad request" });
-    // }
+    if (!data.name || !data.email) {
+      return res.status(400).send({ message: "Bad request" });
+    }
+    let transporter = nodemailer.createTransport('smtps://caterninjadiy@gmail.com:wnetkdifdnuqytcm@smtp.gmail.com');
 
-    // try {
-    //   await transporter.sendMail({
-    //     ...mailOptions,
-    //     ...generateEmailContent(data),
-    //     subject: data.subject,
-    //   });
+    try {
+    let mailOptions = {
+    from: data.email,
+    to: `caterninjadiy@gmail.com, ${data.email}, 8n62vi4t8_5o1fxq4@parser.zohocrm.com`,
+    subject: `Final Quote ${data.date} | CaterNinja🤺| Party Quote.`,
+    html: ` 
+    
+  <h2>Hello ${data.name} !! </h2>
+  <h2>Thank you for choosing CaterNinja😊</h2>
+  
+  
+  
+    <h3>Name : ${data.name.toUpperCase()}</h3>
+    <h3>Email : ${data.email}</h3>
+    <h3>Mobile No : ${data.mobileno}</h3>
+    <h3>City : ${data.city.toUpperCase()}</h3>
+    <h3>Date: ${data.date}</h3>
+  
+    <h3>Guest Count : ${data.people}</h3>
+    <h3>Occasion: ${data.occasion}</h3>
+    <h3>Cuisine : ${data.cuisine}</h3>
+    <h3>Preference : ${data.preference}</h3>
+    <h3>Meal Type : ${data.mealtype}</h3>
+   
+  
+  
+  <div>
+  
+  <h3>Appetizer :
+        ${data.boolean &&
+      data.appetizer.some((el) => el.value === true) &&
+      data.appetizer
+        .map((array, index) => {
+          return array.value === true
+            ? `<li key="${array.id}_${index}">${array.name} (${array.quantity})</li>`
+  
+            : null;
+        })
+        .join("")
+      } 
+        </h3> 
+  </div>
+  
+  <div>
+  <h3>MainCourse: 
+  
+  
+  
+  ${data.boolean &&
+      data.mainCourse.some((el) => el.value === true) &&
+      data.mainCourse
+        .map((array, index) => {
+          return array.value === true
+            ? `<li key="${array.id}_${index}">${array.name} (${array.quantity})</li>`
+            : null;
+        })
+        .join("")
+      }  
+  </h3>
+  </div>
+  
+  <div>
+  
+  <h3>BreadRice: 
+  ${data.boolean &&
+      data.breadRice.some((el) => el.value === true) &&
+      data.breadRice
+        .map((array, index) => {
+          return array.value === true
+            ? `<li key="${array.id}_${index}">${array.name} (${array.quantity})</li>`
+            : null;
+        })
+        .join("")
+      }  
+  </h3>
+  </div>
+  
+  <div>
+  
+  <h3>Dessert: 
+        ${data.boolean &&
+      data.dessert.some((el) => el.value === true) &&
+      data.dessert
+        .map((array, index) => {
+          return array.value === true
+            ? `<li key="${array.id}_${index}">${array.name}</li>`
+            : null;
+        })
+        .join("")
+      }  
+        </h3>
+  </div>
+  
+  
+    <h3>Sub Total : Rs ${data.totalAppeticerPrice +
+      data.totalMainCoursePrice +
+      data.totalDessertPrice +
+      data.totalBreadRicePrice
+      }</h3>
+    
+    <h3>Box/Buffet Price : Rs ${data.buffet}</h3>
+    <h3>GST: Rs ${Math.round(((data.totalAppeticerPrice +
+      data.totalMainCoursePrice +
+      data.totalDessertPrice +
+      data.totalBreadRicePrice) *
+      5) /
+      100)}</h3>
+    <h2>Grand Total : Rs ${Math.round((((data.totalAppeticerPrice +
+        data.totalMainCoursePrice +
+        data.totalDessertPrice +
+        data.totalBreadRicePrice) *
+        5) / 100) +
+        (data.totalAppeticerPrice +
+          data.totalMainCoursePrice +
+          data.totalDessertPrice +
+          data.totalBreadRicePrice +
+          data.buffet * 1.05))
+      }</h2>
+  
+  
+   <table style="width:100%">
+  
+   ${data.city === "mumbai"
+        ? `<tr>
+   <td><h3>Booking assistance for Mumbai :</h3></td>
+   <td><a style="color:green;text-decoration: none;" id="chat" href="https://api.whatsapp.com/send?phone=917738096313&amp;text=Hey! Need help booking a DIY Menu in Mumbai" className="whatsapp" title="WhatsApp us" async>
+   <h3> Chat on Whatassp !!</h3></a></td>  
+  </tr>`
+        : ""
+      }
+  
+  ${data.city === "bangalore"
+        ? `<tr>
+  <td><h3>Booking assistance for Bangalore :</h3></td>
+  <td><a style="color:green;text-decoration: none;" id="chat" href="https://api.whatsapp.com/send?phone=917738096313&amp;text=Hey! Need help booking a DIY Menu in Bangalore" className="whatsapp" title="WhatsApp us" async>
+  <h3> Chat on Whatassp !!</h3></a></td>  
+  </tr>`
+        : ""
+      }
+  
+  ${data.city === "delhi"
+        ? `<tr>
+  <td><h3>Booking assistance for Delhi :</h3></td>
+  <td><a style="color:green;text-decoration: none;" id="chat" href="https://api.whatsapp.com/send?phone=917738096313&amp;text=Hey! Need help booking a DIY Menu in Delhi" className="whatsapp" title="WhatsApp us" async>
+  <h3> Chat on Whatassp !!</h3></a></td>  
+  </tr>`
+        : ""
+      }
+  
+  ${data.city === "gurgaon"
+        ? `<tr>
+  <td><h3>Booking assistance for Gurgaon :</h3></td>
+  <td><a style="color:green;text-decoration: none;" id="chat" href="https://api.whatsapp.com/send?phone=917738096313&amp;text=Hey! Need help booking a DIY Menu in Gurgaon" className="whatsapp" title="WhatsApp us" async>
+  <h3> Chat on Whatassp !!</h3></a></td>  
+  </tr>`
+        : ""
+      }
+    
+  </table>
+  
+        `,
+  };
 
-    //   return res.status(200).json({ success: true });
-    // } catch (err) {
-    //   console.log(err);
-    //   return res.status(400).json({ message: err.message });
-    // }
+      // transporter.sendMail({
+        
+        
+      // });
+      transporter.sendMail(mailOptions, (error, response) => {
+        if (error) {
+          return res.status(400).json({ success: false});
+        } else {
+          return res.status(200).json({ success: true });
+        }
+      });
+
+      
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json({ message: err.message });
+    }
   }
   return res.status(400).json({ message: "Bad request" });
 };
