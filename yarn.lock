@@ -1418,6 +1418,11 @@
   optionalDependencies:
     "fsevents" "~2.3.2"
 
+"circular-json@^0.5.9":
+  "integrity" "sha512-4ivwqHpIFJZBuhN3g/pEcdbnGUywkBblloGbkglyloVjjR3uT6tieI89MVOfbP2tHX5sgb01FuLgAOzebNlJNQ=="
+  "resolved" "https://registry.npmjs.org/circular-json/-/circular-json-0.5.9.tgz"
+  "version" "0.5.9"
+
 "clamp@1.0.1":
   "integrity" "sha512-kgMuFyE78OC6Dyu3Dy7vcx4uy97EIbVxJB/B0eJ3bUNAkwdNcxYzgKltnyADiYwsR7SEqkkUPsEUT//OVS6XMA=="
   "resolved" "https://registry.npmjs.org/clamp/-/clamp-1.0.1.tgz"

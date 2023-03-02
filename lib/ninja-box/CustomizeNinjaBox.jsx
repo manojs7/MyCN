@@ -14,7 +14,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
-// import JSAlert from 'js-alert'
+import Swal from 'sweetalert2'
 
 
 
@@ -45,6 +45,8 @@ const CustomizeNinjaBox = () => {
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([])
+  const [datas, setDatas] = useState([])
+
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
   const [isDisabledMains, setIsDisabledMains] = useState(true);
@@ -862,10 +864,20 @@ const CustomizeNinjaBox = () => {
   function checkFirstValidation(){
     if(!city || !startTime){
       if(!city){
-        alert("Please select your city");
+        Swal.fire({
+          text: 'Please select your City',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        // alert("Fill the City please");
       }
       else if(!startTime){
-        alert("Please enter your delivery time");
+        Swal.fire({
+          text: 'Please fill the delivery time',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the Event time please");
       }
       return false;
     }
@@ -1272,13 +1284,28 @@ const CustomizeNinjaBox = () => {
 
   if(name.length=='' || email.length=='' || mobileno.length==''){
     if(name.length==''){
-      alert("Please enter your name");
+      Swal.fire({
+        text: 'Please enter your Name',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the name please");
     }
     else if(email.length==''){
-      alert("Please enter your email");
+      Swal.fire({
+        text: 'Please enter your Email',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the Email please");
     }
     else if(mobileno.length==''){
-      alert("Please enter your mob. no.");
+      Swal.fire({
+        text: 'Please enter your mob. no.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the Mobile No please");
     }
     return false;
   }
@@ -1291,42 +1318,34 @@ const CustomizeNinjaBox = () => {
     
     // e.preventDefault();
 
-    const data = {
-      name: name,
-      email: email,
-      mobileno: mobileno,
-      city: city,
-      occasion: 'occasion',
-      people: people,
-      date: startDate,
-      time: startTime,
-      url: refURL,
-
-      meal: 'meal',
-      cuisine: cuisine,
-      preference: 'preference',
-      mealtype: 'mealtype',
-      boolean: true,
-      // data: [newdata.Sheet1],
-
-      appetizer: starters,
-      mainCourse: mains,
-      dessert: desserts,
-      breadRice: breadRice,
-      grandTotal: grandTotal,
-      buffet: buffet,
-      dessertClassname: "caterNinja_add_dessert_button",
-      showDessert: false,
-      // totalMainCoursePrice: totalMainCoursePrice,
-      // totalAppeticerPrice: totalAppeticerPrice,
-      // totalDessertPrice: totalDessertPrice,
-      // totalBreadRicePrice: totalBreadRicePrice,
-
-      // appetizer:appetizer,
-      // mainCourse:mainCourse,
-      // breadRice:breadRice,
-      // dessert:dessert
+    let datas = {
+      
+      name : name,
+      email : email,
+      mobileno : mobileno,
+      city : city,
+      occasion : 'occasion',
+      people : people,
+      date : startDate,
+      // time : startTime,
+      url : refURL,
+      meal : 'meal',
+      cuisine : cuisine,
+      preference : 'preference',
+      mealtype : 'mealtype',
+      boolean : true,
+      appetizer : starters,
+      mainCourse : mains,
+      dessert : desserts,
+      breadRice : breadRice,
+      grandTotal : grandTotal,
+      buffet : buffet,
+      dessertClassname : "caterNinja_add_dessert_button",
+      showDessert : false
     };
+    console.log(datas)
+    
+    setDatas(datas)
     // console.log(data);
     // axios
     //   .post("/api/forma", data)
@@ -1342,22 +1361,28 @@ const CustomizeNinjaBox = () => {
     //   .catch((error) => {
     //     console.log("message not sent");
     //     console.log(error);
-    //   });
+    //   }); 
+    let data = "";
+    try{
+      data = JSON.stringify(datas);
+    }catch(e){
+      console.log(e);
+    }
     fetch("/api/forma", {
       method: "POST",
-      body:  data,
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: data,
+      headers: { 'Content-Type': 'application/json; charset=UTF-8'},
     }).then((res) => {
+      console.log(res)
       if (res.success){
         console.log("message sent");
       } 
       else{
         console.log("Failed to send message");
-
       }
     });
-  
-  };
+  }
+
   
 
   return (
