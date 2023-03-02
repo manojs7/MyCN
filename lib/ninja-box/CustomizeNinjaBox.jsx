@@ -37,7 +37,7 @@ const CustomizeNinjaBox = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileno, setPhone] = useState("");
-  const [city, setCity] = useState();
+  const [city, setCity] = useState("");
 
 
   const [startDate, setStartDate] = useState(new Date());
@@ -45,6 +45,8 @@ const CustomizeNinjaBox = () => {
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([])
+  const [datas, setDatas] = useState([])
+
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
   const [isDisabledMains, setIsDisabledMains] = useState(true);
@@ -868,10 +870,26 @@ const CustomizeNinjaBox = () => {
     setHideBreadRecommenedQnty(true);
     setHideDessertRecommenedQnty(true);
     if (item.Qtype === 'pcs') {
-      value = parseInt(value) - 6;
+      if(value<12){
+        value=12  
+        handleChange(value, index, type);
+        // return false;
+      }
+      else{
+        value = parseInt(value) - 6; 
+      }
+      
     }
     else {
-      value = parseFloat(value) - 0.5;
+      if(value<1){
+        value=1
+        handleChange(value, index, type);
+        // return false;
+      }
+      else{
+        value = parseFloat(value) - 0.5;
+      }
+      
     }
     handleChange(value, index, type);
   }
@@ -900,13 +918,9 @@ const CustomizeNinjaBox = () => {
     }
 
   };
-  function getDeliveryCharge(people) {
-    if (!city) {
-      // checkFirstValidation();
-      return false;
-    }
-    else if (city === 'mumbai' || city === 'banglore') {
-      if (people <= 25) {
+  function getDeliveryCharge(people){
+    if(city==='mumbai' || city==='banglore'){
+      if(people<=25 ){
         setDeliveryCharge(0);
       }
       else if (people > 25 && people <= 40) {
@@ -1275,14 +1289,16 @@ const CustomizeNinjaBox = () => {
       }
     });
 
-    setTotalPrice(starterPrice + mainPrice + dessertPrice + bredRicePrice);
+    setTotalPrice(parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice));
     getDeliveryCharge(people);
-    setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5 / 100));
+    setGST(getGst());
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
     // setShowPriceList(!showPriceList)
-  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
 
-
+  function getGst(){
+    return parseInt((totalPrice+buffet+deliveryCharge)* 5/100)
+  }
   function handleBuffet(value) {
 
     setbuffet(value);
@@ -1298,95 +1314,108 @@ const CustomizeNinjaBox = () => {
     }
 
 
-    if (name.length == '' || email.length == '' || mobileno.length == '') {
-      if (name.length == '') {
-        Swal.fire({
-          text: 'Please enter your Name',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
-        //alert("Fill the name please");
-      }
-      else if (email.length == '') {
-        Swal.fire({
-          text: 'Please enter your Email',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
-        //alert("Fill the Email please");
-      }
-      else if (mobileno.length == '') {
-        Swal.fire({
-          text: 'Please enter your mob. no.',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
-        //alert("Fill the Mobile No please");
-      }
-      return false;
+  if(name.length=='' || email.length=='' || mobileno.length==''){
+    if(name.length==''){
+      Swal.fire({
+        text: 'Please enter your Name',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the name please");
     }
-    getDeliveryCharge(people);
-    setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5 / 100));
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-    setShowPriceList(!showPriceList)
-
-
+    else if(email.length==''){
+      Swal.fire({
+        text: 'Please enter your Email',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the Email please");
+    }
+    else if(mobileno.length==''){
+      Swal.fire({
+        text: 'Please enter your mob. no.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+      //alert("Fill the Mobile No please");
+    }
+    return false;
+  }
+  getDeliveryCharge(people);
+  // setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+  setGST(getGst())
+  setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+  setShowPriceList(!showPriceList)
+    
+    
     // e.preventDefault();
 
-    let data = {
-      name: name,
-      email: email,
-      mobileno: mobileno,
-      city: city,
-      occasion: 'occasion',
-      people: people,
-      date: startDate,
-      time: startTime,
-      url: refURL,
-
-      meal: 'meal',
-      cuisine: cuisine,
-      preference: 'preference',
-      mealtype: 'mealtype',
-      boolean: true,
-      // data: [newdata.Sheet1],
-
-      appetizer: starters,
-      mainCourse: mains,
-      dessert: desserts,
-      breadRice: breadRice,
-      grandTotal: grandTotal,
-      buffet: buffet,
-      dessertClassname: "caterNinja_add_dessert_button",
-      showDessert: false,
-      // totalMainCoursePrice: totalMainCoursePrice,
-      // totalAppeticerPrice: totalAppeticerPrice,
-      // totalDessertPrice: totalDessertPrice,
-      // totalBreadRicePrice: totalBreadRicePrice,
-
-      // appetizer:appetizer,
-      // mainCourse:mainCourse,
-      // breadRice:breadRice,
-      // dessert:dessert
+    let datas = {
+      
+      name : name,
+      email : email,
+      mobileno : mobileno,
+      city : city,
+      occasion : 'occasion',
+      people : people,
+      date : startDate,
+      // time : startTime,
+      url : refURL,
+      meal : 'meal',
+      cuisine : cuisine,
+      preference : 'preference',
+      mealtype : 'mealtype',
+      boolean : true,
+      appetizer : starters,
+      mainCourse : mains,
+      dessert : desserts,
+      breadRice : breadRice,
+      grandTotal : grandTotal,
+      buffet : buffet,
+      dessertClassname : "caterNinja_add_dessert_button",
+      showDessert : false
     };
-    console.log(data);
-    axios
-      .post("/api/forma", data)
-      .then((res) => {
-        this.setState(
-          {
-            sent: true,
-          },
-          this.resetForm(),
-          console.log("sent")
-        );
-      })
-      .catch((error) => {
-        console.log("message not sent");
-        console.log(error);
-      });
-  };
+    console.log(datas)
+    
+    setDatas(datas)
+    // console.log(data);
+    // axios
+    //   .post("/api/forma", data)
+    //   .then((res) => {
+    //     this.setState(
+    //       {
+    //         sent: true,
+    //       },
+    //       this.resetForm(),
+    //       console.log("sent")
+    //     );
+    //   })
+    //   .catch((error) => {
+    //     console.log("message not sent");
+    //     console.log(error);
+    //   }); 
+    let data = "";
+    try{
+      data = JSON.stringify(datas);
+    }catch(e){
+      console.log(e);
+    }
+    fetch("/api/forma", {
+      method: "POST",
+      body: data,
+      headers: { 'Content-Type': 'application/json; charset=UTF-8'},
+    }).then((res) => {
+      console.log(res)
+      if (res.success){
+        console.log("message sent");
+      } 
+      else{
+        console.log("Failed to send message");
+      }
+    });
+  }
 
+  
 
   return (
     <div className={styles.customizeMainContainer}>
