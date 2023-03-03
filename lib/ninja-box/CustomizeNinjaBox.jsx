@@ -1293,7 +1293,7 @@ const CustomizeNinjaBox = () => {
     getDeliveryCharge(people);
     setGST(getGst());
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-    setShowPriceList(false)
+    //setShowPriceList(false)
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
 
   function getGst(){
@@ -1626,18 +1626,18 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchValue}
                             onChange={searchStarter}
                             placeholder="Search Starter" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles2.insideDivLi}>
+                                    <div id={styles.insideDivLi}>
                                       {/* <img src={item.img} width="30.05px" height="26.54px" /> */}
                                       <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
@@ -1649,7 +1649,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1696,13 +1696,13 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu2 && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchMainsValue}
                             onChange={searchMains}
                             placeholder="Search Mains" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredMainsData.map((item, index) => (
                                 <li key={item.id}>
@@ -1719,7 +1719,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1768,13 +1768,13 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu3 && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchBreadValue}
                             onChange={searchBread}
                             placeholder="Search Bread Rice Noodles" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredBreadData.map((item, index) => (
                                 <li key={item.id}>
@@ -1791,7 +1791,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1839,13 +1839,13 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu4 && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchDessertValue}
                             onChange={searchDessert}
                             placeholder="Search Desserts" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredDessertData.map((item, index) => (
                                 <li key={item.id}>
@@ -1862,7 +1862,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1872,7 +1872,7 @@ const CustomizeNinjaBox = () => {
                 </div>
               </div>
               <hr className={styles.MenuHr} />
-              <div className='text-center mt-3'>
+              <div className='text-center mt-3' id={styles.itemsQnty}>
                 <h6>{starters?.length} Starters + {mains?.length + breadRice.length} Mains + {desserts?.length} Desserts</h6>
               </div>
               <div className='mt-5'>
@@ -2013,7 +2013,7 @@ const CustomizeNinjaBox = () => {
                     ) : null}
                   </select>
 
-                  <p>{buffet}</p>
+                  <p>₹{buffet}</p>
                 </div>
               </div>
               {showPriceList && <div className={styles.pricing}>
