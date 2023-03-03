@@ -1293,16 +1293,16 @@ const CustomizeNinjaBox = () => {
     getDeliveryCharge(people);
     setGST(getGst());
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-    // setShowPriceList(!showPriceList)
+    setShowPriceList(false)
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
 
   function getGst(){
-    return parseInt((totalPrice+buffet+deliveryCharge)* 5/100)
+    return parseInt((parseInt(totalPrice)+parseInt(buffet)+parseInt(deliveryCharge))* 5/100)
   }
   function handleBuffet(value) {
 
     setbuffet(value);
-
+    setGST(getGst());
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
 
   }
