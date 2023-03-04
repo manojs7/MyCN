@@ -870,26 +870,26 @@ const CustomizeNinjaBox = () => {
     setHideBreadRecommenedQnty(true);
     setHideDessertRecommenedQnty(true);
     if (item.Qtype === 'pcs') {
-      if(value<12){
-        value=12  
+      if (value < 12) {
+        value = 12
         handleChange(value, index, type);
         // return false;
       }
-      else{
-        value = parseInt(value) - 6; 
+      else {
+        value = parseInt(value) - 6;
       }
-      
+
     }
     else {
-      if(value<1){
-        value=1
+      if (value < 1) {
+        value = 1
         handleChange(value, index, type);
         // return false;
       }
-      else{
+      else {
         value = parseFloat(value) - 0.5;
       }
-      
+
     }
     handleChange(value, index, type);
   }
@@ -918,9 +918,9 @@ const CustomizeNinjaBox = () => {
     }
 
   };
-  function getDeliveryCharge(people){
-    if(city==='mumbai' || city==='banglore'){
-      if(people<=25 ){
+  function getDeliveryCharge(people) {
+    if (city === 'mumbai' || city === 'banglore') {
+      if (people <= 25) {
         setDeliveryCharge(0);
       }
       else if (people > 25 && people <= 40) {
@@ -1293,11 +1293,11 @@ const CustomizeNinjaBox = () => {
     getDeliveryCharge(people);
     setGST(getGst());
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-    setShowPriceList(false)
+    //setShowPriceList(false)
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
 
-  function getGst(){
-    return parseInt((parseInt(totalPrice)+parseInt(buffet)+parseInt(deliveryCharge))* 5/100)
+  function getGst() {
+    return parseInt((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * 5 / 100)
   }
   function handleBuffet(value) {
 
@@ -1314,69 +1314,69 @@ const CustomizeNinjaBox = () => {
     }
 
 
-  if(name.length=='' || email.length=='' || mobileno.length==''){
-    if(name.length==''){
-      Swal.fire({
-        text: 'Please enter your Name',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      })
-      //alert("Fill the name please");
+    if (name.length == '' || email.length == '' || mobileno.length == '') {
+      if (name.length == '') {
+        Swal.fire({
+          text: 'Please enter your Name',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the name please");
+      }
+      else if (email.length == '') {
+        Swal.fire({
+          text: 'Please enter your Email',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the Email please");
+      }
+      else if (mobileno.length == '') {
+        Swal.fire({
+          text: 'Please enter your mob. no.',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        //alert("Fill the Mobile No please");
+      }
+      return false;
     }
-    else if(email.length==''){
-      Swal.fire({
-        text: 'Please enter your Email',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      })
-      //alert("Fill the Email please");
-    }
-    else if(mobileno.length==''){
-      Swal.fire({
-        text: 'Please enter your mob. no.',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      })
-      //alert("Fill the Mobile No please");
-    }
-    return false;
-  }
-  getDeliveryCharge(people);
-  // setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
-  setGST(getGst())
-  setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-  setShowPriceList(!showPriceList)
-    
-    
+    getDeliveryCharge(people);
+    // setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
+    setGST(getGst())
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+    setShowPriceList(!showPriceList)
+
+
     // e.preventDefault();
 
     let datas = {
-      
-      name : name,
-      email : email,
-      mobileno : mobileno,
-      city : city,
-      occasion : 'occasion',
-      people : people,
-      date : startDate,
+
+      name: name,
+      email: email,
+      mobileno: mobileno,
+      city: city,
+      occasion: 'occasion',
+      people: people,
+      date: startDate,
       // time : startTime,
-      url : refURL,
-      meal : 'meal',
-      cuisine : cuisine,
-      preference : 'preference',
-      mealtype : 'mealtype',
-      boolean : true,
-      appetizer : starters,
-      mainCourse : mains,
-      dessert : desserts,
-      breadRice : breadRice,
-      grandTotal : grandTotal,
-      buffet : buffet,
-      dessertClassname : "caterNinja_add_dessert_button",
-      showDessert : false
+      url: refURL,
+      meal: 'meal',
+      cuisine: cuisine,
+      preference: 'preference',
+      mealtype: 'mealtype',
+      boolean: true,
+      appetizer: starters,
+      mainCourse: mains,
+      dessert: desserts,
+      breadRice: breadRice,
+      grandTotal: grandTotal,
+      buffet: buffet,
+      dessertClassname: "caterNinja_add_dessert_button",
+      showDessert: false
     };
     console.log(datas)
-    
+
     setDatas(datas)
     // console.log(data);
     // axios
@@ -1395,27 +1395,27 @@ const CustomizeNinjaBox = () => {
     //     console.log(error);
     //   }); 
     let data = "";
-    try{
+    try {
       data = JSON.stringify(datas);
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
     fetch("/api/forma", {
       method: "POST",
       body: data,
-      headers: { 'Content-Type': 'application/json; charset=UTF-8'},
+      headers: { 'Content-Type': 'application/json; charset=UTF-8' },
     }).then((res) => {
       console.log(res)
-      if (res.success){
+      if (res.success) {
         console.log("message sent");
-      } 
-      else{
+      }
+      else {
         console.log("Failed to send message");
       }
     });
   }
 
-  
+
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -1548,24 +1548,36 @@ const CustomizeNinjaBox = () => {
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
               <div className={styles.selfService}>
-                {<Slider {...settings}> <div>
-                  <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
-                  <img src='555.png' height="150px" width="274.5px" />
-                </div>
+                {<Slider {...settings}>
+                  <div>
+                    <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
+                    <img src='555.png' height="150px" width="274.5px" />
+                  </div>
                   <div>
                     <h3>SETUP + SERVICE<br />NINJA<span>BUFFET</span></h3>
                     <img src='Frame 769.png' height="150px" width="274.5px" />
-                  </div></Slider>}
+                  </div>
+                  <div>
+                    <h3>PREMIUM BUFFET<br />NINJA<span>CLASSIC</span></h3>
+                    <img src='Group 1254.png' height="150px" width="274.5px" />
+                  </div>
+                </Slider>}
               </div>
               <div className={styles.pkgSliderContainerLG}>
-              {<Slider {...settings}><div className={styles.pkgSlider}>
+                {<Slider {...settings}>
+                  <div className={styles.pkgSlider}>
                     <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
                     <img src='555.png' />
-              </div>
-              <div className={styles.pkgSlider}>
+                  </div>
+                  <div className={styles.pkgSlider}>
                     <h3>SELF - SERVICE<br />NINJA<span>BUFFET</span></h3>
-                    <img src='Frame 769.png'/>
-              </div></Slider>}
+                    <img src='Frame 769.png' />
+                  </div>
+                  <div className={styles.pkgSlider}>
+                    <h3>PREMIUM BUFFET<br />NINJA<span>CLASSIC</span></h3>
+                    <img src='Group 1254.png' />
+                  </div>
+                </Slider>}
               </div>
               {/* <div className={styles.pkgDetails}>
                 <div>
@@ -1591,7 +1603,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1626,20 +1638,20 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchValue}
                             onChange={searchStarter}
                             placeholder="Search Starter" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles2.insideDivLi}>
+                                    <div id={styles.insideDivLi}>
                                       {/* <img src={item.img} width="30.05px" height="26.54px" /> */}
-                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "starters")} />
@@ -1649,7 +1661,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1662,7 +1674,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1696,20 +1708,20 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu2 && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchMainsValue}
                             onChange={searchMains}
                             placeholder="Search Mains" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredMainsData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
                                       {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
-                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "mains")} />
@@ -1719,7 +1731,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1733,7 +1745,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1768,20 +1780,20 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu3 && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchBreadValue}
                             onChange={searchBread}
                             placeholder="Search Bread Rice Noodles" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredBreadData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
                                       {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
-                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "Bread+Rice")} />
@@ -1791,7 +1803,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1804,7 +1816,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1839,20 +1851,20 @@ const CustomizeNinjaBox = () => {
                     </div>
                     )}
                     {showSelectedMenu4 && (<div className={styles2.starterMenuContainer}>
-                      <div id={styles2.starterSearchContent}>
+                      <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
                             value={searchDessertValue}
                             onChange={searchDessert}
                             placeholder="Search Desserts" />
-                          <div id={styles2.starterList}>
+                          <div id={styles.starterList}>
                             <ul>
                               {filteredDessertData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles2.insideDivLi}>
                                       {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
-                                      <p style={{marginTop: "12.5px"}} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "desserts")} />
@@ -1862,7 +1874,7 @@ const CustomizeNinjaBox = () => {
                               ))}
                             </ul>
                           </div>
-                          <div id={styles2.listInsideBtn}>
+                          <div id={styles.listInsideBtn}>
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1872,7 +1884,7 @@ const CustomizeNinjaBox = () => {
                 </div>
               </div>
               <hr className={styles.MenuHr} />
-              <div className='text-center mt-3'>
+              <div className='text-center mt-3' id={styles.itemsQnty}>
                 <h6>{starters?.length} Starters + {mains?.length + breadRice.length} Mains + {desserts?.length} Desserts</h6>
               </div>
               <div className='mt-5'>
@@ -2013,7 +2025,7 @@ const CustomizeNinjaBox = () => {
                     ) : null}
                   </select>
 
-                  <p>{buffet}</p>
+                  <p>₹{buffet}</p>
                 </div>
               </div>
               {showPriceList && <div className={styles.pricing}>
