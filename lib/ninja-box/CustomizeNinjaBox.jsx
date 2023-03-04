@@ -1035,9 +1035,58 @@ const CustomizeNinjaBox = () => {
             let guests = veg + nonVeg;
             if (count >= 2) {
               item.quantity = 0.15 * guests;
-            } else if (count === 1) {
-              item.quantity = 0.2 * guests;
+            } else if (count === 1 && mains.length===0 && starters.length>=2) {
+              if(item.veg===true){
+                item.quantity = 0.250 * veg;
+              }
+              else{
+                item.quantity = 0.250 * nonVeg;
+              }
             }
+
+            else if (count === 1 && mains.length===0 && starters.length<=1) {
+              if(item.veg===true){
+                item.quantity = 0.300 * veg;
+              }
+              else{
+                item.quantity = 0.300 * nonVeg;
+              }
+            }
+
+            else if (count >= 1 && mains.length===0 && starters.length<=1) {
+              if(item.veg===true){
+                item.quantity = 0.250 * veg;
+              }
+              else{
+                item.quantity = 0.250 * nonVeg;
+              }
+            }
+
+            else if (count >= 1 && mains.length===0 && starters.length>=2) {
+              if(item.veg===true){
+                item.quantity = 0.2 * veg;
+              }
+              else{
+                item.quantity = 0.2 * nonVeg;
+              }
+            }
+
+            else if (count === 1 && mains.length>=1) {
+              item.quantity = 0.20 * guests;
+            }
+
+            else{
+              if(item.veg===true){
+                item.quantity = 0.15 * veg;
+              }
+              else{
+                item.quantity = 0.15 * nonVeg;
+              }
+            }
+
+            
+
+            
           }
         }
       });
@@ -1230,32 +1279,33 @@ const CustomizeNinjaBox = () => {
           else {
             quantity = nonVeg * 0.15;
           }
+          
+      }
 
+      temp.forEach((item) => {
+        if(count>=3){
+          if (item.menu_label === "Rice" && item.veg === true) {
+
+            item.quantity = 0.10 * veg;
+          }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.10 * nonVeg;
+          }
         }
-
-        temp.forEach((item) => {
-          if (count >= 3) {
-            if (item.menu_label === "Rice" && item.veg === true) {
-
-              item.quantity = 0.10 * veg;
-            }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.10 * nonVeg;
-            }
+       
+        else{
+          if (item.menu_label === "Rice" && item.veg === true) {
+              
+            item.quantity = 0.15 * veg;
           }
-          else {
-            if (item.menu_label === "Rice" && item.veg === true) {
-
-              item.quantity = 0.15 * veg;
-            }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.15 * nonVeg;
-            }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.15 * nonVeg;
           }
-
-        });
-
-
+        }
+        
+      });
+       
+        
 
 
         // if (count >= 2) {
