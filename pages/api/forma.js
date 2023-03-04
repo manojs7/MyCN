@@ -103,7 +103,7 @@ export default function handler(req, res) {
     </div>
     
     
-      <h3>Sub Total : Rs ${totalPrice}</h3>
+      <h3>Sub Total : Rs ${data.totalPrice}</h3>
       
       <h3>Box/Buffet Price : Rs ${data.buffet}</h3>
       <h3>GST: Rs ${GST}</h3>
