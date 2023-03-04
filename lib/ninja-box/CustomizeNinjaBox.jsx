@@ -1152,40 +1152,127 @@ const CustomizeNinjaBox = () => {
       console.log("rice", count);
       if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
         let guests = veg > 0 ? veg : nonVeg;
-        if (count >= 1) {
-          console.log("count2");
-          quantity = 0.15 * guests;
-          temp.forEach((item) => {
-            if (item.menu_label === "Rice") {
-              item.quantity = 0.15 * guests;
-            }
-          });
-        } else if (mains.length > 0 && count === 1) {
-          console.log("count1");
-
-          quantity = 0.2 * guests;
-        } else if (mains.length === 0 && count === 1) {
-          console.log("count1");
-          quantity = 0.3 * guests;
+        if(mains.length === 0 && count === 1){
+          quantity = guests * 0.3;
         }
+        else if(mains.length > 0 && count === 1){
+          quantity = guests * 0.2;
+        }
+        else if(count >=3){
+          quantity = guests * 0.1;
+        }
+        else{
+          quantity = guests * 0.15;
+        }
+        temp.forEach((item) => {
+          if (item.menu_label === "Rice") {
+            if(count>=3){
+              quantity= guests * 0.1;
+            }
+            else{
+              quantity = guests * 0.15;
+            }
+            // item.quantity = 0.15 * guests;
+          }
+        });
+
+
+
+
+
+        // if (count >= 1) {
+        //   console.log("count2");
+        //   quantity = 0.30 * guests;
+        //   temp.forEach((item) => {
+        //     if (item.menu_label === "Rice") {
+        //       item.quantity = 0.15 * guests;
+        //     }
+        //   });
+        // } else if (mains.length > 0 && count === 1) {
+        //   console.log("count1");
+
+        //   quantity = 0.15 * guests;
+        // } else if (mains.length === 0 && count === 1) {
+        //   console.log("count1");
+        //   quantity = 0.3 * guests;
+        // }
       }
       else if (veg > 0 && nonVeg > 0) {
         let guests = veg + nonVeg;
-        if (count >= 2) {
-          quantity = 0.15 * guests;
-          temp.forEach((item) => {
-            if (item.menu_label === "Rice" && item.veg === true) {
-              item.quantity = 0.15 * guests;
-            }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.15 * nonVeg;
-            }
-          });
-        } else if (count === 1) {
-          !filterBreadRice?.veg
-            ? (quantity = nonVeg * 0.2)
-            : (quantity = 0.2 * guests);
+
+      if(filterBreadRice.veg){
+        if(mains.length === 0 && count === 1){
+          quantity = guests * 0.3;
         }
+        else if(mains.length > 0 && count === 1){
+          quantity = guests * 0.2;
+        }
+        else if(count >=3){
+          quantity = veg * 0.1;
+        }
+        else{
+          quantity = veg * 0.15;
+        }
+        
+      }
+      else{
+        //non veg rice handelling
+
+          if(mains.length === 0 && count === 1){
+            quantity = nonVeg * 0.3;
+          }
+          else if(mains.length > 0 && count === 1){
+            quantity = nonVeg * 0.2;
+          }
+          else if(count >=3){
+            quantity = nonVeg * 0.1;
+          }
+          else{
+            quantity = nonVeg * 0.15;
+          }
+          
+      }
+
+      temp.forEach((item) => {
+        if(count>=3){
+          if (item.menu_label === "Rice" && item.veg === true) {
+
+            item.quantity = 0.10 * veg;
+          }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.10 * nonVeg;
+          }
+        }
+        else{
+          if (item.menu_label === "Rice" && item.veg === true) {
+
+            item.quantity = 0.15 * veg;
+          }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.15 * nonVeg;
+          }
+        }
+        
+      });
+       
+        
+
+
+        // if (count >= 2) {
+        //   quantity = 0.15 * guests;
+        //   temp.forEach((item) => {
+        //     if (item.menu_label === "Rice" && item.veg === true) {
+        //       item.quantity = 0.15 * guests;
+        //     }
+        //     if (item.menu_label === "Rice" && item.veg === false) {
+        //       item.quantity = 0.15 * nonVeg;
+        //     }
+        //   });
+        // } else if (count === 1) {
+        //   !filterBreadRice?.veg
+        //     ? (quantity = nonVeg * 0.2)
+        //     : (quantity = 0.2 * guests);
+        // }
       }
       console.log("rice", count);
     }
