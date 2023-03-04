@@ -2073,7 +2073,7 @@ const CustomizeNinjaBox = () => {
                       <h4>Coupon Value</h4>
                     </div>
                     <div>
-                      <p>₹0000</p>
+                      <p>₹0</p>
                     </div>
                   </div>
                   <div className={styles.pricingTitle4}>
@@ -2091,7 +2091,7 @@ const CustomizeNinjaBox = () => {
                     <h4>Grand Total</h4>
                   </div>
                   <div>
-                    <p>{grandTotal.toLocaleString('en-US')}</p>
+                    <p>₹{grandTotal.toLocaleString('en-US')}</p>
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
