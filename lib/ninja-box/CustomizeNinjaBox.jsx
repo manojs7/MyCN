@@ -192,6 +192,10 @@ const CustomizeNinjaBox = () => {
 
   const handleCity = (city) => {
     setCity(city);
+    setStarters([]);
+    setMains([]);
+    setDesserts([]);
+    setBreadRice([]);
 
     const filterStarter = startersData2.filter(
       (d) => d.city === city
@@ -1078,7 +1082,7 @@ const CustomizeNinjaBox = () => {
         temp.forEach((item) => {
           item.name === "Pooris"
             ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = (veg + nonVeg) * 1);
+            : (item.quantity = (veg + nonVeg) * 2);
 
         });
         quantity = (veg + nonVeg) * 2;
@@ -1098,12 +1102,12 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       if (bread === 1) {
-        quantity = (veg + nonVeg) * 2;
+        quantity = (veg + nonVeg) * 1.5;
       } else {
         temp.forEach((item) => {
           item.name === "Pooris"
             ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = (veg + nonVeg) * 1);
+            : (item.quantity = (veg + nonVeg) * 2);
         });
         quantity = (veg + nonVeg) * 1;
       }
@@ -1148,40 +1152,127 @@ const CustomizeNinjaBox = () => {
       console.log("rice", count);
       if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
         let guests = veg > 0 ? veg : nonVeg;
-        if (count >= 1) {
-          console.log("count2");
-          quantity = 0.15 * guests;
-          temp.forEach((item) => {
-            if (item.menu_label === "Rice") {
-              item.quantity = 0.15 * guests;
-            }
-          });
-        } else if (mains.length > 0 && count === 1) {
-          console.log("count1");
-
-          quantity = 0.2 * guests;
-        } else if (mains.length === 0 && count === 1) {
-          console.log("count1");
-          quantity = 0.3 * guests;
+        if(mains.length === 0 && count === 1){
+          quantity = guests * 0.3;
         }
+        else if(mains.length > 0 && count === 1){
+          quantity = guests * 0.2;
+        }
+        else if(count >=3){
+          quantity = guests * 0.1;
+        }
+        else{
+          quantity = guests * 0.15;
+        }
+        temp.forEach((item) => {
+          if (item.menu_label === "Rice") {
+            if(count>=3){
+              quantity= guests * 0.1;
+            }
+            else{
+              quantity = guests * 0.15;
+            }
+            // item.quantity = 0.15 * guests;
+          }
+        });
+
+
+
+
+
+        // if (count >= 1) {
+        //   console.log("count2");
+        //   quantity = 0.30 * guests;
+        //   temp.forEach((item) => {
+        //     if (item.menu_label === "Rice") {
+        //       item.quantity = 0.15 * guests;
+        //     }
+        //   });
+        // } else if (mains.length > 0 && count === 1) {
+        //   console.log("count1");
+
+        //   quantity = 0.15 * guests;
+        // } else if (mains.length === 0 && count === 1) {
+        //   console.log("count1");
+        //   quantity = 0.3 * guests;
+        // }
       }
       else if (veg > 0 && nonVeg > 0) {
         let guests = veg + nonVeg;
-        if (count >= 2) {
-          quantity = 0.15 * guests;
-          temp.forEach((item) => {
-            if (item.menu_label === "Rice" && item.veg === true) {
-              item.quantity = 0.15 * guests;
-            }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.15 * nonVeg;
-            }
-          });
-        } else if (count === 1) {
-          !filterBreadRice?.veg
-            ? (quantity = nonVeg * 0.2)
-            : (quantity = 0.2 * guests);
+
+      if(filterBreadRice.veg){
+        if(mains.length === 0 && count === 1){
+          quantity = guests * 0.3;
         }
+        else if(mains.length > 0 && count === 1){
+          quantity = guests * 0.2;
+        }
+        else if(count >=3){
+          quantity = veg * 0.1;
+        }
+        else{
+          quantity = veg * 0.15;
+        }
+        
+      }
+      else{
+        //non veg rice handelling
+
+          if(mains.length === 0 && count === 1){
+            quantity = nonVeg * 0.3;
+          }
+          else if(mains.length > 0 && count === 1){
+            quantity = nonVeg * 0.2;
+          }
+          else if(count >=3){
+            quantity = nonVeg * 0.1;
+          }
+          else{
+            quantity = nonVeg * 0.15;
+          }
+          
+      }
+
+      temp.forEach((item) => {
+        if(count>=3){
+          if (item.menu_label === "Rice" && item.veg === true) {
+
+            item.quantity = 0.10 * veg;
+          }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.10 * nonVeg;
+          }
+        }
+        else{
+          if (item.menu_label === "Rice" && item.veg === true) {
+
+            item.quantity = 0.15 * veg;
+          }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.15 * nonVeg;
+          }
+        }
+        
+      });
+       
+        
+
+
+        // if (count >= 2) {
+        //   quantity = 0.15 * guests;
+        //   temp.forEach((item) => {
+        //     if (item.menu_label === "Rice" && item.veg === true) {
+        //       item.quantity = 0.15 * guests;
+        //     }
+        //     if (item.menu_label === "Rice" && item.veg === false) {
+        //       item.quantity = 0.15 * nonVeg;
+        //     }
+        //   });
+        // } else if (count === 1) {
+        //   !filterBreadRice?.veg
+        //     ? (quantity = nonVeg * 0.2)
+        //     : (quantity = 0.2 * guests);
+        // }
       }
       console.log("rice", count);
     }
@@ -1220,7 +1311,7 @@ const CustomizeNinjaBox = () => {
         quantity = Math.round((veg + nonVeg) * 1.5);
       }
     } else {
-      quantity = Math.round((veg + nonVeg) * 0.075).toFixed(1);
+      quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
     }
     temp.push({
       // name: dessert.name,
@@ -1272,8 +1363,14 @@ const CustomizeNinjaBox = () => {
       }
     });
     desserts.map((d) => {
-      if (d.Qtype === 'pcs') {
-        dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price) / 12);
+      if (d.Qtype === "pcs") {
+        // expensive desserts should go 1 piece
+        if (d.cuisine === 'Continental') {
+          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price));
+        }
+        else {
+          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price) / 12);
+        }
       }
       else {
         dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
@@ -1373,6 +1470,8 @@ const CustomizeNinjaBox = () => {
       grandTotal: grandTotal,
       buffet: buffet,
       dessertClassname: "caterNinja_add_dessert_button",
+      totalPrice:totalPrice,
+      GST:GST,
       showDessert: false
     };
     console.log(datas)
@@ -2038,14 +2137,14 @@ const CustomizeNinjaBox = () => {
                       <p>₹{totalPrice.toLocaleString('en-US')}</p>
                     </div>
                   </div>
-                  <div className={styles.pricingTitle11}>
+                  {/* <div className={styles.pricingTitle11}>
                     <div>
                       <h4>NinjaBox Service</h4>
                     </div>
                     <div>
                       <p>₹0000</p>
                     </div>
-                  </div>
+                  </div> */}
                   <div className={styles.pricingTitle2}>
                     <div>
                       <h4>Delivery Charges <span></span></h4>
@@ -2061,7 +2160,7 @@ const CustomizeNinjaBox = () => {
                       <h4>Coupon Value</h4>
                     </div>
                     <div>
-                      <p>₹0000</p>
+                      <p>₹0</p>
                     </div>
                   </div>
                   <div className={styles.pricingTitle4}>
@@ -2079,7 +2178,7 @@ const CustomizeNinjaBox = () => {
                     <h4>Grand Total</h4>
                   </div>
                   <div>
-                    <p>{grandTotal.toLocaleString('en-US')}</p>
+                    <p>₹{grandTotal.toLocaleString('en-US')}</p>
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
