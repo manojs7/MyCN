@@ -1152,24 +1152,24 @@ const CustomizeNinjaBox = () => {
       console.log("rice", count);
       if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
         let guests = veg > 0 ? veg : nonVeg;
-        if(mains.length === 0 && count === 1){
+        if (mains.length === 0 && count === 1) {
           quantity = guests * 0.3;
         }
-        else if(mains.length > 0 && count === 1){
+        else if (mains.length > 0 && count === 1) {
           quantity = guests * 0.2;
         }
-        else if(count >=3){
+        else if (count >= 3) {
           quantity = guests * 0.1;
         }
-        else{
+        else {
           quantity = guests * 0.15;
         }
         temp.forEach((item) => {
           if (item.menu_label === "Rice") {
-            if(count>=3){
-              quantity= guests * 0.1;
+            if (count >= 3) {
+              quantity = guests * 0.1;
             }
-            else{
+            else {
               quantity = guests * 0.15;
             }
             // item.quantity = 0.15 * guests;
@@ -1200,62 +1200,62 @@ const CustomizeNinjaBox = () => {
       else if (veg > 0 && nonVeg > 0) {
         let guests = veg + nonVeg;
 
-      if(filterBreadRice.veg){
-        if(mains.length === 0 && count === 1){
-          quantity = guests * 0.3;
-        }
-        else if(mains.length > 0 && count === 1){
-          quantity = guests * 0.2;
-        }
-        else if(count >=3){
-          quantity = veg * 0.1;
-        }
-        else{
-          quantity = veg * 0.15;
-        }
-        
-      }
-      else{
-        //non veg rice handelling
+        if (filterBreadRice.veg) {
+          if (mains.length === 0 && count === 1) {
+            quantity = guests * 0.3;
+          }
+          else if (mains.length > 0 && count === 1) {
+            quantity = guests * 0.2;
+          }
+          else if (count >= 3) {
+            quantity = veg * 0.1;
+          }
+          else {
+            quantity = veg * 0.15;
+          }
 
-          if(mains.length === 0 && count === 1){
+        }
+        else {
+          //non veg rice handelling
+
+          if (mains.length === 0 && count === 1) {
             quantity = nonVeg * 0.3;
           }
-          else if(mains.length > 0 && count === 1){
+          else if (mains.length > 0 && count === 1) {
             quantity = nonVeg * 0.2;
           }
-          else if(count >=3){
+          else if (count >= 3) {
             quantity = nonVeg * 0.1;
           }
-          else{
+          else {
             quantity = nonVeg * 0.15;
           }
-          
-      }
 
-      temp.forEach((item) => {
-        if(count>=3){
-          if (item.menu_label === "Rice" && item.veg === true) {
-
-            item.quantity = 0.10 * veg;
-          }
-          if (item.menu_label === "Rice" && item.veg === false) {
-            item.quantity = 0.10 * nonVeg;
-          }
         }
-        else{
-          if (item.menu_label === "Rice" && item.veg === true) {
 
-            item.quantity = 0.15 * veg;
+        temp.forEach((item) => {
+          if (count >= 3) {
+            if (item.menu_label === "Rice" && item.veg === true) {
+
+              item.quantity = 0.10 * veg;
+            }
+            if (item.menu_label === "Rice" && item.veg === false) {
+              item.quantity = 0.10 * nonVeg;
+            }
           }
-          if (item.menu_label === "Rice" && item.veg === false) {
-            item.quantity = 0.15 * nonVeg;
+          else {
+            if (item.menu_label === "Rice" && item.veg === true) {
+
+              item.quantity = 0.15 * veg;
+            }
+            if (item.menu_label === "Rice" && item.veg === false) {
+              item.quantity = 0.15 * nonVeg;
+            }
           }
-        }
-        
-      });
-       
-        
+
+        });
+
+
 
 
         // if (count >= 2) {
@@ -1470,8 +1470,8 @@ const CustomizeNinjaBox = () => {
       grandTotal: grandTotal,
       buffet: buffet,
       dessertClassname: "caterNinja_add_dessert_button",
-      totalPrice:totalPrice,
-      GST:GST,
+      totalPrice: totalPrice,
+      GST: GST,
       showDessert: false
     };
     console.log(datas)
@@ -2004,11 +2004,11 @@ const CustomizeNinjaBox = () => {
               <div className={styles.instantQuoteBtn}>
                 <button onClick={formSubmit}>Get Instant Quote</button>
               </div>
-              <div className={styles.applyCoupon}>
+              {/* <div className={styles.applyCoupon}>
                 <input type="text" placeholder='Enter Coupon Code' />
                 <button>Apply</button>
-              </div>
-              <div className={styles.finalPriceSection}>
+              </div> */}
+              {showPriceList &&<div className={styles.finalPriceSection}>
                 <div className="d-flex justify-content-between">
                   {/* <select className="form-select" aria-label="Default select example" value={buffet} onChange={e => handleBuffet(e.target.value)}>
                     <option value="" selected>Ninjabox - Delivery (Free)</option>
@@ -2124,9 +2124,9 @@ const CustomizeNinjaBox = () => {
                     ) : null}
                   </select>
 
-                  <p>₹{buffet}</p>
+                  <p style={{fontWeight: "600"}}>₹{buffet}</p>
                 </div>
-              </div>
+              </div>}
               {showPriceList && <div className={styles.pricing}>
                 <div>
                   <div className={styles.pricingTitle1}>
@@ -2134,7 +2134,7 @@ const CustomizeNinjaBox = () => {
                       <h4>Items Total</h4>
                     </div>
                     <div>
-                      <p>₹{totalPrice.toLocaleString('en-US')}</p>
+                      <p style={{fontWeight: "600"}}>₹{totalPrice.toLocaleString('en-US')}</p>
                     </div>
                   </div>
                   {/* <div className={styles.pricingTitle11}>
@@ -2156,8 +2156,9 @@ const CustomizeNinjaBox = () => {
                   </div>
                   <hr className={styles.hr1} />
                   <div className={styles.pricingTitle3}>
-                    <div>
-                      <h4>Coupon Value</h4>
+                    <div className={styles.applyCoupon}>
+                      <input type="text" placeholder='Enter Coupon Code' />
+                      <button>Apply</button>
                     </div>
                     <div>
                       <p>₹0</p>
@@ -2178,7 +2179,7 @@ const CustomizeNinjaBox = () => {
                     <h4>Grand Total</h4>
                   </div>
                   <div>
-                    <p>₹{grandTotal.toLocaleString('en-US')}</p>
+                    <p style={{fontWeight: "600"}}>₹{grandTotal.toLocaleString('en-US')}</p>
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
