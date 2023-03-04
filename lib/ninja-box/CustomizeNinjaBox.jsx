@@ -192,6 +192,10 @@ const CustomizeNinjaBox = () => {
 
   const handleCity = (city) => {
     setCity(city);
+    setStarters([]);
+    setMains([]);
+    setDesserts([]);
+    setBreadRice([]);
 
     const filterStarter = startersData2.filter(
       (d) => d.city === city
@@ -1272,8 +1276,14 @@ const CustomizeNinjaBox = () => {
       }
     });
     desserts.map((d) => {
-      if (d.Qtype === 'pcs') {
-        dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price) / 12);
+      if (d.Qtype === "pcs") {
+        // expensive desserts should go 1 piece
+        if (d.cuisine === 'Continental') {
+          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price));
+        }
+        else {
+          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price) / 12);
+        }
       }
       else {
         dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
@@ -1373,6 +1383,8 @@ const CustomizeNinjaBox = () => {
       grandTotal: grandTotal,
       buffet: buffet,
       dessertClassname: "caterNinja_add_dessert_button",
+      totalPrice:totalPrice,
+      GST:GST,
       showDessert: false
     };
     console.log(datas)
@@ -2038,14 +2050,14 @@ const CustomizeNinjaBox = () => {
                       <p>₹{totalPrice.toLocaleString('en-US')}</p>
                     </div>
                   </div>
-                  <div className={styles.pricingTitle11}>
+                  {/* <div className={styles.pricingTitle11}>
                     <div>
                       <h4>NinjaBox Service</h4>
                     </div>
                     <div>
                       <p>₹0000</p>
                     </div>
-                  </div>
+                  </div> */}
                   <div className={styles.pricingTitle2}>
                     <div>
                       <h4>Delivery Charges <span></span></h4>

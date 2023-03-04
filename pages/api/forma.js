@@ -103,30 +103,12 @@ export default function handler(req, res) {
     </div>
     
     
-      <h3>Sub Total : Rs ${data.totalAppeticerPrice +
-        data.totalMainCoursePrice +
-        data.totalDessertPrice +
-        data.totalBreadRicePrice
-        }</h3>
+      <h3>Sub Total : Rs ${totalPrice}</h3>
       
       <h3>Box/Buffet Price : Rs ${data.buffet}</h3>
-      <h3>GST: Rs ${Math.round(((data.totalAppeticerPrice +
-        data.totalMainCoursePrice +
-        data.totalDessertPrice +
-        data.totalBreadRicePrice) *
-        5) /
-        100)}</h3>
-      <h2>Grand Total : Rs ${Math.round((((data.totalAppeticerPrice +
-          data.totalMainCoursePrice +
-          data.totalDessertPrice +
-          data.totalBreadRicePrice) *
-          5) / 100) +
-          (data.totalAppeticerPrice +
-            data.totalMainCoursePrice +
-            data.totalDessertPrice +
-            data.totalBreadRicePrice +
-            data.buffet * 1.05))
-        }</h2>
+      <h3>GST: Rs ${GST}</h3>
+      <h2>Grand Total : Rs ${data.grandTotal}
+        </h2>
     
     
     <table style="width:100%">
