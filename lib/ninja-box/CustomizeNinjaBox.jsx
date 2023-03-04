@@ -690,7 +690,7 @@ const CustomizeNinjaBox = () => {
             quantity = 12;
           }
         } else {
-          quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
+          quantity = (veg * 0.05 + nonVeg * 0.05).toFixed(1);
         }
       } else {
         if (starter.Qtype === "pcs") {
@@ -1220,7 +1220,7 @@ const CustomizeNinjaBox = () => {
         quantity = Math.round((veg + nonVeg) * 1.5);
       }
     } else {
-      quantity = Math.round((veg + nonVeg) * 0.075).toFixed(1);
+      quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
     }
     temp.push({
       // name: dessert.name,
