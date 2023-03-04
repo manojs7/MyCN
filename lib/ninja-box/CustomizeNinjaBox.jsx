@@ -1243,9 +1243,15 @@ const CustomizeNinjaBox = () => {
             item.quantity = 0.10 * nonVeg;
           }
         }
+        else if (count===1 && item.veg===true){
+          item.quantity = 0.30 * (veg + nonVeg);
+        }
+        else if (count===1 && item.veg===false){
+          item.quantity = 0.30 * nonVeg;
+        }
         else{
           if (item.menu_label === "Rice" && item.veg === true) {
-
+              
             item.quantity = 0.15 * veg;
           }
           if (item.menu_label === "Rice" && item.veg === false) {
