@@ -1082,7 +1082,7 @@ const CustomizeNinjaBox = () => {
         temp.forEach((item) => {
           item.name === "Pooris"
             ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = (veg + nonVeg) * 1);
+            : (item.quantity = (veg + nonVeg) * 2);
 
         });
         quantity = (veg + nonVeg) * 2;
@@ -1102,12 +1102,12 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       if (bread === 1) {
-        quantity = (veg + nonVeg) * 2;
+        quantity = (veg + nonVeg) * 1.5;
       } else {
         temp.forEach((item) => {
           item.name === "Pooris"
             ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = (veg + nonVeg) * 1);
+            : (item.quantity = (veg + nonVeg) * 2);
         });
         quantity = (veg + nonVeg) * 1;
       }
