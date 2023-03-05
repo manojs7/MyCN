@@ -39,16 +39,18 @@ export default function handler(req, res) {
     
     <h3>Appetizer :
           ${
-        data.appetizer.some((el) => el.value === true) &&
+        // data.appetizer.some((el) => el.value === true) &&
         data.appetizer
           .map((array, index) => {
-            return array.value === true
-              ? `<li key="${array.id}_${index}">${array.name} (${array.quantity})</li>`
-    
+            return array.quantity
+              ? `<li key="${array.id}_${index}">${array.name} (${array.quantity} ${array.Qtype})</li>`
               : null;
           })
           .join("")
+          
+          
         } 
+        
           </h3> 
     </div>
     
@@ -58,12 +60,12 @@ export default function handler(req, res) {
     
     
     ${
-        data.mainCourse.some((el) => el.value === true) &&
+        
         data.mainCourse
           .map((array, index) => {
-            return array.value === true
-              ? `<li key="${array.id}_${index}">${array.name} (${array.quantity})</li>`
-              : null;
+            return array.quantity
+            ? `<li key="${array.id}_${index}">${array.name} (${array.quantity} ${array.Qtype})</li>`
+            : null;
           })
           .join("")
         }  
@@ -74,12 +76,12 @@ export default function handler(req, res) {
     
     <h3>BreadRice: 
     ${
-        data.breadRice.some((el) => el.value === true) &&
+       
         data.breadRice
           .map((array, index) => {
-            return array.value === true
-              ? `<li key="${array.id}_${index}">${array.name} (${array.quantity})</li>`
-              : null;
+            return array.quantity
+            ? `<li key="${array.id}_${index}">${array.name} (${array.quantity} ${array.Qtype})</li>`
+            : null;
           })
           .join("")
         }  
@@ -90,11 +92,11 @@ export default function handler(req, res) {
     
     <h3>Dessert: 
           ${
-        data.dessert.some((el) => el.value === true) &&
+        
         data.dessert
           .map((array, index) => {
-            return array.value === true
-              ? `<li key="${array.id}_${index}">${array.name}</li>`
+            return array.quantity
+              ? `<li key="${array.id}_${index}">${array.name} (${array.quantity} ${array.Qtype})</li>`
               : null;
           })
           .join("")
@@ -153,12 +155,13 @@ export default function handler(req, res) {
     
           `,
     };
+    let appt=data.appetizer;
 
         transporter.sendMail(mailOptions, (error, response) => {
           if (error) {
             return res.json({ success: false});
           } else {
-            return res.json({ success: true });
+            return res.json({ success: true, message:mailOptions });
           }
         });
 

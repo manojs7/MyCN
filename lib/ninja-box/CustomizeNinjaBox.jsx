@@ -1554,7 +1554,7 @@ const CustomizeNinjaBox = () => {
       body: data,
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
     }).then((res) => {
-      console.log(res)
+      console.log(res.message)
       if (res.success) {
         console.log("message sent");
       }
