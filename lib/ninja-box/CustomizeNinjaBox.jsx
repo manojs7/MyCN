@@ -196,6 +196,7 @@ const CustomizeNinjaBox = () => {
     setMains([]);
     setDesserts([]);
     setBreadRice([]);
+    getDeliveryCharge(veg+nonVeg);
 
     const filterStarter = startersData2.filter(
       (d) => d.city === city
@@ -241,6 +242,7 @@ const CustomizeNinjaBox = () => {
       setBreadRiceData(breadRiceData2);
 
     }
+    getDeliveryCharge(veg+nonVeg);
 
 
     // setStarters([]);
@@ -839,6 +841,54 @@ const CustomizeNinjaBox = () => {
       }
     }
 
+    temp.forEach((item) => {
+      if (item.veg) {
+        if(item.menu_label==='Mains-dry' || item.menu_label==="Mains-dal"){
+          item.quantity=HandleCeilFloorValue(veg*0.1+nonVeg*0.1);
+        }
+        else if (item.menu_label === "Pasta") {
+          if (nonVegPastaMainCount > 0) {
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+          }
+          else {
+            item.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          }
+
+        }
+        //Mains-gravy : same logic as above 
+        else if (item.menu_label === "Mains-Gravy") {
+          if (nonVegMainsGravyMainCount > 0) {
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+          }
+          else {
+            item.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          }
+
+        }
+        //Main -Thai : same logic as above
+        else if (item.menu_label === "Mains-Thai") {
+
+          if (nonVegMainThaiMainCount > 0) {
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+          }
+          else {
+            item.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+          }
+        }
+      }
+      else{
+        if (item.Qtype === "pcs") {
+          item.quantity = nonVeg * 1;
+        }
+        else if (item.name === highestPrice.name) {
+          item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
+        }
+        else {
+          item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+        }
+      }
+    })
+
     temp.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
@@ -1383,6 +1433,13 @@ const CustomizeNinjaBox = () => {
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
   console.log("desert", desserts);
+  function handleBuffet(value) {
+
+    setbuffet(value);
+    // setGST(getGst());
+    // setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+
+  }
   // cost calculation
   useEffect(() => {
 
@@ -1439,20 +1496,14 @@ const CustomizeNinjaBox = () => {
     setTotalPrice(parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice));
     getDeliveryCharge(people);
     setGST(getGst());
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(getGst()));
     //setShowPriceList(false)
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
 
   function getGst() {
     return parseInt((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * 5 / 100)
   }
-  function handleBuffet(value) {
-
-    setbuffet(value);
-    setGST(getGst());
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-
-  }
+  
 
   const formSubmit = (e) => {
     e.preventDefault();
