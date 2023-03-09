@@ -100,8 +100,15 @@
         margin-top: 20px;
         text-align: end;
         margin-right: 20px;
+
+        #clearbtn{
+            background-color: none;
+            border: #4E810A;
+            color: black;
+        }
     
         button {
+            margin-left: 10px;
             width: 53.05px;
             height: 14.39px;
             background: rgba(190, 45, 48, 0.1);
@@ -844,6 +851,10 @@
         }
     }
 
+    #drdwndcntnr{
+        margin-bottom: -15px;
+    }
+
     .finalPriceSection {
         margin-top: 50px;
         margin-inline: 20px;
@@ -962,6 +973,13 @@
         display: none;
     }
 
+    #dlvydscr{
+        font-size: 7.3px;
+        margin-top: 0px;
+        margin-bottom: 0%;
+        margin-left: 0px;
+    }
+
 }
 
 .customizeMainContainer {
@@ -971,6 +989,25 @@
 //*********************************  LARGE DEVICE  ***************************************
 
 @media (min-width: 768px) {
+
+    #vegLogoLg{
+        margin-top: 10px !important;
+        width: 15px !important;
+        height: 15px !important;
+    }
+    #nvegLogoLg{
+        margin-top: 10px !important;
+        width: 15px !important;
+        height: 15px !important;
+    }
+
+    #dlvydscr{
+        font-size: 12px;
+        margin-left: 20px;
+        margin-top: -40px;
+        margin-bottom: 0%;
+    }
+
     .header {
         background-color: #FFC31A;
         margin-top: 80px;
@@ -1149,8 +1186,16 @@
         margin-top: 20px;
         text-align: end;
         margin-right: 20px;
+
+        #clearbtn{
+            width: 70px;
+            background-color: none;
+            border: #4E810A;
+            color: black;
+        }
     
         button {
+            margin-left: 10px;
             width: 60px;
             height: 20px;
             background: rgba(190, 45, 48, 0.1);
