@@ -196,7 +196,7 @@ const CustomizeNinjaBox = () => {
     setMains([]);
     setDesserts([]);
     setBreadRice([]);
-    getDeliveryCharge(veg + nonVeg);
+    getDeliveryCharge(veg+nonVeg);
 
     const filterStarter = startersData2.filter(
       (d) => d.city === city
@@ -242,7 +242,7 @@ const CustomizeNinjaBox = () => {
       setBreadRiceData(breadRiceData2);
 
     }
-    getDeliveryCharge(veg + nonVeg);
+    getDeliveryCharge(veg+nonVeg);
 
 
     // setStarters([]);
@@ -843,8 +843,8 @@ const CustomizeNinjaBox = () => {
 
     temp.forEach((item) => {
       if (item.veg) {
-        if (item.menu_label === 'Mains-dry' || item.menu_label === "Mains-dal") {
-          item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
+        if(item.menu_label==='Mains-dry' || item.menu_label==="Mains-dal"){
+          item.quantity=HandleCeilFloorValue(veg*0.1+nonVeg*0.1);
         }
         else if (item.menu_label === "Pasta") {
           if (nonVegPastaMainCount > 0) {
@@ -876,7 +876,7 @@ const CustomizeNinjaBox = () => {
           }
         }
       }
-      else {
+      else{
         if (item.Qtype === "pcs") {
           item.quantity = nonVeg * 1;
         }
@@ -896,6 +896,7 @@ const CustomizeNinjaBox = () => {
       quantity: quantity,
       Qtype: main.Qtype,
       veg: main.veg,
+      Images: main.Images,
       selling_price: main.selling_price,
       // description: main.description,
     });
@@ -1085,58 +1086,58 @@ const CustomizeNinjaBox = () => {
             let guests = veg + nonVeg;
             if (count >= 2) {
               item.quantity = 0.15 * guests;
-            } else if (count === 1 && mains.length === 0 && starters.length >= 2) {
-              if (item.veg === true) {
+            } else if (count === 1 && mains.length===0 && starters.length>=2) {
+              if(item.veg===true){
                 item.quantity = 0.250 * veg;
               }
-              else {
+              else{
                 item.quantity = 0.250 * nonVeg;
               }
             }
 
-            else if (count === 1 && mains.length === 0 && starters.length <= 1) {
-              if (item.veg === true) {
+            else if (count === 1 && mains.length===0 && starters.length<=1) {
+              if(item.veg===true){
                 item.quantity = 0.300 * veg;
               }
-              else {
+              else{
                 item.quantity = 0.300 * nonVeg;
               }
             }
 
-            else if (count >= 1 && mains.length === 0 && starters.length <= 1) {
-              if (item.veg === true) {
+            else if (count >= 1 && mains.length===0 && starters.length<=1) {
+              if(item.veg===true){
                 item.quantity = 0.250 * veg;
               }
-              else {
+              else{
                 item.quantity = 0.250 * nonVeg;
               }
             }
 
-            else if (count >= 1 && mains.length === 0 && starters.length >= 2) {
-              if (item.veg === true) {
+            else if (count >= 1 && mains.length===0 && starters.length>=2) {
+              if(item.veg===true){
                 item.quantity = 0.2 * veg;
               }
-              else {
+              else{
                 item.quantity = 0.2 * nonVeg;
               }
             }
 
-            else if (count === 1 && mains.length >= 1) {
+            else if (count === 1 && mains.length>=1) {
               item.quantity = 0.20 * guests;
             }
 
-            else {
-              if (item.veg === true) {
+            else{
+              if(item.veg===true){
                 item.quantity = 0.15 * veg;
               }
-              else {
+              else{
                 item.quantity = 0.15 * nonVeg;
               }
             }
 
+            
 
-
-
+            
           }
         }
       });
@@ -1329,33 +1330,33 @@ const CustomizeNinjaBox = () => {
           else {
             quantity = nonVeg * 0.15;
           }
+          
+      }
 
+      temp.forEach((item) => {
+        if(count>=3){
+          if (item.menu_label === "Rice" && item.veg === true) {
+
+            item.quantity = 0.10 * veg;
+          }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.10 * nonVeg;
+          }
         }
-
-        temp.forEach((item) => {
-          if (count >= 3) {
-            if (item.menu_label === "Rice" && item.veg === true) {
-
-              item.quantity = 0.10 * veg;
-            }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.10 * nonVeg;
-            }
+       
+        else{
+          if (item.menu_label === "Rice" && item.veg === true) {
+              
+            item.quantity = 0.15 * veg;
           }
-
-          else {
-            if (item.menu_label === "Rice" && item.veg === true) {
-
-              item.quantity = 0.15 * veg;
-            }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.15 * nonVeg;
-            }
+          if (item.menu_label === "Rice" && item.veg === false) {
+            item.quantity = 0.15 * nonVeg;
           }
-
-        });
-
-
+        }
+        
+      });
+       
+        
 
 
         // if (count >= 2) {
@@ -1381,6 +1382,7 @@ const CustomizeNinjaBox = () => {
       menu_label: filterBreadRice?.menu_label,
       name: filterBreadRice?.name,
       quantity: quantity,
+      Images: filterBreadRice?.Images,
       Qtype: filterBreadRice?.Qtype,
       veg: filterBreadRice?.veg,
       selling_price: filterBreadRice.selling_price,
@@ -1424,6 +1426,7 @@ const CustomizeNinjaBox = () => {
       cuisine: dessert.cuisine,
       menu_label: dessert.menu_label,
       name: dessert.name,
+      Images: dessert.Images,
       quantity: quantity,
       Qtype: dessert.Qtype,
       veg: dessert.veg,
@@ -1503,7 +1506,7 @@ const CustomizeNinjaBox = () => {
   function getGst() {
     return parseInt((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * 5 / 100)
   }
-
+  
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -1615,6 +1618,8 @@ const CustomizeNinjaBox = () => {
     });
   }
 
+
+
   return (
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
@@ -1693,7 +1698,7 @@ const CustomizeNinjaBox = () => {
 
                 <div className={styles.eventDate}>
                   <p>Event Date</p>
-                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} dateFormat='dd-MM-yyyy' required />
+                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} required />
                 </div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Veg Guest</p>
@@ -1722,23 +1727,6 @@ const CustomizeNinjaBox = () => {
                 <div>
                   <p>Delivery Time</p>
                   <input type="time" name='event_time' onChange={(time) => setstartTime(time)} required></input>
-                  {/* <select className="form-select">
-                    <option>12:00 am</option>
-                    <option>12:30 am</option>
-                    <option>1:00 pm</option>
-                    <option>1:30 pm</option>
-                    <option>2:00 pm</option>
-                    <option>2:30 pm</option>
-                    <option>3:00 pm</option>
-                    <option>5:00 pm</option>
-                    <option>5:30 pm</option>
-                    <option>6:00 pm</option>
-                    <option>6:30 pm</option>
-                    <option>7:30 pm</option>
-                    <option>8:00 pm</option>
-                    <option>8:30 pm</option>
-                    <option>9:00 pm</option>
-                  </select> */}
                 </div>
                 <div style={{ marginTop: "40px" }}>
                   <p>Non Veg Guest</p>
@@ -1818,7 +1806,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
+                        <img className={styles.itemImage} src={item.Images}  />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1865,9 +1853,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                      {/* <img src={item.img} width="30.05px" height="26.54px" /> */}
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                      <img src={item.Images} width="30.05px" height="26.54px" />
                                       <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1879,7 +1865,6 @@ const CustomizeNinjaBox = () => {
                             </ul>
                           </div>
                           <div id={styles.listInsideBtn}>
-                            {/* <button id={styles.clearbtn}>Clear All</button> */}
                             <button onClick={handleCancelClick}>Done</button>
                           </div>
                         </div>
@@ -1892,7 +1877,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
+                        <img className={styles.itemImage} src={item.Images}  />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1937,10 +1922,8 @@ const CustomizeNinjaBox = () => {
                               {filteredMainsData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles.insideDivLi}>
-                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                    <div id={styles2.insideDivLi}>
+                                      <img src={item.Images} width="30.05px" height="26.54px" />
                                       <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -1965,7 +1948,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
+                        <img className={styles.itemImage} src={item.Images}  />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2011,10 +1994,8 @@ const CustomizeNinjaBox = () => {
                               {filteredBreadData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles.insideDivLi}>
-                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                    <div id={styles2.insideDivLi}>
+                                      <img src={item.Images} width="30.05px" height="26.54px" />
                                       <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -2038,7 +2019,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169" />
+                        <img className={styles.itemImage} src={item.Images} />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2084,10 +2065,8 @@ const CustomizeNinjaBox = () => {
                               {filteredDessertData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles.insideDivLi}>
-                                      {/* <img src={item.image} width="30.05px" height="26.54px" /> */}
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                    <div id={styles2.insideDivLi}>
+                                      <img src={item.Images} width="30.05px" height="26.54px" />
                                       <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
@@ -2133,8 +2112,8 @@ const CustomizeNinjaBox = () => {
                 <input type="text" placeholder='Enter Coupon Code' />
                 <button>Apply</button>
               </div> */}
-              {showPriceList && <div className={styles.finalPriceSection}>
-                <div className="d-flex justify-content-between" id={styles.drdwndcntnr}>
+              {showPriceList &&<div className={styles.finalPriceSection}>
+                <div className="d-flex justify-content-between">
                   {/* <select className="form-select" aria-label="Default select example" value={buffet} onChange={e => handleBuffet(e.target.value)}>
                     <option value="" selected>Ninjabox - Delivery (Free)</option>
                     <option value="3500">Buffet setup + 1 waiter (+ ₹ 3,500.00)</option>
@@ -2249,9 +2228,8 @@ const CustomizeNinjaBox = () => {
                     ) : null}
                   </select>
 
-                  <p style={{ fontWeight: "600" }}>₹{buffet}</p>
+                  <p style={{fontWeight: "600"}}>₹{buffet}</p>
                 </div>
-                <p id={styles.dlvydscr}>(Click here to choose delivery options)</p>
               </div>}
               {showPriceList && <div className={styles.pricing}>
                 <div>
@@ -2260,7 +2238,7 @@ const CustomizeNinjaBox = () => {
                       <h4>Items Total</h4>
                     </div>
                     <div>
-                      <p style={{ fontWeight: "600" }}>₹{totalPrice.toLocaleString('en-US')}</p>
+                      <p style={{fontWeight: "600"}}>₹{totalPrice.toLocaleString('en-US')}</p>
                     </div>
                   </div>
                   {/* <div className={styles.pricingTitle11}>
@@ -2305,7 +2283,7 @@ const CustomizeNinjaBox = () => {
                     <h4>Grand Total</h4>
                   </div>
                   <div>
-                    <p style={{ fontWeight: "600" }}>₹{grandTotal.toLocaleString('en-US')}</p>
+                    <p style={{fontWeight: "600"}}>₹{grandTotal.toLocaleString('en-US')}</p>
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
