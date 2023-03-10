@@ -196,7 +196,7 @@ const CustomizeNinjaBox = () => {
     setMains([]);
     setDesserts([]);
     setBreadRice([]);
-    getDeliveryCharge(veg+nonVeg);
+    getDeliveryCharge(veg + nonVeg);
 
     const filterStarter = startersData2.filter(
       (d) => d.city === city
@@ -242,7 +242,7 @@ const CustomizeNinjaBox = () => {
       setBreadRiceData(breadRiceData2);
 
     }
-    getDeliveryCharge(veg+nonVeg);
+    getDeliveryCharge(veg + nonVeg);
 
 
     // setStarters([]);
@@ -843,8 +843,8 @@ const CustomizeNinjaBox = () => {
 
     temp.forEach((item) => {
       if (item.veg) {
-        if(item.menu_label==='Mains-dry' || item.menu_label==="Mains-dal"){
-          item.quantity=HandleCeilFloorValue(veg*0.1+nonVeg*0.1);
+        if (item.menu_label === 'Mains-dry' || item.menu_label === "Mains-dal") {
+          item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
         }
         else if (item.menu_label === "Pasta") {
           if (nonVegPastaMainCount > 0) {
@@ -876,7 +876,7 @@ const CustomizeNinjaBox = () => {
           }
         }
       }
-      else{
+      else {
         if (item.Qtype === "pcs") {
           item.quantity = nonVeg * 1;
         }
@@ -1086,58 +1086,58 @@ const CustomizeNinjaBox = () => {
             let guests = veg + nonVeg;
             if (count >= 2) {
               item.quantity = 0.15 * guests;
-            } else if (count === 1 && mains.length===0 && starters.length>=2) {
-              if(item.veg===true){
+            } else if (count === 1 && mains.length === 0 && starters.length >= 2) {
+              if (item.veg === true) {
                 item.quantity = 0.250 * veg;
               }
-              else{
+              else {
                 item.quantity = 0.250 * nonVeg;
               }
             }
 
-            else if (count === 1 && mains.length===0 && starters.length<=1) {
-              if(item.veg===true){
+            else if (count === 1 && mains.length === 0 && starters.length <= 1) {
+              if (item.veg === true) {
                 item.quantity = 0.300 * veg;
               }
-              else{
+              else {
                 item.quantity = 0.300 * nonVeg;
               }
             }
 
-            else if (count >= 1 && mains.length===0 && starters.length<=1) {
-              if(item.veg===true){
+            else if (count >= 1 && mains.length === 0 && starters.length <= 1) {
+              if (item.veg === true) {
                 item.quantity = 0.250 * veg;
               }
-              else{
+              else {
                 item.quantity = 0.250 * nonVeg;
               }
             }
 
-            else if (count >= 1 && mains.length===0 && starters.length>=2) {
-              if(item.veg===true){
+            else if (count >= 1 && mains.length === 0 && starters.length >= 2) {
+              if (item.veg === true) {
                 item.quantity = 0.2 * veg;
               }
-              else{
+              else {
                 item.quantity = 0.2 * nonVeg;
               }
             }
 
-            else if (count === 1 && mains.length>=1) {
+            else if (count === 1 && mains.length >= 1) {
               item.quantity = 0.20 * guests;
             }
 
-            else{
-              if(item.veg===true){
+            else {
+              if (item.veg === true) {
                 item.quantity = 0.15 * veg;
               }
-              else{
+              else {
                 item.quantity = 0.15 * nonVeg;
               }
             }
 
-            
 
-            
+
+
           }
         }
       });
@@ -1330,33 +1330,33 @@ const CustomizeNinjaBox = () => {
           else {
             quantity = nonVeg * 0.15;
           }
-          
-      }
 
-      temp.forEach((item) => {
-        if(count>=3){
-          if (item.menu_label === "Rice" && item.veg === true) {
+        }
 
-            item.quantity = 0.10 * veg;
+        temp.forEach((item) => {
+          if (count >= 3) {
+            if (item.menu_label === "Rice" && item.veg === true) {
+
+              item.quantity = 0.10 * veg;
+            }
+            if (item.menu_label === "Rice" && item.veg === false) {
+              item.quantity = 0.10 * nonVeg;
+            }
           }
-          if (item.menu_label === "Rice" && item.veg === false) {
-            item.quantity = 0.10 * nonVeg;
+
+          else {
+            if (item.menu_label === "Rice" && item.veg === true) {
+
+              item.quantity = 0.15 * veg;
+            }
+            if (item.menu_label === "Rice" && item.veg === false) {
+              item.quantity = 0.15 * nonVeg;
+            }
           }
-        }
-       
-        else{
-          if (item.menu_label === "Rice" && item.veg === true) {
-              
-            item.quantity = 0.15 * veg;
-          }
-          if (item.menu_label === "Rice" && item.veg === false) {
-            item.quantity = 0.15 * nonVeg;
-          }
-        }
-        
-      });
-       
-        
+
+        });
+
+
 
 
         // if (count >= 2) {
@@ -1506,7 +1506,7 @@ const CustomizeNinjaBox = () => {
   function getGst() {
     return parseInt((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * 5 / 100)
   }
-  
+
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -1806,7 +1806,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src={item.Images}  />
+                        <img className={styles.itemImage} src={item.Images} />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1854,7 +1854,9 @@ const CustomizeNinjaBox = () => {
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
                                       <img src={item.Images} width="30.05px" height="26.54px" />
-                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
+                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "starters")} />
@@ -1877,7 +1879,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src={item.Images}  />
+                        <img className={styles.itemImage} src={item.Images} />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1922,9 +1924,11 @@ const CustomizeNinjaBox = () => {
                               {filteredMainsData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles2.insideDivLi}>
+                                    <div id={styles.insideDivLi}>
                                       <img src={item.Images} width="30.05px" height="26.54px" />
-                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
+                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "mains")} />
@@ -1948,7 +1952,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src={item.Images}  />
+                        <img className={styles.itemImage} src={item.Images} />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1994,9 +1998,11 @@ const CustomizeNinjaBox = () => {
                               {filteredBreadData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles2.insideDivLi}>
+                                    <div id={styles.insideDivLi}>
                                       <img src={item.Images} width="30.05px" height="26.54px" />
-                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
+                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "Bread+Rice")} />
@@ -2065,9 +2071,11 @@ const CustomizeNinjaBox = () => {
                               {filteredDessertData.map((item, index) => (
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
-                                    <div id={styles2.insideDivLi}>
+                                    <div id={styles.insideDivLi}>
                                       <img src={item.Images} width="30.05px" height="26.54px" />
-                                      <p style={{ marginTop: "12.5px" }} onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
+                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
+                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
+                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
                                     </div>
                                     <div>
                                       <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "desserts")} />
@@ -2112,8 +2120,8 @@ const CustomizeNinjaBox = () => {
                 <input type="text" placeholder='Enter Coupon Code' />
                 <button>Apply</button>
               </div> */}
-              {showPriceList &&<div className={styles.finalPriceSection}>
-                <div className="d-flex justify-content-between">
+              {showPriceList && <div className={styles.finalPriceSection}>
+                <div id={styles.drdwnCnt} className="d-flex justify-content-between">
                   {/* <select className="form-select" aria-label="Default select example" value={buffet} onChange={e => handleBuffet(e.target.value)}>
                     <option value="" selected>Ninjabox - Delivery (Free)</option>
                     <option value="3500">Buffet setup + 1 waiter (+ ₹ 3,500.00)</option>
@@ -2228,8 +2236,9 @@ const CustomizeNinjaBox = () => {
                     ) : null}
                   </select>
 
-                  <p style={{fontWeight: "600"}}>₹{buffet}</p>
+                  <p style={{ fontWeight: "600" }}>₹{buffet}</p>
                 </div>
+                <p id={styles.dlvydscr}>(Click here to choose delivey option)</p>
               </div>}
               {showPriceList && <div className={styles.pricing}>
                 <div>
@@ -2238,7 +2247,7 @@ const CustomizeNinjaBox = () => {
                       <h4>Items Total</h4>
                     </div>
                     <div>
-                      <p style={{fontWeight: "600"}}>₹{totalPrice.toLocaleString('en-US')}</p>
+                      <p style={{ fontWeight: "600" }}>₹{totalPrice.toLocaleString('en-US')}</p>
                     </div>
                   </div>
                   {/* <div className={styles.pricingTitle11}>
@@ -2283,7 +2292,7 @@ const CustomizeNinjaBox = () => {
                     <h4>Grand Total</h4>
                   </div>
                   <div>
-                    <p style={{fontWeight: "600"}}>₹{grandTotal.toLocaleString('en-US')}</p>
+                    <p style={{ fontWeight: "600" }}>₹{grandTotal.toLocaleString('en-US')}</p>
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
