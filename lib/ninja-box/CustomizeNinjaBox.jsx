@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 // import styles from "$styles/Customize.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong, faArrowLeftLong, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
@@ -303,6 +303,7 @@ const CustomizeNinjaBox = () => {
     }
     setShowSelectedMenu(true);
     setShowDropdown(false)
+    setSearchValue("")
 
     setState({
       showDiv1: false,
@@ -1636,6 +1637,21 @@ const CustomizeNinjaBox = () => {
 
   }
 
+  const outerDivRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (outerDivRef.current && !outerDivRef.current.contains(event.target)) {
+        handleCancelClick();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -1857,7 +1873,7 @@ const CustomizeNinjaBox = () => {
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
                     )}
-                    {showSelectedMenu && (<div className={styles2.starterMenuContainer}>
+                    {showSelectedMenu && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
                       <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
@@ -1929,7 +1945,7 @@ const CustomizeNinjaBox = () => {
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
                     )}
-                    {showSelectedMenu2 && (<div className={styles2.starterMenuContainer}>
+                    {showSelectedMenu2 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
                       <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
@@ -2003,7 +2019,7 @@ const CustomizeNinjaBox = () => {
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
                     )}
-                    {showSelectedMenu3 && (<div className={styles2.starterMenuContainer}>
+                    {showSelectedMenu3 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
                       <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
@@ -2076,7 +2092,7 @@ const CustomizeNinjaBox = () => {
                       <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                     </div>
                     )}
-                    {showSelectedMenu4 && (<div className={styles2.starterMenuContainer}>
+                    {showSelectedMenu4 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
                       <div id={styles.starterSearchContent}>
                         <div>
                           <input type="text"
