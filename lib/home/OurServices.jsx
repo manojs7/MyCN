@@ -108,7 +108,7 @@ const OurServices = () => {
                     View Details
                   </button></Link>
                   <button
-                    onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
+                    onClick={() => (window.location.href = "/customizeNinjaBox")}
                     className="sample-pricing"
                   >
                     Sample Pricing
