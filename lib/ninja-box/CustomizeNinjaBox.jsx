@@ -1618,6 +1618,25 @@ const CustomizeNinjaBox = () => {
     });
   }
 
+  const handlePlaceOrder=()=>{
+    let msg="Hey,! Please Help me to make my DIY menu order!";
+
+    if(city==='bangalore'){
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
+    }
+    if(city==='delhi'){
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
+    }
+    if(city==='mumbai'){
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
+    }
+    if(city==='gurgaon'){
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
+    }    
+
+  }
+
+
   return (
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
@@ -2294,7 +2313,7 @@ const CustomizeNinjaBox = () => {
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
-                  <button>Place Order</button>
+                  <button onClick={handlePlaceOrder}>Place Order</button>
                 </div>
               </div>}
             </div>
