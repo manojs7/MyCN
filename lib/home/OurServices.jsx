@@ -107,12 +107,11 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <button
-                    onClick={() => (window.location.href = "/customizeNinjaBox")}
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
@@ -161,12 +160,11 @@ const OurServices = () => {
                 </div>
                 <div className="buttons">
                   <Link href = "/ninjabuffet"><button className="view-details">View Details</button></Link>
-                  <button
-                    onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
@@ -437,12 +435,11 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <button
-                    onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
@@ -498,12 +495,11 @@ const OurServices = () => {
                   <Link href = "/ninjabuffet"><button className="view-details">
                     View Details
                   </button></Link>
-                  <button
-                    onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>

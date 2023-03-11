@@ -330,6 +330,7 @@ const CustomizeNinjaBox = () => {
 
     setShowSelectedMenu2(true);
     setShowDropdown2(false)
+    setSearchMainsValue("")
 
     setState({
       showDiv1: false,
@@ -356,6 +357,7 @@ const CustomizeNinjaBox = () => {
 
     setShowSelectedMenu3(true);
     setShowDropdown3(false)
+    setSearchBreadValue("")
 
     setState({
       showDiv1: false,
@@ -382,6 +384,7 @@ const CustomizeNinjaBox = () => {
 
     setShowSelectedMenu4(true);
     setShowDropdown4(false)
+    setSearchDessertValue("")
 
     setState({
       showDiv1: false,
@@ -1839,7 +1842,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src={item.Images} />
+                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1886,7 +1889,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                      <img src={item.Images} width="30.05px" height="26.54px" />
+                                      <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
@@ -1912,7 +1915,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src={item.Images} />
+                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1958,7 +1961,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                      <img src={item.Images} width="30.05px" height="26.54px" />
+                                      <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
@@ -1985,7 +1988,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src={item.Images} />
+                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2032,7 +2035,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                      <img src={item.Images} width="30.05px" height="26.54px" />
+                                      <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
@@ -2058,7 +2061,7 @@ const CustomizeNinjaBox = () => {
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        <img className={styles.itemImage} src={item.Images} />
+                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2105,7 +2108,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                      <img src={item.Images} width="30.05px" height="26.54px" />
+                                      <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
@@ -2329,7 +2332,7 @@ const CustomizeNinjaBox = () => {
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
-                  <button onClick={handlePlaceOrder}>Place Order</button>
+                  <button onClick={handlePlaceOrder}>Get Booking Help</button>
                 </div>
               </div>}
             </div>
