@@ -15,6 +15,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
 import Swal from 'sweetalert2'
+import Link from 'next/link';
 
 
 
@@ -2332,7 +2333,7 @@ const CustomizeNinjaBox = () => {
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
-                  <button onClick={handlePlaceOrder}>Get Booking Help</button>
+                  <Link href="https://api.whatsapp.com/send?phone=917738096313&amp;text=Hey"><button>Get Booking Help</button></Link>
                 </div>
               </div>}
             </div>
