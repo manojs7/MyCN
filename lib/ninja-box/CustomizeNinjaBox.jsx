@@ -1618,8 +1618,6 @@ const CustomizeNinjaBox = () => {
     });
   }
 
-
-
   return (
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
