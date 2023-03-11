@@ -1620,7 +1620,7 @@ const CustomizeNinjaBox = () => {
 
   const handlePlaceOrder=()=>{
     let msg="Hey,! Please Help me to make my DIY menu order!";
-
+  
     if(city==='bangalore'){
       window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
     }
@@ -1633,6 +1633,8 @@ const CustomizeNinjaBox = () => {
     if(city==='gurgaon'){
       window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
     }    
+    alert("Order Details Received Successfully");
+
 
   }
 
