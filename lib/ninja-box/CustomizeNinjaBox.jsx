@@ -1843,10 +1843,10 @@ const CustomizeNinjaBox = () => {
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
                       {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {/* <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
+                        {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
                         
-                        {item.Images ? <img  lassName={styles.itemImage} src={item.Images} /> :
-                                        <img lassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
+                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
+                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
                                       
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
@@ -1922,8 +1922,8 @@ const CustomizeNinjaBox = () => {
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img  lassName={styles.itemImage} src={item.Images} /> :
-                                        <img lassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
+                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
+                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1997,8 +1997,8 @@ const CustomizeNinjaBox = () => {
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img  lassName={styles.itemImage} src={item.Images} /> :
-                                        <img lassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
+                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
+                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2072,8 +2072,8 @@ const CustomizeNinjaBox = () => {
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img  lassName={styles.itemImage} src={item.Images} /> :
-                                        <img lassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
+                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
+                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2415,7 +2415,7 @@ const CustomizeNinjaBox = () => {
                             <h5>Starters</h5>
                             <div className={styles.starterItems}>
                                 <div className={styles.fstItem}>
-                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <img cclassName={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
                                         <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                                         <div>
@@ -2440,7 +2440,7 @@ const CustomizeNinjaBox = () => {
                                 </div>
                                 <div className="mt-3">
                                     <div className={styles.fstItem}>
-                                        <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
+                                        <img cclassName={styles.itemImage} src="/diy images/starter/Mask group.png" />
                                         <div className={styles.itemDetailsContainer}>
                                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />
                                             <div>
