@@ -32,6 +32,7 @@ export default function handler(req, res) {
       <h3>Cuisine : ${data.cuisine}</h3>
       <h3>Preference : ${data.preference}</h3>
       <h3>Meal Type : ${data.mealtype}</h3>
+      <h3 style="display:none">Ref URL 2 : ${data.refURL}</h3>
     
     
     
