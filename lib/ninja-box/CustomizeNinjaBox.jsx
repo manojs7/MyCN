@@ -2333,7 +2333,7 @@ const CustomizeNinjaBox = () => {
                   </div>
                 </div>
                 <div className={styles.orderBtn}>
-                  <Link href="https://api.whatsapp.com/send?phone=917738096313&amp;text=Hey"><button>Get Booking Help</button></Link>
+                  <Link href="https://api.whatsapp.com/send?phone=917738096313&amp;text=Hi Need Help Booking DIY Menu"><button>Get Booking Help</button></Link>
                 </div>
               </div>}
             </div>
