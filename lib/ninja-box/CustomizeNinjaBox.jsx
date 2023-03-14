@@ -1468,6 +1468,7 @@ const CustomizeNinjaBox = () => {
         starterPrice += parseInt(d.quantity) * parseInt((d.selling_price));
       }
     });
+    console.log(starterPrice)
     mains.map((d) => {
       if (d.Qtype === 'pcs') {
         mainPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
@@ -1476,11 +1477,12 @@ const CustomizeNinjaBox = () => {
         mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
       }
     });
+    console.log(mainPrice)
     desserts.map((d) => {
       if (d.Qtype === "pcs") {
         // expensive desserts should go 1 piece
         if (d.cuisine === 'Continental') {
-          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price));
+          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price)/12);
         }
         else {
           dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price) / 12);
@@ -1499,7 +1501,7 @@ const CustomizeNinjaBox = () => {
         bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price));
       }
     });
-
+    console.log(bredRicePrice)
     setTotalPrice(parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice));
     getDeliveryCharge(people);
     setGST(getGst());
