@@ -42,20 +42,20 @@ const NewNavBar = () => {
                                 </div> */}
                             </li>
                             <li className="nav-item d-flex align-items-center">
-                                <img id={styles.navImg} src='mealbox (1).png' height="33px" width="52.8px" />
-                                <Link href="/mealbox"><a id={styles.navLink} className="nav-link" >Meal<span>Box</span></a></Link>
-                            </li>
-                            <li className="nav-item d-flex align-items-center">
-                                <img id={styles.navImg} src='snackbox.png' height="33px" width="52.8px" />
-                                <Link href="/snackbox"><a id={styles.navLink} className="nav-link" >Snack<span>Box</span></a></Link>
-                            </li>
-                            <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='classic.png' height="33px" width="52.8px" />
                                 <Link href="/ninjaclassic"><a id={styles.navLink} className="nav-link" >Ninja<span>Classic</span></a></Link>
                             </li>
                             <li className="nav-item d-flex align-items-center">
+                                <img id={styles.navImg} src='mealbox (1).png' height="33px" width="52.8px" />
+                                <Link href="/mealbox"><a id={styles.navLink} className="nav-link" >Meal<span>Box</span></a></Link>
+                            </li>
+                            <li className="nav-item d-flex align-items-center">
                                 <img id={styles.navImg} src='gourmet.png' height="33px" width="52.8px" />
                                 <Link href="/gourmet"><a id={styles.navLink} className="nav-link" >Ninja<span>Gourmet</span></a></Link>
+                            </li>
+                            <li className="nav-item d-flex align-items-center">
+                                <img id={styles.navImg} src='snackbox.png' height="33px" width="52.8px" />
+                                <Link href="/snackbox"><a id={styles.navLink} className="nav-link" >Snack<span>Box</span></a></Link>
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <Link href="https://www.caterninja.com/about-us"><a id={styles.navLink} className="nav-link" target="_blank">About<span>Us</span></a></Link>

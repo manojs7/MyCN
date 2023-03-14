@@ -1660,6 +1660,15 @@ const CustomizeNinjaBox = () => {
   }, []);
 
 
+// const selectedItems = filteredData.filter(item => item.checked);
+// const unselectedItems = filteredData.filter(item => !item.checked);
+
+
+// selectedItems.sort((a, b) => a.name.localeCompare(b.name));
+
+// const sortedData = selectedItems.concat(unselectedItems);
+
+
   return (
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
@@ -1920,7 +1929,7 @@ const CustomizeNinjaBox = () => {
                     </div>)}
                   </div>
                   <hr className={styles.MenuHr} />
-                  <div className={styles.imgDesc} id="d2">
+                   <div className={styles.imgDesc} id="d2">
                     <p>*Images are for representation purpose only</p>
                   </div>
                   {/* mains add */}
@@ -2364,7 +2373,6 @@ const CustomizeNinjaBox = () => {
                 </div>
               </div>}
             </div>
-
           </div>
         </form>
         <div className={styles.createYourOwnPkg}>
@@ -2374,8 +2382,8 @@ const CustomizeNinjaBox = () => {
           <div className='text-center mt-3'>
             <p>Wanna try with the Packages?</p>
             <h2>Visit Our<span> Website</span></h2>
-            <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
-            <Link href="/"><button>SEE ALL THE SERVICES</button></Link>
+            <h6>Curate your own flavour of party<br />from variety of cuisines and services</h6>
+            <a target="_blank" href="/"><button>SEE ALL THE SERVICES</button></a>
           </div>
         </div>
       </div>
