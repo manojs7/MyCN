@@ -223,12 +223,14 @@ const CustomizeNinjaBox = () => {
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     }
-    name === "veg" ? setVeg(value) : setNonVeg(value);
+    else{
+      name === "veg" ? setVeg(value) : setNonVeg(value);
+    }
     console.log("guest", veg, nonVeg);
     people = veg + nonVeg;
     setPeople(people);
 
-    if (name !== "veg" && value === 0) {
+    if (name != "veg" && (value < 0 || !value) ) {
       // showing only veg
       setStartersData((prev) => prev.filter((d) => d.veg === true));
       setMainData((prev) => prev.filter((d) => d.veg === true));
@@ -238,7 +240,6 @@ const CustomizeNinjaBox = () => {
       setStartersData(startersData2);
       setMainData(mainData2);
       setBreadRiceData(breadRiceData2);
-
     }
     getDeliveryCharge(veg + nonVeg);
 
