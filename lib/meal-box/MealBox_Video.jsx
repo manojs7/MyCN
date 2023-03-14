@@ -10,7 +10,7 @@ export default function MealBox_Video() {
         height: "390",
         width: "640",
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
         },
       }
 
@@ -18,7 +18,7 @@ export default function MealBox_Video() {
         height: "190",
         width: "340",
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
         },
       }
 
