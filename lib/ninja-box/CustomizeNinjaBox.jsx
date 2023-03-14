@@ -1848,8 +1848,8 @@ const CustomizeNinjaBox = () => {
                       {!showSelectedMenu && starters.map((item, index) => (<div id='d1' className={styles.fstItem} key={index}>
                         {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
 
-                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
-                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
+                        {item.Images ? <img className={styles.itemImage} src={item.Images} width="30.05px" height="26.54px"/> :
+                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px"/>}
 
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
