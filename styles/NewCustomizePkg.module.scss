@@ -6,6 +6,15 @@
 
 @media (max-width: 576px) {
 
+    .imgDesc{
+        text-align: center;
+        p{
+            color: #FFC31A;
+            font-size: 8.8px;
+            font-weight: 500;
+        }
+    }
+
     #starterSearchContent {
         padding-top: 10px;
         width: 326px;
@@ -719,8 +728,8 @@
         justify-content: space-around;
 
         img {
-            width: 113.73px;
-            height: 140.04px;
+            margin-top: 35px;
+            width: 160px;
         }
 
         p {
@@ -1002,6 +1011,15 @@
 //*********************************  LARGE DEVICE  ***************************************
 
 @media (min-width: 768px) {
+
+    .imgDesc{
+        text-align: center;
+        p{
+            color: #FFC31A;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
 
     #vegLogoLg{
         margin-left: 7px;
@@ -1943,8 +1961,9 @@
         justify-content: space-evenly;
 
         img {
-            width: 309.59px;
-            height: 381.23px;
+            margin-top: 70px;
+            width: 607px;
+            height: 261.2px;
         }
 
         p {

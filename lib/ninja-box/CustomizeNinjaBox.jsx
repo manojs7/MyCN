@@ -720,7 +720,7 @@ const CustomizeNinjaBox = () => {
       quantity: quantity,
       Qtype: starter.Qtype,
       veg: starter.veg,
-      Images:starter.Images,
+      Images: starter.Images,
       selling_price: starter.selling_price,
       // description: starter.description,
     });
@@ -1621,21 +1621,21 @@ const CustomizeNinjaBox = () => {
     });
   }
 
-  const handlePlaceOrder=()=>{
-    let msg="Hey,! Please Help me to make my DIY menu order!";
-  
-    if(city==='bangalore'){
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
+  const handlePlaceOrder = () => {
+    let msg = "Hey,! Please Help me to make my DIY menu order!";
+
+    if (city === 'bangalore') {
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if(city==='delhi'){
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
+    if (city === 'delhi') {
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if(city==='mumbai'){
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
+    if (city === 'mumbai') {
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if(city==='gurgaon'){
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text="+{msg};
-    }    
+    if (city === 'gurgaon') {
+      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
+    }
     alert("Order Details Received Successfully");
 
 
@@ -1842,12 +1842,12 @@ const CustomizeNinjaBox = () => {
                   <div className={styles.startersContainer}>
                     <h5>Starters</h5>
                     <div className={styles.selectedStarterContainer}>
-                      {!showSelectedMenu && starters.map((item, index) => (<div className={styles.fstItem} key={index}>
+                      {!showSelectedMenu && starters.map((item, index) => (<div id='d1' className={styles.fstItem} key={index}>
                         {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
-                        
-                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
-                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
-                                      
+
+                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
+                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
+
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1894,9 +1894,9 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                    {item.Images ? <img src={item.Images} /> :
+                                      {item.Images ? <img src={item.Images} /> :
                                         <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
-                                      
+
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
                                       <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
@@ -1917,13 +1917,16 @@ const CustomizeNinjaBox = () => {
                     </div>)}
                   </div>
                   <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc} id="d2">
+                    <p>*Images are for representation purpose only</p>
+                  </div>
                   {/* mains add */}
                   <div className={styles.mainsContainer}>
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
-                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
+                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
+                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -1969,7 +1972,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                    {item.Images ? <img src={item.Images} width="30.05px" height="26.54px"/> :
+                                      {item.Images ? <img src={item.Images} width="30.05px" height="26.54px" /> :
                                         <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
@@ -1992,13 +1995,16 @@ const CustomizeNinjaBox = () => {
                   </div>
 
                   <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
                   {/* Bread rice noodles */}
                   <div className={styles.mainsContainer}>
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
-                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
+                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
+                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2045,7 +2051,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                    {item.Images ? <img src={item.Images} width="30.05px" height="26.54px"/> :
+                                      {item.Images ? <img src={item.Images} width="30.05px" height="26.54px" /> :
                                         <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
@@ -2067,13 +2073,16 @@ const CustomizeNinjaBox = () => {
                     </div>)}
                   </div>
                   <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
                   {/* dessert add */}
                   <div className={styles.mainsContainer}>
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
                       {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img  className={styles.itemImage} src={item.Images} /> :
-                                        <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169'/>}
+                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
+                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
                             <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
@@ -2120,7 +2129,7 @@ const CustomizeNinjaBox = () => {
                                 <li key={item.id}>
                                   <div className='d-flex justify-content-between'>
                                     <div id={styles.insideDivLi}>
-                                    {item.Images ? <img src={item.Images} width="30.05px" height="26.54px"/> :
+                                      {item.Images ? <img src={item.Images} width="30.05px" height="26.54px" /> :
                                         <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
                                       {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
                                         <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
@@ -2144,6 +2153,9 @@ const CustomizeNinjaBox = () => {
                 </div>
               </div>
               <hr className={styles.MenuHr} />
+              <div className={styles.imgDesc}>
+                <p>*Images are for representation purpose only</p>
+              </div>
               <div className='text-center mt-3' id={styles.itemsQnty}>
                 <h6>{starters?.length} Starters + {mains?.length + breadRice.length} Mains + {desserts?.length} Desserts</h6>
               </div>
@@ -2354,13 +2366,13 @@ const CustomizeNinjaBox = () => {
         </form>
         <div className={styles.createYourOwnPkg}>
           <div>
-            <img src='Group 803.png' />
+            <img src='Group 1097.png' />
           </div>
           <div className='text-center mt-3'>
-            <p>Not Happy with the Package?</p>
-            <h2>Create Your<span>Own</span></h2>
+            <p>Wanna try with the Packages?</p>
+            <h2>Visit Our<span> Website</span></h2>
             <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
-            <button>Create Your Own Package</button>
+            <Link href="/"><button>SEE ALL THE SERVICES</button></Link>
           </div>
         </div>
       </div>
