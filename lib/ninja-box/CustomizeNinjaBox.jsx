@@ -220,6 +220,7 @@ const CustomizeNinjaBox = () => {
   };
 
   const handleVegNonVegGuest = (name, value) => {
+    alert(value)
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     }
@@ -238,7 +239,6 @@ const CustomizeNinjaBox = () => {
       setStartersData(startersData2);
       setMainData(mainData2);
       setBreadRiceData(breadRiceData2);
-
     }
     getDeliveryCharge(veg + nonVeg);
 
