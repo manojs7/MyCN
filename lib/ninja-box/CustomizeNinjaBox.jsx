@@ -118,11 +118,22 @@ const CustomizeNinjaBox = () => {
       if (nameA > nameB) {
         return 1;
       }
-
+ 
       // names must be equal
       return 0;
     });
 
+     // removing duplicate
+    //  const result = allMenus?.reduce((finalArray, current) => {
+    //   let obj = finalArray?.find((item) => item.name === current.name);
+
+    //   // console.log('duplicate',result)
+    //   if (obj) {
+    //     return finalArray;
+    //   } 
+    //   return finalArray.concat([current]);
+    // }, [])
+    const result = allMenus;
     // reference url
     if (sessionStorage.getItem("first_url") === null) {
       const catch_url = sessionStorage.setItem("first_url", "x");
@@ -131,17 +142,7 @@ const CustomizeNinjaBox = () => {
       setRefURL(ref_url);
     }
 
-    // removing duplicate
-    const result = allMenus?.reduce((finalArray, current) => {
-      let obj = finalArray?.find((item) => item.name === current.name);
-
-      // console.log('duplicate',result)
-      if (obj) {
-        return finalArray;
-      }
-      return finalArray.concat([current]);
-    }, [])
-
+   
 
     setStartersData(result.filter((d) => d.mealType === "Starter"));
     setStartersData2(result.filter((d) => d.mealType === "Starter"));
@@ -160,7 +161,7 @@ const CustomizeNinjaBox = () => {
     setHighestPrice(newMainData[0]);
   }, []);
 
-
+ 
 
   // filtering data according to cuisine
   const handleCuisine = (index) => {
@@ -243,11 +244,6 @@ const CustomizeNinjaBox = () => {
     }
     getDeliveryCharge(veg + nonVeg);
 
-
-    // setStarters([]);
-    // setMains([]);
-    // setDesserts([]);
-    // setBreadRice([]);
   };
 
   const [searchValue, setSearchValue] = React.useState('');
@@ -458,13 +454,13 @@ const CustomizeNinjaBox = () => {
     // starter value change after veg and non-veg guest change
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...starters];
-    if (veg > 0 && nonVeg === 0) {
-      // showing only veg
-      setStartersData((prev) => prev.filter((d) => d.veg === true));
-    }
-    else {
-      setStartersData((prev) => prev.filter((d) => d.veg === true || d.veg === false));
-    }
+    // if (veg > 0 && nonVeg === 0) {
+    //   // showing only veg
+    //   setStartersData((prev) => prev.filter((d) => d.veg === true));
+    // }
+    // else {
+    //   setStartersData((prev) => prev.filter((d) => d.veg === true || d.veg === false));
+    // }
 
     temp.map((data) => {
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
@@ -1449,11 +1445,6 @@ const CustomizeNinjaBox = () => {
   }
   // cost calculation
   useEffect(() => {
-
-    // if(setShowPriceList){
-    //   setShowPriceList(!showPriceList)
-
-    // }
 
     let starterPrice = 0;
     let mainPrice = 0;
