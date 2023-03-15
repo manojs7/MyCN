@@ -11,6 +11,7 @@ import NboxVd from '$lib/ninja-box/NboxVd';
 import NewFooter from '$lib/NewFooter';
 import Zoho from '$lib/bookChef/Zoho';
 import FloatNav from '$lib/FloatNav';
+import Float from '$lib/Float';
 
 export default function Ninja_Box()
 {
@@ -41,7 +42,9 @@ export default function Ninja_Box()
         {/* <NboxVd /> */}
         <Custom_Package />
         {/* <Footer /> */}
+        
         <NewFooter />
+        <Float />
         <FloatNav/>
         <Zoho/>
     </>)

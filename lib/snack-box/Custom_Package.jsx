@@ -371,7 +371,7 @@ const Custom_Package = () => {
               <p>Not Happy with the Packages?</p>
               <h2>Create Your <span>Own</span></h2>
               <h6>Curate your own flavour of party<br /><span>from variety of cuisines</span></h6>
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} className="btn btn-danger">Create Your Own Package</button>
+              <button onClick={() => (window.location.href="/customizeNinjaBox")} className="btn btn-danger">Create Your Own Package</button>
             </div>
           </div>
         </div>
@@ -527,7 +527,7 @@ const Custom_Package = () => {
             <h2>Create Your <span>Own</span></h2>
             <h6>Curate your own flavour of party<br />from variety of cusines</h6>
             <div>
-              <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} className="btn btn-sm">Create Your Own Package</button>
+              <button onClick={() => (window.location.href="/customizeNinjaBox")} className="btn btn-sm">Create Your Own Package</button>
             </div>
           </div>
         </div>

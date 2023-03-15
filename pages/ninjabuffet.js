@@ -9,6 +9,7 @@ import NewNavBar from '$lib/NewNavBar';
 import NewFooter from '$lib/NewFooter';
 import Zoho from '$lib/bookChef/Zoho';
 import FloatNav from '$lib/FloatNav';
+import Float from '$lib/Float';
 
 export default function Ninja_Buffet()
 {
@@ -22,6 +23,7 @@ export default function Ninja_Buffet()
         <Custom_Package />
         {/* <Footer /> */}
         <NewFooter />
+        <Float/>
         <FloatNav/>
         <Zoho/>
     </>)
