@@ -200,23 +200,23 @@ const CustomizeNinjaBox = () => {
     setBreadRice([]);
     getDeliveryCharge(veg + nonVeg);
 
-    const filterStarter = startersData2.filter(
-      (d) => d.city === city
-    );
-    setStartersData(filterStarter);
+    // const filterStarter = startersData2.filter(
+    //   (d) => d.city === city
+    // );
+    // setStartersData(filterStarter);
 
-    const filterMain = mainData2.filter((d) => d.city === city);
-    setMainData(filterMain);
+    // const filterMain = mainData2.filter((d) => d.city === city);
+    // setMainData(filterMain);
 
-    const filterBreadData = breadRiceData2.filter(
-      (d) => d.city === city
-    );
-    setBreadRiceData(filterBreadData);
+    // const filterBreadData = breadRiceData2.filter(
+    //   (d) => d.city === city
+    // );
+    // setBreadRiceData(filterBreadData);
 
-    const filterDessertData = dessertData2.filter(
-      (d) => d.city === city
-    );
-    setDessertData(filterDessertData);
+    // const filterDessertData = dessertData2.filter(
+    //   (d) => d.city === city
+    // );
+    // setDessertData(filterDessertData);
 
   };
 
@@ -695,7 +695,7 @@ const CustomizeNinjaBox = () => {
             quantity = 12;
           }
         } else {
-          quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
+          quantity = (veg * 0.05 + nonVeg * 0.05).toFixed(1);
         }
       } else {
         if (starter.Qtype === "pcs") {
@@ -1410,7 +1410,13 @@ const CustomizeNinjaBox = () => {
         quantity = Math.round((veg + nonVeg));
       }
       else {
-        quantity = Math.round((veg + nonVeg) * 1.5);
+        if(dessert.name==='Angoori Gulab Jamun'){
+          quantity = Math.round((veg + nonVeg) * 3);
+        }
+        else{
+          quantity = Math.round((veg + nonVeg) * 1.5);
+        }
+        
       }
     } else {
       quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
@@ -1497,8 +1503,8 @@ const CustomizeNinjaBox = () => {
     getDeliveryCharge(people);
     setGST(getGst());
     setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(getGst()));
-    //setShowPriceList(false)
-  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
+    setShowPriceList(false)
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
 
   function getGst() {
     return parseInt((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * 5 / 100)
