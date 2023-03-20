@@ -107,7 +107,7 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <Link href="/checkprice"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -160,7 +160,7 @@ const OurServices = () => {
                 </div>
                 <div className="buttons">
                   <Link href = "/ninjabuffet"><button className="view-details">View Details</button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <Link href="/checkprice"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -435,7 +435,7 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <Link href="/checkprice"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -495,7 +495,7 @@ const OurServices = () => {
                   <Link href = "/ninjabuffet"><button className="view-details">
                     View Details
                   </button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <Link href="/checkprice"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
