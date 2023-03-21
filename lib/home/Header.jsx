@@ -18,11 +18,11 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const bannerImages = [
-    "Component 7.png",
-    "ninjabox1.png",
-    "ninjabuffet.png",
-    "mealbox.png",
-    "ninjaclassic.png",
+    "Component 7.webp",
+    "ninjabox1.webp",
+    "ninjabuffet.webp",
+    "mealbox.webp",
+    "ninjaclassic.webp",
   ];
   const settings = {
     dots: true,
@@ -194,16 +194,16 @@ const Header = () => {
     <div className={"header-carousel3 " + styles.header_center}>
       <Slider ref={setSliderRef} afterChange={handleChange} {...settings}>
         <div className="image-container">
-          <img src="Group 1069.png" height="450px" width="100%" alt="logo" />
+          <img src="Group 1069.webp" height="450px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="Group 823.png" height="458px" width="100%" alt="logo" />
+          <img src="Group 823.webp" height="458px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="Group 824.png" height="458px" width="100%" alt="logo" />
+          <img src="Group 824.webp" height="458px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="Group 825.png" height="458px" width="100%" alt="logo" />
+          <img src="Group 825.webp" height="458px" width="100%" alt="logo" />
         </div>
 
         {/* {Testimonials_Data.map((item, index) => (
