@@ -1,15 +1,7 @@
 import { useState, React, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import {
-  faAngleLeft,
-  faAngleRight,
-  faQuoteLeft,
-} from "@fortawesome/free-solid-svg-icons";
 import Slider from "react-slick/lib/slider";
 import styles from "$styles/home/Home.module.scss";
 import Link from "next/link";
-import Image from 'next/image'
 
 const Header = () => {
   const [sliderRef, setSliderRef] = useState(null);
@@ -47,20 +39,20 @@ const Header = () => {
     setIndex(currentIndex);
   }
 
-  const Testimonials_Data = [
-    {
-      title: "Our Signature Offerings",
-      imageUrl: "/home/header/chef.png",
-    },
-    {
-      title: "Our Signature Offerings",
-      imageUrl: "/home/header/chef.png",
-    },
-    {
-      title: "Our Signature Offerings",
-      imageUrl: "/home/header/chef.png",
-    },
-  ];
+  // const Testimonials_Data = [
+  //   {
+  //     title: "Our Signature Offerings",
+  //     imageUrl: "/home/header/chef.png",
+  //   },
+  //   {
+  //     title: "Our Signature Offerings",
+  //     imageUrl: "/home/header/chef.png",
+  //   },
+  //   {
+  //     title: "Our Signature Offerings",
+  //     imageUrl: "/home/header/chef.png",
+  //   },
+  // ];
 
   const rightHeader = (
     <div className="header-right-container">

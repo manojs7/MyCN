@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { useEffect } from "react";
 
 export default function WhatMakeUsSpecial() {
@@ -32,7 +31,7 @@ export default function WhatMakeUsSpecial() {
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn1.png" width={25} height={22} alt="" />
+                  <img src="wmus-iocn1.png" alt="" />
                 </div>
                 <p>Easy Online<br/>Ordering</p>
               </div>
@@ -45,7 +44,7 @@ export default function WhatMakeUsSpecial() {
                 </p>
 
                 <div>
-                  <img style={{width: "30.47px", height: "55.68px", marginRight: "16px", marginTop: "6px"}} src="/HomeCard1.png" alt="" />
+                  <img style={{width: "30.47px", height: "55.68px", marginRight: "16px", marginTop: "6px"}} src="HomeCard1.png" alt="" />
                 </div>
               </div>
             </div>
@@ -56,7 +55,7 @@ export default function WhatMakeUsSpecial() {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn2.png" width={25} height={22} alt="" />
+                  <img src="wmus-iocn2.png" alt="" />
                 </div>
                 <p>Select menu and<br/>Get price</p>
               </div>
@@ -78,7 +77,7 @@ export default function WhatMakeUsSpecial() {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn3.png" width={25} height={22} alt="" />
+                  <img src="wmus-iocn3.png" alt="" />
                 </div>
                 <p>Multiple Quotation Instantly</p>
               </div>
@@ -101,7 +100,7 @@ export default function WhatMakeUsSpecial() {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn4.png" width={15} height={22} alt="" />
+                  <img src="wmus-iocn4.png" alt="" />
                 </div>
                 <p>Guaranteed Best Price</p>
               </div>

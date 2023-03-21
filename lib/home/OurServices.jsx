@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUp, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import Link from "next/link";
-import Image from "next/image";
 
 const OurServices = () => {
   const [isSmall, setIsSmall] = useState(false);
@@ -73,7 +72,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <img
-                        src="fontPic.png"
+                        src="fontpic.png"
                         alt=""
                         className="img-fluid hoverZoom"
                       />
@@ -97,7 +96,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <img
-                    src="backpic.png"
+                    src="backpic.webp"
                     alt=""
                     className="img-fluid hoverZoom"
                   />
@@ -108,7 +107,7 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <Link href="/checkprice"><button
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -154,14 +153,14 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <img
-                    src="backpic2.png"
+                    src="backpic2.webp"
                     alt=""
                     className="img-fluid hoverZoom"
                   />
                 </div>
                 <div className="buttons">
-                  <Link href="/ninjabuffet"><button className="view-details">View Details</button></Link>
-                  <Link href="/checkprice"><button
+                  <Link href = "/ninjabuffet"><button className="view-details">View Details</button></Link>
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -205,14 +204,14 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <img
-                    src="backpic3.png"
+                    src="backpic3.webp"
                     alt=""
                     className="img-fluid hoverZoom"
                   />
                 </div>
                 <div className="buttons">
-                  <Link href="/ninjaclassic"><button
-                    className="view-details mt-2 mx-auto">View Details</button></Link>
+                  <Link href = "/ninjaclassic"><button
+                  className="view-details mt-2 mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
                     className="sample-pricing mt-2"
@@ -265,8 +264,8 @@ const OurServices = () => {
                 </div>
 
                 <div className="buttons">
-                  <Link href="/mealbox"><button
-                    className="view-details mt-3 mx-auto">View Details</button></Link>
+                  <Link href = "/mealbox"><button
+                  className="view-details mt-3 mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                     className="sample-pricing mt-3"
@@ -316,8 +315,8 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href="/snackbox"><button
-                    className="view-details mx-auto">View Details</button></Link>
+                  <Link href = "/snackbox"><button
+                  className="view-details mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                     className="sample-pricing"
@@ -367,8 +366,8 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href="/gourmet"><button
-                    className="view-details mt-5 mx-auto">View Details</button></Link>
+                  <Link href = "/gourmet"><button
+                  className="view-details mt-5 mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
                     className="sample-pricing mt-5"
@@ -401,7 +400,7 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image1">
-                      <Image src="/fontPic.webp" width="166.9px" height="129.11px" alt="" className="hoverZoom" />
+                      <img src="fontPic.webp" alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
                       <p>
@@ -422,21 +421,21 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-picmb">
-                  <Image
-                    src="/backpic.webp"
-                    height="130px"
-                    width="190px"
+                  <img
+                    src="backpic.webp"
+                    height="100%"
+                    width="90%"
                     alt=""
                     className="hoverZoom"
                   />
                 </div>
                 <div className="buttons">
-                  <Link href="/ninjabox"><button
+                  <Link href = "/ninjabox"><button
                     className="view-details"
                   >
                     View Details
                   </button></Link>
-                  <Link href="/checkprice"><button
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -458,9 +457,8 @@ const OurServices = () => {
                     </div>
 
                     <div className="image2">
-                      <Image
-                        src="/fontPic2.webp"
-                        width="152.92px" height="127.86px"
+                      <img
+                        src="fontPic2.webp"
                         alt=""
                         className="img-fluid hoverZoom"
                       />
@@ -484,20 +482,20 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-picmb">
-                  <Image
-                    src="/backpic2.webp"
-                    height="130px"
-                    width="190px"
+                  <img
+                    src="backpic2.webp"
+                    height="100%"
+                    width="90%"
                     alt=""
                     className="hoverZoom"
-                  //className="img-fluid hoverZoom"
+                    //className="img-fluid hoverZoom"
                   />
                 </div>
                 <div className="buttons">
-                  <Link href="/ninjabuffet"><button className="view-details">
+                  <Link href = "/ninjabuffet"><button className="view-details">
                     View Details
                   </button></Link>
-                  <Link href="/checkprice"><button
+                  <Link href="/customizeNinjaBox"><button
                     className="sample-pricing"
                   >
                     Sample Pricing
@@ -518,9 +516,8 @@ const OurServices = () => {
                       <span> Ninja</span>Classic
                     </div>
                     <div className="image3">
-                      <Image
-                        src="/fontPic3.png"
-                        width="129.57px" height="148.77px"
+                      <img
+                        src="fontPic3.webp"
                         alt=""
                         className="img-fluid hoverZoom"
                       />
@@ -543,17 +540,17 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-picmb">
-                  <Image
-                    src="/backpic3.png"
-                    height="130px"
-                    width="190px"
+                  <img
+                    src="backpic3.png"
+                    height="100%"
+                    width="60%"
                     alt=""
                     className="img-fluid hoverZoom"
                   />
                 </div>
                 <div className="buttons">
-                  <Link href="/ninjaclassic"><button
-                    className="view-details mx-auto">View Details</button></Link>
+                  <Link href = "/ninjaclassic"><button
+                  className="view-details mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
                     className="sample-pricing"
@@ -582,9 +579,8 @@ const OurServices = () => {
                     MealBox
                   </div>
                   <div className="image4">
-                    <Image
-                      src="/fontPic4.png"
-                      width="158.65px" height="141.72px"
+                    <img
+                      src="fontPic4.webp"
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -606,18 +602,18 @@ const OurServices = () => {
                 </p>
               </div>
               <div className="service-back-picmb">
-                <Image
-                  src="/backpic4.png"
-                  height="130px"
-                  width="190px"
+                <img
+                  src="backpic4.png"
+                  height="100%"
+                    width="90%"
                   alt=""
                   className="img-fluid hoverZoom"
                 />
               </div>
 
               <div className="buttons">
-                <Link href="/mealbox"><button
-                  className="view-details mx-auto">View Details</button></Link>
+                <Link href = "/mealbox"><button 
+                className="view-details mx-auto">View Details</button></Link>
                 {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                   className="sample-pricing"
@@ -640,9 +636,8 @@ const OurServices = () => {
                     SnackBox
                   </div>
                   <div className="image5">
-                    <Image
-                      src="/fontPic5.png"
-                      width="149.47px" height="147.25px"
+                    <img
+                      src="fontPic5.webp"
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -664,17 +659,17 @@ const OurServices = () => {
                 </p>
               </div>
               <div className="service-back-picmb">
-                <Image
-                  src="/backpic5.png"
-                  height="130px"
-                  width="150px"
+                <img
+                  src="backpic5.png"
+                  height="100%"
+                  width="60%"
                   alt=""
                   className="img-fluid hoverZoom"
                 />
               </div>
               <div className="buttons">
-                <Link href="/snackbox"><button
-                  className="view-details mx-auto">View Details</button></Link>
+                <Link href = "/snackbox"><button 
+                className="view-details mx-auto">View Details</button></Link>
                 {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                   className="sample-pricing"
@@ -697,9 +692,8 @@ const OurServices = () => {
                     Gourmet
                   </div>
                   <div className="image6">
-                    <Image
-                      src="/fontPic6.png"
-                      width="129.54px" height="136.98px"
+                    <img
+                      src="fontPic6.webp"
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -720,17 +714,17 @@ const OurServices = () => {
                 </p>
               </div>
               <div className="service-back-picmb">
-                <Image
-                  src="/backpic6.png"
-                  height="120px"
-                  width="150px"
+                <img
+                  src="backpic6.png"
+                  height="100%"
+                    width="65%"
                   alt=""
                   className="img-fluid hoverZoom"
                 />
               </div>
               <div className="buttons">
-                <Link href="/gourmet"><button
-                  className="view-details mx-auto">View Details</button></Link>
+                <Link href = "/gourmet"><button
+                className="view-details mx-auto">View Details</button></Link>
                 {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
                   className="sample-pricing"
