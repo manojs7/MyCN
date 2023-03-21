@@ -18,11 +18,11 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const bannerImages = [
-    "Component 7.png",
-    "ninjabox1.png",
-    "ninjabuffet.png",
-    "mealbox.png",
-    "ninjaclassic.png",
+    "/Component 7.png",
+    "/ninjabox1.png",
+    "/ninjabuffet.png",
+    "/mealbox.png",
+    "/ninjaclassic.png",
   ];
   const settings = {
     dots: true,
@@ -66,7 +66,7 @@ const Header = () => {
     <div className="header-right-container">
       <div className="description">
         <div className="header-title" style={{marginTop: "35px"}}>
-          <img src="CaterNinja (1).png" height="36.92px" width="183.88px" alt="logo"/>
+          <Image src="/CaterNinja (1).png" height={36.92} width={183.88} alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>
@@ -168,7 +168,7 @@ const Header = () => {
       <Slider {...settings} className="">
         {bannerImages.map((d, i) => (
           <div key={i} className="banner-mobile-image-container">
-            <img src={d} height="100%" width="100%" alt="logo" />
+            <Image src={d} layout="fill" alt="logo" />
 
             {i !== 0 && (
               <button onClick={() => (window.location.href = "#ourservices")} className="see-more-below-btn">See More Below</button>

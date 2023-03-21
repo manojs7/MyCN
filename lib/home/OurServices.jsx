@@ -401,7 +401,7 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image1">
-                      <Image src="/fontPic.png" width="166.9px" height="129.11px" alt="" className="hoverZoom" />
+                      <Image src="/fontPic.png" width={166.9} height={129.11} alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
                       <p>
@@ -424,8 +424,8 @@ const OurServices = () => {
                 <div className="service-back-picmb">
                   <Image
                     src="/backpic.png"
-                    height="130px"
-                    width="190px"
+                    height={130}
+                    width={190}
                     alt=""
                     className="hoverZoom"
                   />
@@ -460,7 +460,7 @@ const OurServices = () => {
                     <div className="image2">
                       <Image
                         src="/fontPic2.png"
-                        width="152.92px" height="127.86px"
+                        width={152.92} height={127.86}
                         alt=""
                         className="img-fluid hoverZoom"
                       />
@@ -486,8 +486,8 @@ const OurServices = () => {
                 <div className="service-back-picmb">
                   <Image
                     src="/backpic2.png"
-                    height="130px"
-                    width="190px"
+                    height={130}
+                    width={190}
                     alt=""
                     className="hoverZoom"
                   //className="img-fluid hoverZoom"
@@ -520,7 +520,7 @@ const OurServices = () => {
                     <div className="image3">
                       <Image
                         src="/fontPic3.png"
-                        width="129.57px" height="148.77px"
+                        width={129.57} height={148.77}
                         alt=""
                         className="img-fluid hoverZoom"
                       />
@@ -545,8 +545,8 @@ const OurServices = () => {
                 <div className="service-back-picmb">
                   <Image
                     src="/backpic3.png"
-                    height="130px"
-                    width="190px"
+                    height={130}
+                    width={190}
                     alt=""
                     className="img-fluid hoverZoom"
                   />
@@ -584,7 +584,7 @@ const OurServices = () => {
                   <div className="image4">
                     <Image
                       src="/fontPic4.png"
-                      width="158.65px" height="141.72px"
+                      width={158.65} height={141.72}
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -608,8 +608,8 @@ const OurServices = () => {
               <div className="service-back-picmb">
                 <Image
                   src="/backpic4.png"
-                  height="130px"
-                  width="190px"
+                  height={130}
+                  width={190}
                   alt=""
                   className="img-fluid hoverZoom"
                 />
@@ -642,7 +642,7 @@ const OurServices = () => {
                   <div className="image5">
                     <Image
                       src="/fontPic5.png"
-                      width="149.47px" height="147.25px"
+                      width={149.47} height={147.25}
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -666,8 +666,8 @@ const OurServices = () => {
               <div className="service-back-picmb">
                 <Image
                   src="/backpic5.png"
-                  height="130px"
-                  width="150px"
+                  height={130}
+                  width={150}
                   alt=""
                   className="img-fluid hoverZoom"
                 />
@@ -699,7 +699,7 @@ const OurServices = () => {
                   <div className="image6">
                     <Image
                       src="/fontPic6.png"
-                      width="129.54px" height="136.98px"
+                      width={129.54} height={136.98}
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -722,8 +722,8 @@ const OurServices = () => {
               <div className="service-back-picmb">
                 <Image
                   src="/backpic6.png"
-                  height="120px"
-                  width="150px"
+                  height={120}
+                  width={150}
                   alt=""
                   className="img-fluid hoverZoom"
                 />

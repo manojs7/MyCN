@@ -32,7 +32,7 @@ export default function WhatMakeUsSpecial() {
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn1.png" width="25px" height="22px" alt="" />
+                  <Image src="/wmus-iocn1.png" width={25} height={22} alt="" />
                 </div>
                 <p>Easy Online<br/>Ordering</p>
               </div>
@@ -56,7 +56,7 @@ export default function WhatMakeUsSpecial() {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn2.png" width="25px" height="22px" alt="" />
+                  <Image src="/wmus-iocn2.png" width={25} height={22} alt="" />
                 </div>
                 <p>Select menu and<br/>Get price</p>
               </div>
@@ -78,7 +78,7 @@ export default function WhatMakeUsSpecial() {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn3.png" width="25px" height="22px" alt="" />
+                  <Image src="/wmus-iocn3.png" width={25} height={22} alt="" />
                 </div>
                 <p>Multiple Quotation Instantly</p>
               </div>
@@ -101,7 +101,7 @@ export default function WhatMakeUsSpecial() {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <Image src="/wmus-iocn4.png" width="15px" height="22px" alt="" />
+                  <Image src="/wmus-iocn4.png" width={15} height={22} alt="" />
                 </div>
                 <p>Guaranteed Best Price</p>
               </div>
