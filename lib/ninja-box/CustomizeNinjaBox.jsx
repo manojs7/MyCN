@@ -1031,8 +1031,27 @@ const CustomizeNinjaBox = () => {
     if (type === "starters") {
       let temp = [...starters];
       temp.splice(index, 1);
-
+      console.log("hey",temp, filteredData)
       setStarters(temp);
+      let removedIndexes = []
+      filteredData.forEach((item,index) => {
+        let innerData = temp.filter(innerItem => innerItem?.name === item?.name);
+        console.log('item',innerData)
+        if(!innerData?.length){
+          removedIndexes.push(index);
+        }
+      }) 
+      for (let j = 0; j < filteredData.length; j++) {
+        if (!removedIndexes.includes(j)) {
+          filteredData[j].checked = 'checked';
+        }else{
+          filteredData[j].checked = '';
+          setCheckedValues(checkedValues.filter(v => v.id !== filteredData[j].id));
+        }
+      }
+      // setStartersData(filteredData)
+      console.log('removed',filteredData,removedIndexes)
+      
     } else if (type === "mains") {
       let temp = [...mains];
       temp.splice(index, 1);
@@ -1142,7 +1161,7 @@ const CustomizeNinjaBox = () => {
         }
       });
 
-      console.log(bread);
+      console.log("hey",temp,filteredData);
 
       setBreadRice(temp);
     }
