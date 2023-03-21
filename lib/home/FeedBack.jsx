@@ -4,45 +4,45 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import Slider from "react-slick";
 export default function FeedBack() {
-  const settings = {
-    className: "center",
+  // const settings = {
+  //   className: "center",
 
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
+  //   centerMode: true,
+  //   infinite: true,
+  //   centerPadding: "60px",
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   autoplay: true,
 
-    cssEase: "linear",
-    pauseOnHover: true,
-    speed: 500,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: false,
-        },
-      },
-      {
-        breakpoint: 750,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  //   cssEase: "linear",
+  //   pauseOnHover: true,
+  //   speed: 500,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //         infinite: false,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 750,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         initialSlide: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
   return (
     <div className="feed-back-container">
       {/* <Slider {...settings}>

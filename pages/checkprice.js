@@ -17,7 +17,7 @@ import Zoho from '$lib/bookChef/Zoho';
 import FloatNav2 from '$lib/FloatNav2';
 import Float2 from '$lib/Float2';
 
-export default function Customize_Ninja_Box() {
+export default function Checkprice() {
     return (<>
         <Head>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous" />

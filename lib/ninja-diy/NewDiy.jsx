@@ -35,6 +35,8 @@ const NewDiy = () => {
     const [isDisabledBread, setIsDisabledBread] = useState(true);
     const [isDisabledRice, setIsDisabledRice] = useState(true);
     const [showDropdown, setShowDropdown] = useState(true)
+    const [showDropdown2, setShowDropdown2] = useState(true)
+    const [showDropdown3, setShowDropdown3] = useState(true)
     const [isShown, setIsShown] = useState(false);
 
     const [state, setState] = useState({
@@ -42,10 +44,59 @@ const NewDiy = () => {
         showDiv2: false
     });
 
+    //STARTER
     const handleDiv1Click = () => {
-
         setShowSelectedMenu(true);
         setShowDropdown(false)
+        setSearchValue("")
+
+        setState({
+            showDiv1: false,
+            showDiv2: true
+        });
+
+        const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+
+        let selectedIds = [];
+        for (let i = 0; i < results.length; i++) {
+            selectedIds.push(results[i].id);
+        }
+        for (let j = 0; j < filteredData.length; j++) {
+            if (!(selectedIds.includes(filteredData[j].id))) {
+                filteredData[j].checked = 'checked';
+            }
+        }
+    };
+
+    //MAINS
+    const handleDiv2Click = () => {
+        setShowSelectedMenu2(true);
+        setShowDropdown2(false)
+        //setSearchMainsValue("")
+
+        setState({
+            showDiv1: false,
+            showDiv2: true
+        });
+
+        const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+
+        let selectedIds = [];
+        for (let i = 0; i < results.length; i++) {
+            selectedIds.push(results[i].id);
+        }
+        for (let j = 0; j < filteredData.length; j++) {
+            if (!(selectedIds.includes(filteredData[j].id))) {
+                filteredData[j].checked = 'checked';
+            }
+        }
+    };
+
+    //BREAD
+    const handleDiv3Click = () => {
+        setShowSelectedMenu3(true);
+        setShowDropdown3(false)
+        //setSearchMainsValue("")
 
         setState({
             showDiv1: false,
@@ -69,6 +120,8 @@ const NewDiy = () => {
 
         setShowSelectedMenu(false);
         setShowDropdown(true);
+        setShowSelectedMenu2(false);
+        setShowDropdown2(true);
         setState({
             showDiv1: true,
             showDiv2: false
@@ -78,6 +131,10 @@ const NewDiy = () => {
     const deleteMenu = (item) => {
         setCheckedValues(checkedValues.filter(v => v.id !== item.id));
     }
+    const deleteMenu2 = (item) => {
+        setCheckedValues2(checkedValues2.filter(v => v.id !== item.id));
+    }
+
     const handleClick = event => {
         // 👇️ toggle shown state
         setIsShown(current => !current);
@@ -158,33 +215,40 @@ const NewDiy = () => {
             image: '/diy images/starter/image 23.png',
             name: 'Palak Paneer',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
-            checked: ''
+            checked: '',
+            veg: true
         },
         {
             id: 2,
             image: '/diy images/starter/image 23.png',
-            name: 'Butter Paneer',
-            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
-            checked: ''
+            name: 'Butter Chicken',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false
         },
         {
             id: 3,
             image: '/diy images/starter/image 23.png',
             name: 'Matar Paneer',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
-            checked: ''
+            checked: '',
+            veg: true
         },
         {
             id: 4,
             image: '/diy images/starter/image 23.png',
-            name: 'Chilie Paneer',
-            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
-            checked: ''
+            name: 'Chilie Chicken',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false
         },
     ]
 
     const [searchValue, setSearchValue] = React.useState('');
     const [showSelectedMenu, setShowSelectedMenu] = useState(false);
+    const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
+    const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
+    const [showSelectedMenu4, setShowSelectedMenu4] = useState(false);
 
     const searchStarter = (e) => {
         setSearchValue(e.target.value);
@@ -195,6 +259,7 @@ const NewDiy = () => {
     );
 
     const [checkedValues, setCheckedValues] = React.useState([]);
+    const [checkedValues2, setCheckedValues2] = React.useState([]);
 
     const handleCheckboxChange = (e, item) => {
         const value = item;
@@ -207,6 +272,31 @@ const NewDiy = () => {
         }
     }
 
+    const handleCheckboxChange2 = (e, item) => {
+        const value = item;
+        if (e.target.checked) {
+            value.checked = 'checked';
+            setCheckedValues2([...checkedValues2, value]);
+        } else {
+            value.checked = '';
+            setCheckedValues2(checkedValues2.filter(v => v.id !== value.id));
+        }
+    }
+
+    const outerDivRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (outerDivRef.current && !outerDivRef.current.contains(event.target)) {
+                handleCancelClick();
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className={styles.diyMainContainer}>
@@ -391,7 +481,7 @@ const NewDiy = () => {
                                 {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles.fstItem} key={index}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
-                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                                        {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
                                         <div>
                                             <h4>{item.name}</h4>
                                             <p>{item.description}</p>
@@ -430,91 +520,8 @@ const NewDiy = () => {
                         />
                         <div><button onClick={handleClick}>close</button></div>
                     </div>)} */}
-                            {showSelectedMenu && (<div className={styles.starterMenuContainer}>
-                                {/* <Multiselect
-                                    disable={!isDisabledStarter}
-                                    id="starterOptions"
-                                    placeholder="Select Starter"
-                                    displayValue="key"
-                                    onKeyPressFn={function noRefCheck() { }}
-                                    onRemove={function noRefCheck() { }}
-                                    onSearch={function noRefCheck() { }}
-                                    onSelect={function noRefCheck() { }}
-                                    options={[
-                                        {
-                                            cat: 'Group 1',
-                                            key: 'Palak Paneer',
-                                            image: "/666.png"
-                                        },
-                                        {
-                                            cat: 'Group 1',
-                                            key: 'Butter Paneer'
-                                        },
-                                        {
-                                            cat: 'Group 1',
-                                            key: 'Muter Paneer'
-                                        },
-                                        {
-                                            cat: 'Group 2',
-                                            key: 'Chilie Paneer'
-                                        }
-                                    ]}
-                                    showCheckbox
-                                /> */}
+                            {showSelectedMenu && (<div ref={outerDivRef} className={styles.starterMenuContainer}>
                                 <div id={styles.starterSearchContent}>
-                                    {/* <Multiselect
-                                        disable={!isDisabledStarter}
-                                        id="starterOptions"
-                                        placeholder="Select Starter"
-                                        displayValue="key"
-                                        onKeyPressFn={function noRefCheck() { }}
-                                        onRemove={function noRefCheck() { }}
-                                        onSearch={function noRefCheck() { }}
-                                        onSelect={function noRefCheck() { }}
-                                        options={[
-                                            {
-                                                cat: 'Group 1',
-                                                key: 'Palak Paneer',
-                                            },
-                                            {
-                                                cat: 'Group 1',
-                                                key: 'Butter Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 1',
-                                                key: 'Muter Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 2',
-                                                key: 'Chilie Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 2',
-                                                key: 'Chilie Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 2',
-                                                key: 'Chilie Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 2',
-                                                key: 'Chilie Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 2',
-                                                key: 'Chilie Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 2',
-                                                key: 'Chilie Paneer'
-                                            },
-                                            {
-                                                cat: 'Group 2',
-                                                key: 'Chilie Paneer'
-                                            }
-                                        ]}
-                                        showCheckbox
-                                        Multiselect/> */}
                                     <div>
                                         <input type="text"
                                             value={searchValue}
@@ -527,6 +534,7 @@ const NewDiy = () => {
                                                         <div className='d-flex justify-content-between'>
                                                             <div id={styles.insideDivLi}>
                                                                 <img src={item.image} width="30.05px" height="26.54px" />
+                                                                {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
                                                                 <p>{item.name}<br /><span>{item.description}</span></p>
                                                             </div>
                                                             <div>
@@ -549,6 +557,8 @@ const NewDiy = () => {
                             <div className={styles.addMoreBtn}>
                                 <button onClick={handleDiv1Click}>+ Add More</button>
                             </div>
+
+                            {/* Mains Dropdown */}
                             <div className={styles.startersContainer}>
                                 <div>
                                     <label className={styles.switch}>
@@ -561,8 +571,70 @@ const NewDiy = () => {
                                     <h6>MAINS -</h6>
                                 </div>
                             </div>
-                            <div>
-                                <Multiselect
+                            <div className={styles.selectedStarterContainer}>
+                                {!showSelectedMenu2 && checkedValues2.map((item, index) => (<div className={styles.fstItem} key={index}>
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <div className={styles.itemDetailsContainer}>
+                                        {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
+                                        <div>
+                                            <h4>{item.name}</h4>
+                                            <p>{item.description}</p>
+                                        </div>
+                                        <div>
+                                            <div className={styles.quantityBtn}>
+                                                <button>-</button>
+                                                <h6>00pcs</h6>
+                                                <button>+</button>
+                                            </div>
+                                            <div className={styles.recQnty}>
+                                                <p>Recommended Qt.</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu2(item)} />
+                                        </div>
+                                    </div>
+                                </div>
+                                ))}
+                            </div>
+                            {showDropdown2 && (<div onClick={handleDiv2Click} className={styles.starterSearchBtn} id="srchbr">
+                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                            </div>
+                            )}
+                            {showSelectedMenu2 && (<div ref={outerDivRef} className={styles.starterMenuContainer}>
+                                <div id={styles.starterSearchContent}>
+                                    <div>
+                                        <input type="text"
+                                            value={searchValue}
+                                            onChange={searchStarter}
+                                            placeholder="Search Starter" />
+                                        <div id={styles.starterList}>
+                                            <ul>
+                                                {filteredData.map((item, index) => (
+                                                    <li key={item.id}>
+                                                        <div className='d-flex justify-content-between'>
+                                                            <div id={styles.insideDivLi}>
+                                                                <img src={item.image} width="30.05px" height="26.54px" />
+                                                                {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
+                                                                <p>{item.name}<br /><span>{item.description}</span></p>
+                                                            </div>
+                                                            <div>
+                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange2(e, item)} />
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div id={styles.listInsideBtn}>
+                                            <button onClick={handleCancelClick}>Done</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>)}
+                            {/*<div>
+                                 <Multiselect
                                     disable={!isDisabledMains}
                                     id="starterOptions"
                                     placeholder="Select Mains"
@@ -591,12 +663,12 @@ const NewDiy = () => {
                                     ]}
                                     showCheckbox
                                 />
-                            </div>
+                            </div> */}
                             <div className={styles.starterBtmLine}>
                                 <hr />
                             </div>
                             <div className={styles.addMoreBtn}>
-                                <button>+ Add More</button>
+                                <button onClick={handleDiv2Click}>+ Add More</button>
                             </div>
                             <div className={styles.startersContainer}>
                                 <div>
@@ -610,37 +682,68 @@ const NewDiy = () => {
                                     <h6>BREAD / RICE -</h6>
                                 </div>
                             </div>
-                            <div>
-                                <Multiselect
-                                    disable={!isDisabledBread}
-                                    id="starterOptions"
-                                    placeholder="Select Bread / Rice"
-                                    displayValue="key"
-                                    onKeyPressFn={function noRefCheck() { }}
-                                    onRemove={function noRefCheck() { }}
-                                    onSearch={function noRefCheck() { }}
-                                    onSelect={function noRefCheck() { }}
-                                    options={[
-                                        {
-                                            cat: 'Group 1',
-                                            key: 'Palak Paneer'
-                                        },
-                                        {
-                                            cat: 'Group 1',
-                                            key: 'Butter Paneer'
-                                        },
-                                        {
-                                            cat: 'Group 1',
-                                            key: 'Muter Paneer'
-                                        },
-                                        {
-                                            cat: 'Group 2',
-                                            key: 'Chilie Paneer'
-                                        }
-                                    ]}
-                                    showCheckbox
-                                />
+                            <div className={styles.selectedStarterContainer}>
+                                {!showSelectedMenu3 && checkedValues2.map((item, index) => (<div className={styles.fstItem} key={index}>
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <div className={styles.itemDetailsContainer}>
+                                        {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
+                                        <div>
+                                            <h4>{item.name}</h4>
+                                            <p>{item.description}</p>
+                                        </div>
+                                        <div>
+                                            <div className={styles.quantityBtn}>
+                                                <button>-</button>
+                                                <h6>00pcs</h6>
+                                                <button>+</button>
+                                            </div>
+                                            <div className={styles.recQnty}>
+                                                <p>Recommended Qt.</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu2(item)} />
+                                        </div>
+                                    </div>
+                                </div>
+                                ))}
                             </div>
+                            {showDropdown3 && (<div onClick={handleDiv3Click} className={styles.starterSearchBtn} id="srchbr">
+                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                            </div>
+                            )}
+                            {showSelectedMenu3 && (<div ref={outerDivRef} className={styles.starterMenuContainer}>
+                                <div id={styles.starterSearchContent}>
+                                    <div>
+                                        <input type="text"
+                                            value={searchValue}
+                                            onChange={searchStarter}
+                                            placeholder="Search Starter" />
+                                        <div id={styles.starterList}>
+                                            <ul>
+                                                {filteredData.map((item, index) => (
+                                                    <li key={item.id}>
+                                                        <div className='d-flex justify-content-between'>
+                                                            <div id={styles.insideDivLi}>
+                                                                <img src={item.image} width="30.05px" height="26.54px" />
+                                                                {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
+                                                                <p>{item.name}<br /><span>{item.description}</span></p>
+                                                            </div>
+                                                            <div>
+                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange2(e, item)} />
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div id={styles.listInsideBtn}>
+                                            <button onClick={handleCancelClick}>Done</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>)}
                             <div className={styles.starterBtmLine}>
                                 <hr />
                             </div>

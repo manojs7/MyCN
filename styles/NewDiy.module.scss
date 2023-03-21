@@ -1062,6 +1062,8 @@ input:checked+.slider:before {
                     display: flex;
 
                     p {
+                        margin-top: 2px;
+                        margin-left: 5px;
                         font-weight: 500;
                         font-size: 12px;
                         letter-spacing: 0.05em;
@@ -1307,4 +1309,10 @@ input:checked+.slider:before {
             font-size: small;
         }
     }
+}
+
+.vegLogo{
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
 }
