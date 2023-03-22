@@ -39,21 +39,6 @@ const Header = () => {
     setIndex(currentIndex);
   }
 
-  // const Testimonials_Data = [
-  //   {
-  //     title: "Our Signature Offerings",
-  //     imageUrl: "/home/header/chef.png",
-  //   },
-  //   {
-  //     title: "Our Signature Offerings",
-  //     imageUrl: "/home/header/chef.png",
-  //   },
-  //   {
-  //     title: "Our Signature Offerings",
-  //     imageUrl: "/home/header/chef.png",
-  //   },
-  // ];
-
   const rightHeader = (
     <div className="header-right-container">
       <div className="description">
@@ -74,88 +59,7 @@ const Header = () => {
     </div>
   );
 
-  // const leftHeader = (
-  //   <div className="header-left-container">
-  //     <div className="rating left-box">
-  //       95% <FontAwesomeIcon icon={faStar} />
-  //       <FontAwesomeIcon icon={faStar} />
-  //       <FontAwesomeIcon icon={faStar} />
-  //       <FontAwesomeIcon icon={faStar} />
-  //       <FontAwesomeIcon icon={faStar} /> Rating
-  //     </div>
-  //     <div className="customer left-box">
-  //       Customers Include Actors And Cricketers
-  //     </div>
-  //     <div className="orders left-box">10,000 Orders Served Since 2017</div>
-  //     <div className="events left-box">
-  //       We Cater From Small Events(10+ Guests) To Big Events (20+ Guests)
-  //     </div>
-  //   </div>
-  // );
-
   const mobileCenter = (
-    // <div className={"testimonials-content " + styles.header_center}>
-    //   <div className={"testimonials-carousel " + styles.item}>
-    //     <Slider ref={setSliderRef} afterChange={handleChange} {...settings}>
-    //       <div className={"testimonials-item mobile" + styles.item}>
-    //         <div className={"image" + styles.image}>
-    //           <div className={styles.description}>
-    //             <div className={styles.header_title}>
-    //               <span>Cater</span>Ninja
-    //             </div>
-    //             <div className="header-content">
-    //               We make it easy to order great catering food
-    //             </div>
-    //             <div className="header-button header-button-mobile">
-    //               <button>Our Services</button>
-    //             </div>
-    //           </div>
-    //           <div className={"rating left-box-mobile " + styles.box}>
-    //             95% <FontAwesomeIcon icon={faStar} />
-    //             <FontAwesomeIcon icon={faStar} />
-    //             <FontAwesomeIcon icon={faStar} />
-    //             <FontAwesomeIcon icon={faStar} />
-    //             <FontAwesomeIcon icon={faStar} /> Rating
-    //           </div>
-    //         </div>
-    //       </div>
-    //       {Testimonials_Data.map((item, index) => (
-    //         <div
-    //           className={"testimonials-item mobile " + styles.item}
-    //           key={index}
-    //         >
-    //           <div className={"image " + styles.image}>
-    //             <img
-    //               src={item.imageUrl}
-    //               alt="image"
-    //               className="img-fluid hoverZoom"
-    //             />
-    //           </div>
-    //           <div className={styles.content}>
-    //             <div className={styles.title}>{item.title}</div>
-    //             {index === 0 && (
-    //               <div className="left-box-mobile">
-    //                 Customers Include Actors And Cricketers
-    //               </div>
-    //             )}
-    //             {index === 1 && (
-    //               <div className="orders left-box-mobile">
-    //                 10,000 Orders Served Since 2017
-    //               </div>
-    //             )}
-    //             {index === 2 && (
-    //               <div className="events left-box-mobile">
-    //                 We Cater From Small Events(10+ Guests) To Big Events (20+
-    //                 Guests)
-    //               </div>
-    //             )}
-    //           </div>
-    //         </div>
-    //       ))}
-
-    //     </Slider>
-    //   </div>
-    // </div>
     <div className="banner-mobile-slide-container">
       <Slider {...settings} className="">
         {bannerImages.map((d, i) => (
@@ -197,24 +101,6 @@ const Header = () => {
         <div className="image-container">
           <img src="Group 825.webp" height="458px" width="100%" alt="logo" />
         </div>
-
-        {/* {Testimonials_Data.map((item, index) => (
-              <div
-                className={"testimonials-item mobile " + styles.item}
-                key={index}
-              >
-                <div className={"image " + styles.image}>
-                  <img
-                    src={item.imageUrl}
-                    alt="image"
-                    className="img-fluid hoverZoom"
-                  />
-                </div>
-                <div className={styles.content}>
-                  <div className={styles.title}>{item.title}</div>
-                </div>
-              </div>
-            ))} */}
       </Slider>
     </div>
   );
