@@ -990,7 +990,7 @@ const CustomizeNinjaBox = () => {
     }
     else if (city === 'Delhi' || city === 'Gurgaon' || city === 'Noida' || city === 'Ghaziabad') {
       if (people <= 25) {
-        setDeliveryCharge(0);
+        setDeliveryCharge(499);
       }
       else if (people > 25 && people <= 40) {
         setDeliveryCharge(999);
@@ -1159,10 +1159,11 @@ const CustomizeNinjaBox = () => {
 
           }
         }
+
       });
 
       console.log("hey",temp,filteredData);
-
+      
       setBreadRice(temp);
     }
   }
@@ -1464,9 +1465,7 @@ const CustomizeNinjaBox = () => {
   function handleBuffet(value) {
 
     setbuffet(value);
-    // setGST(getGst());
-    // setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
-
+    
   }
   // cost calculation
   useEffect(() => {
@@ -1526,11 +1525,16 @@ const CustomizeNinjaBox = () => {
     setShowPriceList(false)
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
 
+  useEffect(() => {
+    setGST(getGst());
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(getGst()));
+  }, [buffet]);
+
   function getGst() {
     return parseInt((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * 5 / 100)
   }
 
-
+  
   const formSubmit = (e) => {
     e.preventDefault();
     if (!checkFirstValidation()) {
@@ -1566,9 +1570,8 @@ const CustomizeNinjaBox = () => {
       return false;
     }
     getDeliveryCharge(people);
-    // setGST((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * (5/100));
     setGST(getGst())
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(GST));
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(getGst()));
     setShowPriceList(!showPriceList)
 
 
