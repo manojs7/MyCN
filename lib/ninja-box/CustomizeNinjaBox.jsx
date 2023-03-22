@@ -1581,6 +1581,8 @@ const CustomizeNinjaBox = () => {
       mobileno: mobileno,
       city: city,
       occasion: 'occasion',
+      veg_c:veg,
+      nonveg_c:nonVeg,
       people: people,
       date: startDate,
       // time : startTime,

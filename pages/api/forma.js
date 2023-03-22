@@ -11,8 +11,9 @@ export default function handler(req, res) {
     try 
       {
       let mailOptions = {
-      from: data.email,
-      to: `caterninjadiy@gmail.com, ${data.email}, 8n62vi4t8_5o1fxq4@parser.zohocrm.com`,
+      from: 'caterninjadiy@gmail.com',
+      // to: `caterninjadiy@gmail.com, ${data.email}, 8n62vi4t8_5o1fxq4@parser.zohocrm.com, lqruate0s_j7e8lb8@parser.zohocrm.com`,
+      to:`${data.email},59drv2k@parser.zohocrm.com`,
       subject: `Final Quote ${data.name} | CaterNinja🤺| Party Quote.`,
       html: ` 
       
@@ -21,18 +22,20 @@ export default function handler(req, res) {
     
     
     
-      <h3>Name : ${data.name.toUpperCase()}</h3>
-      <h3>Email : ${data.email}</h3>
-      <h3>Mobile No : ${data.mobileno}</h3>
-      <h3>City : ${data.city.toUpperCase()}</h3>
-      <h3>Date: ${data.date}</h3>
-    
-      <h3>Guest Count : ${data.people}</h3>
-      <h3>Occasion: ${data.occasion}</h3>
-      <h3>Cuisine : ${data.cuisine}</h3>
-      <h3>Preference : ${data.preference}</h3>
-      <h3>Meal Type : ${data.mealtype}</h3>
-      <h3 style="display:none">Ref URL 2 : ${data.refURL}</h3>
+      <h3>Name : ${data.name.toUpperCase()}</h3><br>
+      <h3>Email : ${data.email}</h3><br>
+      <h3>Mobile No : ${data.mobileno}</h3><br>
+      <h3>City : ${data.city.toUpperCase()}</h3><br>
+
+      <h3>Date: ${data.date}</h3><br>
+      <h3>Veg Count : ${data.veg_c}</h3><br>
+      <h3>nonVeg Count : ${data.nonveg_c}</h3><br>
+      <h3>Guest Count : ${data.people}</h3><br>
+      <h3>Occasion: ${data.occasion}</h3><br>
+      <h3>Cuisine : ${data.cuisine}</h3><br>
+      <h3>Preference : ${data.preference}</h3><br>
+      <h3>Meal Type : ${data.mealtype}</h3><br>
+      <h3>Ref URL 2 : www.caterninja.com</h3><br>
     
     
     
@@ -55,7 +58,7 @@ export default function handler(req, res) {
           </h3> 
     </div>
     
-    <div>
+    <div><br>
     <h3>MainCourse: 
     
     
@@ -73,7 +76,7 @@ export default function handler(req, res) {
     </h3>
     </div>
     
-    <div>
+    <div><br>
     
     <h3>BreadRice: 
     ${
@@ -90,6 +93,7 @@ export default function handler(req, res) {
     </div>
     
     <div>
+    <br>
     
     <h3>Dessert: 
           ${
@@ -104,14 +108,17 @@ export default function handler(req, res) {
         }  
           </h3>
     </div>
+
+    <br>
     
     
-      <h3>Sub Total : Rs ${data.totalPrice}</h3>
+      <h3>Sub Total : Rs ${data.totalPrice}</h3><br>
       
-      <h3>Box/Buffet Price : Rs ${data.buffet}</h3>
-      <h3>GST: Rs ${data.GST}</h3>
+      <h3>Box/Buffet Price : ${data.buffet?'NinjaBuffet':'NinjaBox'}</h3><br>
+      <h3>GST: Rs ${data.GST}</h3><br>
       <h2>Grand Total : Rs ${data.grandTotal}
-        </h2>
+        </h2><br>
+      Thank you!!! <br>
     
     
     <table style="width:100%">
