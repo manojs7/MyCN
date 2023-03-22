@@ -1478,19 +1478,20 @@ const CustomizeNinjaBox = () => {
 
     starters.map((d) => {
       if (d.Qtype === 'pcs') {
-        starterPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+        starterPrice += d.quantity * parseInt((d.selling_price) / 12);
       }
       else {
-        starterPrice += parseInt(d.quantity) * parseInt((d.selling_price));
+        starterPrice += d.quantity * parseInt((d.selling_price));
       }
     });
     console.log("startersPrice",starterPrice)
+    console.log("mains",mains)
     mains.map((d) => {
       if (d.Qtype === 'pcs') {
-        mainPrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+        mainPrice += d.quantity * parseInt((d.selling_price) / 12);
       }
       else {
-        mainPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+        mainPrice += d.quantity * parseInt(d.selling_price);
       }
     });
     console.log("mainprice",mainPrice)
@@ -1498,23 +1499,23 @@ const CustomizeNinjaBox = () => {
       if (d.Qtype === "pcs") {
         // expensive desserts should go 1 piece
         if (d.cuisine === 'Continental') {
-          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price)/12);
+          dessertPrice += d.quantity * (parseInt(d.selling_price)/12);
         }
         else {
-          dessertPrice += parseInt(d.quantity) * (parseInt(d.selling_price) / 12);
+          dessertPrice += d.quantity * (parseInt(d.selling_price) / 12);
         }
       }
       else {
-        dessertPrice += parseInt(d.quantity) * parseInt(d.selling_price);
+        dessertPrice += d.quantity * parseInt(d.selling_price);
       }
     });
     console.log("dessertprice",dessertPrice)
     breadRice.map((d) => {
       if (d.Qtype === 'pcs') {
-        bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price) / 12);
+        bredRicePrice += d.quantity * parseInt((d.selling_price) / 12);
       }
       else {
-        bredRicePrice += parseInt(d.quantity) * parseInt((d.selling_price));
+        bredRicePrice += d.quantity * parseInt((d.selling_price));
       }
     });
     console.log("breadriceprice",bredRicePrice)
