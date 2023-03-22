@@ -30,6 +30,25 @@ function MyApp({ Component, pageProps }) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '630003897160862');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
+        <noscript>
+          <img height="1" width="1" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=630003897160862&ev=PageView&noscript=1" />
+        </noscript>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
         (function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
             h._hjSettings={hjid:3418457,hjsv:6};
@@ -55,29 +74,6 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <Script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></Script>
-      <Script
-        strategy="lazyOnload"
-        src="https://connect.facebook.net/en_US/fbevents.js"
-      />
-      <Script strategy="lazyOnload">
-        {`
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '630003897160862');
-        fbq('track', 'PageView');
-      `}
-      </Script>
-      <noscript>
-        <img height="1" width="1" style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=630003897160862&ev=PageView&noscript=1"
-        />
-      </noscript>
       <AppMenuProvider>
         <Component {...pageProps} />
         <Google />
