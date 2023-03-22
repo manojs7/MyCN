@@ -2206,7 +2206,7 @@ const CustomizeNinjaBox = () => {
                 <input type="text" />
               </div>
               <div className={styles.instantQuoteBtn}>
-                <button onClick={formSubmit}>Get Instant Quote</button>
+                <button onClick={formSubmit}>Check Price</button>
               </div>
               {/* <div className={styles.applyCoupon}>
                 <input type="text" placeholder='Enter Coupon Code' />
