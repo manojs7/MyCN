@@ -400,7 +400,7 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image1">
-                      <img src="fontPic.webp" alt="" className="hoverZoom" />
+                      <img src="fontPic.png" alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
                       <p>
