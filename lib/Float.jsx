@@ -23,7 +23,7 @@ export default function Float()
             </div>
             <div className={styles.item}>
                
-                   <button onClick={() => (window.location.href = "https://caterninja.com/shop/catering")} className={styles.floatBtn}>
+                   <button onClick={() => (window.location.href = "/checkprice")} className={styles.floatBtn}>
                 <span>Custom Menu</span>
                 <br />Instant Price
                 
