@@ -974,7 +974,7 @@ const CustomizeNinjaBox = () => {
 
   };
   function getDeliveryCharge(people) {
-    if (city === 'mumbai' || city === 'banglore') {
+    if (city === 'Mumbai' || city === 'Banglore' || city === 'Navi-Mumbai' || city === 'Thane' ) {
       if (people <= 25) {
         setDeliveryCharge(0);
       }
@@ -988,7 +988,7 @@ const CustomizeNinjaBox = () => {
         setDeliveryCharge(1999);
       }
     }
-    else if (city === 'delhi' || city === 'gurgaon') {
+    else if (city === 'Delhi' || city === 'Gurgaon' || city === 'Noida' || city === 'Ghaziabad') {
       if (people <= 25) {
         setDeliveryCharge(0);
       }
@@ -1646,16 +1646,16 @@ const CustomizeNinjaBox = () => {
   const handlePlaceOrder = () => {
     let msg = "Hey,! Please Help me to make my DIY menu order!";
 
-    if (city === 'bangalore') {
+    if (city === 'Bangalore') {
       window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if (city === 'delhi') {
+    if (city === 'Delhi') {
       window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if (city === 'mumbai') {
+    if (city === 'Mumbai') {
       window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if (city === 'gurgaon') {
+    if (city === 'Gurgaon') {
       window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
     alert("Order Details Received Successfully");
@@ -2227,8 +2227,8 @@ const CustomizeNinjaBox = () => {
                     value={buffet}
                     onChange={e => handleBuffet(e.target.value)}
                   >
-                    {(city === "mumbai" ||
-                      city === "bangalore") &&
+                    {(city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
+                      city === "Bangalore") &&
                       people < 26 ? (
                       <>
                         <option value="0" defaultValue>
@@ -2238,8 +2238,8 @@ const CustomizeNinjaBox = () => {
                           Buffet setup + 1 waiter (+ ₹ 3,500.00)
                         </option>
                       </>
-                    ) : (city === "mumbai" ||
-                      city === "bangalore") &&
+                    ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -2250,8 +2250,8 @@ const CustomizeNinjaBox = () => {
                           Buffet setup + 2 waiter (+ ₹ 4,500.00)
                         </option>
                       </>
-                    ) : (city === "mumbai" ||
-                      city === "bangalore") &&
+                    ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -2262,8 +2262,8 @@ const CustomizeNinjaBox = () => {
                           Buffet setup + Service (+ ₹ 6,000.00)
                         </option>
                       </>
-                    ) : (city === "mumbai" ||
-                      city === "bangalore") &&
+                    ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -2278,8 +2278,8 @@ const CustomizeNinjaBox = () => {
 
                     {/* ------------------------------------- */}
 
-                    {(city === "delhi" ||
-                      city === "gurgaon") &&
+                    {(city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people < 26 ? (
                       <>
                         <option value="0" defaultValue>
@@ -2289,8 +2289,8 @@ const CustomizeNinjaBox = () => {
                           Buffet setup + 1 waiter (+ ₹ 3,500.00)
                         </option>
                       </>
-                    ) : (city === "delhi" ||
-                      city === "gurgaon") &&
+                    ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -2301,8 +2301,8 @@ const CustomizeNinjaBox = () => {
                           Buffet setup + 2 waiter (+ ₹ 4,500.00)
                         </option>
                       </>
-                    ) : (city === "delhi" ||
-                      city === "gurgaon") &&
+                    ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -2313,8 +2313,8 @@ const CustomizeNinjaBox = () => {
                           Buffet setup + Service (+ ₹ 6,000.00)
                         </option>
                       </>
-                    ) : (city === "delhi" ||
-                      city === "gurgaon") &&
+                    ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
