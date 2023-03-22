@@ -1518,6 +1518,8 @@ const CustomizeNinjaBox = () => {
       }
     });
     console.log("breadriceprice",bredRicePrice)
+    people = veg + nonVeg;
+    setPeople(people);
     setTotalPrice(parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice));
     getDeliveryCharge(people);
     setGST(getGst());
@@ -2237,8 +2239,8 @@ const CustomizeNinjaBox = () => {
                         <option value="0" defaultValue>
                           Ninjabox - Delivery (Free)
                         </option>
-                        <option value="3500">
-                          Buffet setup + 1 waiter (+ ₹ 3,500.00)
+                        <option value="4000">
+                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
                         </option>
                       </>
                     ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
@@ -2249,8 +2251,8 @@ const CustomizeNinjaBox = () => {
                         <option value="0" defaultValue>
                           Ninjabox - Delivery (Free)
                         </option>
-                        <option value="4500">
-                          Buffet setup + 2 waiter (+ ₹ 4,500.00)
+                        <option value="5000">
+                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
                         </option>
                       </>
                     ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
@@ -2288,8 +2290,8 @@ const CustomizeNinjaBox = () => {
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
                         </option>
-                        <option value="3500">
-                          Buffet setup + 1 waiter (+ ₹ 3,500.00)
+                        <option value="4000">
+                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
                         </option>
                       </>
                     ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
@@ -2300,8 +2302,8 @@ const CustomizeNinjaBox = () => {
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
                         </option>
-                        <option value="4500">
-                          Buffet setup + 2 waiter (+ ₹ 4,500.00)
+                        <option value="5000">
+                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
                         </option>
                       </>
                     ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
