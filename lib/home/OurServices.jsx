@@ -1,50 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUp, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import Link from "next/link";
 
 const OurServices = () => {
   const [isSmall, setIsSmall] = useState(false);
-
-  // const settings = {
-  //   className: "center",
-
-  //   centerMode: true,
-  //   infinite: true,
-  //   centerPadding: "60px",
-  //   slidesToShow: 3,
-  //   slidesToScroll: 1,
-
-  //   cssEase: "linear",
-  //   pauseOnHover: true,
-  //   speed: 500,
-  //   responsive: [
-  //     {
-  //       breakpoint: 1024,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 2,
-  //         infinite: false,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 750,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //         initialSlide: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 480,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //   ],
-  // };
 
   useEffect(() => {
     setIsSmall(window.innerWidth <= 939);

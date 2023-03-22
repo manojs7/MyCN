@@ -101,6 +101,24 @@ const Header = () => {
         <div className="image-container">
           <img src="Group 825.webp" height="458px" width="100%" alt="logo" />
         </div>
+
+        {/* {Testimonials_Data.map((item, index) => (
+              <div
+                className={"testimonials-item mobile " + styles.item}
+                key={index}
+              >
+                <div className={"image " + styles.image}>
+                  <img
+                    src={item.imageUrl}
+                    alt="image"
+                    className="img-fluid hoverZoom"
+                  />
+                </div>
+                <div className={styles.content}>
+                  <div className={styles.title}>{item.title}</div>
+                </div>
+              </div>
+            ))} */}
       </Slider>
     </div>
   );
