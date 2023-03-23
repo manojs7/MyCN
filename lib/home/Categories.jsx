@@ -61,7 +61,7 @@ const Categories = () => {
         <div className="categories-item-container">
         {categories_1.map((item, index) => (
             <div className="categories-item" key={index}>
-              <Link href="/checkprice"><img src={item.image} alt="" className="img-fluid"/></Link>
+              <a href="/checkprice" target="_blank"><img src={item.image} alt="" className="img-fluid"/></a>
               <Link href="/checkprice"><p>{item.title}</p></Link>
             </div>
           ))}
@@ -70,7 +70,7 @@ const Categories = () => {
         <div className="categories-item-container"> */}
         {categories_2.map((item, index) => (
             <div className="categories-item" key={index}>
-              <Link href="/checkprice"><img src={item.image} alt="" className="img-fluid " /></Link>
+              <a href="/checkprice" target="_blank"><img src={item.image} alt="" className="img-fluid " /></a>
               <Link href="/checkprice"><p>{item.title}</p></Link>
             </div>
           ))}

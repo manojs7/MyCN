@@ -67,11 +67,11 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button></Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -120,11 +120,11 @@ const OurServices = () => {
                 </div>
                 <div className="buttons">
                   <Link href = "/ninjabuffet"><button className="view-details">View Details</button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button></Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -395,11 +395,11 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button></Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -455,11 +455,11 @@ const OurServices = () => {
                   <Link href = "/ninjabuffet"><button className="view-details">
                     View Details
                   </button></Link>
-                  <Link href="/customizeNinjaBox"><button
+                  <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button></Link>
+                  </button>
                 </div>
               </div>
             </div>
