@@ -1,8 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook, faYoutube ,faAddressBook,faStar} from "@fortawesome/free-brands-svg-icons";
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import Slider from "react-slick";
 export default function FeedBack() {
   return (
     <div className="feed-back-container">
