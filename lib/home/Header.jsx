@@ -50,7 +50,7 @@ const Header = () => {
         </div>
         <div className="header-content">
           {/* height="330px" width="290px" */}
-          <img src="chef.png" height="313.89px" width="261.5px" alt="logo" />
+          <img src="chef-min.png" height="313.89px" width="261.5px" alt="logo" />
           <div className="header-button">
             <a href="#ourServices" className="bg-red">Our Services</a>
           </div>
