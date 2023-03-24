@@ -31,7 +31,7 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image">
-                      <img
+                      <img async
                         src="Group 833.png"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -55,7 +55,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-pic">
-                  <img
+                  <img async
                     src="backpic.webp"
                     alt=""
                     className="img-fluid hoverZoom"
@@ -87,7 +87,7 @@ const OurServices = () => {
                     </div>
 
                     <div className="image">
-                      <img
+                      <img async
                         src="Group 872 (3).png"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -112,7 +112,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-pic">
-                  <img
+                  <img async
                     src="backpic2.webp"
                     alt=""
                     className="img-fluid hoverZoom"
@@ -138,7 +138,7 @@ const OurServices = () => {
                       <span> Ninja</span>Classic
                     </div>
                     <div className="image">
-                      <img
+                      <img async
                         src="Group 854 (2).png"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -163,7 +163,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-pic">
-                  <img
+                  <img async
                     src="backpic3.png"
                     alt=""
                     className="img-fluid hoverZoom"
@@ -193,7 +193,7 @@ const OurServices = () => {
                       MealBox
                     </div>
                     <div className="image">
-                      <img
+                      <img async
                         src="fontPic4.png"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -216,7 +216,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-pic">
-                  <img
+                  <img async
                     src="backpic4.png"
                     alt=""
                     className="img-fluid hoverZoom"
@@ -245,7 +245,7 @@ const OurServices = () => {
                       SnackBox
                     </div>
                     <div className="image">
-                      <img
+                      <img async
                         src="fontPic5.png"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -268,7 +268,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-pic">
-                  <img
+                  <img async
                     src="backpic5.png"
                     alt=""
                     className="img-fluid hoverZoom"
@@ -297,7 +297,7 @@ const OurServices = () => {
                     </div>
 
                     <div className="image">
-                      <img
+                      <img async
                         src="fontPic6.png"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -319,7 +319,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-pic">
-                  <img
+                  <img async
                     src="backpic6.png"
                     alt=""
                     className="img-fluid hoverZoom"
@@ -360,7 +360,7 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image1">
-                      <img src="fontPic.png" alt="" className="hoverZoom" />
+                      <img async src="fontPic.png" alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
                       <p>
@@ -381,7 +381,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-picmb">
-                  <img
+                  <img async
                     src="backpic.webp"
                     height="100%"
                     width="90%"
@@ -417,7 +417,7 @@ const OurServices = () => {
                     </div>
 
                     <div className="image2">
-                      <img
+                      <img async
                         src="fontPic2.webp"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -442,7 +442,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-picmb">
-                  <img
+                  <img async
                     src="backpic2.webp"
                     height="100%"
                     width="90%"
@@ -476,7 +476,7 @@ const OurServices = () => {
                       <span> Ninja</span>Classic
                     </div>
                     <div className="image3">
-                      <img
+                      <img async
                         src="fontPic3.webp"
                         alt=""
                         className="img-fluid hoverZoom"
@@ -500,7 +500,7 @@ const OurServices = () => {
                   </p>
                 </div>
                 <div className="service-back-picmb">
-                  <img
+                  <img async
                     src="backpic3.png"
                     height="100%"
                     width="60%"
@@ -539,7 +539,7 @@ const OurServices = () => {
                     MealBox
                   </div>
                   <div className="image4">
-                    <img
+                    <img async
                       src="fontPic4.webp"
                       alt=""
                       className="img-fluid hoverZoom"
@@ -562,7 +562,7 @@ const OurServices = () => {
                 </p>
               </div>
               <div className="service-back-picmb">
-                <img
+                <img async
                   src="backpic4.png"
                   height="100%"
                     width="90%"
@@ -596,7 +596,7 @@ const OurServices = () => {
                     SnackBox
                   </div>
                   <div className="image5">
-                    <img
+                    <img async
                       src="fontPic5.webp"
                       alt=""
                       className="img-fluid hoverZoom"
@@ -619,7 +619,7 @@ const OurServices = () => {
                 </p>
               </div>
               <div className="service-back-picmb">
-                <img
+                <img async
                   src="backpic5.png"
                   height="100%"
                   width="60%"
@@ -652,7 +652,7 @@ const OurServices = () => {
                     Gourmet
                   </div>
                   <div className="image6">
-                    <img
+                    <img async
                       src="fontPic6.webp"
                       alt=""
                       className="img-fluid hoverZoom"
@@ -674,7 +674,7 @@ const OurServices = () => {
                 </p>
               </div>
               <div className="service-back-picmb">
-                <img
+                <img async
                   src="backpic6.png"
                   height="100%"
                     width="65%"

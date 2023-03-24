@@ -43,14 +43,14 @@ const Header = () => {
     <div className="header-right-container">
       <div className="description">
         <div className="header-title" style={{marginTop: "35px"}}>
-          <img src="CaterNinja (1).png" height="36.92px" width="183.88px" alt="logo"/>
+          <img async src="CaterNinja (1).png" height="36.92px" width="183.88px" alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>
         </div>
         <div className="header-content">
           {/* height="330px" width="290px" */}
-          <img src="chef.png" height="313.89px" width="261.5px" alt="logo" />
+          <img async src="chef.png" height="313.89px" width="261.5px" alt="logo" />
           <div className="header-button">
             <a href="#ourServices" className="bg-red">Our Services</a>
           </div>
@@ -64,7 +64,7 @@ const Header = () => {
       <Slider {...settings} className="">
         {bannerImages.map((d, i) => (
           <div key={i} className="banner-mobile-image-container">
-            <img src={d} height="100%" width="100%" alt="logo" />
+            <img async src={d} height="100%" width="100%" alt="logo" />
 
             {i !== 0 && (
               <button onClick={() => (window.location.href = "#ourservices")} className="see-more-below-btn">See More Below</button>
@@ -90,16 +90,16 @@ const Header = () => {
     <div className={"header-carousel3 " + styles.header_center}>
       <Slider ref={setSliderRef} afterChange={handleChange} {...settings}>
         <div className="image-container">
-          <img src="Group 1069.webp" height="450px" width="100%" alt="logo" />
+          <img async src="Group 1069.webp" height="450px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="Group 823.webp" height="458px" width="100%" alt="logo" />
+          <img async src="Group 823.webp" height="458px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="Group 824.webp" height="458px" width="100%" alt="logo" />
+          <img async src="Group 824.webp" height="458px" width="100%" alt="logo" />
         </div>
         <div className="image-container">
-          <img src="Group 825.webp" height="458px" width="100%" alt="logo" />
+          <img async src="Group 825.webp" height="458px" width="100%" alt="logo" />
         </div>
 
         {/* {Testimonials_Data.map((item, index) => (
