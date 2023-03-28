@@ -23,7 +23,7 @@ import Link from 'next/link';
 const CustomizeNinjaBox = () => {
 
 
-  const { menu, cuisines, allMenus, cities } = useAppMenu();
+  const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -39,6 +39,7 @@ const CustomizeNinjaBox = () => {
   const [email, setEmail] = useState("");
   const [mobileno, setPhone] = useState("");
   const [city, setCity] = useState("");
+  const [occasion, setOccasion] = useState("");
 
 
   const [startDate, setStartDate] = useState(new Date());
@@ -192,6 +193,9 @@ const CustomizeNinjaBox = () => {
     }
   };
 
+  const handleOccasion=(occasion)=>{
+    setOccasion(occasion);
+  }
   const handleCity = (city) => {
     setCity(city);
     setStarters([]);
@@ -1585,7 +1589,7 @@ const CustomizeNinjaBox = () => {
       email: email,
       mobileno: mobileno,
       city: city,
-      occasion: 'occasion',
+      occasion: occasion,
       veg_c:veg,
       nonveg_c:nonVeg,
       people: people,
@@ -1787,7 +1791,7 @@ const CustomizeNinjaBox = () => {
 
               </div>
               <div>
-                <div style={{ marginBottom: "40px" }}>
+                {/* <div style={{ marginBottom: "40px" }}>
                   <p>Cuisine</p>
                   <select className="form-select" name='cuisine' aria-label="Default select example" value={cuisine} onChange={e => handleCuisine(e.target.value)} required>
                     {cuisines.map((item, index) => {
@@ -1796,7 +1800,19 @@ const CustomizeNinjaBox = () => {
                       )
                     })}
                   </select>
-                </div>
+                </div> */}
+
+                <div style={{ marginBottom: "40px" }}>
+                  <p>Occasion</p>
+                  <select className="form-select" name='occasion' aria-label="Default select example" value={occasion} onChange={e => handleOccasion(e.target.value)} >
+                  <option value='' selected>Select Occasion</option>
+                    {occasions.map((item, index) => {
+                      return (
+                        <option key={index} value={item}>{item}</option>
+                      )
+                    })}
+                  </select>
+                </div>  
                 <div>
                   <p>Delivery Time</p>
                   <input type="time" name='event_time' onChange={(time) => setstartTime(time)} required></input>
