@@ -11,7 +11,7 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const bannerImages = [
-    "/Component 7.webp",
+    "/component.webp",
     "/ninjabox1.webp",
     "/ninjabuffet.webp",
     "/mealbox.webp",
@@ -44,7 +44,7 @@ const Header = () => {
     <div className="header-right-container">
       <div className="description">
         <div className="header-title" style={{marginTop: "35px"}}>
-          <Image priority src="/CaterNinja (1).webp" height={36.92} width={183.88} alt="logo"/>
+          <Image priority src="/caterninja.webp" height={36.92} width={183.88} alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>
@@ -65,7 +65,7 @@ const Header = () => {
       <Slider {...settings} className="">
         {bannerImages.map((d, i) => (
           <div key={i} className="banner-mobile-image-container">
-            <Image priority src={d} layout="fill" alt="logo" />
+            <Image priority src={d} width={380} height={436} alt="logo" />
 
             {i !== 0 && (
               <button onClick={() => (window.location.href = "#ourservices")} className="see-more-below-btn">See More Below</button>
@@ -91,7 +91,7 @@ const Header = () => {
     <div className={"header-carousel3 " + styles.header_center}>
       <Slider {...settings}>
         <div className="image-container">
-          <Image priority src="/Group 1069.webp" width={960} height={450}  alt="logo" />
+          <Image priority src="/group.webp" width={960} height={450}  alt="logo" />
         </div>
         <div className="image-container">
           <Image priority src="/Group 823.webp" width={963} height={458} alt="logo" />

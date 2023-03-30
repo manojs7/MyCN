@@ -302,7 +302,7 @@ const NewDiy = () => {
         <div className={styles.diyMainContainer}>
             {/* <div className={styles.diyAnimationScreen}>
                 <div className={styles.whiteBg}>
-                    <img id={styles.logo} src='CaterNinja (1).webp' />
+                    <img id={styles.logo} src='caterninja.webp' />
                     <p>Get Instant Quote In <span>Four</span> Easy Steps</p>
                     <img id={styles.ninja} src='/diy images/Group 266 (1).png' />
                 </div>
@@ -310,7 +310,7 @@ const NewDiy = () => {
                 <div className={styles.yellowBg} />
             </div> */}
             <div className={styles.header}>
-                <img src='CaterNinja (1).webp' />
+                <img src='caterninja.webp' />
                 <h4>Get Instant Quote In Four Easy Steps</h4>
                 {/* <div className={styles.headerButtonsLines}>
                     <button id={styles.btn1}></button>

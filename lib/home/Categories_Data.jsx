@@ -1,6 +1,6 @@
 export const categories_1 = [
   {
-    image: "cate1.webp",
+    image: "cate1 (1).webp",
     title:'Bulk Food Delivery'
   },
   {
