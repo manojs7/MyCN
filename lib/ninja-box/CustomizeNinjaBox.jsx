@@ -1683,7 +1683,7 @@ const CustomizeNinjaBox = () => {
 
 // const sortedData = selectedItems.concat(unselectedItems);
 
-const initiatePayment=()=>{
+const initiatePayment=(e)=>{
   e.preventDefault();
     debugger
     let txnToken;
@@ -1722,7 +1722,7 @@ const initiatePayment=()=>{
 * import checksum generation utility
 * You can get this utility from https://developer.paytm.com/docs/checksum/
 */
-const PaytmChecksum = require("../../components/Paytm/Checksum");
+const PaytmChecksum = require("../../components/Paytm/PaytmChecksum");
 
 var paytmParams = {};
 

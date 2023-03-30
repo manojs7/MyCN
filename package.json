@@ -35,6 +35,7 @@
     "multiselect-react-dropdown": "^2.0.25",
     "next": "^12.3.4",
     "nodemailer": "^6.9.1",
+    "paytmchecksum": "^1.5.0",
     "react": "18.0.0",
     "react-bootstrap": "^2.2.1",
     "react-datepicker": "^4.8.0",
