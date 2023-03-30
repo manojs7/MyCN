@@ -1567,7 +1567,7 @@ const CustomizeNinjaBox = () => {
       }
       else if (mobileno.length == '') {
         Swal.fire({
-          text: 'Please enter your mob. no.',
+          text: 'Please enter your mob.no.',
           icon: 'warning',
           confirmButtonText: 'OK'
         })
@@ -1577,9 +1577,11 @@ const CustomizeNinjaBox = () => {
     }
     getDeliveryCharge(people);
     setGST(getGst())
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(getGst()));
+    var final_gst=getGst();
+    var final_grandtotal=parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + getGst()
+    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + getGst());
     setShowPriceList(!showPriceList)
-
+    console.log("gst",final_gst, final_grandtotal)
 
     // e.preventDefault();
 
@@ -1605,11 +1607,11 @@ const CustomizeNinjaBox = () => {
       mainCourse: mains,
       dessert: desserts,
       breadRice: breadRice,
-      grandTotal: grandTotal,
+      grandTotal: final_grandtotal,
       buffet: buffet,
       dessertClassname: "caterNinja_add_dessert_button",
       totalPrice: totalPrice,
-      GST: GST,
+      GST: final_gst,
       showDessert: false
     };
     console.log(datas)
@@ -1681,6 +1683,108 @@ const CustomizeNinjaBox = () => {
 
 // const sortedData = selectedItems.concat(unselectedItems);
 
+const initiatePayment=()=>{
+  e.preventDefault();
+    debugger
+    let txnToken;
+    var config ={
+    "root": "",
+    "flow": "DEFAULT",
+    "data": {
+    "orderId": Math.random(),
+    "token": txnToken, /* update token value */
+    "tokenType": "TXN_TOKEN",
+    "amount": "1",/* update amount */
+    },
+    "handler": {
+    "notifyMerchant": function(eventName, data) {
+    console.log("notifyMerchant handler function called");
+    console.log("eventName => ", eventName);
+    console.log("data => ", data);
+    }
+    }
+  }
+
+ 
+    // initialze configuration using init method
+    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+    // after successfully updating configuration, invoke JS Checkout
+    window.Paytm.CheckoutJS.invoke();
+    }).catch(function onError(error){
+      console.log("error => ", error);
+    });
+  
+
+
+
+  const https = require('https');
+/*
+* import checksum generation utility
+* You can get this utility from https://developer.paytm.com/docs/checksum/
+*/
+const PaytmChecksum = require("../../components/Paytm/Checksum");
+
+var paytmParams = {};
+
+paytmParams.body = {
+    "requestType"   : "Payment",
+    "mid"           : "CaterN17180271203216",
+    "websiteName"   : "CaterNinja",
+    "orderId"       : Math.random(),
+    "callbackUrl"   : "https://localhost:3000/",
+    "txnAmount"     : {
+        "value"     : "1.00",
+        "currency"  : "INR",
+    },
+    "userInfo"      : {
+        "custId"    : "CUST_001",
+    },
+};
+debugger
+/*
+* Generate checksum by parameters we have in body
+* Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+*/
+PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT_KEY").then(function(checksum){
+
+    paytmParams.head = {
+        "signature"    : checksum
+    };
+
+    var post_data = JSON.stringify(paytmParams);
+
+    var options = {
+
+        /* for Staging */
+        hostname: 'securegw-stage.paytm.in',
+
+        /* for Production */
+        // hostname: 'securegw.paytm.in',
+
+        port: 443,
+        path: '/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': post_data.length
+        }
+    };
+
+    var response = "";
+    var post_req = https.request(options, function(post_res) {
+        post_res.on('data', function (chunk) {
+            response += chunk;
+        });
+
+        post_res.on('end', function(){
+            console.log('Response: ', response);
+        });
+    });
+
+    post_req.write(post_data);
+    post_req.end();
+});
+}
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -2395,6 +2499,9 @@ const CustomizeNinjaBox = () => {
                 </div>
                 <div className={styles.orderBtn}>
                   <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
+                  <button onClick={initiatePayment}>
+                    Pay
+                  </button>
                 </div>
               </div>}
             </div>
