@@ -1615,22 +1615,7 @@ const CustomizeNinjaBox = () => {
     console.log(datas)
 
     setDatas(datas)
-    // console.log(data);
-    // axios
-    //   .post("/api/forma", data)
-    //   .then((res) => {
-    //     this.setState(
-    //       {
-    //         sent: true,
-    //       },
-    //       this.resetForm(),
-    //       console.log("sent")
-    //     );
-    //   })
-    //   .catch((error) => {
-    //     console.log("message not sent");
-    //     console.log(error);
-    //   }); 
+  
     let data = "";
     try {
       data = JSON.stringify(datas);
