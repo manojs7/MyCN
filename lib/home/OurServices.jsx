@@ -91,7 +91,7 @@ const OurServices = () => {
 
                     <div className="image">
                       <Image
-                        src="/Group 872 (2).webp"
+                        src="/osf22.webp"
                         width={230} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -144,7 +144,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/Group 854 (2).webp"
+                        src="/osf3.webp"
                         width={200} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -201,7 +201,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/_AD_7734 copy 2.webp"
+                        src="/osf4.webp"
                         width={220} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -430,7 +430,7 @@ const OurServices = () => {
 
                     <div className="image2">
                       <Image
-                        src="/Group 872 (2).webp"
+                        src="/osf22.webp"
                         width={152.92} height={134.75}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -489,7 +489,7 @@ const OurServices = () => {
                     </div>
                     <div className="image3">
                       <Image
-                        src="/Group 854 (2).webp"
+                        src="/osf3.webp"
                         width={129.57} height={148.77}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -552,7 +552,7 @@ const OurServices = () => {
                   </div>
                   <div className="image4">
                     <Image
-                        src="/_AD_7734 copy 2.webp"
+                        src="/osf4.webp"
                         width={158.65} height={141.72}
                       alt=""
                       className="img-fluid hoverZoom"
