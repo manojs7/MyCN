@@ -94,13 +94,13 @@ const Header = () => {
           <Image priority src="/group.webp" width={960} height={450}  alt="logo" />
         </div>
         <div className="image-container">
-          <Image priority src="/Group 823.webp" width={963} height={458} alt="logo" />
+          <Image priority src="/group3.webp" width={963} height={458} alt="logo" />
         </div>
         <div className="image-container">
-          <Image priority src="/Group 824.webp" width={963} height={458} alt="logo" />
+          <Image priority src="/group5.webp" width={963} height={458} alt="logo" />
         </div>
         <div className="image-container">
-          <Image priority src="/Group 825.webp" width={963} height={458} alt="logo" />
+          <Image priority src="/group6.webp" width={963} height={458} alt="logo" />
         </div>
 
         {/* {Testimonials_Data.map((item, index) => (
