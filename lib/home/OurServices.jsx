@@ -33,7 +33,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/Group 833.webp"
+                        src="/osf1.webp"
                         width={230} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -373,7 +373,7 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image1">
-                      <Image src="/Group 833.webp" width={166.9} height={129.11} alt="" className="hoverZoom" />
+                      <Image src="/osf1.webp" width={166.9} height={129.11} alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
                       <p>

@@ -11,7 +11,7 @@ const NewFooter = () => {
                 <div className={styles.insideContent}>
                     <div>
                         <div className={styles.caterninjaLogo}>
-                            <img src="CaterNinja (1).webp" alt="Caterninja" />
+                            <img src="caterninja.webp" alt="Caterninja" />
                         </div>
                         <div className={styles.footer_socials}>
                             <ul className={styles.links} >
