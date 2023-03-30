@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
 import Image from "next/image";
-import ReactImageMagnify from "react-image-magnify";
+import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
-import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
-import YouTube from "react-youtube";
 
 const Ninja_Header = () => {
   const images = [
-    "Frame 760.png",
-    "Frame 761.png",
-    "Frame 762.png",
-    "Frame 763.png",
+    "/Frame 760.png",
+    "/Frame 761.png",
+    "/Frame 762.png",
+    "/Frame 763.png",
 
 
 
@@ -94,22 +90,22 @@ const Ninja_Header = () => {
         <div className="ninja-box-carouserl-container">
           <div>
             <div onClick={() => handlePhotoChange(0)} className="inner-slide">
-              <img src={images[0]} alt="" height="100%" width="100%" />
+              <Image src={images[0]} alt="" height="90px" width="150px" />
             </div>
           </div>
           <div>
             <div onClick={() => handlePhotoChange(1)} className="inner-slide">
-              <img src={images[1]} alt="" height="100%" width="100%" />
+              <Image src={images[1]} alt="" height="90px" width="150px" />
             </div>
           </div>
           <div>
             <div onClick={() => handlePhotoChange(2)} className="inner-slide">
-              <img src={images[2]} alt="" height="100%" width="100%" />
+              <Image src={images[2]} alt="" height="90px" width="150px" />
             </div>
           </div>
           <div>
             <div onClick={() => handlePhotoChange(3)} className="inner-slide">
-              <img src={images[3]} alt="" height="100%" width="100%" />
+              <Image src={images[3]} alt="" height="90px" width="150px" />
             </div>
           </div>
         </div>
@@ -132,36 +128,25 @@ const Ninja_Header = () => {
           {/* <img loader={'loading'} src={photo} alt='' height='100%' width='100%'/> */}
           {indexPhoto === null && <Carousel slide={true}>
             {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
-              <img
+              <Image
+                height="380px" width="630px"
                 className="d-block w-100"
                 src={d}
                 alt="Third slide"
               />
-
-
             </Carousel.Item>)}
-
-
-
           </Carousel>}
-
-
 
           {indexPhoto !== null && <Carousel activeIndex={indexPhoto} slide={true}>
             {images.map((d, i) => <Carousel.Item key={i} interval={1000}>
-              <img
+              <Image
+                height="380px" width="630px"
                 className="d-block w-100"
                 src={d}
                 alt="Third slide"
               />
-
-
             </Carousel.Item>)}
-
-
-
           </Carousel>}
-
         </div>
       </div>
       <div className="ninja-header-right-container">
@@ -331,7 +316,7 @@ const Ninja_Header = () => {
             </div>
           </div>
           <div>
-            <div  onClick={() => handlePhotoChange(3)} >
+            <div onClick={() => handlePhotoChange(3)} >
               <img src={images[3]} alt="" style={{ width: "80px", height: "auto" }} />
             </div>
           </div>

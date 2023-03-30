@@ -16,7 +16,7 @@ const NewNavBar = () => {
                     <button className="navbar-toggler" id={styles.btn} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <img id={styles.hmbg} src='hamburger.png' width="21.19px" height="11.91px" />
                     </button>
-                    <Link href='/'><a><img id={styles.midLogo} src='CaterNinja (1).png' width="119px" height="24px" /></a></Link>
+                    <Link href='/'><a><img id={styles.midLogo} src='CaterNinja (1).webp' width="119px" height="24px" /></a></Link>
                     <img src='bottomNavLogo.png' width="29.64px" height="30.06px" />
                     {/* <a className="navbar-brand" href="#">Navbar</a> */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -73,7 +73,7 @@ const NewNavBar = () => {
                         <img src='hamburger.png' width="21.19px" height="11.91px" />
                     </div>
                     <div>
-                        <img src='CaterNinja (1).png' width="119px" height="24px" />
+                        <img src='CaterNinja (1).webp' width="119px" height="24px" />
                     </div>
                     <div>
                         <Link href="javascript:void(0)" onclick={() => myFunction()} ><img src='bottomNavLogo.png' width="29.64px" height="30.06px" /></Link>

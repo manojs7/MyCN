@@ -1878,7 +1878,12 @@ const CustomizeNinjaBox = () => {
                   {/* starters add */}
                   <div className={styles.startersContainer}>
                     <h5>Starters</h5>
-                    <div className={styles.selectedStarterContainer}>
+                    {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
+                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                    </div>
+                    )}
+                    <div className={styles.selectedStarterContainer} style={{marginTop: "20px"}}>
                       {!showSelectedMenu && starters.map((item, index) => (<div id='d1' className={styles.fstItem} key={index}>
                         {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
 
@@ -1913,11 +1918,6 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>))}
                     </div>
-                    {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
-                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
-                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                    </div>
-                    )}
                     {showSelectedMenu && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
                       <div id={styles.starterSearchContent}>
                         <div>
