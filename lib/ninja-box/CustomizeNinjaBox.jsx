@@ -1,28 +1,28 @@
-import React from 'react'
+import React from "react";
 import { useEffect, useState, useRef } from "react";
 // import styles from "$styles/Customize.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightLong, faArrowLeftLong, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightLong,
+  faArrowLeftLong,
+  faMagnifyingGlass,
+  faAngleDown,
+} from "@fortawesome/free-solid-svg-icons";
 
-import styles from '/styles/NewCustomizePkg.module.scss';
-import styles2 from '/styles/NewDiy.module.scss';
+import styles from "/styles/NewCustomizePkg.module.scss";
+import styles2 from "/styles/NewDiy.module.scss";
 
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import { useRouter } from "next/router";
 import { useAppMenu } from "$lib/menuContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Slider from "react-slick/lib/slider";
-import Swal from 'sweetalert2'
-import Link from 'next/link';
-
-
-
+import Swal from "sweetalert2";
+import Link from "next/link";
 
 const CustomizeNinjaBox = () => {
-
-
   const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
@@ -32,7 +32,7 @@ const CustomizeNinjaBox = () => {
   const [nonVeg, setNonVeg] = useState(10);
   const [people, setPeople] = useState(20);
 
-  const [cuisine, setCuisine] = useState('All');
+  const [cuisine, setCuisine] = useState("All");
   const [knowMore, setKnowMore] = useState([]);
   const [isSmall, setIsSmall] = useState(false);
   const [name, setName] = useState("");
@@ -41,34 +41,34 @@ const CustomizeNinjaBox = () => {
   const [city, setCity] = useState("");
   const [occasion, setOccasion] = useState("");
 
-
   const [startDate, setStartDate] = useState(new Date());
   const [startTime, setstartTime] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState();
-  const [data, setData] = useState([])
-  const [datas, setDatas] = useState([])
+  const [data, setData] = useState([]);
+  const [datas, setDatas] = useState([]);
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
   const [isDisabledMains, setIsDisabledMains] = useState(true);
   const [isDisabledBread, setIsDisabledBread] = useState(true);
   const [isDisabledRice, setIsDisabledRice] = useState(true);
-  const [showDropdown, setShowDropdown] = useState(true)
-  const [showDropdown2, setShowDropdown2] = useState(true)
-  const [showDropdown3, setShowDropdown3] = useState(true)
-  const [showDropdown4, setShowDropdown4] = useState(true)
+  const [showDropdown, setShowDropdown] = useState(true);
+  const [showDropdown2, setShowDropdown2] = useState(true);
+  const [showDropdown3, setShowDropdown3] = useState(true);
+  const [showDropdown4, setShowDropdown4] = useState(true);
   const [refURL, setRefURL] = useState();
 
   const [isShown, setIsShown] = useState(false);
   const [hideRecommenedQnty, setHideRecommenedQnty] = useState(false);
   const [hideMainsRecommenedQnty, setHideMainsRecommenedQnty] = useState(false);
   const [hideBreadRecommenedQnty, setHideBreadRecommenedQnty] = useState(false);
-  const [hideDessertRecommenedQnty, setHideDessertRecommenedQnty] = useState(false);
+  const [hideDessertRecommenedQnty, setHideDessertRecommenedQnty] =
+    useState(false);
 
   const [state, setState] = useState({
     showDiv1: true,
-    showDiv2: false
+    showDiv2: false,
   });
   const [startersData, setStartersData] = useState([]);
   const [startersData2, setStartersData2] = useState([]);
@@ -119,19 +119,19 @@ const CustomizeNinjaBox = () => {
       if (nameA > nameB) {
         return 1;
       }
- 
+
       // names must be equal
       return 0;
     });
 
-     // removing duplicate
+    // removing duplicate
     //  const result = allMenus?.reduce((finalArray, current) => {
     //   let obj = finalArray?.find((item) => item.name === current.name);
 
     //   // console.log('duplicate',result)
     //   if (obj) {
     //     return finalArray;
-    //   } 
+    //   }
     //   return finalArray.concat([current]);
     // }, [])
     const result = allMenus;
@@ -142,8 +142,6 @@ const CustomizeNinjaBox = () => {
       let ref_url = sessionStorage.getItem("first_url");
       setRefURL(ref_url);
     }
-
-   
 
     setStartersData(result.filter((d) => d.mealType === "Starter"));
     setStartersData2(result.filter((d) => d.mealType === "Starter"));
@@ -162,8 +160,6 @@ const CustomizeNinjaBox = () => {
     setHighestPrice(newMainData[0]);
   }, []);
 
- 
-
   // filtering data according to cuisine
   const handleCuisine = (index) => {
     setCuisine(index);
@@ -173,29 +169,23 @@ const CustomizeNinjaBox = () => {
       setBreadRiceData(breadRiceData2);
       setDessertData(dessertData2);
     } else {
-      const filterStarter = startersData2.filter(
-        (d) => d.cuisine === index
-      );
+      const filterStarter = startersData2.filter((d) => d.cuisine === index);
       setStartersData(filterStarter);
 
       const filterMain = mainData2.filter((d) => d.cuisine === index);
       setMainData(filterMain);
 
-      const filterBreadData = breadRiceData2.filter(
-        (d) => d.cuisine === index
-      );
+      const filterBreadData = breadRiceData2.filter((d) => d.cuisine === index);
       setBreadRiceData(filterBreadData);
 
-      const filterDessertData = dessertData2.filter(
-        (d) => d.cuisine === index
-      );
+      const filterDessertData = dessertData2.filter((d) => d.cuisine === index);
       setDessertData(filterDessertData);
     }
   };
 
-  const handleOccasion=(occasion)=>{
+  const handleOccasion = (occasion) => {
     setOccasion(occasion);
-  }
+  };
   const handleCity = (city) => {
     setCity(city);
     setStarters([]);
@@ -221,39 +211,35 @@ const CustomizeNinjaBox = () => {
     //   (d) => d.city === city
     // );
     // setDessertData(filterDessertData);
-
   };
 
   const handleVegNonVegGuest = (name, value) => {
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
-    }
-    else{
+    } else {
       name === "veg" ? setVeg(value) : setNonVeg(value);
     }
     console.log("guest", veg, nonVeg);
     people = veg + nonVeg;
     setPeople(people);
 
-    if (name != "veg" && (value < 0 || !value) ) {
+    if (name != "veg" && (value < 0 || !value)) {
       // showing only veg
       setStartersData((prev) => prev.filter((d) => d.veg === true));
       setMainData((prev) => prev.filter((d) => d.veg === true));
       setBreadRiceData((prev) => prev.filter((d) => d.veg === true));
-    }
-    else {
+    } else {
       setStartersData(startersData2);
       setMainData(mainData2);
       setBreadRiceData(breadRiceData2);
     }
     getDeliveryCharge(veg + nonVeg);
-
   };
 
-  const [searchValue, setSearchValue] = React.useState('');
-  const [searchMainsValue, setSearchMainsValue] = React.useState('');
-  const [searchBreadValue, setSearchBreadValue] = React.useState('');
-  const [searchDessertValue, setSearchDessertValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState("");
+  const [searchMainsValue, setSearchMainsValue] = React.useState("");
+  const [searchBreadValue, setSearchBreadValue] = React.useState("");
+  const [searchDessertValue, setSearchDessertValue] = React.useState("");
   const [showSelectedMenu, setShowSelectedMenu] = useState(false);
   const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
   const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
@@ -295,116 +281,119 @@ const CustomizeNinjaBox = () => {
     temp.name.toLowerCase().includes(searchDessertValue.toLowerCase())
   );
 
-
   const handleDiv1Click = () => {
     if (!checkFirstValidation()) {
       return false;
     }
     setShowSelectedMenu(true);
-    setShowDropdown(false)
-    setSearchValue("")
+    setShowDropdown(false);
+    setSearchValue("");
 
     setState({
       showDiv1: false,
-      showDiv2: true
+      showDiv2: true,
     });
 
-    const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+    const results = filteredData.filter(
+      ({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1)
+    );
 
     let selectedIds = [];
     for (let i = 0; i < results.length; i++) {
       selectedIds.push(results[i].id);
     }
     for (let j = 0; j < filteredData.length; j++) {
-      if (!(selectedIds.includes(filteredData[j].id))) {
-        filteredData[j].checked = 'checked';
+      if (!selectedIds.includes(filteredData[j].id)) {
+        filteredData[j].checked = "checked";
       }
     }
   };
   const handleDiv2Click = () => {
-
     if (!checkFirstValidation()) {
       return false;
     }
 
     setShowSelectedMenu2(true);
-    setShowDropdown2(false)
-    setSearchMainsValue("")
+    setShowDropdown2(false);
+    setSearchMainsValue("");
 
     setState({
       showDiv1: false,
-      showDiv2: true
+      showDiv2: true,
     });
 
-    const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+    const results = filteredData.filter(
+      ({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1)
+    );
 
     let selectedIds = [];
     for (let i = 0; i < results.length; i++) {
       selectedIds.push(results[i].id);
     }
     for (let j = 0; j < filteredData.length; j++) {
-      if (!(selectedIds.includes(filteredData[j].id))) {
-        filteredData[j].checked = 'checked';
+      if (!selectedIds.includes(filteredData[j].id)) {
+        filteredData[j].checked = "checked";
       }
     }
   };
   const handleDiv3Click = () => {
-
     if (!checkFirstValidation()) {
       return false;
     }
 
     setShowSelectedMenu3(true);
-    setShowDropdown3(false)
-    setSearchBreadValue("")
+    setShowDropdown3(false);
+    setSearchBreadValue("");
 
     setState({
       showDiv1: false,
-      showDiv2: true
+      showDiv2: true,
     });
 
-    const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+    const results = filteredData.filter(
+      ({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1)
+    );
 
     let selectedIds = [];
     for (let i = 0; i < results.length; i++) {
       selectedIds.push(results[i].id);
     }
     for (let j = 0; j < filteredData.length; j++) {
-      if (!(selectedIds.includes(filteredData[j].id))) {
-        filteredData[j].checked = 'checked';
+      if (!selectedIds.includes(filteredData[j].id)) {
+        filteredData[j].checked = "checked";
       }
     }
   };
   const handleDiv4Click = () => {
-
     if (!checkFirstValidation()) {
       return false;
     }
 
     setShowSelectedMenu4(true);
-    setShowDropdown4(false)
-    setSearchDessertValue("")
+    setShowDropdown4(false);
+    setSearchDessertValue("");
 
     setState({
       showDiv1: false,
-      showDiv2: true
+      showDiv2: true,
     });
 
-    const results = filteredData.filter(({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1));
+    const results = filteredData.filter(
+      ({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1)
+    );
 
     let selectedIds = [];
     for (let i = 0; i < results.length; i++) {
       selectedIds.push(results[i].id);
     }
     for (let j = 0; j < filteredData.length; j++) {
-      if (!(selectedIds.includes(filteredData[j].id))) {
-        filteredData[j].checked = 'checked';
+      if (!selectedIds.includes(filteredData[j].id)) {
+        filteredData[j].checked = "checked";
       }
     }
   };
 
   const handleCancelClick = () => {
-
     setShowSelectedMenu(false);
     setShowDropdown(true);
     setShowSelectedMenu2(false);
@@ -415,44 +404,41 @@ const CustomizeNinjaBox = () => {
     setShowDropdown4(true);
     setState({
       showDiv1: true,
-      showDiv2: false
+      showDiv2: false,
     });
   };
 
   const deleteMenu = (item) => {
-    setCheckedValues(checkedValues.filter(v => v.name !== item.name));
-  }
+    setCheckedValues(checkedValues.filter((v) => v.name !== item.name));
+  };
 
   const [checkedValues, setCheckedValues] = React.useState([]);
 
   const handleCheckboxChange = (e, index, item, type) => {
     if (type === "starters") {
-      handleStatersAdd(item.name, item.id)
+      handleStatersAdd(item.name, item.id);
     }
     if (type === "mains") {
-      handleMainAdd(item.name, item.id)
+      handleMainAdd(item.name, item.id);
     }
     if (type === "desserts") {
-      handleDesertsAdd(item.name, item.id)
+      handleDesertsAdd(item.name, item.id);
     }
     if (type === "Bread+Rice") {
-      handleBreadRiceAdd(item.name, item.id)
+      handleBreadRiceAdd(item.name, item.id);
     }
 
     const value = item;
     if (e.target.checked) {
-      value.checked = 'checked';
+      value.checked = "checked";
       setCheckedValues([...checkedValues, value]);
     } else {
-      value.checked = '';
-      setCheckedValues(checkedValues.filter(v => v.id !== value.id));
-      handleDelete(index, type)
+      value.checked = "";
+      setCheckedValues(checkedValues.filter((v) => v.id !== value.id));
+      handleDelete(index, type);
     }
-
-  }
+  };
   useEffect(() => {
-
-
     // sendRequest();
 
     // starter value change after veg and non-veg guest change
@@ -482,7 +468,7 @@ const CustomizeNinjaBox = () => {
 
         if (data.veg) {
           if (data.Qtype === "pcs") {
-            data.quantity = Math.round((veg * 2 + nonVeg * (1)));
+            data.quantity = Math.round(veg * 2 + nonVeg * 1);
             if (data.quantity < 12) {
               data.quantity = 12;
             }
@@ -505,20 +491,27 @@ const CustomizeNinjaBox = () => {
 
     // main value change after veg anf=d non-veg guest change
     let tempMain = [...mains];
-    let nonVegPastaMainCount = 0
-    let nonVegMainsGravyMainCount = 0
-    let nonVegMainThaiMainCount = 0
-    if (tempMain.find((item) => item.menu_label === "Pasta" && item.veg === false)) {
+    let nonVegPastaMainCount = 0;
+    let nonVegMainsGravyMainCount = 0;
+    let nonVegMainThaiMainCount = 0;
+    if (
+      tempMain.find((item) => item.menu_label === "Pasta" && item.veg === false)
+    ) {
       nonVegPastaMainCount += 1;
-    }
-    else if (tempMain.find((item) => item.menu_label === "Mains-Gravy" && item.veg === false)) {
+    } else if (
+      tempMain.find(
+        (item) => item.menu_label === "Mains-Gravy" && item.veg === false
+      )
+    ) {
       nonVegMainsGravyMainCount += 1;
-    }
-    else if (tempMain.find((item) => item.menu_label === "Mains-Thai" && item.veg === false)) {
+    } else if (
+      tempMain.find(
+        (item) => item.menu_label === "Mains-Thai" && item.veg === false
+      )
+    ) {
       nonVegMainThaiMainCount += 1;
     }
     tempMain.map((data) => {
-
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
         // if not rice , bred, noodles
         console.log("not rice , bred, noodles1");
@@ -531,57 +524,51 @@ const CustomizeNinjaBox = () => {
         }
       } else {
         if (data.veg) {
-
           //Heavy SNack
           if (data.menu_label === "Heavy Snack") {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+              data.quantity = HandleCeilFloorValue(
+                (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+              );
             }
-
           }
           //Pasta mains handelling
           //check whether non veg pasta is selected, if non veg pasta selected then veg pasta data.quantity =veg*100g only else veg*100+nonVeg*100g
-
           else if (data.menu_label === "Pasta") {
             if (nonVegPastaMainCount > 0) {
-              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+            } else {
+              data.quantity = HandleCeilFloorValue(
+                (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+              );
             }
-            else {
-              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-            }
-
           }
-          //Mains-gravy : same logic as above 
+          //Mains-gravy : same logic as above
           else if (data.menu_label === "Main-Gravy") {
             if (nonVegMainsGravyMainCount > 0) {
-              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+            } else {
+              data.quantity = HandleCeilFloorValue(
+                (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+              );
             }
-            else {
-              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-            }
-
           }
           //Main -Thai : same logic as above
           else if (data.menu_label === "Main-Thai") {
-
             if (nonVegMainThaiMainCount > 0) {
-              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
-            }
-            else {
-              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+            } else {
+              data.quantity = HandleCeilFloorValue(
+                (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+              );
             }
           }
           //Mains-dry : veg data.quantity= veg*100+ nonveg*100  else non-veg data.quantity=non veg*100
           else if (data.menu_label === "Main-dry") {
-
-
-            data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
-
-
-          }
-          else {
+            data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
             //manins dal same as mains dry
             //for daal and rest
             if (data.Qtype === "pcs") {
@@ -590,11 +577,7 @@ const CustomizeNinjaBox = () => {
               data.quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
             }
           }
-
-
-
-        }
-        else {
+        } else {
           console.log("not rice , bred, noodles3");
           if (data.Qtype === "pcs") {
             data.quantity = nonVeg * 1;
@@ -615,10 +598,9 @@ const CustomizeNinjaBox = () => {
 
     tempDessert.map((data) => {
       if (data.Qtype === "pcs") {
-        if (data.cuisine === 'Continental') {
-          data.quantity = Math.round((veg + nonVeg));
-        }
-        else {
+        if (data.cuisine === "Continental") {
+          data.quantity = Math.round(veg + nonVeg);
+        } else {
           data.quantity = Math.round((veg + nonVeg) * 1.5);
         }
       } else {
@@ -632,8 +614,7 @@ const CustomizeNinjaBox = () => {
     var decimals = (x - Math.floor(x)).toFixed(1);
     if (decimals <= 0.4) {
       x = Math.floor(x);
-    }
-    else if (decimals >= 0.6) {
+    } else if (decimals >= 0.6) {
       x = Math.floor(x);
     }
     return x;
@@ -656,10 +637,10 @@ const CustomizeNinjaBox = () => {
   }, [cuisine, veg, nonVeg]);
 
   function _isContains(json, keyname, value) {
-
-    return Object.keys(json).some(key => {
-      return typeof json[key] === 'object' ?
-        _isContains(json[key], keyname, value) : key === keyname && json[key] === value;
+    return Object.keys(json).some((key) => {
+      return typeof json[key] === "object"
+        ? _isContains(json[key], keyname, value)
+        : key === keyname && json[key] === value;
     });
   }
   // adding starters
@@ -730,7 +711,6 @@ const CustomizeNinjaBox = () => {
     console.log("starters", starters);
   };
   const handleMainAdd = (item_name, id) => {
-
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
@@ -740,16 +720,24 @@ const CustomizeNinjaBox = () => {
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
-    let nonVegPastaMainCount = 0
-    let nonVegMainsGravyMainCount = 0
-    let nonVegMainThaiMainCount = 0
-    if (temp.find((item) => item.menu_label === "Pasta" && item.veg === false)) {
+    let nonVegPastaMainCount = 0;
+    let nonVegMainsGravyMainCount = 0;
+    let nonVegMainThaiMainCount = 0;
+    if (
+      temp.find((item) => item.menu_label === "Pasta" && item.veg === false)
+    ) {
       nonVegPastaMainCount += 1;
-    }
-    else if (temp.find((item) => item.menu_label === "Mains-Gravy" && item.veg === false)) {
+    } else if (
+      temp.find(
+        (item) => item.menu_label === "Mains-Gravy" && item.veg === false
+      )
+    ) {
       nonVegMainsGravyMainCount += 1;
-    }
-    else if (temp.find((item) => item.menu_label === "Mains-Thai" && item.veg === false)) {
+    } else if (
+      temp.find(
+        (item) => item.menu_label === "Mains-Thai" && item.veg === false
+      )
+    ) {
       nonVegMainThaiMainCount += 1;
     }
 
@@ -758,68 +746,60 @@ const CustomizeNinjaBox = () => {
       console.log("not rice , bred, noodles1");
       if (main.Qtype === "pcs") {
         quantity = (veg > 0 ? veg : nonVeg) * 1;
-      }
-      else if (main.name === highestPrice.name) {
+      } else if (main.name === highestPrice.name) {
         quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
-      }
-      else {
+      } else {
         quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
       }
     } else {
       // if both are present
       if (main.veg) {
-
         //Heavy SNack
         // alert(main.menu_label)
         if (main.menu_label === "Heavy Snack") {
           if (main.Qtype === "pcs") {
             quantity = veg * 1;
           } else {
-            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
           }
-
         }
         //Pasta mains handelling
         //check whether non veg pasta is selected, if non veg pasta selected then veg pasta quantity =veg*100g only else veg*100+nonVeg*100g
-
         else if (main.menu_label === "Pasta") {
           if (nonVegPastaMainCount > 0) {
-            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
           }
-          else {
-            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-          }
-
         }
-        //Mains-gravy : same logic as above 
+        //Mains-gravy : same logic as above
         else if (main.menu_label === "Mains-Gravy") {
           if (nonVegMainsGravyMainCount > 0) {
-            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
           }
-          else {
-            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-          }
-
         }
         //Main -Thai : same logic as above
         else if (main.menu_label === "Mains-Thai") {
-
           if (nonVegMainThaiMainCount > 0) {
-            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
-          }
-          else {
-            quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
           }
         }
         //Mains-dry : veg quantity= veg*100+ nonveg*100  else non-veg quantity=non veg*100
         else if (main.menu_label === "Mains-dry") {
-
-
           quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
-
-
-        }
-        else {
+        } else {
           //manins dal same as mains dry
           //for daal and rest
           if (main.Qtype === "pcs") {
@@ -828,18 +808,14 @@ const CustomizeNinjaBox = () => {
             quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
           }
         }
-
-
       }
       //Non-Veg Mains Handelling
       else {
         if (main.Qtype === "pcs") {
           quantity = nonVeg * 1;
-        }
-        else if (main.name === highestPrice.name) {
+        } else if (main.name === highestPrice.name) {
           quantity = (nonVeg * 0.15).toFixed(1);
-        }
-        else {
+        } else {
           quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
         }
       }
@@ -847,51 +823,50 @@ const CustomizeNinjaBox = () => {
 
     temp.forEach((item) => {
       if (item.veg) {
-        if (item.menu_label === 'Mains-dry' || item.menu_label === "Mains-dal") {
+        if (
+          item.menu_label === "Mains-dry" ||
+          item.menu_label === "Mains-dal"
+        ) {
           item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
-        }
-        else if (item.menu_label === "Pasta") {
+        } else if (item.menu_label === "Pasta") {
           if (nonVegPastaMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            item.quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
           }
-          else {
-            item.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-          }
-
         }
-        //Mains-gravy : same logic as above 
+        //Mains-gravy : same logic as above
         else if (item.menu_label === "Mains-Gravy") {
           if (nonVegMainsGravyMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            item.quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
           }
-          else {
-            item.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-          }
-
         }
         //Main -Thai : same logic as above
         else if (item.menu_label === "Mains-Thai") {
-
           if (nonVegMainThaiMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1))
-          }
-          else {
-            item.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            item.quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
           }
         }
-      }
-      else {
+      } else {
         if (item.Qtype === "pcs") {
           item.quantity = nonVeg * 1;
-        }
-        else if (item.name === highestPrice.name) {
+        } else if (item.name === highestPrice.name) {
           item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-        }
-        else {
+        } else {
           item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
         }
       }
-    })
+    });
 
     temp.push({
       // isRice: main.isRice,
@@ -915,11 +890,10 @@ const CustomizeNinjaBox = () => {
     setHideMainsRecommenedQnty(true);
     setHideBreadRecommenedQnty(true);
     setHideDessertRecommenedQnty(true);
-    if (item.Qtype === 'pcs') {
+    if (item.Qtype === "pcs") {
       value += 6;
-    }
-    else {
-      value = parseFloat(value) + 0.5
+    } else {
+      value = parseFloat(value) + 0.5;
     }
     handleChange(value, index, type);
   }
@@ -928,27 +902,22 @@ const CustomizeNinjaBox = () => {
     setHideMainsRecommenedQnty(true);
     setHideBreadRecommenedQnty(true);
     setHideDessertRecommenedQnty(true);
-    if (item.Qtype === 'pcs') {
+    if (item.Qtype === "pcs") {
       if (value < 12) {
-        value = 12
+        value = 12;
         handleChange(value, index, type);
         // return false;
-      }
-      else {
+      } else {
         value = parseInt(value) - 6;
       }
-
-    }
-    else {
+    } else {
       if (value < 1) {
-        value = 1
+        value = 1;
         handleChange(value, index, type);
         // return false;
-      }
-      else {
+      } else {
         value = parseFloat(value) - 0.5;
       }
-
     }
     handleChange(value, index, type);
   }
@@ -956,53 +925,53 @@ const CustomizeNinjaBox = () => {
     if (!city || !startTime) {
       if (!city) {
         Swal.fire({
-          text: 'Please select your City',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
+          text: "Please select your City",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
         // alert("Fill the City please");
-      }
-      else if (!startTime) {
+      } else if (!startTime) {
         Swal.fire({
-          text: 'Please fill the delivery time',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
+          text: "Please fill the delivery time",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
         //alert("Fill the Event time please");
       }
       return false;
-    }
-    else {
+    } else {
       return true;
     }
-
-  };
+  }
   function getDeliveryCharge(people) {
-    if (city === 'Mumbai' || city === 'Banglore' || city === 'Navi-Mumbai' || city === 'Thane' ) {
+    if (
+      city === "Mumbai" ||
+      city === "Banglore" ||
+      city === "Navi-Mumbai" ||
+      city === "Thane"
+    ) {
       if (people <= 25) {
         setDeliveryCharge(0);
-      }
-      else if (people > 25 && people <= 40) {
+      } else if (people > 25 && people <= 40) {
         setDeliveryCharge(0);
-      }
-      else if (people >= 41 && people <= 60) {
+      } else if (people >= 41 && people <= 60) {
         setDeliveryCharge(1499);
-      }
-      else if (people >= 61 && people <= 99) {
+      } else if (people >= 61 && people <= 99) {
         setDeliveryCharge(1999);
       }
-    }
-    else if (city === 'Delhi' || city === 'Gurgaon' || city === 'Noida' || city === 'Ghaziabad') {
+    } else if (
+      city === "Delhi" ||
+      city === "Gurgaon" ||
+      city === "Noida" ||
+      city === "Ghaziabad"
+    ) {
       if (people <= 25) {
         setDeliveryCharge(499);
-      }
-      else if (people > 25 && people <= 40) {
+      } else if (people > 25 && people <= 40) {
         setDeliveryCharge(999);
-      }
-      else if (people >= 41 && people <= 60) {
+      } else if (people >= 41 && people <= 60) {
         setDeliveryCharge(1499);
-      }
-      else if (people >= 61 && people <= 99) {
+      } else if (people >= 61 && people <= 99) {
         setDeliveryCharge(1999);
       }
     }
@@ -1028,34 +997,36 @@ const CustomizeNinjaBox = () => {
       newDesserts[index].quantity = value;
       setBreadRice(newDesserts);
     }
-
   }
   function handleDelete(index, type) {
     setIsDelete(!isDelete);
     if (type === "starters") {
       let temp = [...starters];
       temp.splice(index, 1);
-      console.log("hey",temp, filteredData)
+      console.log("hey", temp, filteredData);
       setStarters(temp);
-      let removedIndexes = []
-      filteredData.forEach((item,index) => {
-        let innerData = temp.filter(innerItem => innerItem?.name === item?.name);
-        console.log('item',innerData)
-        if(!innerData?.length){
+      let removedIndexes = [];
+      filteredData.forEach((item, index) => {
+        let innerData = temp.filter(
+          (innerItem) => innerItem?.name === item?.name
+        );
+        console.log("item", innerData);
+        if (!innerData?.length) {
           removedIndexes.push(index);
         }
-      }) 
+      });
       for (let j = 0; j < filteredData.length; j++) {
         if (!removedIndexes.includes(j)) {
-          filteredData[j].checked = 'checked';
-        }else{
-          filteredData[j].checked = '';
-          setCheckedValues(checkedValues.filter(v => v.id !== filteredData[j].id));
+          filteredData[j].checked = "checked";
+        } else {
+          filteredData[j].checked = "";
+          setCheckedValues(
+            checkedValues.filter((v) => v.id !== filteredData[j].id)
+          );
         }
       }
       // setStartersData(filteredData)
-      console.log('removed',filteredData,removedIndexes)
-      
+      console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
       let temp = [...mains];
       temp.splice(index, 1);
@@ -1109,83 +1080,78 @@ const CustomizeNinjaBox = () => {
             let guests = veg + nonVeg;
             if (count >= 2) {
               item.quantity = 0.15 * guests;
-            } else if (count === 1 && mains.length === 0 && starters.length >= 2) {
+            } else if (
+              count === 1 &&
+              mains.length === 0 &&
+              starters.length >= 2
+            ) {
               if (item.veg === true) {
-                item.quantity = 0.250 * veg;
+                item.quantity = 0.25 * veg;
+              } else {
+                item.quantity = 0.25 * nonVeg;
               }
-              else {
-                item.quantity = 0.250 * nonVeg;
-              }
-            }
-
-            else if (count === 1 && mains.length === 0 && starters.length <= 1) {
+            } else if (
+              count === 1 &&
+              mains.length === 0 &&
+              starters.length <= 1
+            ) {
               if (item.veg === true) {
-                item.quantity = 0.300 * veg;
+                item.quantity = 0.3 * veg;
+              } else {
+                item.quantity = 0.3 * nonVeg;
               }
-              else {
-                item.quantity = 0.300 * nonVeg;
-              }
-            }
-
-            else if (count >= 1 && mains.length === 0 && starters.length <= 1) {
+            } else if (
+              count >= 1 &&
+              mains.length === 0 &&
+              starters.length <= 1
+            ) {
               if (item.veg === true) {
-                item.quantity = 0.250 * veg;
+                item.quantity = 0.25 * veg;
+              } else {
+                item.quantity = 0.25 * nonVeg;
               }
-              else {
-                item.quantity = 0.250 * nonVeg;
-              }
-            }
-
-            else if (count >= 1 && mains.length === 0 && starters.length >= 2) {
+            } else if (
+              count >= 1 &&
+              mains.length === 0 &&
+              starters.length >= 2
+            ) {
               if (item.veg === true) {
                 item.quantity = 0.2 * veg;
-              }
-              else {
+              } else {
                 item.quantity = 0.2 * nonVeg;
               }
-            }
-
-            else if (count === 1 && mains.length >= 1) {
-              item.quantity = 0.20 * guests;
-            }
-
-            else {
+            } else if (count === 1 && mains.length >= 1) {
+              item.quantity = 0.2 * guests;
+            } else {
               if (item.veg === true) {
                 item.quantity = 0.15 * veg;
-              }
-              else {
+              } else {
                 item.quantity = 0.15 * nonVeg;
               }
             }
-
-
-
-
           }
         }
-
       });
 
-      console.log("hey",temp,filteredData);
-      
+      console.log("hey", temp, filteredData);
+
       setBreadRice(temp);
     }
   }
   const handleBreadRiceAdd = (item_name, id) => {
-
-
     setIsBreadChange(!isBreadChange);
     console.log(item_name);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...breadRice];
-    const filterBreadRice = breadRiceData.find((item) => item.name === item_name);
+    const filterBreadRice = breadRiceData.find(
+      (item) => item.name === item_name
+    );
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
 
     // Rice + Noodles + Breads
-
 
     //Breads Pooris
     if (
@@ -1207,7 +1173,6 @@ const CustomizeNinjaBox = () => {
           item.name === "Pooris"
             ? (item.quantity = (veg + nonVeg) * 2)
             : (item.quantity = (veg + nonVeg) * 2);
-
         });
         quantity = (veg + nonVeg) * 2;
       }
@@ -1238,33 +1203,38 @@ const CustomizeNinjaBox = () => {
     }
     //Noodles
     else if (filterBreadRice?.menu_label === "Noodle") {
-      let nonVegNoodleCount = 0
+      let nonVegNoodleCount = 0;
 
       temp.forEach((item) => {
         if (item.menu_label === "Noodle" && item.veg === false) {
           nonVegNoodleCount += 1;
         }
-      })
+      });
       // console.log("naan");
-      filterBreadRice.veg === true && filterBreadRice.menu_label === "Noodle" && nonVegNoodleCount > 0
+      filterBreadRice.veg === true &&
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = veg * 0.2)
         : (quantity = (veg + nonVeg) * 0.1);
-      filterBreadRice.veg === false && filterBreadRice.menu_label === "Noodle" && nonVegNoodleCount > 0
+      filterBreadRice.veg === false &&
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = nonVeg * 0.15)
         : (quantity = nonVeg * 0.2);
 
       temp.forEach((item) => {
-        item.veg === true && item.menu_label === "Noodle" && nonVegNoodleCount > 0
+        item.veg === true &&
+        item.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
           ? (item.quantity = veg * 0.2)
           : (item.quantity = (veg + nonVeg) * 0.1);
-        item.veg === false && item.menu_label === "Noodle" && nonVegNoodleCount > 0
+        item.veg === false &&
+        item.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
           ? (item.quantity = nonVeg * 0.15)
           : (item.quantity = nonVeg * 0.2);
       });
-
-
-    }
-    else if (filterBreadRice?.menu_label === "Rice") {
+    } else if (filterBreadRice?.menu_label === "Rice") {
       let count = 1;
       let isVeg = false;
       let isNonVeg = false;
@@ -1278,31 +1248,23 @@ const CustomizeNinjaBox = () => {
         let guests = veg > 0 ? veg : nonVeg;
         if (mains.length === 0 && count === 1) {
           quantity = guests * 0.3;
-        }
-        else if (mains.length > 0 && count === 1) {
+        } else if (mains.length > 0 && count === 1) {
           quantity = guests * 0.2;
-        }
-        else if (count >= 3) {
+        } else if (count >= 3) {
           quantity = guests * 0.1;
-        }
-        else {
+        } else {
           quantity = guests * 0.15;
         }
         temp.forEach((item) => {
           if (item.menu_label === "Rice") {
             if (count >= 3) {
               quantity = guests * 0.1;
-            }
-            else {
+            } else {
               quantity = guests * 0.15;
             }
             // item.quantity = 0.15 * guests;
           }
         });
-
-
-
-
 
         // if (count >= 1) {
         //   console.log("count2");
@@ -1320,68 +1282,50 @@ const CustomizeNinjaBox = () => {
         //   console.log("count1");
         //   quantity = 0.3 * guests;
         // }
-      }
-      else if (veg > 0 && nonVeg > 0) {
+      } else if (veg > 0 && nonVeg > 0) {
         let guests = veg + nonVeg;
 
         if (filterBreadRice.veg) {
           if (mains.length === 0 && count === 1) {
             quantity = guests * 0.3;
-          }
-          else if (mains.length > 0 && count === 1) {
+          } else if (mains.length > 0 && count === 1) {
             quantity = guests * 0.2;
-          }
-          else if (count >= 3) {
+          } else if (count >= 3) {
             quantity = veg * 0.1;
-          }
-          else {
+          } else {
             quantity = veg * 0.15;
           }
-
-        }
-        else {
+        } else {
           //non veg rice handelling
 
           if (mains.length === 0 && count === 1) {
             quantity = nonVeg * 0.3;
-          }
-          else if (mains.length > 0 && count === 1) {
+          } else if (mains.length > 0 && count === 1) {
             quantity = nonVeg * 0.2;
-          }
-          else if (count >= 3) {
+          } else if (count >= 3) {
             quantity = nonVeg * 0.1;
-          }
-          else {
+          } else {
             quantity = nonVeg * 0.15;
           }
-
         }
 
         temp.forEach((item) => {
           if (count >= 3) {
             if (item.menu_label === "Rice" && item.veg === true) {
-
-              item.quantity = 0.10 * veg;
+              item.quantity = 0.1 * veg;
             }
             if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.10 * nonVeg;
+              item.quantity = 0.1 * nonVeg;
             }
-          }
-
-          else {
+          } else {
             if (item.menu_label === "Rice" && item.veg === true) {
-
               item.quantity = 0.15 * veg;
             }
             if (item.menu_label === "Rice" && item.veg === false) {
               item.quantity = 0.15 * nonVeg;
             }
           }
-
         });
-
-
-
 
         // if (count >= 2) {
         //   quantity = 0.15 * guests;
@@ -1430,17 +1374,14 @@ const CustomizeNinjaBox = () => {
     }
     if (dessert.Qtype === "pcs") {
       // expensive desserts should go 1 piece
-      if (dessert.cuisine === 'Continental') {
-        quantity = Math.round((veg + nonVeg));
-      }
-      else {
-        if(dessert.name==='Angoori Gulab Jamun'){
+      if (dessert.cuisine === "Continental") {
+        quantity = Math.round(veg + nonVeg);
+      } else {
+        if (dessert.name === "Angoori Gulab Jamun") {
           quantity = Math.round((veg + nonVeg) * 3);
-        }
-        else{
+        } else {
           quantity = Math.round((veg + nonVeg) * 1.5);
         }
-        
       }
     } else {
       quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
@@ -1467,141 +1408,153 @@ const CustomizeNinjaBox = () => {
   };
   console.log("desert", desserts);
   function handleBuffet(value) {
-
     setbuffet(value);
-    
   }
   // cost calculation
   useEffect(() => {
-
     let starterPrice = 0;
     let mainPrice = 0;
     let dessertPrice = 0;
     let bredRicePrice = 0;
 
     starters.map((d) => {
-      if (d.Qtype === 'pcs') {
-        starterPrice += d.quantity * parseInt((d.selling_price) / 12);
-      }
-      else {
-        starterPrice += d.quantity * parseInt((d.selling_price));
+      if (d.Qtype === "pcs") {
+        starterPrice += d.quantity * parseInt(d.selling_price / 12);
+      } else {
+        starterPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("startersPrice",starterPrice)
-    console.log("mains",mains)
+    console.log("startersPrice", starterPrice);
+    console.log("mains", mains);
     mains.map((d) => {
-      if (d.Qtype === 'pcs') {
-        mainPrice += d.quantity * parseInt((d.selling_price) / 12);
-      }
-      else {
+      if (d.Qtype === "pcs") {
+        mainPrice += d.quantity * parseInt(d.selling_price / 12);
+      } else {
         mainPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("mainprice",mainPrice)
+    console.log("mainprice", mainPrice);
     desserts.map((d) => {
       if (d.Qtype === "pcs") {
         // expensive desserts should go 1 piece
-        if (d.cuisine === 'Continental') {
-          dessertPrice += d.quantity * (parseInt(d.selling_price)/12);
-        }
-        else {
+        if (d.cuisine === "Continental") {
+          dessertPrice += d.quantity * (parseInt(d.selling_price) / 12);
+        } else {
           dessertPrice += d.quantity * (parseInt(d.selling_price) / 12);
         }
-      }
-      else {
+      } else {
         dessertPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("dessertprice",dessertPrice)
+    console.log("dessertprice", dessertPrice);
     breadRice.map((d) => {
-      if (d.Qtype === 'pcs') {
-        bredRicePrice += d.quantity * parseInt((d.selling_price) / 12);
-      }
-      else {
-        bredRicePrice += d.quantity * parseInt((d.selling_price));
+      if (d.Qtype === "pcs") {
+        bredRicePrice += d.quantity * parseInt(d.selling_price / 12);
+      } else {
+        bredRicePrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("breadriceprice",bredRicePrice)
+    console.log("breadriceprice", bredRicePrice);
     people = veg + nonVeg;
     setPeople(people);
-    setTotalPrice(parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice));
+    setTotalPrice(
+      parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice)
+    );
     getDeliveryCharge(people);
     setGST(getGst());
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(getGst()));
-    setShowPriceList(false)
+    setgrandTotal(
+      parseInt(totalPrice) +
+        parseInt(buffet) +
+        parseInt(deliveryCharge) +
+        parseInt(getGst())
+    );
+    setShowPriceList(false);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
 
   useEffect(() => {
     setGST(getGst());
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + parseInt(getGst()));
+    setgrandTotal(
+      parseInt(totalPrice) +
+        parseInt(buffet) +
+        parseInt(deliveryCharge) +
+        parseInt(getGst())
+    );
   }, [buffet]);
 
   function getGst() {
-    return parseInt((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) * 5 / 100)
+    return parseInt(
+      ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
+        5) /
+        100
+    );
   }
 
-  
   const formSubmit = (e) => {
     e.preventDefault();
     if (!checkFirstValidation()) {
       return false;
     }
 
-
-    if (name.length == '' || email.length == '' || mobileno.length == '') {
-      if (name.length == '') {
+    if (name.length == "" || email.length == "" || mobileno.length == "") {
+      if (name.length == "") {
         Swal.fire({
-          text: 'Please enter your Name',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
+          text: "Please enter your Name",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
         //alert("Fill the name please");
-      }
-      else if (email.length == '') {
+      } else if (email.length == "") {
         Swal.fire({
-          text: 'Please enter your Email',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
+          text: "Please enter your Email",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
         //alert("Fill the Email please");
-      }
-      else if (mobileno.length == '') {
+      } else if (mobileno.length == "") {
         Swal.fire({
-          text: 'Please enter your mob.no.',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        })
+          text: "Please enter your mob.no.",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
         //alert("Fill the Mobile No please");
       }
       return false;
     }
     getDeliveryCharge(people);
-    setGST(getGst())
-    var final_gst=getGst();
-    var final_grandtotal=parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + getGst()
-    setgrandTotal(parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge) + getGst());
-    setShowPriceList(!showPriceList)
-    console.log("gst",final_gst, final_grandtotal)
+    setGST(getGst());
+    var final_gst = getGst();
+    var final_grandtotal =
+      parseInt(totalPrice) +
+      parseInt(buffet) +
+      parseInt(deliveryCharge) +
+      getGst();
+    setgrandTotal(
+      parseInt(totalPrice) +
+        parseInt(buffet) +
+        parseInt(deliveryCharge) +
+        getGst()
+    );
+    setShowPriceList(!showPriceList);
+    console.log("gst", final_gst, final_grandtotal);
 
     // e.preventDefault();
 
     let datas = {
-
       name: name,
       email: email,
       mobileno: mobileno,
       city: city,
       occasion: occasion,
-      veg_c:veg,
-      nonveg_c:nonVeg,
+      veg_c: veg,
+      nonveg_c: nonVeg,
       people: people,
       date: startDate,
       // time : startTime,
       url: refURL,
-      meal: 'meal',
+      meal: "meal",
       cuisine: cuisine,
-      preference: 'preference',
-      mealtype: 'mealtype',
+      preference: "preference",
+      mealtype: "mealtype",
       boolean: true,
       appetizer: starters,
       mainCourse: mains,
@@ -1612,12 +1565,12 @@ const CustomizeNinjaBox = () => {
       dessertClassname: "caterNinja_add_dessert_button",
       totalPrice: totalPrice,
       GST: final_gst,
-      showDessert: false
+      showDessert: false,
     };
-    console.log(datas)
+    console.log(datas);
 
-    setDatas(datas)
-  
+    setDatas(datas);
+
     let data = "";
     try {
       data = JSON.stringify(datas);
@@ -1627,37 +1580,38 @@ const CustomizeNinjaBox = () => {
     fetch("/api/forma", {
       method: "POST",
       body: data,
-      headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      console.log(res.message)
+      console.log(res.message);
       if (res.success) {
         console.log("message sent");
-      }
-      else {
+      } else {
         console.log("Failed to send message");
       }
     });
-  }
+  };
 
   const handlePlaceOrder = () => {
     let msg = "Hey,! Please Help me to make my DIY menu order!";
 
-    if (city === 'Bangalore') {
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
+    if (city === "Bangalore") {
+      window.location.href =
+        "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if (city === 'Delhi') {
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
+    if (city === "Delhi") {
+      window.location.href =
+        "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if (city === 'Mumbai') {
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
+    if (city === "Mumbai") {
+      window.location.href =
+        "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
-    if (city === 'Gurgaon') {
-      window.location.href = "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
+    if (city === "Gurgaon") {
+      window.location.href =
+        "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
     alert("Order Details Received Successfully");
-
-
-  }
+  };
 
   const outerDivRef = useRef(null);
 
@@ -1668,123 +1622,64 @@ const CustomizeNinjaBox = () => {
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
+  // const selectedItems = filteredData.filter(item => item.checked);
+  // const unselectedItems = filteredData.filter(item => !item.checked);
 
-// const selectedItems = filteredData.filter(item => item.checked);
-// const unselectedItems = filteredData.filter(item => !item.checked);
+  // selectedItems.sort((a, b) => a.name.localeCompare(b.name));
 
+  // const sortedData = selectedItems.concat(unselectedItems);
 
-// selectedItems.sort((a, b) => a.name.localeCompare(b.name));
+  const initiatePayment = async (e) => {
+    e.preventDefault();
+    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
+    const data = { oid };
+    let a = await fetch("/api/paynow", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    var txnToken = await a.json();
+    
+    var config = {
+      root: "",
+      flow: "DEFAULT",
+      ENVIRONMENT: "staging",
+      REQUEST_TYPE: "DEFAULT",
+      INDUSTRY_TYPE_ID: "Retail",
+      WEBSITE: "WEBSTAGING",
+      data: {
+        orderId: oid,
+        token: txnToken /* update token value */,
+        tokenType: "TXN_TOKEN",
+        amount: "100" /* update amount */,
+      },
+      "handler": {
+        "notifyMerchant": function (eventName, data) {
+          console.log("notifyMerchant handler function called");
+          console.log("eventName => ", eventName);
+          console.log("data => ", data);
+        },
+      },
+    };
 
-// const sortedData = selectedItems.concat(unselectedItems);
-
-const initiatePayment=(e)=>{
-  e.preventDefault();
-    debugger
-    let txnToken;
-    var config ={
-    "root": "",
-    "flow": "DEFAULT",
-    "data": {
-    "orderId": Math.random(),
-    "token": txnToken, /* update token value */
-    "tokenType": "TXN_TOKEN",
-    "amount": "1",/* update amount */
-    },
-    "handler": {
-    "notifyMerchant": function(eventName, data) {
-    console.log("notifyMerchant handler function called");
-    console.log("eventName => ", eventName);
-    console.log("data => ", data);
-    }
-    }
-  }
-
- 
     // initialze configuration using init method
-    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-    // after successfully updating configuration, invoke JS Checkout
-    window.Paytm.CheckoutJS.invoke();
-    }).catch(function onError(error){
-      console.log("error => ", error);
-    });
-  
-
-
-
-  const https = require('https');
-/*
-* import checksum generation utility
-* You can get this utility from https://developer.paytm.com/docs/checksum/
-*/
-const PaytmChecksum = require("../../components/Paytm/PaytmChecksum");
-
-var paytmParams = {};
-
-paytmParams.body = {
-    "requestType"   : "Payment",
-    "mid"           : "CaterN17180271203216",
-    "websiteName"   : "CaterNinja",
-    "orderId"       : Math.random(),
-    "callbackUrl"   : "https://localhost:3000/",
-    "txnAmount"     : {
-        "value"     : "1.00",
-        "currency"  : "INR",
-    },
-    "userInfo"      : {
-        "custId"    : "CUST_001",
-    },
-};
-debugger
-/*
-* Generate checksum by parameters we have in body
-* Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-*/
-PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT_KEY").then(function(checksum){
-
-    paytmParams.head = {
-        "signature"    : checksum
-    };
-
-    var post_data = JSON.stringify(paytmParams);
-
-    var options = {
-
-        /* for Staging */
-        hostname: 'securegw-stage.paytm.in',
-
-        /* for Production */
-        // hostname: 'securegw.paytm.in',
-
-        port: 443,
-        path: '/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': post_data.length
-        }
-    };
-
-    var response = "";
-    var post_req = https.request(options, function(post_res) {
-        post_res.on('data', function (chunk) {
-            response += chunk;
-        });
-
-        post_res.on('end', function(){
-            console.log('Response: ', response);
-        });
-    });
-
-    post_req.write(post_data);
-    post_req.end();
-});
-}
+    window.Paytm.CheckoutJS.init(config)
+      .then(function onSuccess() {
+        // after successfully updating configuration, invoke JS Checkout
+        window.Paytm.CheckoutJS.invoke();
+      })
+      .catch(function onError(error) {
+        console.log("error => ", error);
+      });
+  };
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -1792,50 +1687,81 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
         <Slider {...settings}>
           <div className={styles.header}>
             <div className={styles.headerContent}>
-              <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+              <img
+                id={styles.ninjaLogo}
+                src="/CustomizeImg/CaterNinjaLogo.png"
+                width="91.6px"
+                height="19.49px"
+              />
               <div className={styles.textLogo}>
                 <div>
                   <h3>Customize your</h3>
-                  <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
-                  <h5>Get instant quote in just few<br />easy steps!</h5>
+                  <h2 id={styles.ninjaBoxTitle}>
+                    Ninja<span>Box</span>
+                  </h2>
+                  <h5>
+                    Get instant quote in just few
+                    <br />
+                    easy steps!
+                  </h5>
                 </div>
                 <div>
-                  <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
+                  <img
+                    id={styles.ninja}
+                    src="/CustomizeImg/Group 267 (1).png"
+                    width="102.33px"
+                    height="132.73px"
+                  />
                 </div>
                 <div className={styles.ninjaboxLg}>
-                  <img src='Group 1016.png' width="281.81px" height="218px" />
+                  <img src="Group 1016.png" width="281.81px" height="218px" />
                 </div>
               </div>
             </div>
             <div className={styles.ninjabox}>
-              <img src='Group 1016.png' width="281.81px" height="218px" />
+              <img src="Group 1016.png" width="281.81px" height="218px" />
             </div>
           </div>
           <div className={styles.header}>
             <div className={styles.headerContent}>
-              <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+              <img
+                id={styles.ninjaLogo}
+                src="/CustomizeImg/CaterNinjaLogo.png"
+                width="91.6px"
+                height="19.49px"
+              />
               <div className={styles.textLogo}>
                 <div>
                   <h3>Customize your</h3>
-                  <h2 id={styles.ninjaBuffyTitle}>Ninja<span>Buffet</span></h2>
-                  <h5>Get instant quote in just few<br />easy steps!</h5>
+                  <h2 id={styles.ninjaBuffyTitle}>
+                    Ninja<span>Buffet</span>
+                  </h2>
+                  <h5>
+                    Get instant quote in just few
+                    <br />
+                    easy steps!
+                  </h5>
                 </div>
                 <div>
-                  <img id={styles.ninjaB} src='/CustomizeImg/NinjaBuffy.png' width="83.41px" height="132.73px" />
+                  <img
+                    id={styles.ninjaB}
+                    src="/CustomizeImg/NinjaBuffy.png"
+                    width="83.41px"
+                    height="132.73px"
+                  />
                 </div>
                 <div className={styles.ninjaboxLg}>
-                  <img src='Group 1247.png' width="256px" height="225.57px" />
+                  <img src="Group 1247.png" width="256px" height="225.57px" />
                 </div>
               </div>
             </div>
             <div className={styles.ninjabuffy}>
-              <img src='Group 1247.png' width="256px" height="225.57px" />
+              <img src="Group 1247.png" width="256px" height="225.57px" />
             </div>
           </div>
         </Slider>
         <form onSubmit={(e) => formSubmit()}>
           <div className={styles.redBg}>
-
             {/* <div className={styles2.eventDate}>
             <h3>Event Date &amp; Time</h3>
             <hr />
@@ -1852,19 +1778,35 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                 <div className={styles.cityContent}>
                   <p>City</p>
 
-                  <select className="form-select" name='city' aria-label="Default select example" value={city} onChange={e => handleCity(e.target.value)} required>
-                    <option value='' selected>Select City</option>
+                  <select
+                    className="form-select"
+                    name="city"
+                    aria-label="Default select example"
+                    value={city}
+                    onChange={(e) => handleCity(e.target.value)}
+                    required
+                  >
+                    <option value="" selected>
+                      Select City
+                    </option>
                     {cities.map((item, index) => {
                       return (
-                        <option key={index} value={item} >{item}</option>
-                      )
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
 
                 <div className={styles.eventDate}>
                   <p>Event Date</p>
-                  <DatePicker name='event_date' selected={startDate} onChange={(date) => setStartDate(date)} required />
+                  <DatePicker
+                    name="event_date"
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    required
+                  />
                 </div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Veg Guest</p>
@@ -1877,7 +1819,6 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                     defaultValue={veg}
                   />
                 </div>
-
               </div>
               <div>
                 {/* <div style={{ marginBottom: "40px" }}>
@@ -1893,18 +1834,33 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
 
                 <div style={{ marginBottom: "40px" }}>
                   <p>Occasion</p>
-                  <select className="form-select" name='occasion' aria-label="Default select example" value={occasion} onChange={e => handleOccasion(e.target.value)} >
-                  <option value='' selected>Select Occasion</option>
+                  <select
+                    className="form-select"
+                    name="occasion"
+                    aria-label="Default select example"
+                    value={occasion}
+                    onChange={(e) => handleOccasion(e.target.value)}
+                  >
+                    <option value="" selected>
+                      Select Occasion
+                    </option>
                     {occasions.map((item, index) => {
                       return (
-                        <option key={index} value={item}>{item}</option>
-                      )
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
                     })}
                   </select>
-                </div>  
+                </div>
                 <div>
                   <p>Delivery Time</p>
-                  <input type="time" name='event_time' onChange={(time) => setstartTime(time)} required></input>
+                  <input
+                    type="time"
+                    name="event_time"
+                    onChange={(time) => setstartTime(time)}
+                    required
+                  ></input>
                 </div>
                 <div style={{ marginTop: "40px" }}>
                   <p>Non Veg Guest</p>
@@ -1920,7 +1876,6 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
               </div>
             </div>
 
-
             {/* Display Starters, mains etc count */}
             <div className={styles.whiteBg}>
               {/* MANOJ <div className={styles.packageName}>
@@ -1929,36 +1884,68 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
               <div className={styles.selfService}>
-                {<Slider {...settings}>
-                  <div>
-                    <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
-                    <img src='555.png' height="150px" width="274.5px" />
-                  </div>
-                  <div>
-                    <h3>SETUP + SERVICE<br />NINJA<span>BUFFET</span></h3>
-                    <img src='Frame 769.png' height="150px" width="274.5px" />
-                  </div>
-                  <div>
-                    <h3>PREMIUM BUFFET<br />NINJA<span>CLASSIC</span></h3>
-                    <img src='Group 1254.png' height="150px" width="274.5px" />
-                  </div>
-                </Slider>}
+                {
+                  <Slider {...settings}>
+                    <div>
+                      <h3>
+                        SELF - SERVICE
+                        <br />
+                        NINJA<span>BOX</span>
+                      </h3>
+                      <img src="555.png" height="150px" width="274.5px" />
+                    </div>
+                    <div>
+                      <h3>
+                        SETUP + SERVICE
+                        <br />
+                        NINJA<span>BUFFET</span>
+                      </h3>
+                      <img src="Frame 769.png" height="150px" width="274.5px" />
+                    </div>
+                    <div>
+                      <h3>
+                        PREMIUM BUFFET
+                        <br />
+                        NINJA<span>CLASSIC</span>
+                      </h3>
+                      <img
+                        src="Group 1254.png"
+                        height="150px"
+                        width="274.5px"
+                      />
+                    </div>
+                  </Slider>
+                }
               </div>
               <div className={styles.pkgSliderContainerLG}>
-                {<Slider {...settings}>
-                  <div className={styles.pkgSlider}>
-                    <h3>SELF - SERVICE<br />NINJA<span>BOX</span></h3>
-                    <img src='555.png' />
-                  </div>
-                  <div className={styles.pkgSlider}>
-                    <h3>SELF - SERVICE<br />NINJA<span>BUFFET</span></h3>
-                    <img src='Frame 769.png' />
-                  </div>
-                  <div className={styles.pkgSlider}>
-                    <h3>PREMIUM BUFFET<br />NINJA<span>CLASSIC</span></h3>
-                    <img src='Group 1254.png' />
-                  </div>
-                </Slider>}
+                {
+                  <Slider {...settings}>
+                    <div className={styles.pkgSlider}>
+                      <h3>
+                        SELF - SERVICE
+                        <br />
+                        NINJA<span>BOX</span>
+                      </h3>
+                      <img src="555.png" />
+                    </div>
+                    <div className={styles.pkgSlider}>
+                      <h3>
+                        SELF - SERVICE
+                        <br />
+                        NINJA<span>BUFFET</span>
+                      </h3>
+                      <img src="Frame 769.png" />
+                    </div>
+                    <div className={styles.pkgSlider}>
+                      <h3>
+                        PREMIUM BUFFET
+                        <br />
+                        NINJA<span>CLASSIC</span>
+                      </h3>
+                      <img src="Group 1254.png" />
+                    </div>
+                  </Slider>
+                }
               </div>
               {/* <div className={styles.pkgDetails}>
                 <div>
@@ -1971,168 +1958,407 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                 </div>
               </div> */}
               <div>
-
-
                 <div className={styles.menuContainer}>
                   <div className={styles.createYourMenuHead}>
                     <h3>Create Your Menu</h3>
-                    <hr style={{ border: "0.4px dashed #42484E", margin: "auto", width: "196px", backgroundColor: "white" }} />
+                    <hr
+                      style={{
+                        border: "0.4px dashed #42484E",
+                        margin: "auto",
+                        width: "196px",
+                        backgroundColor: "white",
+                      }}
+                    />
                   </div>
 
                   {/* starters add */}
                   <div className={styles.startersContainer}>
                     <h5>Starters</h5>
-                    {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
-                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
-                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                    </div>
+                    {showDropdown && (
+                      <div
+                        onClick={handleDiv1Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Starter
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
                     )}
-                    <div className={styles.selectedStarterContainer} style={{marginTop: "20px"}}>
-                      {!showSelectedMenu && starters.map((item, index) => (<div id='d1' className={styles.fstItem} key={index}>
-                        {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
+                    <div
+                      className={styles.selectedStarterContainer}
+                      style={{ marginTop: "20px" }}
+                    >
+                      {!showSelectedMenu &&
+                        starters.map((item, index) => (
+                          <div id="d1" className={styles.fstItem} key={index}>
+                            {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
 
-                        {item.Images ? <img className={styles.itemImage} src={item.Images} width="30.05px" height="26.54px"/> :
-                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px"/>}
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
 
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
-                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
-                                decrement(item.quantity, index, "starters", item)
-                              }>-</button>
-                              <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
-                                increment(item.quantity, index, "starters", item)
-                              }>+</button>
-
-                            </div>
-                            {!hideRecommenedQnty && <div className={styles.recQnty}>
-                              <p>Recommended Qt.</p>
-                            </div>}
-                          </div>
-                          <div>
-                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "starters")} />
-                          </div>
-                        </div>
-                      </div>))}
-                    </div>
-                    {showSelectedMenu && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                      <div id={styles.starterSearchContent}>
-                        <div>
-                          <input type="text"
-                            value={searchValue}
-                            onChange={searchStarter}
-                            placeholder="Search Starter" />
-                          <div id={styles.starterList}>
-                            <ul>
-                              {filteredData.map((item, index) => (
-                                <li key={item.id}>
-                                  <div className='d-flex justify-content-between'>
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? <img src={item.Images} width="30.05px" height="26.54px"/> :
-                                        <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
-
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
-                                    </div>
-                                    <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "starters")} />
-                                    </div>
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "starters",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "starters",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
                                   </div>
-                                </li>
-                              ))}
-                            </ul>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() =>
+                                    handleDelete(index, "starters")
+                                  }
+                                />
+                              </div>
+                            </div>
                           </div>
-                          <div id={styles.listInsideBtn}>
-                            <button onClick={handleCancelClick}>Done</button>
+                        ))}
+                    </div>
+                    {showSelectedMenu && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchValue}
+                              onChange={searchStarter}
+                              placeholder="Search Starter"
+                            />
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredData.map((item, index) => (
+                                  <li key={item.id}>
+                                    <div className="d-flex justify-content-between">
+                                      <div id={styles.insideDivLi}>
+                                        {item.Images ? (
+                                          <img
+                                            src={item.Images}
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        ) : (
+                                          <img
+                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        )}
+
+                                        {item.veg === true ? (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.vegLogoLg}
+                                            src="/diy images/vegLogo.png"
+                                          />
+                                        ) : (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.nvegLogoLg}
+                                            src="/diy images/Group 962.png"
+                                          />
+                                        )}
+                                        <p
+                                          onClick={() =>
+                                            document
+                                              .getElementById(item.id)
+                                              .click()
+                                          }
+                                        >
+                                          {item.name}
+                                          <br />
+                                          <span>{item.description}</span>
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <input
+                                          id={item.id}
+                                          type="checkbox"
+                                          checked={item.checked}
+                                          value={item.id}
+                                          onChange={(e) =>
+                                            handleCheckboxChange(
+                                              e,
+                                              index,
+                                              item,
+                                              "starters"
+                                            )
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>)}
+                    )}
                   </div>
                   <hr className={styles.MenuHr} />
-                   <div className={styles.imgDesc} id="d2">
+                  <div className={styles.imgDesc} id="d2">
                     <p>*Images are for representation purpose only</p>
                   </div>
                   {/* mains add */}
                   <div className={styles.mainsContainer}>
                     <h5>Mains</h5>
                     <div className={styles.selectedMainsContainer}>
-                      {!showSelectedMenu2 && mains.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
-                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
-                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
-                                decrement(item.quantity, index, "mains", item)
-                              }>-</button>
-                              <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
-                                increment(item.quantity, index, "mains", item)
-                              }>+</button>
-                            </div>
-                            {!hideMainsRecommenedQnty && <div className={styles.recQnty}>
-                              <p>Recommended Qt.</p>
-                            </div>}
-                          </div>
-                          <div>
-                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "mains")} />
-                          </div>
-                        </div>
-                      </div>))}
-                    </div>
-                    {showDropdown2 && (<div onClick={handleDiv2Click} className={styles.starterSearchBtn} id="srchbr2">
-                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Mains</p>
-                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                    </div>
-                    )}
-                    {showSelectedMenu2 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                      <div id={styles.starterSearchContent}>
-                        <div>
-                          <input type="text"
-                            value={searchMainsValue}
-                            onChange={searchMains}
-                            placeholder="Search Mains" />
-                          <div id={styles.starterList}>
-                            <ul>
-                              {filteredMainsData.map((item, index) => (
-                                <li key={item.id}>
-                                  <div className='d-flex justify-content-between'>
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? <img src={item.Images} width="30.05px" height="26.54px" /> :
-                                        <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
-                                    </div>
-                                    <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "mains")} />
-                                    </div>
+                      {!showSelectedMenu2 &&
+                        mains.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "mains",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "mains",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideMainsRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
                                   </div>
-                                </li>
-                              ))}
-                            </ul>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() => handleDelete(index, "mains")}
+                                />
+                              </div>
+                            </div>
                           </div>
-                          <div id={styles.listInsideBtn}>
-                            <button onClick={handleCancelClick}>Done</button>
+                        ))}
+                    </div>
+                    {showDropdown2 && (
+                      <div
+                        onClick={handleDiv2Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr2"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Mains
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
+                    {showSelectedMenu2 && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchMainsValue}
+                              onChange={searchMains}
+                              placeholder="Search Mains"
+                            />
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredMainsData.map((item, index) => (
+                                  <li key={item.id}>
+                                    <div className="d-flex justify-content-between">
+                                      <div id={styles.insideDivLi}>
+                                        {item.Images ? (
+                                          <img
+                                            src={item.Images}
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        ) : (
+                                          <img
+                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        )}
+                                        {item.veg === true ? (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.vegLogoLg}
+                                            src="/diy images/vegLogo.png"
+                                          />
+                                        ) : (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.nvegLogoLg}
+                                            src="/diy images/Group 962.png"
+                                          />
+                                        )}
+                                        <p
+                                          onClick={() =>
+                                            document
+                                              .getElementById(item.id)
+                                              .click()
+                                          }
+                                        >
+                                          {item.name}
+                                          <br />
+                                          <span>{item.description}</span>
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <input
+                                          id={item.id}
+                                          type="checkbox"
+                                          checked={item.checked}
+                                          value={item.id}
+                                          onChange={(e) =>
+                                            handleCheckboxChange(
+                                              e,
+                                              index,
+                                              item,
+                                              "mains"
+                                            )
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>)}
+                    )}
                   </div>
 
                   <hr className={styles.MenuHr} />
@@ -2143,75 +2369,189 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                   <div className={styles.mainsContainer}>
                     <h5>Bread Rice and Noodles</h5>
                     <div className={styles.selectedMainsContainer}>
-                      {!showSelectedMenu3 && breadRice.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
-                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
-                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
-                                decrement(item.quantity, index, "Bread+Rice", item)
-                              }>-</button>
-                              <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
-                                increment(item.quantity, index, "Bread+Rice", item)
-                              }>+</button>
-
-                            </div>
-                            {!hideBreadRecommenedQnty && <div className={styles.recQnty}>
-                              <p>Recommended Qt.</p>
-                            </div>}
-                          </div>
-                          <div>
-                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "Bread+Rice")} />
-                          </div>
-                        </div>
-                      </div>))}
-                    </div>
-                    {showDropdown3 && (<div onClick={handleDiv3Click} className={styles.starterSearchBtn} id="srchbr2">
-                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Breads Rice </p>
-                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                    </div>
-                    )}
-                    {showSelectedMenu3 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                      <div id={styles.starterSearchContent}>
-                        <div>
-                          <input type="text"
-                            value={searchBreadValue}
-                            onChange={searchBread}
-                            placeholder="Search Bread Rice Noodles" />
-                          <div id={styles.starterList}>
-                            <ul>
-                              {filteredBreadData.map((item, index) => (
-                                <li key={item.id}>
-                                  <div className='d-flex justify-content-between'>
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? <img src={item.Images} width="30.05px" height="26.54px" /> :
-                                        <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
-                                    </div>
-                                    <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "Bread+Rice")} />
-                                    </div>
+                      {!showSelectedMenu3 &&
+                        breadRice.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "Bread+Rice",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "Bread+Rice",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideBreadRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
                                   </div>
-                                </li>
-                              ))}
-                            </ul>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() =>
+                                    handleDelete(index, "Bread+Rice")
+                                  }
+                                />
+                              </div>
+                            </div>
                           </div>
-                          <div id={styles.listInsideBtn}>
-                            <button onClick={handleCancelClick}>Done</button>
+                        ))}
+                    </div>
+                    {showDropdown3 && (
+                      <div
+                        onClick={handleDiv3Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr2"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Breads Rice{" "}
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
+                    {showSelectedMenu3 && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchBreadValue}
+                              onChange={searchBread}
+                              placeholder="Search Bread Rice Noodles"
+                            />
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredBreadData.map((item, index) => (
+                                  <li key={item.id}>
+                                    <div className="d-flex justify-content-between">
+                                      <div id={styles.insideDivLi}>
+                                        {item.Images ? (
+                                          <img
+                                            src={item.Images}
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        ) : (
+                                          <img
+                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        )}
+                                        {item.veg === true ? (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.vegLogoLg}
+                                            src="/diy images/vegLogo.png"
+                                          />
+                                        ) : (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.nvegLogoLg}
+                                            src="/diy images/Group 962.png"
+                                          />
+                                        )}
+                                        <p
+                                          onClick={() =>
+                                            document
+                                              .getElementById(item.id)
+                                              .click()
+                                          }
+                                        >
+                                          {item.name}
+                                          <br />
+                                          <span>{item.description}</span>
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <input
+                                          id={item.id}
+                                          type="checkbox"
+                                          checked={item.checked}
+                                          value={item.id}
+                                          onChange={(e) =>
+                                            handleCheckboxChange(
+                                              e,
+                                              index,
+                                              item,
+                                              "Bread+Rice"
+                                            )
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>)}
+                    )}
                   </div>
                   <hr className={styles.MenuHr} />
                   <div className={styles.imgDesc}>
@@ -2221,75 +2561,189 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                   <div className={styles.mainsContainer}>
                     <h5>Desserts</h5>
                     <div className={styles.selectedMainsContainer}>
-                      {!showSelectedMenu4 && desserts.map((item, index) => (<div className={styles.fstItem} key={index}>
-                        {item.Images ? <img className={styles.itemImage} src={item.Images} /> :
-                          <img className={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' />}
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? <img className={styles.vegLogo} src="/diy images/vegLogo.png" /> :
-                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button type='button' onClick={(e) =>
-                                decrement(item.quantity, index, "desserts", item)
-                              }>-</button>
-                              <h6>{item.quantity}{item.Qtype}</h6>
-                              <button type='button' onClick={(e) =>
-                                increment(item.quantity, index, "desserts", item)
-                              }>+</button>
-
-                            </div>
-                            {!hideDessertRecommenedQnty && <div className={styles.recQnty}>
-                              <p>Recommended Qt.</p>
-                            </div>}
-                          </div>
-                          <div>
-                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => handleDelete(index, "desserts")} />
-                          </div>
-                        </div>
-                      </div>))}
-                    </div>
-                    {showDropdown4 && (<div onClick={handleDiv4Click} className={styles.starterSearchBtn} id="srchbr2">
-                      <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Desserts </p>
-                      <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                    </div>
-                    )}
-                    {showSelectedMenu4 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                      <div id={styles.starterSearchContent}>
-                        <div>
-                          <input type="text"
-                            value={searchDessertValue}
-                            onChange={searchDessert}
-                            placeholder="Search Desserts" />
-                          <div id={styles.starterList}>
-                            <ul>
-                              {filteredDessertData.map((item, index) => (
-                                <li key={item.id}>
-                                  <div className='d-flex justify-content-between'>
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? <img src={item.Images} width="30.05px" height="26.54px" /> :
-                                        <img src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' width="30.05px" height="26.54px" />}
-                                      {item.veg === true ? <img className={styles.vegLogo} id={styles.vegLogoLg} src="/diy images/vegLogo.png" /> :
-                                        <img className={styles.vegLogo} id={styles.nvegLogoLg} src="/diy images/Group 962.png" />}
-                                      <p onClick={() => document.getElementById(item.id).click()}>{item.name}<br /><span>{item.description}</span></p>
-                                    </div>
-                                    <div>
-                                      <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, index, item, "desserts")} />
-                                    </div>
+                      {!showSelectedMenu4 &&
+                        desserts.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "desserts",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "desserts",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideDessertRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
                                   </div>
-                                </li>
-                              ))}
-                            </ul>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() =>
+                                    handleDelete(index, "desserts")
+                                  }
+                                />
+                              </div>
+                            </div>
                           </div>
-                          <div id={styles.listInsideBtn}>
-                            <button onClick={handleCancelClick}>Done</button>
+                        ))}
+                    </div>
+                    {showDropdown4 && (
+                      <div
+                        onClick={handleDiv4Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr2"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Desserts{" "}
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
+                    {showSelectedMenu4 && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchDessertValue}
+                              onChange={searchDessert}
+                              placeholder="Search Desserts"
+                            />
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredDessertData.map((item, index) => (
+                                  <li key={item.id}>
+                                    <div className="d-flex justify-content-between">
+                                      <div id={styles.insideDivLi}>
+                                        {item.Images ? (
+                                          <img
+                                            src={item.Images}
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        ) : (
+                                          <img
+                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                            width="30.05px"
+                                            height="26.54px"
+                                          />
+                                        )}
+                                        {item.veg === true ? (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.vegLogoLg}
+                                            src="/diy images/vegLogo.png"
+                                          />
+                                        ) : (
+                                          <img
+                                            className={styles.vegLogo}
+                                            id={styles.nvegLogoLg}
+                                            src="/diy images/Group 962.png"
+                                          />
+                                        )}
+                                        <p
+                                          onClick={() =>
+                                            document
+                                              .getElementById(item.id)
+                                              .click()
+                                          }
+                                        >
+                                          {item.name}
+                                          <br />
+                                          <span>{item.description}</span>
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <input
+                                          id={item.id}
+                                          type="checkbox"
+                                          checked={item.checked}
+                                          value={item.id}
+                                          onChange={(e) =>
+                                            handleCheckboxChange(
+                                              e,
+                                              index,
+                                              item,
+                                              "desserts"
+                                            )
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>)}
+                    )}
                   </div>
                 </div>
               </div>
@@ -2297,16 +2751,35 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
               <div className={styles.imgDesc}>
                 <p>*Images are for representation purpose only</p>
               </div>
-              <div className='text-center mt-3' id={styles.itemsQnty}>
-                <h6>{starters?.length} Starters + {mains?.length + breadRice.length} Mains + {desserts?.length} Desserts</h6>
+              <div className="text-center mt-3" id={styles.itemsQnty}>
+                <h6>
+                  {starters?.length} Starters +{" "}
+                  {mains?.length + breadRice.length} Mains + {desserts?.length}{" "}
+                  Desserts
+                </h6>
               </div>
-              <div className='mt-5'>
+              <div className="mt-5">
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
                   <div className={styles.detailsInputLg}>
-                    <input placeholder='Name' onInput={(e) => setName(e.target.value)} required />
-                    <input placeholder='Phone No.' name='mobileno' onInput={(e) => setPhone(e.target.value)} maxLength='10' required />
-                    <input placeholder='Email' name='email' onInput={(e) => setEmail(e.target.value)} required />
+                    <input
+                      placeholder="Name"
+                      onInput={(e) => setName(e.target.value)}
+                      required
+                    />
+                    <input
+                      placeholder="Phone No."
+                      name="mobileno"
+                      onInput={(e) => setPhone(e.target.value)}
+                      maxLength="10"
+                      required
+                    />
+                    <input
+                      placeholder="Email"
+                      name="email"
+                      onInput={(e) => setEmail(e.target.value)}
+                      required
+                    />
                   </div>
                 </div>
               </div>
@@ -2322,137 +2795,163 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                 <input type="text" placeholder='Enter Coupon Code' />
                 <button>Apply</button>
               </div> */}
-              {showPriceList && <div className={styles.finalPriceSection}>
-                <div id={styles.drdwnCnt} className="d-flex justify-content-between">
-                  {/* <select className="form-select" aria-label="Default select example" value={buffet} onChange={e => handleBuffet(e.target.value)}>
+              {showPriceList && (
+                <div className={styles.finalPriceSection}>
+                  <div
+                    id={styles.drdwnCnt}
+                    className="d-flex justify-content-between"
+                  >
+                    {/* <select className="form-select" aria-label="Default select example" value={buffet} onChange={e => handleBuffet(e.target.value)}>
                     <option value="" selected>Ninjabox - Delivery (Free)</option>
                     <option value="3500">Buffet setup + 1 waiter (+ ₹ 3,500.00)</option>
                     <option value="4500">Buffet setup + 2 waiter (+ ₹ 4,500.00)</option>
                   </select> */}
-                  <select
-                    aria-label="Default select example"
-                    className="form-select"
-                    id="fontR"
-                    name="buffet"
-                    value={buffet}
-                    onChange={e => handleBuffet(e.target.value)}
-                  >
-                    {(city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
-                      city === "Bangalore") &&
+                    <select
+                      aria-label="Default select example"
+                      className="form-select"
+                      id="fontR"
+                      name="buffet"
+                      value={buffet}
+                      onChange={(e) => handleBuffet(e.target.value)}
+                    >
+                      {(city === "Mumbai" ||
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                       people < 26 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery (Free)
-                        </option>
-                        <option value="4000">
-                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
-                      city === "Bangalore") &&
-                      people > 25 &&
-                      people < 41 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery (Free)
-                        </option>
-                        <option value="5000">
-                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
-                      city === "Bangalore") &&
-                      people > 40 &&
-                      people < 61 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery Only
-                        </option>
-                        <option value="6000">
-                          Buffet setup + Service (+ ₹ 6,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Mumbai" || city === "Navi-Mumbai" || city === "Thane" ||
-                      city === "Bangalore") &&
-                      people > 60 &&
-                      people < 100 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery Only
-                        </option>
-                        <option value="7500">
-                          Buffet setup + Service (+ ₹ 7,500.00)
-                        </option>
-                      </>
-                    ) : null}
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox - Delivery (Free)
+                          </option>
+                          <option value="4000">
+                            Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                          </option>
+                        </>
+                      ) : (city === "Mumbai" ||
+                          city === "Navi-Mumbai" ||
+                          city === "Thane" ||
+                          city === "Bangalore") &&
+                        people > 25 &&
+                        people < 41 ? (
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox - Delivery (Free)
+                          </option>
+                          <option value="5000">
+                            Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                          </option>
+                        </>
+                      ) : (city === "Mumbai" ||
+                          city === "Navi-Mumbai" ||
+                          city === "Thane" ||
+                          city === "Bangalore") &&
+                        people > 40 &&
+                        people < 61 ? (
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox - Delivery Only
+                          </option>
+                          <option value="6000">
+                            Buffet setup + Service (+ ₹ 6,000.00)
+                          </option>
+                        </>
+                      ) : (city === "Mumbai" ||
+                          city === "Navi-Mumbai" ||
+                          city === "Thane" ||
+                          city === "Bangalore") &&
+                        people > 60 &&
+                        people < 100 ? (
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox - Delivery Only
+                          </option>
+                          <option value="7500">
+                            Buffet setup + Service (+ ₹ 7,500.00)
+                          </option>
+                        </>
+                      ) : null}
 
-                    {/* ------------------------------------- */}
+                      {/* ------------------------------------- */}
 
-                    {(city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                      {(city === "Delhi" ||
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people < 26 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Bulk Food Delivery
-                        </option>
-                        <option value="4000">
-                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
-                      people > 25 &&
-                      people < 41 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Bulk Food Delivery
-                        </option>
-                        <option value="5000">
-                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
-                      people > 40 &&
-                      people < 61 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox -Bulk Food Delivery
-                        </option>
-                        <option value="6000">
-                          Buffet setup + Service (+ ₹ 6,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Delhi" || city === "Noida" || city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
-                      people > 60 &&
-                      people < 100 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox -Bulk Food Delivery
-                        </option>
-                        <option value="7500">
-                          Buffet setup + Service (+ ₹ 7,500.00)
-                        </option>
-                      </>
-                    ) : null}
-                  </select>
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox - Bulk Food Delivery
+                          </option>
+                          <option value="4000">
+                            Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                          </option>
+                        </>
+                      ) : (city === "Delhi" ||
+                          city === "Noida" ||
+                          city === "Ghaziabad" ||
+                          city === "Gurgaon") &&
+                        people > 25 &&
+                        people < 41 ? (
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox - Bulk Food Delivery
+                          </option>
+                          <option value="5000">
+                            Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                          </option>
+                        </>
+                      ) : (city === "Delhi" ||
+                          city === "Noida" ||
+                          city === "Ghaziabad" ||
+                          city === "Gurgaon") &&
+                        people > 40 &&
+                        people < 61 ? (
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox -Bulk Food Delivery
+                          </option>
+                          <option value="6000">
+                            Buffet setup + Service (+ ₹ 6,000.00)
+                          </option>
+                        </>
+                      ) : (city === "Delhi" ||
+                          city === "Noida" ||
+                          city === "Ghaziabad" ||
+                          city === "Gurgaon") &&
+                        people > 60 &&
+                        people < 100 ? (
+                        <>
+                          <option value="0" defaultValue>
+                            Ninjabox -Bulk Food Delivery
+                          </option>
+                          <option value="7500">
+                            Buffet setup + Service (+ ₹ 7,500.00)
+                          </option>
+                        </>
+                      ) : null}
+                    </select>
 
-                  <p style={{ fontWeight: "600" }}>₹{buffet}</p>
-                </div>
-                <p id={styles.dlvydscr}>(Click here to choose delivey option)</p>
-              </div>}
-              {showPriceList && <div className={styles.pricing}>
-                <div>
-                  <div className={styles.pricingTitle1}>
-                    <div>
-                      <h4>Items Total</h4>
-                    </div>
-                    <div>
-                      <p style={{ fontWeight: "600" }}>₹{totalPrice.toLocaleString('en-US')}</p>
-                    </div>
+                    <p style={{ fontWeight: "600" }}>₹{buffet}</p>
                   </div>
-                  {/* <div className={styles.pricingTitle11}>
+                  <p id={styles.dlvydscr}>
+                    (Click here to choose delivey option)
+                  </p>
+                </div>
+              )}
+              {showPriceList && (
+                <div className={styles.pricing}>
+                  <div>
+                    <div className={styles.pricingTitle1}>
+                      <div>
+                        <h4>Items Total</h4>
+                      </div>
+                      <div>
+                        <p style={{ fontWeight: "600" }}>
+                          ₹{totalPrice.toLocaleString("en-US")}
+                        </p>
+                      </div>
+                    </div>
+                    {/* <div className={styles.pricingTitle11}>
                     <div>
                       <h4>NinjaBox Service</h4>
                     </div>
@@ -2460,60 +2959,74 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                       <p>₹0000</p>
                     </div>
                   </div> */}
-                  <div className={styles.pricingTitle2}>
-                    <div>
-                      <h4>Delivery Charges <span></span></h4>
+                    <div className={styles.pricingTitle2}>
+                      <div>
+                        <h4>
+                          Delivery Charges <span></span>
+                        </h4>
+                      </div>
+                      <div>
+                        <p>₹{deliveryCharge}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p>₹{deliveryCharge}</p>
+                    <hr className={styles.hr1} />
+                    <div className={styles.pricingTitle3}>
+                      <div className={styles.applyCoupon}>
+                        <input type="text" placeholder="Enter Coupon Code" />
+                        <button>Apply</button>
+                      </div>
+                      <div>
+                        <p>₹0</p>
+                      </div>
                     </div>
-
+                    <div className={styles.pricingTitle4}>
+                      <div>
+                        <h4>GST</h4>
+                      </div>
+                      <div>
+                        <p>₹{GST}</p>
+                      </div>
+                    </div>
+                    <hr id={styles.hr2} />
                   </div>
-                  <hr className={styles.hr1} />
-                  <div className={styles.pricingTitle3}>
-                    <div className={styles.applyCoupon}>
-                      <input type="text" placeholder='Enter Coupon Code' />
-                      <button>Apply</button>
+                  <div className={styles.grandTotal}>
+                    <div>
+                      <h4>Grand Total</h4>
                     </div>
                     <div>
-                      <p>₹0</p>
+                      <p style={{ fontWeight: "600" }}>
+                        ₹{grandTotal.toLocaleString("en-US")}
+                      </p>
                     </div>
                   </div>
-                  <div className={styles.pricingTitle4}>
-                    <div>
-                      <h4>GST</h4>
-                    </div>
-                    <div>
-                      <p>₹{GST}</p>
-                    </div>
+                  <div className={styles.orderBtn}>
+                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                      <button>Get Booking Help</button>
+                    </Link>
+                    <button onClick={initiatePayment}></button>
                   </div>
-                  <hr id={styles.hr2} />
                 </div>
-                <div className={styles.grandTotal}>
-                  <div>
-                    <h4>Grand Total</h4>
-                  </div>
-                  <div>
-                    <p style={{ fontWeight: "600" }}>₹{grandTotal.toLocaleString('en-US')}</p>
-                  </div>
-                </div>
-                <div className={styles.orderBtn}>
-                  <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
-                  <button onClick={initiatePayment}></button>
-                </div>
-              </div>}
+              )}
             </div>
           </div>
         </form>
         <div className={styles.createYourOwnPkg}>
           <div>
-            <img src='Group 1097.png' />
+            <img src="Group 1097.png" />
           </div>
-          <div className='text-center mt-3'>
+          <div className="text-center mt-3">
             <p>Wanna try with the Packages?</p>
-            <h2>Visit Our<span> Website</span></h2>
-            <h6>Curate your own flavour of party<br />from variety of cuisines and services</h6>
-            <a target="_blank" href="/"><button>SEE ALL THE SERVICES</button></a>
+            <h2>
+              Visit Our<span> Website</span>
+            </h2>
+            <h6>
+              Curate your own flavour of party
+              <br />
+              from variety of cuisines and services
+            </h6>
+            <a target="_blank" href="/">
+              <button>SEE ALL THE SERVICES</button>
+            </a>
           </div>
         </div>
       </div>
@@ -2626,7 +3139,7 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "YOUR_MERCHANT
                 </div>
             </div> */}
     </div>
-  )
-}
+  );
+};
 
-export default CustomizeNinjaBox
+export default CustomizeNinjaBox;

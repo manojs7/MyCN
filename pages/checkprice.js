@@ -25,10 +25,11 @@ export default function Checkprice() {
             <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
         </Head>
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></Script>
-        <Script type="application/javascript" crossorigin="anonymous" 
-        src={`https://securegw.paytm.in/merchantpgpui/checkoutjs/merchants/CaterN17180271203216.js`}/>
+        <Script type="application/javascript" src="https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/CaterN17180271203216.js"  crossorigin="anonymous"></Script>
+
         <NewNavBar />
         <Navbar />
+ 
         <CustomizeNinjaBox />
         {/* <Footer /> */}
         <Float2/>

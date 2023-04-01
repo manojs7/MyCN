@@ -254,8 +254,12 @@ export default function handler(req, res) {
       let mailOptions = {
       from: 'caterninjadiy@gmail.com',
       // to: `caterninjadiy@gmail.com, ${data.email}, 8n62vi4t8_5o1fxq4@parser.zohocrm.com, lqruate0s_j7e8lb8@parser.zohocrm.com`,
-      to:`${data.email},59drv2k@parser.zohocrm.com`,
+      // to:`${data.email},59drv2k@parser.zohocrm.com`,
+      // to:`${data.email}, i4e16n207_bvnzocb@parser.zohocrm.com`,
+      to:`${data.email}`,
+
       subject: `Final Quote ${data.name} | CaterNinja🤺| Party Quote.`,
+
       html: ` 
       
     <h2>Hello ${data.name} !! </h2>
