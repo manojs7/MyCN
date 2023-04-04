@@ -911,7 +911,11 @@ const CustomizeNinjaBox = () => {
         // return false;
       } else {
         value = parseInt(value) - 6;
-        decrement(value, index, type, item)
+        if (value < 12) {
+          value = 12;
+          handleChange(value, index, type);
+          // return false;
+        }
       }
     } else {
       if (value < 1) {
@@ -920,6 +924,11 @@ const CustomizeNinjaBox = () => {
         // return false;
       } else {
         value = parseFloat(value) - 0.5;
+        if (value < 1) {
+          value = 1;
+          handleChange(value, index, type);
+          // return false;
+        }
       }
     }
     handleChange(value, index, type);
@@ -1168,15 +1177,15 @@ const CustomizeNinjaBox = () => {
       });
       bread === 1
         ? (quantity = (veg + nonVeg) * 3)
-        : (item.quantity = item.quantity);
+        : (quantity = (veg + nonVeg) * 2);
       if (bread === 1) {
         quantity = (veg + nonVeg) * 3;
       } else {
-        temp.forEach((item) => {
-          item.name === "Pooris" && item.menu_label === "Breads"
-            ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = item.quantity);
-        });
+        // temp.forEach((item) => {
+        //   item.name === "Pooris" && item.menu_label === "Breads"
+        //     ? (item.quantity = (veg + nonVeg) * 2)
+        //     : (item.quantity = (veg + nonVeg) * 0.2);
+        // });
         quantity = (veg + nonVeg) * 2;
       }
       // checking for bread
@@ -1196,11 +1205,12 @@ const CustomizeNinjaBox = () => {
       if (bread === 1) {
         quantity = (veg + nonVeg) * 1.5;
       } else {
-        temp.forEach((item) => {
-          item.name === "Pooris" && item.menu_label === "Breads"
-            ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = item.quantity);
-        });
+        // temp.forEach((item) => {
+        //   item.name === "Pooris" && item.menu_label === "Breads"
+        //     ? (item.quantity = (veg + nonVeg) * 2)
+        //     : (item.quantity = (veg + nonVeg) * 0.2);
+
+        // });
         quantity = (veg + nonVeg) * 1;
       }
     }
@@ -1215,28 +1225,28 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = veg * 0.2)
         : (quantity = (veg + nonVeg) * 0.1);
       filterBreadRice.veg === false &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = nonVeg * 0.15)
         : (quantity = nonVeg * 0.2);
 
-      temp.forEach((item) => {
-        item.veg === true &&
-          item.menu_label === "Noodle" &&
-          nonVegNoodleCount > 0
-          ? (item.quantity = veg * 0.2)
-          : (item.quantity = (veg + nonVeg) * 0.1);
-        item.veg === false &&
-          item.menu_label === "Noodle" &&
-          nonVegNoodleCount > 0
-          ? (item.quantity = nonVeg * 0.15)
-          : (item.quantity = nonVeg * 0.2);
-      });
+      // temp.forEach((item) => {
+      //   item.veg === true &&
+      //   item.menu_label === "Noodle" &&
+      //   nonVegNoodleCount > 0
+      //     ? (item.quantity = veg * 0.2)
+      //     : (item.quantity = (veg + nonVeg) * 0.1);
+      //   item.veg === false &&
+      //   item.menu_label === "Noodle" &&
+      //   nonVegNoodleCount > 0
+      //     ? (item.quantity = nonVeg * 0.15)
+      //     : (item.quantity = nonVeg * 0.2);
+      // });
     } else if (filterBreadRice?.menu_label === "Rice") {
       let count = 1;
       let isVeg = false;
@@ -1311,24 +1321,117 @@ const CustomizeNinjaBox = () => {
             quantity = nonVeg * 0.15;
           }
         }
+        let bread = 0;
+      let count = 0;
+      let isVeg = false;
 
-        temp.forEach((item) => {
-          if (count >= 3) {
-            if (item.menu_label === "Rice" && item.veg === true) {
-              item.quantity = 0.1 * veg;
+      temp.map((item) => {
+        item.menu_label === "Breads" ? (bread += 1) : bread;
+        item.menu_label === "Rice" ? (count += 1) : count;
+        item.veg ? (isVeg = true) : (isVeg = false);
+      });
+        temp.map((item) => {
+          if (item?.menu_label === "Breads" && item.name === "Pooris") {
+            if (bread === 1) {
+              item.quantity = (veg + nonVeg) * 3;
+            } else {
+              item.quantity = (veg + nonVeg) * 2;
             }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.1 * nonVeg;
+          } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+            if (bread === 1) {
+              item.quantity = (veg + nonVeg) * 2;
+            } else {
+              item.quantity = (veg + nonVeg) * 1;
             }
-          } else {
-            if (item.menu_label === "Rice" && item.veg === true) {
-              item.quantity = 0.15 * veg;
-            }
-            if (item.menu_label === "Rice" && item.veg === false) {
-              item.quantity = 0.15 * nonVeg;
+          } else if (item?.menu_label === "Rice") {
+            console.log("rice", count);
+            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+              let guests = veg > 0 ? veg : nonVeg;
+              if (count >= 2) {
+                console.log("count2");
+                item.quantity = 0.15 * guests;
+              } else if (mains.length > 0 && count === 1) {
+                console.log("count1");
+  
+                item.quantity = 0.2 * guests;
+              } else if (mains.length === 0 && count === 1) {
+                console.log("count1");
+                item.quantity = 0.3 * guests;
+              }
+            } else if (veg > 0 && nonVeg > 0) {
+              let guests = veg + nonVeg;
+              if (count >= 2) {
+                item.quantity = 0.15 * guests;
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.25 * veg;
+                } else {
+                  item.quantity = 0.25 * nonVeg;
+                }
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.3 * veg;
+                } else {
+                  item.quantity = 0.3 * nonVeg;
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.25 * veg;
+                } else {
+                  item.quantity = 0.25 * nonVeg;
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.2 * veg;
+                } else {
+                  item.quantity = 0.2 * nonVeg;
+                }
+              } else if (count === 1 && mains.length >= 1) {
+                item.quantity = 0.2 * guests;
+              } else {
+                if (item.veg === true) {
+                  item.quantity = 0.15 * veg;
+                } else {
+                  item.quantity = 0.15 * nonVeg;
+                }
+              }
             }
           }
         });
+
+        // temp.forEach((item) => {
+        //   if (count >= 3) {
+        //     if (item.menu_label === "Rice" && item.veg === true) {
+        //       item.quantity = 0.1 * veg;
+        //     }
+        //     if (item.menu_label === "Rice" && item.veg === false) {
+        //       item.quantity = 0.1 * nonVeg;
+        //     }
+        //   } else {
+        //     if (item.menu_label === "Rice" && item.veg === true) {
+        //       item.quantity = 0.15 * veg;
+        //     }
+        //     if (item.menu_label === "Rice" && item.veg === false) {
+        //       item.quantity = 0.15 * nonVeg;
+        //     }
+        //   }
+        // });
 
         // if (count >= 2) {
         //   quantity = 0.15 * guests;
@@ -1457,15 +1560,15 @@ const CustomizeNinjaBox = () => {
     people = veg + nonVeg;
     setPeople(people);
     setTotalPrice(
-      parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice)
+      parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd)
     );
-    getDeliveryCharge(people);
+    // getDeliveryCharge(people);
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
         parseInt(buffet) +
         // parseInt(deliveryCharge) +
-        parseInt(getGst())+ extraAdd
+        parseInt(getGst())
     );
     setShowPriceList(false);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
@@ -1476,7 +1579,7 @@ const CustomizeNinjaBox = () => {
       parseInt(totalPrice) +
         parseInt(buffet) +
         // parseInt(deliveryCharge) +
-        parseInt(getGst()) + extraAdd
+        parseInt(getGst()) 
     );
   }, [buffet]);
 
@@ -1484,7 +1587,7 @@ const CustomizeNinjaBox = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-      100
+        100
     );
   }
 
@@ -1519,9 +1622,6 @@ const CustomizeNinjaBox = () => {
       }
       return false;
     }
-
-    setbuffet("0");
-
     getDeliveryCharge(people);
     setGST(getGst());
     var final_gst = getGst();
@@ -1535,7 +1635,7 @@ const CustomizeNinjaBox = () => {
         parseInt(buffet) +
         // parseInt(deliveryCharge) +
         getGst()
-        + extraAdd
+        
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -1650,7 +1750,7 @@ const CustomizeNinjaBox = () => {
       body: JSON.stringify(data),
     });
     var txnToken = await a.json();
-
+    
     var config = {
       root: "",
       flow: "DEFAULT",
@@ -2183,6 +2283,87 @@ const CustomizeNinjaBox = () => {
                   {/* mains add */}
                   <div className={styles.mainsContainer}>
                     <h5>Mains</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu2 &&
+                        mains.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "mains",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "mains",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideMainsRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                  </div>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() => handleDelete(index, "mains")}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
                     {showDropdown2 && (
                       <div
                         onClick={handleDiv2Click}
@@ -2284,9 +2465,18 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>
                     )}
-                    <div className={styles.selectedMainsContainer} style={{ marginTop: "20px" }}>
-                      {!showSelectedMenu2 &&
-                        mains.map((item, index) => (
+                  </div>
+
+                  <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
+                  {/* Bread rice noodles */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Bread Rice and Noodles</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu3 &&
+                        breadRice.map((item, index) => (
                           <div className={styles.fstItem} key={index}>
                             {item.Images ? (
                               <img
@@ -2323,7 +2513,7 @@ const CustomizeNinjaBox = () => {
                                       decrement(
                                         item.quantity,
                                         index,
-                                        "mains",
+                                        "Bread+Rice",
                                         item
                                       )
                                     }
@@ -2340,7 +2530,7 @@ const CustomizeNinjaBox = () => {
                                       increment(
                                         item.quantity,
                                         index,
-                                        "mains",
+                                        "Bread+Rice",
                                         item
                                       )
                                     }
@@ -2348,7 +2538,7 @@ const CustomizeNinjaBox = () => {
                                     +
                                   </button>
                                 </div>
-                                {!hideMainsRecommenedQnty && (
+                                {!hideBreadRecommenedQnty && (
                                   <div className={styles.recQnty}>
                                     <p>Recommended Qt.</p>
                                   </div>
@@ -2358,22 +2548,15 @@ const CustomizeNinjaBox = () => {
                                 <img
                                   className={styles.trassLogo}
                                   src="/diy images/trash-alt.png"
-                                  onClick={() => handleDelete(index, "mains")}
+                                  onClick={() =>
+                                    handleDelete(index, "Bread+Rice")
+                                  }
                                 />
                               </div>
                             </div>
                           </div>
                         ))}
                     </div>
-                  </div>
-
-                  <hr className={styles.MenuHr} />
-                  <div className={styles.imgDesc}>
-                    <p>*Images are for representation purpose only</p>
-                  </div>
-                  {/* Bread rice noodles */}
-                  <div className={styles.mainsContainer}>
-                    <h5>Bread Rice and Noodles</h5>
                     {showDropdown3 && (
                       <div
                         onClick={handleDiv3Click}
@@ -2475,9 +2658,17 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>
                     )}
-                    <div className={styles.selectedMainsContainer} style={{ marginTop: "20px" }}>
-                      {!showSelectedMenu3 &&
-                        breadRice.map((item, index) => (
+                  </div>
+                  <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
+                  {/* dessert add */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Desserts</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu4 &&
+                        desserts.map((item, index) => (
                           <div className={styles.fstItem} key={index}>
                             {item.Images ? (
                               <img
@@ -2514,7 +2705,7 @@ const CustomizeNinjaBox = () => {
                                       decrement(
                                         item.quantity,
                                         index,
-                                        "Bread+Rice",
+                                        "desserts",
                                         item
                                       )
                                     }
@@ -2531,7 +2722,7 @@ const CustomizeNinjaBox = () => {
                                       increment(
                                         item.quantity,
                                         index,
-                                        "Bread+Rice",
+                                        "desserts",
                                         item
                                       )
                                     }
@@ -2539,7 +2730,7 @@ const CustomizeNinjaBox = () => {
                                     +
                                   </button>
                                 </div>
-                                {!hideBreadRecommenedQnty && (
+                                {!hideDessertRecommenedQnty && (
                                   <div className={styles.recQnty}>
                                     <p>Recommended Qt.</p>
                                   </div>
@@ -2550,7 +2741,7 @@ const CustomizeNinjaBox = () => {
                                   className={styles.trassLogo}
                                   src="/diy images/trash-alt.png"
                                   onClick={() =>
-                                    handleDelete(index, "Bread+Rice")
+                                    handleDelete(index, "desserts")
                                   }
                                 />
                               </div>
@@ -2558,14 +2749,6 @@ const CustomizeNinjaBox = () => {
                           </div>
                         ))}
                     </div>
-                  </div>
-                  <hr className={styles.MenuHr} />
-                  <div className={styles.imgDesc}>
-                    <p>*Images are for representation purpose only</p>
-                  </div>
-                  {/* dessert add */}
-                  <div className={styles.mainsContainer}>
-                    <h5>Desserts</h5>
                     {showDropdown4 && (
                       <div
                         onClick={handleDiv4Click}
@@ -2667,89 +2850,6 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>
                     )}
-                    <div className={styles.selectedMainsContainer} style={{marginTop: "20px"}}>
-                      {!showSelectedMenu4 &&
-                        desserts.map((item, index) => (
-                          <div className={styles.fstItem} key={index}>
-                            {item.Images ? (
-                              <img
-                                className={styles.itemImage}
-                                src={item.Images}
-                              />
-                            ) : (
-                              <img
-                                className={styles.itemImage}
-                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                              />
-                            )}
-                            <div className={styles.itemDetailsContainer}>
-                              {item.veg === true ? (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/vegLogo.png"
-                                />
-                              ) : (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/Group 962.png"
-                                />
-                              )}
-                              <div>
-                                <h4>{item.name}</h4>
-                                <p>{item.description}</p>
-                              </div>
-                              <div>
-                                <div className={styles.quantityBtn}>
-                                  <button
-                                    type="button"
-                                    onClick={(e) =>
-                                      decrement(
-                                        item.quantity,
-                                        index,
-                                        "desserts",
-                                        item
-                                      )
-                                    }
-                                  >
-                                    -
-                                  </button>
-                                  <h6>
-                                    {item.quantity}
-                                    {item.Qtype}
-                                  </h6>
-                                  <button
-                                    type="button"
-                                    onClick={(e) =>
-                                      increment(
-                                        item.quantity,
-                                        index,
-                                        "desserts",
-                                        item
-                                      )
-                                    }
-                                  >
-                                    +
-                                  </button>
-                                </div>
-                                {!hideDessertRecommenedQnty && (
-                                  <div className={styles.recQnty}>
-                                    <p>Recommended Qt.</p>
-                                  </div>
-                                )}
-                              </div>
-                              <div>
-                                <img
-                                  className={styles.trassLogo}
-                                  src="/diy images/trash-alt.png"
-                                  onClick={() =>
-                                    handleDelete(index, "desserts")
-                                  }
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                    </div>
                   </div>
                 </div>
               </div>
@@ -2820,7 +2920,7 @@ const CustomizeNinjaBox = () => {
                         city === "Navi-Mumbai" ||
                         city === "Thane" ||
                         city === "Bangalore") &&
-                        people < 26 ? (
+                      people < 26 ? (
                         <>
                           <option value="0" defaultValue>
                             Ninjabox - Delivery Only
@@ -2830,9 +2930,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                          city === "Navi-Mumbai" ||
+                          city === "Thane" ||
+                          city === "Bangalore") &&
                         people > 25 &&
                         people < 41 ? (
                         <>
@@ -2844,9 +2944,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                          city === "Navi-Mumbai" ||
+                          city === "Thane" ||
+                          city === "Bangalore") &&
                         people > 40 &&
                         people < 61 ? (
                         <>
@@ -2858,9 +2958,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                          city === "Navi-Mumbai" ||
+                          city === "Thane" ||
+                          city === "Bangalore") &&
                         people > 60 &&
                         people < 100 ? (
                         <>
@@ -2879,7 +2979,7 @@ const CustomizeNinjaBox = () => {
                         city === "Noida" ||
                         city === "Ghaziabad" ||
                         city === "Gurgaon") &&
-                        people < 26 ? (
+                      people < 26 ? (
                         <>
                           <option value="0" defaultValue>
                             Ninjabox - Bulk Food Delivery
@@ -2889,9 +2989,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                          city === "Noida" ||
+                          city === "Ghaziabad" ||
+                          city === "Gurgaon") &&
                         people > 25 &&
                         people < 41 ? (
                         <>
@@ -2903,9 +3003,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                          city === "Noida" ||
+                          city === "Ghaziabad" ||
+                          city === "Gurgaon") &&
                         people > 40 &&
                         people < 61 ? (
                         <>
@@ -2917,9 +3017,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                          city === "Noida" ||
+                          city === "Ghaziabad" ||
+                          city === "Gurgaon") &&
                         people > 60 &&
                         people < 100 ? (
                         <>
@@ -2962,14 +3062,14 @@ const CustomizeNinjaBox = () => {
                     </div>
                   </div> */}
                     <div className={styles.pricingTitle2}>
-                      {/* <div>
+                      <div>
                         <h4>
                           Delivery Charges <span></span>
                         </h4>
                       </div>
                       <div>
-                        <p>₹{deliveryCharge}</p>
-                      </div> */}
+                        <p>As Per Actual</p>
+                      </div>
                     </div>
                     <hr className={styles.hr1} />
                     <div className={styles.pricingTitle3}>
@@ -3000,9 +3100,6 @@ const CustomizeNinjaBox = () => {
                         ₹{grandTotal.toLocaleString("en-US")}
                       </p>
                     </div>
-                  </div>
-                  <div className={styles.dlvryChrg}>
-                    <p>*Delivery charges</p>
                   </div>
                   <div className={styles.orderBtn}>
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
