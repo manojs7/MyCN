@@ -1168,14 +1168,14 @@ const CustomizeNinjaBox = () => {
       });
       bread === 1
         ? (quantity = (veg + nonVeg) * 3)
-        : (quantity = (veg + nonVeg) * 2);
+        : (item.quantity = item.quantity);
       if (bread === 1) {
         quantity = (veg + nonVeg) * 3;
       } else {
         temp.forEach((item) => {
-          item.name === "Pooris"
+          item.name === "Pooris" && item.menu_label === "Breads"
             ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = (veg + nonVeg) * 2);
+            : (item.quantity = item.quantity);
         });
         quantity = (veg + nonVeg) * 2;
       }
@@ -1197,9 +1197,9 @@ const CustomizeNinjaBox = () => {
         quantity = (veg + nonVeg) * 1.5;
       } else {
         temp.forEach((item) => {
-          item.name === "Pooris"
+          item.name === "Pooris" && item.menu_label === "Breads"
             ? (item.quantity = (veg + nonVeg) * 2)
-            : (item.quantity = (veg + nonVeg) * 2);
+            : (item.quantity = item.quantity);
         });
         quantity = (veg + nonVeg) * 1;
       }
