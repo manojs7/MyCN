@@ -477,6 +477,11 @@ const NewDiy = () => {
                                     <h6>STARTERS -</h6>
                                 </div>
                             </div>
+                            {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
+                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                            </div>
+                            )}
                             <div className={styles.selectedStarterContainer}>
                                 {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles.fstItem} key={index}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
@@ -503,23 +508,18 @@ const NewDiy = () => {
                                 </div>
                                 ))}
                             </div>
-                            {showDropdown && (<div onClick={handleDiv1Click} className={styles.starterSearchBtn} id="srchbr">
-                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
-                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                            </div>
-                            )}
-                            {/* { isShown && (<div className={styles.starterMenuContainer}>
-                        <Select
-                            className={styles.selectDropdown}
-                            options={optionList}
-                            placeholder="Select Starter"
-                            value={selectedOptions}
-                            onChange={handleSelect}
-                            isSearchable={true}
-                            isMulti
-                        />
-                        <div><button onClick={handleClick}>close</button></div>
-                    </div>)} */}
+                                {/* { isShown && (<div className={styles.starterMenuContainer}>
+                            <Select
+                                className={styles.selectDropdown}
+                                options={optionList}
+                                placeholder="Select Starter"
+                                value={selectedOptions}
+                                onChange={handleSelect}
+                                isSearchable={true}
+                                isMulti
+                            />
+                            <div><button onClick={handleClick}>close</button></div>
+                            </div>)} */}
                             {showSelectedMenu && (<div ref={outerDivRef} className={styles.starterMenuContainer}>
                                 <div id={styles.starterSearchContent}>
                                     <div>
@@ -571,6 +571,11 @@ const NewDiy = () => {
                                     <h6>MAINS -</h6>
                                 </div>
                             </div>
+                            {showDropdown2 && (<div onClick={handleDiv2Click} className={styles.starterSearchBtn} id="srchbr">
+                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                            </div>
+                            )}
                             <div className={styles.selectedStarterContainer}>
                                 {!showSelectedMenu2 && checkedValues2.map((item, index) => (<div className={styles.fstItem} key={index}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
@@ -597,11 +602,6 @@ const NewDiy = () => {
                                 </div>
                                 ))}
                             </div>
-                            {showDropdown2 && (<div onClick={handleDiv2Click} className={styles.starterSearchBtn} id="srchbr">
-                                <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
-                                <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                            </div>
-                            )}
                             {showSelectedMenu2 && (<div ref={outerDivRef} className={styles.starterMenuContainer}>
                                 <div id={styles.starterSearchContent}>
                                     <div>
@@ -682,32 +682,6 @@ const NewDiy = () => {
                                     <h6>BREAD / RICE -</h6>
                                 </div>
                             </div>
-                            <div className={styles.selectedStarterContainer}>
-                                {!showSelectedMenu3 && checkedValues2.map((item, index) => (<div className={styles.fstItem} key={index}>
-                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
-                                    <div className={styles.itemDetailsContainer}>
-                                        {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
-                                        <div>
-                                            <h4>{item.name}</h4>
-                                            <p>{item.description}</p>
-                                        </div>
-                                        <div>
-                                            <div className={styles.quantityBtn}>
-                                                <button>-</button>
-                                                <h6>00pcs</h6>
-                                                <button>+</button>
-                                            </div>
-                                            <div className={styles.recQnty}>
-                                                <p>Recommended Qt.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu2(item)} />
-                                        </div>
-                                    </div>
-                                </div>
-                                ))}
-                            </div>
                             {showDropdown3 && (<div onClick={handleDiv3Click} className={styles.starterSearchBtn} id="srchbr">
                                 <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
                                 <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
@@ -744,6 +718,32 @@ const NewDiy = () => {
                                     </div>
                                 </div>
                             </div>)}
+                            <div className={styles.selectedStarterContainer}>
+                                {!showSelectedMenu3 && checkedValues2.map((item, index) => (<div className={styles.fstItem} key={index}>
+                                    <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                    <div className={styles.itemDetailsContainer}>
+                                        {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
+                                        <div>
+                                            <h4>{item.name}</h4>
+                                            <p>{item.description}</p>
+                                        </div>
+                                        <div>
+                                            <div className={styles.quantityBtn}>
+                                                <button>-</button>
+                                                <h6>00pcs</h6>
+                                                <button>+</button>
+                                            </div>
+                                            <div className={styles.recQnty}>
+                                                <p>Recommended Qt.</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu2(item)} />
+                                        </div>
+                                    </div>
+                                </div>
+                                ))}
+                            </div>
                             <div className={styles.starterBtmLine}>
                                 <hr />
                             </div>

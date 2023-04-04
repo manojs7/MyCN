@@ -1215,25 +1215,25 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = veg * 0.2)
         : (quantity = (veg + nonVeg) * 0.1);
       filterBreadRice.veg === false &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = nonVeg * 0.15)
         : (quantity = nonVeg * 0.2);
 
       temp.forEach((item) => {
         item.veg === true &&
-        item.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+          item.menu_label === "Noodle" &&
+          nonVegNoodleCount > 0
           ? (item.quantity = veg * 0.2)
           : (item.quantity = (veg + nonVeg) * 0.1);
         item.veg === false &&
-        item.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+          item.menu_label === "Noodle" &&
+          nonVegNoodleCount > 0
           ? (item.quantity = nonVeg * 0.15)
           : (item.quantity = nonVeg * 0.2);
       });
@@ -1484,7 +1484,7 @@ const CustomizeNinjaBox = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-        100
+      100
     );
   }
 
@@ -1519,6 +1519,9 @@ const CustomizeNinjaBox = () => {
       }
       return false;
     }
+
+    setbuffet("0");
+
     getDeliveryCharge(people);
     setGST(getGst());
     var final_gst = getGst();
@@ -1647,7 +1650,7 @@ const CustomizeNinjaBox = () => {
       body: JSON.stringify(data),
     });
     var txnToken = await a.json();
-    
+
     var config = {
       root: "",
       flow: "DEFAULT",
@@ -2180,87 +2183,6 @@ const CustomizeNinjaBox = () => {
                   {/* mains add */}
                   <div className={styles.mainsContainer}>
                     <h5>Mains</h5>
-                    <div className={styles.selectedMainsContainer}>
-                      {!showSelectedMenu2 &&
-                        mains.map((item, index) => (
-                          <div className={styles.fstItem} key={index}>
-                            {item.Images ? (
-                              <img
-                                className={styles.itemImage}
-                                src={item.Images}
-                              />
-                            ) : (
-                              <img
-                                className={styles.itemImage}
-                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                              />
-                            )}
-                            <div className={styles.itemDetailsContainer}>
-                              {item.veg === true ? (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/vegLogo.png"
-                                />
-                              ) : (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/Group 962.png"
-                                />
-                              )}
-                              <div>
-                                <h4>{item.name}</h4>
-                                <p>{item.description}</p>
-                              </div>
-                              <div>
-                                <div className={styles.quantityBtn}>
-                                  <button
-                                    type="button"
-                                    onClick={(e) =>
-                                      decrement(
-                                        item.quantity,
-                                        index,
-                                        "mains",
-                                        item
-                                      )
-                                    }
-                                  >
-                                    -
-                                  </button>
-                                  <h6>
-                                    {item.quantity}
-                                    {item.Qtype}
-                                  </h6>
-                                  <button
-                                    type="button"
-                                    onClick={(e) =>
-                                      increment(
-                                        item.quantity,
-                                        index,
-                                        "mains",
-                                        item
-                                      )
-                                    }
-                                  >
-                                    +
-                                  </button>
-                                </div>
-                                {!hideMainsRecommenedQnty && (
-                                  <div className={styles.recQnty}>
-                                    <p>Recommended Qt.</p>
-                                  </div>
-                                )}
-                              </div>
-                              <div>
-                                <img
-                                  className={styles.trassLogo}
-                                  src="/diy images/trash-alt.png"
-                                  onClick={() => handleDelete(index, "mains")}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                    </div>
                     {showDropdown2 && (
                       <div
                         onClick={handleDiv2Click}
@@ -2362,18 +2284,9 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>
                     )}
-                  </div>
-
-                  <hr className={styles.MenuHr} />
-                  <div className={styles.imgDesc}>
-                    <p>*Images are for representation purpose only</p>
-                  </div>
-                  {/* Bread rice noodles */}
-                  <div className={styles.mainsContainer}>
-                    <h5>Bread Rice and Noodles</h5>
-                    <div className={styles.selectedMainsContainer}>
-                      {!showSelectedMenu3 &&
-                        breadRice.map((item, index) => (
+                    <div className={styles.selectedMainsContainer} style={{ marginTop: "20px" }}>
+                      {!showSelectedMenu2 &&
+                        mains.map((item, index) => (
                           <div className={styles.fstItem} key={index}>
                             {item.Images ? (
                               <img
@@ -2410,7 +2323,7 @@ const CustomizeNinjaBox = () => {
                                       decrement(
                                         item.quantity,
                                         index,
-                                        "Bread+Rice",
+                                        "mains",
                                         item
                                       )
                                     }
@@ -2427,7 +2340,7 @@ const CustomizeNinjaBox = () => {
                                       increment(
                                         item.quantity,
                                         index,
-                                        "Bread+Rice",
+                                        "mains",
                                         item
                                       )
                                     }
@@ -2435,7 +2348,7 @@ const CustomizeNinjaBox = () => {
                                     +
                                   </button>
                                 </div>
-                                {!hideBreadRecommenedQnty && (
+                                {!hideMainsRecommenedQnty && (
                                   <div className={styles.recQnty}>
                                     <p>Recommended Qt.</p>
                                   </div>
@@ -2445,15 +2358,22 @@ const CustomizeNinjaBox = () => {
                                 <img
                                   className={styles.trassLogo}
                                   src="/diy images/trash-alt.png"
-                                  onClick={() =>
-                                    handleDelete(index, "Bread+Rice")
-                                  }
+                                  onClick={() => handleDelete(index, "mains")}
                                 />
                               </div>
                             </div>
                           </div>
                         ))}
                     </div>
+                  </div>
+
+                  <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
+                  {/* Bread rice noodles */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Bread Rice and Noodles</h5>
                     {showDropdown3 && (
                       <div
                         onClick={handleDiv3Click}
@@ -2555,17 +2475,9 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>
                     )}
-                  </div>
-                  <hr className={styles.MenuHr} />
-                  <div className={styles.imgDesc}>
-                    <p>*Images are for representation purpose only</p>
-                  </div>
-                  {/* dessert add */}
-                  <div className={styles.mainsContainer}>
-                    <h5>Desserts</h5>
-                    <div className={styles.selectedMainsContainer}>
-                      {!showSelectedMenu4 &&
-                        desserts.map((item, index) => (
+                    <div className={styles.selectedMainsContainer} style={{ marginTop: "20px" }}>
+                      {!showSelectedMenu3 &&
+                        breadRice.map((item, index) => (
                           <div className={styles.fstItem} key={index}>
                             {item.Images ? (
                               <img
@@ -2602,7 +2514,7 @@ const CustomizeNinjaBox = () => {
                                       decrement(
                                         item.quantity,
                                         index,
-                                        "desserts",
+                                        "Bread+Rice",
                                         item
                                       )
                                     }
@@ -2619,7 +2531,7 @@ const CustomizeNinjaBox = () => {
                                       increment(
                                         item.quantity,
                                         index,
-                                        "desserts",
+                                        "Bread+Rice",
                                         item
                                       )
                                     }
@@ -2627,7 +2539,7 @@ const CustomizeNinjaBox = () => {
                                     +
                                   </button>
                                 </div>
-                                {!hideDessertRecommenedQnty && (
+                                {!hideBreadRecommenedQnty && (
                                   <div className={styles.recQnty}>
                                     <p>Recommended Qt.</p>
                                   </div>
@@ -2638,7 +2550,7 @@ const CustomizeNinjaBox = () => {
                                   className={styles.trassLogo}
                                   src="/diy images/trash-alt.png"
                                   onClick={() =>
-                                    handleDelete(index, "desserts")
+                                    handleDelete(index, "Bread+Rice")
                                   }
                                 />
                               </div>
@@ -2646,6 +2558,14 @@ const CustomizeNinjaBox = () => {
                           </div>
                         ))}
                     </div>
+                  </div>
+                  <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
+                  {/* dessert add */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Desserts</h5>
                     {showDropdown4 && (
                       <div
                         onClick={handleDiv4Click}
@@ -2747,6 +2667,89 @@ const CustomizeNinjaBox = () => {
                         </div>
                       </div>
                     )}
+                    <div className={styles.selectedMainsContainer} style={{marginTop: "20px"}}>
+                      {!showSelectedMenu4 &&
+                        desserts.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "desserts",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "desserts",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideDessertRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                  </div>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() =>
+                                    handleDelete(index, "desserts")
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2817,7 +2820,7 @@ const CustomizeNinjaBox = () => {
                         city === "Navi-Mumbai" ||
                         city === "Thane" ||
                         city === "Bangalore") &&
-                      people < 26 ? (
+                        people < 26 ? (
                         <>
                           <option value="0" defaultValue>
                             Ninjabox - Delivery Only
@@ -2827,9 +2830,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                         people > 25 &&
                         people < 41 ? (
                         <>
@@ -2841,9 +2844,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                         people > 40 &&
                         people < 61 ? (
                         <>
@@ -2855,9 +2858,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                         people > 60 &&
                         people < 100 ? (
                         <>
@@ -2876,7 +2879,7 @@ const CustomizeNinjaBox = () => {
                         city === "Noida" ||
                         city === "Ghaziabad" ||
                         city === "Gurgaon") &&
-                      people < 26 ? (
+                        people < 26 ? (
                         <>
                           <option value="0" defaultValue>
                             Ninjabox - Bulk Food Delivery
@@ -2886,9 +2889,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                         people > 25 &&
                         people < 41 ? (
                         <>
@@ -2900,9 +2903,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                         people > 40 &&
                         people < 61 ? (
                         <>
@@ -2914,9 +2917,9 @@ const CustomizeNinjaBox = () => {
                           </option>
                         </>
                       ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                         people > 60 &&
                         people < 100 ? (
                         <>
@@ -2959,14 +2962,14 @@ const CustomizeNinjaBox = () => {
                     </div>
                   </div> */}
                     <div className={styles.pricingTitle2}>
-                      <div>
+                      {/* <div>
                         <h4>
                           Delivery Charges <span></span>
                         </h4>
                       </div>
                       <div>
                         <p>₹{deliveryCharge}</p>
-                      </div>
+                      </div> */}
                     </div>
                     <hr className={styles.hr1} />
                     <div className={styles.pricingTitle3}>
@@ -2997,6 +3000,9 @@ const CustomizeNinjaBox = () => {
                         ₹{grandTotal.toLocaleString("en-US")}
                       </p>
                     </div>
+                  </div>
+                  <div className={styles.dlvryChrg}>
+                    <p>*Delivery charges</p>
                   </div>
                   <div className={styles.orderBtn}>
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">

@@ -247,7 +247,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Basic%20Veg%20NinjaClassic%20Package%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Premium%20SnackBox%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -262,7 +262,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Basic%20Veg%20NinjaClassic%20Package%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Executive%20SnackBox%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -277,7 +277,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Basic%20Veg%20NinjaClassic%20Package%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Classic%20SnackBox%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
@@ -294,7 +294,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Basic%20Veg%20NinjaClassic%20Package%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Asian%20SnackBox%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -309,7 +309,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Basic%20Veg%20NinjaClassic%20Package%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Indian%20SnackBox%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
             <div className="packageNameSection text-center">
@@ -324,7 +324,7 @@ const Custom_Package = () => {
               </div>
               <div className="d-flex justify-content-evenly">
                 {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Basic%20Veg%20NinjaClassic%20Package%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
+                <button onClick={() => window.open('http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20would%20like%20to%20book%20Basic%20SnackBox%20', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise Package</button>
               </div>
             </div>
           </div>
