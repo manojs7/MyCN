@@ -89,6 +89,8 @@ const CustomizeNinjaBox = () => {
   const [grandTotal, setgrandTotal] = useState(0);
   const [buffet, setbuffet] = useState(0);
   const [GST, setGST] = useState(0);
+  const [extraAdd, setExtraAdd] = useState(500);
+
 
   const [isStarterChange, setIsStarterChange] = useState(false);
   const [isMainChange, setIsMainChange] = useState(false);
@@ -909,6 +911,7 @@ const CustomizeNinjaBox = () => {
         // return false;
       } else {
         value = parseInt(value) - 6;
+        decrement(value, index, type, item)
       }
     } else {
       if (value < 1) {
@@ -1258,9 +1261,9 @@ const CustomizeNinjaBox = () => {
         temp.forEach((item) => {
           if (item.menu_label === "Rice") {
             if (count >= 3) {
-              quantity = guests * 0.1;
+              item.quantity = guests * 0.1;
             } else {
-              quantity = guests * 0.15;
+              item.quantity = guests * 0.15;
             }
             // item.quantity = 0.15 * guests;
           }
@@ -1337,11 +1340,7 @@ const CustomizeNinjaBox = () => {
         //       item.quantity = 0.15 * nonVeg;
         //     }
         //   });
-        // } else if (count === 1) {
-        //   !filterBreadRice?.veg
-        //     ? (quantity = nonVeg * 0.2)
-        //     : (quantity = 0.2 * guests);
-        // }
+        // } 
       }
       console.log("rice", count);
     }
@@ -1465,8 +1464,8 @@ const CustomizeNinjaBox = () => {
     setgrandTotal(
       parseInt(totalPrice) +
         parseInt(buffet) +
-        parseInt(deliveryCharge) +
-        parseInt(getGst())
+        // parseInt(deliveryCharge) +
+        parseInt(getGst())+ extraAdd
     );
     setShowPriceList(false);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
@@ -1476,8 +1475,8 @@ const CustomizeNinjaBox = () => {
     setgrandTotal(
       parseInt(totalPrice) +
         parseInt(buffet) +
-        parseInt(deliveryCharge) +
-        parseInt(getGst())
+        // parseInt(deliveryCharge) +
+        parseInt(getGst()) + extraAdd
     );
   }, [buffet]);
 
@@ -1526,13 +1525,14 @@ const CustomizeNinjaBox = () => {
     var final_grandtotal =
       parseInt(totalPrice) +
       parseInt(buffet) +
-      parseInt(deliveryCharge) +
+      // parseInt(deliveryCharge) +
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
         parseInt(buffet) +
-        parseInt(deliveryCharge) +
+        // parseInt(deliveryCharge) +
         getGst()
+        + extraAdd
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -1669,6 +1669,9 @@ const CustomizeNinjaBox = () => {
         },
       },
     };
+
+    
+      
 
     // initialze configuration using init method
     window.Paytm.CheckoutJS.init(config)
@@ -2801,11 +2804,7 @@ const CustomizeNinjaBox = () => {
                     id={styles.drdwnCnt}
                     className="d-flex justify-content-between"
                   >
-                    {/* <select className="form-select" aria-label="Default select example" value={buffet} onChange={e => handleBuffet(e.target.value)}>
-                    <option value="" selected>Ninjabox - Delivery (Free)</option>
-                    <option value="3500">Buffet setup + 1 waiter (+ ₹ 3,500.00)</option>
-                    <option value="4500">Buffet setup + 2 waiter (+ ₹ 4,500.00)</option>
-                  </select> */}
+                  
                     <select
                       aria-label="Default select example"
                       className="form-select"
@@ -2821,7 +2820,7 @@ const CustomizeNinjaBox = () => {
                       people < 26 ? (
                         <>
                           <option value="0" defaultValue>
-                            Ninjabox - Delivery (Free)
+                            Ninjabox - Delivery Only
                           </option>
                           <option value="4000">
                             Buffet setup + 1 waiter (+ ₹ 4,000.00)
@@ -2835,7 +2834,7 @@ const CustomizeNinjaBox = () => {
                         people < 41 ? (
                         <>
                           <option value="0" defaultValue>
-                            Ninjabox - Delivery (Free)
+                            Ninjabox - Delivery Only
                           </option>
                           <option value="5000">
                             Buffet setup + 2 waiter (+ ₹ 5,000.00)
@@ -3003,7 +3002,7 @@ const CustomizeNinjaBox = () => {
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link>
-                    <button onClick={initiatePayment}></button>
+                    {/* <button onClick={initiatePayment}></button> */}
                   </div>
                 </div>
               )}
