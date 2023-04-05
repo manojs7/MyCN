@@ -256,14 +256,14 @@ export default function handler(req, res) {
       // to: `caterninjadiy@gmail.com, ${data.email}, 8n62vi4t8_5o1fxq4@parser.zohocrm.com, lqruate0s_j7e8lb8@parser.zohocrm.com`,
       // to:`${data.email},59drv2k@parser.zohocrm.com`,
       // to:`${data.email}, i4e16n207_bvnzocb@parser.zohocrm.com`,
-      to:`${data.email}`,
+      to:`${data.email}, otuva63_5bg91a2@preparser.zohocrm.com`,
 
       subject: `Final Quote ${data.name} | CaterNinja🤺| Party Quote.`,
 
       html: ` 
       
-    <h2>Hello ${data.name} !! </h2>
-    <h2>Thank you for choosing CaterNinja😊</h2>
+    <h3>Hello ${data.name} !! </h3><br>
+    <h3>Thank you for choosing CaterNinja😊</h3><br>
     
     
     
@@ -360,9 +360,10 @@ export default function handler(req, res) {
       
       <h3>Box/Buffet Price : ${data.buffet?'NinjaBuffet':'NinjaBox'}</h3><br>
       <h3>GST: Rs ${data.GST}</h3><br>
-      <h2>Grand Total : Rs ${data.grandTotal}
-        </h2><br>
-      Thank you!!! <br>
+      <h3>Grand Total : Rs ${data.grandTotal}</h3><br>
+      <h3>Need any help ${data.name} : Please call us</h3>
+        
+      <h2>Thank you!!! </h2<br>
     
     
     <table style="width:100%">
