@@ -2863,6 +2863,7 @@ const CustomizeNinjaBox = () => {
                   {mains?.length + breadRice.length} Mains + {desserts?.length}{" "}
                   Desserts
                 </h6>
+                
               </div>
               <div className={styles.finalPriceSection}>
                 <div
@@ -2998,7 +2999,7 @@ const CustomizeNinjaBox = () => {
                   <p style={{ fontWeight: "600" }}>₹{buffet}</p>
                 </div>
                 <p id={styles.dlvydscr}>
-                  (Click here to choose delivey option)
+                  (Select Delivery/Service Option)
                 </p>
               </div>
               <div className="mt-5">
@@ -3078,7 +3079,7 @@ const CustomizeNinjaBox = () => {
                       </div>
                     </div> */}
                     <hr className={styles.hr1} />
-                    <div className={styles.pricingTitle3}>
+                    {/* <div className={styles.pricingTitle3}>
                       <div className={styles.applyCoupon}>
                         <input type="text" placeholder="Enter Coupon Code" />
                         <button>Apply</button>
@@ -3086,7 +3087,7 @@ const CustomizeNinjaBox = () => {
                       <div>
                         <p>₹0</p>
                       </div>
-                    </div>
+                    </div> */}
                     <div className={styles.pricingTitle4}>
                       <div>
                         <h4>GST</h4>
