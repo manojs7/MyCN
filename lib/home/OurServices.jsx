@@ -200,7 +200,7 @@ const OurServices = () => {
                     <div className="image">
                       <Image
                         src="/nc1.webp"
-                        width={200} height={210}
+                        width={260} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
                       />
@@ -552,7 +552,7 @@ const OurServices = () => {
                     <div className="image3">
                       <Image
                         src="/nc1.webp"
-                        width={129.57} height={148.77}
+                        width={180} height={148.77}
                         alt=""
                         className="img-fluid hoverZoom"
                       />
