@@ -2865,132 +2865,6 @@ const CustomizeNinjaBox = () => {
                 </h6>
                 
               </div>
-              <div className={styles.userInput}>
-              <select
-                      aria-label="Default select example"
-                      className="form-select"
-                      id="fontR"
-                      name="buffet"
-                      value={buffet}
-                      onChange={(e) => handleBuffet(e.target.value)}
-                    >
-                      {(city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
-                      people < 26 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="4000">
-                            Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
-                        people > 25 &&
-                        people < 41 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="5000">
-                            Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
-                        people > 40 &&
-                        people < 61 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="6000">
-                            Buffet setup + Service (+ ₹ 6,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
-                        people > 60 &&
-                        people < 100 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="7500">
-                            Buffet setup + Service (+ ₹ 7,500.00)
-                          </option>
-                        </>
-                      ) : null}
-
-                      {/* ------------------------------------- */}
-
-                      {(city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
-                      people < 26 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Bulk Food Delivery
-                          </option>
-                          <option value="4000">
-                            Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
-                        people > 25 &&
-                        people < 41 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Bulk Food Delivery
-                          </option>
-                          <option value="5000">
-                            Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
-                        people > 40 &&
-                        people < 61 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox -Bulk Food Delivery
-                          </option>
-                          <option value="6000">
-                            Buffet setup + Service (+ ₹ 6,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
-                        people > 60 &&
-                        people < 100 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox -Bulk Food Delivery
-                          </option>
-                          <option value="7500">
-                            Buffet setup + Service (+ ₹ 7,500.00)
-                          </option>
-                        </>
-                      ) : null}
-                    </select>
-              </div>
               <div className={styles.finalPriceSection}>
                 <div
                   id={styles.drdwnCnt}
@@ -3125,7 +2999,7 @@ const CustomizeNinjaBox = () => {
                   <p style={{ fontWeight: "600" }}>₹{buffet}</p>
                 </div>
                 <p id={styles.dlvydscr}>
-                  (Click here to choose delivey option)
+                  (Select Delivery/Service Option)
                 </p>
               </div>
               <div className="mt-5">
@@ -3205,7 +3079,7 @@ const CustomizeNinjaBox = () => {
                       </div>
                     </div> */}
                     <hr className={styles.hr1} />
-                    <div className={styles.pricingTitle3}>
+                    {/* <div className={styles.pricingTitle3}>
                       <div className={styles.applyCoupon}>
                         <input type="text" placeholder="Enter Coupon Code" />
                         <button>Apply</button>
@@ -3213,7 +3087,7 @@ const CustomizeNinjaBox = () => {
                       <div>
                         <p>₹0</p>
                       </div>
-                    </div>
+                    </div> */}
                     <div className={styles.pricingTitle4}>
                       <div>
                         <h4>GST</h4>
