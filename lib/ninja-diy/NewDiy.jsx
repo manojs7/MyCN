@@ -134,6 +134,9 @@ const NewDiy = () => {
     const deleteMenu2 = (item) => {
         setCheckedValues2(checkedValues2.filter(v => v.id !== item.id));
     }
+    const deleteMenu3 = (item) => {
+        setCheckedValues3(checkedValues3.filter(v => v.id !== item.id));
+    }
 
     const handleClick = event => {
         // 👇️ toggle shown state
@@ -260,6 +263,7 @@ const NewDiy = () => {
 
     const [checkedValues, setCheckedValues] = React.useState([]);
     const [checkedValues2, setCheckedValues2] = React.useState([]);
+    const [checkedValues3, setCheckedValues3] = React.useState([]);
 
     const handleCheckboxChange = (e, item) => {
         const value = item;
@@ -280,6 +284,17 @@ const NewDiy = () => {
         } else {
             value.checked = '';
             setCheckedValues2(checkedValues2.filter(v => v.id !== value.id));
+        }
+    }
+
+    const handleCheckboxChange3 = (e, item) => {
+        const value = item;
+        if (e.target.checked) {
+            value.checked = 'checked';
+            setCheckedValues3([...checkedValues3, value]);
+        } else {
+            value.checked = '';
+            setCheckedValues3(checkedValues3.filter(v => v.id !== value.id));
         }
     }
 
@@ -482,7 +497,7 @@ const NewDiy = () => {
                                 <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                             </div>
                             )}
-                            <div className={styles.selectedStarterContainer}>
+                            <div className={styles.selectedStarterContainer} style={{marginTop: "10px"}}>
                                 {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles.fstItem} key={index}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
@@ -576,7 +591,7 @@ const NewDiy = () => {
                                 <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                             </div>
                             )}
-                            <div className={styles.selectedStarterContainer}>
+                            <div className={styles.selectedStarterContainer} style={{marginTop: "10px"}}>
                                 {!showSelectedMenu2 && checkedValues2.map((item, index) => (<div className={styles.fstItem} key={index}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
@@ -705,7 +720,7 @@ const NewDiy = () => {
                                                                 <p>{item.name}<br /><span>{item.description}</span></p>
                                                             </div>
                                                             <div>
-                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange2(e, item)} />
+                                                                <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange3(e, item)} />
                                                             </div>
                                                         </div>
                                                     </li>
@@ -719,7 +734,7 @@ const NewDiy = () => {
                                 </div>
                             </div>)}
                             <div className={styles.selectedStarterContainer}>
-                                {!showSelectedMenu3 && checkedValues2.map((item, index) => (<div className={styles.fstItem} key={index}>
+                                {!showSelectedMenu3 && checkedValues3.map((item, index) => (<div className={styles.fstItem} key={index}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
                                         {item.veg === true ? <img className={styles.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles.vegLogo} src='/diy images/Group 962.png' />}
@@ -738,7 +753,7 @@ const NewDiy = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu2(item)} />
+                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu3(item)} />
                                         </div>
                                     </div>
                                 </div>
