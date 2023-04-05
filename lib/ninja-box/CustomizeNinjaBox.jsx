@@ -1225,13 +1225,13 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = veg * 0.2)
         : (quantity = (veg + nonVeg) * 0.1);
       filterBreadRice.veg === false &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = nonVeg * 0.15)
         : (quantity = nonVeg * 0.2);
 
@@ -1322,14 +1322,14 @@ const CustomizeNinjaBox = () => {
           }
         }
         let bread = 0;
-      let count = 0;
-      let isVeg = false;
+        let count = 0;
+        let isVeg = false;
 
-      temp.map((item) => {
-        item.menu_label === "Breads" ? (bread += 1) : bread;
-        item.menu_label === "Rice" ? (count += 1) : count;
-        item.veg ? (isVeg = true) : (isVeg = false);
-      });
+        temp.map((item) => {
+          item.menu_label === "Breads" ? (bread += 1) : bread;
+          item.menu_label === "Rice" ? (count += 1) : count;
+          item.veg ? (isVeg = true) : (isVeg = false);
+        });
         temp.map((item) => {
           if (item?.menu_label === "Breads" && item.name === "Pooris") {
             if (bread === 1) {
@@ -1352,7 +1352,7 @@ const CustomizeNinjaBox = () => {
                 item.quantity = 0.15 * guests;
               } else if (mains.length > 0 && count === 1) {
                 console.log("count1");
-  
+
                 item.quantity = 0.2 * guests;
               } else if (mains.length === 0 && count === 1) {
                 console.log("count1");
@@ -1563,23 +1563,23 @@ const CustomizeNinjaBox = () => {
       parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd)
     );
     // getDeliveryCharge(people);
+
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
     setShowPriceList(false);
-  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
-
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst()) 
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
   }, [buffet]);
 
@@ -1587,7 +1587,7 @@ const CustomizeNinjaBox = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-        100
+      100
     );
   }
 
@@ -1622,7 +1622,6 @@ const CustomizeNinjaBox = () => {
       }
       return false;
     }
-    setbuffet("0")
     getDeliveryCharge(people);
     setGST(getGst());
     var final_gst = getGst();
@@ -1633,10 +1632,10 @@ const CustomizeNinjaBox = () => {
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        getGst()
-        
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst()
+
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -1751,7 +1750,7 @@ const CustomizeNinjaBox = () => {
       body: JSON.stringify(data),
     });
     var txnToken = await a.json();
-    
+
     var config = {
       root: "",
       flow: "DEFAULT",
@@ -1774,8 +1773,8 @@ const CustomizeNinjaBox = () => {
       },
     };
 
-    
-      
+
+
 
     // initialze configuration using init method
     window.Paytm.CheckoutJS.init(config)
@@ -2865,6 +2864,143 @@ const CustomizeNinjaBox = () => {
                   Desserts
                 </h6>
               </div>
+              <div className={styles.finalPriceSection}>
+                <div
+                  id={styles.drdwnCnt}
+                  className="d-flex justify-content-between"
+                >
+
+                  <select
+                    aria-label="Default select example"
+                    className="form-select"
+                    id="fontR"
+                    name="buffet"
+                    value={buffet}
+                    onChange={(e) => handleBuffet(e.target.value)}
+                  >
+                    {(city === "Mumbai" ||
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
+                      people < 26 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="4000">
+                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Mumbai" ||
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
+                      people > 25 &&
+                      people < 41 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="5000">
+                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Mumbai" ||
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
+                      people > 40 &&
+                      people < 61 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="6000">
+                          Buffet setup + Service (+ ₹ 6,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Mumbai" ||
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
+                      people > 60 &&
+                      people < 100 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="7500">
+                          Buffet setup + Service (+ ₹ 7,500.00)
+                        </option>
+                      </>
+                    ) : null}
+
+                    {/* ------------------------------------- */}
+
+                    {(city === "Delhi" ||
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
+                      people < 26 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Bulk Food Delivery
+                        </option>
+                        <option value="4000">
+                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Delhi" ||
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
+                      people > 25 &&
+                      people < 41 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Bulk Food Delivery
+                        </option>
+                        <option value="5000">
+                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Delhi" ||
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
+                      people > 40 &&
+                      people < 61 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox -Bulk Food Delivery
+                        </option>
+                        <option value="6000">
+                          Buffet setup + Service (+ ₹ 6,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Delhi" ||
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
+                      people > 60 &&
+                      people < 100 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox -Bulk Food Delivery
+                        </option>
+                        <option value="7500">
+                          Buffet setup + Service (+ ₹ 7,500.00)
+                        </option>
+                      </>
+                    ) : null}
+                  </select>
+
+                  <p style={{ fontWeight: "600" }}>₹{buffet}</p>
+                </div>
+                <p id={styles.dlvydscr}>
+                  (Click here to choose delivey option)
+                </p>
+              </div>
               <div className="mt-5">
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
@@ -2903,147 +3039,16 @@ const CustomizeNinjaBox = () => {
                 <button>Apply</button>
               </div> */}
               {showPriceList && (
-                <div className={styles.finalPriceSection}>
-                  <div
-                    id={styles.drdwnCnt}
-                    className="d-flex justify-content-between"
-                  >
-                  
-                    <select
-                      aria-label="Default select example"
-                      className="form-select"
-                      id="fontR"
-                      name="buffet"
-                      value={buffet}
-                      onChange={(e) => handleBuffet(e.target.value)}
-                    >
-                      {(city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
-                      people < 26 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="4000">
-                            Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
-                        people > 25 &&
-                        people < 41 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="5000">
-                            Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
-                        people > 40 &&
-                        people < 61 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="6000">
-                            Buffet setup + Service (+ ₹ 6,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Mumbai" ||
-                          city === "Navi-Mumbai" ||
-                          city === "Thane" ||
-                          city === "Bangalore") &&
-                        people > 60 &&
-                        people < 100 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Delivery Only
-                          </option>
-                          <option value="7500">
-                            Buffet setup + Service (+ ₹ 7,500.00)
-                          </option>
-                        </>
-                      ) : null}
-
-                      {/* ------------------------------------- */}
-
-                      {(city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
-                      people < 26 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Bulk Food Delivery
-                          </option>
-                          <option value="4000">
-                            Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
-                        people > 25 &&
-                        people < 41 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox - Bulk Food Delivery
-                          </option>
-                          <option value="5000">
-                            Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
-                        people > 40 &&
-                        people < 61 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox -Bulk Food Delivery
-                          </option>
-                          <option value="6000">
-                            Buffet setup + Service (+ ₹ 6,000.00)
-                          </option>
-                        </>
-                      ) : (city === "Delhi" ||
-                          city === "Noida" ||
-                          city === "Ghaziabad" ||
-                          city === "Gurgaon") &&
-                        people > 60 &&
-                        people < 100 ? (
-                        <>
-                          <option value="0" defaultValue>
-                            Ninjabox -Bulk Food Delivery
-                          </option>
-                          <option value="7500">
-                            Buffet setup + Service (+ ₹ 7,500.00)
-                          </option>
-                        </>
-                      ) : null}
-                    </select>
-
-                    <p style={{ fontWeight: "600" }}>₹{buffet}</p>
-                  </div>
-                  <p id={styles.dlvydscr}>
-                    (Click here to choose delivey option)
-                  </p>
-                </div>
-              )}
-              {showPriceList && (
                 <div className={styles.pricing}>
-                  <div>
+                  <div style={{marginTop: "10px"}}>
+                  <div className={styles.pricingTitle4}>
+                      <div>
+                        <h4>Buffet Service</h4>
+                      </div>
+                      <div>
+                        <p>₹{buffet}</p>
+                      </div>
+                    </div>
                     <div className={styles.pricingTitle1}>
                       <div>
                         <h4>Items Total</h4>
