@@ -1622,6 +1622,7 @@ const CustomizeNinjaBox = () => {
       }
       return false;
     }
+    setbuffet("0")
     getDeliveryCharge(people);
     setGST(getGst());
     var final_gst = getGst();
@@ -3061,7 +3062,7 @@ const CustomizeNinjaBox = () => {
                       <p>₹0000</p>
                     </div>
                   </div> */}
-                    <div className={styles.pricingTitle2}>
+                    {/* <div className={styles.pricingTitle2}>
                       <div>
                         <h4>
                           Delivery Charges <span></span>
@@ -3070,7 +3071,7 @@ const CustomizeNinjaBox = () => {
                       <div>
                         <p>As Per Actual</p>
                       </div>
-                    </div>
+                    </div> */}
                     <hr className={styles.hr1} />
                     <div className={styles.pricingTitle3}>
                       <div className={styles.applyCoupon}>
@@ -3100,6 +3101,9 @@ const CustomizeNinjaBox = () => {
                         ₹{grandTotal.toLocaleString("en-US")}
                       </p>
                     </div>
+                  </div>
+                  <div className={styles.dlvryChrg}>
+                    <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
