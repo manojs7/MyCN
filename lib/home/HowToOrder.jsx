@@ -29,10 +29,10 @@ export default function HowToOrder() {
   return (
     <div className="container text-center mt-5">
             { isSmall ? <div className="ninjaBoxVideoSm">
-                <YouTube videoId="e0m_0U2BQmA" opts={optsm}/>
+                <YouTube videoId="o-s9E53Apq8" opts={optsm}/>
             </div> : ""}
             { !isSmall ?<div className="ninjaBoxVideoLg my-5">
-                <YouTube videoId="e0m_0U2BQmA" opts={opts} />
+                <YouTube videoId="o-s9E53Apq8" opts={opts} />
             </div> : ""}
         </div>
   );

@@ -108,17 +108,15 @@ export default function TestimonialsThree() {
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9" target="_blank" rel="noreferrer"><img src="https://lh3.googleusercontent.com/a-/AD5-WClycg2JiOEDl3Yntgm2GM8qt-HpCFdC3fgn5fRzJQ=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://g.co/kgs/DZaWfT" target="_blank" rel="noreferrer"><img src="https://lh3.googleusercontent.com/a-/ACB-R5TiN8YZ0ICbW_ifUJGrZ8Arn6Z-VH2eatK_9An4gA=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9" target="_blank" rel="noreferrer"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://g.co/kgs/DZaWfT" target="_blank" rel="noreferrer"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9" target="_blank" rel="noreferrer"><p id="title">Hari om Gangwar</p></a>
-                                        <a href="https://goo.gl/maps/EPdywe9Fw361Tn7H9" target="_blank" rel="noreferrer"><p id="description">I had a snack box party for 90 kids with CaterNinja.
-                                            It was delivered to me before time and the delivery person was friendly and helped me in keeping the boxes at my place.
-                                            Kids loved the donuts, spring rolls and veg sliders a lot.
-                                            Hassle free and best experience for me.
-                                            Highly recommend to everyone looking for professional catering requirements.</p></a>
+                                        <a href="https://g.co/kgs/DZaWfT" target="_blank" rel="noreferrer"><p id="title">Kiran Dwivedi</p></a>
+                                        <a href="https://g.co/kgs/DZaWfT" target="_blank" rel="noreferrer"><p id="description">Amazing service.
+                                            Very well priced.
+                                            Every dish on the menu was delicious.thank you</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -138,15 +136,13 @@ export default function TestimonialsThree() {
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8" target="_blank" rel="noreferrer"><img src="https://lh3.googleusercontent.com/a-/AD5-WCkS3_VMomayA5xpyA8L2Jr2g3BIKxCIyACmgnWy=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://g.co/kgs/r74yB3" target="_blank" rel="noreferrer"><img src="https://lh3.googleusercontent.com/a-/ACB-R5QHQyXfD4fxr83m6OJJmvyeYqatBeMO_F498yTMRNY=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8" target="_blank" rel="noreferrer"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://g.co/kgs/r74yB3" target="_blank" rel="noreferrer"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8" target="_blank" rel="noreferrer"><p id="title">Aditi Shah</p></a>
-                                        <a href="https://goo.gl/maps/r48z1rwaeozFXPLK8" target="_blank" rel="noreferrer"><p id="description">Food came hot in their nicely packed containers and packaging looked premium and very unique.
-                                            It tasted very good, we kept the items for tomorrow and their containers were microwave friendly.
-                                            Great initiative by company.</p></a>
+                                        <a href="https://g.co/kgs/r74yB3" target="_blank" rel="noreferrer"><p id="title">Santnu Duttaf</p></a>
+                                        <a href="https://g.co/kgs/r74yB3" target="_blank" rel="noreferrer"><p id="description">Food quality is very good and packaging was also very good.. All my guest  liked the food very much... Thank you Ninja caterer.... ❤❤</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -166,14 +162,13 @@ export default function TestimonialsThree() {
                             <div className="">
                                 <div className="review-card row p-2">
                                     <div className="profile-img col-3">
-                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8" target="_blank" rel="noreferrer"><img src="https://lh3.googleusercontent.com/a-/AD5-WCnUB65nzQv8Ljg2xSs_OwLU5VotOzaQ5fXMc6qi=w60-h60-p-rp-mo-br100" /></a>
+                                        <a href="https://g.co/kgs/Z6iXBj" target="_blank" rel="noreferrer"><img src="https://lh3.googleusercontent.com/a-/ACB-R5R2T4wO-lIdvuKXaRYpBWUJmeaMjv-loAhrjX3c8A=w60-h60-p-rp-mo-br100" /></a>
                                     </div>
                                     <div className="text-section col-9 ps-4">
-                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8" target="_blank" rel="noreferrer"><img id="img1" src="google logo.png" /></a>
+                                        <a href="https://g.co/kgs/Z6iXBj" target="_blank" rel="noreferrer"><img id="img1" src="google logo.png" /></a>
                                         <img src="Star.svg" />
-                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8" target="_blank" rel="noreferrer"><p id="title">Swati Singh</p></a>
-                                        <a href="https://goo.gl/maps/QqbHgAUF3ofUc5yt8" target="_blank" rel="noreferrer"><p id="description">We have ordered for 30 people , Fixed menu and we  must say It was very easy and time saving decision. Food was yummy, Packaging was very nice.
-                                            Our overall experience was very good.</p></a>
+                                        <a href="https://g.co/kgs/Z6iXBj" target="_blank" rel="noreferrer"><p id="title">Pooja Shah</p></a>
+                                        <a href="https://g.co/kgs/Z6iXBj" target="_blank" rel="noreferrer"><p id="description">I ordered from them for an office party and it was quite a good experience. The menu selection, ordering process was seamless. Delivery was super neat and punctual. The food was really good, everyone loved it. And the overall setup was very impressive. The quantities were enough and everyone ate to their heart’s full… and to top it, I found them quite reasonably priced.I am definitely ordering again from them.</p></a>
                                     </div>
                                 </div>
                             </div>
