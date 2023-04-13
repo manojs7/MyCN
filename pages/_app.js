@@ -16,9 +16,23 @@ import Zoho from "$lib/bookChef/Zoho";
 import Script from 'next/script'
 import Google from "$lib/bookChef/Google";
 import Float2 from "$lib/Float2";
-
-
+import { useState } from "react";
+import { useEffect } from "react";
 function MyApp({ Component, pageProps }) {
+  const[url, setUrl] = useState("");
+    
+
+    useEffect(() => {
+        const x = document.referrer;
+        if (sessionStorage.getItem("first_url") === '') {
+            const catch_url = sessionStorage.setItem("first_url", JSON.stringify(x));
+            console.log(catch_url);
+          } else {
+            let url_value = sessionStorage.getItem("first_url");
+            setUrl(url_value)
+            console.log(url_value);
+          }
+        },[])
 
   return (
     <>

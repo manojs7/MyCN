@@ -21,6 +21,8 @@ import axios from "axios";
 import Slider from "react-slick/lib/slider";
 import Swal from "sweetalert2";
 import Link from "next/link";
+// import { Bolt } from "@mui/icons-material";
+// import { Launch } from "@mui/icons-material";
 
 const CustomizeNinjaBox = () => {
   const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
@@ -112,6 +114,7 @@ const CustomizeNinjaBox = () => {
   };
 
   useEffect(() => {
+    
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
@@ -125,6 +128,8 @@ const CustomizeNinjaBox = () => {
       // names must be equal
       return 0;
     });
+   
+
 
     // removing duplicate
     //  const result = allMenus?.reduce((finalArray, current) => {
@@ -138,11 +143,13 @@ const CustomizeNinjaBox = () => {
     // }, [])
     const result = allMenus;
     // reference url
-    if (sessionStorage.getItem("first_url") === null) {
-      const catch_url = sessionStorage.setItem("first_url", "x");
+    if (sessionStorage.getItem("first_url") === '') {
+      const catch_url = sessionStorage.setItem("first_url", JSON.stringify(x));
+      console.log(catch_url);
     } else {
-      let ref_url = sessionStorage.getItem("first_url");
-      setRefURL(ref_url);
+      let url_value = sessionStorage.getItem("first_url");
+      setRefURL(url_value)
+      console.log(url_value);
     }
 
     setStartersData(result.filter((d) => d.mealType === "Starter"));
@@ -155,6 +162,7 @@ const CustomizeNinjaBox = () => {
     setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
 
     const newMainData = allMenus.filter((d) => d.mealType === "Main course");
+
 
     newMainData.sort(function (a, b) {
       return parseInt(b.selling_price) - parseInt(a.selling_price);
@@ -216,6 +224,14 @@ const CustomizeNinjaBox = () => {
   };
 
   const handleVegNonVegGuest = (name, value) => {
+    // console.log("work in progress")
+    // let IDs = ["Aloo Gobi Tamatar"];
+    // let testmains;
+    // IDs.forEach((item)=>{
+    //   testmains= allMenus.filter((d) => d.mealType === "Main course" && d.name===item)
+    //   handleMainAdd(testmains.name) 
+    // })
+    // console.log("mh", testmains)
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     } else {
@@ -441,7 +457,9 @@ const CustomizeNinjaBox = () => {
     }
   };
   useEffect(() => {
+
     // sendRequest();
+    
 
     // starter value change after veg and non-veg guest change
     if (veg === 0 && nonVeg === 0) return;
@@ -1514,6 +1532,8 @@ const CustomizeNinjaBox = () => {
   }
   // cost calculation
   useEffect(() => {
+   
+
     let starterPrice = 0;
     let mainPrice = 0;
     let dessertPrice = 0;
@@ -1738,54 +1758,130 @@ const CustomizeNinjaBox = () => {
 
   // const sortedData = selectedItems.concat(unselectedItems);
 
-  const initiatePayment = async (e) => {
-    e.preventDefault();
-    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
-    const data = { oid };
-    let a = await fetch("/api/paynow", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    var txnToken = await a.json();
-
-    var config = {
-      root: "",
-      flow: "DEFAULT",
-      ENVIRONMENT: "staging",
-      REQUEST_TYPE: "DEFAULT",
-      INDUSTRY_TYPE_ID: "Retail",
-      WEBSITE: "WEBSTAGING",
-      data: {
-        orderId: oid,
-        token: txnToken /* update token value */,
-        tokenType: "TXN_TOKEN",
-        amount: "100" /* update amount */,
-      },
-      "handler": {
-        "notifyMerchant": function (eventName, data) {
-          console.log("notifyMerchant handler function called");
-          console.log("eventName => ", eventName);
-          console.log("data => ", data);
+  const redirectToPayU=(pd)=> {
+    console.log("pd",pd)
+    //use window.bolt.launch if you face an error in bolt.launch
+    
+    bolt.launch(pd, {
+      responseHandler: function (response) {
+      // your payment response Code goes here
+      fetch("/api/payResponse", {
+        method: 'POST',
+        headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
         },
-      },
-    };
-
-
-
-
-    // initialze configuration using init method
-    window.Paytm.CheckoutJS.init(config)
-      .then(function onSuccess() {
-        // after successfully updating configuration, invoke JS Checkout
-        window.Paytm.CheckoutJS.invoke();
+        body: JSON.stringify(response.response)
       })
-      .catch(function onError(error) {
-        console.log("error => ", error);
-      });
-  };
+      .then(function (a) {
+         return a.json(); 
+       })
+      .then(function (json) {
+        console.log(json);
+       });
+    },
+    catchException: function (response) {
+      // the code you use to handle the integration errors goes here
+      // Make any UI changes to convey the error to the user
+    }
+  });
+  }
+
+
+  const payumoney=(e)=>{
+    e.preventDefault();
+    //Create a Data object that is to be passed to LAUNCH method of Bolt
+    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
+    console.log(oid)
+      var pd = {
+         key: "VKy9EEvW",
+         txnid: oid,
+         amount: "1",
+         firstname: "Manoj",
+         email: "takmanoj369@gmail.com",
+         phone: "7023405885",
+         productinfo: "test",
+         surl: "https://caterninja.com",
+         furl: "https://new.caterninja.com",
+         hash: ''
+    }
+    
+    // Data to be Sent to API to generate hash.
+    let data = {
+        'txnid': pd.txnid,
+        'email': pd.email,
+        'amount': pd.amount,
+        'productinfo': pd.productinfo,
+        'firstname': pd.firstname
+    }
+    let self = this;
+    // API call to get the Hash value
+    fetch("/api/paynow", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+       },
+       body: JSON.stringify(data)
+    })
+       .then(function (a) {
+           return a.json(); 
+       })
+       .then(function (json) {
+           pd.hash = json['hash']
+           //  With the hash value in response, we are ready to launch the bolt overlay.
+          //Function to launch BOLT   
+          redirectToPayU(pd);
+       });
+    }
+  // const initiatePayment = async (e) => {
+  //   e.preventDefault();
+  //   let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
+  //   const data = { oid };
+  //   let a = await fetch("/api/paynow", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
+  //   var txnToken = await a.json();
+
+  //   var config = {
+  //     root: "",
+  //     flow: "DEFAULT",
+  //     ENVIRONMENT: "staging",
+  //     REQUEST_TYPE: "DEFAULT",
+  //     INDUSTRY_TYPE_ID: "Retail",
+  //     WEBSITE: "WEBSTAGING",
+  //     data: {
+  //       orderId: oid,
+  //       token: txnToken /* update token value */,
+  //       tokenType: "TXN_TOKEN",
+  //       amount: "100" /* update amount */,
+  //     },
+  //     "handler": {
+  //       "notifyMerchant": function (eventName, data) {
+  //         console.log("notifyMerchant handler function called");
+  //         console.log("eventName => ", eventName);
+  //         console.log("data => ", data);
+  //       },
+  //     },
+  //   };
+
+
+
+
+  //   // initialze configuration using init method
+  //   window.Paytm.CheckoutJS.init(config)
+  //     .then(function onSuccess() {
+  //       // after successfully updating configuration, invoke JS Checkout
+  //       window.Paytm.CheckoutJS.invoke();
+  //     })
+  //     .catch(function onError(error) {
+  //       console.log("error => ", error);
+  //     });
+  // };
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -3115,7 +3211,7 @@ const CustomizeNinjaBox = () => {
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link>
-                    {/* <button onClick={initiatePayment}></button> */}
+                    <button onClick={payumoney}></button>
                   </div>
                 </div>
               )}
