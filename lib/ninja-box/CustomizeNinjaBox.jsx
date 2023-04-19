@@ -1597,7 +1597,7 @@ const CustomizeNinjaBox = () => {
       return false;
     }
 
-    if (name.length == "" || email.length == "" || mobileno.length == "") {
+    if (name.length == "" || mobileno.length == "" || (!/^\d{10}$/.test(mobileno)) || email.length == "" || (!/\S+@\S+\.\S+/.test(email))) {
       if (name.length == "") {
         Swal.fire({
           text: "Please enter your Name",
@@ -1605,6 +1605,20 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the name please");
+      }else if (mobileno.length == "") {
+        Swal.fire({
+          text: "Please enter your mob.no.",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Mobile No please");
+      }else if (!/^\d{10}$/.test(mobileno)) {
+        Swal.fire({
+          text: "Please enter a valid phone number",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Mobile No please");
       } else if (email.length == "") {
         Swal.fire({
           text: "Please enter your Email",
@@ -1612,13 +1626,13 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the Email please");
-      } else if (mobileno.length == "") {
+      }else if ((!/\S+@\S+\.\S+/.test(email))) {
         Swal.fire({
-          text: "Please enter your mob.no.",
+          text: "Please enter valid Email",
           icon: "warning",
           confirmButtonText: "OK",
         });
-        //alert("Fill the Mobile No please");
+        //alert("Fill the Email please");
       }
       return false;
     }
@@ -3019,6 +3033,7 @@ const CustomizeNinjaBox = () => {
                       required
                     />
                     <input
+                      type="email"
                       placeholder="Email"
                       name="email"
                       onInput={(e) => setEmail(e.target.value)}
