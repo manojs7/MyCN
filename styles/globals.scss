@@ -324,52 +324,52 @@ input[type=radio] {
   margin: auto;
   width: 286.9px;
 
-    .searchWrapper {
-      border: none;
-      margin-bottom: -20px;
-    }
+  .searchWrapper {
+    border: none;
+    margin-bottom: -20px;
+  }
 
-    .optionListContainer {
-      //box-shadow: 8.09291px 20.0824px 67.4409px rgba(0, 0, 0, 0.51);
-    }
+  .optionListContainer {
+    //box-shadow: 8.09291px 20.0824px 67.4409px rgba(0, 0, 0, 0.51);
+  }
 
-    input {
-      background-color: #EFEFEF;
-    }
+  input {
+    background-color: #EFEFEF;
+  }
 
-    .optionContainer {
-      li {
-        margin: 0%;
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        font-weight: 500;
-        font-size: 10.0002px;
-        line-height: 12px;
-        letter-spacing: 0.05em;
-        text-transform: capitalize;
-        color: #000000;
-      }
-
-      .checkbox {
-        margin: 0%;
-        padding: 0%;
-        margin-right: 0%;
-        padding-right: 0%;
-        width: 20px;
-      }
-    }
-
-    ::placeholder {
-      padding: 0%;
-      font-weight: 600;
-      font-size: 12.1784px;
-      line-height: 15px;
+  .optionContainer {
+    li {
+      margin: 0%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      font-weight: 500;
+      font-size: 10.0002px;
+      line-height: 12px;
       letter-spacing: 0.05em;
       text-transform: capitalize;
-      color: #2C3338;
+      color: #000000;
+    }
+
+    .checkbox {
+      margin: 0%;
+      padding: 0%;
+      margin-right: 0%;
+      padding-right: 0%;
+      width: 20px;
     }
   }
+
+  ::placeholder {
+    padding: 0%;
+    font-weight: 600;
+    font-size: 12.1784px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    color: #2C3338;
+  }
+}
 
 
 /*  NEW  */
@@ -448,6 +448,7 @@ input[type=radio] {
     transform: scale(1, 0);
     opacity: 0;
   }
+
   to {
     transform: scale(1, 1);
     opacity: 1;
@@ -471,6 +472,7 @@ input[type=radio] {
   cursor: pointer;
   transition: 0.3s;
 }
+
 .btn:hover {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
 }
@@ -480,12 +482,13 @@ input[type=radio] {
 
 .multiSelectContainer ul {
   max-height: 230px !important;
-  li{
+
+  li {
     height: 50px;
   }
 }
 
-#starterOptions .optionContainer .checkbox{
+#starterOptions .optionContainer .checkbox {
   width: 15px;
 }
 
