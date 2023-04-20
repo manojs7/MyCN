@@ -15,16 +15,16 @@ const NinjaBoxViewPkg = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
-          //alert("Please fill out all details!");
-          Swal.fire({
-            text: "Please fill out all details!",
-            icon: "warning",
-            confirmButtonText: "OK",
-          });
+            //alert("Please fill out all details!");
+            Swal.fire({
+                text: "Please fill out all details!",
+                icon: "warning",
+                confirmButtonText: "OK",
+            });
         } else {
-          setShowDiv(true);
+            setShowDiv(true);
         }
-      };
+    };
 
     return (
         <div className={styles.customizeMainContainer}>
@@ -43,7 +43,7 @@ const NinjaBoxViewPkg = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.pkgCardHeader}>
+                    {/* <div className={styles.pkgCardHeader}>
                         <div>
                             <h3>PACKAGE NAME</h3>
                             <img src='555.png' />
@@ -51,7 +51,7 @@ const NinjaBoxViewPkg = () => {
                             <h4> XXXX</h4>
                             <p>(For 20 Guests)</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className={styles.redBg}>
                     {/* <div className={styles.cityContainer}>
@@ -66,17 +66,47 @@ const NinjaBoxViewPkg = () => {
                         </div>
                     </div> */}
                     <div className={styles.redContent}>
-                        <div className={styles.cityName}>
-                            <div><h3>City:</h3></div>
-                            <div className={styles.contName}><h3>Mumbai</h3></div>
+                        <div className={styles.cityDateContainer}>
+                            <div>
+                                <p>City</p>
+                                <div>
+                                    <select>
+                                        <option>mumbai</option>
+                                        <option>mumbai</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Date</p>
+                                <div>
+                                    <input type="date" />
+                                </div>
+                            </div>
                         </div>
-                        <div className={styles.cityName}>
-                            <div><h3>Occasion:</h3></div>
-                            <div className={styles.contName}><h3>House Party</h3></div>
+                        <div className={styles.guestCountContainer}>
+                            <div>
+                                <p>Veg Count</p>
+                                <div>
+                                    <input></input>
+                                </div>
+                            </div>
+                            <div>
+                                <p>N-Veg Count</p>
+                                <div>
+                                    <input></input>
+                                </div>
+                            </div>
                         </div>
-                        <div className={styles.cityName}>
-                            <div><h3>Date:</h3></div>
-                            <div className={styles.contName}><h3>14/04/2023</h3></div>
+                        <div className={styles.cityDateContainer}>
+                            <div>
+                                <p>Occasion</p>
+                                <div>
+                                    <select>
+                                        <option>House Party</option>
+                                        <option>Bday Party</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.whiteBg}>
@@ -84,10 +114,10 @@ const NinjaBoxViewPkg = () => {
                             <h3>PACKAGE NAME</h3>
                             <img src='555.png' height="150px" width="274.5px" />
                             <h6>Starters + X Mains + X Desserts</h6>
-                            <div>
+                            {/* <div>
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
-                            </div>
+                            </div> */}
                             <h5>₹ 8,888</h5>
                         </div>
                         <div className={styles.pkgDetails}>
@@ -287,15 +317,14 @@ const NinjaBoxViewPkg = () => {
                             </div>
                         </div>
                         <div className={styles.chefNote}>
-                            <p>Special Restriction? Chef Note?</p>
-                            <input type="text" />
+                            <input placeholder='Special Restriction? Chef Note?' type="text" />
                         </div>
                         <div className={styles.btnContnr}>
                             <div>
                                 <button onClick={handleSubmit} id={styles.cnfrmPkg}>Check Price</button>
                             </div>
                             <div>
-                                <button id={styles.custmPkg}>Customise Package</button>
+                                <button onClick={() => window.open('/customiseNinjaBox', '_blank')} id={styles.custmPkg}>Customise Package</button>
                             </div>
                         </div>
                         {/* <div style={{marginBottom: "10px"}} className={styles.instantQuoteBtn}>
@@ -315,14 +344,14 @@ const NinjaBoxViewPkg = () => {
                                         <p>₹0000</p>
                                     </div>
                                 </div>
-                                <div className={styles.pricingTitle11}>
+                                {/* <div className={styles.pricingTitle11}>
                                     <div>
                                         <h4>Buffet Service</h4>
                                     </div>
                                     <div>
                                         <p>₹0000</p>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <div className={styles.pricingTitle2}>
                                     <div>
                                         <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>

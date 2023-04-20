@@ -224,6 +224,10 @@
             margin: auto;
         }
     }
+    .ninjabox1{
+        margin-top: 40px;
+        text-align: center;
+    }
 
     .ninjabuffy {
         margin-top: 20px;
@@ -571,6 +575,15 @@
             height: 34px;
             border-radius: 5.41px;
             font-size: small;
+        }
+        input::placeholder {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 10.8163px;
+            line-height: 13px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #A8A7A7;
         }
     }
 
@@ -1818,6 +1831,15 @@
             width: 549px;
             height: 69px;
             border-radius: 10px;
+        }
+        input::placeholder {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 10.8163px;
+            line-height: 13px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #A8A7A7;
         }
     }
 

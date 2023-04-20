@@ -123,6 +123,9 @@ const Custom_Package = () => {
   const handleButtonClick = () => {
     setShowDiv(!showDiv);
   };
+  const closePopup = () => {
+    setShowDiv(!showDiv);
+  };
 
   //VEG - GUEST COUNT
   const [number, setNumber] = useState(10);
@@ -174,7 +177,6 @@ const Custom_Package = () => {
       setNumber2(number2 - 1);
     }
   };
-
   useEffect(() => {
     setIsSmall(window.innerWidth <= 939);
     window.addEventListener("resize", () =>
@@ -185,23 +187,45 @@ const Custom_Package = () => {
   return (
     <div>
       {showDiv && (<div className={styles.popupguestcount} ref={ref}>
-        <h3>Additional <span>Info-</span></h3>
-        {/* <div className={styles.dateSection}>
-        <DatePicker
-          name="event_date"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          required
-        />
-        </div> */}
-        <div className={styles.popupcontainer}>
-          <div className={styles.ninjaImg}>
-            <Image id={styles.ninjaImg1} src="/popupNinja.png" width={94.66} height={173} />
-          </div>
-          <div className={styles.ninjaImg2}>
-            <Image id={styles.ninjaImg2} src="/popupNinja.png" width={43.85} height={80.15} />
+        <h3>Additional <span>Info</span></h3>
+        <div className={styles.dateContainer}>
+          <div>
+            <img src="miniNinjaLeft.png" width="24.03" height="43.92" />
           </div>
           <div>
+            <h4>Date</h4>
+            <div><input type="date" /></div>
+          </div>
+          <div>
+            <img src="miniNinjaRight.png" width={24.03} height={43.92} />
+          </div>
+        </div>
+        <div className={styles.guestCountCn}>
+          <h3>Guest Count</h3>
+          <div className={styles.guestcountCN}>
+            <div>
+              <p>Veg Guest</p>
+              <div className={styles.numBtn}>
+                <button onClick={handleDecreaseClick}>-</button>
+                <input id={styles.vNum} type="number" value={number} onChange={handleInputChange} onClick={handleInputClick} />
+                <button onClick={handleIncreaseClick}>+</button>
+              </div>
+            </div>
+            <div>
+              <p>NV Guest</p>
+              <div className={styles.numBtn}>
+                <button onClick={handleDecreaseClick2}>-</button>
+                <input id={styles.nvNum} type="number" value={number2} onChange={handleInputChange2} onClick={handleInputClick2} />
+                <button onClick={handleIncreaseClick2}>+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.cnfmBtn}>
+          <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+          <button onClick={() => window.open('/ninjaBoxViewPkg', '_blank')} id={styles.viewBtn}>View Package</button>
+        </div>
+        {/* <div>
             <div className={styles.inputContainer}>
               <div>
                 <h4 id={styles.vegText}>Vegetarian<br /><span>Guests</span></h4>
@@ -225,8 +249,7 @@ const Custom_Package = () => {
             <div className={styles.viewPkgBtn}>
               <button onClick={() => window.open('/ninjaBoxViewPkg', '_blank')}>View Package</button>
             </div>
-          </div>
-        </div>
+          </div> */}
       </div>)}
       {!isSmall ? <section className="custom-package py-5">
         <div className="container" id="NBPkg">
@@ -521,7 +544,7 @@ const Custom_Package = () => {
             <h1>Ninja<span>Box</span></h1>
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
-            {/* <div className="checkbox-container my-4">
+            <div className="checkbox-container my-4">
               <input type="checkbox" value='veg' name="Veg" id="" />
             </div>
             <div className="container">
@@ -574,7 +597,7 @@ const Custom_Package = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </section> : ""}
       {isSmall ? <section>
@@ -590,8 +613,8 @@ const Custom_Package = () => {
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-3" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+              {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
+              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise & Book Now</button>
             </div>
 
           </div>

@@ -6,29 +6,84 @@
 
 @media (max-width: 576px) {
 
-    .redContent{
+    .redContent {
         background-color: #BE2D30;
-        padding-block: 20px;
-        padding-inline: 40px;
-        
-        .cityName{
-            display: flex;
-            justify-content: space-between;
-            h3{
-                color: white;
-                font-weight: 700;
-            }
-            .contName{
-                h3{
-                    font-size: 22px;
-                    text-align: center;
-                    font-weight: 500;
-                    color: black;
-                    background-color: white;
-                    border-radius: 5px;
-                    width: 160px;
-                }
-            }
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .cityDateContainer {
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+
+        p {
+            margin: auto;
+            font-weight: 700;
+            font-size: 15.8412px;
+            line-height: 19px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+        }
+
+        select {
+            border: 1px solid #000000;
+            width: 127.95px;
+            height: 23.15px;
+            border-radius: 6.09px;
+            background: #fafafa;
+            font-weight: 500;
+            font-size: 12.1856px;
+            line-height: 15px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #534848;
+        }
+
+        input {
+            border: 1px solid #000000;
+            width: 127.95px;
+            height: 23.15px;
+            border-radius: 6.09px;
+            background: #fafafa;
+            font-weight: 500;
+            font-size: 12.1856px;
+            line-height: 15px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #534848;
+        }
+    }
+
+    .guestCountContainer {
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+
+        p {
+            margin: auto;
+            text-align: center;
+            font-weight: 700;
+            font-size: 15.8412px;
+            line-height: 19px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+        }
+
+        input {
+            border: 1px solid #000000;
+            width: 127.95px;
+            height: 23.15px;
+            border-radius: 6.09px;
+            background: #fafafa;
+            font-weight: 500;
+            font-size: 12.1856px;
+            line-height: 15px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #534848;
         }
     }
 
@@ -46,7 +101,7 @@
     }
 
     .header {
-        height: 505px;
+        height: 231px;
         background-color: #FFC31A;
     }
 
@@ -389,6 +444,16 @@
             border-radius: 5.41px;
             font-size: small;
         }
+
+        input::placeholder {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 10.8163px;
+            line-height: 13px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #A8A7A7;
+        }
     }
 
     .instantQuoteBtn {
@@ -716,37 +781,37 @@
         margin-top: 50px;
         text-align: center;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: space-evenly;
 
         button {
             border: none;
             align-items: center;
-            width: 197.96px;
-            height: 38.6px;
-            border-radius: 7.56px;
-            gap: 1.76px;
-            filter: drop-shadow(0px 3.51999px 3.51999px rgba(0, 0, 0, 0.25));
+            width: 142.09px;
+            height: 30.24px;
+            box-shadow: 0px 2.2826px 2.2826px rgba(0, 0, 0, 0.25);
+            border-radius: 5.70649px;
         }
 
         #cnfrmPkg {
             background-color: #BE2D30;
-            color: white;
-            margin-bottom: 20px;
             font-weight: 500;
-            font-size: 17.5999px;
-            line-height: 21px;
+            font-size: 12.6327px;
+            line-height: 15px;
             text-align: center;
             letter-spacing: 0.03em;
+            color: #FFFFFF;
         }
 
         #custmPkg {
             border: 1px solid black;
-            background-color: #FFFFFF;
+            background-color: #FFC31A;
             font-weight: 500;
-            font-size: 16.8547px;
-            line-height: 21px;
+            font-size: 12.0978px;
+            line-height: 15px;
             text-align: center;
             letter-spacing: 0.03em;
-            color: #000000;
+            color: #2C2626;
         }
     }
 
@@ -887,22 +952,25 @@
         }
     }
 
-    .redContent{
+    .redContent {
         display: flex;
         margin-inline: 220px;
         justify-content: space-between;
         padding-block: 50px;
     }
 
-    .cityName{
+    .cityName {
         display: flex;
         color: white;
-        h3{
+
+        h3 {
             font-weight: 600;
         }
-        .contName{
+
+        .contName {
             margin: auto;
-            h3{
+
+            h3 {
                 font-size: 20px;
                 background-color: white;
                 color: black;
