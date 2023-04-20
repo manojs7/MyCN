@@ -20,18 +20,47 @@ import { useState } from "react";
 import { useEffect } from "react";
 function MyApp({ Component, pageProps }) {
   const[url, setUrl] = useState("");
+  // const cookieParser = require("cookie-parser");
+  // app.use(cookieParser());
+
+
     
 
+  function getCurrentURL () {
+    return window.location.href
+  }
+  
+  function getCookie(name) {
+    let cookieValue;
+    if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
     useEffect(() => {
-        const x = document.referrer;
-        if (sessionStorage.getItem("first_url") === '') {
-            const catch_url = sessionStorage.setItem("first_url", JSON.stringify(x));
-            console.log(catch_url);
+      
+        const x = getCurrentURL();
+        if(getCookie("f_url")){
+          sessionStorage.setItem("first_url2", getCookie("f_url"));
+        }
+        else{
+          if (sessionStorage.getItem("first_url2") === null ) {
+            const catch_url = sessionStorage.setItem("first_url2", x);
+            setUrl(catch_url)
           } else {
-            let url_value = sessionStorage.getItem("first_url");
+            let url_value = sessionStorage.getItem("first_url2");
             setUrl(url_value)
-            console.log(url_value);
           }
+        }
+
+       
         },[])
 
   return (

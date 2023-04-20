@@ -25,7 +25,8 @@ import Link from "next/link";
 // import { Launch } from "@mui/icons-material";
 
 const CustomizeNinjaBox = () => {
-  const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
+  const { menu, cuisines, allMenus, cities, occasions, PreSelected } =
+    useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -93,7 +94,6 @@ const CustomizeNinjaBox = () => {
   const [GST, setGST] = useState(0);
   const [extraAdd, setExtraAdd] = useState(500);
 
-
   const [isStarterChange, setIsStarterChange] = useState(false);
   const [isMainChange, setIsMainChange] = useState(false);
   const [isBreadChange, setIsBreadChange] = useState(false);
@@ -128,8 +128,6 @@ const CustomizeNinjaBox = () => {
       // names must be equal
       return 0;
     });
-   
-
 
     // removing duplicate
     //  const result = allMenus?.reduce((finalArray, current) => {
@@ -143,15 +141,17 @@ const CustomizeNinjaBox = () => {
     // }, [])
     const result = allMenus;
     // reference url
-    if (sessionStorage.getItem("first_url") === '') {
-      const catch_url = sessionStorage.setItem("first_url", JSON.stringify(x));
-      console.log(catch_url);
-    } else {
-      let url_value = sessionStorage.getItem("first_url");
-      setRefURL(url_value)
-      console.log(url_value);
-    }
-
+    // if (sessionStorage.getItem("first_url2") === "") {
+    //   const catch_url = sessionStorage.setItem("first_url2", JSON.stringify(x));
+    //   setRefURL(catch_url);
+    //   console.log(catch_url);
+    // } else {
+    //   let url_value = sessionStorage.getItem("first_url2");
+    //   setRefURL(url_value);
+    //   console.log(url_value);
+    // }
+    let url_value = sessionStorage.getItem("first_url2");
+    setRefURL(url_value);
     setStartersData(result.filter((d) => d.mealType === "Starter"));
     setStartersData2(result.filter((d) => d.mealType === "Starter"));
     setMainData(result.filter((d) => d.mealType === "Main course"));
@@ -161,8 +161,25 @@ const CustomizeNinjaBox = () => {
     setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
     setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
 
-    const newMainData = allMenus.filter((d) => d.mealType === "Main course");
+    // console.log("work in progress");
 
+    // let itemData;
+
+    // PreSelected.forEach((item) => {
+    //   itemData = allMenus.filter((d) => d.name === item);
+    //   if (itemData[0].mealType === "Starter") {
+    //     // handleStatersAdd(item);
+    //   } else if (itemData[0].mealType === "Main course") {
+    //     // handleMainAdd(item);
+    //   } else if (itemData[0].mealType === "Bread+Rice") {
+    //     // handleBreadRiceAdd(item);
+    //   } else if (itemData[0].mealType === "Dessert") {
+    //     // handleDesertsAdd(item);
+    //   }
+    //   console.log("here", itemData);
+    // });
+
+    const newMainData = allMenus.filter((d) => d.mealType === "Main course");
 
     newMainData.sort(function (a, b) {
       return parseInt(b.selling_price) - parseInt(a.selling_price);
@@ -224,14 +241,6 @@ const CustomizeNinjaBox = () => {
   };
 
   const handleVegNonVegGuest = (name, value) => {
-    // console.log("work in progress")
-    // let IDs = ["Aloo Gobi Tamatar"];
-    // let testmains;
-    // IDs.forEach((item)=>{
-    //   testmains= allMenus.filter((d) => d.mealType === "Main course" && d.name===item)
-    //   handleMainAdd(testmains.name) 
-    // })
-    // console.log("mh", testmains)
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     } else {
@@ -457,9 +466,7 @@ const CustomizeNinjaBox = () => {
     }
   };
   useEffect(() => {
-
     // sendRequest();
-    
 
     // starter value change after veg and non-veg guest change
     if (veg === 0 && nonVeg === 0) return;
@@ -671,6 +678,7 @@ const CustomizeNinjaBox = () => {
 
     let temp = [...starters];
     const starter = startersData.find((item) => item.name === item_name);
+    console.log("starterdata",startersData)
     // removing selected item
     // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
@@ -1097,28 +1105,28 @@ const CustomizeNinjaBox = () => {
             let guests = veg > 0 ? veg : nonVeg;
             if (count >= 2) {
               console.log("count2");
-              item.quantity = 0.15 * guests;
+              item.quantity = HandleCeilFloorValue(0.15 * guests);
             } else if (mains.length > 0 && count === 1) {
               console.log("count1");
 
-              item.quantity = 0.2 * guests;
+              item.quantity = HandleCeilFloorValue(0.2 * guests);
             } else if (mains.length === 0 && count === 1) {
               console.log("count1");
-              item.quantity = 0.3 * guests;
+              item.quantity = HandleCeilFloorValue(0.3 * guests);
             }
           } else if (veg > 0 && nonVeg > 0) {
             let guests = veg + nonVeg;
             if (count >= 2) {
-              item.quantity = 0.15 * guests;
+              item.quantity = HandleCeilFloorValue(0.15 * guests);
             } else if (
               count === 1 &&
               mains.length === 0 &&
               starters.length >= 2
             ) {
               if (item.veg === true) {
-                item.quantity = 0.25 * veg;
+                item.quantity = HandleCeilFloorValue( 0.25 * veg);
               } else {
-                item.quantity = 0.25 * nonVeg;
+                item.quantity = HandleCeilFloorValue( 0.25 * nonVeg);
               }
             } else if (
               count === 1 &&
@@ -1126,9 +1134,9 @@ const CustomizeNinjaBox = () => {
               starters.length <= 1
             ) {
               if (item.veg === true) {
-                item.quantity = 0.3 * veg;
+                item.quantity = HandleCeilFloorValue( 0.3 * veg);
               } else {
-                item.quantity = 0.3 * nonVeg;
+                item.quantity = HandleCeilFloorValue( 0.3 * nonVeg);
               }
             } else if (
               count >= 1 &&
@@ -1136,9 +1144,9 @@ const CustomizeNinjaBox = () => {
               starters.length <= 1
             ) {
               if (item.veg === true) {
-                item.quantity = 0.25 * veg;
+                item.quantity = HandleCeilFloorValue( 0.25 * veg);
               } else {
-                item.quantity = 0.25 * nonVeg;
+                item.quantity = HandleCeilFloorValue( 0.25 * nonVeg);
               }
             } else if (
               count >= 1 &&
@@ -1146,17 +1154,17 @@ const CustomizeNinjaBox = () => {
               starters.length >= 2
             ) {
               if (item.veg === true) {
-                item.quantity = 0.2 * veg;
+                item.quantity = HandleCeilFloorValue( 0.2 * veg);
               } else {
-                item.quantity = 0.2 * nonVeg;
+                item.quantity = HandleCeilFloorValue( 0.2 * nonVeg);
               }
             } else if (count === 1 && mains.length >= 1) {
-              item.quantity = 0.2 * guests;
+              item.quantity = HandleCeilFloorValue( 0.2 * guests);
             } else {
               if (item.veg === true) {
-                item.quantity = 0.15 * veg;
+                item.quantity = HandleCeilFloorValue( 0.15 * veg);
               } else {
-                item.quantity = 0.15 * nonVeg;
+                item.quantity = HandleCeilFloorValue( 0.15 * nonVeg);
               }
             }
           }
@@ -1194,17 +1202,17 @@ const CustomizeNinjaBox = () => {
         item.menu_label === "Breads" ? (bread += 1) : bread;
       });
       bread === 1
-        ? (quantity = (veg + nonVeg) * 3)
-        : (quantity = (veg + nonVeg) * 2);
+        ? (quantity = Math.round((veg + nonVeg) * 3))
+        : (quantity = Math.round((veg + nonVeg) * 2));
       if (bread === 1) {
-        quantity = (veg + nonVeg) * 3;
+        quantity = Math.round((veg + nonVeg) * 3);
       } else {
         // temp.forEach((item) => {
         //   item.name === "Pooris" && item.menu_label === "Breads"
-        //     ? (item.quantity = (veg + nonVeg) * 2)
-        //     : (item.quantity = (veg + nonVeg) * 0.2);
+        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
+        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
         // });
-        quantity = (veg + nonVeg) * 2;
+        quantity = Math.round((veg + nonVeg) * 2);
       }
       // checking for bread
     }
@@ -1221,15 +1229,15 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       if (bread === 1) {
-        quantity = (veg + nonVeg) * 1.5;
+        quantity = Math.round((veg + nonVeg) * 1.5);
       } else {
         // temp.forEach((item) => {
         //   item.name === "Pooris" && item.menu_label === "Breads"
-        //     ? (item.quantity = (veg + nonVeg) * 2)
-        //     : (item.quantity = (veg + nonVeg) * 0.2);
+        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
+        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
 
         // });
-        quantity = (veg + nonVeg) * 1;
+        quantity = Math.round((veg + nonVeg) * 1);
       }
     }
     //Noodles
@@ -1243,15 +1251,15 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
-        ? (quantity = veg * 0.2)
-        : (quantity = (veg + nonVeg) * 0.1);
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
+        ? (quantity = HandleCeilFloorValue(veg * 0.2))
+        : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
       filterBreadRice.veg === false &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
-        ? (quantity = nonVeg * 0.15)
-        : (quantity = nonVeg * 0.2);
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
+        ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
+        : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
 
       // temp.forEach((item) => {
       //   item.veg === true &&
@@ -1278,20 +1286,20 @@ const CustomizeNinjaBox = () => {
       if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
         let guests = veg > 0 ? veg : nonVeg;
         if (mains.length === 0 && count === 1) {
-          quantity = guests * 0.3;
+          quantity = HandleCeilFloorValue(guests * 0.3);
         } else if (mains.length > 0 && count === 1) {
-          quantity = guests * 0.2;
+          quantity = HandleCeilFloorValue(guests * 0.2);
         } else if (count >= 3) {
-          quantity = guests * 0.1;
+          quantity = HandleCeilFloorValue(guests * 0.1);
         } else {
-          quantity = guests * 0.15;
+          quantity = HandleCeilFloorValue(guests * 0.15);
         }
         temp.forEach((item) => {
           if (item.menu_label === "Rice") {
             if (count >= 3) {
-              item.quantity = guests * 0.1;
+              item.quantity = HandleCeilFloorValue(guests * 0.1);
             } else {
-              item.quantity = guests * 0.15;
+              item.quantity = HandleCeilFloorValue(guests * 0.15);
             }
             // item.quantity = 0.15 * guests;
           }
@@ -1318,25 +1326,25 @@ const CustomizeNinjaBox = () => {
 
         if (filterBreadRice.veg) {
           if (mains.length === 0 && count === 1) {
-            quantity = guests * 0.3;
+            quantity = HandleCeilFloorValue(guests * 0.3);
           } else if (mains.length > 0 && count === 1) {
-            quantity = guests * 0.2;
+            quantity = HandleCeilFloorValue(guests * 0.2);
           } else if (count >= 3) {
-            quantity = veg * 0.1;
+            quantity = HandleCeilFloorValue(veg * 0.1);
           } else {
-            quantity = veg * 0.15;
+            quantity = HandleCeilFloorValue(veg * 0.15);
           }
         } else {
           //non veg rice handelling
 
           if (mains.length === 0 && count === 1) {
-            quantity = nonVeg * 0.3;
+            quantity = HandleCeilFloorValue(nonVeg * 0.3);
           } else if (mains.length > 0 && count === 1) {
-            quantity = nonVeg * 0.2;
+            quantity = HandleCeilFloorValue(nonVeg * 0.2);
           } else if (count >= 3) {
-            quantity = nonVeg * 0.1;
+            quantity = HandleCeilFloorValue(nonVeg * 0.1);
           } else {
-            quantity = nonVeg * 0.15;
+            quantity = HandleCeilFloorValue(nonVeg * 0.15);
           }
         }
         let bread = 0;
@@ -1367,28 +1375,28 @@ const CustomizeNinjaBox = () => {
               let guests = veg > 0 ? veg : nonVeg;
               if (count >= 2) {
                 console.log("count2");
-                item.quantity = 0.15 * guests;
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
               } else if (mains.length > 0 && count === 1) {
                 console.log("count1");
 
-                item.quantity = 0.2 * guests;
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
               } else if (mains.length === 0 && count === 1) {
                 console.log("count1");
-                item.quantity = 0.3 * guests;
+                item.quantity = HandleCeilFloorValue(0.3 * guests);
               }
             } else if (veg > 0 && nonVeg > 0) {
               let guests = veg + nonVeg;
               if (count >= 2) {
-                item.quantity = 0.15 * guests;
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
               } else if (
                 count === 1 &&
                 mains.length === 0 &&
                 starters.length >= 2
               ) {
                 if (item.veg === true) {
-                  item.quantity = 0.25 * veg;
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
                 } else {
-                  item.quantity = 0.25 * nonVeg;
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
                 }
               } else if (
                 count === 1 &&
@@ -1396,9 +1404,9 @@ const CustomizeNinjaBox = () => {
                 starters.length <= 1
               ) {
                 if (item.veg === true) {
-                  item.quantity = 0.3 * veg;
+                  item.quantity = HandleCeilFloorValue(0.3 * veg);
                 } else {
-                  item.quantity = 0.3 * nonVeg;
+                  item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
                 }
               } else if (
                 count >= 1 &&
@@ -1406,9 +1414,9 @@ const CustomizeNinjaBox = () => {
                 starters.length <= 1
               ) {
                 if (item.veg === true) {
-                  item.quantity = 0.25 * veg;
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
                 } else {
-                  item.quantity = 0.25 * nonVeg;
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
                 }
               } else if (
                 count >= 1 &&
@@ -1416,17 +1424,17 @@ const CustomizeNinjaBox = () => {
                 starters.length >= 2
               ) {
                 if (item.veg === true) {
-                  item.quantity = 0.2 * veg;
+                  item.quantity = HandleCeilFloorValue(0.2 * veg);
                 } else {
-                  item.quantity = 0.2 * nonVeg;
+                  item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
                 }
               } else if (count === 1 && mains.length >= 1) {
-                item.quantity = 0.2 * guests;
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
               } else {
                 if (item.veg === true) {
-                  item.quantity = 0.15 * veg;
+                  item.quantity = HandleCeilFloorValue(0.15 * veg);
                 } else {
-                  item.quantity = 0.15 * nonVeg;
+                  item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
                 }
               }
             }
@@ -1461,7 +1469,7 @@ const CustomizeNinjaBox = () => {
         //       item.quantity = 0.15 * nonVeg;
         //     }
         //   });
-        // } 
+        // }
       }
       console.log("rice", count);
     }
@@ -1532,8 +1540,6 @@ const CustomizeNinjaBox = () => {
   }
   // cost calculation
   useEffect(() => {
-   
-
     let starterPrice = 0;
     let mainPrice = 0;
     let dessertPrice = 0;
@@ -1580,16 +1586,18 @@ const CustomizeNinjaBox = () => {
     people = veg + nonVeg;
     setPeople(people);
     setTotalPrice(
-      parseInt(starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd)
+      parseInt(
+        starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
+      )
     );
     // getDeliveryCharge(people);
 
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-      parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      parseInt(getGst())
+        parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        parseInt(getGst())
     );
     setShowPriceList(false);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
@@ -1597,9 +1605,9 @@ const CustomizeNinjaBox = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-      parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      parseInt(getGst())
+        parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        parseInt(getGst())
     );
   }, [buffet]);
 
@@ -1607,7 +1615,7 @@ const CustomizeNinjaBox = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-      100
+        100
     );
   }
 
@@ -1652,10 +1660,9 @@ const CustomizeNinjaBox = () => {
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-      parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      getGst()
-
+        parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        getGst()
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -1758,82 +1765,81 @@ const CustomizeNinjaBox = () => {
 
   // const sortedData = selectedItems.concat(unselectedItems);
 
-  const redirectToPayU=(pd)=> {
-    console.log("pd",pd)
+  const redirectToPayU = (pd) => {
+    console.log("pd", pd);
     //use window.bolt.launch if you face an error in bolt.launch
-    
+
     bolt.launch(pd, {
       responseHandler: function (response) {
-      // your payment response Code goes here
-      fetch("/api/payResponse", {
-        method: 'POST',
-        headers: {
-         'Accept': 'application/json',
-         'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(response.response)
-      })
-      .then(function (a) {
-         return a.json(); 
-       })
-      .then(function (json) {
-        console.log(json);
-       });
-    },
-    catchException: function (response) {
-      // the code you use to handle the integration errors goes here
-      // Make any UI changes to convey the error to the user
-    }
-  });
-  }
+        // your payment response Code goes here
+        fetch("/api/payResponse", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(response.response),
+        })
+          .then(function (a) {
+            return a.json();
+          })
+          .then(function (json) {
+            console.log(json);
+          });
+      },
+      catchException: function (response) {
+        // the code you use to handle the integration errors goes here
+        // Make any UI changes to convey the error to the user
+      },
+    });
+  };
 
-
-  const payumoney=(e)=>{
+  const payumoney = (e) => {
     e.preventDefault();
     //Create a Data object that is to be passed to LAUNCH method of Bolt
-    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
-    console.log(oid)
-      var pd = {
-         key: "VKy9EEvW",
-         txnid: oid,
-         amount: "1",
-         firstname: "Manoj",
-         email: "takmanoj369@gmail.com",
-         phone: "7023405885",
-         productinfo: "test",
-         surl: "https://caterninja.com",
-         furl: "https://new.caterninja.com",
-         hash: ''
-    }
-    
+    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000);
+    console.log(oid);
+    var pd = {
+      key: "VKy9EEvW",
+      txnid: oid,
+      amount: "1",
+      firstname: "Manoj",
+      email: "takmanoj369@gmail.com",
+      phone: "7023405885",
+      productinfo: "test",
+      surl: "https://caterninja.com",
+      furl: "https://new.caterninja.com",
+      hash: "",
+    };
+
     // Data to be Sent to API to generate hash.
     let data = {
-        'txnid': pd.txnid,
-        'email': pd.email,
-        'amount': pd.amount,
-        'productinfo': pd.productinfo,
-        'firstname': pd.firstname
-    }
+      txnid: pd.txnid,
+      email: pd.email,
+      amount: pd.amount,
+      productinfo: pd.productinfo,
+      firstname: pd.firstname,
+    };
     let self = this;
     // API call to get the Hash value
     fetch("/api/paynow", {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-       },
-       body: JSON.stringify(data)
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
-       .then(function (a) {
-           return a.json(); 
-       })
-       .then(function (json) {
-           pd.hash = json['hash']
-           //  With the hash value in response, we are ready to launch the bolt overlay.
-          //Function to launch BOLT   
-          redirectToPayU(pd);
-       });
-    }
+      .then(function (a) {
+        return a.json();
+      })
+      .then(function (json) {
+        pd.hash = json["hash"];
+        //  With the hash value in response, we are ready to launch the bolt overlay.
+        //Function to launch BOLT
+        redirectToPayU(pd);
+      });
+  };
   // const initiatePayment = async (e) => {
   //   e.preventDefault();
   //   let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
@@ -1868,9 +1874,6 @@ const CustomizeNinjaBox = () => {
   //       },
   //     },
   //   };
-
-
-
 
   //   // initialze configuration using init method
   //   window.Paytm.CheckoutJS.init(config)
@@ -2959,14 +2962,12 @@ const CustomizeNinjaBox = () => {
                   {mains?.length + breadRice.length} Mains + {desserts?.length}{" "}
                   Desserts
                 </h6>
-                
               </div>
               <div className={styles.finalPriceSection}>
                 <div
                   id={styles.drdwnCnt}
                   className="d-flex justify-content-between"
                 >
-
                   <select
                     aria-label="Default select example"
                     className="form-select"
@@ -2979,7 +2980,7 @@ const CustomizeNinjaBox = () => {
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
                       city === "Bangalore") &&
-                      people < 26 ? (
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -2989,9 +2990,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3003,9 +3004,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3017,9 +3018,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3038,7 +3039,7 @@ const CustomizeNinjaBox = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                      people < 26 ? (
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3048,9 +3049,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3062,9 +3063,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3076,9 +3077,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3094,9 +3095,7 @@ const CustomizeNinjaBox = () => {
 
                   <p style={{ fontWeight: "600" }}>₹{buffet}</p>
                 </div>
-                <p id={styles.dlvydscr}>
-                  (Select Delivery/Service Option)
-                </p>
+                <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
               </div>
               <div className="mt-5">
                 <div className={styles.userInput}>
@@ -3111,13 +3110,17 @@ const CustomizeNinjaBox = () => {
                       placeholder="Phone No."
                       name="mobileno"
                       onInput={(e) => setPhone(e.target.value)}
+                      pattern="[789][0-9]{9}"
                       maxLength="10"
+                      min="10"
+
                       required
                     />
                     <input
                       placeholder="Email"
                       name="email"
                       onInput={(e) => setEmail(e.target.value)}
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                       required
                     />
                   </div>
@@ -3137,8 +3140,8 @@ const CustomizeNinjaBox = () => {
               </div> */}
               {showPriceList && (
                 <div className={styles.pricing}>
-                  <div style={{marginTop: "10px"}}>
-                  <div className={styles.pricingTitle4}>
+                  <div style={{ marginTop: "10px" }}>
+                    <div className={styles.pricingTitle4}>
                       <div>
                         <h4>Buffet Service</h4>
                       </div>
@@ -3211,7 +3214,7 @@ const CustomizeNinjaBox = () => {
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link>
-                    <button onClick={payumoney}></button>
+                    {/* <button onClick={payum *-+oney}></button> */}
                   </div>
                 </div>
               )}
