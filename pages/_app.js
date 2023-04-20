@@ -16,9 +16,12 @@ import Zoho from "$lib/bookChef/Zoho";
 import Script from 'next/script'
 import Google from "$lib/bookChef/Google";
 import Float2 from "$lib/Float2";
+import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { useEffect } from "react";
 function MyApp({ Component, pageProps }) {
+
+  
   const[url, setUrl] = useState("");
   // const cookieParser = require("cookie-parser");
   // app.use(cookieParser());
@@ -115,6 +118,7 @@ function MyApp({ Component, pageProps }) {
       `
           }}
         />
+        
       </Head>
       <Script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></Script>
       <AppMenuProvider>

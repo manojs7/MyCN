@@ -8,7 +8,7 @@ import { faThin, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 
 const NewNavBar = () => {
-
+    
     return (
         <div className='mobileNavbar'>
             <nav className="navbar py-3">

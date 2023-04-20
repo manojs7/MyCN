@@ -2571,6 +2571,27 @@ border-radius: 4.29101px;
     }
   }
 
+  .selectCityDropdown{
+    select{
+      margin-top: 5px;
+      border: 1px solid black;
+      font-size: 12.9218px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      line-height: 16px;
+    }
+  }
+  .selectOccasionDropdown{
+    select{
+      margin-top: 5px;
+      border: 1px solid black;
+      font-size: 12.9218px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      line-height: 16px;
+    }
+  }
+
   .checkbox-container {
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 50px !important;
@@ -2584,12 +2605,13 @@ border-radius: 4.29101px;
       width: 100% !important;
       height: 100%;
       margin-bottom: 0px !important;
-      //-webkit-appearance: none !important;
+      -webkit-appearance: none !important;
       border: 0;
       border-radius: 50px !important;
       background: #ffffff;
 
       &::before {
+        padding-top: 5px;
         z-index: 2;
         content: "Veg";
         color: #ffffff;
@@ -2621,7 +2643,7 @@ border-radius: 4.29101px;
         z-index: 2;
         left: 100px;
         border-radius: 50px;
-        background: red;
+        background: #BE2D30;
         content: "Non-Veg";
       }
 

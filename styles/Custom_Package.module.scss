@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet');
+
+@media (min-width: 768px) {
+    .popupguestcount {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 626px;
+        height: 336.3px;
+        border-radius: 39.05px;
+        background-color: #FFC31A;
+
+        //padding: 1rem;
+        // border-radius: 0.5rem;
+        // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        h3 {
+            font-family: "Montserrat", sans-serif;
+            width: 370px;
+            height: 50px;
+            margin-top: 37.79px;
+            margin-left: 47.86px;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 44.2538px;
+            line-height: 112%;
+            color: #BE2D30;
+
+            span {
+                color: #000000;
+            }
+        }
+
+        .ninjaImg2 {
+            display: none;
+        }
+
+        .ninjaImg {
+            margin-top: 15px;
+        }
+
+        .popupcontainer {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .inputContainer {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .btnConatiner {
+            display: flex;
+
+            button {
+                margin-top: 10px;
+                background-color: none;
+                border: none;
+                background: none;
+                font-weight: 700;
+                font-size: 24.9637px;
+                width: 15px;
+                height: 28px;
+            }
+
+            input {
+                margin-top: 13px;
+                margin-left: 12px;
+                width: 86.91px;
+                height: 36.53px;
+                background: #FFFFFF;
+                font-size: 24.9637px;
+                font-weight: 700;
+                color: #2C3338;
+            }
+
+            input::placeholder {
+                font-size: 24.9637px;
+                font-weight: 700;
+                color: #2C3338;
+            }
+        }
+
+        #vegText {
+            margin-left: 60px;
+            margin-right: 10px;
+            font-weight: 700;
+            font-size: 24.9637px;
+            line-height: 112%;
+            color: #000000;
+            text-align: right;
+
+            span {
+                margin-right: 0%;
+                color: #BE2D30;
+            }
+        }
+
+        #nonvegText {
+            margin-right: 10px;
+            font-weight: 700;
+            font-size: 24.9637px;
+            line-height: 112%;
+            color: #000000;
+            text-align: right;
+
+            span {
+                margin-right: 0%;
+                color: #BE2D30;
+            }
+        }
+
+        .viewPkgBtn {
+            text-align: end;
+            margin-top: 10px;
+
+            button {
+                width: 192.71px;
+                height: 45.02px;
+                background: #FDC938;
+                box-shadow: 2.23229px 2.97639px 7.44096px #BE2D30;
+                border-radius: 15.254px;
+                border: none;
+                font-size: 19.8898px;
+                font-weight: 700;
+                line-height: 24px;
+                color: #363D42;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .popupguestcount {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 291.53px;
+        height: 283px;
+        filter: drop-shadow(1.11417px 5.57087px 27.8543px rgba(0, 0, 0, 0.7));
+        border-radius: 14.7739px;
+        background-color: #FFC31A;
+
+        h3 {
+            text-align: center;
+            font-family: "Montserrat", sans-serif;
+            margin-top: 20px;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 28.6887px;
+            line-height: 112%;
+            color: #BE2D30;
+
+            span {
+                color: #000000;
+            }
+        }
+
+        .dateContainer {
+            display: flex;
+            justify-content: space-evenly;
+
+            h4 {
+                text-align: center;
+                font-weight: 700;
+                font-size: 20.7457px;
+                line-height: 25px;
+                letter-spacing: 0.05em;
+                color: #2C3338;
+            }
+
+            input {
+                width: 119.97px;
+                height: 30.14px;
+                background: #FFFFFF;
+                box-shadow: 0px 3.25806px 3.25806px rgba(0, 0, 0, 0.25);
+                border-radius: 6.21959px;
+                font-size: 12.198px;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+            }
+
+            img {
+                margin-top: 20px;
+            }
+        }
+
+        .guestCountCn {
+            margin-top: -25px;
+
+            h3 {
+                font-weight: 700;
+                font-size: 20.7457px;
+                line-height: 25px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                color: #2C3338;
+            }
+
+            .guestcountCN {
+                display: flex;
+                justify-content: space-evenly;
+                margin-top: -10px;
+
+                p {
+                    margin-left: 25px;
+                    //margin: auto;
+                    font-weight: 500;
+                    font-size: 12.0367px;
+                    line-height: 15px;
+                    text-align: center;
+                    letter-spacing: 0.05em;
+                    text-transform: capitalize;
+
+                    color: #2C3338;
+                }
+            }
+
+            .numBtn {
+                margin-top: -10px;
+                display: flex;
+                justify-content: space-around;
+                width: 101.81px;
+                height: 30.14px;
+                background: #FFFFFF;
+                box-shadow: 0px 3.25806px 3.25806px rgba(0, 0, 0, 0.25);
+                border-radius: 6.21959px;
+
+                button {
+                    margin-top: -12px;
+                    border: none;
+                    background: none;
+                    font-size: 31.6141px;
+                    font-weight: 500;
+                    letter-spacing: 0.05em;
+                    color: #4D555B;
+                }
+
+                input {
+                    margin: auto;
+                    background: none;
+                    border: none;
+                    text-align: center;
+                }
+
+                #vNum {
+                    font-weight: 600;
+                    font-size: 15.4758px;
+                    line-height: 19px;
+                    text-align: center;
+                    letter-spacing: 0.05em;
+                    text-transform: capitalize;
+                    color: #63B335;
+                }
+
+                #nvNum {
+                    font-weight: 600;
+                    font-size: 15.4758px;
+                    line-height: 19px;
+                    text-align: center;
+                    letter-spacing: 0.05em;
+                    text-transform: capitalize;
+                    color: #BE2D30;
+                }
+            }
+        }
+
+        .cnfmBtn {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+
+            #cancelBtn {
+                font-weight: 700;
+                font-size: 12.9637px;
+                line-height: 16px;
+                text-align: center;
+                color: #FFFFFF;
+                background: none;
+                border: none;
+            }
+
+            #viewBtn {
+                width: 125.61px;
+                height: 29.34px;
+                background: #BE2D30;
+                box-shadow: 0px 2.60711px 2.60711px rgba(0, 0, 0, 0.25);
+                border-radius: 9.9422px;
+                font-weight: 700;
+                font-size: 12.9637px;
+                line-height: 16px;
+                text-align: center;
+                color: #FFFFFF;
+                border: none;
+
+            }
+        }
+
+        .popupcontainer {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .inputContainer {
+            display: flex;
+        }
+
+        .btnConatiner {
+            display: flex;
+
+            button {
+                margin-top: -5px;
+                background-color: none;
+                border: none;
+                background: none;
+                font-weight: 700;
+                font-size: 11.5646px;
+                width: 15px;
+                height: 28px;
+            }
+
+            input {
+                // margin-top: 13px;
+                // margin-left: 12px;
+                width: 40.26px;
+                height: 19.92px;
+                background: #FFFFFF;
+                font-size: 11.5646px;
+                font-weight: 700;
+                color: #2C3338;
+            }
+
+            input::placeholder {
+                font-size: 11.5646px;
+                font-weight: 700;
+                color: #2C3338;
+            }
+        }
+
+        #vegText {
+            margin-left: 30px;
+            font-weight: 700;
+            font-size: 11.5646px;
+            line-height: 112%;
+            color: #000000;
+            text-align: right;
+
+            span {
+                margin-right: 0%;
+                color: #BE2D30;
+            }
+        }
+
+        #nonvegText {
+            // margin-right: 10px;
+            font-weight: 700;
+            font-size: 11.5646px;
+            line-height: 112%;
+            color: #000000;
+            text-align: right;
+
+            span {
+                margin-right: 0%;
+                color: #BE2D30;
+            }
+        }
+
+        .viewPkgBtn {
+            text-align: end;
+            margin-top: -10px;
+
+            button {
+                width: 89.28px;
+                height: 20.85px;
+                background: #FDC938;
+                box-shadow: 1.03413px 1.37884px 3.44709px #BE2D30;
+                border-radius: 7.06654px;
+                border: none;
+                font-size: 9.21411px;
+                font-weight: 700;
+                line-height: 11px;
+                color: #363D42;
+            }
+        }
+
+        .ninjaImg {
+            display: none;
+        }
+    }
+}

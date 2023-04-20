@@ -1089,15 +1089,15 @@ const CustomizeNinjaBox = () => {
       temp.map((item) => {
         if (item?.menu_label === "Breads" && item.name === "Pooris") {
           if (bread === 1) {
-            item.quantity = (veg + nonVeg) * 3;
+            item.quantity = Math.round((veg + nonVeg) * 3);
           } else {
-            item.quantity = (veg + nonVeg) * 2;
+            item.quantity = Math.round((veg + nonVeg) * 2);
           }
         } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
           if (bread === 1) {
-            item.quantity = (veg + nonVeg) * 2;
+            item.quantity = Math.round((veg + nonVeg) * 2);
           } else {
-            item.quantity = (veg + nonVeg) * 1;
+            item.quantity = Math.round((veg + nonVeg) * 1);
           }
         } else if (item?.menu_label === "Rice") {
           console.log("rice", count);
@@ -1359,15 +1359,15 @@ const CustomizeNinjaBox = () => {
         temp.map((item) => {
           if (item?.menu_label === "Breads" && item.name === "Pooris") {
             if (bread === 1) {
-              item.quantity = (veg + nonVeg) * 3;
+              item.quantity = Math.round((veg + nonVeg) * 3);
             } else {
-              item.quantity = (veg + nonVeg) * 2;
+              item.quantity = Math.round((veg + nonVeg) * 2);
             }
           } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
             if (bread === 1) {
-              item.quantity = (veg + nonVeg) * 2;
+              item.quantity = Math.round((veg + nonVeg) * 2);
             } else {
-              item.quantity = (veg + nonVeg) * 1;
+              item.quantity = Math.round((veg + nonVeg) * 1);
             }
           } else if (item?.menu_label === "Rice") {
             console.log("rice", count);
@@ -1625,7 +1625,7 @@ const CustomizeNinjaBox = () => {
       return false;
     }
 
-    if (name.length == "" || email.length == "" || mobileno.length == "") {
+    if (name.length == "" || mobileno.length == "" || (!/^\d{10}$/.test(mobileno)) || email.length == "" || (!/\S+@\S+\.\S+/.test(email))) {
       if (name.length == "") {
         Swal.fire({
           text: "Please enter your Name",
@@ -1633,6 +1633,20 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the name please");
+      }else if (mobileno.length == "") {
+        Swal.fire({
+          text: "Please enter your mob.no.",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Mobile No please");
+      }else if (!/^\d{10}$/.test(mobileno)) {
+        Swal.fire({
+          text: "Please enter a valid phone number",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Mobile No please");
       } else if (email.length == "") {
         Swal.fire({
           text: "Please enter your Email",
@@ -1640,13 +1654,13 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the Email please");
-      } else if (mobileno.length == "") {
+      }else if ((!/\S+@\S+\.\S+/.test(email))) {
         Swal.fire({
-          text: "Please enter your mob.no.",
+          text: "Please enter valid Email",
           icon: "warning",
           confirmButtonText: "OK",
         });
-        //alert("Fill the Mobile No please");
+        //alert("Fill the Email please");
       }
       return false;
     }
@@ -3117,6 +3131,7 @@ const CustomizeNinjaBox = () => {
                       required
                     />
                     <input
+                      type="email"
                       placeholder="Email"
                       name="email"
                       onInput={(e) => setEmail(e.target.value)}

@@ -1,12 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import styles from "/styles/Custom_Package.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
 import Router from "next/router";
 import BookThisPackageModal from "./BookThisPackageModal";
 import { Carousel } from "react-bootstrap";
+import Image from "next/image";
+import { useAppMenu } from "$lib/menuContext";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Custom_Package = () => {
+  const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
+  const [city, setCity] = useState("");
+  const [occasion, setOccasion] = useState("");
+
+  const [startDate, setStartDate] = useState(new Date());
+
+  const handleCity = (city) => {
+    setCity(city);
+  }
+  const handleOccasion = (occasion) => {
+    setOccasion(occasion);
+  };
+
   const images = [
     "nijjabox1.png",
     "nijjabox2.png",
@@ -85,6 +103,80 @@ const Custom_Package = () => {
   //   );
   // }
 
+  //SHOW/HIDE POPUP
+  const [showDiv, setShowDiv] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShowDiv(false);
+    }
+  };
+
+  const handleButtonClick = () => {
+    setShowDiv(!showDiv);
+  };
+  const closePopup = () => {
+    setShowDiv(!showDiv);
+  };
+
+  //VEG - GUEST COUNT
+  const [number, setNumber] = useState(10);
+
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    if (value !== "" && /^\d+$/.test(value)) {
+      setNumber(parseInt(value));
+    } else {
+      setNumber(0);
+    }
+  };
+
+  const handleInputClick = () => {
+    setNumber("");
+  };
+
+  const handleIncreaseClick = () => {
+    setNumber(number + 1);
+  };
+
+  const handleDecreaseClick = () => {
+    if (number > 0) {
+      setNumber(number - 1);
+    }
+  };
+
+  const [number2, setNumber2] = useState(10);
+
+  const handleInputChange2 = (event) => {
+    const value2 = event.target.value;
+    if (value2 !== "" && /^\d+$/.test(value2)) {
+      setNumber2(parseInt(value2));
+    } else {
+      setNumber2(0);
+    }
+  };
+
+  const handleInputClick2 = () => {
+    setNumber2("");
+  };
+
+  const handleIncreaseClick2 = () => {
+    setNumber2(number2 + 1);
+  };
+
+  const handleDecreaseClick2 = () => {
+    if (number2 > 0) {
+      setNumber2(number2 - 1);
+    }
+  };
   useEffect(() => {
     setIsSmall(window.innerWidth <= 939);
     window.addEventListener("resize", () =>
@@ -94,7 +186,72 @@ const Custom_Package = () => {
 
   return (
     <div>
-      { !isSmall ? <section className="custom-package py-5">
+      {showDiv && (<div className={styles.popupguestcount} ref={ref}>
+        <h3>Additional <span>Info</span></h3>
+        <div className={styles.dateContainer}>
+          <div>
+            <img src="miniNinjaLeft.png" width="24.03" height="43.92" />
+          </div>
+          <div>
+            <h4>Date</h4>
+            <div><input type="date" /></div>
+          </div>
+          <div>
+            <img src="miniNinjaRight.png" width={24.03} height={43.92} />
+          </div>
+        </div>
+        <div className={styles.guestCountCn}>
+          <h3>Guest Count</h3>
+          <div className={styles.guestcountCN}>
+            <div>
+              <p>Veg Guest</p>
+              <div className={styles.numBtn}>
+                <button onClick={handleDecreaseClick}>-</button>
+                <input id={styles.vNum} type="number" value={number} onChange={handleInputChange} onClick={handleInputClick} />
+                <button onClick={handleIncreaseClick}>+</button>
+              </div>
+            </div>
+            <div>
+              <p>NV Guest</p>
+              <div className={styles.numBtn}>
+                <button onClick={handleDecreaseClick2}>-</button>
+                <input id={styles.nvNum} type="number" value={number2} onChange={handleInputChange2} onClick={handleInputClick2} />
+                <button onClick={handleIncreaseClick2}>+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.cnfmBtn}>
+          <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+          <button onClick={() => window.open('/ninjaBoxViewPkg', '_blank')} id={styles.viewBtn}>View Package</button>
+        </div>
+        {/* <div>
+            <div className={styles.inputContainer}>
+              <div>
+                <h4 id={styles.vegText}>Vegetarian<br /><span>Guests</span></h4>
+              </div>
+              <div className={styles.btnConatiner}>
+                <button onClick={handleDecreaseClick}>-</button>
+                <input type="number" value={number} onChange={handleInputChange} onClick={handleInputClick} />
+                <button onClick={handleIncreaseClick}>+</button>
+              </div>
+            </div>
+            <div className={styles.inputContainer}>
+              <div>
+                <h4 id={styles.nonvegText}>Non-Vegetarian<br /><span>Guests</span></h4>
+              </div>
+              <div className={styles.btnConatiner}>
+                <button onClick={handleDecreaseClick2}>-</button>
+                <input type="number" value={number2} onChange={handleInputChange2} onClick={handleInputClick2} />
+                <button onClick={handleIncreaseClick2}>+</button>
+              </div>
+            </div>
+            <div className={styles.viewPkgBtn}>
+              <button onClick={() => window.open('/ninjaBoxViewPkg', '_blank')}>View Package</button>
+            </div>
+          </div> */}
+      </div>)}
+      {!isSmall ? <section className="custom-package py-5">
         <div className="container" id="NBPkg">
           <div className="section-title">
             <h2>
@@ -246,10 +403,9 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
+                {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
                 <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
-
             </div>
             <div className="packageNameSection text-center me-4">
               <h3>NinjaBox Indian</h3>
@@ -388,37 +544,60 @@ const Custom_Package = () => {
             <h1>Ninja<span>Box</span></h1>
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
-            {/* <div className="checkbox-container my-4">
-              <input onChange={handleChange} type="checkbox" value='veg' name="Veg" id="" />
-            </div> */}
-            {/*<div className="container">
+            <div className="checkbox-container my-4">
+              <input type="checkbox" value='veg' name="Veg" id="" />
+            </div>
+            <div className="container">
               <div className="dropdown-label row">
                 <div className="col-6">
                   <p>City</p>
-                  <div>
-                    <select name="cityName" id="cities">
-                      <option value="mumbai">Mumbai</option>
-                      <option value="bengaluru">Bengaluru</option>
-                      <option value="delhi">Delhi</option>
+                  <div className="selectCityDropdown">
+                    <select
+                      className="form-select"
+                      name="city"
+                      aria-label="Default select example"
+                      value={city}
+                      onChange={(e) => handleCity(e.target.value)}
+                      required
+                    >
+                      <option value="" selected>
+                        Select City
+                      </option>
+                      {cities.map((item, index) => {
+                        return (
+                          <option key={index} value={item}>
+                            {item}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
                 <div className="col-6">
-                  <p>No: Of Guests</p>
-                  <div>
-                    <select name="guestNo" id="guestNo">
-                      <option value="10">10</option>
-                      <option value="10">15</option>
-                      <option value="20">20</option>
-                      <option value="30">25</option>
-                      <option value="40">30</option>
-                      <option value="40">35</option>
-                      <option value="40">40</option>
+                  <p>Occasion</p>
+                  <div className="selectOccasionDropdown">
+                    <select
+                      className="form-select"
+                      name="occasion"
+                      aria-label="Default select example"
+                      value={occasion}
+                      onChange={(e) => handleOccasion(e.target.value)}
+                    >
+                      <option value="" selected>
+                        Select Occasion
+                      </option>
+                      {occasions.map((item, index) => {
+                        return (
+                          <option key={index} value={item}>
+                            {item}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </section> : ""}
       {isSmall ? <section>
@@ -434,8 +613,8 @@ const Custom_Package = () => {
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+              {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
+              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise & Book Now</button>
             </div>
 
           </div>

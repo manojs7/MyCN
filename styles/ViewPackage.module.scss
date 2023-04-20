@@ -6,6 +6,87 @@
 
 @media (max-width: 576px) {
 
+    .redContent {
+        background-color: #BE2D30;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .cityDateContainer {
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+
+        p {
+            margin: auto;
+            font-weight: 700;
+            font-size: 15.8412px;
+            line-height: 19px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+        }
+
+        select {
+            border: 1px solid #000000;
+            width: 127.95px;
+            height: 23.15px;
+            border-radius: 6.09px;
+            background: #fafafa;
+            font-weight: 500;
+            font-size: 12.1856px;
+            line-height: 15px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #534848;
+        }
+
+        input {
+            border: 1px solid #000000;
+            width: 127.95px;
+            height: 23.15px;
+            border-radius: 6.09px;
+            background: #fafafa;
+            font-weight: 500;
+            font-size: 12.1856px;
+            line-height: 15px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #534848;
+        }
+    }
+
+    .guestCountContainer {
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+
+        p {
+            margin: auto;
+            text-align: center;
+            font-weight: 700;
+            font-size: 15.8412px;
+            line-height: 19px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+        }
+
+        input {
+            border: 1px solid #000000;
+            width: 127.95px;
+            height: 23.15px;
+            border-radius: 6.09px;
+            background: #fafafa;
+            font-weight: 500;
+            font-size: 12.1856px;
+            line-height: 15px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #534848;
+        }
+    }
+
     .pkgDetails {
         display: none;
     }
@@ -20,7 +101,7 @@
     }
 
     .header {
-        height: 505px;
+        height: 231px;
         background-color: #FFC31A;
     }
 
@@ -363,6 +444,16 @@
             border-radius: 5.41px;
             font-size: small;
         }
+
+        input::placeholder {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 10.8163px;
+            line-height: 13px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #A8A7A7;
+        }
     }
 
     .instantQuoteBtn {
@@ -497,7 +588,7 @@
             padding: 6.78751px 14.9325px 5.43001px;
             gap: 1.36px;
             border: none;
-            width: 116.87px;
+            width: 190px;
             height: 30.08px;
             background-color: #FFC31A;
             border-radius: 5.83px;
@@ -690,37 +781,37 @@
         margin-top: 50px;
         text-align: center;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: space-evenly;
 
         button {
             border: none;
             align-items: center;
-            width: 197.96px;
-            height: 38.6px;
-            border-radius: 7.56px;
-            gap: 1.76px;
-            filter: drop-shadow(0px 3.51999px 3.51999px rgba(0, 0, 0, 0.25));
+            width: 142.09px;
+            height: 30.24px;
+            box-shadow: 0px 2.2826px 2.2826px rgba(0, 0, 0, 0.25);
+            border-radius: 5.70649px;
         }
 
         #cnfrmPkg {
             background-color: #BE2D30;
-            color: white;
-            margin-bottom: 20px;
             font-weight: 500;
-            font-size: 17.5999px;
-            line-height: 21px;
+            font-size: 12.6327px;
+            line-height: 15px;
             text-align: center;
             letter-spacing: 0.03em;
+            color: #FFFFFF;
         }
 
         #custmPkg {
             border: 1px solid black;
-            background-color: #FFFFFF;
+            background-color: #FFC31A;
             font-weight: 500;
-            font-size: 16.8547px;
-            line-height: 21px;
+            font-size: 12.0978px;
+            line-height: 15px;
             text-align: center;
             letter-spacing: 0.03em;
-            color: #000000;
+            color: #2C2626;
         }
     }
 
@@ -841,7 +932,6 @@
     .cityContainer {
         margin-inline: 220px;
         display: flex;
-        justify-content: flex-end;
         padding-block: 50px;
 
         .cityflexLg {
@@ -859,6 +949,35 @@
             width: 210.5px;
             height: 42.81px;
             border-radius: 10px;
+        }
+    }
+
+    .redContent {
+        display: flex;
+        margin-inline: 220px;
+        justify-content: space-between;
+        padding-block: 50px;
+    }
+
+    .cityName {
+        display: flex;
+        color: white;
+
+        h3 {
+            font-weight: 600;
+        }
+
+        .contName {
+            margin: auto;
+
+            h3 {
+                font-size: 20px;
+                background-color: white;
+                color: black;
+                margin-left: 10px;
+                padding-inline: 15px;
+                border-radius: 5px;
+            }
         }
     }
 
@@ -1264,7 +1383,7 @@
             padding: 13.575px 29.8651px 10.86px;
             gap: 2.72px;
             border: none;
-            width: 233.73px;
+            width: 330px;
             height: 60.15px;
             background-color: #FFC31A;
             border-radius: 11.6558px;
