@@ -257,6 +257,55 @@ const Custom_Package = () => {
             <h2>
               Ninja<span>Box</span> Packages
             </h2>
+            <h6 className="text-center" style={{fontSize: "20px"}}>Select Your Ninja<span>Box</span> Package</h6>
+            <div className="checkbox-container my-4 mx-auto">
+              <input type="checkbox" value='veg' name="Veg" id="" />
+            </div>
+            <div className="selectCityOcLg">
+              <div>
+                <p>City</p>
+                <select
+                  className="form-select"
+                  name="city"
+                  aria-label="Default select example"
+                  value={city}
+                  onChange={(e) => handleCity(e.target.value)}
+                  required
+                >
+                  <option value="" selected>
+                    Select City
+                  </option>
+                  {cities.map((item, index) => {
+                    return (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div>
+                <p>Occasion</p>
+                <select
+                    className="form-select"
+                    name="occasion"
+                    aria-label="Default select example"
+                    value={occasion}
+                    onChange={(e) => handleOccasion(e.target.value)}
+                  >
+                    <option value="" selected>
+                      Select Occasion
+                    </option>
+                    {occasions.map((item, index) => {
+                      return (
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+              </div>
+            </div>
           </div>
           {/* <div className="row mb-md-5 mb-0 filter">
             <h5>Choose City</h5>
@@ -403,8 +452,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -613,8 +662,8 @@ const Custom_Package = () => {
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise & Book Now</button>
+              <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
             </div>
 
           </div>

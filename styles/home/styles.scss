@@ -2079,7 +2079,7 @@
       width: 100% !important;
       height: 100%;
       margin-bottom: 0px !important;
-      //-webkit-appearance: none !important;
+      -webkit-appearance: none !important;
       border: 0;
       border-radius: 50px !important;
       background: #ffffff;
@@ -2534,6 +2534,68 @@ border-radius: 4.29101px;
   .our-services-box .buttons button:first-child {
     margin-bottom: 20px !important;
     margin-right: 20px;
+  }
+}
+
+.selectCityDropdown{
+  select{
+    margin-top: 5px;
+    border: 1px solid black;
+    font-size: 12.9218px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 16px;
+  }
+}
+.selectOccasionDropdown{
+  select{
+    margin-top: 5px;
+    border: 1px solid black;
+    font-size: 12.9218px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 16px;
+  }
+}
+
+.dropdown-label {
+  font-family: "Montserrat", sans-serif;
+
+  p {
+    color: var(--ninja-red);
+    font-weight: bolder;
+    font-size: 20px;
+    margin-bottom: 1px;
+  }
+
+  #cities,
+  #guestNo {
+    width: 140px;
+    font-weight: 100;
+    border-radius: 0;
+    border: 1px solid;
+
+    option {
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+}
+
+.selectCityOcLg{
+  display: flex;
+  justify-content: space-evenly;
+  margin-inline: 200px;
+  text-align: center;
+  p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #BE2D30;
+  }
+  select{
+    width: 170px;
+    background: white;
+    font-weight: 600;
   }
 }
 
