@@ -11,11 +11,11 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const bannerImages = [
-    "/component.webp",
-    "/ninjabox1.webp",
-    "/ninjabuffet.webp",
-    "/mealbox.webp",
-    "/ninjaclassic.webp",
+    "/home/header/component.webp",
+    "/home/header/ninjabox1.webp",
+    "/home/header/ninjabuffet.webp",
+    "/home/header/mealbox.webp",
+    "/home/header/ninjaclassic.webp",
   ];
   const settings = {
     dots: true,
@@ -44,14 +44,14 @@ const Header = () => {
     <div className="header-right-container">
       <div className="description">
         <div className="header-title" style={{marginTop: "35px"}}>
-          <Image priority src="/caterninja.webp" height={36.92} width={183.88} alt="logo"/>
+          <Image priority src="/CaterNinja logo/caterninja.webp" height={36.92} width={183.88} alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>
         </div>
         <div className="header-content">
           {/* height="330px" width="290px" */}
-          <img src="chef-min.webp" height="313.89px" width="261.5px" alt="logo" />
+          <img src="/home/header/chef-min.webp" height="313.89px" width="261.5px" alt="logo" />
           <div className="header-button">
             <a href="#ourServices" className="bg-red">Our Services</a>
           </div>
@@ -91,16 +91,16 @@ const Header = () => {
     <div className={"header-carousel3 " + styles.header_center}>
       <Slider {...settings}>
         <div className="image-container">
-          <Image priority src="/group.webp" width={960} height={450}  alt="logo" />
+          <Image priority src="/home/header/group.webp" width={960} height={450}  alt="logo" />
         </div>
         <div className="image-container">
-          <Image priority src="/group3.webp" width={963} height={458} alt="logo" />
+          <Image priority src="/home/header/group3.webp" width={963} height={458} alt="logo" />
         </div>
         <div className="image-container">
-          <Image priority src="/group5.webp" width={963} height={458} alt="logo" />
+          <Image priority src="/home/header/group5.webp" width={963} height={458} alt="logo" />
         </div>
         <div className="image-container">
-          <Image priority src="/group6.webp" width={963} height={458} alt="logo" />
+          <Image priority src="/home/header/group6.webp" width={963} height={458} alt="logo" />
         </div>
 
         {/* {Testimonials_Data.map((item, index) => (
