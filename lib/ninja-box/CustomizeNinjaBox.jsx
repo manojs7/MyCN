@@ -3228,7 +3228,7 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Tried%20making%20a%20diy%20menu%20,need%20assistance%20in%20booking">
+                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link>
                     {/* <button onClick={payum *-+oney}></button> */}

@@ -44,7 +44,7 @@ const Header = () => {
     <div className="header-right-container">
       <div className="description">
         <div className="header-title" style={{marginTop: "35px"}}>
-          <Image priority src="/CaterNinja logo/caterninja.webp" height={36.92} width={183.88} alt="logo"/>
+          <Image priority src="/caterninja.png" height={36.92} width={183.88} alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
           <p> Mumbai | Bangalore | Delhi </p>
