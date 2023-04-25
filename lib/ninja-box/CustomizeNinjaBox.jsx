@@ -1621,6 +1621,8 @@ const CustomizeNinjaBox = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
+    let url_value = sessionStorage.getItem("first_url2");
+    setRefURL(url_value);
     if (!checkFirstValidation()) {
       return false;
     }
@@ -1694,7 +1696,7 @@ const CustomizeNinjaBox = () => {
       people: people,
       date: startDate,
       // time : startTime,
-      url: refURL,
+      url: url_value,
       meal: "meal",
       cuisine: cuisine,
       preference: "preference",
@@ -3226,7 +3228,7 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Tried%20making%20a%20diy%20menu%20,need%20assistance%20in%20booking">
                       <button>Get Booking Help</button>
                     </Link>
                     {/* <button onClick={payum *-+oney}></button> */}
