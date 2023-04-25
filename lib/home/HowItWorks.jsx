@@ -13,7 +13,7 @@ const HowItWorks = () =>
 						<div className="how-it-works-box">
 							<div className="image">
 								<img
-									src="../home/how-it-works-1.png"
+									src="/home/howItWorks/how-it-works-1.png"
 									alt=""
 									className="img-fluid hoverZoom"
 								/>
@@ -29,7 +29,7 @@ const HowItWorks = () =>
 						<div className="how-it-works-box">
 							<div className="image">
 								<img
-									src="../home/how-it-works-2.png"
+									src="/home/howItWorks/how-it-works-2.png"
 									alt=""
 									className="img-fluid hoverZoom"
 								/>
@@ -45,7 +45,7 @@ const HowItWorks = () =>
 						<div className="how-it-works-box">
 							<div className="image">
 								<img
-									src="../home/how-it-works-3.png"
+									src="/home/howItWorks/how-it-works-3.png"
 									alt=""
 									className="img-fluid hoverZoom"
 								/>
@@ -61,7 +61,7 @@ const HowItWorks = () =>
 						<div className="how-it-works-box">
 							<div className="image">
 								<img
-									src="../home/how-it-works-4.png"
+									src="/home/howItWorks/how-it-works-4.png"
 									alt=""
 									className="img-fluid hoverZoom"
 								/>

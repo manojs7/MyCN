@@ -48,7 +48,7 @@ const Specials = () => {
                 <div className="">
                   <div className="What-Make-Us-Special-container-card-font">
                     <div className="what-makes-ninjabox-special-logo">
-                      <img src="HomeCard1.png" alt="" style={{ width: "33px" }} />
+                      <img src="/specials/HomeCard1.png" alt="" style={{ width: "33px" }} />
                     </div>
                     <p>Gourmet Menu<br />Items</p>
                   </div>
@@ -69,7 +69,7 @@ const Specials = () => {
                 <div className="What-Make-Us-Special-hover">
                   <div className="What-Make-Us-Special-container-card-font">
                     <div className="what-makes-ninjabox-special-logo">
-                      <img src="HomeCard2.png" alt="" style={{ width: "45px" }} />
+                      <img src="/specials/HomeCard2.png" alt="" style={{ width: "45px" }} />
                     </div>
                     <p>Complete Party<br />Solution</p>
                   </div>
@@ -91,7 +91,7 @@ const Specials = () => {
                 <div className="What-Make-Us-Special-hover">
                   <div className="What-Make-Us-Special-container-card-font">
                     <div className="what-makes-ninjabox-special-logo">
-                      <img src="HomeCard3.png" alt="" style={{ width: "64px" }} />
+                      <img src="/specials/HomeCard3.png" alt="" style={{ width: "64px" }} />
                     </div>
                     <p>Prepared with<br />care and Hygiene</p>
                   </div>
@@ -113,7 +113,7 @@ const Specials = () => {
                 <div className="What-Make-Us-Special-hover">
                   <div className="What-Make-Us-Special-container-card-font">
                     <div className="what-makes-ninjabox-special-logo">
-                      <img src="HomeCard4.png" alt="" style={{ width: "35px" }} />
+                      <img src="/specials/HomeCard4.png" alt="" style={{ width: "35px" }} />
                     </div>
                     <p>Hassle Free<br />Solution</p>
                   </div>
@@ -242,7 +242,7 @@ const Specials = () => {
             <div className="">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="what-makes-ninjabox-special-logo">
-                  <img src="HomeCard1.png" alt="" style={{ width: "23px" }} />
+                  <img src="/specials/HomeCard1.png" alt="" style={{ width: "23px" }} />
                 </div>
                 <p>Gourmet Menu<br />Items</p>
               </div>
@@ -263,7 +263,7 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="HomeCard2.png" alt="" style={{ width: "35px" }} />
+                  <img src="/specials/HomeCard2.png" alt="" style={{ width: "35px" }} />
                 </div>
                 <p>Complete Party Solution</p>
               </div>
@@ -285,7 +285,7 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="HomeCard3.png" alt="" style={{ width: "44px" }} />
+                  <img src="/specials/HomeCard3.png" alt="" style={{ width: "44px" }} />
                 </div>
                 <p>Prepared with care and Hygiene</p>
               </div>
@@ -307,7 +307,7 @@ const Specials = () => {
             <div className="What-Make-Us-Special-hover">
               <div className="What-Make-Us-Special-container-card-font">
                 <div className="What-Make-Us-Special-icon">
-                  <img src="HomeCard4.png" alt="" style={{ width: "28px" }} />
+                  <img src="/specials/HomeCard4.png" alt="" style={{ width: "28px" }} />
                 </div>
                 <p>Hassle Free<br />Solution</p>
               </div>
