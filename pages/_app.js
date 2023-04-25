@@ -25,10 +25,6 @@ function MyApp({ Component, pageProps }) {
   const[url, setUrl] = useState("");
   // const cookieParser = require("cookie-parser");
   // app.use(cookieParser());
-
-
-    
-
   function getCurrentURL () {
     return window.location.href
   }

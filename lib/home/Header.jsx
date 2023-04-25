@@ -50,7 +50,6 @@ const Header = () => {
           <p> Mumbai | Bangalore | Delhi </p>
         </div>
         <div className="header-content">
-          {/* height="330px" width="290px" */}
           <img src="/home/header/chef-min.webp" height="313.89px" width="261.5px" alt="logo" />
           <div className="header-button">
             <a href="#ourServices" className="bg-red">Our Services</a>
@@ -102,24 +101,6 @@ const Header = () => {
         <div className="image-container">
           <Image priority src="/home/header/group6.webp" width={963} height={458} alt="logo" />
         </div>
-
-        {/* {Testimonials_Data.map((item, index) => (
-              <div
-                className={"testimonials-item mobile " + styles.item}
-                key={index}
-              >
-                <div className={"image " + styles.image}>
-                  <img
-                    src={item.imageUrl}
-                    alt="image"
-                    className="img-fluid hoverZoom"
-                  />
-                </div>
-                <div className={styles.content}>
-                  <div className={styles.title}>{item.title}</div>
-                </div>
-              </div>
-            ))} */}
       </Slider>
     </div>
   );
