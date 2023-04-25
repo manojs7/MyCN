@@ -43,11 +43,11 @@ const Header = () => {
   const rightHeader = (
     <div className="header-right-container">
       <div className="description">
-        <div className="header-title" style={{marginTop: "35px"}}>
+        <div className="header-title" style={{marginTop: "30px"}}>
           <Image priority src="/caterninja.png" height={36.92} width={183.88} alt="logo"/>
         </div>
         <div className="header-title-two pt-2">
-          <p> Mumbai | Bangalore | Delhi </p>
+          <p> Mumbai | Bangalore | Delhi |<br/>Pune | Chennai </p>
         </div>
         <div className="header-content">
           <img src="/home/header/chef-min.webp" height="313.89px" width="261.5px" alt="logo" />
