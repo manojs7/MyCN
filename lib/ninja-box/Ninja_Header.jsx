@@ -111,21 +111,6 @@ const Ninja_Header = () => {
         </div>
 
         <div className="video-player">
-          {/* <ReactImageMagnify
-            {...{
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                isFluidWidth: true,
-                src: photo,
-              },
-              largeImage: {
-                src: photo,
-                width: 600,
-                height: 800,
-              },
-            }}
-          /> */}
-          {/* <img loader={'loading'} src={photo} alt='' height='100%' width='100%'/> */}
           {indexPhoto === null && <Carousel slide={true}>
             {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
               <Image
@@ -196,38 +181,7 @@ const Ninja_Header = () => {
               </div>
             </div>
           </div>
-          {/* <div className="video-player">
-            <ReactImageMagnify
-              {...{
-                smallImage: {
-                  alt: "Wristwatch by Ted Baker London",
-                  isFluidWidth: true,
-                  src: photo,
-                },
-                largeImage: {
-                  src: photo,
-                  width: 100,
-                  height: 200,
-                },
-              }}
-            />
-          </div> */}
           <div className="mb-5">
-            {/* <ReactImageMagnify
-            {...{
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                isFluidWidth: true,
-                src: photo,
-              },
-              largeImage: {
-                src: photo,
-                width: 600,
-                height: 800,
-              },
-            }}
-          /> */}
-            {/* <img loader={'loading'} src={photo} alt='' height='100%' width='100%'/> */}
             {indexPhoto === null && <Carousel slide={true}>
               {images.map((d, i) => <Carousel.Item key={i} interval={2000}>
                 <img
@@ -251,54 +205,6 @@ const Ninja_Header = () => {
         </div>
       </div>
       <div className="mt-2">
-        {/*{<BootstrapCarousel {...settings}>
-          <div>
-            <div onClick={() => handlePhotoChange(0)} >
-              <img src={images[0]} alt="" style={{ width: "200px", height: "100px" }} />
-            </div>
-          </div>
-          <div>
-            <div onClick={() => handlePhotoChange(1)} >
-              <img src={images[1]} alt="" style={{ width: "200px", height: "100px" }} />
-            </div>
-          </div>
-          <div>
-            <div onClick={() => handlePhotoChange(2)} >
-              <img src={images[2]} alt="" style={{ width: "200px", height: "100px" }} />
-            </div>
-          </div>
-          <div>
-            <div onClick={() => handlePhotoChange(3)} >
-              <img src={images[3]} alt="" style={{ width: "200px", height: "100px" }} />
-            </div>
-          </div>
-          {/* <div>
-              <div onClick={() => handlePhotoChange(4)} className="inner-slide">
-                <img src={images[4]} alt="" height="100%" width="100%" />
-              </div>
-            </div>
-            <div>
-              <div onClick={() => handlePhotoChange(5)} className="inner-slide">
-                <img src={images[5]} alt="" height="100%" width="100%" />
-              </div>
-            </div>
-            <div>
-              <div onClick={() => handlePhotoChange(6)} className="inner-slide">
-                <img src={images[6]} alt="" height="100%" width="100%" />
-              </div>
-            </div>
-            <div>
-              <div onClick={() => handlePhotoChange(7)} className="inner-slide">
-                <img src={images[7]} alt="" height="100%" width="100%" />
-              </div>
-            </div>
-          <div>
-              <div className="inner-slide">5</div>
-            </div>
-            <div>
-              <div className="inner-slide">5</div>
-            </div>
-        </BootstrapCarousel>}*/}
         <div className="d-flex justify-content-between">
           <div className="me-2">
             <div onClick={() => handlePhotoChange(0)} >

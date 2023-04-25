@@ -114,7 +114,7 @@ const CustomizeNinjaBox = () => {
   };
 
   useEffect(() => {
-    
+
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
@@ -678,7 +678,7 @@ const CustomizeNinjaBox = () => {
 
     let temp = [...starters];
     const starter = startersData.find((item) => item.name === item_name);
-    console.log("starterdata",startersData)
+    console.log("starterdata", startersData)
     // removing selected item
     // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
@@ -1124,9 +1124,9 @@ const CustomizeNinjaBox = () => {
               starters.length >= 2
             ) {
               if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue( 0.25 * veg);
+                item.quantity = HandleCeilFloorValue(0.25 * veg);
               } else {
-                item.quantity = HandleCeilFloorValue( 0.25 * nonVeg);
+                item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
               }
             } else if (
               count === 1 &&
@@ -1134,9 +1134,9 @@ const CustomizeNinjaBox = () => {
               starters.length <= 1
             ) {
               if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue( 0.3 * veg);
+                item.quantity = HandleCeilFloorValue(0.3 * veg);
               } else {
-                item.quantity = HandleCeilFloorValue( 0.3 * nonVeg);
+                item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
               }
             } else if (
               count >= 1 &&
@@ -1144,9 +1144,9 @@ const CustomizeNinjaBox = () => {
               starters.length <= 1
             ) {
               if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue( 0.25 * veg);
+                item.quantity = HandleCeilFloorValue(0.25 * veg);
               } else {
-                item.quantity = HandleCeilFloorValue( 0.25 * nonVeg);
+                item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
               }
             } else if (
               count >= 1 &&
@@ -1154,17 +1154,17 @@ const CustomizeNinjaBox = () => {
               starters.length >= 2
             ) {
               if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue( 0.2 * veg);
+                item.quantity = HandleCeilFloorValue(0.2 * veg);
               } else {
-                item.quantity = HandleCeilFloorValue( 0.2 * nonVeg);
+                item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
               }
             } else if (count === 1 && mains.length >= 1) {
-              item.quantity = HandleCeilFloorValue( 0.2 * guests);
+              item.quantity = HandleCeilFloorValue(0.2 * guests);
             } else {
               if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue( 0.15 * veg);
+                item.quantity = HandleCeilFloorValue(0.15 * veg);
               } else {
-                item.quantity = HandleCeilFloorValue( 0.15 * nonVeg);
+                item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
               }
             }
           }
@@ -1251,13 +1251,13 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(veg * 0.2))
         : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
       filterBreadRice.veg === false &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
         : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
 
@@ -1595,9 +1595,9 @@ const CustomizeNinjaBox = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
     setShowPriceList(false);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
@@ -1605,9 +1605,9 @@ const CustomizeNinjaBox = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
   }, [buffet]);
 
@@ -1615,7 +1615,7 @@ const CustomizeNinjaBox = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-        100
+      100
     );
   }
 
@@ -1635,14 +1635,14 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the name please");
-      }else if (mobileno.length == "") {
+      } else if (mobileno.length == "") {
         Swal.fire({
           text: "Please enter your mob.no.",
           icon: "warning",
           confirmButtonText: "OK",
         });
         //alert("Fill the Mobile No please");
-      }else if (!/^\d{10}$/.test(mobileno)) {
+      } else if (!/^\d{10}$/.test(mobileno)) {
         Swal.fire({
           text: "Please enter a valid phone number",
           icon: "warning",
@@ -1656,7 +1656,7 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the Email please");
-      }else if ((!/\S+@\S+\.\S+/.test(email))) {
+      } else if ((!/\S+@\S+\.\S+/.test(email))) {
         Swal.fire({
           text: "Please enter valid Email",
           icon: "warning",
@@ -1676,9 +1676,9 @@ const CustomizeNinjaBox = () => {
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        getGst()
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst()
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -2996,7 +2996,7 @@ const CustomizeNinjaBox = () => {
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
                       city === "Bangalore") &&
-                    people < 26 ? (
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3006,9 +3006,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3020,9 +3020,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3034,9 +3034,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3055,7 +3055,7 @@ const CustomizeNinjaBox = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                    people < 26 ? (
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3065,9 +3065,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3079,9 +3079,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3093,9 +3093,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3258,115 +3258,7 @@ const CustomizeNinjaBox = () => {
           </div>
         </div>
       </div>
-      {/* <div className={styles.header}>
-                <div className={styles.headerContent}>
-                    <div>
-                        <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="186.97px" height="39.79px" />
-                        <h2>Customise Your</h2>
-                        <h1>Ninja<span>Box</span></h1>
-                        <p>Get instant quote in just few<br />easy steps!</p>
-                    </div>
-                    <div className='d-flex'>
-                        <div>
-                            <img id={styles.ninja} src='/CustomizeImg/Group 267.png' width="208.89px" height="270.92px" />
-                        </div>
-                        <div>
-                            <img id={styles.pkgImg} src='NB.png' width="376.91px" height="291.56px" />
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-      {/* <div className={styles.packageContainer}>
-                <div className={styles.page}>
-                    <div className={styles.cityContent}>
-                        <div>
-                            <h3>City</h3>
-                        </div>
-                        <div>
-                            <select className="form-select" aria-label="Default select example">
-                                <option selected>Mumbai</option>
-                                <option value="1">Bangalore</option>
-                                <option value="2">Delhi</option>
-                                <option value="3">Gurgaon</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className={styles.bgWhiteClr}>
-                        <div className={styles.pkgDetails}>
-                            <div>
-                                <h3>PACKAGE NAME</h3>
-                                <h5>X Starters + X Mains + X Desserts</h5>
-                                <div>
-                                    <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
-                                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: 10</span></p>
-                                </div>
-                            </div>
-                            <div>
-                                <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
-                            </div>
-                        </div>
-                        <div className={styles.startersContainer}>
-                            <h5>Starters</h5>
-                            <div className={styles.starterItems}>
-                                <div className={styles.fstItem}>
-                                    <img cclassName={styles.itemImage} src="/diy images/starter/image 23.png" />
-                                    <div className={styles.itemDetailsContainer}>
-                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                        <div>
-                                            <h4>Paneer Butter<br />Masala</h4>
-                                            <p>Classic Choice For Mains</p>
-                                        </div>
-                                        <div>
-                                            <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                        </div>
-                                        <div>
-                                            <div className={styles.quantityBtn}>
-                                                <button>-</button>
-                                                <h6>5.5 Kg</h6>
-                                                <button>+</button>
-                                            </div>
-                                            <p className={styles.recQnty}>Recommended Qt.</p>
-                                        </div>
-                                        <div>
-                                            <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="mt-3">
-                                    <div className={styles.fstItem}>
-                                        <img cclassName={styles.itemImage} src="/diy images/starter/Mask group.png" />
-                                        <div className={styles.itemDetailsContainer}>
-                                            <img className={styles.vegLogo} src="/diy images/Group 962.png" />
-                                            <div>
-                                                <h4>Chicken<br />Tandoori</h4>
-                                                <p>Classic Choice For Mains</p>
-                                            </div>
-                                            <div>
-                                                <img className={styles.downarrowLogo} src="/diy images/Polygon 9.png" />
-                                            </div>
-                                            <div>
-                                                <div className={styles.quantityBtn}>
-                                                    <button>-</button>
-                                                    <h6>50 Pcs</h6>
-                                                    <button>+</button>
-                                                </div>
-                                                <p className={styles.recQnty}>Recommended Qt.</p>
-                                            </div>
-                                            <div>
-                                                <img className={styles.trassLogo} src="/diy images/trash-alt.png" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.addStarterBtnContnr}>
-                                    <button className={styles.addStarterBtn}>+ Add Starter</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-    </div>
+    </div >
   );
 };
 

@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "/styles/Custom_Package.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
-import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
-import Router from "next/router";
-import BookThisPackageModal from "./BookThisPackageModal";
-import { Carousel } from "react-bootstrap";
-import Image from "next/image";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
+// import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
+// import Router from "next/router";
+// import BookThisPackageModal from "./BookThisPackageModal";
+// import { Carousel } from "react-bootstrap";
 import { useAppMenu } from "$lib/menuContext";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Custom_Package = () => {
@@ -452,8 +450,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise</button>
+                {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
@@ -662,8 +660,8 @@ const Custom_Package = () => {
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+              {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
+              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise & Book Now</button>
             </div>
 
           </div>
