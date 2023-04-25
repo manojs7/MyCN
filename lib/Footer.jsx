@@ -11,7 +11,7 @@ export default function Footer()
             <div className={styles.row +" row"}>
                 <div className={styles.heading + " col-lg-4 col-md-4 col-sm-12 footer-logo"}>
                     <div className={styles.text}>
-                        <img src="caterninja.webp" alt="Caterninja"/>
+                        <img src="/CaterNinja logo/caterninja.webp" alt="Caterninja"/>
                     </div>
                     <div className={styles.footer_socials}>
                         <ul className={styles.links} >

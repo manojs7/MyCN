@@ -6,23 +6,22 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 626px;
-        height: 336.3px;
-        border-radius: 39.05px;
+        width: 291.53px;
+        height: 283px;
+        filter: drop-shadow(1.11417px 5.57087px 27.8543px rgba(0, 0, 0, 0.7));
+        border-radius: 14.7739px;
         background-color: #FFC31A;
 
         //padding: 1rem;
         // border-radius: 0.5rem;
         // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
         h3 {
+            text-align: center;
             font-family: "Montserrat", sans-serif;
-            width: 370px;
-            height: 50px;
-            margin-top: 37.79px;
-            margin-left: 47.86px;
+            margin-top: 20px;
             font-style: normal;
             font-weight: 800;
-            font-size: 44.2538px;
+            font-size: 28.6887px;
             line-height: 112%;
             color: #BE2D30;
 
@@ -126,6 +125,146 @@
                 line-height: 24px;
                 color: #363D42;
             }
+        }
+    }
+
+    .dateContainer {
+        display: flex;
+        justify-content: space-evenly;
+
+        h4 {
+            text-align: center;
+            font-weight: 700;
+            font-size: 20.7457px;
+            line-height: 25px;
+            letter-spacing: 0.05em;
+            color: #2C3338;
+        }
+
+        input {
+            width: 119.97px;
+            height: 30.14px;
+            background: #FFFFFF;
+            box-shadow: 0px 3.25806px 3.25806px rgba(0, 0, 0, 0.25);
+            border-radius: 6.21959px;
+            font-size: 12.198px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        img {
+            margin-top: 20px;
+        }
+    }
+
+    .guestCountCn {
+        margin-top: -25px;
+
+        h3 {
+            font-weight: 700;
+            font-size: 20.7457px;
+            line-height: 25px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #2C3338;
+        }
+
+        .guestcountCN {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: -10px;
+
+            p {
+                margin-left: 25px;
+                //margin: auto;
+                font-weight: 500;
+                font-size: 12.0367px;
+                line-height: 15px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+
+                color: #2C3338;
+            }
+        }
+
+        .numBtn {
+            margin-top: -10px;
+            display: flex;
+            justify-content: space-around;
+            width: 101.81px;
+            height: 30.14px;
+            background: #FFFFFF;
+            box-shadow: 0px 3.25806px 3.25806px rgba(0, 0, 0, 0.25);
+            border-radius: 6.21959px;
+
+            button {
+                margin-top: -12px;
+                border: none;
+                background: none;
+                font-size: 31.6141px;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+                color: #4D555B;
+            }
+
+            input {
+                margin: auto;
+                background: none;
+                border: none;
+                text-align: center;
+            }
+
+            #vNum {
+                font-weight: 600;
+                font-size: 15.4758px;
+                line-height: 19px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #63B335;
+            }
+
+            #nvNum {
+                font-weight: 600;
+                font-size: 15.4758px;
+                line-height: 19px;
+                text-align: center;
+                letter-spacing: 0.05em;
+                text-transform: capitalize;
+                color: #BE2D30;
+            }
+        }
+    }
+
+    .cnfmBtn {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+
+        #cancelBtn {
+            font-weight: 700;
+            font-size: 12.9637px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+            background: none;
+            border: none;
+        }
+
+        #viewBtn {
+            width: 125.61px;
+            height: 29.34px;
+            background: #BE2D30;
+            box-shadow: 0px 2.60711px 2.60711px rgba(0, 0, 0, 0.25);
+            border-radius: 9.9422px;
+            font-weight: 700;
+            font-size: 12.9637px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+
         }
     }
 }

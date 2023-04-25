@@ -4,10 +4,10 @@ import { Carousel } from "react-bootstrap";
 
 const Ninja_Header = () => {
   const images = [
-    "/Frame 760.png",
-    "/Frame 761.png",
-    "/Frame 762.png",
-    "/Frame 763.png",
+    "/ninja-box/header/Frame 760.png",
+    "/ninja-box/header/Frame 761.png",
+    "/ninja-box/header/Frame 762.png",
+    "/ninja-box/header/Frame 763.png",
 
 
 
@@ -152,7 +152,7 @@ const Ninja_Header = () => {
       <div className="ninja-header-right-container">
         <div className="description">
           <div className="lgd-ninja-box-header-logo">
-            <img src="caterninja.png" height="27px" width="134.46px" alt="" />
+            <img src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" alt="" />
           </div>
           <div className="lgd-ninja-box-header-title">
             Ninja<span>Box</span>
@@ -163,7 +163,7 @@ const Ninja_Header = () => {
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
-            <img src='ninja-box-ninja.png' alt='' />
+            <img src='/ninja-box/header/ninja-box-ninja.png' alt='' />
           </div>
           <div className="ninja-box-header-button">
             <button onClick={() => (window.location.href = "#NBPkg")} className="bg-red">Select Package</button>
@@ -179,7 +179,7 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-box-header-logo">
-              <img src="caterninja.png" height="21.49px" width="107px" alt="" />
+              <img src="/CaterNinja logo/caterninja.webp" height="21.49px" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
@@ -192,7 +192,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-box-ninja-img">
-                <img src='Group 1065.png' alt='' style={{ height: "118.57px", width: "109.22px" }} />
+                <img src='/ninja-box/header/Group 1065.png' alt='' style={{ height: "118.57px", width: "109.22px" }} />
               </div>
             </div>
           </div>

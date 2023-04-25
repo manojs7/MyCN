@@ -257,6 +257,55 @@ const Custom_Package = () => {
             <h2>
               Ninja<span>Box</span> Packages
             </h2>
+            <h6 className="text-center" style={{fontSize: "20px"}}>Select Your Ninja<span>Box</span> Package</h6>
+            <div className="checkbox-container my-4 mx-auto">
+              <input type="checkbox" value='veg' name="Veg" id="" />
+            </div>
+            <div className="selectCityOcLg">
+              <div>
+                <p>City</p>
+                <select
+                  className="form-select"
+                  name="city"
+                  aria-label="Default select example"
+                  value={city}
+                  onChange={(e) => handleCity(e.target.value)}
+                  required
+                >
+                  <option value="" selected>
+                    Select City
+                  </option>
+                  {cities.map((item, index) => {
+                    return (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div>
+                <p>Occasion</p>
+                <select
+                    className="form-select"
+                    name="occasion"
+                    aria-label="Default select example"
+                    value={occasion}
+                    onChange={(e) => handleOccasion(e.target.value)}
+                  >
+                    <option value="" selected>
+                      Select Occasion
+                    </option>
+                    {occasions.map((item, index) => {
+                      return (
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+              </div>
+            </div>
           </div>
           {/* <div className="row mb-md-5 mb-0 filter">
             <h5>Choose City</h5>
@@ -395,7 +444,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>Punjabi NinjaBox</h3>
               <div className="packageImg">
-                <img src="NBP-1.png" />
+                <img src="/ninja-box/packages/NBP-1.png" />
               </div>
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -403,14 +452,14 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise</button>
               </div>
             </div>
             <div className="packageNameSection text-center me-4">
               <h3>NinjaBox Indian</h3>
               <div className="packageImg">
-                <img src="NBP2.png" />
+                <img src="/ninja-box/packages/NBP2.png" />
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 4 Mains + 1 Dessert</h4>
@@ -426,7 +475,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>B&apos;Day NinjaBox</h3>
               <div className="packageImg">
-                <img src="NBP3.png" />
+                <img src="/ninja-box/packages/NBP3.png" />
               </div>
               <div className="packagesName">
                 <h4>1 Starter + 4 Mains + 1 Dessert</h4>
@@ -444,7 +493,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>Fusion NinjaBox</h3>
               <div className="packageImg">
-                <img src="NBP4.png" />
+                <img src="/ninja-box/packages/NBP4.png" />
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 3 Mains + 1 Dessert</h4>
@@ -460,7 +509,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>Asian NinjaBox</h3>
               <div className="packageImg">
-                <img src="NBP5.png" />
+                <img src="/ninja-box/packages/NBP5.png" />
               </div>
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -476,7 +525,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>Cocktail Party</h3>
               <div className="packageImg">
-                <img src="NBP6.png" />
+                <img src="/ninja-box/packages/NBP6.png" />
               </div>
               <div className="packagesName">
                 <h4>6 Starters + 1 Mains</h4>
@@ -605,7 +654,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>Punjabi NinjaBox</h3>
             <div className="packageImg">
-              <img src="NBP1.png" />
+              <img src="/ninja-box/packages/NBP-1.png" />
             </div>
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -613,15 +662,15 @@ const Custom_Package = () => {
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise & Book Now</button>
+              <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
             </div>
 
           </div>
           <div className="packageNameSection text-center me-3">
             <h3>NinjaBox Indian</h3>
             <div className="packageImg">
-              <img src="222.png" />
+              <img src="/ninja-box/packages/NBP2.png" />
             </div>
             <div className="packagesName">
               <h4>2 Starters + 4 Mains + 1 Dessert</h4>
@@ -637,7 +686,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>B&apos;Day NinjaBox</h3>
             <div className="packageImg">
-              <img src="333.png" />
+              <img src="/ninja-box/packages/NBP3.png" />
             </div>
             <div className="packagesName">
               <h4>1 Starter + 4 Mains + 1 Dessert</h4>
@@ -654,7 +703,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>Fusion NinjaBox</h3>
             <div className="packageImg">
-              <img src="4444.png" />
+              <img src="/ninja-box/packages/NBP4.png" />
             </div>
             <div className="packagesName">
               <h4>2 Starters + 3 Mains + 1 Dessert</h4>
@@ -670,7 +719,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>Asian NinjaBox</h3>
             <div className="packageImg">
-              <img src="555.png" />
+              <img src="/ninja-box/packages/NBP5.png" />
             </div>
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -686,7 +735,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>Cocktail Party</h3>
             <div className="packageImg">
-              <img src="666.png" />
+              <img src="/ninja-box/packages/NBP6.png" />
             </div>
             <div className="packagesName">
               <h4>6 Starters + 1 Mains</h4>
@@ -704,10 +753,10 @@ const Custom_Package = () => {
         <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
-              <img id="left-ninja-logo" src="Group 1065.png"></img>
+              <img id="left-ninja-logo" src="/ninja-box/header/Group 1065.png"></img>
             </div>
             <div className="col-8" id="rightside">
-              <img id="right-ninja-logo" src="caterninja.png"></img>
+              <img id="right-ninja-logo" src="/CaterNinja logo/caterninja.webp"></img>
               <h2>Ninja<span>Box</span></h2>
               <p><span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10-40 Guests</span></p>
             </div>

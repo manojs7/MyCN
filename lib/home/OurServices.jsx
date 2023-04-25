@@ -33,7 +33,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/osf1.webp"
+                        src="/home/ourServices/osf1.webp"
                         width={230} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -58,7 +58,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <Image
-                    src="/backpic.webp"
+                    src="/home/ourServices/backpic.webp"
                     width={300} height={230}
                     alt=""
                     className="img-fluid hoverZoom"
@@ -91,7 +91,7 @@ const OurServices = () => {
 
                     <div className="image">
                       <Image
-                        src="/osf22.webp"
+                        src="/home/ourServices/osf22.webp"
                         width={230} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -117,7 +117,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <Image
-                    src="/backpic2.webp"
+                    src="/home/ourServices/backpic2.webp"
                     width={300} height={230}
                     alt=""
                     className="img-fluid hoverZoom"
@@ -146,7 +146,7 @@ const OurServices = () => {
 
                     <div className="image">
                       <Image
-                        src="/osf3.webp"
+                        src="/home/ourServices/osf3.webp"
                         width={220} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -169,7 +169,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <Image
-                    src="/backpic6.webp"
+                    src="/home/ourServices/backpic6.webp"
                     width={250} height={180}
                     alt=""
                     className="img-fluid hoverZoom"
@@ -199,7 +199,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/nc1.webp"
+                        src="/home/ourServices/nc1.webp"
                         width={260} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -225,7 +225,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <Image
-                    src="/backpic3.webp"
+                    src="/home/ourServices/backpic3.webp"
                     width={300} height={230}
                     alt=""
                     className="img-fluid hoverZoom"
@@ -255,7 +255,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/osf4.webp"
+                        src="/home/ourServices/osf4.webp"
                         width={220} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -279,7 +279,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <Image
-                    src="/backpic4.webp"
+                    src="/home/ourServices/backpic4.webp"
                     width={300} height={230}
                     alt=""
                     className="img-fluid hoverZoom"
@@ -309,7 +309,7 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/ezgif.com-gif-maker.webp"
+                        src="/home/ourServices/ezgif.com-gif-maker.webp"
                         width={220} height={210}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -333,7 +333,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <Image
-                    src="/backpic5.webp"
+                    src="/home/ourServices/backpic5.webp"
                     width={210} height={200}
                     alt=""
                     className="img-fluid hoverZoom"
@@ -374,7 +374,7 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image1">
-                      <Image src="/osf1.webp" width={166.9} height={129.11} alt="" className="hoverZoom" />
+                      <Image src="/home/ourServices/osf1.webp" width={166.9} height={129.11} alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
                       <p>
@@ -396,7 +396,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-picmb">
                   <Image
-                    src="/backpic.webp"
+                    src="/home/ourServices/backpic.webp"
                     width={210} height={140}
                     alt=""
                     className="hoverZoom"
@@ -431,7 +431,7 @@ const OurServices = () => {
 
                     <div className="image2">
                       <Image
-                        src="/osf22.webp"
+                        src="/home/ourServices/osf22.webp"
                         width={152.92} height={134.75}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -457,7 +457,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-picmb">
                   <Image
-                    src="/backpic2.webp"
+                    src="/home/ourServices/backpic2.webp"
                     width={210} height={140}
                     alt=""
                     className="hoverZoom"
@@ -491,7 +491,7 @@ const OurServices = () => {
                   </div>
                   <div className="image6">
                     <Image
-                        src="/osf3.webp"
+                        src="/home/ourServices/osf3.webp"
                         width={129.57} height={148.77}
                       alt=""
                       className="img-fluid hoverZoom"
@@ -514,7 +514,7 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <Image
-                    src="/backpic6.webp"
+                    src="/home/ourServices/backpic6.webp"
                     width={180} height={130}
                   alt=""
                   className="img-fluid hoverZoom"
@@ -551,7 +551,7 @@ const OurServices = () => {
                     </div>
                     <div className="image3">
                       <Image
-                        src="/nc1.webp"
+                        src="/home/ourServices/nc1.webp"
                         width={180} height={148.77}
                         alt=""
                         className="img-fluid hoverZoom"
@@ -576,7 +576,7 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-picmb">
                   <Image
-                    src="/backpic3.webp"
+                    src="/home/ourServices/backpic3.webp"
                     width={210} height={135}
                     alt=""
                     className="img-fluid hoverZoom"
@@ -610,7 +610,7 @@ const OurServices = () => {
                   </div>
                   <div className="image4">
                     <Image
-                        src="/osf4.webp"
+                        src="/home/ourServices/osf4.webp"
                         width={158.65} height={141.72}
                       alt=""
                       className="img-fluid hoverZoom"
@@ -634,7 +634,7 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <Image
-                    src="/backpic4.webp"
+                    src="/home/ourServices/backpic4.webp"
                     width={210} height={140}
                   alt=""
                   className="img-fluid hoverZoom"
@@ -668,7 +668,7 @@ const OurServices = () => {
                   </div>
                   <div className="image5">
                     <Image
-                        src="/ezgif.com-gif-maker.webp"
+                        src="/home/ourServices/ezgif.com-gif-maker.webp"
                         width={152.92} height={134.75}
                       alt=""
                       className="img-fluid hoverZoom"
@@ -692,7 +692,7 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <Image
-                    src="/backpic5.webp"
+                    src="/home/ourServices/backpic5.webp"
                     width={150} height={130}
                   alt=""
                   className="img-fluid hoverZoom"

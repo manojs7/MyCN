@@ -44,7 +44,7 @@ export default function WhatMakeUsSpecial() {
                 </p>
 
                 <div>
-                  <img style={{width: "30.47px", height: "55.68px", marginRight: "16px", marginTop: "6px"}} src="HomeCard1.png" alt="" />
+                  <img style={{width: "30.47px", height: "55.68px", marginRight: "16px", marginTop: "6px"}} src="/specials/HomeCard1.png" alt="" />
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function WhatMakeUsSpecial() {
                 Fixed Menu Packages
               </p>
               <div>
-                <img style={{width: "43.43px", height: "55.08px", marginRight: "16px", marginTop: "6px"}} src="HomeCard2.png" alt="" />
+                <img style={{width: "43.43px", height: "55.08px", marginRight: "16px", marginTop: "6px"}} src="/specials/HomeCard2.png" alt="" />
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function WhatMakeUsSpecial() {
               </p>
 
               <div className="What-Make-Us-Special-container-card-back-img">
-                <img style={{width: "55.01px", height: "52.16px", marginRight: "0px", marginTop: "6px"}} src="HomeCard3.png" alt="" />
+                <img style={{width: "55.01px", height: "52.16px", marginRight: "0px", marginTop: "6px"}} src="/specials/HomeCard3.png" alt="" />
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function WhatMakeUsSpecial() {
               </p>
 
               <div>
-                <img style={{width: "36.36px", height: "63.42px", marginRight: "16px", marginTop: "6px"}} src="HomeCard4.png" alt="" />
+                <img style={{width: "36.36px", height: "63.42px", marginRight: "16px", marginTop: "6px"}} src="/specials/HomeCard4.png" alt="" />
               </div>
             </div>
           </div>
