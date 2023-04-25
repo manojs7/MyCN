@@ -27,14 +27,8 @@ export default function Home() {
       <TestimonialsThree />
       <HowToOrder />
       <HowItWorks />
-      {/* <Testimonials /> */}
-      {/* <TestimonialsTwo/> */}
       <News />
       <Categories />
-      {/* <Ninja_Header /> */}
-      {/* <Specials /> */}
-      {/* <Custom_Package /> */}
-      {/* <Footer /> */}
       <NewFooter />
       <Float/>
       <FloatNav />

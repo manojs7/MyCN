@@ -7,10 +7,10 @@ import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 
 const Ninja_Header = () => {
   const images = [
-    "Frame 759.png",
-    "Frame 769.png",
-    "Frame 770.png",
-    "Frame 771.png",
+    "/ninja-buffy/header/Frame 759.png",
+    "/ninja-buffy/header/Frame 769.png",
+    "/ninja-buffy/header/Frame 770.png",
+    "/ninja-buffy/header/Frame 771.png",
 
 
 
@@ -166,7 +166,7 @@ const Ninja_Header = () => {
       <div className="ninja-header-right-container">
         <div className="description">
           <div className="lgd-ninja-box-header-logo">
-            <img src="caterninja.png" height="27px" width="134.46px" alt="" />
+            <img src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" alt="" />
           </div>
           <div className="lgd-ninja-buffet-header-title">Ninja<span>Buffet</span>
           </div>
@@ -176,7 +176,7 @@ const Ninja_Header = () => {
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
-            <img src='buffetNinjaLogo.png' alt='' style={{width: "120px"}} />
+            <img src='/ninja-buffy/header/buffetNinjaLogo.png' alt='' style={{width: "120px"}} />
           </div>
           <div className="ninja-box-header-button">
             <button onClick={() => (window.location.href = "#buffeyPkg")} className="bg-red">Select Package</button>
@@ -192,7 +192,7 @@ const Ninja_Header = () => {
         <div className="description">
           <div className="description">
             <div className="ninja-buffet-header-logo">
-              <img src="caterninja.png" height="21.49" width="107px" alt="" />
+              <img src="/CaterNinja logo/caterninja.webp" height="21.49" width="107px" alt="" />
             </div>
             <div className="container d-flex">
               <div className="col-6">
@@ -205,7 +205,7 @@ const Ninja_Header = () => {
                 </div>
               </div>
               <div className="col-6 ninja-buffet-ninja-img">
-                <img src='buffetNinjaLogo.png' alt='' style={{ height: "118.57px", width: "105.22px" }} />
+                <img src='/ninja-buffy/header/buffetNinjaLogo.png' alt='' style={{ height: "118.57px", width: "105.22px" }} />
               </div>
             </div>
           </div>

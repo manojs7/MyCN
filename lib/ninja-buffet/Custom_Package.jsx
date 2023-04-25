@@ -238,7 +238,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>Punjabi NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="BuffetP1.png" />
+                <img src="/ninja-buffy/packages/BuffetP1.png" />
               </div>
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -253,7 +253,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>NinjaBuffet Indian</h3>
               <div className="packageImg">
-                <img src="BuffetP2.png" />
+                <img src="/ninja-buffy/packages/BuffetP2.png" />
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 4 Mains + 1 Dessert</h4>
@@ -268,7 +268,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>B&apos;Day NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="BuffetP3.png" />
+                <img src="/ninja-buffy/packages/BuffetP3.png" />
               </div>
               <div className="packagesName">
                 <h4>1 Starter + 4 Mains + 1 Dessert</h4>
@@ -285,7 +285,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>Fusion NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="BuffetP4.png" />
+                <img src="/ninja-buffy/packages/BuffetP4.png" />
               </div>
               <div className="packagesName">
                 <h4>2 Starters + 3 Mains + 1 Dessert</h4>
@@ -300,7 +300,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center me-4">
               <h3>Asian NinjaBuffet</h3>
               <div className="packageImg">
-                <img src="BuffetP5.png" />
+                <img src="/ninja-buffy/packages/BuffetP5.png" />
               </div>
               <div className="packagesName">
                 <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -315,7 +315,7 @@ const Custom_Package = () => {
             <div className="packageNameSection text-center">
               <h3>Cocktail Party</h3>
               <div className="packageImg">
-                <img src="BuffetP6.png" />
+                <img src="/ninja-buffy/packages/BuffetP6.png" />
               </div>
               <div className="packagesName">
                 <h4>6 Starters + 1 Mains</h4>
@@ -419,7 +419,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>Punjabi NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="BuffetP1.png" />
+              <img src="/ninja-buffy/packages/BuffetP1.png" />
             </div>
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -434,7 +434,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>NinjaBuffet Indian</h3>
             <div className="packageImg">
-              <img src="BuffetP2.png" />
+              <img src="/ninja-buffy/packages/BuffetP2.png" />
             </div>
             <div className="packagesName">
               <h4>2 Starters + 4 Mains + 1 Dessert</h4>
@@ -449,7 +449,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>B&apos;Day NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="BuffetP3.png" />
+              <img src="/ninja-buffy/packages/BuffetP3.png" />
             </div>
             <div className="packagesName">
               <h4>1 Starter + 4 Mains + 1 Dessert</h4>
@@ -466,7 +466,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center ms-2 me-4">
             <h3>Fusion NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="BuffetP4.png" />
+              <img src="/ninja-buffy/packages/BuffetP4.png" />
             </div>
             <div className="packagesName">
               <h4>2 Starters + 3 Mains + 1 Dessert</h4>
@@ -481,7 +481,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center me-3">
             <h3>Asian NinjaBuffet</h3>
             <div className="packageImg">
-              <img src="BuffetP5.png" />
+              <img src="/ninja-buffy/packages/BuffetP5.png" />
             </div>
             <div className="packagesName">
               <h4>3 Starters + 4 Mains + 1 Dessert</h4>
@@ -496,7 +496,7 @@ const Custom_Package = () => {
           <div className="packageNameSection text-center">
             <h3>Cocktail Party</h3>
             <div className="packageImg">
-              <img src="BuffetP6.png" />
+              <img src="/ninja-buffy/packages/BuffetP6.png" />
             </div>
             <div className="packagesName">
               <h4>1 Starter + 4 Mains + 1 Dessert</h4>
@@ -514,10 +514,10 @@ const Custom_Package = () => {
         <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
-              <img id="left-ninja-logo" src="fontPic6.png"></img>
+              <img id="left-ninja-logo" src="/ninja-buffy/fontPic6.webp"></img>
             </div>
             <div className="col-8" id="rightside">
-              <img id="right-ninja-logo" src="caterninja.png"></img>
+              <img id="right-ninja-logo" src="/CaterNinja logo/caterninja.webp"></img>
               <h2>Ninja<span>Buffet</span></h2>
               <p><span>Door Step</span> Delivery with Hassle Free Service by our Swift Ninjas For <span>10-40 Guests</span></p>
             </div>
