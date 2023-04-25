@@ -2119,7 +2119,7 @@ const CustomizeNinjaBox = () => {
                         <br />
                         NINJA<span>BUFFET</span>
                       </h3>
-                      <img src="Frame 769.png" height="150px" width="274.5px" />
+                      <img src="/ninja-buffy/header/Frame 769.png" height="150px" width="274.5px" />
                     </div>
                     <div>
                       <h3>
