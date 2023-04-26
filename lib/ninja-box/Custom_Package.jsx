@@ -256,10 +256,10 @@ const Custom_Package = () => {
               Ninja<span>Box</span> Packages
             </h2>
             <h6 className="text-center" style={{fontSize: "20px"}}>Select Your Ninja<span>Box</span> Package</h6>
-            <div className="checkbox-container my-4 mx-auto">
+            {/* <div className="checkbox-container my-4 mx-auto">
               <input type="checkbox" value='veg' name="Veg" id="" />
-            </div>
-            <div className="selectCityOcLg">
+            </div> */}
+            {/* <div className="selectCityOcLg">
               <div>
                 <p>City</p>
                 <select
@@ -303,7 +303,7 @@ const Custom_Package = () => {
                     })}
                   </select>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* <div className="row mb-md-5 mb-0 filter">
             <h5>Choose City</h5>
@@ -591,10 +591,10 @@ const Custom_Package = () => {
             <h1>Ninja<span>Box</span></h1>
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
-            <div className="checkbox-container my-4">
+            {/* <div className="checkbox-container my-4">
               <input type="checkbox" value='veg' name="Veg" id="" />
-            </div>
-            <div className="container">
+            </div> */}
+            {/* <div className="container">
               <div className="dropdown-label row">
                 <div className="col-6">
                   <p>City</p>
@@ -644,7 +644,7 @@ const Custom_Package = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </section> : ""}
       {isSmall ? <section>
