@@ -2102,7 +2102,7 @@ const CustomizeNinjaBox = () => {
                                 <img src='555.png' height="150px" width="274.5px" />
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
-              <div className={styles.selfService}>
+              {/* <div className={styles.selfService}>
                 {
                   <Slider {...settings}>
                     <div>
@@ -2135,7 +2135,7 @@ const CustomizeNinjaBox = () => {
                     </div>
                   </Slider>
                 }
-              </div>
+              </div> */}
               <div className={styles.pkgSliderContainerLG}>
                 {
                   <Slider {...settings}>
