@@ -1,11 +1,806 @@
-import React, { useState } from 'react'
+import React from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from '/styles/ViewPackage.module.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles2 from "/styles/NewCustomizePkg.module.scss";
 import Link from 'next/link';
 import Swal from "sweetalert2";
-
+import { useRouter } from "next/router";
+import { useAppMenu } from "$lib/menuContext";
 const NinjaBoxViewPkg = () => {
+
+
+    //DIY Logic by Manoj
+
+    const { menu, cuisines, allMenus, cities, occasions, PreSelected, PreSelectMenuNinjaBox } =
+    useAppMenu();
+    const [veg, setVeg] = useState(10);
+  const [nonVeg, setNonVeg] = useState(10);
+  const [people, setPeople] = useState(20);
+  const [starters, setStarters] = useState([]);
+  const [mains, setMains] = useState([]);
+  const [desserts, setDesserts] = useState([]);
+  const [breadRice, setBreadRice] = useState([]);
+  const [highestPrice, setHighestPrice] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [deliveryCharge, setDeliveryCharge] = useState(0);
+  const [grandTotal, setgrandTotal] = useState(0);
+  const [buffet, setbuffet] = useState(0);
+  const [GST, setGST] = useState(0);
+  const [extraAdd, setExtraAdd] = useState(500);
+  const [startersData, setStartersData] = useState([]);
+  const [startersData2, setStartersData2] = useState([]);
+  const [mainData, setMainData] = useState([]);
+  const [mainData2, setMainData2] = useState([]);
+  const [dessertData, setDessertData] = useState([]);
+  const [dessertData2, setDessertData2] = useState([]);
+  const [breadRiceData, setBreadRiceData] = useState([]);
+  const [breadRiceData2, setBreadRiceData2] = useState([]);
+
+  useEffect(() => {
+
+    allMenus.sort(function (a, b) {
+      const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
+      const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      // names must be equal
+      return 0;
+    });
+
+    // removing duplicate
+    //  const result = allMenus?.reduce((finalArray, current) => {
+    //   let obj = finalArray?.find((item) => item.name === current.name);
+
+    //   // console.log('duplicate',result)
+    //   if (obj) {
+    //     return finalArray;
+    //   }
+    //   return finalArray.concat([current]);
+    // }, [])
+    // const result = allMenus;
+     const result = allMenus?.reduce((finalArray, current) => {
+      let obj = finalArray?.find((item) => item.name === current.name);
+
+      // console.log('duplicate',result)
+      if (obj) {
+        return finalArray;
+      }
+      return finalArray.concat([current]);
+    }, [])
+    // reference url
+    // if (sessionStorage.getItem("first_url2") === "") {
+    //   const catch_url = sessionStorage.setItem("first_url2", JSON.stringify(x));
+    //   setRefURL(catch_url);
+    //   console.log(catch_url);
+    // } else {
+    //   let url_value = sessionStorage.getItem("first_url2");
+    //   setRefURL(url_value);
+    //   console.log(url_value);
+    // }
+    let url_value = sessionStorage.getItem("first_url2");
+    // setRefURL(url_value);
+    
+    setStartersData(result.filter((d) => d.mealType === "Starter"));
+    setStartersData2(result.filter((d) => d.mealType === "Starter"));
+    setMainData(result.filter((d) => d.mealType === "Main course"));
+    setMainData2(result.filter((d) => d.mealType === "Main course"));
+    setDessertData(result.filter((d) => d.mealType === "Dessert"));
+    setDessertData2(result.filter((d) => d.mealType === "Dessert"));
+    setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
+    setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
+
+
+    
+    // const newMainData = allMenus.filter((d) => d.mealType === "Main course");
+
+    // newMainData.sort(function (a, b) {
+    //   return parseInt(b.selling_price) - parseInt(a.selling_price);
+    // });
+    // setHighestPrice(newMainData[0]);
+  }, []);
+
+//Adding menu items to preselection
+ 
+
+const preselection=async()=>{
+    let itemData;
+
+
+    PreSelectMenuNinjaBox[0].items.forEach((item) => {
+      itemData = allMenus.filter((d) => d.name === item);
+      if (itemData[0].mealType === "Starter") {
+        handleStatersAdd(item);
+      } else if (itemData[0].mealType === "Main course") {
+        handleMainAdd(item);
+      } else if (itemData[0].mealType === "Bread+Rice") {
+        handleBreadRiceAdd(item);
+      } else if (itemData[0].mealType === "Dessert") {
+        handleDesertsAdd(item);
+      }
+      console.log("here", itemData);
+    });
+
+}
+
+const handleStatersAdd = (item_name, id) => {
+    // setIsStarterChange(!isStarterChange);
+    if (veg === 0 && nonVeg === 0) return;
+
+    let temp = [...starters];
+    const starter = allMenus.find((item) => item.name === item_name);
+    console.log("starterdata", starter)
+    // removing selected item
+    // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
+
+    let quantity;
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+
+    // if only  veg or non veg guest is available
+
+    if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+      if (starter.Qtype === "pcs") {
+        quantity = (veg > 0 ? veg : nonVeg) * 2;
+        if (quantity < 12) {
+          quantity = 12;
+        }
+      } else {
+        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+      }
+    } else {
+      // if both guest is available
+
+      if (starter.veg) {
+        if (starter.Qtype === "pcs") {
+          quantity = Math.round((veg + nonVeg) * 1.5);
+          if (quantity < 12) {
+            quantity = 12;
+          }
+        } else {
+          quantity = (veg * 0.05 + nonVeg * 0.05).toFixed(1);
+        }
+      } else {
+        if (starter.Qtype === "pcs") {
+          quantity = nonVeg * 2;
+          if (quantity < 12) {
+            quantity = 12;
+          }
+        } else {
+          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+        }
+      }
+    }
+    temp.push({
+      id: starter.id,
+      city: starter.city,
+      cuisine: starter.cuisine,
+      menu_label: starter.menu_label,
+      name: starter.name,
+      quantity: quantity,
+      Qtype: starter.Qtype,
+      veg: starter.veg,
+      Images: starter.Images,
+      selling_price: starter.selling_price,
+      // description: starter.description,
+    });
+    setStarters(temp);
+
+    console.log("starters", starters);
+  };
+  const handleMainAdd = (item_name, id) => {
+    // setIsMainChange(!isMainChange);
+    if (veg === 0 && nonVeg === 0) return;
+    let temp = [...mains];
+
+    const main = allMenus.find((item) => item.name === item_name);
+    let quantity;
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+    let nonVegPastaMainCount = 0;
+    let nonVegMainsGravyMainCount = 0;
+    let nonVegMainThaiMainCount = 0;
+    if (
+      temp.find((item) => item.menu_label === "Pasta" && item.veg === false)
+    ) {
+      nonVegPastaMainCount += 1;
+    } else if (
+      temp.find(
+        (item) => item.menu_label === "Mains-Gravy" && item.veg === false
+      )
+    ) {
+      nonVegMainsGravyMainCount += 1;
+    } else if (
+      temp.find(
+        (item) => item.menu_label === "Mains-Thai" && item.veg === false
+      )
+    ) {
+      nonVegMainThaiMainCount += 1;
+    }
+
+    if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+      // if not rice , bred, noodles
+      console.log("not rice , bred, noodles1");
+      if (main.Qtype === "pcs") {
+        quantity = (veg > 0 ? veg : nonVeg) * 1;
+      } else if (main.name === highestPrice.name) {
+        quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
+      } else {
+        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+      }
+    } else {
+      // if both are present
+      if (main.veg) {
+        //Heavy SNack
+        // alert(main.menu_label)
+        if (main.menu_label === "Heavy Snack") {
+          if (main.Qtype === "pcs") {
+            quantity = veg * 1;
+          } else {
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
+          }
+        }
+        //Pasta mains handelling
+        //check whether non veg pasta is selected, if non veg pasta selected then veg pasta quantity =veg*100g only else veg*100+nonVeg*100g
+        else if (main.menu_label === "Pasta") {
+          if (nonVegPastaMainCount > 0) {
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
+          }
+        }
+        //Mains-gravy : same logic as above
+        else if (main.menu_label === "Mains-Gravy") {
+          if (nonVegMainsGravyMainCount > 0) {
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
+          }
+        }
+        //Main -Thai : same logic as above
+        else if (main.menu_label === "Mains-Thai") {
+          if (nonVegMainThaiMainCount > 0) {
+            quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
+          }
+        }
+        //Mains-dry : veg quantity= veg*100+ nonveg*100  else non-veg quantity=non veg*100
+        else if (main.menu_label === "Mains-dry") {
+          quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+        } else {
+          //manins dal same as mains dry
+          //for daal and rest
+          if (main.Qtype === "pcs") {
+            quantity = veg * 1;
+          } else {
+            quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+          }
+        }
+      }
+      //Non-Veg Mains Handelling
+      else {
+        if (main.Qtype === "pcs") {
+          quantity = nonVeg * 1;
+        } else if (main.name === highestPrice.name) {
+          quantity = (nonVeg * 0.15).toFixed(1);
+        } else {
+          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+        }
+      }
+    }
+
+    temp.forEach((item) => {
+      if (item.veg) {
+        if (
+          item.menu_label === "Mains-dry" ||
+          item.menu_label === "Mains-dal"
+        ) {
+          item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
+        } else if (item.menu_label === "Pasta") {
+          if (nonVegPastaMainCount > 0) {
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            item.quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
+          }
+        }
+        //Mains-gravy : same logic as above
+        else if (item.menu_label === "Mains-Gravy") {
+          if (nonVegMainsGravyMainCount > 0) {
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            item.quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
+          }
+        }
+        //Main -Thai : same logic as above
+        else if (item.menu_label === "Mains-Thai") {
+          if (nonVegMainThaiMainCount > 0) {
+            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+          } else {
+            item.quantity = HandleCeilFloorValue(
+              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+            );
+          }
+        }
+      } else {
+        if (item.Qtype === "pcs") {
+          item.quantity = nonVeg * 1;
+        } else if (item.name === highestPrice.name) {
+          item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
+        } else {
+          item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+        }
+      }
+    });
+
+    temp.push({
+      // isRice: main.isRice,
+      menu_label: main.menu_label,
+      name: main.name,
+      quantity: quantity,
+      Qtype: main.Qtype,
+      veg: main.veg,
+      Images: main.Images,
+      selling_price: main.selling_price,
+      // description: main.description,
+    });
+
+    setMains(temp);
+    // handleAfterItemSelection(temp);
+    // setMainData((prev) => prev.filter((d) => d.name !== item_name));
+  };
+
+  const handleBreadRiceAdd = (item_name, id) => {
+    // setIsBreadChange(!isBreadChange);
+    console.log(item_name);
+    if (veg === 0 && nonVeg === 0) return;
+    let temp = [...breadRice];
+    const filterBreadRice = breadRiceData.find(
+      (item) => item.name === item_name
+    );
+    let quantity;
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+
+    // Rice + Noodles + Breads
+
+    //Breads Pooris
+    if (
+      filterBreadRice?.menu_label === "Breads" &&
+      filterBreadRice.name === "Pooris"
+    ) {
+      let bread = 1;
+
+      temp.map((item) => {
+        item.menu_label === "Breads" ? (bread += 1) : bread;
+      });
+      bread === 1
+        ? (quantity = Math.round((veg + nonVeg) * 3))
+        : (quantity = Math.round((veg + nonVeg) * 2));
+      if (bread === 1) {
+        quantity = Math.round((veg + nonVeg) * 3);
+      } else {
+        // temp.forEach((item) => {
+        //   item.name === "Pooris" && item.menu_label === "Breads"
+        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
+        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
+        // });
+        quantity = Math.round((veg + nonVeg) * 2);
+      }
+      // checking for bread
+    }
+
+    //Breads but not Pooris
+    else if (
+      filterBreadRice?.menu_label === "Breads" &&
+      filterBreadRice?.name !== "Pooris"
+    ) {
+      let bread = 1;
+
+      temp.map((item) => {
+        item.menu_label === "Breads" ? (bread += 1) : bread;
+      });
+      // console.log("naan");
+      if (bread === 1) {
+        quantity = Math.round((veg + nonVeg) * 1.5);
+      } else {
+        // temp.forEach((item) => {
+        //   item.name === "Pooris" && item.menu_label === "Breads"
+        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
+        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
+
+        // });
+        quantity = Math.round((veg + nonVeg) * 1);
+      }
+    }
+    //Noodles
+    else if (filterBreadRice?.menu_label === "Noodle") {
+      let nonVegNoodleCount = 0;
+
+      temp.forEach((item) => {
+        if (item.menu_label === "Noodle" && item.veg === false) {
+          nonVegNoodleCount += 1;
+        }
+      });
+      // console.log("naan");
+      filterBreadRice.veg === true &&
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
+        ? (quantity = HandleCeilFloorValue(veg * 0.2))
+        : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
+      filterBreadRice.veg === false &&
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
+        ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
+        : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
+
+      // temp.forEach((item) => {
+      //   item.veg === true &&
+      //   item.menu_label === "Noodle" &&
+      //   nonVegNoodleCount > 0
+      //     ? (item.quantity = veg * 0.2)
+      //     : (item.quantity = (veg + nonVeg) * 0.1);
+      //   item.veg === false &&
+      //   item.menu_label === "Noodle" &&
+      //   nonVegNoodleCount > 0
+      //     ? (item.quantity = nonVeg * 0.15)
+      //     : (item.quantity = nonVeg * 0.2);
+      // });
+    } else if (filterBreadRice?.menu_label === "Rice") {
+      let count = 1;
+      let isVeg = false;
+      let isNonVeg = false;
+
+      temp.map((item) => {
+        item.menu_label === "Rice" ? (count += 1) : count;
+        item.veg ? (isVeg = true) : (isNonVeg = true);
+      });
+      console.log("rice", count);
+      if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+        let guests = veg > 0 ? veg : nonVeg;
+        if (mains.length === 0 && count === 1) {
+          quantity = HandleCeilFloorValue(guests * 0.3);
+        } else if (mains.length > 0 && count === 1) {
+          quantity = HandleCeilFloorValue(guests * 0.2);
+        } else if (count >= 3) {
+          quantity = HandleCeilFloorValue(guests * 0.1);
+        } else {
+          quantity = HandleCeilFloorValue(guests * 0.15);
+        }
+        temp.forEach((item) => {
+          if (item.menu_label === "Rice") {
+            if (count >= 3) {
+              item.quantity = HandleCeilFloorValue(guests * 0.1);
+            } else {
+              item.quantity = HandleCeilFloorValue(guests * 0.15);
+            }
+            // item.quantity = 0.15 * guests;
+          }
+        });
+
+        // if (count >= 1) {
+        //   console.log("count2");
+        //   quantity = 0.30 * guests;
+        //   temp.forEach((item) => {
+        //     if (item.menu_label === "Rice") {
+        //       item.quantity = 0.15 * guests;
+        //     }
+        //   });
+        // } else if (mains.length > 0 && count === 1) {
+        //   console.log("count1");
+
+        //   quantity = 0.15 * guests;
+        // } else if (mains.length === 0 && count === 1) {
+        //   console.log("count1");
+        //   quantity = 0.3 * guests;
+        // }
+      } else if (veg > 0 && nonVeg > 0) {
+        let guests = veg + nonVeg;
+
+        if (filterBreadRice.veg) {
+          if (mains.length === 0 && count === 1) {
+            quantity = HandleCeilFloorValue(guests * 0.3);
+          } else if (mains.length > 0 && count === 1) {
+            quantity = HandleCeilFloorValue(guests * 0.2);
+          } else if (count >= 3) {
+            quantity = HandleCeilFloorValue(veg * 0.1);
+          } else {
+            quantity = HandleCeilFloorValue(veg * 0.15);
+          }
+        } else {
+          //non veg rice handelling
+
+          if (mains.length === 0 && count === 1) {
+            quantity = HandleCeilFloorValue(nonVeg * 0.3);
+          } else if (mains.length > 0 && count === 1) {
+            quantity = HandleCeilFloorValue(nonVeg * 0.2);
+          } else if (count >= 3) {
+            quantity = HandleCeilFloorValue(nonVeg * 0.1);
+          } else {
+            quantity = HandleCeilFloorValue(nonVeg * 0.15);
+          }
+        }
+        let bread = 0;
+        let count = 0;
+        let isVeg = false;
+
+        temp.map((item) => {
+          item.menu_label === "Breads" ? (bread += 1) : bread;
+          item.menu_label === "Rice" ? (count += 1) : count;
+          item.veg ? (isVeg = true) : (isVeg = false);
+        });
+        temp.map((item) => {
+          if (item?.menu_label === "Breads" && item.name === "Pooris") {
+            if (bread === 1) {
+              item.quantity = Math.round((veg + nonVeg) * 3);
+            } else {
+              item.quantity = Math.round((veg + nonVeg) * 2);
+            }
+          } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+            if (bread === 1) {
+              item.quantity = Math.round((veg + nonVeg) * 2);
+            } else {
+              item.quantity = Math.round((veg + nonVeg) * 1);
+            }
+          } else if (item?.menu_label === "Rice") {
+            console.log("rice", count);
+            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+              let guests = veg > 0 ? veg : nonVeg;
+              if (count >= 2) {
+                console.log("count2");
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              } else if (mains.length > 0 && count === 1) {
+                console.log("count1");
+
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
+              } else if (mains.length === 0 && count === 1) {
+                console.log("count1");
+                item.quantity = HandleCeilFloorValue(0.3 * guests);
+              }
+            } else if (veg > 0 && nonVeg > 0) {
+              let guests = veg + nonVeg;
+              if (count >= 2) {
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+                }
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.3 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.2 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+                }
+              } else if (count === 1 && mains.length >= 1) {
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
+              } else {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.15 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+                }
+              }
+            }
+          }
+        });
+
+        // temp.forEach((item) => {
+        //   if (count >= 3) {
+        //     if (item.menu_label === "Rice" && item.veg === true) {
+        //       item.quantity = 0.1 * veg;
+        //     }
+        //     if (item.menu_label === "Rice" && item.veg === false) {
+        //       item.quantity = 0.1 * nonVeg;
+        //     }
+        //   } else {
+        //     if (item.menu_label === "Rice" && item.veg === true) {
+        //       item.quantity = 0.15 * veg;
+        //     }
+        //     if (item.menu_label === "Rice" && item.veg === false) {
+        //       item.quantity = 0.15 * nonVeg;
+        //     }
+        //   }
+        // });
+
+        // if (count >= 2) {
+        //   quantity = 0.15 * guests;
+        //   temp.forEach((item) => {
+        //     if (item.menu_label === "Rice" && item.veg === true) {
+        //       item.quantity = 0.15 * guests;
+        //     }
+        //     if (item.menu_label === "Rice" && item.veg === false) {
+        //       item.quantity = 0.15 * nonVeg;
+        //     }
+        //   });
+        // }
+      }
+      console.log("rice", count);
+    }
+    temp.push({
+      // isRice: main.isRice,
+      menu_label: filterBreadRice?.menu_label,
+      name: filterBreadRice?.name,
+      quantity: quantity,
+      Images: filterBreadRice?.Images,
+      Qtype: filterBreadRice?.Qtype,
+      veg: filterBreadRice?.veg,
+      selling_price: filterBreadRice.selling_price,
+      // description: main.description,
+    });
+    setBreadRice(temp);
+    // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
+  };
+  const handleDesertsAdd = (item_name, id) => {
+    // setIsDessertChange(!isDessertChange);
+    let temp = [...desserts];
+    if (veg === 0 && nonVeg === 0) return;
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+
+    const dessert = dessertData.find((item) => item.name === item_name);
+    let quantity;
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+    if (dessert.Qtype === "pcs") {
+      // expensive desserts should go 1 piece
+      if (dessert.cuisine === "Continental") {
+        quantity = Math.round(veg + nonVeg);
+      } else {
+        if (dessert.name === "Angoori Gulab Jamun") {
+          quantity = Math.round((veg + nonVeg) * 3);
+        } else {
+          quantity = Math.round((veg + nonVeg) * 1.5);
+        }
+      }
+    } else {
+      quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
+    }
+    temp.push({
+      // name: dessert.name,
+      // quantity: quantity,
+      // Qtype: dessert.Qtype,
+      // veg: dessert.veg,
+      // description: dessert.description,
+      id: dessert.id,
+      city: dessert.city,
+      cuisine: dessert.cuisine,
+      menu_label: dessert.menu_label,
+      name: dessert.name,
+      Images: dessert.Images,
+      quantity: quantity,
+      Qtype: dessert.Qtype,
+      veg: dessert.veg,
+      selling_price: dessert.selling_price,
+    });
+    setDesserts(temp);
+    // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
+  };
+
+
+
+
+  useEffect(() => {
+    preselection();
+
+    let starterPrice = 0;
+    let mainPrice = 0;
+    let dessertPrice = 0;
+    let bredRicePrice = 0;
+
+    console.log("starters",starters);
+    console.log("mains", mains)
+
+    starters.map((d) => {
+      if (d.Qtype === "pcs") {
+        starterPrice += d.quantity * parseInt(d.selling_price / 12);
+      } else {
+        starterPrice += d.quantity * parseInt(d.selling_price);
+      }
+    });
+    console.log("startersPrice", starterPrice);
+    console.log("mains", mains);
+    mains.map((d) => {
+      if (d.Qtype === "pcs") {
+        mainPrice += d.quantity * parseInt(d.selling_price / 12);
+      } else {
+        mainPrice += d.quantity * parseInt(d.selling_price);
+      }
+    });
+    console.log("mainprice", mainPrice);
+    desserts.map((d) => {
+      if (d.Qtype === "pcs") {
+        // expensive desserts should go 1 piece
+        if (d.cuisine === "Continental") {
+          dessertPrice += d.quantity * (parseInt(d.selling_price) / 12);
+        } else {
+          dessertPrice += d.quantity * (parseInt(d.selling_price) / 12);
+        }
+      } else {
+        dessertPrice += d.quantity * parseInt(d.selling_price);
+      }
+    });
+    console.log("dessertprice", dessertPrice);
+    breadRice.map((d) => {
+      if (d.Qtype === "pcs") {
+        bredRicePrice += d.quantity * parseInt(d.selling_price / 12);
+      } else {
+        bredRicePrice += d.quantity * parseInt(d.selling_price);
+      }
+    });
+    console.log("breadriceprice", bredRicePrice);
+    people = veg + nonVeg;
+    setPeople(people);
+    setTotalPrice(
+      parseInt(
+        starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
+      )
+    );
+    // getDeliveryCharge(people);
+
+    // setGST(getGst());
+    // setgrandTotal(
+    //   parseInt(totalPrice) +
+    //   parseInt(buffet) +
+    //   // parseInt(deliveryCharge) +
+    //   parseInt(getGst())
+    // );
+    // setShowPriceList(false);
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
+
+
+  //code already done by sourav
 
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -113,7 +908,7 @@ const NinjaBoxViewPkg = () => {
                         <div className={styles.packageName}>
                             <h3>PACKAGE NAME</h3>
                             <img src='555.png' height="150px" width="274.5px" />
-                            <h6>Starters + X Mains + X Desserts</h6>
+                            <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             {/* <div>
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
@@ -122,14 +917,14 @@ const NinjaBoxViewPkg = () => {
                         </div>
                         <div className={styles.pkgDetails}>
                             <div>
-                                <h3>PACKAGE NAME</h3>
-                                <h5>X Starters + X Mains + X Desserts</h5>
+                                <h3>{PreSelectMenuNinjaBox[0].name}</h3>
+                                <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
                                 <div>
-                                    <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
-                                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: 10</span></p>
+                                    <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
+                                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
                                 </div>
                                 <div>
-                                    <h6>₹ 8,888</h6>
+                                    <h6>₹ {totalPrice}</h6>
                                 </div>
                             </div>
                             <div>
@@ -141,34 +936,22 @@ const NinjaBoxViewPkg = () => {
                                 <div className={styles.startersContainer}>
                                     <h5>Starters</h5>
                                     <div className={styles.starterItems}>
+                                    {starters.map((item, index) => (
                                         <div className={styles.fstItem}>
-                                            <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                            <img className={styles.itemImage} src={item.image} />
                                             <div className={styles.itemDetailsContainer}>
                                                 <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                                                 <div>
-                                                    <h4>Paneer Butter<br />Masala</h4>
-                                                    <p>Classic Choice For Mains</p>
+                                                    <h4>{item.name}</h4>
+                                                    <p>{item.description}</p>
                                                 </div>
                                                 <div className={styles.pcs}>
-                                                    <p>000pcs</p>
+                                                    <p>{item.quantity}{item.Qtype}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="mt-3">
-                                            <div className={styles.fstItem}>
-                                                <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
-                                                <div className={styles.itemDetailsContainer}>
-                                                    <img className={styles.vegLogo} src="/diy images/Group 962.png" />
-                                                    <div>
-                                                        <h4>Chicken<br />Tandoori</h4>
-                                                        <p>Classic Choice For Mains</p>
-                                                    </div>
-                                                    <div className={styles.pcs}>
-                                                        <p>000pcs</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
+                                    ))}
                                     </div>
                                 </div>
                                 <hr className={styles2.MenuHr} />
@@ -178,64 +961,23 @@ const NinjaBoxViewPkg = () => {
                                 <div className={styles.startersContainer}>
                                     <h5 className='mt-5'>Mains</h5>
                                     <div className={styles.starterItems}>
+                                    {mains.map((item, index) => (
                                         <div className={styles.fstItem}>
-                                            <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                            <img className={styles.itemImage} src={item.image} />
                                             <div className={styles.itemDetailsContainer}>
                                                 <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                                                 <div>
-                                                    <h4>Paneer Butter<br />Masala</h4>
-                                                    <p>Classic Choice For Mains</p>
+                                                    <h4>{item.name}</h4>
+                                                    <p>{item.description}</p>
                                                 </div>
                                                 <div className={styles.pcs}>
-                                                    <p>000pcs</p>
+                                                    <p>{item.quantity}{item.Qtype}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="mt-3">
-                                            <div className={styles.fstItem}>
-                                                <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
-                                                <div className={styles.itemDetailsContainer}>
-                                                    <img className={styles.vegLogo} src="/diy images/Group 962.png" />
-                                                    <div>
-                                                        <h4>Chicken<br />Tandoori</h4>
-                                                        <p>Classic Choice For Mains</p>
-                                                    </div>
-                                                    <div className={styles.pcs}>
-                                                        <p>000pcs</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="mt-3">
-                                            <div className={styles.fstItem}>
-                                                <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
-                                                <div className={styles.itemDetailsContainer}>
-                                                    <img className={styles.vegLogo} src="/diy images/Group 962.png" />
-                                                    <div>
-                                                        <h4>Chicken<br />Tandoori</h4>
-                                                        <p>Classic Choice For Mains</p>
-                                                    </div>
-                                                    <div className={styles.pcs}>
-                                                        <p>000pcs</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="mt-3">
-                                            <div className={styles.fstItem}>
-                                                <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
-                                                <div className={styles.itemDetailsContainer}>
-                                                    <img className={styles.vegLogo} src="/diy images/Group 962.png" />
-                                                    <div>
-                                                        <h4>Chicken<br />Tandoori</h4>
-                                                        <p>Classic Choice For Mains</p>
-                                                    </div>
-                                                    <div className={styles.pcs}>
-                                                        <p>000pcs</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
+                                    ))}
+                                
                                     </div>
                                 </div>
                                 <hr className={styles2.MenuHr} />
@@ -245,34 +987,23 @@ const NinjaBoxViewPkg = () => {
                                 <div className={styles.startersContainer}>
                                     <h5 className='mt-5'>Desserts</h5>
                                     <div className={styles.starterItems}>
+                                    {desserts.map((item, index) => (
                                         <div className={styles.fstItem}>
-                                            <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
+                                            <img className={styles.itemImage} src={item.image} />
                                             <div className={styles.itemDetailsContainer}>
                                                 <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                                                 <div>
-                                                    <h4>Paneer Butter<br />Masala</h4>
-                                                    <p>Classic Choice For Mains</p>
+                                                    <h4>{item.name}</h4>
+                                                    <p>{item.description}</p>
                                                 </div>
                                                 <div className={styles.pcs}>
-                                                    <p>000pcs</p>
+                                                    <p>{item.quantity}{item.Qtype}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="mt-3">
-                                            <div className={styles.fstItem}>
-                                                <img className={styles.itemImage} src="/diy images/starter/Mask group.png" />
-                                                <div className={styles.itemDetailsContainer}>
-                                                    <img className={styles.vegLogo} src="/diy images/Group 962.png" />
-                                                    <div>
-                                                        <h4>Chicken<br />Tandoori</h4>
-                                                        <p>Classic Choice For Mains</p>
-                                                    </div>
-                                                    <div className={styles.pcs}>
-                                                        <p>000pcs</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
+                                    ))}
+                                        
                                     </div>
                                 </div>
                                 <hr className={styles2.MenuHr} />
@@ -341,7 +1072,7 @@ const NinjaBoxViewPkg = () => {
                                         <h4>Items Total</h4>
                                     </div>
                                     <div>
-                                        <p>₹0000</p>
+                                        <p>₹{totalPrice}</p>
                                     </div>
                                 </div>
                                 {/* <div className={styles.pricingTitle11}>
@@ -374,7 +1105,7 @@ const NinjaBoxViewPkg = () => {
                                         <h4>GST</h4>
                                     </div>
                                     <div>
-                                        <p>₹0000</p>
+                                        <p>₹{GST}</p>
                                     </div>
                                 </div>
                                 <hr id={styles.hr2} />
@@ -384,7 +1115,7 @@ const NinjaBoxViewPkg = () => {
                                     <h4>Grand Total</h4>
                                 </div>
                                 <div>
-                                    <p>₹0000</p>
+                                    <p>₹{grandTotal}</p>
                                 </div>
                             </div>
                             <div className={styles2.dlvryChrg}>

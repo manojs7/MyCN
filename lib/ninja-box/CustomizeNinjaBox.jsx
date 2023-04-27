@@ -163,21 +163,21 @@ const CustomizeNinjaBox = () => {
 
     // console.log("work in progress");
 
-    // let itemData;
+    let itemData;
 
-    // PreSelected.forEach((item) => {
-    //   itemData = allMenus.filter((d) => d.name === item);
-    //   if (itemData[0].mealType === "Starter") {
-    //     // handleStatersAdd(item);
-    //   } else if (itemData[0].mealType === "Main course") {
-    //     // handleMainAdd(item);
-    //   } else if (itemData[0].mealType === "Bread+Rice") {
-    //     // handleBreadRiceAdd(item);
-    //   } else if (itemData[0].mealType === "Dessert") {
-    //     // handleDesertsAdd(item);
-    //   }
-    //   console.log("here", itemData);
-    // });
+    PreSelected.forEach((item) => {
+      itemData = allMenus.filter((d) => d.name === item);
+      if (itemData[0].mealType === "Starter") {
+        // handleStatersAdd(item);
+      } else if (itemData[0].mealType === "Main course") {
+        // handleMainAdd(item);
+      } else if (itemData[0].mealType === "Bread+Rice") {
+        // handleBreadRiceAdd(item);
+      } else if (itemData[0].mealType === "Dessert") {
+        // handleDesertsAdd(item);
+      }
+      console.log("here", itemData);
+    });
 
     const newMainData = allMenus.filter((d) => d.mealType === "Main course");
 
