@@ -13,6 +13,8 @@ const Custom_Package = () => {
   const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
   const [city, setCity] = useState("");
   const [occasion, setOccasion] = useState("");
+  const [itemSelected, setItemSelected] = useState()
+  const [selectedDate, setSelectedDate] = useState()
 
   const [startDate, setStartDate] = useState(new Date());
 
@@ -22,6 +24,29 @@ const Custom_Package = () => {
   const handleOccasion = (occasion) => {
     setOccasion(occasion);
   };
+
+  const navigateToOverview = ()=>{
+    let dataSelected = {city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected}
+    sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
+    window.open('/ninjaBoxViewPkg', '_blank')
+  }
+
+//PACKAGES
+const packages = {
+  veg: [
+    { id: 1, name: 'Punjabi NinjaBox', price: '5,299', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+    { id: 2, name: 'NinjaBox Indian', price: '4,499', img: '/ninja-box/packages/NBP2.png', details: "3 Starters + 4 Mains + 1 Dessert"  },
+    { id: 3, name: "B'Day NinjaBox", price: '3,699', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert"  },
+  ],
+  nonVeg: [
+    { id: 1, name: 'Fusion NinjaBox', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert" },
+    { id: 1, name: 'Asian NinjaBox', price: '4,199', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+    { id: 1, name: 'Cocktail Party', price: '4,199', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains" }
+  ],
+};
+
+
+
 
   const images = [
     "nijjabox1.png",
@@ -118,7 +143,13 @@ const Custom_Package = () => {
     }
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (item) => {
+    setItemSelected(item)
+    if(!city){
+      alert("please select the city ")
+    }else if(!occasion){
+      alert("please select the occasion")
+    }else
     setShowDiv(!showDiv);
   };
   const closePopup = () => {
@@ -192,7 +223,7 @@ const Custom_Package = () => {
           </div>
           <div>
             <h4>Date</h4>
-            <div><input type="date" /></div>
+            <div><input type="date" onChange={(event)=>setSelectedDate(event.target.value)}/></div>
           </div>
           <div>
             <img src="miniNinjaRight.png" width={24.03} height={43.92} />
@@ -221,7 +252,7 @@ const Custom_Package = () => {
         </div>
         <div className={styles.cnfmBtn}>
           <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
-          <button onClick={() => window.open('/ninjaBoxViewPkg', '_blank')} id={styles.viewBtn}>View Package</button>
+          <button onClick={() => navigateToOverview()} id={styles.viewBtn}>View Package</button>
         </div>
         {/* <div>
             <div className={styles.inputContainer}>
@@ -259,11 +290,10 @@ const Custom_Package = () => {
             {/* <div className="checkbox-container my-4 mx-auto">
               <input type="checkbox" value='veg' name="Veg" id="" />
             </div> */}
-            {/* <div className="selectCityOcLg">
+            <div className="selectCityOcLg mt-5">
               <div>
                 <p>City</p>
                 <select
-                  className="form-select"
                   name="city"
                   aria-label="Default select example"
                   value={city}
@@ -285,7 +315,6 @@ const Custom_Package = () => {
               <div>
                 <p>Occasion</p>
                 <select
-                    className="form-select"
                     name="occasion"
                     aria-label="Default select example"
                     value={occasion}
@@ -303,7 +332,7 @@ const Custom_Package = () => {
                     })}
                   </select>
               </div>
-            </div> */}
+            </div>
           </div>
           {/* <div className="row mb-md-5 mb-0 filter">
             <h5>Choose City</h5>
@@ -439,53 +468,21 @@ const Custom_Package = () => {
             ))}
           </div> */}
           <div className="d-flex">
-            <div className="packageNameSection text-center me-4">
-              <h3>Punjabi NinjaBox</h3>
+          {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+              <h3>{item.name}</h3>
               <div className="packageImg">
-                <img src="/ninja-box/packages/NBP-1.png" />
+                <img src={item.img} />
               </div>
               <div className="packagesName">
-                <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 5,299/-<span> Onwards</span></h3>
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-<span> Onwards</span></h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={()=>handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
               </div>
-            </div>
-            <div className="packageNameSection text-center me-4">
-              <h3>NinjaBox Indian</h3>
-              <div className="packageImg">
-                <img src="/ninja-box/packages/NBP2.png" />
-              </div>
-              <div className="packagesName">
-                <h4>2 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 4,499/-<span> Onwards</span></h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-              </div>
-
-            </div>
-            <div className="packageNameSection text-center">
-              <h3>B&apos;Day NinjaBox</h3>
-              <div className="packageImg">
-                <img src="/ninja-box/packages/NBP3.png" />
-              </div>
-              <div className="packagesName">
-                <h4>1 Starter + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 3,699/-<span> Onwards</span></h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-              </div>
-
-            </div>
+            </div>))}
           </div>
           <div className="d-flex">
             <div className="packageNameSection text-center me-4">
@@ -591,10 +588,10 @@ const Custom_Package = () => {
             <h1>Ninja<span>Box</span></h1>
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
-            {/* <div className="checkbox-container my-4">
+            <div className="checkbox-container my-4">
               <input type="checkbox" value='veg' name="Veg" id="" />
-            </div> */}
-            {/* <div className="container">
+            </div>
+            <div className="container">
               <div className="dropdown-label row">
                 <div className="col-6">
                   <p>City</p>
@@ -644,58 +641,26 @@ const Custom_Package = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </section> : ""}
       {isSmall ? <section>
         <div className="packageContainer">
-          <div className="packageNameSection text-center ms-2 me-4">
-            <h3>Punjabi NinjaBox</h3>
+        {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+            <h3>{item.name}</h3>
             <div className="packageImg">
-              <img src="/ninja-box/packages/NBP-1.png" />
+              <img src={item.img} />
             </div>
             <div className="packagesName">
-              <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 5,299/-<span> Onwards</span></h3>
+              <h4>{item.details}</h4>
+              <h3>₹ {item.price}/-<span> Onwards</span></h3>
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button onClick={handleButtonClick} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise & Book Now</button>
+              <button onClick={()=>handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
             </div>
-
-          </div>
-          <div className="packageNameSection text-center me-3">
-            <h3>NinjaBox Indian</h3>
-            <div className="packageImg">
-              <img src="/ninja-box/packages/NBP2.png" />
-            </div>
-            <div className="packagesName">
-              <h4>2 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 4,499/-<span> Onwards</span></h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
-
-          </div>
-          <div className="packageNameSection text-center">
-            <h3>B&apos;Day NinjaBox</h3>
-            <div className="packageImg">
-              <img src="/ninja-box/packages/NBP3.png" />
-            </div>
-            <div className="packagesName">
-              <h4>1 Starter + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 3,699/-<span> Onwards</span></h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
-          </div>
+            </div>))}
         </div>
         <div className="packageContainer">
           <div className="packageNameSection text-center ms-2 me-4">

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '/styles/ViewPackage.module.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles2 from "/styles/NewCustomizePkg.module.scss";
 import Link from 'next/link';
 import Swal from "sweetalert2";
+import { useAppMenu } from "$lib/menuContext";
 
 const NinjaBoxViewPkg = () => {
 
@@ -11,6 +12,25 @@ const NinjaBoxViewPkg = () => {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [showDiv, setShowDiv] = useState(false);
+
+    const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
+
+    const [city, setCity] = useState("");
+    const [occasion, setOccasion] = useState("");
+    const [itemSelected, setItemSelected] = useState()
+    const [selectedDate, setSelectedDate] = useState()
+    const [vegCount, setVegCount] = useState()
+    const [nonVegCount, setNonVegCount] = useState()
+    const [details, setDetails] = useState()
+    const [price, setPrice] = useState()
+    const [image, setImage] = useState()
+
+    const handleCity = (city) => {
+        setCity(city);
+    }
+    const handleOccasion = (occasion) => {
+        setOccasion(occasion);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,6 +46,20 @@ const NinjaBoxViewPkg = () => {
         }
     };
 
+    useEffect(() => {
+        let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
+        // sessionStorage.removeItem("dataSelected")
+        setCity(dataSelected['city'])
+        setVegCount(dataSelected['vcount'])
+        setNonVegCount(dataSelected['nvcount'])
+        setSelectedDate(dataSelected['selectedDate'])
+        setOccasion(dataSelected['occasion'])
+        setName(dataSelected.itemSelected['name'])
+        setDetails(dataSelected.itemSelected['details'])
+        setPrice(dataSelected.itemSelected['price'])
+        setImage(dataSelected.itemSelected['img'])
+        console.log(dataSelected)
+    }, [])
     return (
         <div className={styles.customizeMainContainer}>
             <div className={styles.customizeMainContainer}>
@@ -70,16 +104,30 @@ const NinjaBoxViewPkg = () => {
                             <div>
                                 <p>City</p>
                                 <div>
-                                    <select>
-                                        <option>mumbai</option>
-                                        <option>mumbai</option>
+                                    <select
+                                        name="city"
+                                        aria-label="Default select example"
+                                        value={city}
+                                        onChange={(e) => handleCity(e.target.value)}
+                                        required
+                                    >
+                                        <option value="" selected>
+                                            Select City
+                                        </option>
+                                        {cities.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item}>
+                                                    {item}
+                                                </option>
+                                            );
+                                        })}
                                     </select>
                                 </div>
                             </div>
                             <div>
                                 <p>Date</p>
                                 <div>
-                                    <input type="date" />
+                                    <input type="date" value={selectedDate}/>
                                 </div>
                             </div>
                         </div>
@@ -87,13 +135,13 @@ const NinjaBoxViewPkg = () => {
                             <div>
                                 <p>Veg Count</p>
                                 <div>
-                                    <input></input>
+                                    <input value={vegCount}></input>
                                 </div>
                             </div>
                             <div>
                                 <p>N-Veg Count</p>
                                 <div>
-                                    <input></input>
+                                    <input value={nonVegCount}></input>
                                 </div>
                             </div>
                         </div>
@@ -101,9 +149,22 @@ const NinjaBoxViewPkg = () => {
                             <div>
                                 <p>Occasion</p>
                                 <div>
-                                    <select>
-                                        <option>House Party</option>
-                                        <option>Bday Party</option>
+                                    <select
+                                        name="occasion"
+                                        aria-label="Default select example"
+                                        value={occasion}
+                                        onChange={(e) => handleOccasion(e.target.value)}
+                                    >
+                                        <option value="" selected>
+                                            Select Occasion
+                                        </option>
+                                        {occasions.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item}>
+                                                    {item}
+                                                </option>
+                                            );
+                                        })}
                                     </select>
                                 </div>
                             </div>
@@ -111,29 +172,29 @@ const NinjaBoxViewPkg = () => {
                     </div>
                     <div className={styles.whiteBg}>
                         <div className={styles.packageName}>
-                            <h3>PACKAGE NAME</h3>
-                            <img src='555.png' height="150px" width="274.5px" />
-                            <h6>Starters + X Mains + X Desserts</h6>
+                            <h3>{name}</h3>
+                            <img src={image} height="150px" width="274.5px" />
+                            <h6>{details}</h6>
                             {/* <div>
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
                             </div> */}
-                            <h5>₹ 8,888</h5>
+                            <h5>₹ {price}</h5>
                         </div>
                         <div className={styles.pkgDetails}>
                             <div>
-                                <h3>PACKAGE NAME</h3>
-                                <h5>X Starters + X Mains + X Desserts</h5>
+                                <h3>{name}</h3>
+                                <h5>{details}</h5>
                                 <div>
-                                    <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
-                                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: 10</span></p>
+                                    <p id={styles.vegGuest}>Veg Guests<span>: {vegCount}</span></p>
+                                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVegCount}</span></p>
                                 </div>
                                 <div>
-                                    <h6>₹ 8,888</h6>
+                                    <h6>₹ {price}</h6>
                                 </div>
                             </div>
                             <div>
-                                <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
+                                <img id={styles.pkgImg} src={image} width="366px" height="200px" />
                             </div>
                         </div>
                         <div>
