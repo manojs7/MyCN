@@ -37,6 +37,41 @@ const NinjaBoxViewPkg = () => {
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
 
+
+
+//code already done by sourav
+
+const [name, setName] = useState("");
+const [phone, setPhone] = useState("");
+const [email, setEmail] = useState("");
+const [showDiv, setShowDiv] = useState(false);
+
+const [city, setCity] = useState("");
+const [occasion, setOccasion] = useState("");
+const [itemSelected, setItemSelected] = useState()
+const [selectedDate, setSelectedDate] = useState()
+const [details, setDetails] = useState()
+const [price, setPrice] = useState()
+const [image, setImage] = useState()
+const [ID, setId] = useState(0)
+
+useEffect(() => {
+    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
+    // sessionStorage.removeItem("dataSelected")
+    setCity(dataSelected['city'])
+    setVeg(dataSelected['vcount'])
+    setNonVeg(dataSelected['nvcount'])
+    setSelectedDate(dataSelected['selectedDate'])
+    setOccasion(dataSelected['occasion'])
+    setName(dataSelected.itemSelected['name'])
+    setDetails(dataSelected.itemSelected['details'])
+    setPrice(dataSelected.itemSelected['price'])
+    setImage(dataSelected.itemSelected['img'])
+    setId(dataSelected.itemSelected['id'])
+    console.log(dataSelected)
+}, [])
+
+//by Manoj
   useEffect(() => {
 
     allMenus.sort(function (a, b) {
@@ -111,8 +146,7 @@ const NinjaBoxViewPkg = () => {
 const preselection=async()=>{
     let itemData;
 
-
-    PreSelectMenuNinjaBox[0].items.forEach((item) => {
+    (PreSelectMenuNinjaBox.filter((d)=>d.id===ID))[0].details.items.forEach((item) => {
       itemData = allMenus.filter((d) => d.name === item);
       if (itemData[0].mealType === "Starter") {
         handleStatersAdd(item);
@@ -800,12 +834,9 @@ const handleStatersAdd = (item_name, id) => {
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
 
-  //code already done by sourav
+  
 
-    const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [showDiv, setShowDiv] = useState(false);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -821,6 +852,7 @@ const handleStatersAdd = (item_name, id) => {
         }
     };
 
+   
     return (
         <div className={styles.customizeMainContainer}>
             <div className={styles.customizeMainContainer}>
@@ -865,16 +897,30 @@ const handleStatersAdd = (item_name, id) => {
                             <div>
                                 <p>City</p>
                                 <div>
-                                    <select>
-                                        <option>mumbai</option>
-                                        <option>mumbai</option>
+                                    <select
+                                        name="city"
+                                        aria-label="Default select example"
+                                        value={city}
+                                        onChange={(e) => handleCity(e.target.value)}
+                                        required
+                                    >
+                                        <option value="" selected>
+                                            Select City
+                                        </option>
+                                        {cities.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item}>
+                                                    {item}
+                                                </option>
+                                            );
+                                        })}
                                     </select>
                                 </div>
                             </div>
                             <div>
                                 <p>Date</p>
                                 <div>
-                                    <input type="date" />
+                                    <input type="date" value={selectedDate}/>
                                 </div>
                             </div>
                         </div>
@@ -882,13 +928,13 @@ const handleStatersAdd = (item_name, id) => {
                             <div>
                                 <p>Veg Count</p>
                                 <div>
-                                    <input></input>
+                                    <input value={veg}></input>
                                 </div>
                             </div>
                             <div>
                                 <p>N-Veg Count</p>
                                 <div>
-                                    <input></input>
+                                    <input value={nonVeg}></input>
                                 </div>
                             </div>
                         </div>
@@ -896,9 +942,22 @@ const handleStatersAdd = (item_name, id) => {
                             <div>
                                 <p>Occasion</p>
                                 <div>
-                                    <select>
-                                        <option>House Party</option>
-                                        <option>Bday Party</option>
+                                    <select
+                                        name="occasion"
+                                        aria-label="Default select example"
+                                        value={occasion}
+                                        onChange={(e) => handleOccasion(e.target.value)}
+                                    >
+                                        <option value="" selected>
+                                            Select Occasion
+                                        </option>
+                                        {occasions.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item}>
+                                                    {item}
+                                                </option>
+                                            );
+                                        })}
                                     </select>
                                 </div>
                             </div>
@@ -906,14 +965,14 @@ const handleStatersAdd = (item_name, id) => {
                     </div>
                     <div className={styles.whiteBg}>
                         <div className={styles.packageName}>
-                            <h3>PACKAGE NAME</h3>
-                            <img src='555.png' height="150px" width="274.5px" />
-                            <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
+                            <h3>{name}</h3>
+                            <img src={image} height="150px" width="274.5px" />
+                            <h6>{details}</h6>
                             {/* <div>
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
                             </div> */}
-                            <h5>₹ 8,888</h5>
+                            <h5>₹ {price}</h5>
                         </div>
                         <div className={styles.pkgDetails}>
                             <div>
@@ -928,7 +987,7 @@ const handleStatersAdd = (item_name, id) => {
                                 </div>
                             </div>
                             <div>
-                                <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
+                                <img id={styles.pkgImg} src={image} width="366px" height="200px" />
                             </div>
                         </div>
                         <div>
