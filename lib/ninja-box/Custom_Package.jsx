@@ -8,6 +8,8 @@ import styles from "/styles/Custom_Package.module.scss";
 // import { Carousel } from "react-bootstrap";
 import { useAppMenu } from "$lib/menuContext";
 import "react-datepicker/dist/react-datepicker.css";
+import Image from "next/image";
+import Swal from "sweetalert2";
 
 const Custom_Package = () => {
   const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
@@ -25,27 +27,50 @@ const Custom_Package = () => {
     setOccasion(occasion);
   };
 
-  const navigateToOverview = ()=>{
-    let dataSelected = {city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected}
+  const navigateToOverview = () => {
+    if(!selectedDate){
+      Swal.fire({
+        text: "please select date",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    }else{
+    let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected }
     sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
     window.open('/ninjaBoxViewPkg', '_blank')
   }
+  }
 
-//PACKAGES
-const packages = {
-  veg: [
-    { id: 1, name: 'Punjabi NinjaBox', price: '5,299', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert" },
-    { id: 2, name: 'NinjaBox Indian', price: '4,499', img: '/ninja-box/packages/NBP2.png', details: "3 Starters + 4 Mains + 1 Dessert"  },
-    { id: 3, name: "B'Day NinjaBox", price: '3,699', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert"  },
-  ],
-  nonVeg: [
-    { id: 1, name: 'Fusion NinjaBox', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert" },
-    { id: 1, name: 'Asian NinjaBox', price: '4,199', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert" },
-    { id: 1, name: 'Cocktail Party', price: '4,199', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains" }
-  ],
-};
+  //PACKAGES
+  const packages = {
+    veg: [
+      { id: 1, name: 'Punjabi NinjaBox', price: '5,299', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+      { id: 2, name: 'NinjaBox Indian', price: '4,499', img: '/ninja-box/packages/NBP2.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+      { id: 3, name: "B'Day NinjaBox", price: '3,699', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert" },
+    ],
+    veg2: [
+      { id: 1, name: 'Fusion NinjaBox', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert" },
+      { id: 1, name: 'Asian NinjaBox', price: '4,199', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+      { id: 1, name: 'Cocktail Party', price: '4,199', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains" }
+    ],
+    nonVeg: [
+      { id: 1, name: 'Punjabi NinjaBoxNV', price: '5,299', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+      { id: 2, name: 'NinjaBox Indian', price: '4,499', img: '/ninja-box/packages/NBP2.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+      { id: 3, name: "B'Day NinjaBox", price: '3,699', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert" },
+    ],
+    nonVeg2: [
+      { id: 1, name: 'Fusion NinjaBox', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert" },
+      { id: 1, name: 'Asian NinjaBox', price: '4,199', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+      { id: 1, name: 'Cocktail Party', price: '4,199', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains" }
+    ],
+  };
 
+  //SHOW NON-VEG PACKAGES
+  const [showNonveg, setShowNonVeg] = useState(false);
 
+  const checkForNonveg = () => {
+    setShowNonVeg(!showNonveg);
+  };
 
 
   const images = [
@@ -145,12 +170,20 @@ const packages = {
 
   const handleButtonClick = (item) => {
     setItemSelected(item)
-    if(!city){
-      alert("please select the city ")
-    }else if(!occasion){
-      alert("please select the occasion")
-    }else
-    setShowDiv(!showDiv);
+    if (!city) {
+      Swal.fire({
+        text: "Please select the city",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else if (!occasion) {
+      Swal.fire({
+        text: "Please select the occasion",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else
+      setShowDiv(!showDiv);
   };
   const closePopup = () => {
     setShowDiv(!showDiv);
@@ -182,7 +215,7 @@ const packages = {
     }
   };
 
-  const [number2, setNumber2] = useState(10);
+  const [number2, setNumber2] = useState(0);
 
   const handleInputChange2 = (event) => {
     const value2 = event.target.value;
@@ -223,7 +256,7 @@ const packages = {
           </div>
           <div>
             <h4>Date</h4>
-            <div><input type="date" onChange={(event)=>setSelectedDate(event.target.value)}/></div>
+            <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)} /></div>
           </div>
           <div>
             <img src="miniNinjaRight.png" width={24.03} height={43.92} />
@@ -240,14 +273,14 @@ const packages = {
                 <button onClick={handleIncreaseClick}>+</button>
               </div>
             </div>
-            <div>
+            {showNonveg && <div>
               <p>NV Guest</p>
               <div className={styles.numBtn}>
                 <button onClick={handleDecreaseClick2}>-</button>
                 <input id={styles.nvNum} type="number" value={number2} onChange={handleInputChange2} onClick={handleInputClick2} />
                 <button onClick={handleIncreaseClick2}>+</button>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
         <div className={styles.cnfmBtn}>
@@ -286,10 +319,10 @@ const packages = {
             <h2>
               Ninja<span>Box</span> Packages
             </h2>
-            <h6 className="text-center" style={{fontSize: "20px"}}>Select Your Ninja<span>Box</span> Package</h6>
-            {/* <div className="checkbox-container my-4 mx-auto">
-              <input type="checkbox" value='veg' name="Veg" id="" />
-            </div> */}
+            <h6 className="text-center" style={{ fontSize: "20px" }}>Select Your Ninja<span>Box</span> Package</h6>
+            <div className="checkbox-container my-4 mx-auto">
+              <input type="checkbox" checked={showNonveg} onChange={checkForNonveg} />
+            </div>
             <div className="selectCityOcLg mt-5">
               <div>
                 <p>City</p>
@@ -315,22 +348,22 @@ const packages = {
               <div>
                 <p>Occasion</p>
                 <select
-                    name="occasion"
-                    aria-label="Default select example"
-                    value={occasion}
-                    onChange={(e) => handleOccasion(e.target.value)}
-                  >
-                    <option value="" selected>
-                      Select Occasion
-                    </option>
-                    {occasions.map((item, index) => {
-                      return (
-                        <option key={index} value={item}>
-                          {item}
-                        </option>
-                      );
-                    })}
-                  </select>
+                  name="occasion"
+                  aria-label="Default select example"
+                  value={occasion}
+                  onChange={(e) => handleOccasion(e.target.value)}
+                >
+                  <option value="" selected>
+                    Select Occasion
+                  </option>
+                  {occasions.map((item, index) => {
+                    return (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
             </div>
           </div>
@@ -467,8 +500,16 @@ const packages = {
               </div>
             ))}
           </div> */}
+          <div className="d-flex ms-3 mb-2">
+            <div>
+              <h3 style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</h3>
+            </div>
+            <div className="mt-2 ms-2">
+              <Image src="/diy images/vegLogo.png" width="20px" height="20px" />
+            </div>
+          </div>
           <div className="d-flex">
-          {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+            {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
               <h3>{item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
@@ -479,61 +520,72 @@ const packages = {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={()=>handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
                 <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
               </div>
             </div>))}
           </div>
           <div className="d-flex">
-            <div className="packageNameSection text-center me-4">
-              <h3>Fusion NinjaBox</h3>
+            {packages.veg2.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+              <h3>{item.name}</h3>
               <div className="packageImg">
-                <img src="/ninja-box/packages/NBP4.png" />
+                <img src={item.img} />
               </div>
               <div className="packagesName">
-                <h4>2 Starters + 3 Mains + 1 Dessert</h4>
-                <h3>₹ 5,999/-<span> Onwards</span></h3>
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-<span> Onwards</span></h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
               </div>
-
-            </div>
-            <div className="packageNameSection text-center me-4">
-              <h3>Asian NinjaBox</h3>
-              <div className="packageImg">
-                <img src="/ninja-box/packages/NBP5.png" />
-              </div>
-              <div className="packagesName">
-                <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 4,199/-<span> Onwards</span></h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-              </div>
-
-            </div>
-            <div className="packageNameSection text-center">
-              <h3>Cocktail Party</h3>
-              <div className="packageImg">
-                <img src="/ninja-box/packages/NBP6.png" />
-              </div>
-              <div className="packagesName">
-                <h4>6 Starters + 1 Mains</h4>
-                <h3>₹ 4,199/-<span> Onwards</span></h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-              </div>
-
-            </div>
+            </div>))}
           </div>
+          {showNonveg && <div>
+            <div className="d-flex ms-3 mb-2 mt-2">
+              <div>
+                <h3 style={{ color: "#BE2D30", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Non-Veg Packages</h3>
+              </div>
+              <div className="mt-2 ms-2">
+                <Image src="/diy images/Group 962.png" width="20px" height="20px" />
+              </div>
+            </div>
+            <div className="d-flex">
+              {packages.nonVeg.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+                <h3>{item.name}</h3>
+                <div className="packageImg">
+                  <img src={item.img} />
+                </div>
+                <div className="packagesName">
+                  <h4>{item.details}</h4>
+                  <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                  <p>(Min. Order 10 Guests)</p>
+                </div>
+                <div className="d-flex justify-content-evenly">
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                </div>
+              </div>))}
+            </div>
+            <div className="d-flex">
+              {packages.nonVeg2.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+                <h3>{item.name}</h3>
+                <div className="packageImg">
+                  <img src={item.img} />
+                </div>
+                <div className="packagesName">
+                  <h4>{item.details}</h4>
+                  <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                  <p>(Min. Order 10 Guests)</p>
+                </div>
+                <div className="d-flex justify-content-evenly">
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                </div>
+              </div>))}
+            </div>
+          </div>}
         </div>
       </section> : ""}
       {/* {!isSmall ? <section className="custom-package-lower">
@@ -584,12 +636,12 @@ const packages = {
       </secction> : ""}
       {isSmall ?
         <section>
-          <div className="custom-package-smallD text-center mb-5">
+          <div className="custom-package-smallD text-center mb-3">
             <h1>Ninja<span>Box</span></h1>
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
             <div className="checkbox-container my-4">
-              <input type="checkbox" value='veg' name="Veg" id="" />
+              <input type="checkbox" checked={showNonveg} onChange={checkForNonveg} />
             </div>
             <div className="container">
               <div className="dropdown-label row">
@@ -644,9 +696,17 @@ const packages = {
             </div>
           </div>
         </section> : ""}
+      {isSmall ? <div className="d-flex mb-4 justify-content-center">
+        <div>
+          <p style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</p>
+        </div>
+        <div className="ms-1">
+          <Image src="/diy images/vegLogo.png" width="10px" height="10px" />
+        </div>
+      </div> : ""}
       {isSmall ? <section>
         <div className="packageContainer">
-        {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+          {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
             <h3>{item.name}</h3>
             <div className="packageImg">
               <img src={item.img} />
@@ -657,61 +717,75 @@ const packages = {
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              <button onClick={()=>handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+              <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-3" id="selectBtn">Select Package</button>
               <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
             </div>
-            </div>))}
+          </div>))}
         </div>
         <div className="packageContainer">
-          <div className="packageNameSection text-center ms-2 me-4">
-            <h3>Fusion NinjaBox</h3>
+          {packages.veg2.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+            <h3>{item.name}</h3>
             <div className="packageImg">
-              <img src="/ninja-box/packages/NBP4.png" />
+              <img src={item.img} />
             </div>
             <div className="packagesName">
-              <h4>2 Starters + 3 Mains + 1 Dessert</h4>
-              <h3>₹ 5,999/-<span> Onwards</span></h3>
+              <h4>{item.details}</h4>
+              <h3>₹ {item.price}/-<span> Onwards</span></h3>
               <p>(Min. Order 10 Guests)</p>
             </div>
             <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+              <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
             </div>
-
-          </div>
-          <div className="packageNameSection text-center me-3">
-            <h3>Asian NinjaBox</h3>
-            <div className="packageImg">
-              <img src="/ninja-box/packages/NBP5.png" />
-            </div>
-            <div className="packagesName">
-              <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 4,199/-<span> Onwards</span></h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
-
-          </div>
-          <div className="packageNameSection text-center">
-            <h3>Cocktail Party</h3>
-            <div className="packageImg">
-              <img src="/ninja-box/packages/NBP6.png" />
-            </div>
-            <div className="packagesName">
-              <h4>6 Starters + 1 Mains</h4>
-              <h3>₹ 4,199/-<span> Onwards</span></h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
-          </div>
+          </div>))}
         </div>
       </section> : ""}
+      { showNonveg && <div>
+        {isSmall ? <div className="d-flex mb-4 justify-content-center">
+          <div>
+            <p style={{ color: "#BE2D30", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Non-Veg Packages</p>
+          </div>
+          <div className="ms-1">
+            <Image src="/diy images/Group 962.png" width="10px" height="10px" />
+          </div>
+        </div> : ""}
+        {isSmall ? <section>
+          <div className="packageContainer">
+            {packages.nonVeg.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+              </div>
+            </div>))}
+          </div>
+          <div className="packageContainer">
+            {packages.nonVeg2.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+              </div>
+            </div>))}
+          </div>
+        </section> : ""}
+      </div>}
       {isSmall ? <section>
         <div className="create-your-own-package">
           <div className="row container">

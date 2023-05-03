@@ -5,6 +5,7 @@ import styles2 from "/styles/NewCustomizePkg.module.scss";
 import Link from 'next/link';
 import Swal from "sweetalert2";
 import { useAppMenu } from "$lib/menuContext";
+import styles3 from "/styles/Custom_Package.module.scss";
 
 const NinjaBoxViewPkg = () => {
 
@@ -24,6 +25,8 @@ const NinjaBoxViewPkg = () => {
     const [details, setDetails] = useState()
     const [price, setPrice] = useState()
     const [image, setImage] = useState()
+    const [showPopup, setShowPopup] = useState(false);
+
 
     const handleCity = (city) => {
         setCity(city);
@@ -32,19 +35,27 @@ const NinjaBoxViewPkg = () => {
         setOccasion(occasion);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
-            //alert("Please fill out all details!");
-            Swal.fire({
-                text: "Please fill out all details!",
-                icon: "warning",
-                confirmButtonText: "OK",
-            });
-        } else {
-            setShowDiv(true);
-        }
+    const confirmPkg = (e) => {
+        setShowDiv(true);
+        // e.preventDefault();
+        // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
+        //     //alert("Please fill out all details!");
+        //     Swal.fire({
+        //         text: "Please fill out all details!",
+        //         icon: "warning",
+        //         confirmButtonText: "OK",
+        //     });
+        // } else {
+        //     setShowDiv(true);
+        // }
     };
+
+    const placeOrderBtn = () => {
+        setShowPopup(true);
+    }
+    const closePopup = () => {
+        setShowPopup(false);
+    }
 
     useEffect(() => {
         let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
@@ -87,6 +98,35 @@ const NinjaBoxViewPkg = () => {
                         </div>
                     </div> */}
                 </div>
+                { showPopup && <div className={styles.popupCnfrmPkg}>
+                    <h4>Details</h4>
+                    <div className={styles.formDetails}>
+                        <div className='d-flex justify-content-between'>
+                            <p>Name:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>Phone:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>Email:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>Address:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>ZipCode:</p>
+                            <input></input>
+                        </div>
+                    </div>
+                    <div className={styles.cnfmBtn}>
+                        <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+                        <button onClick={() => navigateToOverview()} id={styles.viewBtn}>Payment</button>
+                    </div>
+                </div>}
                 <div className={styles.redBg}>
                     {/* <div className={styles.cityContainer}>
                         <div className={styles.cityflexLg}>
@@ -127,7 +167,7 @@ const NinjaBoxViewPkg = () => {
                             <div>
                                 <p>Date</p>
                                 <div>
-                                    <input type="date" value={selectedDate}/>
+                                    <input type="date" value={selectedDate}></input>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +219,7 @@ const NinjaBoxViewPkg = () => {
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
                             </div> */}
-                            <h5>₹ {price}</h5>
+                            {/* <h5>₹ {price}</h5> */}
                         </div>
                         <div className={styles.pkgDetails}>
                             <div>
@@ -189,9 +229,9 @@ const NinjaBoxViewPkg = () => {
                                     <p id={styles.vegGuest}>Veg Guests<span>: {vegCount}</span></p>
                                     <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVegCount}</span></p>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <h6>₹ {price}</h6>
-                                </div>
+                                </div> */}
                             </div>
                             <div>
                                 <img id={styles.pkgImg} src={image} width="366px" height="200px" />
@@ -352,7 +392,7 @@ const NinjaBoxViewPkg = () => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className="mt-5">
+                        {/* <div className="mt-5">
                             <div className={styles2.userInput}>
                                 <h4>Details*</h4>
                                 <form className={styles2.detailsInputLg}>
@@ -376,17 +416,20 @@ const NinjaBoxViewPkg = () => {
                                     />
                                 </form>
                             </div>
-                        </div>
-                        <div className={styles.chefNote}>
+                        </div> */}
+                        {/* <div className={styles.chefNote}>
                             <input placeholder='Special Restriction? Chef Note?' type="text" />
-                        </div>
+                        </div> */}
                         <div className={styles.btnContnr}>
                             <div>
-                                <button onClick={handleSubmit} id={styles.cnfrmPkg}>Check Price</button>
+                                <button onClick={confirmPkg} id={styles.cnfrmPkg}>Confirm Package</button>
                             </div>
                             <div>
                                 <button onClick={() => window.open('/customiseNinjaBox', '_blank')} id={styles.custmPkg}>Customise Package</button>
                             </div>
+                        </div>
+                        <div className={styles.createNewPkg}>
+                            <button onClick={() => window.open('/checkprice', '_blank')}>Create New Package</button>
                         </div>
                         {/* <div style={{marginBottom: "10px"}} className={styles.instantQuoteBtn}>
                             <button>Get Instant Quote</button>
@@ -452,8 +495,11 @@ const NinjaBoxViewPkg = () => {
                                 <p>*Delivery charges as per actual</p>
                             </div>
                             <div className={styles.orderBtn}>
-                                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
+                                <button onClick={() => placeOrderBtn()}>Place Order</button>
                             </div>
+                            {/* <div className={styles.orderBtn}>
+                                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
+                            </div> */}
                         </div>)}
                     </div>
                 </div>
