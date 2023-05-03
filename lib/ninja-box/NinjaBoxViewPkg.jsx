@@ -7,6 +7,8 @@ import Link from 'next/link';
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 import { useAppMenu } from "$lib/menuContext";
+import styles3 from "/styles/Custom_Package.module.scss";
+
 const NinjaBoxViewPkg = () => {
 
 
@@ -36,6 +38,8 @@ const NinjaBoxViewPkg = () => {
   const [dessertData2, setDessertData2] = useState([]);
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
+   
+
 
 
 
@@ -50,9 +54,12 @@ const [city, setCity] = useState("");
 const [occasion, setOccasion] = useState("");
 const [itemSelected, setItemSelected] = useState()
 const [selectedDate, setSelectedDate] = useState()
+const [vegCount, setVegCount] = useState()
+const [nonVegCount, setNonVegCount] = useState()
 const [details, setDetails] = useState()
 const [price, setPrice] = useState()
 const [image, setImage] = useState()
+const [showPopup, setShowPopup] = useState(false);
 const [ID, setId] = useState(0)
 
 useEffect(() => {
@@ -838,21 +845,43 @@ const handleStatersAdd = (item_name, id) => {
 
     
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
-            //alert("Please fill out all details!");
-            Swal.fire({
-                text: "Please fill out all details!",
-                icon: "warning",
-                confirmButtonText: "OK",
-            });
-        } else {
-            setShowDiv(true);
-        }
+    const confirmPkg = (e) => {
+        setShowDiv(true);
+        // e.preventDefault();
+        // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
+        //     //alert("Please fill out all details!");
+        //     Swal.fire({
+        //         text: "Please fill out all details!",
+        //         icon: "warning",
+        //         confirmButtonText: "OK",
+        //     });
+        // } else {
+        //     setShowDiv(true);
+        // }
     };
 
    
+    const placeOrderBtn = () => {
+        setShowPopup(true);
+    }
+    const closePopup = () => {
+        setShowPopup(false);
+    }
+
+    useEffect(() => {
+        let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
+        // sessionStorage.removeItem("dataSelected")
+        setCity(dataSelected['city'])
+        setVegCount(dataSelected['vcount'])
+        setNonVegCount(dataSelected['nvcount'])
+        setSelectedDate(dataSelected['selectedDate'])
+        setOccasion(dataSelected['occasion'])
+        setName(dataSelected.itemSelected['name'])
+        setDetails(dataSelected.itemSelected['details'])
+        setPrice(dataSelected.itemSelected['price'])
+        setImage(dataSelected.itemSelected['img'])
+        console.log(dataSelected)
+    }, [])
     return (
         <div className={styles.customizeMainContainer}>
             <div className={styles.customizeMainContainer}>
@@ -880,6 +909,35 @@ const handleStatersAdd = (item_name, id) => {
                         </div>
                     </div> */}
                 </div>
+                { showPopup && <div className={styles.popupCnfrmPkg}>
+                    <h4>Details</h4>
+                    <div className={styles.formDetails}>
+                        <div className='d-flex justify-content-between'>
+                            <p>Name:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>Phone:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>Email:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>Address:</p>
+                            <input></input>
+                        </div>
+                        <div className='d-flex justify-content-between'>
+                            <p>ZipCode:</p>
+                            <input></input>
+                        </div>
+                    </div>
+                    <div className={styles.cnfmBtn}>
+                        <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+                        <button onClick={() => navigateToOverview()} id={styles.viewBtn}>Payment</button>
+                    </div>
+                </div>}
                 <div className={styles.redBg}>
                     {/* <div className={styles.cityContainer}>
                         <div className={styles.cityflexLg}>
@@ -920,7 +978,7 @@ const handleStatersAdd = (item_name, id) => {
                             <div>
                                 <p>Date</p>
                                 <div>
-                                    <input type="date" value={selectedDate}/>
+                                    <input type="date" value={selectedDate}></input>
                                 </div>
                             </div>
                         </div>
@@ -972,7 +1030,7 @@ const handleStatersAdd = (item_name, id) => {
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
                             </div> */}
-                            <h5>₹ {price}</h5>
+                            {/* <h5>₹ {price}</h5> */}
                         </div>
                         <div className={styles.pkgDetails}>
                             <div>
@@ -985,6 +1043,9 @@ const handleStatersAdd = (item_name, id) => {
                                 <div>
                                     <h6>₹ {totalPrice}</h6>
                                 </div>
+                                {/* <div>
+                                    <h6>₹ {price}</h6>
+                                </div> */}
                             </div>
                             <div>
                                 <img id={styles.pkgImg} src={image} width="366px" height="200px" />
@@ -1081,7 +1142,7 @@ const handleStatersAdd = (item_name, id) => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className="mt-5">
+                        {/* <div className="mt-5">
                             <div className={styles2.userInput}>
                                 <h4>Details*</h4>
                                 <form className={styles2.detailsInputLg}>
@@ -1105,17 +1166,20 @@ const handleStatersAdd = (item_name, id) => {
                                     />
                                 </form>
                             </div>
-                        </div>
-                        <div className={styles.chefNote}>
+                        </div> */}
+                        {/* <div className={styles.chefNote}>
                             <input placeholder='Special Restriction? Chef Note?' type="text" />
-                        </div>
+                        </div> */}
                         <div className={styles.btnContnr}>
                             <div>
-                                <button onClick={handleSubmit} id={styles.cnfrmPkg}>Check Price</button>
+                                <button onClick={confirmPkg} id={styles.cnfrmPkg}>Confirm Package</button>
                             </div>
                             <div>
                                 <button onClick={() => window.open('/customiseNinjaBox', '_blank')} id={styles.custmPkg}>Customise Package</button>
                             </div>
+                        </div>
+                        <div className={styles.createNewPkg}>
+                            <button onClick={() => window.open('/checkprice', '_blank')}>Create New Package</button>
                         </div>
                         {/* <div style={{marginBottom: "10px"}} className={styles.instantQuoteBtn}>
                             <button>Get Instant Quote</button>
@@ -1181,8 +1245,11 @@ const handleStatersAdd = (item_name, id) => {
                                 <p>*Delivery charges as per actual</p>
                             </div>
                             <div className={styles.orderBtn}>
-                                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
+                                <button onClick={() => placeOrderBtn()}>Place Order</button>
                             </div>
+                            {/* <div className={styles.orderBtn}>
+                                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
+                            </div> */}
                         </div>)}
                     </div>
                 </div>

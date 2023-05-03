@@ -1783,7 +1783,7 @@ const CustomizeNinjaBox = () => {
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
 
-        var raw={ "phoneNumber": "7023405885", "event": "NewOrder", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
+        var raw={ "phoneNumber": "7023405885", "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -1791,8 +1791,23 @@ const CustomizeNinjaBox = () => {
             redirect: 'follow'
           };
           
-          axios.post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+        axios.post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
             .then(response => console.log("resot",response.json()))
+  }
+
+  const EmailOrderConfirmation=(datas)=>{
+    //post api for email
+    fetch("/api/EmailOrderConfirmation", {
+      method: "POST",
+      body: JSON.stringify(datas),
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+    }).then((res) => {
+      if (res.success) {
+       alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+      } else {
+        console.log("Failed to send message");
+      }
+    });
   }
 
   // const selectedItems = filteredData.filter(item => item.checked);
@@ -1859,9 +1874,14 @@ const CustomizeNinjaBox = () => {
                 },
                 body: JSON.stringify(datas),
               }).then((res)=>console.log("successful"),
+
+              //Email the Order Confirmation
+              EmailOrderConfirmation(datas),
               
                 //Interakt Api message to hit my number with details
                 interakt()
+
+                
               );
             }
             else{
@@ -2391,6 +2411,20 @@ const CustomizeNinjaBox = () => {
                               onChange={searchStarter}
                               placeholder="Search Starter"
                             />
+                            {/* <div className={styles.radioFilter}>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
+                                <label className="form-check-label" for="inlineRadio1">All</label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="veg" />
+                                <label style={{color: "green"}} className="form-check-label" for="inlineRadio2">Veg</label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
+                                <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
+                              </div>
+                            </div> */}
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredData.map((item, index) => (
@@ -2582,6 +2616,20 @@ const CustomizeNinjaBox = () => {
                               onChange={searchMains}
                               placeholder="Search Mains"
                             />
+                            {/* <div className={styles.radioFilter}>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
+                                <label className="form-check-label" for="inlineRadio1">All</label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="veg" />
+                                <label style={{color: "green"}} className="form-check-label" for="inlineRadio2">Veg</label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
+                                <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
+                              </div>
+                            </div> */}
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredMainsData.map((item, index) => (

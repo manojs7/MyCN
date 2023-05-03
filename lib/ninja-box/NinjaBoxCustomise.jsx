@@ -1855,8 +1855,8 @@ const NinjaBoxCustomise = () => {
             </div>
             
         </div> */}
-                        
-                                {/* <div style={{ marginBottom: "40px" }}>
+
+                        {/* <div style={{ marginBottom: "40px" }}>
                   <p>Cuisine</p>
                   <select className="form-select" name='cuisine' aria-label="Default select example" value={cuisine} onChange={e => handleCuisine(e.target.value)} required>
                     {cuisines.map((item, index) => {
@@ -1867,89 +1867,98 @@ const NinjaBoxCustomise = () => {
                   </select>
                 </div> */}
                         <div className={styles3.redContent}>
-                        <div className={styles3.cityDateContainer}>
-                            <div>
-                                <p>City</p>
+                            <div className={styles3.cityDateContainer}>
                                 <div>
-                                <select
-                                        name="city"
-                                        aria-label="Default select example"
-                                        value={city}
-                                        onChange={(e) => handleCity(e.target.value)}
+                                    <p>City</p>
+                                    <div>
+                                        <select
+                                            name="city"
+                                            aria-label="Default select example"
+                                            value={city}
+                                            onChange={(e) => handleCity(e.target.value)}
+                                            required
+                                        >
+                                            <option value="" selected>
+                                                Select City
+                                            </option>
+                                            {cities.map((item, index) => {
+                                                return (
+                                                    <option key={index} value={item}>
+                                                        {item}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>Date</p>
+                                    <div>
+                                        <input type="date" name="event_date"
+                                            selected={startDate}
+                                            onChange={(date) => setStartDate(date)}
+                                            required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles3.guestCountContainer}>
+                                <div>
+                                    <p>Veg Count</p>
+                                    <div>
+                                        <input type="number"
+                                            onBlur={(e) =>
+                                                handleVegNonVegGuest("veg", parseInt(e.target.value))
+                                            }
+                                            min="0"
+                                            defaultValue={veg}></input>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>N-Veg Count</p>
+                                    <div>
+                                        <input type="number"
+                                            onBlur={(e) =>
+                                                handleVegNonVegGuest("nonVeg", parseInt(e.target.value))
+                                            }
+                                            min="0"
+                                            defaultValue={nonVeg}></input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles3.cityDateContainer}>
+                                <div>
+                                    <p>Occasion</p>
+                                    <div>
+                                        <select
+                                            name="occasion"
+                                            aria-label="Default select example"
+                                            value={occasion}
+                                            onChange={(e) => handleOccasion(e.target.value)}
+                                        >
+                                            <option value="" selected>
+                                                Select Occasion
+                                            </option>
+                                            {occasions.map((item, index) => {
+                                                return (
+                                                    <option key={index} value={item}>
+                                                        {item}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>Delivery Time</p>
+                                    <input
+                                        type="time"
+                                        name="event_time"
+                                        onChange={(time) => setstartTime(time)}
                                         required
-                                    >
-                                        <option value="" selected>
-                                            Select City
-                                        </option>
-                                        {cities.map((item, index) => {
-                                            return (
-                                                <option key={index} value={item}>
-                                                    {item}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <p>Date</p>
-                                <div>
-                                    <input type="date" name="event_date"
-                                        selected={startDate}
-                                        onChange={(date) => setStartDate(date)}
-                                        required/>
+                                    ></input>
                                 </div>
                             </div>
                         </div>
-                        <div className={styles3.guestCountContainer}>
-                            <div>
-                                <p>Veg Count</p>
-                                <div>
-                                    <input type="number"
-                                        onBlur={(e) =>
-                                            handleVegNonVegGuest("veg", parseInt(e.target.value))
-                                        }
-                                        min="0"
-                                        defaultValue={veg}></input>
-                                </div>
-                            </div>
-                            <div>
-                                <p>N-Veg Count</p>
-                                <div>
-                                    <input type="number"
-                                        onBlur={(e) =>
-                                            handleVegNonVegGuest("nonVeg", parseInt(e.target.value))
-                                        }
-                                        min="0"
-                                        defaultValue={nonVeg}></input>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles3.cityDateContainer}>
-                            <div>
-                                <p>Occasion</p>
-                                <div>
-                                <select
-                                        name="occasion"
-                                        aria-label="Default select example"
-                                        value={occasion}
-                                        onChange={(e) => handleOccasion(e.target.value)}
-                                    >
-                                        <option value="" selected>
-                                            Select Occasion
-                                        </option>
-                                        {occasions.map((item, index) => {
-                                            return (
-                                                <option key={index} value={item}>
-                                                    {item}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                         {/* Display Starters, mains etc count */}
                         <div className={styles.whiteBg}>
                             {/* MANOJ <div className={styles.packageName}>
@@ -1962,7 +1971,7 @@ const NinjaBoxCustomise = () => {
                                 <img src='555.png' height="150px" width="274.5px" />
                                 <h6>Starters + X Mains + X Desserts</h6>
                             </div>
-                            <div className={styles.pkgSliderContainerLG}>
+                            {/* <div className={styles.pkgSliderContainerLG}>
                                 {
                                     <Slider {...settings}>
                                         <div className={styles.pkgSlider}>
@@ -1991,7 +2000,7 @@ const NinjaBoxCustomise = () => {
                                         </div>
                                     </Slider>
                                 }
-                            </div>
+                            </div> */}
                             {/* <div className={styles.pkgDetails}>
                 <div>
                   <h3>PACKAGE NAME</h3>
