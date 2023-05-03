@@ -39,9 +39,9 @@ const packages = {
     { id: 3, name: "B'Day NinjaBox", price: '3,699', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert"  },
   ],
   nonVeg: [
-    { id: 1, name: 'Fusion NinjaBox', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert" },
-    { id: 1, name: 'Asian NinjaBox', price: '4,199', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert" },
-    { id: 1, name: 'Cocktail Party', price: '4,199', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains" }
+    { id: 4, name: 'Fusion NinjaBox', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert" },
+    { id: 5, name: 'Asian NinjaBox', price: '4,199', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert" },
+    { id: 6, name: 'Cocktail Party', price: '4,199', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains" }
   ],
 };
 
@@ -54,7 +54,7 @@ const packages = {
     "nijjabox3.png",
     "nijjabox4.png",]
   // const [show, setShow] = useState(false);
-  // const [vegNonVeg, setVegNonVeg] = useState('Veg');
+  const [vegNonVeg, setVegNonVeg] = useState('Veg');
 
   // const [vegGuest, setVegGuest] = useState(10);
   // const [nonVegGuest, setNonVegGuest] = useState(10);
@@ -91,14 +91,14 @@ const packages = {
   // const handleShow = () => setShow(true);
 
   //veg non-veg check
-  // const handleChange = (event) => {
-  //   if (event.target.checked) {
-  //     setVegNonVeg('nonVeg')
-  //   } else {
-  //     setVegNonVeg('Veg')
-  //     console.log(' Checkbox is NOT checked');
-  //   }
-  // }
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      setVegNonVeg('nonVeg')
+    } else {
+      setVegNonVeg('Veg')
+      console.log(' Checkbox is NOT checked');
+    }
+  }
   // const handleGuestAdd = (e) => {
   //   vegNonVeg === 'nonVeg' ? setNonVegGuest(e.target.value) : setVegGuest(e.target.value)
   //   console.log(vegGuest, nonVegGuest)
@@ -287,9 +287,9 @@ const packages = {
               Ninja<span>Box</span> Packages
             </h2>
             <h6 className="text-center" style={{fontSize: "20px"}}>Select Your Ninja<span>Box</span> Package</h6>
-            {/* <div className="checkbox-container my-4 mx-auto">
-              <input type="checkbox" value='veg' name="Veg" id="" />
-            </div> */}
+            <div className="checkbox-container my-4 mx-auto">
+              <input type="checkbox"  value='veg' name="Veg" id="" />
+            </div>
             <div className="selectCityOcLg mt-5">
               <div>
                 <p>City</p>
@@ -589,7 +589,7 @@ const packages = {
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
             <div className="checkbox-container my-4">
-              <input type="checkbox" value='veg' name="Veg" id="" />
+              <input type="checkbox" onChange={handleChange} value='veg' name="Veg" id="" />
             </div>
             <div className="container">
               <div className="dropdown-label row">

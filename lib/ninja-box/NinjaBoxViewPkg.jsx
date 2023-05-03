@@ -990,7 +990,7 @@ const handleStatersAdd = (item_name, id) => {
                                 <img id={styles.pkgImg} src={image} width="366px" height="200px" />
                             </div>
                         </div>
-                        <div>
+                        <div> 
                             <div className={styles.menuContainer}>
                                 <div className={styles.startersContainer}>
                                     <h5>Starters</h5>
@@ -1012,7 +1012,7 @@ const handleStatersAdd = (item_name, id) => {
                                         
                                     ))}
                                     </div>
-                                </div>
+                                </div> 
                                 <hr className={styles2.MenuHr} />
                                 <div className={styles2.imgDesc} id="d2">
                                     <p>*Images are for representation purpose only</p>
@@ -1037,7 +1037,7 @@ const handleStatersAdd = (item_name, id) => {
                                         
                                     ))}
                                 
-                                    </div>
+                                    </div> 
                                 </div>
                                 <hr className={styles2.MenuHr} />
                                 <div className={styles2.imgDesc} id="d2">

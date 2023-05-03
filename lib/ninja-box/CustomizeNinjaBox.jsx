@@ -49,7 +49,7 @@ const CustomizeNinjaBox = () => {
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState();
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
@@ -1544,6 +1544,7 @@ const CustomizeNinjaBox = () => {
     let mainPrice = 0;
     let dessertPrice = 0;
     let bredRicePrice = 0;
+    
 
     starters.map((d) => {
       if (d.Qtype === "pcs") {
@@ -1600,6 +1601,9 @@ const CustomizeNinjaBox = () => {
       parseInt(getGst())
     );
     setShowPriceList(false);
+   
+
+
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
@@ -1713,10 +1717,10 @@ const CustomizeNinjaBox = () => {
       GST: final_gst,
       showDessert: false,
     };
-    console.log(datas);
+   
 
     setDatas(datas);
-
+    
     let data = "";
     try {
       data = JSON.stringify(datas);
@@ -1774,6 +1778,23 @@ const CustomizeNinjaBox = () => {
     };
   }, []);
 
+  const interakt=()=>{
+    var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
+
+        var raw={ "phoneNumber": "7023405885", "event": "NewOrder", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+          };
+          
+          axios.post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+            .then(response => console.log("resot",response.json()))
+  }
+
   // const selectedItems = filteredData.filter(item => item.checked);
   // const unselectedItems = filteredData.filter(item => !item.checked);
 
@@ -1797,21 +1818,74 @@ const CustomizeNinjaBox = () => {
           body: JSON.stringify(response.response),
         })
           .then(function (a) {
+            
             return a.json();
           })
+          //Storing the payment details
           .then(function (json) {
-            console.log(json);
+
+            //API call for saving all the payment response whether it is success or failure
+            fetch("/api/RawPaymentAllDetails", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(json.status),
+            })
+
+            // if payment gets successful
+
+            if(json.status.status==="success"){
+            
+              // let payData={
+                datas.txnid=json.status.txnid,
+                datas.phone=json.status.phone,
+                datas.productinfo=json.status.productinfo,
+                datas.amount=json.status.amount,
+                datas.status=json.status,
+                datas.email=json.status.email,
+                datas.bank_ref_num=json.status.bank_ref_num,
+                datas.name=json.status.field4
+
+              // }
+              // let userData= JSON.stringify(datas)+JSON.stringify(payData);
+
+              fetch("/api/saveCompletedOrderDetails", {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(datas),
+              }).then((res)=>console.log("successful"),
+              
+                //Interakt Api message to hit my number with details
+                interakt()
+              );
+            }
+            else{
+              
+              alert("Payment Failed! Please try again.");
+            }
           });
+          
       },
-      catchException: function (response) {
-        // the code you use to handle the integration errors goes here
-        // Make any UI changes to convey the error to the user
-      },
+      
+      // catchException: function (response) {
+      //   // the code you use to handle the integration errors goes here
+      //   // Make any UI changes to convey the error to the user
+      // },
     });
   };
 
   const payumoney = (e) => {
     e.preventDefault();
+
+    if(totalPrice<3000){
+      alert("Order value must be greater than 3000");
+      return;
+    }
     //Create a Data object that is to be passed to LAUNCH method of Bolt
     let oid = "RSGI" + Math.floor(Math.random(6) * 1000000);
     console.log(oid);
@@ -3228,10 +3302,10 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                    {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
-                    </Link>
-                    {/* <button onClick={payum *-+oney}></button> */}
+                    </Link> */}
+                    <button onClick={payumoney}>Place Order</button>
                   </div>
                 </div>
               )}
