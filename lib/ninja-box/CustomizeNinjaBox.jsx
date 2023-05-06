@@ -25,7 +25,7 @@ import Link from "next/link";
 // import { Launch } from "@mui/icons-material";
 
 const CustomizeNinjaBox = () => {
-  const { menu, cuisines, allMenus, cities, occasions, PreSelected } =
+  const { menu, cuisines, allMenus, cities, occasions, PreSelected,PreSelectMenuNinjaBox } =
     useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
