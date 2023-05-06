@@ -25,7 +25,7 @@ import Link from "next/link";
 // import { Launch } from "@mui/icons-material";
 
 const CustomizeNinjaBox = () => {
-  const { menu, cuisines, allMenus, cities, occasions, PreSelected,PreSelectMenuNinjaBox } =
+  const { menu, cuisines, allMenus, cities, occasions } =
     useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
@@ -165,19 +165,19 @@ const CustomizeNinjaBox = () => {
 
     let itemData;
 
-    PreSelected.forEach((item) => {
-      itemData = allMenus.filter((d) => d.name === item);
-      if (itemData[0].mealType === "Starter") {
-        // handleStatersAdd(item);
-      } else if (itemData[0].mealType === "Main course") {
-        // handleMainAdd(item);
-      } else if (itemData[0].mealType === "Bread+Rice") {
-        // handleBreadRiceAdd(item);
-      } else if (itemData[0].mealType === "Dessert") {
-        // handleDesertsAdd(item);
-      }
-      console.log("here", itemData);
-    });
+    // PreSelected.forEach((item) => {
+    //   itemData = allMenus.filter((d) => d.name === item);
+    //   if (itemData[0].mealType === "Starter") {
+    //     // handleStatersAdd(item);
+    //   } else if (itemData[0].mealType === "Main course") {
+    //     // handleMainAdd(item);
+    //   } else if (itemData[0].mealType === "Bread+Rice") {
+    //     // handleBreadRiceAdd(item);
+    //   } else if (itemData[0].mealType === "Dessert") {
+    //     // handleDesertsAdd(item);
+    //   }
+    //   console.log("here", itemData);
+    // });
 
     const newMainData = allMenus.filter((d) => d.mealType === "Main course");
 
