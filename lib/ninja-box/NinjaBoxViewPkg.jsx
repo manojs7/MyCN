@@ -95,17 +95,7 @@ useEffect(() => {
       return 0;
     });
 
-    // removing duplicate
-    //  const result = allMenus?.reduce((finalArray, current) => {
-    //   let obj = finalArray?.find((item) => item.name === current.name);
-
-    //   // console.log('duplicate',result)
-    //   if (obj) {
-    //     return finalArray;
-    //   }
-    //   return finalArray.concat([current]);
-    // }, [])
-    // const result = allMenus;
+    
      const result = allMenus?.reduce((finalArray, current) => {
       let obj = finalArray?.find((item) => item.name === current.name);
 
@@ -115,16 +105,7 @@ useEffect(() => {
       }
       return finalArray.concat([current]);
     }, [])
-    // reference url
-    // if (sessionStorage.getItem("first_url2") === "") {
-    //   const catch_url = sessionStorage.setItem("first_url2", JSON.stringify(x));
-    //   setRefURL(catch_url);
-    //   console.log(catch_url);
-    // } else {
-    //   let url_value = sessionStorage.getItem("first_url2");
-    //   setRefURL(url_value);
-    //   console.log(url_value);
-    // }
+   
     let url_value = sessionStorage.getItem("first_url2");
     // setRefURL(url_value);
     
@@ -137,36 +118,34 @@ useEffect(() => {
     setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
     setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
 
-
-    
-    // const newMainData = allMenus.filter((d) => d.mealType === "Main course");
-
-    // newMainData.sort(function (a, b) {
-    //   return parseInt(b.selling_price) - parseInt(a.selling_price);
-    // });
-    // setHighestPrice(newMainData[0]);
   }, []);
 
 //Adding menu items to preselection
  
 
-const preselection=async()=>{
+const preselection=()=>{
     let itemData;
 
-    (PreSelectMenuNinjaBox.filter((d)=>d.id===ID))[0].details.items.forEach((item) => {
-      itemData = allMenus.filter((d) => d.name === item);
-      if (itemData[0].mealType === "Starter") {
-        handleStatersAdd(item);
-      } else if (itemData[0].mealType === "Main course") {
-        handleMainAdd(item);
-      } else if (itemData[0].mealType === "Bread+Rice") {
-        handleBreadRiceAdd(item);
-      } else if (itemData[0].mealType === "Dessert") {
-        handleDesertsAdd(item);
-      }
-      console.log("here", itemData);
-    });
+    if(ID){
+      (PreSelectMenuNinjaBox.filter((d)=>d.id===ID))[0].details.items.forEach((item) => {
+        itemData = allMenus.filter((d) => d.name === item);
+        if (itemData[0].mealType === "Starter") {
+          handleStatersAdd(item);
+        } else if (itemData[0].mealType === "Main course") {
+          handleMainAdd(item);
+        } else if (itemData[0].mealType === "Bread+Rice") {
+          handleBreadRiceAdd(item);
+        } else if (itemData[0].mealType === "Dessert") {
+          handleDesertsAdd(item);
+        }
+        console.log("here", itemData);
+      });
+    }
+    else{
 
+    }
+
+    
 }
 
 const handleStatersAdd = (item_name, id) => {
@@ -780,9 +759,6 @@ const handleStatersAdd = (item_name, id) => {
     let dessertPrice = 0;
     let bredRicePrice = 0;
 
-    console.log("starters",starters);
-    console.log("mains", mains)
-
     starters.map((d) => {
       if (d.Qtype === "pcs") {
         starterPrice += d.quantity * parseInt(d.selling_price / 12);
@@ -791,7 +767,6 @@ const handleStatersAdd = (item_name, id) => {
       }
     });
     console.log("startersPrice", starterPrice);
-    console.log("mains", mains);
     mains.map((d) => {
       if (d.Qtype === "pcs") {
         mainPrice += d.quantity * parseInt(d.selling_price / 12);
@@ -828,16 +803,8 @@ const handleStatersAdd = (item_name, id) => {
         starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
       )
     );
-    // getDeliveryCharge(people);
-
-    // setGST(getGst());
-    // setgrandTotal(
-    //   parseInt(totalPrice) +
-    //   parseInt(buffet) +
-    //   // parseInt(deliveryCharge) +
-    //   parseInt(getGst())
-    // );
-    // setShowPriceList(false);
+    preselection()
+    
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
 

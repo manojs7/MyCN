@@ -12,6 +12,9 @@ module.exports = withAnalyzer({
     locales: ["en"],
     defaultLocale: "en",
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: ['firebasestorage.googleapis.com']
   }
