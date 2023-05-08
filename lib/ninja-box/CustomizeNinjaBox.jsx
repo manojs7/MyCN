@@ -3350,10 +3350,10 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
-                    </Link> */}
-                    <button onClick={payumoney}>Place Order</button>
+                    </Link>
+                    {/* <button onClick={payumoney}>Place Order</button> */}
                   </div>
                 </div>
               )}
