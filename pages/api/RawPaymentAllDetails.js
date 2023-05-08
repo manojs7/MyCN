@@ -1,15 +1,14 @@
 import clientPromise from "../../lib/mongodb";
 
-export default function handler(req, res) {
-  const client = clientPromise;
+export default async function handler(req, res) {
+  const client = await clientPromise;
   const db = client.db("CaterNinja");
   if (req.method === "POST") {
-    res.json("here",client)
-    // let bodyObject = (req.body);
-    // let myPost = db.collection("RawPaymentAllDetails").insertOne(bodyObject);
-    // res.json(myPost);
+    let bodyObject = (req.body);
+    let myPost = await db.collection("RawPaymentAllDetails").insertOne(bodyObject);
+    res.json(myPost);
   } else {
-    const allPosts = db.collection("RawPaymentAllDetails").find({}).toArray();
+    const allPosts = await db.collection("RawPaymentAllDetails").find({}).toArray();
     res.json({ status: 200, data: allPosts });
   }
 }
