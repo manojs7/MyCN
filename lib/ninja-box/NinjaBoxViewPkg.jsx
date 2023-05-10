@@ -123,7 +123,7 @@ useEffect(() => {
 //Adding menu items to preselection
  
 
-const preselection=()=>{
+const preselection=async()=>{
     let itemData;
 
     if(ID){
@@ -138,6 +138,11 @@ const preselection=()=>{
         } else if (itemData[0].mealType === "Dessert") {
           handleDesertsAdd(item);
         }
+        sessionStorage.setItem("starters", starters)
+    sessionStorage.setItem("mains", mains)
+    sessionStorage.setItem("breadRice", breadRice)
+    sessionStorage.setItem("desserts", desserts)
+    
         console.log("here", itemData);
       });
     }

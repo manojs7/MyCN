@@ -1869,6 +1869,7 @@ const CustomizeNinjaBox = () => {
                 datas.status=json.status,
                 datas.email=json.status.email,
                 datas.bank_ref_num=json.status.bank_ref_num,
+                datas.OrderStatus=""
                 // datas.name=json.status.field4
 
               // }

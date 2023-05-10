@@ -112,6 +112,25 @@ const NinjaBoxCustomise = () => {
         autoplaySpeed: 2000,
     };
 
+    useEffect(()=>{
+        let SessionData=JSON.parse(sessionStorage.getItem("dataSelected"));
+        console.log("here",sessionStorage.getItem("starters"))
+        if(SessionData){
+          setCity(SessionData['city']),
+          setVeg(SessionData['vcount']),
+          setNonVeg(SessionData['nvcount']),
+          // setStartDate(SessionData['selectedDate']),
+          setOccasion(SessionData['occasion'])
+
+          // setstartTime(SessionData['evt_time'])
+
+
+        //   setStarters(sessionStorage.getItem("starters"))
+        //   setMains(sessionStorage.getItem("mains"))
+        //   setBreadRice(sessionStorage.getItem("breadRice"))
+        //   setDesserts(sessionStorage.getItem("desserts"))
+        }
+      },[])
     useEffect(() => {
         allMenus.sort(function (a, b) {
             const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase

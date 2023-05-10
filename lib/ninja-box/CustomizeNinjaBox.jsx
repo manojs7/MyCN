@@ -113,6 +113,17 @@ const CustomizeNinjaBox = () => {
     autoplaySpeed: 2000,
   };
 
+  useEffect(()=>{
+    let SessionData=JSON.parse(sessionStorage.getItem("dataSelected"));
+    if(SessionData){
+      setCity(SessionData['city']),
+      setVeg(SessionData['vcount']),
+      setNonVeg(SessionData['nvcount']),
+      // setStartDate(SessionData['selectedDate']),
+      setOccasion(SessionData['occasion'])
+      // setstartTime(SessionData['evt_time'])
+    }
+  },[])
   useEffect(() => {
 
     allMenus.sort(function (a, b) {
