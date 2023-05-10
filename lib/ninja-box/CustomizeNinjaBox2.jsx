@@ -1783,7 +1783,7 @@ const CustomizeNinjaBox = () => {
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
 
-        var raw={ "phoneNumber": "7023405885", "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
+        var raw={ "phoneNumber": datas.mobileno, "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -1913,9 +1913,9 @@ const CustomizeNinjaBox = () => {
       key: "VKy9EEvW",
       txnid: oid,
       amount: "1",
-      firstname: name,
-      email: email,
-      phone: "7023405885",
+      firstname: datas.name,
+      email: datas.email,
+      phone: datas.name,
       productinfo: "test",
       surl: "https://caterninja.com",
       furl: "https://new.caterninja.com",
