@@ -869,6 +869,9 @@ const handleStatersAdd = (item_name, id) => {
                             <div>
                                 <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
                             </div>
+                            <div className={styles.LgHeaderImg} style={{marginLeft: "120px", marginTop: "10px"}}>
+                                <img src="Group 1016.png" width="300px" height="280px" />
+                            </div>
                         </div>
                     </div>
                     {/* <div className={styles.pkgCardHeader}>

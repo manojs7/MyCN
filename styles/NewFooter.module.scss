@@ -100,9 +100,139 @@
         }
     }
 }
+
+.popupUserDetails {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 291.53px;
+    height: 260px;
+    box-shadow: #534848 0px 0px 80px 10px;
+    //filter: drop-shadow(1.11417px 5.57087px 27.8543px rgba(0, 0, 0, 0.7));
+    border-radius: 14.7739px;
+    background-color: #FFC31A;
+    text-align: center;
+
+    h3{
+        margin-top: 15px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #BE2D30;
+    }
+    p{
+        margin-top: 20px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .namePhoneContainer{
+        input{
+            width: 200px;
+            height: 25px;
+            border-radius: 5px;
+            background-color: white;
+            font-weight: 600;
+        }
+        #nameSecn{
+            display: flex;
+            justify-content: space-around;
+        }
+        #phoneSecn{
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    .btnSection{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        button{
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 80px;
+        }
+        #btn1{
+            background-color: white;
+        }
+        #btn2{
+            background-color: green;
+            color: white;
+        }
+    }
+}
+
 }
 
 @media (max-width: 576px) {
+
+    .popupUserDetails {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 291.53px;
+        height: 260px;
+        box-shadow: #534848 0px 0px 80px 10px;
+        //filter: drop-shadow(1.11417px 5.57087px 27.8543px rgba(0, 0, 0, 0.7));
+        border-radius: 14.7739px;
+        background-color: #FFC31A;
+        text-align: center;
+
+        h3{
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #BE2D30;
+        }
+        p{
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .namePhoneContainer{
+            input{
+                width: 200px;
+                height: 25px;
+                border-radius: 5px;
+                background-color: white;
+                font-weight: 600;
+            }
+            #nameSecn{
+                display: flex;
+                justify-content: space-around;
+            }
+            #phoneSecn{
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+
+        .btnSection{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            button{
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: 600;
+                width: 80px;
+            }
+            #btn1{
+                background-color: white;
+            }
+            #btn2{
+                background-color: green;
+                color: white;
+            }
+        }
+    }
+
     .footerContainer {
         font-family: "Montserrat", sans-serif;
         height: 378px;

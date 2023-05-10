@@ -6,6 +6,13 @@
 
 @media (max-width: 576px) {
 
+    .LgHeaderImg{
+        img{
+            display: none;
+        }
+        
+    }
+
     .redContent {
         background-color: #BE2D30;
         padding-top: 15px;

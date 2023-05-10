@@ -21,14 +21,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 function MyApp({ Component, pageProps }) {
 
-  
-  const[url, setUrl] = useState("");
+
+  const [url, setUrl] = useState("");
   // const cookieParser = require("cookie-parser");
   // app.use(cookieParser());
-  function getCurrentURL () {
+  function getCurrentURL() {
     return window.location.href
   }
-  
+
   function getCookie(name) {
     let cookieValue;
     if (document.cookie && document.cookie !== '') {
@@ -43,24 +43,24 @@ function MyApp({ Component, pageProps }) {
     }
     return cookieValue;
   }
-    useEffect(() => {
-      
-        const x = getCurrentURL();
-        if(getCookie("f_url")){
-          sessionStorage.setItem("first_url2", getCookie("f_url"));
-        }
-        else{
-          if (sessionStorage.getItem("first_url2") === null ) {
-            const catch_url = sessionStorage.setItem("first_url2", x);
-            setUrl(catch_url)
-          } else {
-            let url_value = sessionStorage.getItem("first_url2");
-            setUrl(url_value)
-          }
-        }
+  useEffect(() => {
 
-       
-        },[])
+    const x = getCurrentURL();
+    if (getCookie("f_url")) {
+      sessionStorage.setItem("first_url2", getCookie("f_url"));
+    }
+    else {
+      if (sessionStorage.getItem("first_url2") === null) {
+        const catch_url = sessionStorage.setItem("first_url2", x);
+        setUrl(catch_url)
+      } else {
+        let url_value = sessionStorage.getItem("first_url2");
+        setUrl(url_value)
+      }
+    }
+
+
+  }, [])
 
   return (
     <>
@@ -98,8 +98,7 @@ function MyApp({ Component, pageProps }) {
             r=o.createElement('script');r.async=1;
             r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
             a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-      `
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
           }}
         />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LTMMZTYB0W"></script>
@@ -110,11 +109,20 @@ function MyApp({ Component, pageProps }) {
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-LTMMZTYB0W');
-      `
+        gtag('config', 'G-LTMMZTYB0W');`
           }}
         />
-        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PQ8CP4BNB"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-3PQ8CP4BNB');`
+          }}
+        />
       </Head>
       <Script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></Script>
       <AppMenuProvider>
