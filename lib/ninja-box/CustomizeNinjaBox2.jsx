@@ -1803,12 +1803,14 @@ const CustomizeNinjaBox = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      if (res.message==="Parameter missing") {
-        alert("Email or Name is Missing");
-      }
-      else if(res.success){
+      if(res.success) {
         alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
-        //show pop up here
+//show pop up here
+      }
+      else if (res.message==="Parameter missing"){
+        alert("Email or Name is Missing");
+
+        
       }
       else {
         console.log("Failed to send message");
