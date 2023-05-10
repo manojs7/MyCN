@@ -1787,7 +1787,7 @@ const CustomizeNinjaBox = () => {
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
-            body: raw,
+            body: JSON.stringify(raw),
             redirect: 'follow'
           };
           
