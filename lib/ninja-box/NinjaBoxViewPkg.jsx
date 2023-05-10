@@ -12,11 +12,11 @@ import styles3 from "/styles/Custom_Package.module.scss";
 const NinjaBoxViewPkg = () => {
 
 
-    //DIY Logic by Manoj
+  //DIY Logic by Manoj
 
-    const { menu, cuisines, allMenus, cities, occasions, PreSelected, PreSelectMenuNinjaBox } =
+  const { menu, cuisines, allMenus, cities, occasions, PreSelected, PreSelectMenuNinjaBox } =
     useAppMenu();
-    const [veg, setVeg] = useState(10);
+  const [veg, setVeg] = useState(10);
   const [nonVeg, setNonVeg] = useState(10);
   const [people, setPeople] = useState(20);
   const [starters, setStarters] = useState([]);
@@ -38,31 +38,31 @@ const NinjaBoxViewPkg = () => {
   const [dessertData2, setDessertData2] = useState([]);
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
-   
 
 
 
 
-//code already done by sourav
 
-const [name, setName] = useState("");
-const [phone, setPhone] = useState("");
-const [email, setEmail] = useState("");
-const [showDiv, setShowDiv] = useState(false);
+  //code already done by sourav
 
-const [city, setCity] = useState("");
-const [occasion, setOccasion] = useState("");
-const [itemSelected, setItemSelected] = useState()
-const [selectedDate, setSelectedDate] = useState()
-const [vegCount, setVegCount] = useState()
-const [nonVegCount, setNonVegCount] = useState()
-const [details, setDetails] = useState()
-const [price, setPrice] = useState()
-const [image, setImage] = useState()
-const [showPopup, setShowPopup] = useState(false);
-const [ID, setId] = useState(0)
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [showDiv, setShowDiv] = useState(false);
 
-useEffect(() => {
+  const [city, setCity] = useState("");
+  const [occasion, setOccasion] = useState("");
+  const [itemSelected, setItemSelected] = useState()
+  const [selectedDate, setSelectedDate] = useState()
+  const [vegCount, setVegCount] = useState()
+  const [nonVegCount, setNonVegCount] = useState()
+  const [details, setDetails] = useState()
+  const [price, setPrice] = useState()
+  const [image, setImage] = useState()
+  const [showPopup, setShowPopup] = useState(false);
+  const [ID, setId] = useState(0)
+
+  useEffect(() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
     // sessionStorage.removeItem("dataSelected")
     setCity(dataSelected['city'])
@@ -76,9 +76,9 @@ useEffect(() => {
     setImage(dataSelected.itemSelected['img'])
     setId(dataSelected.itemSelected['id'])
     console.log(dataSelected)
-}, [])
+  }, [])
 
-//by Manoj
+  //by Manoj
   useEffect(() => {
 
     allMenus.sort(function (a, b) {
@@ -95,8 +95,8 @@ useEffect(() => {
       return 0;
     });
 
-    
-     const result = allMenus?.reduce((finalArray, current) => {
+
+    const result = allMenus?.reduce((finalArray, current) => {
       let obj = finalArray?.find((item) => item.name === current.name);
 
       // console.log('duplicate',result)
@@ -105,10 +105,10 @@ useEffect(() => {
       }
       return finalArray.concat([current]);
     }, [])
-   
+
     let url_value = sessionStorage.getItem("first_url2");
     // setRefURL(url_value);
-    
+
     setStartersData(result.filter((d) => d.mealType === "Starter"));
     setStartersData2(result.filter((d) => d.mealType === "Starter"));
     setMainData(result.filter((d) => d.mealType === "Main course"));
@@ -120,14 +120,14 @@ useEffect(() => {
 
   }, []);
 
-//Adding menu items to preselection
- 
+  //Adding menu items to preselection
 
-const preselection=async()=>{
+
+  const preselection = async () => {
     let itemData;
 
-    if(ID){
-      (PreSelectMenuNinjaBox.filter((d)=>d.id===ID))[0].details.items.forEach((item) => {
+    if (ID) {
+      (PreSelectMenuNinjaBox.filter((d) => d.id === ID))[0].details.items.forEach((item) => {
         itemData = allMenus.filter((d) => d.name === item);
         if (itemData[0].mealType === "Starter") {
           handleStatersAdd(item);
@@ -139,21 +139,21 @@ const preselection=async()=>{
           handleDesertsAdd(item);
         }
         sessionStorage.setItem("starters", starters)
-    sessionStorage.setItem("mains", mains)
-    sessionStorage.setItem("breadRice", breadRice)
-    sessionStorage.setItem("desserts", desserts)
-    
+        sessionStorage.setItem("mains", mains)
+        sessionStorage.setItem("breadRice", breadRice)
+        sessionStorage.setItem("desserts", desserts)
+
         console.log("here", itemData);
       });
     }
-    else{
+    else {
 
     }
 
-    
-}
 
-const handleStatersAdd = (item_name, id) => {
+  }
+
+  const handleStatersAdd = (item_name, id) => {
     // setIsStarterChange(!isStarterChange);
     if (veg === 0 && nonVeg === 0) return;
 
@@ -809,72 +809,72 @@ const handleStatersAdd = (item_name, id) => {
       )
     );
     preselection()
-    
+
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
 
-  
 
-    
 
-    const confirmPkg = (e) => {
-        setShowDiv(true);
-        // e.preventDefault();
-        // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
-        //     //alert("Please fill out all details!");
-        //     Swal.fire({
-        //         text: "Please fill out all details!",
-        //         icon: "warning",
-        //         confirmButtonText: "OK",
-        //     });
-        // } else {
-        //     setShowDiv(true);
-        // }
-    };
 
-   
-    const placeOrderBtn = () => {
-        setShowPopup(true);
-    }
-    const closePopup = () => {
-        setShowPopup(false);
-    }
 
-    useEffect(() => {
-        let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
-        // sessionStorage.removeItem("dataSelected")
-        setCity(dataSelected['city'])
-        setVegCount(dataSelected['vcount'])
-        setNonVegCount(dataSelected['nvcount'])
-        setSelectedDate(dataSelected['selectedDate'])
-        setOccasion(dataSelected['occasion'])
-        setName(dataSelected.itemSelected['name'])
-        setDetails(dataSelected.itemSelected['details'])
-        setPrice(dataSelected.itemSelected['price'])
-        setImage(dataSelected.itemSelected['img'])
-        console.log(dataSelected)
-    }, [])
-    return (
-        <div className={styles.customizeMainContainer}>
-            <div className={styles.customizeMainContainer}>
-                <div className={styles.header}>
-                    <div className={styles.headerContent}>
-                        <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
-                        <div className={styles.textLogo}>
-                            <div>
-                                <h3>View your</h3>
-                                <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
-                                <h5>You can also customise your<br />package below!</h5>
-                            </div>
-                            <div>
-                                <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
-                            </div>
-                            <div className={styles.LgHeaderImg} style={{marginLeft: "120px", marginTop: "10px"}}>
-                                <img src="Group 1016.png" width="300px" height="280px" />
-                            </div>
-                        </div>
-                    </div>
-                    {/* <div className={styles.pkgCardHeader}>
+  const confirmPkg = (e) => {
+    setShowDiv(true);
+    // e.preventDefault();
+    // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
+    //     //alert("Please fill out all details!");
+    //     Swal.fire({
+    //         text: "Please fill out all details!",
+    //         icon: "warning",
+    //         confirmButtonText: "OK",
+    //     });
+    // } else {
+    //     setShowDiv(true);
+    // }
+  };
+
+
+  const placeOrderBtn = () => {
+    setShowPopup(true);
+  }
+  const closePopup = () => {
+    setShowPopup(false);
+  }
+
+  useEffect(() => {
+    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
+    // sessionStorage.removeItem("dataSelected")
+    setCity(dataSelected['city'])
+    setVegCount(dataSelected['vcount'])
+    setNonVegCount(dataSelected['nvcount'])
+    setSelectedDate(dataSelected['selectedDate'])
+    setOccasion(dataSelected['occasion'])
+    setName(dataSelected.itemSelected['name'])
+    setDetails(dataSelected.itemSelected['details'])
+    setPrice(dataSelected.itemSelected['price'])
+    setImage(dataSelected.itemSelected['img'])
+    console.log(dataSelected)
+  }, [])
+  return (
+    <div className={styles.customizeMainContainer}>
+      <div className={styles.customizeMainContainer}>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
+            <div className={styles.textLogo}>
+              <div>
+                <h3>View your</h3>
+                <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
+                <h5>You can also customise your<br />package below!</h5>
+              </div>
+              <div>
+                <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
+              </div>
+              <div className={styles.LgHeaderImg} style={{ marginLeft: "120px", marginTop: "10px" }}>
+                <img src="Group 1016.png" width="300px" height="280px" />
+              </div>
+            </div>
+          </div>
+          {/* <div className={styles.pkgCardHeader}>
                         <div>
                             <h3>PACKAGE NAME</h3>
                             <img src='555.png' />
@@ -883,38 +883,38 @@ const handleStatersAdd = (item_name, id) => {
                             <p>(For 20 Guests)</p>
                         </div>
                     </div> */}
-                </div>
-                { showPopup && <div className={styles.popupCnfrmPkg}>
-                    <h4>Details</h4>
-                    <div className={styles.formDetails}>
-                        <div className='d-flex justify-content-between'>
-                            <p>Name:</p>
-                            <input></input>
-                        </div>
-                        <div className='d-flex justify-content-between'>
-                            <p>Phone:</p>
-                            <input></input>
-                        </div>
-                        <div className='d-flex justify-content-between'>
-                            <p>Email:</p>
-                            <input></input>
-                        </div>
-                        <div className='d-flex justify-content-between'>
-                            <p>Address:</p>
-                            <input></input>
-                        </div>
-                        <div className='d-flex justify-content-between'>
-                            <p>ZipCode:</p>
-                            <input></input>
-                        </div>
-                    </div>
-                    <div className={styles.cnfmBtn}>
-                        <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
-                        <button onClick={() => navigateToOverview()} id={styles.viewBtn}>Payment</button>
-                    </div>
-                </div>}
-                <div className={styles.redBg}>
-                    {/* <div className={styles.cityContainer}>
+        </div>
+        {showPopup && <div className={styles.popupCnfrmPkg}>
+          <h4>Details</h4>
+          <div className={styles.formDetails}>
+            <div className='d-flex justify-content-between'>
+              <p>Name:</p>
+              <input></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Phone:</p>
+              <input></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Email:</p>
+              <input></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Address:</p>
+              <input></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>ZipCode:</p>
+              <input></input>
+            </div>
+          </div>
+          <div className={styles.cnfmBtn}>
+            <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+            <button onClick={() => navigateToOverview()} id={styles.viewBtn}>Payment</button>
+          </div>
+        </div>}
+        <div className={styles.redBg}>
+          {/* <div className={styles.cityContainer}>
                         <div className={styles.cityflexLg}>
                             <h3>City</h3>
                             <select className="form-select" aria-label="Default select example">
@@ -925,189 +925,188 @@ const handleStatersAdd = (item_name, id) => {
                             </select>
                         </div>
                     </div> */}
-                    <div className={styles.redContent}>
-                        <div className={styles.cityDateContainer}>
-                            <div>
-                                <p>City</p>
-                                <div>
-                                    <select
-                                        name="city"
-                                        aria-label="Default select example"
-                                        value={city}
-                                        onChange={(e) => handleCity(e.target.value)}
-                                        required
-                                    >
-                                        <option value="" selected>
-                                            Select City
-                                        </option>
-                                        {cities.map((item, index) => {
-                                            return (
-                                                <option key={index} value={item}>
-                                                    {item}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <p>Date</p>
-                                <div>
-                                    <input type="date" value={selectedDate}></input>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.guestCountContainer}>
-                            <div>
-                                <p>Veg Count</p>
-                                <div>
-                                    <input value={veg}></input>
-                                </div>
-                            </div>
-                            <div>
-                                <p>N-Veg Count</p>
-                                <div>
-                                    <input value={nonVeg}></input>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.cityDateContainer}>
-                            <div>
-                                <p>Occasion</p>
-                                <div>
-                                    <select
-                                        name="occasion"
-                                        aria-label="Default select example"
-                                        value={occasion}
-                                        onChange={(e) => handleOccasion(e.target.value)}
-                                    >
-                                        <option value="" selected>
-                                            Select Occasion
-                                        </option>
-                                        {occasions.map((item, index) => {
-                                            return (
-                                                <option key={index} value={item}>
-                                                    {item}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.whiteBg}>
-                        <div className={styles.packageName}>
-                            <h3>{name}</h3>
-                            <img src={image} height="150px" width="274.5px" />
-                            <h6>{details}</h6>
-                            {/* <div>
+          <div className={styles.redContent}>
+            <div className={styles.cityDateContainer}>
+              <div>
+                <p>City</p>
+                <div>
+                  <select
+                    name="city"
+                    aria-label="Default select example"
+                    value={city}
+                    onChange={(e) => handleCity(e.target.value)}
+                    required
+                  >
+                    <option value="" selected>
+                      Select City
+                    </option>
+                    {cities.map((item, index) => {
+                      return (
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
+              <div>
+                <p>Date</p>
+                <div>
+                  <input type="date" value={selectedDate}></input>
+                </div>
+              </div>
+            </div>
+            <div className={styles.guestCountContainer}>
+              <div>
+                <p>Veg Count</p>
+                <div>
+                  <input value={veg}></input>
+                </div>
+              </div>
+              <div>
+                <p>N-Veg Count</p>
+                <div>
+                  <input value={nonVeg}></input>
+                </div>
+              </div>
+            </div>
+            <div className={styles.cityDateContainer}>
+              <div>
+                <p>Occasion</p>
+                <div>
+                  <select
+                    name="occasion"
+                    aria-label="Default select example"
+                    value={occasion}
+                    onChange={(e) => handleOccasion(e.target.value)}
+                  >
+                    <option value="" selected>
+                      Select Occasion
+                    </option>
+                    {occasions.map((item, index) => {
+                      return (
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.whiteBg}>
+            <div className={styles.packageName}>
+              <h3>{name}</h3>
+              <img src={image} height="150px" width="274.5px" />
+              <h6>{details}</h6>
+              {/* <div>
                                 <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
                                 <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
                             </div> */}
-                            {/* <h5>₹ {price}</h5> */}
-                        </div>
-                        <div className={styles.pkgDetails}>
-                            <div>
-                                <h3>{PreSelectMenuNinjaBox[0].name}</h3>
-                                <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
-                                <div>
-                                    <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
-                                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
-                                </div>
-                                <div>
-                                    <h6>₹ {totalPrice}</h6>
-                                </div>
-                                {/* <div>
+              {/* <h5>₹ {price}</h5> */}
+            </div>
+            <div className={styles.pkgDetails}>
+              <div>
+                <h3>{PreSelectMenuNinjaBox[0].name}</h3>
+                <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
+                <div>
+                  <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
+                  <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
+                </div>
+                <div>
+                  <h6>₹ {totalPrice}</h6>
+                </div>
+                {/* <div>
                                     <h6>₹ {price}</h6>
                                 </div> */}
-                            </div>
-                            <div>
-                                <img id={styles.pkgImg} src={image} width="366px" height="200px" />
-                            </div>
+              </div>
+              <div>
+                <img id={styles.pkgImg} src={image} width="366px" height="200px" />
+              </div>
+            </div>
+            <div>
+              <div className={styles.menuContainer}>
+                <div className={styles.startersContainer}>
+                  <h5>Starters</h5>
+                  <div className={styles.starterItems}>
+                    {starters.map((item, index) => (
+                      <div className={styles.fstItem}>
+                        <img className={styles.itemImage} src={item.image} />
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div className={styles.pcs}>
+                            <p>{item.quantity}{item.Qtype}</p>
+                          </div>
                         </div>
-                        <div> 
-                            <div className={styles.menuContainer}>
-                                <div className={styles.startersContainer}>
-                                    <h5>Starters</h5>
-                                    <div className={styles.starterItems}>
-                                    {starters.map((item, index) => (
-                                        <div className={styles.fstItem}>
-                                            <img className={styles.itemImage} src={item.image} />
-                                            <div className={styles.itemDetailsContainer}>
-                                                <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                                <div>
-                                                    <h4>{item.name}</h4>
-                                                    <p>{item.description}</p>
-                                                </div>
-                                                <div className={styles.pcs}>
-                                                    <p>{item.quantity}{item.Qtype}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    ))}
-                                    </div>
-                                </div> 
-                                <hr className={styles2.MenuHr} />
-                                <div className={styles2.imgDesc} id="d2">
-                                    <p>*Images are for representation purpose only</p>
-                                </div>
-                                <div className={styles.startersContainer}>
-                                    <h5 className='mt-5'>Mains</h5>
-                                    <div className={styles.starterItems}>
-                                    {mains.map((item, index) => (
-                                        <div className={styles.fstItem}>
-                                            <img className={styles.itemImage} src={item.image} />
-                                            <div className={styles.itemDetailsContainer}>
-                                                <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                                <div>
-                                                    <h4>{item.name}</h4>
-                                                    <p>{item.description}</p>
-                                                </div>
-                                                <div className={styles.pcs}>
-                                                    <p>{item.quantity}{item.Qtype}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    ))}
-                                
-                                    </div> 
-                                </div>
-                                <hr className={styles2.MenuHr} />
-                                <div className={styles2.imgDesc} id="d2">
-                                    <p>*Images are for representation purpose only</p>
-                                </div>
-                                <div className={styles.startersContainer}>
-                                    <h5 className='mt-5'>Desserts</h5>
-                                    <div className={styles.starterItems}>
-                                    {desserts.map((item, index) => (
-                                        <div className={styles.fstItem}>
-                                            <img className={styles.itemImage} src={item.image} />
-                                            <div className={styles.itemDetailsContainer}>
-                                                <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
-                                                <div>
-                                                    <h4>{item.name}</h4>
-                                                    <p>{item.description}</p>
-                                                </div>
-                                                <div className={styles.pcs}>
-                                                    <p>{item.quantity}{item.Qtype}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    ))}
-                                        
-                                    </div>
-                                </div>
-                                <hr className={styles2.MenuHr} />
-                                <div className={styles2.imgDesc} id="d2">
-                                    <p>*Images are for representation purpose only</p>
-                                </div>
-                            </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <hr className={styles2.MenuHr} />
+                <div className={styles2.imgDesc} id="d2">
+                  <p>*Images are for representation purpose only</p>
+                </div>
+                <div className={styles.startersContainer}>
+                  <h5 className='mt-5'>Mains</h5>
+                  <div className={styles.starterItems}>
+                    {mains.map((item, index) => (
+                      <div className={styles.fstItem}>
+                        <img className={styles.itemImage} src={item.image} />
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div className={styles.pcs}>
+                            <p>{item.quantity}{item.Qtype}</p>
+                          </div>
                         </div>
-                        {/* <div className='mt-5'>
+                      </div>
+
+                    ))}
+
+                  </div>
+                </div>
+                <hr className={styles2.MenuHr} />
+                <div className={styles2.imgDesc} id="d2">
+                  <p>*Images are for representation purpose only</p>
+                </div>
+                <div className={styles.startersContainer}>
+                  <h5 className='mt-5'>Desserts</h5>
+                  <div className={styles.starterItems}>
+                    {desserts.map((item, index) => (
+                      <div className={styles.fstItem}>
+                        <img className={styles.itemImage} src={item.image} />
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div className={styles.pcs}>
+                            <p>{item.quantity}{item.Qtype}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    ))}
+
+                  </div>
+                </div>
+                <hr className={styles2.MenuHr} />
+                <div className={styles2.imgDesc} id="d2">
+                  <p>*Images are for representation purpose only</p>
+                </div>
+              </div>
+            </div>
+            {/* <div className='mt-5'>
                             <div className={styles.userInput}>
                                 <h4>Details*</h4>
                                 <div className={styles.detailsInputLg}>
@@ -1117,7 +1116,7 @@ const handleStatersAdd = (item_name, id) => {
                                 </div>
                             </div>
                         </div> */}
-                        {/* <div className="mt-5">
+            {/* <div className="mt-5">
                             <div className={styles2.userInput}>
                                 <h4>Details*</h4>
                                 <form className={styles2.detailsInputLg}>
@@ -1142,38 +1141,38 @@ const handleStatersAdd = (item_name, id) => {
                                 </form>
                             </div>
                         </div> */}
-                        {/* <div className={styles.chefNote}>
+            {/* <div className={styles.chefNote}>
                             <input placeholder='Special Restriction? Chef Note?' type="text" />
                         </div> */}
-                        <div className={styles.btnContnr}>
-                            <div>
-                                <button onClick={confirmPkg} id={styles.cnfrmPkg}>Confirm Package</button>
-                            </div>
-                            <div>
-                                <button onClick={() => window.open('/customiseNinjaBox', '_blank')} id={styles.custmPkg}>Customise Package</button>
-                            </div>
-                        </div>
-                        <div className={styles.createNewPkg}>
-                            <button onClick={() => window.open('/checkprice', '_blank')}>Create New Package</button>
-                        </div>
-                        {/* <div style={{marginBottom: "10px"}} className={styles.instantQuoteBtn}>
+            <div className={styles.btnContnr}>
+              <div>
+                <button onClick={confirmPkg} id={styles.cnfrmPkg}>Confirm Package</button>
+              </div>
+              <div>
+                <button onClick={() => window.open('/customiseNinjaBox', '_blank')} id={styles.custmPkg}>Customise Package</button>
+              </div>
+            </div>
+            <div className={styles.createNewPkg}>
+              <button onClick={() => window.open('/checkprice', '_blank')}>Create New Package</button>
+            </div>
+            {/* <div style={{marginBottom: "10px"}} className={styles.instantQuoteBtn}>
                             <button>Get Instant Quote</button>
                         </div> */}
-                        {/* <div className={styles.applyCoupon}>
+            {/* <div className={styles.applyCoupon}>
                             <input type="text" placeholder='Enter Coupon Code' />
                             <button>Apply</button>
                         </div> */}
-                        {showDiv && (<div className={styles.pricing}>
-                            <div>
-                                <div className={styles.pricingTitle1}>
-                                    <div>
-                                        <h4>Items Total</h4>
-                                    </div>
-                                    <div>
-                                        <p>₹{totalPrice}</p>
-                                    </div>
-                                </div>
-                                {/* <div className={styles.pricingTitle11}>
+            {showDiv && (<div className={styles.pricing}>
+              <div>
+                <div className={styles.pricingTitle1}>
+                  <div>
+                    <h4>Items Total</h4>
+                  </div>
+                  <div>
+                    <p>₹{totalPrice}</p>
+                  </div>
+                </div>
+                {/* <div className={styles.pricingTitle11}>
                                     <div>
                                         <h4>Buffet Service</h4>
                                     </div>
@@ -1181,7 +1180,7 @@ const handleStatersAdd = (item_name, id) => {
                                         <p>₹0000</p>
                                     </div>
                                 </div> */}
-                                {/* <div className={styles.pricingTitle2}>
+                {/* <div className={styles.pricingTitle2}>
                                     <div>
                                         <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
                                     </div>
@@ -1189,8 +1188,8 @@ const handleStatersAdd = (item_name, id) => {
                                         <p>₹0000</p>
                                     </div>
                                 </div> */}
-                                <hr className={styles.hr1} />
-                                {/* <div className={styles.pricingTitle3}>
+                <hr className={styles.hr1} />
+                {/* <div className={styles.pricingTitle3}>
                                     <div>
                                         <h4>Coupon Value</h4>
                                     </div>
@@ -1198,49 +1197,49 @@ const handleStatersAdd = (item_name, id) => {
                                         <p>₹0000</p>
                                     </div>
                                 </div> */}
-                                <div className={styles.pricingTitle4}>
-                                    <div>
-                                        <h4>GST</h4>
-                                    </div>
-                                    <div>
-                                        <p>₹{GST}</p>
-                                    </div>
-                                </div>
-                                <hr id={styles.hr2} />
-                            </div>
-                            <div className={styles.grandTotal}>
-                                <div>
-                                    <h4>Grand Total</h4>
-                                </div>
-                                <div>
-                                    <p>₹{grandTotal}</p>
-                                </div>
-                            </div>
-                            <div className={styles2.dlvryChrg}>
-                                <p>*Delivery charges as per actual</p>
-                            </div>
-                            <div className={styles.orderBtn}>
-                                <button onClick={() => placeOrderBtn()}>Place Order</button>
-                            </div>
-                            {/* <div className={styles.orderBtn}>
+                <div className={styles.pricingTitle4}>
+                  <div>
+                    <h4>GST</h4>
+                  </div>
+                  <div>
+                    <p>₹{GST}</p>
+                  </div>
+                </div>
+                <hr id={styles.hr2} />
+              </div>
+              <div className={styles.grandTotal}>
+                <div>
+                  <h4>Grand Total</h4>
+                </div>
+                <div>
+                  <p>₹{grandTotal}</p>
+                </div>
+              </div>
+              <div className={styles2.dlvryChrg}>
+                <p>*Delivery charges as per actual</p>
+              </div>
+              <div className={styles.orderBtn}>
+                <button onClick={() => placeOrderBtn()}>Place Order</button>
+              </div>
+              {/* <div className={styles.orderBtn}>
                                 <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
                             </div> */}
-                        </div>)}
-                    </div>
-                </div>
-                <div className={styles.createYourOwnPkg}>
-                    <div>
-                        <img src='Group 803.png' />
-                    </div>
-                    <div className='text-center mt-3'>
-                        <p>Not Happy with the Package?</p>
-                        <h2>Create Your<span>Own</span></h2>
-                        <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
-                        <button>Create Your Own Package</button>
-                    </div>
-                </div>
-            </div>
-            {/* <div className={styles.header}>
+            </div>)}
+          </div>
+        </div>
+        <div className={styles.createYourOwnPkg}>
+          <div>
+            <img src='Group 803.png' />
+          </div>
+          <div className='text-center mt-3'>
+            <p>Not Happy with the Package?</p>
+            <h2>Create Your<span>Own</span></h2>
+            <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
+            <button>Create Your Own Package</button>
+          </div>
+        </div>
+      </div>
+      {/* <div className={styles.header}>
                 <div className={styles.headerContent}>
                     <div>
                         <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="186.97px" height="39.79px" />
@@ -1258,7 +1257,7 @@ const handleStatersAdd = (item_name, id) => {
                     </div>
                 </div>
             </div> */}
-            {/* <div className={styles.packageContainer}>
+      {/* <div className={styles.packageContainer}>
                 <div className={styles.page}>
                     <div className={styles.cityContent}>
                         <div>
@@ -1348,8 +1347,8 @@ const handleStatersAdd = (item_name, id) => {
                     </div>
                 </div>
             </div> */}
-        </div>
-    )
+    </div>
+  )
 }
 
 export default NinjaBoxViewPkg
