@@ -13,8 +13,8 @@
     "fs": false,
     "path": false,
     "os": false,
-    "net":false,
-    "tls":false,
+    "net": false,
+    "tls": false,
     "child_process": false,
     "readline": false
   },
@@ -46,6 +46,7 @@
     "googleapis": "^100.0.0",
     "jquery": "^3.6.0",
     "jssha": "^3.3.0",
+    "mongodb": "^5.4.0",
     "multiselect-react-dropdown": "^2.0.25",
     "next": "^12.3.4",
     "nodemailer": "^6.9.1",

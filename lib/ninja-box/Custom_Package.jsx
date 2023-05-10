@@ -79,7 +79,7 @@ const Custom_Package = () => {
     "nijjabox3.png",
     "nijjabox4.png",]
   // const [show, setShow] = useState(false);
-  // const [vegNonVeg, setVegNonVeg] = useState('Veg');
+  const [vegNonVeg, setVegNonVeg] = useState('Veg');
 
   // const [vegGuest, setVegGuest] = useState(10);
   // const [nonVegGuest, setNonVegGuest] = useState(10);
@@ -116,14 +116,14 @@ const Custom_Package = () => {
   // const handleShow = () => setShow(true);
 
   //veg non-veg check
-  // const handleChange = (event) => {
-  //   if (event.target.checked) {
-  //     setVegNonVeg('nonVeg')
-  //   } else {
-  //     setVegNonVeg('Veg')
-  //     console.log(' Checkbox is NOT checked');
-  //   }
-  // }
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      setVegNonVeg('nonVeg')
+    } else {
+      setVegNonVeg('Veg')
+      console.log(' Checkbox is NOT checked');
+    }
+  }
   // const handleGuestAdd = (e) => {
   //   vegNonVeg === 'nonVeg' ? setNonVegGuest(e.target.value) : setVegGuest(e.target.value)
   //   console.log(vegGuest, nonVegGuest)

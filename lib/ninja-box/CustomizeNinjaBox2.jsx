@@ -1778,33 +1778,41 @@ const CustomizeNinjaBox = () => {
     };
   }, []);
 
-  const interakt=()=>{
+  const interakt=async()=>{
     var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
 
-        var raw={ "phoneNumber": "7023405885", "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
+        var raw={ "phoneNumber": datas.mobileno, "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
-            body: raw,
+            body: JSON.stringify(raw),
             redirect: 'follow'
           };
           
-        axios.post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+        await fetch("https://api.interakt.ai/v1/public/track/events/", requestOptions)
             .then(response => console.log("resot",response.json()))
   }
 
-  const EmailOrderConfirmation=(datas)=>{
+  const EmailOrderConfirmation=async(datas)=>{
+
     //post api for email
-    fetch("/api/EmailOrderConfirmation", {
+    await fetch("/api/EmailOrderConfirmation", {
       method: "POST",
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      if (res.success) {
-       alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
-      } else {
+      if(res.success) {
+        alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+//show pop up here
+      }
+      else if (res.message==="Parameter missing"){
+        alert("Email or Name is Missing");
+
+        
+      }
+      else {
         console.log("Failed to send message");
       }
     });
@@ -1817,7 +1825,7 @@ const CustomizeNinjaBox = () => {
 
   // const sortedData = selectedItems.concat(unselectedItems);
 
-  const redirectToPayU = (pd) => {
+  const redirectToPayU = async(pd) => {
     console.log("pd", pd);
     //use window.bolt.launch if you face an error in bolt.launch
 
@@ -1837,7 +1845,7 @@ const CustomizeNinjaBox = () => {
             return a.json();
           })
           //Storing the payment details
-          .then(function (json) {
+          .then(async function (json) {
 
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
@@ -1861,7 +1869,7 @@ const CustomizeNinjaBox = () => {
                 datas.status=json.status,
                 datas.email=json.status.email,
                 datas.bank_ref_num=json.status.bank_ref_num,
-                datas.name=json.status.field4
+                // datas.name=json.status.field4
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -1876,10 +1884,10 @@ const CustomizeNinjaBox = () => {
               }).then((res)=>console.log("successful"),
 
               //Email the Order Confirmation
-              EmailOrderConfirmation(datas),
+              await EmailOrderConfirmation(datas),
               
                 //Interakt Api message to hit my number with details
-                interakt()
+              await interakt()
 
                 
               );
@@ -1913,11 +1921,11 @@ const CustomizeNinjaBox = () => {
       key: "VKy9EEvW",
       txnid: oid,
       amount: "1",
-      firstname: name,
-      email: email,
-      phone: "7023405885",
+      firstname: datas.name,
+      email: datas.email,
+      phone: datas.name,
       productinfo: "test",
-      surl: "https://caterninja.com",
+      surl: "https://new.caterninja.com",
       furl: "https://new.caterninja.com",
       hash: "",
     };
@@ -3350,10 +3358,10 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                    {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
-                    </Link>
-                    {/* <button onClick={payumoney}>Place Order</button> */}
+                    </Link> */}
+                    <button onClick={payumoney}>Place Order</button>
                   </div>
                 </div>
               )}
