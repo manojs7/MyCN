@@ -12,15 +12,11 @@ import styles3 from "/styles/Custom_Package.module.scss";
 const NinjaBoxViewPkg = () => {
   //DIY Logic by Manoj
 
-  const {
-    menu,
-    cuisines,
-    allMenus,
-    cities,
-    occasions,
-    PreSelected,
-    PreSelectMenuNinjaBox,
-  } = useAppMenu();
+
+  //DIY Logic by Manoj
+
+  const { menu, cuisines, allMenus, cities, occasions, PreSelected, PreSelectMenuNinjaBox } =
+    useAppMenu();
   const [veg, setVeg] = useState(10);
   const [nonVeg, setNonVeg] = useState(10);
   const [people, setPeople] = useState(20);
@@ -799,45 +795,13 @@ const NinjaBoxViewPkg = () => {
         starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
       )
     );
-    preselection();
+    preselection()
+
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
-  const confirmPkg = (e) => {
-    setShowDiv(true);
-    // e.preventDefault();
-    // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
-    //     //alert("Please fill out all details!");
-    //     Swal.fire({
-    //         text: "Please fill out all details!",
-    //         icon: "warning",
-    //         confirmButtonText: "OK",
-    //     });
-    // } else {
-    //     setShowDiv(true);
-    // }
-  };
+ 
 
-  const placeOrderBtn = () => {
-    setShowPopup(true);
-  };
-  const closePopup = () => {
-    setShowPopup(false);
-  };
-
-  // useEffect(() => {
-  //   let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
-  //   // sessionStorage.removeItem("dataSelected")
-  //   setCity(dataSelected["city"]);
-  //   setVegCount(dataSelected["vcount"]);
-  //   setNonVegCount(dataSelected["nvcount"]);
-  //   setSelectedDate(dataSelected["selectedDate"]);
-  //   setOccasion(dataSelected["occasion"]);
-  //   setName(dataSelected.itemSelected["name"]);
-  //   setDetails(dataSelected.itemSelected["details"]);
-  //   setPrice(dataSelected.itemSelected["price"]);
-  //   setImage(dataSelected.itemSelected["img"]);
-  //   console.log(dataSelected);
-  // }, []);
+ 
   const interakt=async()=>{
     var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -1019,41 +983,63 @@ const NinjaBoxViewPkg = () => {
         redirectToPayU(pd);
       });
   };
+
+
+
+
+  const confirmPkg = (e) => {
+    setShowDiv(true);
+    // e.preventDefault();
+    // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
+    //     //alert("Please fill out all details!");
+    //     Swal.fire({
+    //         text: "Please fill out all details!",
+    //         icon: "warning",
+    //         confirmButtonText: "OK",
+    //     });
+    // } else {
+    //     setShowDiv(true);
+    // }
+  };
+
+
+  const placeOrderBtn = () => {
+    setShowPopup(true);
+  }
+  const closePopup = () => {
+    setShowPopup(false);
+  }
+
+  useEffect(() => {
+    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
+    // sessionStorage.removeItem("dataSelected")
+    setCity(dataSelected['city'])
+    setVegCount(dataSelected['vcount'])
+    setNonVegCount(dataSelected['nvcount'])
+    setSelectedDate(dataSelected['selectedDate'])
+    setOccasion(dataSelected['occasion'])
+    setName(dataSelected.itemSelected['name'])
+    setDetails(dataSelected.itemSelected['details'])
+    setPrice(dataSelected.itemSelected['price'])
+    setImage(dataSelected.itemSelected['img'])
+    console.log(dataSelected)
+  }, [])
   return (
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
         <div className={styles.header}>
           <div className={styles.headerContent}>
-            <img
-              id={styles.ninjaLogo}
-              src="/CustomizeImg/CaterNinjaLogo.png"
-              width="91.6px"
-              height="19.49px"
-            />
+            <img id={styles.ninjaLogo} src='/CustomizeImg/CaterNinjaLogo.png' width="91.6px" height="19.49px" />
             <div className={styles.textLogo}>
               <div>
                 <h3>View your</h3>
-                <h2 id={styles.ninjaBoxTitle}>
-                  Ninja<span>Box</span>
-                </h2>
-                <h5>
-                  You can also customise your
-                  <br />
-                  package below!
-                </h5>
+                <h2 id={styles.ninjaBoxTitle}>Ninja<span>Box</span></h2>
+                <h5>You can also customise your<br />package below!</h5>
               </div>
               <div>
-                <img
-                  id={styles.ninja}
-                  src="/CustomizeImg/Group 267 (1).png"
-                  width="102.33px"
-                  height="132.73px"
-                />
+                <img id={styles.ninja} src='/CustomizeImg/Group 267 (1).png' width="102.33px" height="132.73px" />
               </div>
-              <div
-                className={styles.LgHeaderImg}
-                style={{ marginLeft: "120px", marginTop: "10px" }}
-              >
+              <div className={styles.LgHeaderImg} style={{ marginLeft: "120px", marginTop: "10px" }}>
                 <img src="Group 1016.png" width="300px" height="280px" />
               </div>
             </div>
@@ -1068,41 +1054,35 @@ const NinjaBoxViewPkg = () => {
                         </div>
                     </div> */}
         </div>
-        {showPopup && (
-          <div className={styles.popupCnfrmPkg}>
-            <h4>Details</h4>
-            <div className={styles.formDetails}>
-              <div className="d-flex justify-content-between">
-                <p>Name:</p>
-                <input></input>
-              </div>
-              <div className="d-flex justify-content-between">
-                <p>Phone:</p>
-                <input></input>
-              </div>
-              <div className="d-flex justify-content-between">
-                <p>Email:</p>
-                <input></input>
-              </div>
-              <div className="d-flex justify-content-between">
-                <p>Address:</p>
-                <input></input>
-              </div>
-              <div className="d-flex justify-content-between">
-                <p>ZipCode:</p>
-                <input></input>
-              </div>
+        {showPopup && <div className={styles.popupCnfrmPkg}>
+          <h4>Details</h4>
+          <div className={styles.formDetails}>
+            <div className='d-flex justify-content-between'>
+              <p>Name:</p>
+              <input></input>
             </div>
-            <div className={styles.cnfmBtn}>
-              <button onClick={closePopup} id={styles.cancelBtn}>
-                Go Back
-              </button>
-              <button onClick={() => navigateToOverview()} id={styles.viewBtn}>
-                Payment
-              </button>
+            <div className='d-flex justify-content-between'>
+              <p>Phone:</p>
+              <input></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Email:</p>
+              <input></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Address:</p>
+              <input></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>ZipCode:</p>
+              <input></input>
             </div>
           </div>
-        )}
+          <div className={styles.cnfmBtn}>
+            <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+            <button onClick={() => navigateToOverview()} id={styles.viewBtn}>Payment</button>
+          </div>
+        </div>}
         <div className={styles.redBg}>
           {/* <div className={styles.cityContainer}>
                         <div className={styles.cityflexLg}>
@@ -1200,17 +1180,10 @@ const NinjaBoxViewPkg = () => {
             <div className={styles.pkgDetails}>
               <div>
                 <h3>{PreSelectMenuNinjaBox[0].name}</h3>
-                <h5>
-                  {starters?.length} Starters + {mains?.length} Mains +{" "}
-                  {desserts?.length} Desserts
-                </h5>
+                <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
                 <div>
-                  <p id={styles.vegGuest}>
-                    Veg Guests<span>: {veg}</span>
-                  </p>
-                  <p id={styles.nonVegGuest}>
-                    Non Veg Guests<span>: {nonVeg}</span>
-                  </p>
+                  <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
+                  <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
                 </div>
                 <div>
                   <h6>₹ {totalPrice}</h6>
@@ -1220,12 +1193,7 @@ const NinjaBoxViewPkg = () => {
                                 </div> */}
               </div>
               <div>
-                <img
-                  id={styles.pkgImg}
-                  src={image}
-                  width="366px"
-                  height="200px"
-                />
+                <img id={styles.pkgImg} src={image} width="366px" height="200px" />
               </div>
             </div>
             <div>
@@ -1237,19 +1205,13 @@ const NinjaBoxViewPkg = () => {
                       <div className={styles.fstItem}>
                         <img className={styles.itemImage} src={item.image} />
                         <div className={styles.itemDetailsContainer}>
-                          <img
-                            className={styles.vegLogo}
-                            src="/diy images/vegLogo.png"
-                          />
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
                           </div>
                           <div className={styles.pcs}>
-                            <p>
-                              {item.quantity}
-                              {item.Qtype}
-                            </p>
+                            <p>{item.quantity}{item.Qtype}</p>
                           </div>
                         </div>
                       </div>
@@ -1261,29 +1223,25 @@ const NinjaBoxViewPkg = () => {
                   <p>*Images are for representation purpose only</p>
                 </div>
                 <div className={styles.startersContainer}>
-                  <h5 className="mt-5">Mains</h5>
+                  <h5 className='mt-5'>Mains</h5>
                   <div className={styles.starterItems}>
                     {mains.map((item, index) => (
                       <div className={styles.fstItem}>
                         <img className={styles.itemImage} src={item.image} />
                         <div className={styles.itemDetailsContainer}>
-                          <img
-                            className={styles.vegLogo}
-                            src="/diy images/vegLogo.png"
-                          />
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
                           </div>
                           <div className={styles.pcs}>
-                            <p>
-                              {item.quantity}
-                              {item.Qtype}
-                            </p>
+                            <p>{item.quantity}{item.Qtype}</p>
                           </div>
                         </div>
                       </div>
+
                     ))}
+
                   </div>
                 </div>
                 <hr className={styles2.MenuHr} />
@@ -1291,29 +1249,25 @@ const NinjaBoxViewPkg = () => {
                   <p>*Images are for representation purpose only</p>
                 </div>
                 <div className={styles.startersContainer}>
-                  <h5 className="mt-5">Desserts</h5>
+                  <h5 className='mt-5'>Desserts</h5>
                   <div className={styles.starterItems}>
                     {desserts.map((item, index) => (
                       <div className={styles.fstItem}>
                         <img className={styles.itemImage} src={item.image} />
                         <div className={styles.itemDetailsContainer}>
-                          <img
-                            className={styles.vegLogo}
-                            src="/diy images/vegLogo.png"
-                          />
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
                           </div>
                           <div className={styles.pcs}>
-                            <p>
-                              {item.quantity}
-                              {item.Qtype}
-                            </p>
+                            <p>{item.quantity}{item.Qtype}</p>
                           </div>
                         </div>
                       </div>
+
                     ))}
+
                   </div>
                 </div>
                 <hr className={styles2.MenuHr} />
@@ -1362,23 +1316,14 @@ const NinjaBoxViewPkg = () => {
                         </div> */}
             <div className={styles.btnContnr}>
               <div>
-                <button onClick={confirmPkg} id={styles.cnfrmPkg}>
-                  Confirm Package
-                </button>
+                <button onClick={confirmPkg} id={styles.cnfrmPkg}>Confirm Package</button>
               </div>
               <div>
-                <button
-                  onClick={() => window.open("/customiseNinjaBox", "_blank")}
-                  id={styles.custmPkg}
-                >
-                  Customise Package
-                </button>
+                <button onClick={() => window.open('/customiseNinjaBox', '_blank')} id={styles.custmPkg}>Customise Package</button>
               </div>
             </div>
             <div className={styles.createNewPkg}>
-              <button onClick={() => window.open("/checkprice", "_blank")}>
-                Create New Package
-              </button>
+              <button onClick={() => window.open('/checkprice', '_blank')}>Create New Package</button>
             </div>
             {/* <div style={{marginBottom: "10px"}} className={styles.instantQuoteBtn}>
                             <button>Get Instant Quote</button>
@@ -1387,18 +1332,17 @@ const NinjaBoxViewPkg = () => {
                             <input type="text" placeholder='Enter Coupon Code' />
                             <button>Apply</button>
                         </div> */}
-            {showDiv && (
-              <div className={styles.pricing}>
-                <div>
-                  <div className={styles.pricingTitle1}>
-                    <div>
-                      <h4>Items Total</h4>
-                    </div>
-                    <div>
-                      <p>₹{totalPrice}</p>
-                    </div>
+            {showDiv && (<div className={styles.pricing}>
+              <div>
+                <div className={styles.pricingTitle1}>
+                  <div>
+                    <h4>Items Total</h4>
                   </div>
-                  {/* <div className={styles.pricingTitle11}>
+                  <div>
+                    <p>₹{totalPrice}</p>
+                  </div>
+                </div>
+                {/* <div className={styles.pricingTitle11}>
                                     <div>
                                         <h4>Buffet Service</h4>
                                     </div>
@@ -1406,7 +1350,7 @@ const NinjaBoxViewPkg = () => {
                                         <p>₹0000</p>
                                     </div>
                                 </div> */}
-                  {/* <div className={styles.pricingTitle2}>
+                {/* <div className={styles.pricingTitle2}>
                                     <div>
                                         <h4>Delivery Charges <span>(Free Upto 10 Km)</span></h4>
                                     </div>
@@ -1414,8 +1358,8 @@ const NinjaBoxViewPkg = () => {
                                         <p>₹0000</p>
                                     </div>
                                 </div> */}
-                  <hr className={styles.hr1} />
-                  {/* <div className={styles.pricingTitle3}>
+                <hr className={styles.hr1} />
+                {/* <div className={styles.pricingTitle3}>
                                     <div>
                                         <h4>Coupon Value</h4>
                                     </div>
@@ -1423,53 +1367,44 @@ const NinjaBoxViewPkg = () => {
                                         <p>₹0000</p>
                                     </div>
                                 </div> */}
-                  <div className={styles.pricingTitle4}>
-                    <div>
-                      <h4>GST</h4>
-                    </div>
-                    <div>
-                      <p>₹{GST}</p>
-                    </div>
-                  </div>
-                  <hr id={styles.hr2} />
-                </div>
-                <div className={styles.grandTotal}>
+                <div className={styles.pricingTitle4}>
                   <div>
-                    <h4>Grand Total</h4>
+                    <h4>GST</h4>
                   </div>
                   <div>
-                    <p>₹{grandTotal}</p>
+                    <p>₹{GST}</p>
                   </div>
                 </div>
-                <div className={styles2.dlvryChrg}>
-                  <p>*Delivery charges as per actual</p>
+                <hr id={styles.hr2} />
+              </div>
+              <div className={styles.grandTotal}>
+                <div>
+                  <h4>Grand Total</h4>
                 </div>
-                <div className={styles.orderBtn}>
-                <button onClick={payumoney}>Place Order</button>
-
-                  {/* <button onClick={() => placeOrderBtn()}>Place Order</button> */}
+                <div>
+                  <p>₹{grandTotal}</p>
                 </div>
-                {/* <div className={styles.orderBtn}>
+              </div>
+              <div className={styles2.dlvryChrg}>
+                <p>*Delivery charges as per actual</p>
+              </div>
+              <div className={styles.orderBtn}>
+                <button onClick={() => placeOrderBtn()}>Place Order</button>
+              </div>
+              {/* <div className={styles.orderBtn}>
                                 <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
                             </div> */}
-              </div>
-            )}
+            </div>)}
           </div>
         </div>
         <div className={styles.createYourOwnPkg}>
           <div>
-            <img src="Group 803.png" />
+            <img src='Group 803.png' />
           </div>
-          <div className="text-center mt-3">
+          <div className='text-center mt-3'>
             <p>Not Happy with the Package?</p>
-            <h2>
-              Create Your<span>Own</span>
-            </h2>
-            <h6>
-              Curate your own flavour of party
-              <br />
-              from variety of cuisines
-            </h6>
+            <h2>Create Your<span>Own</span></h2>
+            <h6>Curate your own flavour of party<br />from variety of cuisines</h6>
             <button>Create Your Own Package</button>
           </div>
         </div>
@@ -1583,7 +1518,7 @@ const NinjaBoxViewPkg = () => {
                 </div>
             </div> */}
     </div>
-  );
-};
+  )
+}
 
 export default NinjaBoxViewPkg;

@@ -6,11 +6,11 @@
 
 @media (max-width: 576px) {
 
-    .LgHeaderImg{
-        img{
+    .LgHeaderImg {
+        img {
             display: none;
         }
-        
+
     }
 
     .redContent {
@@ -31,19 +31,23 @@
         border-radius: 14.7739px;
         background-color: #FFC31A;
         box-shadow: #787878 5px 5px 30px 10px;
-        h4{
+
+        h4 {
             text-align: center;
             margin-top: 10px;
             font-size: 22px;
         }
-        .formDetails{
+
+        .formDetails {
             margin-right: 20px;
             margin-top: 20px;
             position: relative;
-            p{
+
+            p {
                 font-weight: 600;
             }
-            input{
+
+            input {
                 width: 180px;
                 height: 25px;
                 border-radius: 5px;
@@ -53,10 +57,11 @@
             }
         }
 
-        .cnfmBtn{
+        .cnfmBtn {
             display: flex;
             justify-content: space-around;
             margin-top: 10px;
+
             #cancelBtn {
                 font-weight: 700;
                 font-size: 12.9637px;
@@ -66,7 +71,7 @@
                 background: none;
                 border: none;
             }
-    
+
             #viewBtn {
                 width: 125.61px;
                 height: 29.34px;
@@ -333,12 +338,14 @@
     }
 
     .fstItem {
+        border: 1px solid green;
         height: 61.3px;
         width: 315.17px;
         background-color: #F8F8F8;
         margin: auto;
         border-radius: 4.87px;
         display: flex;
+        margin-bottom: 10px;
     }
 
     .itemImage {
@@ -358,6 +365,7 @@
             letter-spacing: 0.05em;
             color: #2C3338;
             margin-bottom: -10px;
+            width: 170px;
         }
 
         P {
@@ -378,12 +386,6 @@
         margin-top: 3px;
         height: 10.79px;
         width: 10.79px;
-    }
-
-    .downarrowLogo {
-        width: 12.27px;
-        height: 8px;
-        margin: 15px 0px 0px -5px;
     }
 
     .quantityBtn {
@@ -908,13 +910,11 @@
 
     .pcs {
         margin-top: 5px;
-        margin-left: 40px;
 
         p {
             padding: 5px 10px 5px 10px;
             border-radius: 4.87px;
             background-color: #FFFFFF;
-            margin: auto;
             font-weight: 600;
             font-style: normal;
             font-size: 7.99748px;
@@ -1067,19 +1067,23 @@
         border-radius: 14.7739px;
         background-color: #FFC31A;
         box-shadow: #787878 5px 5px 30px 10px;
-        h4{
+
+        h4 {
             text-align: center;
             margin-top: 10px;
             font-size: 22px;
         }
-        .formDetails{
+
+        .formDetails {
             margin-right: 20px;
             margin-top: 20px;
             position: relative;
-            p{
+
+            p {
                 font-weight: 600;
             }
-            input{
+
+            input {
                 width: 180px;
                 height: 25px;
                 border-radius: 5px;
@@ -1089,10 +1093,11 @@
             }
         }
 
-        .cnfmBtn{
+        .cnfmBtn {
             display: flex;
             justify-content: space-around;
             margin-top: 10px;
+
             #cancelBtn {
                 font-weight: 700;
                 font-size: 12.9637px;
@@ -1102,7 +1107,7 @@
                 background: none;
                 border: none;
             }
-    
+
             #viewBtn {
                 width: 125.61px;
                 height: 29.34px;
@@ -1302,6 +1307,7 @@
         margin: auto;
         border-radius: 10px;
         display: flex;
+        margin-bottom: 10px;
     }
 
     .itemImage {
@@ -1321,6 +1327,7 @@
             letter-spacing: 0.05em;
             color: #2C3338;
             margin-bottom: -3px;
+            width: 230px;
         }
 
         P {
@@ -1866,6 +1873,7 @@
 
     .createNewPkg {
         text-align: center;
+
         button {
             border: none;
             align-items: center;
