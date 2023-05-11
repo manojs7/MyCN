@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 import styles from '/styles/BirthdayParty.module.scss';
 
 const Birthday_Packages = () => {
@@ -23,6 +23,28 @@ const Birthday_Packages = () => {
         }
     };
 
+    //Starter selector
+    const [showDiv, setShowDiv] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShowDiv(false);
+    }
+  };
+
+  const handleHover = () => {
+    setShowDiv(true);
+  };
+
 
     return (
         <div className={styles.mainBody}>
@@ -43,23 +65,23 @@ const Birthday_Packages = () => {
                             <div>
                                 <div className='d-flex'>
                                     <p>Veg Snack-</p>
-                                    <button>Any 4</button>
-                                    <div className={styles.vegSnackOptions}>
+                                    <button onMouseEnter={handleHover}>Any 4</button>
+                                    {showDiv && (<div className={styles.vegSnackOptions} ref={ref}>
                                         <ul>
                                             {options.map((option) => (
                                                 <li key={option.id}>
-                                                        <input htmlFor={option.id}
+                                                    <p>{option.label}</p>
+                                                    <input htmlFor={option.id}
                                                             type="checkbox"
                                                             id={option.id}
                                                             checked={selectedOptions.indexOf(option.id) !== -1}
                                                             onChange={() => handleOptionSelect(option.id)}
                                                             disabled={selectedOptions.indexOf(option.id) === -1 && selectedOptions.length >= 4}
                                                         />
-                                                    <p>{option.label}</p>
                                                 </li>
                                             ))}
                                         </ul>
-                                    </div>
+                                    </div>)}
                                 </div>
                                 <div className='d-flex'>
                                     <p>Veg Snack-</p>
@@ -100,7 +122,6 @@ const Birthday_Packages = () => {
                         return <li key={optionId}>{option.label}</li>;
                     })}
                 </ul>
-
             </div>
         </div>
     )
