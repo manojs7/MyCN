@@ -1843,10 +1843,12 @@ const CustomizeNinjaBox = () => {
           .then(function (a) {
             
             return a.json();
+            
           })
           //Storing the payment details
           .then(async function (json) {
-
+            
+            console.log("a",json.status)
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",

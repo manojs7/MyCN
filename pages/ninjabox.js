@@ -33,6 +33,11 @@ export default function Ninja_Box()
     }, [])
 
     return (<>
+    <Head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" ></meta>
+    </Head>
+    <Script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js" bolt-color="e34524" bolt-logo="http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png"/>
+
         <NewNavBar />
         <Navbar />
         <FeedBack/>

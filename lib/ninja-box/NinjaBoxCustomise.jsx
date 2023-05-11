@@ -49,11 +49,11 @@ const NinjaBoxCustomise = () => {
     const [data, setData] = useState([]);
     const [datas, setDatas] = useState([]);
 
-    const [isDisabled, setIsDisabled] = useState(true);
-    const [isDisabledStarter, setIsDisabledStarter] = useState(true);
-    const [isDisabledMains, setIsDisabledMains] = useState(true);
-    const [isDisabledBread, setIsDisabledBread] = useState(true);
-    const [isDisabledRice, setIsDisabledRice] = useState(true);
+    // const [isDisabled, setIsDisabled] = useState(true);
+    // const [isDisabledStarter, setIsDisabledStarter] = useState(true);
+    // const [isDisabledMains, setIsDisabledMains] = useState(true);
+    // const [isDisabledBread, setIsDisabledBread] = useState(true);
+    // const [isDisabledRice, setIsDisabledRice] = useState(true);
     const [showDropdown, setShowDropdown] = useState(true);
     const [showDropdown2, setShowDropdown2] = useState(true);
     const [showDropdown3, setShowDropdown3] = useState(true);
@@ -114,12 +114,13 @@ const NinjaBoxCustomise = () => {
 
     useEffect(()=>{
         let SessionData=JSON.parse(sessionStorage.getItem("dataSelected"));
-        console.log("here",sessionStorage.getItem("starters"))
+        console.log("here",SessionData);
         if(SessionData){
+
           setCity(SessionData['city']),
           setVeg(SessionData['vcount']),
           setNonVeg(SessionData['nvcount']),
-          // setStartDate(SessionData['selectedDate']),
+          setStartDate(SessionData['selectedDate']),
           setOccasion(SessionData['occasion'])
 
           // setstartTime(SessionData['evt_time'])
@@ -158,10 +159,10 @@ const NinjaBoxCustomise = () => {
         // }, [])
         const result = allMenus;
         // reference url
-        if (sessionStorage.getItem("first_url") === null) {
-            const catch_url = sessionStorage.setItem("first_url", "x");
+        if (sessionStorage.getItem("first_url2") === null) {
+            const catch_url = sessionStorage.setItem("first_url2", "x");
         } else {
-            let ref_url = sessionStorage.getItem("first_url");
+            let ref_url = sessionStorage.getItem("first_url2");
             setRefURL(ref_url);
         }
 
@@ -216,23 +217,6 @@ const NinjaBoxCustomise = () => {
         setBreadRice([]);
         getDeliveryCharge(veg + nonVeg);
 
-        // const filterStarter = startersData2.filter(
-        //   (d) => d.city === city
-        // );
-        // setStartersData(filterStarter);
-
-        // const filterMain = mainData2.filter((d) => d.city === city);
-        // setMainData(filterMain);
-
-        // const filterBreadData = breadRiceData2.filter(
-        //   (d) => d.city === city
-        // );
-        // setBreadRiceData(filterBreadData);
-
-        // const filterDessertData = dessertData2.filter(
-        //   (d) => d.city === city
-        // );
-        // setDessertData(filterDessertData);
     };
 
     const handleVegNonVegGuest = (name, value) => {
@@ -954,7 +938,7 @@ const NinjaBoxCustomise = () => {
         handleChange(value, index, type);
     }
     function checkFirstValidation() {
-        if (!city || !startTime) {
+        if (!city ) {
             if (!city) {
                 Swal.fire({
                     text: "Please select your City",
@@ -1772,54 +1756,236 @@ const NinjaBoxCustomise = () => {
 
     // const sortedData = selectedItems.concat(unselectedItems);
 
-    const initiatePayment = async (e) => {
-        e.preventDefault();
-        let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
-        const data = { oid };
-        let a = await fetch("/api/paynow", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
+    const interakt=async()=>{
+        var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
+    
+            var raw={ "phoneNumber": datas.mobileno, "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify(raw),
+                redirect: 'follow'
+              };
+              
+            await fetch("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+                .then(response => console.log("resot",response.json()))
+      }
+    
+      const EmailOrderConfirmation=async(datas)=>{
+    
+        //post api for email
+        await fetch("/api/EmailOrderConfirmation", {
+          method: "POST",
+          body: JSON.stringify(datas),
+          headers: { "Content-Type": "application/json; charset=UTF-8" },
+        }).then((res) => {
+          if(res.success) {
+            alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+    //show pop up here
+          }
+          else if (res.message==="Parameter missing"){
+            alert("Email or Name is Missing");
+    
+            
+          }
+          else {
+            console.log("Failed to send message");
+          }
         });
-        var txnToken = await a.json();
-
-        var config = {
-            root: "",
-            flow: "DEFAULT",
-            ENVIRONMENT: "staging",
-            REQUEST_TYPE: "DEFAULT",
-            INDUSTRY_TYPE_ID: "Retail",
-            WEBSITE: "WEBSTAGING",
-            data: {
-                orderId: oid,
-                token: txnToken /* update token value */,
-                tokenType: "TXN_TOKEN",
-                amount: "100" /* update amount */,
-            },
-            "handler": {
-                "notifyMerchant": function (eventName, data) {
-                    console.log("notifyMerchant handler function called");
-                    console.log("eventName => ", eventName);
-                    console.log("data => ", data);
-                },
-            },
-        };
-
-
-
-
-        // initialze configuration using init method
-        window.Paytm.CheckoutJS.init(config)
-            .then(function onSuccess() {
-                // after successfully updating configuration, invoke JS Checkout
-                window.Paytm.CheckoutJS.invoke();
+      }
+    
+      // const selectedItems = filteredData.filter(item => item.checked);
+      // const unselectedItems = filteredData.filter(item => !item.checked);
+    
+      // selectedItems.sort((a, b) => a.name.localeCompare(b.name));
+    
+      // const sortedData = selectedItems.concat(unselectedItems);
+    
+      const redirectToPayU = async(pd) => {
+        console.log("pd", pd);
+        //use window.bolt.launch if you face an error in bolt.launch
+    
+        bolt.launch(pd, {
+          responseHandler: function (response) {
+            // your payment response Code goes here
+            fetch("/api/payResponse", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(response.response),
             })
-            .catch(function onError(error) {
-                console.log("error => ", error);
-            });
-    };
+              .then(function (a) {
+                
+                return a.json();
+              })
+              //Storing the payment details
+              .then(async function (json) {
+    
+                //API call for saving all the payment response whether it is success or failure
+                fetch("/api/RawPaymentAllDetails", {
+                  method: "POST",
+                  headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(json.status),
+                })
+    
+                // if payment gets successful
+    
+                if(json.status.status==="success"){
+                
+                  // let payData={
+                    datas.txnid=json.status.txnid,
+                    datas.phone=json.status.phone,
+                    datas.productinfo=json.status.productinfo,
+                    datas.amount=json.status.amount,
+                    datas.status=json.status,
+                    datas.email=json.status.email,
+                    datas.bank_ref_num=json.status.bank_ref_num,
+                    datas.OrderStatus=""
+                    // datas.name=json.status.field4
+    
+                  // }
+                  // let userData= JSON.stringify(datas)+JSON.stringify(payData);
+    
+                  fetch("/api/saveCompletedOrderDetails", {
+                    method: "POST",
+                    headers: {
+                      Accept: "application/json",
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(datas),
+                  }).then((res)=>console.log("successful"),
+    
+                  //Email the Order Confirmation
+                  await EmailOrderConfirmation(datas),
+                  
+                    //Interakt Api message to hit my number with details
+                  await interakt()
+    
+                    
+                  );
+                }
+                else{
+                  
+                  alert("Payment Failed! Please try again.");
+                }
+              });
+              
+          },
+          
+          // catchException: function (response) {
+          //   // the code you use to handle the integration errors goes here
+          //   // Make any UI changes to convey the error to the user
+          // },
+        });
+      };
+    
+      const payumoney = (e) => {
+        e.preventDefault();
+    
+        if(totalPrice<3000){
+          alert("Order value must be greater than 3000");
+          return;
+        }
+        //Create a Data object that is to be passed to LAUNCH method of Bolt
+        let oid = "RSGI" + Math.floor(Math.random(6) * 1000000);
+        console.log(oid);
+        var pd = {
+          key: "VKy9EEvW",
+          txnid: oid,
+          amount: "1",
+          firstname: datas.name,
+          email: datas.email,
+          phone: datas.name,
+          productinfo: "test",
+          surl: "https://new.caterninja.com",
+          furl: "https://new.caterninja.com",
+          hash: "",
+        };
+    
+        // Data to be Sent to API to generate hash.
+        let data = {
+          txnid: pd.txnid,
+          email: pd.email,
+          amount: pd.amount,
+          productinfo: pd.productinfo,
+          firstname: pd.firstname,
+        };
+        let self = this;
+        // API call to get the Hash value
+        fetch("/api/paynow", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then(function (a) {
+            return a.json();
+          })
+          .then(function (json) {
+            pd.hash = json["hash"];
+            //  With the hash value in response, we are ready to launch the bolt overlay.
+            //Function to launch BOLT
+            redirectToPayU(pd);
+          });
+      };
+
+    // const initiatePayment = async (e) => {
+    //     e.preventDefault();
+    //     let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
+    //     const data = { oid };
+    //     let a = await fetch("/api/paynow", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(data),
+    //     });
+    //     var txnToken = await a.json();
+
+    //     var config = {
+    //         root: "",
+    //         flow: "DEFAULT",
+    //         ENVIRONMENT: "staging",
+    //         REQUEST_TYPE: "DEFAULT",
+    //         INDUSTRY_TYPE_ID: "Retail",
+    //         WEBSITE: "WEBSTAGING",
+    //         data: {
+    //             orderId: oid,
+    //             token: txnToken /* update token value */,
+    //             tokenType: "TXN_TOKEN",
+    //             amount: "100" /* update amount */,
+    //         },
+    //         "handler": {
+    //             "notifyMerchant": function (eventName, data) {
+    //                 console.log("notifyMerchant handler function called");
+    //                 console.log("eventName => ", eventName);
+    //                 console.log("data => ", data);
+    //             },
+    //         },
+    //     };
+
+
+
+
+    //     // initialze configuration using init method
+    //     window.Paytm.CheckoutJS.init(config)
+    //         .then(function onSuccess() {
+    //             // after successfully updating configuration, invoke JS Checkout
+    //             window.Paytm.CheckoutJS.invoke();
+    //         })
+    //         .catch(function onError(error) {
+    //             console.log("error => ", error);
+    //         });
+    // };
 
     return (
         <div className={styles.customizeMainContainer}>
@@ -1914,7 +2080,7 @@ const NinjaBoxCustomise = () => {
                                     <p>Date</p>
                                     <div>
                                         <input type="date" name="event_date"
-                                            selected={startDate}
+                                            value={startDate}
                                             onChange={(date) => setStartDate(date)}
                                             required />
                                     </div>
@@ -2945,6 +3111,8 @@ const NinjaBoxCustomise = () => {
                                         <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                                             <button>Get Booking Help</button>
                                         </Link>
+                                        <button onClick={payumoney}>Place Order</button>
+
                                         {/* <button onClick={initiatePayment}></button> */}
                                     </div>
                                 </div>
