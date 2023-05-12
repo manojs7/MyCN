@@ -1,6 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '/styles/BirthdayParty.module.scss';
 
+const items = [
+    { name: 'Item 1', price: 10 },
+    { name: 'Item 2', price: 20 },
+    { name: 'Item 3', price: 30 },
+    { name: 'Item 4', price: 40 },
+    { name: 'Item 5', price: 50 },
+    { name: 'Item 6', price: 60 },
+    { name: 'Item 7', price: 70 },
+    { name: 'Item 8', price: 80 },
+  ];
+  
+  function Item({ name, price }) {
+    return (
+      <div className="item">
+        <h3>{name}</h3>
+        <p>Price: {price}</p>
+      </div>
+    );
+  }
+
 const Birthday_Packages = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -25,25 +45,25 @@ const Birthday_Packages = () => {
 
     //Starter selector
     const [showDiv, setShowDiv] = useState(false);
-  const ref = useRef(null);
+    const ref = useRef(null);
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+            setShowDiv(false);
+        }
     };
-  }, []);
 
-  const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      setShowDiv(false);
-    }
-  };
-
-  const handleHover = () => {
-    setShowDiv(true);
-  };
+    const handleHover = () => {
+        setShowDiv(true);
+    };
 
 
     return (
@@ -72,12 +92,12 @@ const Birthday_Packages = () => {
                                                 <li key={option.id}>
                                                     <p>{option.label}</p>
                                                     <input htmlFor={option.id}
-                                                            type="checkbox"
-                                                            id={option.id}
-                                                            checked={selectedOptions.indexOf(option.id) !== -1}
-                                                            onChange={() => handleOptionSelect(option.id)}
-                                                            disabled={selectedOptions.indexOf(option.id) === -1 && selectedOptions.length >= 4}
-                                                        />
+                                                        type="checkbox"
+                                                        id={option.id}
+                                                        checked={selectedOptions.indexOf(option.id) !== -1}
+                                                        onChange={() => handleOptionSelect(option.id)}
+                                                        disabled={selectedOptions.indexOf(option.id) === -1 && selectedOptions.length >= 4}
+                                                    />
                                                 </li>
                                             ))}
                                         </ul>
@@ -122,6 +142,15 @@ const Birthday_Packages = () => {
                         return <li key={optionId}>{option.label}</li>;
                     })}
                 </ul>
+            </div>
+            <div>
+                <div className={styles.slidercontainer}>
+                    <div className={styles.slider}>
+                        {items.map((item, index) => (
+                            <Item key={index} name={item.name} price={item.price} />
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )
