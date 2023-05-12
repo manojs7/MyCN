@@ -49,13 +49,13 @@ const Custom_Package = () => {
       { id: 3, name: "House Party 3", price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert", items: ["Cheezy Triangles", "Malai Paneer Tikka", "Veg Manchurian", "Honey Chilly Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
     ],
     veg2: [
-      { id: 1, name: 'House Party 4', price: '2,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Crispy corn", "Cajun Spiced Potato", "Veg Fried Rice", "Veg Hakka Noodles", "Paneer Manchurian Gravy", "Fruit Custard"] },
-      { id: 1, name: 'Cocktail Party 1', price: '3,099', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Malai Paneer tikka", "Tandoori malai chaap", "Churasco Pineapple", "Veggie Fingers", "Crispy Corn", "Mushroom Munchurian Dry", "Veg Dum Biryani", "Raita", "Salad"] },
-      { id: 1, name: 'Cocktail Party 2', price: '3,099', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] }
+      { id: 4, name: 'House Party 4', price: '2,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Crispy corn", "Cajun Spiced Potato", "Veg Fried Rice", "Veg Hakka Noodles", "Paneer Manchurian Gravy", "Fruit Custard"] },
+      { id: 5, name: 'Cocktail Party 1', price: '3,099', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Malai Paneer tikka", "Tandoori malai chaap", "Churasco Pineapple", "Veggie Fingers", "Crispy Corn", "Mushroom Munchurian Dry", "Veg Dum Biryani", "Raita", "Salad"] },
+      { id: 6, name: 'Cocktail Party 2', price: '3,099', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] }
     ],
     veg3: [
-      { id: 1, name: 'House Pooja 1', price: '4,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Pudina Paneer Tikka", "Malai Broccoli", "Subz e Bahar", "Paneer Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
-      { id: 1, name: 'House Pooja 2', price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
+      { id: 7, name: 'House Pooja 1', price: '4,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Pudina Paneer Tikka", "Malai Broccoli", "Subz e Bahar", "Paneer Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
+      { id: 8, name: 'House Pooja 2', price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
     ],
     nonVeg: [
       { id: 1, name: 'House Party 1', price: '6,499', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },

@@ -20,23 +20,23 @@ export default function Ninja_Box()
 
     useEffect(() => {
         const x = document.referrer;
-        if (sessionStorage.getItem("first_url") === null) {
-            const catch_url = sessionStorage.setItem("first_url", JSON.stringify(x));
-            console.log(catch_url);
-          } else {
-            let url_value = sessionStorage.getItem("first_url");
-            setUrl(url_value)
-            console.log(url_value);
-          }
+        // if (sessionStorage.getItem("first_url") === null) {
+        //     const catch_url = sessionStorage.setItem("first_url", JSON.stringify(x));
+        //     console.log(catch_url);
+        //   } else {
+        //     let url_value = sessionStorage.getItem("first_url");
+        //     setUrl(url_value)
+        //     console.log(url_value);
+        //   }
           var $zoho = {};
             $zoho=$zoho.salesiq = $zoho.salesiq || {widgetcode: "99b5ba1c1d8e0e516ed773004b338dd1578d41185684ec39567606d36ae19b4dda650c6fc171098ce0179514dc48a6cb", values:{},ready:function(){}};var d=document;var s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
     }, [])
 
     return (<>
-    <Head>
+    {/* <Head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" ></meta>
-    </Head>
-    <Script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js" bolt-color="e34524" bolt-logo="http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png"/>
+    </Head> */}
+    {/* <Script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js" bolt-color="e34524" bolt-logo="http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png"/> */}
 
         <NewNavBar />
         <Navbar />

@@ -57,22 +57,25 @@ const NinjaBoxViewPkg = () => {
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [showPopup, setShowPopup] = useState(false);
-  const [ID, setId] = useState(0);
+  const [ID, setId] = useState(1);
 
   useEffect(() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
     // sessionStorage.removeItem("dataSelected")
-    setCity(dataSelected["city"]);
-    setVeg(dataSelected["vcount"]);
-    setNonVeg(dataSelected["nvcount"]);
-    setSelectedDate(dataSelected["selectedDate"]);
-    setOccasion(dataSelected["occasion"]);
-    setName(dataSelected.itemSelected["name"]);
-    setDetails(dataSelected.itemSelected["details"]);
-    setPrice(dataSelected.itemSelected["price"]);
-    setImage(dataSelected.itemSelected["img"]);
-    setId(dataSelected.itemSelected["id"]);
-    console.log(dataSelected);
+    if(dataSelected){
+      setCity(dataSelected["city"]);
+      setVeg(dataSelected["vcount"]);
+      setNonVeg(dataSelected["nvcount"]);
+      setSelectedDate(dataSelected["selectedDate"]);
+      setOccasion(dataSelected["occasion"]);
+      setName(dataSelected.itemSelected["name"]);
+      setDetails(dataSelected.itemSelected["details"]);
+      setPrice(dataSelected.itemSelected["price"]);
+      setImage(dataSelected.itemSelected["img"]);
+      setId(dataSelected.itemSelected["id"]);
+      // console.log(dataSelected);
+    }
+   
   }, []);
 
   //by Manoj
@@ -120,27 +123,30 @@ const NinjaBoxViewPkg = () => {
     let itemData;
 
     if (ID) {
-      PreSelectMenuNinjaBox.filter((d) => d.id === ID)[0].details.items.forEach(
+      PreSelectMenuNinjaBox.filter((d) => d.id === ID)[0].items.forEach(
         (item) => {
-          itemData = allMenus.filter((d) => d.name === item);
-          if (itemData[0].mealType === "Starter") {
-            handleStatersAdd(item);
-          } else if (itemData[0].mealType === "Main course") {
-            handleMainAdd(item);
-          } else if (itemData[0].mealType === "Bread+Rice") {
-            handleBreadRiceAdd(item);
-          } else if (itemData[0].mealType === "Dessert") {
-            handleDesertsAdd(item);
+          itemData = allMenus.filter((d) => d.name == item);
+          if(itemData.length>0){
+            if (itemData[0].mealType === "Starter") {
+              handleStatersAdd(itemData[0].name);
+            } else if (itemData[0].mealType === "Main course") {
+              handleMainAdd(itemData[0].name);
+            } else if (itemData[0].mealType === "Bread+Rice") {
+              console.log("breadRice", breadRice)
+              handleBreadRiceAdd(itemData[0].name);
+              console.log("breadRice", breadRice)
+            } else if (itemData[0].mealType === "Dessert") {
+              handleDesertsAdd(itemData[0].name);
+            }
+            else{
+              console.log("suspect",item)
+            }
           }
+          
         }
       );
     } else {
     }
-
-    sessionStorage.setItem("starters", JSON.stringify(starters));
-    sessionStorage.setItem("mains", JSON.stringify(mains));
-    sessionStorage.setItem("breadRice", JSON.stringify(breadRice));
-    sessionStorage.setItem("desserts", JSON.stringify(desserts));
   };
 
   const handleStatersAdd = (item_name, id) => {
@@ -207,7 +213,7 @@ const NinjaBoxViewPkg = () => {
     });
     setStarters(temp);
 
-    // console.log("starters", starters);
+    console.log("starters", starters);
   };
   const handleMainAdd = (item_name, id) => {
     // setIsMainChange(!isMainChange);
@@ -385,8 +391,8 @@ const NinjaBoxViewPkg = () => {
   };
 
   const handleBreadRiceAdd = (item_name, id) => {
+
     // setIsBreadChange(!isBreadChange);
-    // console.log(item_name);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...breadRice];
     const filterBreadRice = breadRiceData.find(
@@ -689,7 +695,7 @@ const NinjaBoxViewPkg = () => {
       Images: filterBreadRice?.Images,
       Qtype: filterBreadRice?.Qtype,
       veg: filterBreadRice?.veg,
-      selling_price: filterBreadRice.selling_price,
+      selling_price: filterBreadRice?.selling_price,
       // description: main.description,
     });
     setBreadRice(temp);
@@ -703,7 +709,7 @@ const NinjaBoxViewPkg = () => {
       return;
     }
 
-    const dessert = dessertData.find((item) => item.name === item_name);
+    const dessert = allMenus.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
@@ -740,9 +746,19 @@ const NinjaBoxViewPkg = () => {
       selling_price: dessert.selling_price,
     });
     setDesserts(temp);
+   
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
 
+  function HandleCeilFloorValue(x) {
+    var decimals = (x - Math.floor(x)).toFixed(1);
+    if (decimals <= 0.4) {
+      x = Math.floor(x);
+    } else if (decimals >= 0.6) {
+      x = Math.floor(x);
+    }
+    return x;
+  }
   useEffect(() => {
     preselection();
 
@@ -795,7 +811,8 @@ const NinjaBoxViewPkg = () => {
         starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
       )
     );
-    preselection()
+
+    
 
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
@@ -1010,20 +1027,7 @@ const NinjaBoxViewPkg = () => {
     setShowPopup(false);
   }
 
-  useEffect(() => {
-    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
-    // sessionStorage.removeItem("dataSelected")
-    setCity(dataSelected['city'])
-    setVegCount(dataSelected['vcount'])
-    setNonVegCount(dataSelected['nvcount'])
-    setSelectedDate(dataSelected['selectedDate'])
-    setOccasion(dataSelected['occasion'])
-    setName(dataSelected.itemSelected['name'])
-    setDetails(dataSelected.itemSelected['details'])
-    setPrice(dataSelected.itemSelected['price'])
-    setImage(dataSelected.itemSelected['img'])
-    console.log(dataSelected)
-  }, [])
+
   return (
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
@@ -1179,7 +1183,7 @@ const NinjaBoxViewPkg = () => {
             </div>
             <div className={styles.pkgDetails}>
               <div>
-                <h3>{PreSelectMenuNinjaBox[0].name}</h3>
+                <h3>{PreSelectMenuNinjaBox.filter((d)=>d.id===ID)[0].name}</h3>
                 <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
                 <div>
                   <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
@@ -1203,7 +1207,21 @@ const NinjaBoxViewPkg = () => {
                   <div className={styles.starterItems}>
                     {starters.map((item, index) => (
                       <div className={styles.fstItem}>
-                        <img className={styles.itemImage} src={item.image} />
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
                         <div className={styles.itemDetailsContainer}>
                           <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
@@ -1227,7 +1245,58 @@ const NinjaBoxViewPkg = () => {
                   <div className={styles.starterItems}>
                     {mains.map((item, index) => (
                       <div className={styles.fstItem}>
-                        <img className={styles.itemImage} src={item.image} />
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div className={styles.pcs}>
+                            <p>{item.quantity}{item.Qtype}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    ))}
+
+                  </div>
+                </div>
+                
+                <div className={styles.startersContainer}>
+                  <h5 className='mt-5'>Bread, Rice and Noodles</h5>
+                  <div className={styles.starterItems}>
+                    {breadRice.map((item, index) => (
+                      <div className={styles.fstItem}>
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
                         <div className={styles.itemDetailsContainer}>
                           <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
@@ -1253,7 +1322,21 @@ const NinjaBoxViewPkg = () => {
                   <div className={styles.starterItems}>
                     {desserts.map((item, index) => (
                       <div className={styles.fstItem}>
-                        <img className={styles.itemImage} src={item.image} />
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
                         <div className={styles.itemDetailsContainer}>
                           <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>

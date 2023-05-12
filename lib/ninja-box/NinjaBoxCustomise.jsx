@@ -24,7 +24,8 @@ import Swal from "sweetalert2";
 import Link from "next/link";
 
 const NinjaBoxCustomise = () => {
-    const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
+    const { menu, cuisines, allMenus, cities, occasions, PreSelected, PreSelectMenuNinjaBox } =
+    useAppMenu();
     const [showModal, setShowModal] = useState(false);
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
@@ -98,6 +99,8 @@ const NinjaBoxCustomise = () => {
     const [isBreadChange, setIsBreadChange] = useState(false);
     const [isDessertChange, setIsDessertChange] = useState(false);
     const [isDelete, setIsDelete] = useState(false);
+    const [ID, setId] = useState(1);
+
 
     const [showPriceList, setShowPriceList] = useState(false);
 
@@ -112,6 +115,38 @@ const NinjaBoxCustomise = () => {
         autoplaySpeed: 2000,
     };
 
+    const preselection = async () => {
+        let itemData;
+    
+        if (ID) {
+          PreSelectMenuNinjaBox.filter((d) => d.id === ID)[0].items.forEach(
+            (item) => {
+              itemData = allMenus.filter((d) => d.name === item);
+              if(itemData.length>0){
+                if (itemData[0].mealType === "Starter") {
+                  handleStatersAdd(item);
+                } else if (itemData[0].mealType === "Main course") {
+                  handleMainAdd(item);
+                } else if (itemData[0].mealType === "Bread+Rice") {
+                  handleBreadRiceAdd(item);
+                } else if (itemData[0].mealType === "Dessert") {
+                  handleDesertsAdd(item);
+                }
+                else{
+                  console.log("suspect",item)
+                }
+              }
+              
+            }
+          );
+        } else {
+        }
+    
+        // sessionStorage.setItem("starters", JSON.stringify(starters));
+        // sessionStorage.setItem("mains", JSON.stringify(mains));
+        // sessionStorage.setItem("breadRice", JSON.stringify(breadRice));
+        // sessionStorage.setItem("desserts", JSON.stringify(desserts));
+      };
     useEffect(()=>{
         let SessionData=JSON.parse(sessionStorage.getItem("dataSelected"));
         console.log("here",SessionData);
@@ -656,7 +691,7 @@ const NinjaBoxCustomise = () => {
         if (veg === 0 && nonVeg === 0) return;
 
         let temp = [...starters];
-        const starter = startersData.find((item) => item.name === item_name);
+        const starter = allMenus.find((item) => item.name === item_name);
         // removing selected item
         // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
@@ -721,7 +756,7 @@ const NinjaBoxCustomise = () => {
         if (veg === 0 && nonVeg === 0) return;
         let temp = [...mains];
 
-        const main = mainData.find((item) => item.name === item_name);
+        const main = allMenus.find((item) => item.name === item_name);
         let quantity;
         if (temp.find((item) => item.name === item_name)) {
             return;
@@ -1159,7 +1194,7 @@ const NinjaBoxCustomise = () => {
         console.log(item_name);
         if (veg === 0 && nonVeg === 0) return;
         let temp = [...breadRice];
-        const filterBreadRice = breadRiceData.find(
+        const filterBreadRice = allMenus.find(
             (item) => item.name === item_name
         );
         let quantity;
@@ -1459,7 +1494,7 @@ const NinjaBoxCustomise = () => {
             Images: filterBreadRice?.Images,
             Qtype: filterBreadRice?.Qtype,
             veg: filterBreadRice?.veg,
-            selling_price: filterBreadRice.selling_price,
+            selling_price: filterBreadRice?.selling_price,
             // description: main.description,
         });
         setBreadRice(temp);
@@ -1473,7 +1508,7 @@ const NinjaBoxCustomise = () => {
             return;
         }
 
-        const dessert = dessertData.find((item) => item.name === item_name);
+        const dessert = allMenus.find((item) => item.name === item_name);
         let quantity;
         if (temp.find((item) => item.name === item_name)) {
             return;
@@ -1576,6 +1611,7 @@ const NinjaBoxCustomise = () => {
             parseInt(getGst())
         );
         setShowPriceList(false);
+        preselection();
     }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
     useEffect(() => {
         setGST(getGst());
@@ -1698,18 +1734,18 @@ const NinjaBoxCustomise = () => {
         } catch (e) {
             console.log(e);
         }
-        fetch("/api/forma", {
-            method: "POST",
-            body: data,
-            headers: { "Content-Type": "application/json; charset=UTF-8" },
-        }).then((res) => {
-            console.log(res.message);
-            if (res.success) {
-                console.log("message sent");
-            } else {
-                console.log("Failed to send message");
-            }
-        });
+        // fetch("/api/forma", {
+        //     method: "POST",
+        //     body: data,
+        //     headers: { "Content-Type": "application/json; charset=UTF-8" },
+        // }).then((res) => {
+        //     console.log(res.message);
+        //     if (res.success) {
+        //         console.log("message sent");
+        //     } else {
+        //         console.log("Failed to send message");
+        //     }
+        // });
     };
 
     const handlePlaceOrder = () => {
@@ -2152,9 +2188,9 @@ const NinjaBoxCustomise = () => {
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
                             <div className={styles3.packageName}>
-                                <h3>PACKAGE NAME</h3>
+                                <h3>{PreSelectMenuNinjaBox[0].name}</h3>
                                 <img src='555.png' height="150px" width="274.5px" />
-                                <h6>Starters + X Mains + X Desserts</h6>
+                                <h6>{starters?.length} Starters + {mains?.length+ breadRice?.length} Mains + {desserts?.length} Desserts</h6>
                             </div>
                             {/* <div className={styles.pkgSliderContainerLG}>
                                 {
@@ -2199,7 +2235,7 @@ const NinjaBoxCustomise = () => {
                             <div>
                                 <div className={styles.menuContainer}>
                                     <div className={styles.createYourMenuHead}>
-                                        <h3>Create Your Menu</h3>
+                                        <h3>Customize Your Package</h3>
                                         <hr
                                             style={{
                                                 border: "0.4px dashed #42484E",
@@ -2213,22 +2249,7 @@ const NinjaBoxCustomise = () => {
                                     {/* starters add */}
                                     <div className={styles.startersContainer}>
                                         <h5>Starters</h5>
-                                        {showDropdown && (
-                                            <div
-                                                onClick={handleDiv1Click}
-                                                className={styles.starterSearchBtn}
-                                                id="srchbr"
-                                            >
-                                                <p>
-                                                    <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
-                                                    Starter
-                                                </p>
-                                                <span>
-                                                    <FontAwesomeIcon icon={faAngleDown} /> Click here to
-                                                    select
-                                                </span>
-                                            </div>
-                                        )}
+                                        
                                         <div
                                             className={styles.selectedStarterContainer}
                                             style={{ marginTop: "20px" }}
@@ -2406,6 +2427,22 @@ const NinjaBoxCustomise = () => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        )}
+                                        {showDropdown && (
+                                            <div
+                                                onClick={handleDiv1Click}
+                                                className={styles.starterSearchBtn}
+                                                id="srchbr"
+                                            >
+                                                <p>
+                                                    <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                                                    Starter
+                                                </p>
+                                                <span>
+                                                    <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                                                    select
+                                                </span>
                                             </div>
                                         )}
                                     </div>
