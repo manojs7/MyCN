@@ -113,6 +113,10 @@ const CustomizeNinjaBox = () => {
     autoplaySpeed: 2000,
   };
 
+  //DATE LOGIC
+  const today = new Date();
+  const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
+
   useEffect(() => {
 
     allMenus.sort(function (a, b) {
@@ -2129,6 +2133,8 @@ const CustomizeNinjaBox = () => {
                     name="event_date"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
+                    minDate={minDate}
+                    dateFormat="dd MMMM yyyy"
                     required
                   />
                 </div>
