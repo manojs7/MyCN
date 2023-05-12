@@ -14,7 +14,6 @@ export default function ordersByDiy()
     return (<>
         <NewNavBar />
         <Navbar />
-        <InstantQuote />
         {/* <Footer /> */}
         <NewFooter />
     </>)

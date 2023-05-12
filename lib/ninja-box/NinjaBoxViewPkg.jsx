@@ -1,15 +1,16 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
-import styles from '/styles/ViewPackage.module.scss';
-import 'bootstrap/dist/css/bootstrap.css';
+import styles from "/styles/ViewPackage.module.scss";
+import "bootstrap/dist/css/bootstrap.css";
 import styles2 from "/styles/NewCustomizePkg.module.scss";
-import Link from 'next/link';
+import Link from "next/link";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 import { useAppMenu } from "$lib/menuContext";
 import styles3 from "/styles/Custom_Package.module.scss";
 
 const NinjaBoxViewPkg = () => {
+  //DIY Logic by Manoj
 
 
   //DIY Logic by Manoj
@@ -39,10 +40,6 @@ const NinjaBoxViewPkg = () => {
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
 
-
-
-
-
   //code already done by sourav
 
   const [name, setName] = useState("");
@@ -52,35 +49,34 @@ const NinjaBoxViewPkg = () => {
 
   const [city, setCity] = useState("");
   const [occasion, setOccasion] = useState("");
-  const [itemSelected, setItemSelected] = useState()
-  const [selectedDate, setSelectedDate] = useState()
-  const [vegCount, setVegCount] = useState()
-  const [nonVegCount, setNonVegCount] = useState()
-  const [details, setDetails] = useState()
-  const [price, setPrice] = useState()
-  const [image, setImage] = useState()
+  const [itemSelected, setItemSelected] = useState();
+  const [selectedDate, setSelectedDate] = useState();
+  const [vegCount, setVegCount] = useState();
+  const [nonVegCount, setNonVegCount] = useState();
+  const [details, setDetails] = useState();
+  const [price, setPrice] = useState();
+  const [image, setImage] = useState();
   const [showPopup, setShowPopup] = useState(false);
-  const [ID, setId] = useState(0)
+  const [ID, setId] = useState(0);
 
   useEffect(() => {
-    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
+    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
     // sessionStorage.removeItem("dataSelected")
-    setCity(dataSelected['city'])
-    setVeg(dataSelected['vcount'])
-    setNonVeg(dataSelected['nvcount'])
-    setSelectedDate(dataSelected['selectedDate'])
-    setOccasion(dataSelected['occasion'])
-    setName(dataSelected.itemSelected['name'])
-    setDetails(dataSelected.itemSelected['details'])
-    setPrice(dataSelected.itemSelected['price'])
-    setImage(dataSelected.itemSelected['img'])
-    setId(dataSelected.itemSelected['id'])
-    console.log(dataSelected)
-  }, [])
+    setCity(dataSelected["city"]);
+    setVeg(dataSelected["vcount"]);
+    setNonVeg(dataSelected["nvcount"]);
+    setSelectedDate(dataSelected["selectedDate"]);
+    setOccasion(dataSelected["occasion"]);
+    setName(dataSelected.itemSelected["name"]);
+    setDetails(dataSelected.itemSelected["details"]);
+    setPrice(dataSelected.itemSelected["price"]);
+    setImage(dataSelected.itemSelected["img"]);
+    setId(dataSelected.itemSelected["id"]);
+    console.log(dataSelected);
+  }, []);
 
   //by Manoj
   useEffect(() => {
-
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
@@ -95,7 +91,6 @@ const NinjaBoxViewPkg = () => {
       return 0;
     });
 
-
     const result = allMenus?.reduce((finalArray, current) => {
       let obj = finalArray?.find((item) => item.name === current.name);
 
@@ -104,7 +99,7 @@ const NinjaBoxViewPkg = () => {
         return finalArray;
       }
       return finalArray.concat([current]);
-    }, [])
+    }, []);
 
     let url_value = sessionStorage.getItem("first_url2");
     // setRefURL(url_value);
@@ -117,41 +112,36 @@ const NinjaBoxViewPkg = () => {
     setDessertData2(result.filter((d) => d.mealType === "Dessert"));
     setBreadRiceData(result.filter((d) => d.mealType === "Bread+Rice"));
     setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
-
   }, []);
 
   //Adding menu items to preselection
-
 
   const preselection = async () => {
     let itemData;
 
     if (ID) {
-      (PreSelectMenuNinjaBox.filter((d) => d.id === ID))[0].details.items.forEach((item) => {
-        itemData = allMenus.filter((d) => d.name === item);
-        if (itemData[0].mealType === "Starter") {
-          handleStatersAdd(item);
-        } else if (itemData[0].mealType === "Main course") {
-          handleMainAdd(item);
-        } else if (itemData[0].mealType === "Bread+Rice") {
-          handleBreadRiceAdd(item);
-        } else if (itemData[0].mealType === "Dessert") {
-          handleDesertsAdd(item);
+      PreSelectMenuNinjaBox.filter((d) => d.id === ID)[0].details.items.forEach(
+        (item) => {
+          itemData = allMenus.filter((d) => d.name === item);
+          if (itemData[0].mealType === "Starter") {
+            handleStatersAdd(item);
+          } else if (itemData[0].mealType === "Main course") {
+            handleMainAdd(item);
+          } else if (itemData[0].mealType === "Bread+Rice") {
+            handleBreadRiceAdd(item);
+          } else if (itemData[0].mealType === "Dessert") {
+            handleDesertsAdd(item);
+          }
         }
-        sessionStorage.setItem("starters", starters)
-        sessionStorage.setItem("mains", mains)
-        sessionStorage.setItem("breadRice", breadRice)
-        sessionStorage.setItem("desserts", desserts)
-
-        console.log("here", itemData);
-      });
-    }
-    else {
-
+      );
+    } else {
     }
 
-
-  }
+    sessionStorage.setItem("starters", JSON.stringify(starters));
+    sessionStorage.setItem("mains", JSON.stringify(mains));
+    sessionStorage.setItem("breadRice", JSON.stringify(breadRice));
+    sessionStorage.setItem("desserts", JSON.stringify(desserts));
+  };
 
   const handleStatersAdd = (item_name, id) => {
     // setIsStarterChange(!isStarterChange);
@@ -159,7 +149,7 @@ const NinjaBoxViewPkg = () => {
 
     let temp = [...starters];
     const starter = allMenus.find((item) => item.name === item_name);
-    console.log("starterdata", starter)
+    // console.log("starterdata", starter);
     // removing selected item
     // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
@@ -217,7 +207,7 @@ const NinjaBoxViewPkg = () => {
     });
     setStarters(temp);
 
-    console.log("starters", starters);
+    // console.log("starters", starters);
   };
   const handleMainAdd = (item_name, id) => {
     // setIsMainChange(!isMainChange);
@@ -396,7 +386,7 @@ const NinjaBoxViewPkg = () => {
 
   const handleBreadRiceAdd = (item_name, id) => {
     // setIsBreadChange(!isBreadChange);
-    console.log(item_name);
+    // console.log(item_name);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...breadRice];
     const filterBreadRice = breadRiceData.find(
@@ -469,13 +459,13 @@ const NinjaBoxViewPkg = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(veg * 0.2))
         : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
       filterBreadRice.veg === false &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
         : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
 
@@ -753,9 +743,6 @@ const NinjaBoxViewPkg = () => {
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
 
-
-
-
   useEffect(() => {
     preselection();
 
@@ -812,7 +799,190 @@ const NinjaBoxViewPkg = () => {
 
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
+ 
 
+ 
+  const interakt=async()=>{
+    var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
+
+        var raw={ "phoneNumber": datas.mobileno, "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(raw),
+            redirect: 'follow'
+          };
+          
+        await fetch("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+            .then(response => console.log("resot",response.json()))
+  }
+
+  const EmailOrderConfirmation=async(datas)=>{
+
+    //post api for email
+    await fetch("/api/EmailOrderConfirmation", {
+      method: "POST",
+      body: JSON.stringify(datas),
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+    }).then((res) => {
+      if(res.success) {
+        alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+//show pop up here
+      }
+      else if (res.message==="Parameter missing"){
+        alert("Email or Name is Missing");
+
+        
+      }
+      else {
+        console.log("Failed to send message");
+      }
+    });
+  }
+
+  // const selectedItems = filteredData.filter(item => item.checked);
+  // const unselectedItems = filteredData.filter(item => !item.checked);
+
+  // selectedItems.sort((a, b) => a.name.localeCompare(b.name));
+
+  // const sortedData = selectedItems.concat(unselectedItems);
+
+  const redirectToPayU = async(pd) => {
+    console.log("pd", pd);
+    //use window.bolt.launch if you face an error in bolt.launch
+
+    bolt.launch(pd, {
+      responseHandler: function (response) {
+        // your payment response Code goes here
+        fetch("/api/payResponse", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(response.response),
+        })
+          .then(function (a) {
+            
+            return a.json();
+          })
+          //Storing the payment details
+          .then(async function (json) {
+
+            //API call for saving all the payment response whether it is success or failure
+            fetch("/api/RawPaymentAllDetails", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(json.status),
+            })
+
+            // if payment gets successful
+
+            if(json.status.status==="success"){
+            
+              // let payData={
+                datas.txnid=json.status.txnid,
+                datas.phone=json.status.phone,
+                datas.productinfo=json.status.productinfo,
+                datas.amount=json.status.amount,
+                datas.status=json.status,
+                datas.email=json.status.email,
+                datas.bank_ref_num=json.status.bank_ref_num,
+                datas.OrderStatus=""
+                // datas.name=json.status.field4
+
+              // }
+              // let userData= JSON.stringify(datas)+JSON.stringify(payData);
+
+              fetch("/api/saveCompletedOrderDetails", {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(datas),
+              }).then((res)=>console.log("successful"),
+
+              //Email the Order Confirmation
+              await EmailOrderConfirmation(datas),
+              
+                //Interakt Api message to hit my number with details
+              await interakt()
+
+                
+              );
+            }
+            else{
+              
+              alert("Payment Failed! Please try again.");
+            }
+          });
+          
+      },
+      
+      // catchException: function (response) {
+      //   // the code you use to handle the integration errors goes here
+      //   // Make any UI changes to convey the error to the user
+      // },
+    });
+  };
+
+  const payumoney = (e) => {
+    e.preventDefault();
+
+    if(totalPrice<3000){
+      alert("Order value must be greater than 3000");
+      return;
+    }
+    //Create a Data object that is to be passed to LAUNCH method of Bolt
+    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000);
+    console.log(oid);
+    var pd = {
+      key: "VKy9EEvW",
+      txnid: oid,
+      amount: "1",
+      firstname: datas.name,
+      email: datas.email,
+      phone: datas.name,
+      productinfo: "test",
+      surl: "https://new.caterninja.com",
+      furl: "https://new.caterninja.com",
+      hash: "",
+    };
+
+    // Data to be Sent to API to generate hash.
+    let data = {
+      txnid: pd.txnid,
+      email: pd.email,
+      amount: pd.amount,
+      productinfo: pd.productinfo,
+      firstname: pd.firstname,
+    };
+    let self = this;
+    // API call to get the Hash value
+    fetch("/api/paynow", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(function (a) {
+        return a.json();
+      })
+      .then(function (json) {
+        pd.hash = json["hash"];
+        //  With the hash value in response, we are ready to launch the bolt overlay.
+        //Function to launch BOLT
+        redirectToPayU(pd);
+      });
+  };
 
 
 
@@ -1351,4 +1521,4 @@ const NinjaBoxViewPkg = () => {
   )
 }
 
-export default NinjaBoxViewPkg
+export default NinjaBoxViewPkg;
