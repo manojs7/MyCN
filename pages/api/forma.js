@@ -248,7 +248,13 @@ export default function handler(req, res) {
     //   return res.status(400).send({ message: "Bad request" });
     // }
     let transporter = nodemailer.createTransport('smtps://caterninjadiy@gmail.com:wnetkdifdnuqytcm@smtp.gmail.com');
+    // let reciver;
+    // if(emailedtoparser){
+    //   reciver=data.email,
+    // }
+    // else{
 
+    // }
     try 
       {
       let mailOptions = {
@@ -256,7 +262,8 @@ export default function handler(req, res) {
       // to: `caterninjadiy@gmail.com, ${data.email}, 8n62vi4t8_5o1fxq4@parser.zohocrm.com, lqruate0s_j7e8lb8@parser.zohocrm.com`,
       // to:`${data.email},59drv2k@parser.zohocrm.com`,
       // to:`${data.email}, i4e16n207_bvnzocb@parser.zohocrm.com`,
-      to:`${data.email}, i4e16n207_bvnzocb@parser.zohocrm.com`,
+
+      to:`${data.email}, ${data.emailedtoparser?'':'i4e16n207_bvnzocb@parser.zohocrm.com'}`,
 
       subject: `Final Quote ${data.name} | CaterNinja🤺| Party Quote.`,
 
@@ -274,7 +281,7 @@ export default function handler(req, res) {
       <h3>Date: ${data.date}</h3><br>
       <h3>Veg Count : ${data.veg_c}</h3><br>
       <h3>nonVeg Count : ${data.nonveg_c}</h3><br>
-      <h3>Guest Count : ${data.people}</h3><br>
+      <h3>Total Guest Count : ${data.people}</h3><br>
       <h3>Occasion: ${data.occasion}</h3><br>
       <h3>Cuisine : ${data.cuisine}</h3><br>
       <h3>Preference : ${data.preference}</h3><br>

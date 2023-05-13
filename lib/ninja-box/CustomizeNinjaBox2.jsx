@@ -50,6 +50,7 @@ const CustomizeNinjaBox = () => {
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
   const [datas, setDatas] = useState();
+  const [EmailedToParser,setEmailedToParser]=useState(false)
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
@@ -112,6 +113,10 @@ const CustomizeNinjaBox = () => {
     autoplay: true,
     autoplaySpeed: 2000,
   };
+
+  //DATE LOGIC
+  const today = new Date();
+  const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
 
   useEffect(() => {
 
@@ -1716,6 +1721,7 @@ const CustomizeNinjaBox = () => {
       totalPrice: totalPrice,
       GST: final_gst,
       showDessert: false,
+      emailedtoparser:EmailedToParser
     };
    
 
@@ -1733,6 +1739,7 @@ const CustomizeNinjaBox = () => {
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
       console.log(res.message);
+      setEmailedToParser(true)
       if (res.success) {
         console.log("message sent");
       } else {
@@ -2131,6 +2138,8 @@ const CustomizeNinjaBox = () => {
                     name="event_date"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
+                    minDate={minDate}
+                    dateFormat="dd MMMM yyyy"
                     required
                   />
                 </div>

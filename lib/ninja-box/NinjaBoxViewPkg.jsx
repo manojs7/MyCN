@@ -58,6 +58,7 @@ const NinjaBoxViewPkg = () => {
   const [image, setImage] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const [ID, setId] = useState(1);
+  const [mealType, setMealType]=useState('veg')
 
   useEffect(() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
@@ -73,6 +74,12 @@ const NinjaBoxViewPkg = () => {
       setPrice(dataSelected.itemSelected["price"]);
       setImage(dataSelected.itemSelected["img"]);
       setId(dataSelected.itemSelected["id"]);
+      if(dataSelected.itemSelected["vegType"]){
+        setMealType('nonVeg')
+      }
+      else{
+        setMealType('veg')
+      }
       // console.log(dataSelected);
     }
    
@@ -123,7 +130,7 @@ const NinjaBoxViewPkg = () => {
     let itemData;
 
     if (ID) {
-      PreSelectMenuNinjaBox.filter((d) => d.id === ID)[0].items.forEach(
+      PreSelectMenuNinjaBox[mealType].filter((d) => d.id === ID)[0].items.forEach(
         (item) => {
           itemData = allMenus.filter((d) => d.name == item);
           if(itemData.length>0){
@@ -1060,10 +1067,10 @@ const NinjaBoxViewPkg = () => {
         </div>
         {showPopup && <div className={styles.popupCnfrmPkg}>
           <h4>Details</h4>
-          <div className={styles.formDetails}>
+          <div className={styles.formDetails} >
             <div className='d-flex justify-content-between'>
               <p>Name:</p>
-              <input></input>
+              <input ></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Phone:</p>
@@ -1078,7 +1085,7 @@ const NinjaBoxViewPkg = () => {
               <input></input>
             </div>
             <div className='d-flex justify-content-between'>
-              <p>ZipCode:</p>
+              <p>PinCode:</p>
               <input></input>
             </div>
           </div>
@@ -1183,7 +1190,7 @@ const NinjaBoxViewPkg = () => {
             </div>
             <div className={styles.pkgDetails}>
               <div>
-                <h3>{PreSelectMenuNinjaBox.filter((d)=>d.id===ID)[0].name}</h3>
+                <h3>{PreSelectMenuNinjaBox[mealType].filter((d)=>d.id===ID)[0].name}</h3>
                 <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
                 <div>
                   <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>

@@ -16,9 +16,15 @@ const Custom_Package = () => {
   const [city, setCity] = useState("");
   const [occasion, setOccasion] = useState("");
   const [itemSelected, setItemSelected] = useState()
-  const [selectedDate, setSelectedDate] = useState()
+  const [selectedDate, setSelectedDate] = useState("")
 
   const [startDate, setStartDate] = useState(new Date());
+
+
+  //DATE LOGIC
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() + 2);
+  const minDateISO = minDate.toISOString().split('T')[0];
 
   const handleCity = (city) => {
     setCity(city);
@@ -28,32 +34,28 @@ const Custom_Package = () => {
   };
 
   const navigateToOverview = () => {
-    if(!selectedDate){
+    if (!selectedDate) {
       Swal.fire({
         text: "please select date",
         icon: "warning",
         confirmButtonText: "OK",
       });
-    }else{
-    let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected }
-    sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
-    window.open('/ninjaBoxViewPkg', '_blank')
-  }
+    } else {
+      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, vegType:showNonveg }
+      sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
+      window.open('/ninjaBoxViewPkg', '_blank')
+    }
   }
 
   //PACKAGES
   const packages = {
     veg: [
-      { id: 1, name: 'House Party 1', price: '5,099', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Veggie Fingers","Cajun Spice Potato", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta", "Chole Masala", "Dal Makhni", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal halwa", "Raita"] },
+      { id: 1, name: 'House Party 1', price: '5,099', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Veggie Fingers", "Cajun Spice Potato", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta", "Chole Masala", "Dal Makhni", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal halwa", "Raita"] },
       { id: 2, name: 'House Party 2', price: '4,999', img: '/ninja-box/packages/NBP2.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Malai Paneer Tikka", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Kadhai Veg", "Yellow Dal Fry", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
       { id: 3, name: "House Party 3", price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert", items: ["Cheezy Triangles", "Malai Paneer Tikka", "Veg Manchurian", "Honey Chilly Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
-    ],
-    veg2: [
       { id: 4, name: 'House Party 4', price: '2,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Crispy corn", "Cajun Spiced Potato", "Veg Fried Rice", "Veg Hakka Noodles", "Paneer Manchurian Gravy", "Fruit Custard"] },
       { id: 5, name: 'Cocktail Party 1', price: '3,099', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Malai Paneer tikka", "Tandoori malai chaap", "Churasco Pineapple", "Veggie Fingers", "Crispy Corn", "Mushroom Munchurian Dry", "Veg Dum Biryani", "Raita", "Salad"] },
-      { id: 6, name: 'Cocktail Party 2', price: '3,099', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] }
-    ],
-    veg3: [
+      { id: 6, name: 'Cocktail Party 2', price: '3,099', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] },
       { id: 7, name: 'House Pooja 1', price: '4,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Pudina Paneer Tikka", "Malai Broccoli", "Subz e Bahar", "Paneer Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
       { id: 8, name: 'House Pooja 2', price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
     ],
@@ -61,17 +63,23 @@ const Custom_Package = () => {
       { id: 1, name: 'House Party 1', price: '6,499', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
       { id: 2, name: 'House Party 2', price: '5,999', img: '/ninja-box/packages/NBP2.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
       { id: 3, name: "House Party 3", price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
-    ],
-    nonVeg2: [
-      { id: 1, name: 'House Party 4', price: '3,799', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
-      { id: 1, name: 'Cocktail Party 1', price: '4,799', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
-      { id: 1, name: 'Cocktail Party 2', price: '4,799', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] }
-    ],
-    nonVeg3: [
-      { id: 1, name: 'Fusion Party', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Coastal BBQ Fish Tikka", "Cheesy Triangles", "Paneer Kadai", "Chicken Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
-      { id: 1, name: 'Punjabi Party', price: '5,299', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Punjabi Tangdi", "Dahi Ke Kebab", "Paneer Kofta Gravy", "Punjabi Chicken Curry", "Veg Dum Biryani", "Lachha Paratha", "Shahi Meeta", "Raita"] },
-    ],
+      { id: 4, name: 'House Party 4', price: '3,799', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
+      { id: 5, name: 'Cocktail Party 1', price: '4,799', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
+      { id: 6, name: 'Cocktail Party 2', price: '4,799', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] },
+      { id: 7, name: 'Fusion Party', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Coastal BBQ Fish Tikka", "Cheesy Triangles", "Paneer Kadai", "Chicken Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
+      { id: 8, name: 'Punjabi Party', price: '5,299', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Punjabi Tangdi", "Dahi Ke Kebab", "Paneer Kofta Gravy", "Punjabi Chicken Curry", "Veg Dum Biryani", "Lachha Paratha", "Shahi Meeta", "Raita"] },
+    ]
   };
+
+  //Separate Row for veg packages
+  const firstRow = packages.veg.slice(0, 3);
+  const secondRow = packages.veg.slice(3, 6);
+  const thirdRow = packages.veg.slice(6);
+  //Separate Row for Non-veg packages
+  const nvfirstRow = packages.nonVeg.slice(0, 3);
+  const nvsecondRow = packages.nonVeg.slice(3, 6);
+  const nvthirdRow = packages.nonVeg.slice(6);
+
 
   //SHOW NON-VEG PACKAGES
   const [showNonveg, setShowNonVeg] = useState(false);
@@ -264,7 +272,9 @@ const Custom_Package = () => {
           </div>
           <div>
             <h4>Date</h4>
-            <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)} /></div>
+            <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
+        value={selectedDate}
+        min={minDateISO}/></div>
           </div>
           <div>
             <img src="miniNinjaRight.png" width={24.03} height={43.92} />
@@ -508,65 +518,67 @@ const Custom_Package = () => {
               </div>
             ))}
           </div> */}
-          <div className="d-flex ms-3 mb-2">
-            <div>
-              <h3 style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</h3>
+          { !showNonveg && <div>
+            <div className="d-flex ms-3 mb-2">
+              <div>
+                <h3 style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</h3>
+              </div>
+              <div className="mt-2 ms-2">
+                <Image src="/diy images/vegLogo.png" width="20px" height="20px" />
+              </div>
             </div>
-            <div className="mt-2 ms-2">
-              <Image src="/diy images/vegLogo.png" width="20px" height="20px" />
+            <div className="d-flex">
+              {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+                <h3>{item.name}</h3>
+                <div className="packageImg">
+                  <img src={item.img} />
+                </div>
+                <div className="packagesName">
+                  <h4>{item.details}</h4>
+                  <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                  <p>(Min. Order 10 Guests)</p>
+                </div>
+                <div className="d-flex justify-content-evenly">
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                </div>
+              </div>))}
             </div>
-          </div>
-          <div className="d-flex">
-            {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-              <h3>{item.name}</h3>
-              <div className="packageImg">
-                <img src={item.img} />
-              </div>
-              <div className="packagesName">
-                <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-<span> Onwards</span></h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
-              </div>
-            </div>))}
-          </div>
-          <div className="d-flex">
-            {packages.veg2.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-              <h3>{item.name}</h3>
-              <div className="packageImg">
-                <img src={item.img} />
-              </div>
-              <div className="packagesName">
-                <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-<span> Onwards</span></h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
-              </div>
-            </div>))}
-          </div>
-          <div className="d-flex">
-            {packages.veg3.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-              <h3>{item.name}</h3>
-              <div className="packageImg">
-                <img src={item.img} />
-              </div>
-              <div className="packagesName">
-                <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-<span> Onwards</span></h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
-              </div>
-            </div>))}
-          </div>
+            <div className="d-flex">
+              {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+                <h3>{item.name}</h3>
+                <div className="packageImg">
+                  <img src={item.img} />
+                </div>
+                <div className="packagesName">
+                  <h4>{item.details}</h4>
+                  <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                  <p>(Min. Order 10 Guests)</p>
+                </div>
+                <div className="d-flex justify-content-evenly">
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                </div>
+              </div>))}
+            </div>
+            <div className="d-flex">
+              {thirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+                <h3>{item.name}</h3>
+                <div className="packageImg">
+                  <img src={item.img} />
+                </div>
+                <div className="packagesName">
+                  <h4>{item.details}</h4>
+                  <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                  <p>(Min. Order 10 Guests)</p>
+                </div>
+                <div className="d-flex justify-content-evenly">
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
+                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                </div>
+              </div>))}
+            </div>
+          </div>}
           {showNonveg && <div>
             <div className="d-flex ms-3 mb-2 mt-2">
               <div>
@@ -577,7 +589,7 @@ const Custom_Package = () => {
               </div>
             </div>
             <div className="d-flex">
-              {packages.nonVeg.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+              {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3>{item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -594,7 +606,7 @@ const Custom_Package = () => {
               </div>))}
             </div>
             <div className="d-flex">
-              {packages.nonVeg2.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+              {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3>{item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -611,7 +623,7 @@ const Custom_Package = () => {
               </div>))}
             </div>
             <div className="d-flex">
-              {packages.nonVeg3.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+              {nvthirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3>{item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -738,68 +750,70 @@ const Custom_Package = () => {
             </div>
           </div>
         </section> : ""}
-      {isSmall ? <div className="d-flex mb-4 justify-content-center">
-        <div>
-          <p style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</p>
-        </div>
-        <div className="ms-1">
-          <Image src="/diy images/vegLogo.png" width="10px" height="10px" />
-        </div>
-      </div> : ""}
-      {isSmall ? <section>
-        <div className="packageContainer">
-          {packages.veg.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-            <h3>{item.name}</h3>
-            <div className="packageImg">
-              <img src={item.img} />
-            </div>
-            <div className="packagesName">
-              <h4>{item.details}</h4>
-              <h3>₹ {item.price}/-<span> Onwards</span></h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-3" id="selectBtn">Select Package</button>
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
-            </div>
-          </div>))}
-        </div>
-        <div className="packageContainer">
-          {packages.veg2.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-            <h3>{item.name}</h3>
-            <div className="packageImg">
-              <img src={item.img} />
-            </div>
-            <div className="packagesName">
-              <h4>{item.details}</h4>
-              <h3>₹ {item.price}/-<span> Onwards</span></h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
-            </div>
-          </div>))}
-        </div>
-        <div className="packageContainer">
-          {packages.veg3.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-            <h3>{item.name}</h3>
-            <div className="packageImg">
-              <img src={item.img} />
-            </div>
-            <div className="packagesName">
-              <h4>{item.details}</h4>
-              <h3>₹ {item.price}/-<span> Onwards</span></h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
-            </div>
-          </div>))}
-        </div>
-      </section> : ""}
-      { showNonveg && <div>
+      {!showNonveg && <div>
+        {isSmall ? <div className="d-flex mb-4 justify-content-center">
+          <div>
+            <p style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</p>
+          </div>
+          <div className="ms-1">
+            <Image src="/diy images/vegLogo.png" width="10px" height="10px" />
+          </div>
+        </div> : ""}
+        {isSmall ? <section>
+          <div className="packageContainer">
+            {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-3" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+              </div>
+            </div>))}
+          </div>
+          <div className="packageContainer">
+            {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+              </div>
+            </div>))}
+          </div>
+          <div className="packageContainer">
+            {thirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
+                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+              </div>
+            </div>))}
+          </div>
+        </section> : ""}
+      </div>}
+      {showNonveg && <div>
         {isSmall ? <div className="d-flex mb-4 justify-content-center">
           <div>
             <p style={{ color: "#BE2D30", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Non-Veg Packages</p>
@@ -810,7 +824,7 @@ const Custom_Package = () => {
         </div> : ""}
         {isSmall ? <section>
           <div className="packageContainer">
-            {packages.nonVeg.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+            {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
               <h3>{item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
@@ -827,7 +841,7 @@ const Custom_Package = () => {
             </div>))}
           </div>
           <div className="packageContainer">
-            {packages.nonVeg2.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+            {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
               <h3>{item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
@@ -844,7 +858,7 @@ const Custom_Package = () => {
             </div>))}
           </div>
           <div className="packageContainer">
-            {packages.nonVeg3.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+            {nvthirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
               <h3>{item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />

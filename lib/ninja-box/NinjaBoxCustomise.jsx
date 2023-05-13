@@ -99,7 +99,9 @@ const NinjaBoxCustomise = () => {
     const [isBreadChange, setIsBreadChange] = useState(false);
     const [isDessertChange, setIsDessertChange] = useState(false);
     const [isDelete, setIsDelete] = useState(false);
-    const [ID, setId] = useState(1);
+    const [ID, setId] = useState(0);
+    const [mealType, setMealType]=useState('veg')
+
 
 
     const [showPriceList, setShowPriceList] = useState(false);
@@ -119,7 +121,7 @@ const NinjaBoxCustomise = () => {
         let itemData;
     
         if (ID) {
-          PreSelectMenuNinjaBox.filter((d) => d.id === ID)[0].items.forEach(
+          PreSelectMenuNinjaBox[mealType].filter((d) => d.id === ID)[0].items.forEach(
             (item) => {
               itemData = allMenus.filter((d) => d.name === item);
               if(itemData.length>0){
@@ -157,14 +159,15 @@ const NinjaBoxCustomise = () => {
           setNonVeg(SessionData['nvcount']),
           setStartDate(SessionData['selectedDate']),
           setOccasion(SessionData['occasion'])
+        //   setImage(dataSelected.itemSelected["img"]);
+        setId(SessionData.itemSelected["id"]);
 
-          // setstartTime(SessionData['evt_time'])
-
-
-        //   setStarters(sessionStorage.getItem("starters"))
-        //   setMains(sessionStorage.getItem("mains"))
-        //   setBreadRice(sessionStorage.getItem("breadRice"))
-        //   setDesserts(sessionStorage.getItem("desserts"))
+          if(SessionData.itemSelected["vegType"]){
+            setMealType('nonVeg')
+          }
+          else{
+            setMealType('veg')
+          }
         }
       },[])
     useEffect(() => {
@@ -2188,7 +2191,7 @@ const NinjaBoxCustomise = () => {
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
                             <div className={styles3.packageName}>
-                                <h3>{PreSelectMenuNinjaBox[0].name}</h3>
+                                <h3>{ID? PreSelectMenuNinjaBox[mealType].filter((d)=>d.id===ID)[0].name:""}</h3>
                                 <img src='555.png' height="150px" width="274.5px" />
                                 <h6>{starters?.length} Starters + {mains?.length+ breadRice?.length} Mains + {desserts?.length} Desserts</h6>
                             </div>
