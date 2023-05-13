@@ -12,6 +12,8 @@ import NewFooter from '$lib/NewFooter';
 import Zoho from '$lib/bookChef/Zoho';
 import FloatNav from '$lib/FloatNav';
 import Float from '$lib/Float';
+import Head from 'next/head';
+import Script from 'next/script';
 
 export default function Ninja_Box()
 {

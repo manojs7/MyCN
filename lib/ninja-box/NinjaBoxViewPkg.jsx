@@ -42,9 +42,7 @@ const NinjaBoxViewPkg = () => {
 
   //code already done by sourav
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  
   const [showDiv, setShowDiv] = useState(false);
 
   const [city, setCity] = useState("");
@@ -58,6 +56,23 @@ const NinjaBoxViewPkg = () => {
   const [image, setImage] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const [ID, setId] = useState(0);
+
+  //PLACE ORDER SUBMIT FORM
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
+
+
+  const submitUserData = (e) => {
+    e.preventDefault();
+    if (!name || !phone || !email || !address || !zipcode) {
+      alert('Please fill in all fields');
+    } else {
+      // yaha par user data set kardo aur payment ka popup daal do
+    }
+  };
 
   useEffect(() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
@@ -459,13 +474,13 @@ const NinjaBoxViewPkg = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(veg * 0.2))
         : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
       filterBreadRice.veg === false &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
         : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
 
@@ -799,27 +814,27 @@ const NinjaBoxViewPkg = () => {
 
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
- 
 
- 
-  const interakt=async()=>{
+
+
+  const interakt = async () => {
     var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
 
-        var raw={ "phoneNumber": datas.mobileno, "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: JSON.stringify(raw),
-            redirect: 'follow'
-          };
-          
-        await fetch("https://api.interakt.ai/v1/public/track/events/", requestOptions)
-            .then(response => console.log("resot",response.json()))
+    var raw = { "phoneNumber": datas.mobileno, "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja": "{ninja}" } }
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(raw),
+      redirect: 'follow'
+    };
+
+    await fetch("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+      .then(response => console.log("resot", response.json()))
   }
 
-  const EmailOrderConfirmation=async(datas)=>{
+  const EmailOrderConfirmation = async (datas) => {
 
     //post api for email
     await fetch("/api/EmailOrderConfirmation", {
@@ -827,14 +842,14 @@ const NinjaBoxViewPkg = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      if(res.success) {
+      if (res.success) {
         alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
-//show pop up here
+        //show pop up here
       }
-      else if (res.message==="Parameter missing"){
+      else if (res.message === "Parameter missing") {
         alert("Email or Name is Missing");
 
-        
+
       }
       else {
         console.log("Failed to send message");
@@ -849,7 +864,7 @@ const NinjaBoxViewPkg = () => {
 
   // const sortedData = selectedItems.concat(unselectedItems);
 
-  const redirectToPayU = async(pd) => {
+  const redirectToPayU = async (pd) => {
     console.log("pd", pd);
     //use window.bolt.launch if you face an error in bolt.launch
 
@@ -865,7 +880,7 @@ const NinjaBoxViewPkg = () => {
           body: JSON.stringify(response.response),
         })
           .then(function (a) {
-            
+
             return a.json();
           })
           //Storing the payment details
@@ -883,18 +898,18 @@ const NinjaBoxViewPkg = () => {
 
             // if payment gets successful
 
-            if(json.status.status==="success"){
-            
+            if (json.status.status === "success") {
+
               // let payData={
-                datas.txnid=json.status.txnid,
-                datas.phone=json.status.phone,
-                datas.productinfo=json.status.productinfo,
-                datas.amount=json.status.amount,
-                datas.status=json.status,
-                datas.email=json.status.email,
-                datas.bank_ref_num=json.status.bank_ref_num,
-                datas.OrderStatus=""
-                // datas.name=json.status.field4
+              datas.txnid = json.status.txnid,
+                datas.phone = json.status.phone,
+                datas.productinfo = json.status.productinfo,
+                datas.amount = json.status.amount,
+                datas.status = json.status,
+                datas.email = json.status.email,
+                datas.bank_ref_num = json.status.bank_ref_num,
+                datas.OrderStatus = ""
+              // datas.name=json.status.field4
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -906,25 +921,25 @@ const NinjaBoxViewPkg = () => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(datas),
-              }).then((res)=>console.log("successful"),
+              }).then((res) => console.log("successful"),
 
-              //Email the Order Confirmation
-              await EmailOrderConfirmation(datas),
-              
+                //Email the Order Confirmation
+                await EmailOrderConfirmation(datas),
+
                 //Interakt Api message to hit my number with details
-              await interakt()
+                await interakt()
 
-                
+
               );
             }
-            else{
-              
+            else {
+
               alert("Payment Failed! Please try again.");
             }
           });
-          
+
       },
-      
+
       // catchException: function (response) {
       //   // the code you use to handle the integration errors goes here
       //   // Make any UI changes to convey the error to the user
@@ -935,7 +950,7 @@ const NinjaBoxViewPkg = () => {
   const payumoney = (e) => {
     e.preventDefault();
 
-    if(totalPrice<3000){
+    if (totalPrice < 3000) {
       alert("Order value must be greater than 3000");
       return;
     }
@@ -1059,28 +1074,79 @@ const NinjaBoxViewPkg = () => {
           <div className={styles.formDetails}>
             <div className='d-flex justify-content-between'>
               <p>Name:</p>
-              <input></input>
+              <input type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Phone:</p>
-              <input></input>
+              <input type="text"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Email:</p>
-              <input></input>
+              <input type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Address:</p>
-              <input></input>
+              <input type="text"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>ZipCode:</p>
-              <input></input>
+              <input type="text"
+          value={zipcode}
+          onChange={(e) => setZipcode(e.target.value)}></input>
+            </div>
+          </div>
+          <hr />
+          <div className={styles.selectedDetails}>
+            <div className={styles.data}>
+              <div>
+                <h6>City:</h6>
+                <h6>Date:</h6>
+                <h6>Time:</h6>
+                <h6>Veg Guest:</h6>
+                <h6>Non-veg Guest:</h6>
+                <h6>Occassion:</h6>
+              </div>
+              <div>
+                <h6>Mumbai</h6>
+                <h6>20/06/2023</h6>
+                <h6>9:00 pm</h6>
+                <h6>30</h6>
+                <h6>25</h6>
+                <h6>Birthday Party</h6>
+              </div>
+            </div>
+            <hr/>
+            <div className={styles.selectedItems}>
+              <div>
+                <h4>- Starters -</h4>
+                <p>Paneer chilly</p>
+              </div>
+              <div>
+                <h4>- Mains -</h4>
+                <p>Veg Biryani</p>
+              </div>
+              <div>
+                <h4>- Desserts -</h4>
+                <p>Gulab Jamun</p>
+              </div>
+            </div>
+            <hr/>
+            <div className={styles.priceing}>
+              <h6>GRAND TOTAL :</h6>
+              <h6>15,999/-</h6>
             </div>
           </div>
           <div className={styles.cnfmBtn}>
             <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
-            <button onClick={() => navigateToOverview()} id={styles.viewBtn}>Payment</button>
+            <button onClick={submitUserData} id={styles.viewBtn}>Payment</button>
           </div>
         </div>}
         <div className={styles.redBg}>
