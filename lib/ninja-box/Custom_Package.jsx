@@ -41,7 +41,14 @@ const Custom_Package = () => {
         confirmButtonText: "OK",
       });
     } else {
-      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, vegType:showNonveg }
+      let mealType;
+      if(showNonveg){
+        mealType='nonVeg'
+      }
+      else{
+        mealType='veg'
+      }
+      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType:mealType }
       sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
       window.open('/ninjaBoxViewPkg', '_blank')
     }
