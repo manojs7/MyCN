@@ -195,7 +195,7 @@ let nodemailer = require('nodemailer')
 // };
 
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
     if (!data.name || !data.email) {
@@ -385,11 +385,11 @@ export default function handler(req, res) {
       };
       let appt = data.appetizer;
 
-      transporter.sendMail(mailOptions, (error, response) => {
+      transporter.sendMail(mailOptions, async(error, response) => {
         if (error) {
           res.json({ success: false, message: error });
         } else {
-          res.json({ success: true, message: mailOptions });
+          await res.json({ success: true, message: mailOptions });
         }
       });
     } catch (err) {

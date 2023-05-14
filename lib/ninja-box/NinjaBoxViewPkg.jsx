@@ -975,8 +975,9 @@ function getGst() {
           })
           //Storing the payment details
           .then(async function (json) {
+
+            json.datas=datas,
             
-            console.log("json",json)            
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -984,7 +985,7 @@ function getGst() {
                 Accept: "application/json",
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(json.status),
+              body: JSON.stringify(json),
             })
 
             // if payment gets successful
@@ -1047,20 +1048,25 @@ function getGst() {
     }
     //Create a Data object that is to be passed to LAUNCH method of Bolt
     let oid = "CaterNinja" + Math.floor(Math.random(6) * 1000000);
-    console.log(oid);
-    var pd = {
-      key: "VKy9EEvW",
-      txnid: oid,
-      amount: datas.grandTotal,
-      firstname: datas.name,
-      email: datas.email,
-      phone: datas.mobileno,
-      productinfo: "test",
-      surl: "https://new.caterninja.com",
-      furl: "https://new.caterninja.com",
-      hash: "",
-    };
-
+    if(datas){
+      var pd = {
+        key: "VKy9EEvW",
+        txnid: oid,
+        amount: datas.grandTotal,
+        firstname: datas.name,
+        email: datas.email,
+        phone: datas.mobileno,
+        productinfo: "test",
+        surl: "https://new.caterninja.com",
+        furl: "https://new.caterninja.com",
+        hash: "",
+      };
+  
+    }
+    else{
+      return
+    }
+    
     // Data to be Sent to API to generate hash.
     let data = {
       txnid: pd.txnid,
