@@ -67,11 +67,11 @@ const Custom_Package = () => {
       { id: 8, name: 'House Pooja 2', price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
     ],
     nonVeg: [
-      { id: 1, name: 'House Party 1', price: '6,499', img: '/ninja-box/packages/NBP-1.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
-      { id: 2, name: 'House Party 2', price: '5,999', img: '/ninja-box/packages/NBP2.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
-      { id: 3, name: "House Party 3", price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "1 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
-      { id: 4, name: 'House Party 4', price: '3,799', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
-      { id: 5, name: 'Cocktail Party 1', price: '4,799', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
+      { id: 1, name: 'House Party 1', price: '6,499', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
+      { id: 2, name: 'House Party 2', price: '5,999', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
+      { id: 3, name: "House Party 3", price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
+      { id: 4, name: 'House Party 4', price: '3,799', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
+      { id: 5, name: 'Cocktail Party 1', price: '4,799', img: '/ninja-box/packages/NBP5.png', details: "6 Starters + 2 Mains", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
       { id: 6, name: 'Cocktail Party 2', price: '4,799', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] },
       { id: 7, name: 'Fusion Party', price: '5,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Coastal BBQ Fish Tikka", "Cheesy Triangles", "Paneer Kadai", "Chicken Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
       { id: 8, name: 'Punjabi Party', price: '5,299', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Punjabi Tangdi", "Dahi Ke Kebab", "Paneer Kofta Gravy", "Punjabi Chicken Curry", "Veg Dum Biryani", "Lachha Paratha", "Shahi Meeta", "Raita"] },
@@ -278,7 +278,7 @@ const Custom_Package = () => {
             <img src="miniNinjaLeft.png" width="24.03" height="43.92" />
           </div>
           <div>
-            <h4>Date</h4>
+            <h4>Date <span>i</span></h4>
             <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
               value={selectedDate}
               min={minDateISO} /></div>
