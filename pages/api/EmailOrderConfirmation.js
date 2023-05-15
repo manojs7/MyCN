@@ -372,6 +372,7 @@ export default async function handler(req, res) {
     </div>
 
     <div style="height: 100px; background-color: black;">
+    <h3>Call us in case of query, on +917738096313</h3>
       <h3 style=" color: white; text-align: center; padding-block: 35px;">Thank you ! Visit Again !</h3>
     </div>
 
