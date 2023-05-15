@@ -50,6 +50,7 @@ const CustomizeNinjaBox = () => {
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
   const [datas, setDatas] = useState();
+  const [EmailedToParser,setEmailedToParser]=useState(false)
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
@@ -1720,6 +1721,7 @@ const CustomizeNinjaBox = () => {
       totalPrice: totalPrice,
       GST: final_gst,
       showDessert: false,
+      emailedtoparser:EmailedToParser
     };
    
 
@@ -1737,6 +1739,7 @@ const CustomizeNinjaBox = () => {
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
       console.log(res.message);
+      setEmailedToParser(true)
       if (res.success) {
         console.log("message sent");
       } else {
@@ -1930,8 +1933,8 @@ const CustomizeNinjaBox = () => {
       amount: "1",
       firstname: datas.name,
       email: datas.email,
-      phone: datas.name,
-      productinfo: "test",
+      phone: datas.mobileno,
+      productinfo: "CaterNinja",
       surl: "https://new.caterninja.com",
       furl: "https://new.caterninja.com",
       hash: "",

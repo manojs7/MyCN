@@ -39,11 +39,15 @@ const NinjaBoxViewPkg = () => {
   const [dessertData2, setDessertData2] = useState([]);
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
+  const [startDate, setStartDate] = useState(new Date());
 
   //code already done by sourav
 
   
   const [showDiv, setShowDiv] = useState(false);
+  const [datas, setDatas]=useState()
+  const [EmailedToParser,setEmailedToParser]=useState(false)
+
 
   const [city, setCity] = useState("");
   const [occasion, setOccasion] = useState("");
@@ -52,42 +56,43 @@ const NinjaBoxViewPkg = () => {
   const [vegCount, setVegCount] = useState();
   const [nonVegCount, setNonVegCount] = useState();
   const [details, setDetails] = useState();
-  const [price, setPrice] = useState();
+  const [packagePrice, setPackagePrice] = useState();
   const [image, setImage] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const [ID, setId] = useState(0);
+  const [mealType, setMealType]=useState('')
 
   //PLACE ORDER SUBMIT FORM
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [packageName, setPackageName] = useState("");
+  
+  const [mobileno, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
 
 
-  const submitUserData = (e) => {
-    e.preventDefault();
-    if (!name || !phone || !email || !address || !zipcode) {
-      alert('Please fill in all fields');
-    } else {
-      // yaha par user data set kardo aur payment ka popup daal do
-    }
-  };
-
+ 
   useEffect(() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
+    console.log('dataselected', dataSelected)
     // sessionStorage.removeItem("dataSelected")
-    setCity(dataSelected["city"]);
-    setVeg(dataSelected["vcount"]);
-    setNonVeg(dataSelected["nvcount"]);
-    setSelectedDate(dataSelected["selectedDate"]);
-    setOccasion(dataSelected["occasion"]);
-    setName(dataSelected.itemSelected["name"]);
-    setDetails(dataSelected.itemSelected["details"]);
-    setPrice(dataSelected.itemSelected["price"]);
-    setImage(dataSelected.itemSelected["img"]);
-    setId(dataSelected.itemSelected["id"]);
-    console.log(dataSelected);
+    if(dataSelected){
+      setCity(dataSelected["city"]);
+      setVeg(dataSelected["vcount"]);
+      setNonVeg(dataSelected["nvcount"]);
+      setStartDate(dataSelected["selectedDate"]);
+      setOccasion(dataSelected["occasion"]);
+      setPackageName(dataSelected.itemSelected["name"]);
+      setDetails(dataSelected.itemSelected["details"]);
+      setPackagePrice(dataSelected.itemSelected["price"]);
+      setImage(dataSelected.itemSelected["img"]);
+      setId(dataSelected.itemSelected["id"]);
+      setMealType(dataSelected["mealType"])
+      
+      // console.log(dataSelected);
+    }
+   
   }, []);
 
   //by Manoj
@@ -133,29 +138,32 @@ const NinjaBoxViewPkg = () => {
 
   const preselection = async () => {
     let itemData;
-
+    console.log('mtype', mealType)
     if (ID) {
-      PreSelectMenuNinjaBox.filter((d) => d.id === ID)[0].details.items.forEach(
+      PreSelectMenuNinjaBox[mealType].filter((d) => d.id === ID)[0].items.forEach(
         (item) => {
-          itemData = allMenus.filter((d) => d.name === item);
-          if (itemData[0].mealType === "Starter") {
-            handleStatersAdd(item);
-          } else if (itemData[0].mealType === "Main course") {
-            handleMainAdd(item);
-          } else if (itemData[0].mealType === "Bread+Rice") {
-            handleBreadRiceAdd(item);
-          } else if (itemData[0].mealType === "Dessert") {
-            handleDesertsAdd(item);
+          itemData = allMenus.filter((d) => d.name == item);
+          if(itemData.length>0){
+            if (itemData[0].mealType === "Starter") {
+              handleStatersAdd(itemData[0].name);
+            } else if (itemData[0].mealType === "Main course") {
+              handleMainAdd(itemData[0].name);
+            } else if (itemData[0].mealType === "Bread+Rice") {
+              console.log("breadRice", breadRice)
+              handleBreadRiceAdd(itemData[0].name);
+              console.log("breadRice", breadRice)
+            } else if (itemData[0].mealType === "Dessert") {
+              handleDesertsAdd(itemData[0].name);
+            }
+            else{
+              console.log("suspect",item)
+            }
           }
+          
         }
       );
     } else {
     }
-
-    sessionStorage.setItem("starters", JSON.stringify(starters));
-    sessionStorage.setItem("mains", JSON.stringify(mains));
-    sessionStorage.setItem("breadRice", JSON.stringify(breadRice));
-    sessionStorage.setItem("desserts", JSON.stringify(desserts));
   };
 
   const handleStatersAdd = (item_name, id) => {
@@ -222,7 +230,7 @@ const NinjaBoxViewPkg = () => {
     });
     setStarters(temp);
 
-    // console.log("starters", starters);
+    console.log("starters", starters);
   };
   const handleMainAdd = (item_name, id) => {
     // setIsMainChange(!isMainChange);
@@ -400,8 +408,8 @@ const NinjaBoxViewPkg = () => {
   };
 
   const handleBreadRiceAdd = (item_name, id) => {
+
     // setIsBreadChange(!isBreadChange);
-    // console.log(item_name);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...breadRice];
     const filterBreadRice = breadRiceData.find(
@@ -704,7 +712,7 @@ const NinjaBoxViewPkg = () => {
       Images: filterBreadRice?.Images,
       Qtype: filterBreadRice?.Qtype,
       veg: filterBreadRice?.veg,
-      selling_price: filterBreadRice.selling_price,
+      selling_price: filterBreadRice?.selling_price,
       // description: main.description,
     });
     setBreadRice(temp);
@@ -718,7 +726,7 @@ const NinjaBoxViewPkg = () => {
       return;
     }
 
-    const dessert = dessertData.find((item) => item.name === item_name);
+    const dessert = allMenus.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
@@ -755,9 +763,19 @@ const NinjaBoxViewPkg = () => {
       selling_price: dessert.selling_price,
     });
     setDesserts(temp);
+   
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
 
+  function HandleCeilFloorValue(x) {
+    var decimals = (x - Math.floor(x)).toFixed(1);
+    if (decimals <= 0.4) {
+      x = Math.floor(x);
+    } else if (decimals >= 0.6) {
+      x = Math.floor(x);
+    }
+    return x;
+  }
   useEffect(() => {
     preselection();
 
@@ -810,13 +828,85 @@ const NinjaBoxViewPkg = () => {
         starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
       )
     );
-    preselection()
+    if(packagePrice){
+      setTotalPrice(parseInt(packagePrice.replace(',','')))
+      setGST(getGst())
+      setgrandTotal(parseInt(totalPrice)+getGst())
+      
+    }
+    
+
+    
 
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
+//details submissions here
+
+const submitUserData = async(e) => {
+  e.preventDefault();
+  let url_value = sessionStorage.getItem("first_url2");
+    
+  if (!name || !mobileno || !email || !address || !zipcode) {
+    alert('Please fill in all fields');
+    return;
+  } else {
+
+    var final_gst = GST;
+    var final_grandtotal =grandTotal;
+    
+    // yaha par user data set kardo aur payment ka popup daal do
+    let datas = {
+      name: name,
+      email: email,
+      mobileno: mobileno,
+      city: city,
+      occasion: occasion,
+      veg_c: veg,
+      nonveg_c: nonVeg,
+      people: people,
+      date: startDate,
+      // time : startTime,
+      url: url_value,
+      meal: mealType,
+      cuisine: "All",
+      preference: "preference",
+      mealtype: mealType,
+      boolean: true,
+      appetizer: starters,
+      mainCourse: mains,
+      dessert: desserts,
+      breadRice: breadRice,
+      grandTotal: final_grandtotal,
+      buffet: buffet,
+      dessertClassname: "caterNinja_add_dessert_button",
+      totalPrice: totalPrice,
+      GST: final_gst,
+      showDessert: false,
+      emailedtoparser:EmailedToParser,
+      address:address,
+      zipcode:zipcode,
+      packageName:packageName,
+      packagePrice:packagePrice
+    };
+
+    setDatas(datas);
+    console.log("datas",datas)
+
+    await payumoney(e)
+  }
+};
+
+function getGst() {
+  return parseInt(
+    ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
+      5) /
+    100
+  );
+}
 
 
 
+//Payment Part starts here
   const interakt = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -886,6 +976,8 @@ const NinjaBoxViewPkg = () => {
           //Storing the payment details
           .then(async function (json) {
 
+            json.datas=datas,
+            
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -893,7 +985,7 @@ const NinjaBoxViewPkg = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(json.status),
+              body: JSON.stringify(json),
             })
 
             // if payment gets successful
@@ -901,7 +993,7 @@ const NinjaBoxViewPkg = () => {
             if (json.status.status === "success") {
 
               // let payData={
-              datas.txnid = json.status.txnid,
+                datas.txnid = json.status.txnid,
                 datas.phone = json.status.phone,
                 datas.productinfo = json.status.productinfo,
                 datas.amount = json.status.amount,
@@ -947,29 +1039,34 @@ const NinjaBoxViewPkg = () => {
     });
   };
 
-  const payumoney = (e) => {
+  const payumoney = async(e) => {
     e.preventDefault();
 
-    if (totalPrice < 3000) {
+    if (totalPrice < 2999) {
       alert("Order value must be greater than 3000");
       return;
     }
     //Create a Data object that is to be passed to LAUNCH method of Bolt
-    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000);
-    console.log(oid);
-    var pd = {
-      key: "VKy9EEvW",
-      txnid: oid,
-      amount: "1",
-      firstname: datas.name,
-      email: datas.email,
-      phone: datas.name,
-      productinfo: "test",
-      surl: "https://new.caterninja.com",
-      furl: "https://new.caterninja.com",
-      hash: "",
-    };
-
+    let oid = "CaterNinja" + Math.floor(Math.random(6) * 1000000);
+    if(datas){
+      var pd = {
+        key: "VKy9EEvW",
+        txnid: oid,
+        amount: datas.grandTotal,
+        firstname: datas.name,
+        email: datas.email,
+        phone: datas.mobileno,
+        productinfo: "test",
+        surl: "https://new.caterninja.com",
+        furl: "https://new.caterninja.com",
+        hash: "",
+      };
+  
+    }
+    else{
+      return
+    }
+    
     // Data to be Sent to API to generate hash.
     let data = {
       txnid: pd.txnid,
@@ -1025,20 +1122,7 @@ const NinjaBoxViewPkg = () => {
     setShowPopup(false);
   }
 
-  useEffect(() => {
-    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"))
-    // sessionStorage.removeItem("dataSelected")
-    setCity(dataSelected['city'])
-    setVegCount(dataSelected['vcount'])
-    setNonVegCount(dataSelected['nvcount'])
-    setSelectedDate(dataSelected['selectedDate'])
-    setOccasion(dataSelected['occasion'])
-    setName(dataSelected.itemSelected['name'])
-    setDetails(dataSelected.itemSelected['details'])
-    setPrice(dataSelected.itemSelected['price'])
-    setImage(dataSelected.itemSelected['img'])
-    console.log(dataSelected)
-  }, [])
+
   return (
     <div className={styles.customizeMainContainer}>
       <div className={styles.customizeMainContainer}>
@@ -1071,7 +1155,7 @@ const NinjaBoxViewPkg = () => {
         </div>
         {showPopup && <div className={styles.popupCnfrmPkg}>
           <h4>Details</h4>
-          <div className={styles.formDetails}>
+          <div className={styles.formDetails} >
             <div className='d-flex justify-content-between'>
               <p>Name:</p>
               <input type="text"
@@ -1081,7 +1165,7 @@ const NinjaBoxViewPkg = () => {
             <div className='d-flex justify-content-between'>
               <p>Phone:</p>
               <input type="text"
-          value={phone}
+          value={mobileno}
           onChange={(e) => setPhone(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
@@ -1115,33 +1199,46 @@ const NinjaBoxViewPkg = () => {
                 <h6>Occassion:</h6>
               </div>
               <div>
-                <h6>Mumbai</h6>
-                <h6>20/06/2023</h6>
+                <h6>{city}</h6>
+                <h6>{startDate}</h6>
                 <h6>9:00 pm</h6>
-                <h6>30</h6>
-                <h6>25</h6>
-                <h6>Birthday Party</h6>
+                <h6>{veg}</h6>
+                <h6>{nonVeg}</h6>
+                <h6>{occasion}</h6>
               </div>
             </div>
             <hr/>
             <div className={styles.selectedItems}>
               <div>
                 <h4>- Starters -</h4>
-                <p>Paneer chilly</p>
+                {starters.map((item, index) => (
+               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                ))
+              }
               </div>
               <div>
                 <h4>- Mains -</h4>
-                <p>Veg Biryani</p>
+                {mains.map((item, index) => (
+               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                ))
+              }
+              {breadRice.map((item, index) => (
+               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                ))
+              }
               </div>
               <div>
                 <h4>- Desserts -</h4>
-                <p>Gulab Jamun</p>
+                {desserts.map((item, index) => (
+               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                ))
+              }
               </div>
             </div>
             <hr/>
             <div className={styles.priceing}>
               <h6>GRAND TOTAL :</h6>
-              <h6>15,999/-</h6>
+              <h6>{grandTotal}</h6>
             </div>
           </div>
           <div className={styles.cnfmBtn}>
@@ -1245,14 +1342,15 @@ const NinjaBoxViewPkg = () => {
             </div>
             <div className={styles.pkgDetails}>
               <div>
-                <h3>{PreSelectMenuNinjaBox[0].name}</h3>
+                {/* <h3>{ID? PreSelectMenuNinjaBox[mealType].filter((d)=>d.id===ID)[0].name:''}</h3> */}
+                <h3>{packageName}</h3>
                 <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
                 <div>
                   <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
                   <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
                 </div>
                 <div>
-                  <h6>₹ {totalPrice}</h6>
+                  <h6>₹ {packagePrice }</h6>
                 </div>
                 {/* <div>
                                     <h6>₹ {price}</h6>
@@ -1269,7 +1367,21 @@ const NinjaBoxViewPkg = () => {
                   <div className={styles.starterItems}>
                     {starters.map((item, index) => (
                       <div className={styles.fstItem}>
-                        <img className={styles.itemImage} src={item.image} />
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
                         <div className={styles.itemDetailsContainer}>
                           <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
@@ -1293,7 +1405,58 @@ const NinjaBoxViewPkg = () => {
                   <div className={styles.starterItems}>
                     {mains.map((item, index) => (
                       <div className={styles.fstItem}>
-                        <img className={styles.itemImage} src={item.image} />
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
+                        <div className={styles.itemDetailsContainer}>
+                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          <div>
+                            <h4>{item.name}</h4>
+                            <p>{item.description}</p>
+                          </div>
+                          <div className={styles.pcs}>
+                            <p>{item.quantity}{item.Qtype}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    ))}
+
+                  </div>
+                </div>
+                
+                <div className={styles.startersContainer}>
+                  <h5 className='mt-5'>Bread, Rice and Noodles</h5>
+                  <div className={styles.starterItems}>
+                    {breadRice.map((item, index) => (
+                      <div className={styles.fstItem}>
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
                         <div className={styles.itemDetailsContainer}>
                           <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
@@ -1319,7 +1482,21 @@ const NinjaBoxViewPkg = () => {
                   <div className={styles.starterItems}>
                     {desserts.map((item, index) => (
                       <div className={styles.fstItem}>
-                        <img className={styles.itemImage} src={item.image} />
+                        {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
                         <div className={styles.itemDetailsContainer}>
                           <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
                           <div>
