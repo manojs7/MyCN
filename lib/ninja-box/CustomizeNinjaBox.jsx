@@ -50,7 +50,7 @@ const CustomizeNinjaBox = () => {
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
   const [datas, setDatas] = useState();
-  const [EmailedToParser,setEmailedToParser]=useState(false)
+  const [EmailedToParser, setEmailedToParser] = useState(false)
 
 
   const [isDisabled, setIsDisabled] = useState(true);
@@ -104,6 +104,16 @@ const CustomizeNinjaBox = () => {
 
   const [showPriceList, setShowPriceList] = useState(false);
 
+  const [showUrgentLink, setShowUrgentLink] = useState(false);
+
+  function hoverLink() {
+    setShowUrgentLink(prevState => !prevState);
+  }
+
+  function hoverLeaveLink() {
+    setShowUrgentLink(false);
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -116,20 +126,20 @@ const CustomizeNinjaBox = () => {
   };
 
   //DATE LOGIC
-  const today = new Date();
-  const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
+  // const today = new Date();
+  // const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
 
-  useEffect(()=>{
-    let SessionData=JSON.parse(sessionStorage.getItem("dataSelected"));
-    if(SessionData){
+  useEffect(() => {
+    let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
+    if (SessionData) {
       setCity(SessionData['city']),
-      setVeg(SessionData['vcount']),
-      setNonVeg(SessionData['nvcount']),
-      // setStartDate(SessionData['selectedDate']),
-      setOccasion(SessionData['occasion'])
+        setVeg(SessionData['vcount']),
+        setNonVeg(SessionData['nvcount']),
+        // setStartDate(SessionData['selectedDate']),
+        setOccasion(SessionData['occasion'])
       // setstartTime(SessionData['evt_time'])
     }
-  },[])
+  }, [])
   useEffect(() => {
 
     allMenus.sort(function (a, b) {
@@ -288,6 +298,12 @@ const CustomizeNinjaBox = () => {
   const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
   const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
   const [showSelectedMenu4, setShowSelectedMenu4] = useState(false);
+
+
+  //DATE LOGIC
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() + 2);
+  const minDateISO = minDate.toISOString().split('T')[0];
 
   //search Starter
   const searchStarter = (e) => {
@@ -1561,7 +1577,7 @@ const CustomizeNinjaBox = () => {
     let mainPrice = 0;
     let dessertPrice = 0;
     let bredRicePrice = 0;
-    
+
 
     starters.map((d) => {
       if (d.Qtype === "pcs") {
@@ -1618,7 +1634,7 @@ const CustomizeNinjaBox = () => {
       parseInt(getGst())
     );
     setShowPriceList(false);
-   
+
 
 
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
@@ -1733,12 +1749,12 @@ const CustomizeNinjaBox = () => {
       totalPrice: totalPrice,
       GST: final_gst,
       showDessert: false,
-      emailedtoparser:EmailedToParser
+      emailedtoparser: EmailedToParser
     };
-   
+
 
     setDatas(datas);
-    
+
     let data = "";
     try {
       data = JSON.stringify(datas);
@@ -1797,24 +1813,24 @@ const CustomizeNinjaBox = () => {
     };
   }, []);
 
-  const interakt=()=>{
+  const interakt = () => {
     var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
 
-        var raw={ "phoneNumber": "7023405885", "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-          };
-          
-        axios.post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
-            .then(response => console.log("resot",response.json()))
+    var raw = { "phoneNumber": "7023405885", "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja": "{ninja}" } }
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    axios.post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+      .then(response => console.log("resot", response.json()))
   }
 
-  const EmailOrderConfirmation=(datas)=>{
+  const EmailOrderConfirmation = (datas) => {
     //post api for email
     fetch("/api/EmailOrderConfirmation", {
       method: "POST",
@@ -1822,7 +1838,7 @@ const CustomizeNinjaBox = () => {
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
       if (res.success) {
-       alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+        alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
       } else {
         console.log("Failed to send message");
       }
@@ -1852,7 +1868,7 @@ const CustomizeNinjaBox = () => {
           body: JSON.stringify(response.response),
         })
           .then(function (a) {
-            
+
             return a.json();
           })
           //Storing the payment details
@@ -1870,17 +1886,17 @@ const CustomizeNinjaBox = () => {
 
             // if payment gets successful
 
-            if(json.status.status==="success"){
-            
+            if (json.status.status === "success") {
+
               // let payData={
-                datas.txnid=json.status.txnid,
-                datas.phone=json.status.phone,
-                datas.productinfo=json.status.productinfo,
-                datas.amount=json.status.amount,
-                datas.status=json.status,
-                datas.email=json.status.email,
-                datas.bank_ref_num=json.status.bank_ref_num,
-                datas.name=json.status.field4
+              datas.txnid = json.status.txnid,
+                datas.phone = json.status.phone,
+                datas.productinfo = json.status.productinfo,
+                datas.amount = json.status.amount,
+                datas.status = json.status,
+                datas.email = json.status.email,
+                datas.bank_ref_num = json.status.bank_ref_num,
+                datas.name = json.status.field4
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -1892,25 +1908,25 @@ const CustomizeNinjaBox = () => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(datas),
-              }).then((res)=>console.log("successful"),
+              }).then((res) => console.log("successful"),
 
-              //Email the Order Confirmation
-              EmailOrderConfirmation(datas),
-              
+                //Email the Order Confirmation
+                EmailOrderConfirmation(datas),
+
                 //Interakt Api message to hit my number with details
                 interakt()
 
-                
+
               );
             }
-            else{
-              
+            else {
+
               alert("Payment Failed! Please try again.");
             }
           });
-          
+
       },
-      
+
       // catchException: function (response) {
       //   // the code you use to handle the integration errors goes here
       //   // Make any UI changes to convey the error to the user
@@ -1921,7 +1937,7 @@ const CustomizeNinjaBox = () => {
   const payumoney = (e) => {
     e.preventDefault();
 
-    if(totalPrice<3000){
+    if (totalPrice < 3000) {
       alert("Order value must be greater than 3000");
       return;
     }
@@ -2134,15 +2150,22 @@ const CustomizeNinjaBox = () => {
                 </div>
 
                 <div className={styles.eventDate}>
-                  <p>Event Date</p>
-                  <DatePicker
+                  <p>Event Date <span onMouseEnter={hoverLink}
+                    onClick={hoverLink}>i</span></p>
+                  {showUrgentLink && (<div id={styles.urgentLink}>
+                    <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
+                  </div>)}
+                  {/* <DatePicker
                     name="event_date"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     minDate={minDate}
                     dateFormat="dd MMMM yyyy"
                     required
-                  />
+                  /> */}
+                  <input type="date" onChange={(event) => setStartDate(event.target.value)}
+                    value={startDate}
+                    min={minDateISO} />
                 </div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Veg Guest</p>
@@ -2192,11 +2215,8 @@ const CustomizeNinjaBox = () => {
                 <div>
                   <p>Delivery Time</p>
                   <select className="form-select">
-                    <option value="8:00 am">8:00 am</option>
-                    <option value="8:30 am">8:30 am</option>
-                    <option value="9:00 am">9:00 am</option>
-                    <option value="9:30 am">9:30 am</option>
-                    <option value="10:00 am">10:00 am</option>
+                    <option value="11:00 am">11:00 am</option>
+                    <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>
                     <option value="12:30 pm">12:30 pm</option>
                     <option value="1:00 pm">1:00 pm</option>

@@ -6,6 +6,33 @@
 
 @media (max-width: 576px) {
 
+    .eventDate {
+        margin-bottom: 20px;
+        p span{
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            padding-inline: 5px;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+    }
+
+    #urgentLink{
+        margin-top: -58px;
+        margin-left: 80px;
+        position: absolute;
+        background-color: white;
+        a{
+            padding-inline: 5px;
+            font-weight: 500;
+            font-size: 13px;
+            text-decoration: none;
+            color: #000000;
+        }
+        
+    }
+
     .radioFilter{
         margin-top: -20px;
         height: 30px;
@@ -260,6 +287,7 @@
     .inputDetails {
         background-color: #BE2D30;
         display: flex;
+        justify-content: space-between;
         padding-top: 20px;
         padding-bottom: 10px;
         padding-inline: 10px;
@@ -287,7 +315,7 @@
         }
 
         .eventDate {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
     }
@@ -1531,11 +1559,11 @@
 
     .inputDetails {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         padding-top: 30px;
         padding-bottom: 30px;
 
-        //margin-inline: 220px;
+        margin-inline: 220px;
         p {
             margin-left: 0%;
             font-weight: 600;
@@ -2126,7 +2154,30 @@
     }
 
     .eventDate {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
+        p span{
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            padding-inline: 5px;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+    }
+
+    #urgentLink{
+        margin-top: -58px;
+        margin-left: 130px;
+        position: absolute;
+        background-color: white;
+        a{
+            padding-inline: 5px;
+            font-weight: 500;
+            font-size: 13px;
+            text-decoration: none;
+            color: #000000;
+        }
+        
     }
 
 }

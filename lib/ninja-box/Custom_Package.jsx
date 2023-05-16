@@ -10,6 +10,7 @@ import { useAppMenu } from "$lib/menuContext";
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 const Custom_Package = () => {
   const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
@@ -19,6 +20,16 @@ const Custom_Package = () => {
   const [selectedDate, setSelectedDate] = useState("")
 
   const [startDate, setStartDate] = useState(new Date());
+
+  const [showUrgentLink, setShowUrgentLink] = useState(false);
+
+  function hoverLink() {
+    setShowUrgentLink(prevState => !prevState);
+  }
+
+  function hoverLeaveLink() {
+    setShowUrgentLink(false);
+  }
 
 
   //DATE LOGIC
@@ -42,13 +53,13 @@ const Custom_Package = () => {
       });
     } else {
       let mealType;
-      if(showNonveg){
-        mealType='nonVeg'
+      if (showNonveg) {
+        mealType = 'nonVeg'
       }
-      else{
-        mealType='veg'
+      else {
+        mealType = 'veg'
       }
-      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType:mealType }
+      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType }
       sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
       window.open('/ninjaBoxViewPkg', '_blank')
     }
@@ -278,14 +289,42 @@ const Custom_Package = () => {
             <img src="miniNinjaLeft.png" width="24.03" height="43.92" />
           </div>
           <div>
-            <h4>Date <span>i</span></h4>
+            <h4>Date <span id={styles.urgentL} onMouseEnter={hoverLink}
+              onClick={hoverLink}>i</span></h4>
             <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
               value={selectedDate}
               min={minDateISO} /></div>
           </div>
+          {showUrgentLink && (<div id={styles.urgentLink}>
+            <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
+          </div>)}
           <div>
             <img src="miniNinjaRight.png" width={24.03} height={43.92} />
           </div>
+        </div>
+        <div className={styles.deliveryTimeSecn}>
+          <h4>Delivery Time</h4>
+          <select className="mx-auto">
+            <option value="11:00 am">11:00 am</option>
+            <option value="11:30 am">11:30 am</option>
+            <option value="12:00 pm">12:00 pm</option>
+            <option value="12:30 pm">12:30 pm</option>
+            <option value="1:00 pm">1:00 pm</option>
+            <option value="1:30 pm">1:30 pm</option>
+            <option value="2:00 pm">2:00 pm</option>
+            <option value="2:00 pm">2:00 pm</option>
+            <option value="2:30 pm">2:30 pm</option>
+            <option value="3:00 pm">3:00 pm</option>
+            <option value="5:00 pm">5:00 pm</option>
+            <option value="5:30 pm">5:30 pm</option>
+            <option value="6:00 pm">6:00 pm</option>
+            <option value="6:30 pm">6:30 pm</option>
+            <option value="7:00 pm">7:00 pm</option>
+            <option value="7:30 pm">7:30 pm</option>
+            <option value="8:00 pm">8:00 pm</option>
+            <option value="8:30 pm">8:30 pm</option>
+            <option value="9:00 pm">9:30 pm</option>
+          </select>
         </div>
         <div className={styles.guestCountCn}>
           <h3>Guest Count</h3>
