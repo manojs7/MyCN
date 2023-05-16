@@ -59,7 +59,7 @@ const Custom_Package = () => {
       else {
         mealType = 'veg'
       }
-      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType }
+      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType, startTime:startTime }
       sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
       window.open('/ninjaBoxViewPkg', '_blank')
     }
@@ -101,6 +101,7 @@ const Custom_Package = () => {
 
   //SHOW NON-VEG PACKAGES
   const [showNonveg, setShowNonVeg] = useState(false);
+  const [startTime,setStartTime]=useState()
 
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
@@ -304,7 +305,7 @@ const Custom_Package = () => {
         </div>
         <div className={styles.deliveryTimeSecn}>
           <h4>Delivery Time</h4>
-          <select className="mx-auto">
+          <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)}>
             <option value="11:00 am">11:00 am</option>
             <option value="11:30 am">11:30 am</option>
             <option value="12:00 pm">12:00 pm</option>

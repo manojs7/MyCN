@@ -30,7 +30,6 @@ const NinjaBoxCustomise = () => {
     allMenus,
     cities,
     occasions,
-    PreSelected,
     PreSelectMenuNinjaBox,
   } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
@@ -51,7 +50,7 @@ const NinjaBoxCustomise = () => {
   const [occasion, setOccasion] = useState("");
 
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setstartTime] = useState();
+  const [startTime, setStartTime] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
@@ -157,6 +156,7 @@ const NinjaBoxCustomise = () => {
         setOccasion(SessionData["occasion"]);
       //   setImage(dataSelected.itemSelected["img"]);
       setId(SessionData.itemSelected["id"]);
+      setStartTime(SessionData['startTime'])
 
       setMealType(SessionData["mealType"]);
     }
@@ -1710,7 +1710,7 @@ const NinjaBoxCustomise = () => {
       nonveg_c: nonVeg,
       people: people,
       date: startDate,
-      // time : startTime,
+      time : startTime,
       url: refURL,
       meal: "meal",
       cuisine: cuisine,
@@ -1835,6 +1835,9 @@ const NinjaBoxCustomise = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     });
+    alert(
+      "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
+    );
     if (a.success) {
       alert(
         "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
@@ -1842,6 +1845,7 @@ const NinjaBoxCustomise = () => {
     } else {
       console.log("Failed to send message");
     }
+    window.location.href='/'
 
     // .then(async(res) => {
     //     if (res.success) {
@@ -2204,7 +2208,7 @@ const NinjaBoxCustomise = () => {
                 <div>
                   <p>Delivery Time</p>
                   <div>
-                  <select className="mx-auto">
+                  <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)}>
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>

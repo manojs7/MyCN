@@ -15,7 +15,7 @@ const NinjaBoxViewPkg = () => {
 
   //DIY Logic by Manoj
 
-  const { menu, cuisines, allMenus, cities, occasions, PreSelected, PreSelectMenuNinjaBox } =
+  const { menu, cuisines, allMenus, cities, occasions, PreSelectMenuNinjaBox, ZipCodes } =
     useAppMenu();
   const [veg, setVeg] = useState(10);
   const [nonVeg, setNonVeg] = useState(10);
@@ -40,6 +40,8 @@ const NinjaBoxViewPkg = () => {
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const [startTime,setStartTime]=useState('')
+
 
   //code already done by sourav
 
@@ -70,6 +72,7 @@ const NinjaBoxViewPkg = () => {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
+  const [zipcodeError, setZipcodeError] = useState("");
 
 
  
@@ -88,6 +91,7 @@ const NinjaBoxViewPkg = () => {
       setPackagePrice(dataSelected.itemSelected["price"]);
       setImage(dataSelected.itemSelected["img"]);
       setId(dataSelected.itemSelected["id"]);
+      setStartTime(dataSelected['startTime'])
       setMealType(dataSelected["mealType"])
       
       // console.log(dataSelected);
@@ -137,7 +141,7 @@ const NinjaBoxViewPkg = () => {
   //Adding menu items to preselection
 
   const preselection = async () => {
-    let itemData;
+    let itemData; 
     console.log('mtype', mealType)
     if (ID) {
       PreSelectMenuNinjaBox[mealType].filter((d) => d.id === ID)[0].items.forEach(
@@ -777,7 +781,7 @@ const NinjaBoxViewPkg = () => {
     return x;
   }
   useEffect(() => {
-    preselection();
+    preselection(); 
 
     let starterPrice = 0;
     let mainPrice = 0;
@@ -830,9 +834,9 @@ const NinjaBoxViewPkg = () => {
     );
     setGST(getGst());
     setgrandTotal(
-      parseInt(totalPrice) +
-      // parseInt(buffet) +
-      // parseInt(deliveryCharge) +
+      parseInt(
+        starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
+      ) +
       parseInt(getGst())
     );
     
@@ -842,6 +846,19 @@ const NinjaBoxViewPkg = () => {
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
 //details submissions here
+
+//checking Zipcode
+useEffect(()=>{
+  if(zipcode.length>5){
+    if(ZipCodes.includes(zipcode)){
+      setZipcodeError("")
+    }
+    else{
+      setZipcodeError("Sorry, we are not servicable at provided PinCode Area.");
+    }
+  }
+  
+},[zipcode])
 
 const submitUserData = async(e) => {
   e.preventDefault();
@@ -855,12 +872,12 @@ const submitUserData = async(e) => {
     var final_gst = getGst();
     var final_grandtotal =
       parseInt(totalPrice) +
-      parseInt(buffet) +
+      // parseInt(buffet) +
       // parseInt(deliveryCharge) +
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-      parseInt(buffet) +
+      // parseInt(buffet) +
       // parseInt(deliveryCharge) +
       getGst()
     );
@@ -876,7 +893,7 @@ const submitUserData = async(e) => {
       nonveg_c: nonVeg,
       people: people,
       date: startDate,
-      // time : startTime,
+      time : startTime,
       url: url_value,
       meal: mealType,
       cuisine: "All",
@@ -1109,12 +1126,17 @@ function getGst() {
       });
   };
 
-
-
-
-  const confirmPkg = (e) => {
+  const confirmPkg = async(e) => {
+    e.preventDefault();
+    setGST(getGst())
+    setgrandTotal(
+      parseInt(
+        totalPrice
+      ) +
+      parseInt(getGst())
+    );
     setShowDiv(true);
-    // e.preventDefault();
+    //
     // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
     //     //alert("Please fill out all details!");
     //     Swal.fire({
@@ -1195,10 +1217,12 @@ function getGst() {
             </div>
             <div className='d-flex justify-content-between'>
               <p>ZipCode:</p>
-              <input type="text"
+              <input type="number"
+              maxLength={6}
           value={zipcode}
           onChange={(e) => setZipcode(e.target.value)}></input>
             </div>
+            <p>{zipcodeError}</p>
           </div>
           <hr />
           <div className={styles.selectedDetails}>
@@ -1214,7 +1238,7 @@ function getGst() {
               <div>
                 <h6>{city}</h6>
                 <h6>{startDate}</h6>
-                <h6>9:00 pm</h6>
+                <h6>{startTime}</h6>
                 <h6>{veg}</h6>
                 <h6>{nonVeg}</h6>
                 <h6>{occasion}</h6>
@@ -1260,17 +1284,7 @@ function getGst() {
           </div>
         </div>}
         <div className={styles.redBg}>
-          {/* <div className={styles.cityContainer}>
-                        <div className={styles.cityflexLg}>
-                            <h3>City</h3>
-                            <select className="form-select" aria-label="Default select example">
-                                <option selected>Mumbai</option>
-                                <option value="1">Bangalore</option>
-                                <option value="2">Delhi</option>
-                                <option value="3">Gurgaon</option>
-                            </select>
-                        </div>
-                    </div> */}
+         
           <div className={styles.redContent}>
             <div className={styles.cityDateContainer}>
               <div>
@@ -1280,7 +1294,7 @@ function getGst() {
                     name="city"
                     aria-label="Default select example"
                     value={city}
-                    onChange={(e) => handleCity(e.target.value)}
+                    onChange={(e) => setCity(e.target.value)}
                     required
                   >
                     <option value="" selected>
@@ -1299,7 +1313,7 @@ function getGst() {
               <div>
                 <p>Date</p>
                 <div>
-                  <input type="date" value={selectedDate}></input>
+                  <input type="date" value={startDate}></input>
                 </div>
               </div>
             </div>
@@ -1325,7 +1339,7 @@ function getGst() {
                     name="occasion"
                     aria-label="Default select example"
                     value={occasion}
-                    onChange={(e) => handleOccasion(e.target.value)}
+                    onChange={(e) => setOccasion(e.target.value)}
                   >
                     <option value="" selected>
                       Select Occasion
@@ -1444,7 +1458,17 @@ function getGst() {
                               />
                             )}
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1481,7 +1505,17 @@ function getGst() {
                               />
                             )}
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1521,7 +1555,17 @@ function getGst() {
                               />
                             )}
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                          {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1657,9 +1701,9 @@ function getGst() {
               <div className={styles.orderBtn}>
                 <button onClick={() => placeOrderBtn()}>Place Order</button>
               </div>
-              {/* <div className={styles.orderBtn}>
-                                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu"><button>Get Booking Help</button></Link>
-                            </div> */}
+              <div className={styles.orderBtn}>
+                                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20Package%20Menu"><button>Get Booking Help</button></Link>
+                            </div>
             </div>)}
           </div>
         </div>
@@ -1728,7 +1772,17 @@ function getGst() {
                                 <div className={styles.fstItem}>
                                     <img className={styles.itemImage} src="/diy images/starter/image 23.png" />
                                     <div className={styles.itemDetailsContainer}>
-                                        <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                                        {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
                                         <div>
                                             <h4>Paneer Butter<br />Masala</h4>
                                             <p>Classic Choice For Mains</p>
