@@ -30,7 +30,6 @@ const NinjaBoxCustomise = () => {
     allMenus,
     cities,
     occasions,
-    PreSelected,
     PreSelectMenuNinjaBox,
   } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
@@ -1835,6 +1834,9 @@ const NinjaBoxCustomise = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     });
+    alert(
+      "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
+    );
     if (a.success) {
       alert(
         "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
@@ -1842,6 +1844,7 @@ const NinjaBoxCustomise = () => {
     } else {
       console.log("Failed to send message");
     }
+    window.location.href='/'
 
     // .then(async(res) => {
     //     if (res.success) {
