@@ -145,11 +145,6 @@ const NinjaBoxCustomise = () => {
         });
     } else {
     }
-
-    // sessionStorage.setItem("starters", JSON.stringify(starters));
-    // sessionStorage.setItem("mains", JSON.stringify(mains));
-    // sessionStorage.setItem("breadRice", JSON.stringify(breadRice));
-    // sessionStorage.setItem("desserts", JSON.stringify(desserts));
   };
   useEffect(() => {
     let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
@@ -165,7 +160,13 @@ const NinjaBoxCustomise = () => {
 
       setMealType(SessionData["mealType"]);
     }
+    
+
   }, []);
+  // useEffect(()=>{
+  //   preselection();
+  // },[])
+
   useEffect(() => {
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
@@ -3178,7 +3179,7 @@ const NinjaBoxCustomise = () => {
                         <input type="text" placeholder="Enter Coupon Code" />
                         <button>Apply</button>
                       </div>
-                      <div>
+                      <div> 
                         <p>₹0</p>
                       </div>
                     </div> */}

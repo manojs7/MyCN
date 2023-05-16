@@ -367,7 +367,7 @@ export default function handler(req, res) {
       <h3>Box/Buffet Price : ${data.buffet?'NinjaBuffet':'NinjaBox'}</h3><br>
       <h3>GST: Rs ${data.GST}</h3><br>
       <h3>Grand Total : Rs ${data.grandTotal}</h3><br>
-      <h3>Need any help ${data.name} : Please call us</h3>
+      <h3>Need any help ${data.name} : Please call us at +917738096313</h3>
         
       <h2>Thank you!!! </h2<br>
     

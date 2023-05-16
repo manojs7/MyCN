@@ -509,7 +509,13 @@ const CustomizeNinjaBox = () => {
           }
         } else {
           if (data.Qtype === "pcs") {
-            data.quantity = nonVeg * 2;
+            if(data.name==="Punjabi Tangdi"){
+              data.quantity=nonVeg;
+            }
+            else{
+              data.quantity = nonVeg * 2;
+            }
+            // data.quantity = nonVeg * 2;
             if (data.quantity < 12) {
               data.quantity = 12;
             }
@@ -696,7 +702,13 @@ const CustomizeNinjaBox = () => {
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       if (starter.Qtype === "pcs") {
-        quantity = (veg > 0 ? veg : nonVeg) * 2;
+        if(starter.name==="Punjabi Tangdi"){
+          quantity=nonVeg;
+        }
+        else{
+          quantity = (veg > 0 ? veg : nonVeg) * 2;
+        }
+        
         if (quantity < 12) {
           quantity = 12;
         }
@@ -717,7 +729,13 @@ const CustomizeNinjaBox = () => {
         }
       } else {
         if (starter.Qtype === "pcs") {
-          quantity = nonVeg * 2;
+          if(starter.name==="Punjabi Tangdi"){
+            quantity=nonVeg;
+          }
+          else{
+            quantity = nonVeg * 2;
+          }
+          
           if (quantity < 12) {
             quantity = 12;
           }

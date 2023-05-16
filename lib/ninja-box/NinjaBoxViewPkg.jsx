@@ -828,12 +828,13 @@ const NinjaBoxViewPkg = () => {
         starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd
       )
     );
-    if(packagePrice){
-      setTotalPrice(parseInt(packagePrice.replace(',','')))
-      setGST(getGst())
-      setgrandTotal(parseInt(totalPrice)+getGst())
-      
-    }
+    setGST(getGst());
+    setgrandTotal(
+      parseInt(totalPrice) +
+      // parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
+    );
     
 
     
@@ -851,8 +852,18 @@ const submitUserData = async(e) => {
     return;
   } else {
 
-    var final_gst = GST;
-    var final_grandtotal =grandTotal;
+    var final_gst = getGst();
+    var final_grandtotal =
+      parseInt(totalPrice) +
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst();
+    setgrandTotal(
+      parseInt(totalPrice) +
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst()
+    );
     
     // yaha par user data set kardo aur payment ka popup daal do
     let datas = {
@@ -932,6 +943,8 @@ function getGst() {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
+      alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+
       if (res.success) {
         alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
         //show pop up here
@@ -1383,7 +1396,17 @@ function getGst() {
                               />
                             )}
                         <div className={styles.itemDetailsContainer}>
-                          <img className={styles.vegLogo} src="/diy images/vegLogo.png" />
+                        {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
