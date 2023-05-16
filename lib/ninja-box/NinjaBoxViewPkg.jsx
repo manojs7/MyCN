@@ -40,6 +40,8 @@ const NinjaBoxViewPkg = () => {
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const [startTime,setStartTime]=useState('')
+
 
   //code already done by sourav
 
@@ -89,6 +91,7 @@ const NinjaBoxViewPkg = () => {
       setPackagePrice(dataSelected.itemSelected["price"]);
       setImage(dataSelected.itemSelected["img"]);
       setId(dataSelected.itemSelected["id"]);
+      setStartTime(dataSelected['startTime'])
       setMealType(dataSelected["mealType"])
       
       // console.log(dataSelected);
@@ -890,7 +893,7 @@ const submitUserData = async(e) => {
       nonveg_c: nonVeg,
       people: people,
       date: startDate,
-      // time : startTime,
+      time : startTime,
       url: url_value,
       meal: mealType,
       cuisine: "All",
@@ -1235,7 +1238,7 @@ function getGst() {
               <div>
                 <h6>{city}</h6>
                 <h6>{startDate}</h6>
-                <h6>9:00 pm</h6>
+                <h6>{startTime}</h6>
                 <h6>{veg}</h6>
                 <h6>{nonVeg}</h6>
                 <h6>{occasion}</h6>

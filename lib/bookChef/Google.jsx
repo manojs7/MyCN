@@ -107,7 +107,11 @@ class Google extends React.Component {
           a.appendChild(r);
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');`,
                         }}
-                    />
+                    />,
+                    <noscript>{
+                        `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHL8B4X"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>`}
+                    </noscript>
                 </Helmet>
             </div>
         );

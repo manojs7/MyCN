@@ -50,7 +50,7 @@ const NinjaBoxCustomise = () => {
   const [occasion, setOccasion] = useState("");
 
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setstartTime] = useState();
+  const [startTime, setStartTime] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
@@ -156,6 +156,7 @@ const NinjaBoxCustomise = () => {
         setOccasion(SessionData["occasion"]);
       //   setImage(dataSelected.itemSelected["img"]);
       setId(SessionData.itemSelected["id"]);
+      setStartTime(SessionData['startTime'])
 
       setMealType(SessionData["mealType"]);
     }
@@ -1260,13 +1261,13 @@ const NinjaBoxCustomise = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = veg * 0.2)
         : (quantity = (veg + nonVeg) * 0.1);
       filterBreadRice.veg === false &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = nonVeg * 0.15)
         : (quantity = nonVeg * 0.2);
 
@@ -1604,9 +1605,9 @@ const NinjaBoxCustomise = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
     setShowPriceList(false);
     preselection();
@@ -1615,9 +1616,9 @@ const NinjaBoxCustomise = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
   }, [buffet]);
 
@@ -1625,7 +1626,7 @@ const NinjaBoxCustomise = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-        100
+      100
     );
   }
 
@@ -1690,9 +1691,9 @@ const NinjaBoxCustomise = () => {
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        getGst()
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst()
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -1709,7 +1710,7 @@ const NinjaBoxCustomise = () => {
       nonveg_c: nonVeg,
       people: people,
       date: startDate,
-      // time : startTime,
+      time : startTime,
       url: refURL,
       meal: "meal",
       cuisine: cuisine,
@@ -1887,7 +1888,7 @@ const NinjaBoxCustomise = () => {
           })
           //Storing the payment details
           .then(async function (json) {
-            json.datas=datas
+            json.datas = datas
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -2195,7 +2196,7 @@ const NinjaBoxCustomise = () => {
                     </select>
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <p>Delivery Time</p>
                   <input
                     type="time"
@@ -2203,6 +2204,32 @@ const NinjaBoxCustomise = () => {
                     onChange={(time) => setstartTime(time)}
                     required
                   ></input>
+                </div> */}
+                <div>
+                  <p>Delivery Time</p>
+                  <div>
+                  <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)}>
+                    <option value="11:00 am">11:00 am</option>
+                    <option value="11:30 am">11:30 am</option>
+                    <option value="12:00 pm">12:00 pm</option>
+                    <option value="12:30 pm">12:30 pm</option>
+                    <option value="1:00 pm">1:00 pm</option>
+                    <option value="1:30 pm">1:30 pm</option>
+                    <option value="2:00 pm">2:00 pm</option>
+                    <option value="2:00 pm">2:00 pm</option>
+                    <option value="2:30 pm">2:30 pm</option>
+                    <option value="3:00 pm">3:00 pm</option>
+                    <option value="5:00 pm">5:00 pm</option>
+                    <option value="5:30 pm">5:30 pm</option>
+                    <option value="6:00 pm">6:00 pm</option>
+                    <option value="6:30 pm">6:30 pm</option>
+                    <option value="7:00 pm">7:00 pm</option>
+                    <option value="7:30 pm">7:30 pm</option>
+                    <option value="8:00 pm">8:00 pm</option>
+                    <option value="8:30 pm">8:30 pm</option>
+                    <option value="9:00 pm">9:30 pm</option>
+                  </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2217,8 +2244,8 @@ const NinjaBoxCustomise = () => {
                 <h3>
                   {ID
                     ? PreSelectMenuNinjaBox[mealType].filter(
-                        (d) => d.id === ID
-                      )[0].name
+                      (d) => d.id === ID
+                    )[0].name
                     : ""}
                 </h3>
                 <img src="555.png" height="150px" width="274.5px" />
