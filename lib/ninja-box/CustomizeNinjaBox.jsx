@@ -1837,6 +1837,8 @@ const CustomizeNinjaBox = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
+      alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+
       if (res.success) {
         alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
       } else {
@@ -1873,6 +1875,7 @@ const CustomizeNinjaBox = () => {
           })
           //Storing the payment details
           .then(function (json) {
+            json.datas=datas,
 
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
@@ -1881,7 +1884,7 @@ const CustomizeNinjaBox = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(json.status),
+              body: JSON.stringify(json),
             })
 
             // if payment gets successful
