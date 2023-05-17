@@ -920,6 +920,18 @@ const submitUserData = async(e) => {
     setDatas(datas);
     console.log("datas",datas)
 
+    await fetch("/api/forma", {
+      method: "POST",
+      body: data,
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+  }).then((res) => {
+      console.log(res.message);
+      if (res.success) {
+          console.log("message sent");
+      } else {
+          console.log("Failed to send message");
+      }
+  });
     await payumoney(e)
   }
 };

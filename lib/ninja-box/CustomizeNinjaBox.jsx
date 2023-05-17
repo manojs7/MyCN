@@ -45,7 +45,7 @@ const CustomizeNinjaBox = () => {
   const [occasion, setOccasion] = useState("");
 
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setstartTime] = useState();
+  const [startTime, setStartTime] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
@@ -2217,7 +2217,7 @@ const CustomizeNinjaBox = () => {
                 </div>
                 <div>
                   <p>Delivery Time</p>
-                  <select className="form-select">
+                  <select className="form-select" onChange={(e)=>setStartTime(e.target.value)}>
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>

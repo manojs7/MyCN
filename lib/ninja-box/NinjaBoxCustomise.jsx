@@ -160,6 +160,8 @@ const NinjaBoxCustomise = () => {
 
       setMealType(SessionData["mealType"]);
     }
+
+    preselection();
     
 
   }, []);
@@ -1610,7 +1612,7 @@ const NinjaBoxCustomise = () => {
       parseInt(getGst())
     );
     setShowPriceList(false);
-    preselection();
+    
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
@@ -1738,18 +1740,18 @@ const NinjaBoxCustomise = () => {
     } catch (e) {
       console.log(e);
     }
-    // fetch("/api/forma", {
-    //     method: "POST",
-    //     body: data,
-    //     headers: { "Content-Type": "application/json; charset=UTF-8" },
-    // }).then((res) => {
-    //     console.log(res.message);
-    //     if (res.success) {
-    //         console.log("message sent");
-    //     } else {
-    //         console.log("Failed to send message");
-    //     }
-    // });
+    fetch("/api/forma", {
+        method: "POST",
+        body: data,
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
+    }).then((res) => {
+        console.log(res.message);
+        if (res.success) {
+            console.log("message sent");
+        } else {
+            console.log("Failed to send message");
+        }
+    });
   };
 
   const handlePlaceOrder = () => {
