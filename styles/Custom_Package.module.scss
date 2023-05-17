@@ -127,10 +127,11 @@
             }
         }
 
-        .deliveryTimeSecn{
+        .deliveryTimeSecn {
             text-align: center;
             margin-bottom: 20px;
-            h4{
+
+            h4 {
                 text-align: center;
                 font-weight: 700;
                 font-size: 20.7457px;
@@ -139,7 +140,7 @@
                 color: #2C3338;
             }
 
-            select{
+            select {
                 text-align: center;
                 width: 119.97px;
                 height: 30.14px;
@@ -239,23 +240,22 @@
             margin-top: -10px;
             display: flex;
             justify-content: space-between;
-            width: 101.81px;
+            width: 120px;
             height: 30.14px;
             background: #FFFFFF;
             box-shadow: 0px 3.25806px 3.25806px rgba(0, 0, 0, 0.25);
             border-radius: 6.21959px;
 
             button {
-                margin-top: -8px;
                 border: none;
                 background: none;
-                font-size: 25px;
-                font-weight: 500;
+                font-weight: 700;
                 color: #4D555B;
             }
 
             input {
-                margin: auto;
+                width: 80px;
+                height: 30px;
                 background: none;
                 border: none;
                 text-align: center;
@@ -423,23 +423,22 @@
                 margin-top: -10px;
                 display: flex;
                 justify-content: space-between;
-                width: 101.81px;
+                width: 120px;
                 height: 30.14px;
                 background: #FFFFFF;
                 box-shadow: 0px 3.25806px 3.25806px rgba(0, 0, 0, 0.25);
                 border-radius: 6.21959px;
 
                 button {
-                    margin-top: -10px;
                     border: none;
                     background: none;
-                    font-size: 25px;
-                    font-weight: 500;
-                    color: #4D555B;
+                    font-weight: 600;
+                    color: black;
                 }
 
                 input {
-                    margin: auto;
+                    width: 80px;
+                    height: 30px;
                     background: none;
                     border: none;
                     text-align: center;
@@ -450,8 +449,7 @@
                     font-size: 12px;
                     //line-height: 19px;
                     text-align: center;
-                    letter-spacing: 0.05em;
-                    text-transform: capitalize;
+                    //letter-spacing: 0.05em;
                     color: #63B335;
                 }
 
@@ -460,8 +458,7 @@
                     font-size: 12px;
                     //line-height: 19px;
                     text-align: center;
-                    letter-spacing: 0.05em;
-                    text-transform: capitalize;
+                    //letter-spacing: 0.05em;
                     color: #BE2D30;
                 }
             }
@@ -589,10 +586,11 @@
             display: none;
         }
 
-        .deliveryTimeSecn{
+        .deliveryTimeSecn {
             text-align: center;
             margin-bottom: 20px;
-            h4{
+
+            h4 {
                 text-align: center;
                 font-weight: 700;
                 font-size: 20.7457px;
@@ -601,7 +599,7 @@
                 color: #2C3338;
             }
 
-            select{
+            select {
                 text-align: center;
                 width: 119.97px;
                 height: 30.14px;

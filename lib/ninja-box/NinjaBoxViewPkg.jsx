@@ -1388,9 +1388,9 @@ function getGst() {
                   <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
                   <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
                 </div>
-                <div>
+                {/* <div>
                   <h6>₹ {packagePrice }</h6>
-                </div>
+                </div> */}
                 {/* <div>
                                     <h6>₹ {price}</h6>
                                 </div> */}
@@ -1608,7 +1608,7 @@ function getGst() {
                                 </div>
                             </div>
                         </div> */}
-            {/* <div className="mt-5">
+            <div className="mt-5">
                             <div className={styles2.userInput}>
                                 <h4>Details*</h4>
                                 <form className={styles2.detailsInputLg}>
@@ -1632,7 +1632,7 @@ function getGst() {
                                     />
                                 </form>
                             </div>
-                        </div> */}
+                        </div>
             {/* <div className={styles.chefNote}>
                             <input placeholder='Special Restriction? Chef Note?' type="text" />
                         </div> */}

@@ -188,20 +188,20 @@ const Custom_Package = () => {
 
   //SHOW/HIDE POPUP
   const [showDiv, setShowDiv] = useState(false);
-  const ref = useRef(null);
+  // const ref = useRef(null);
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
-  const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      setShowDiv(false);
-    }
-  };
+  // const handleClickOutside = (event) => {
+  //   if (ref.current && !ref.current.contains(event.target)) {
+  //     setShowDiv(false);
+  //   }
+  // };
 
   const handleButtonClick = (item) => {
     setItemSelected(item)
@@ -283,7 +283,7 @@ const Custom_Package = () => {
 
   return (
     <div>
-      {showDiv && (<div className={styles.popupguestcount} ref={ref}>
+      {showDiv && (<div className={styles.popupguestcount}>
         <h3>Additional <span>Info</span></h3>
         <div className={styles.dateContainer}>
           <div>
@@ -586,8 +586,8 @@ const Custom_Package = () => {
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
-                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">See Datials</button>
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
                 </div>
               </div>))}
             </div>
@@ -603,8 +603,8 @@ const Custom_Package = () => {
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
-                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
                 </div>
               </div>))}
             </div>
@@ -620,8 +620,8 @@ const Custom_Package = () => {
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
-                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
                 </div>
               </div>))}
             </div>
@@ -647,8 +647,8 @@ const Custom_Package = () => {
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
-                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
                 </div>
               </div>))}
             </div>
@@ -664,8 +664,8 @@ const Custom_Package = () => {
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
-                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
                 </div>
               </div>))}
             </div>
@@ -681,8 +681,8 @@ const Custom_Package = () => {
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
-                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-2" id="selectBtn">Select Package</button>
-                  <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
                 </div>
               </div>))}
             </div>
@@ -819,8 +819,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-3" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
               </div>
             </div>))}
           </div>
@@ -836,8 +836,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
               </div>
             </div>))}
           </div>
@@ -853,8 +853,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
               </div>
             </div>))}
           </div>
@@ -882,8 +882,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
               </div>
             </div>))}
           </div>
@@ -899,8 +899,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
               </div>
             </div>))}
           </div>
@@ -916,8 +916,8 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-4" id="selectBtn">Select Package</button>
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
               </div>
             </div>))}
           </div>
