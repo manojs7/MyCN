@@ -1876,6 +1876,7 @@ const CustomizeNinjaBox = () => {
           //Storing the payment details
           .then(function (json) {
             json.datas=datas,
+            json.createdAt=new Date()
 
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
@@ -1899,7 +1900,8 @@ const CustomizeNinjaBox = () => {
                 datas.status = json.status,
                 datas.email = json.status.email,
                 datas.bank_ref_num = json.status.bank_ref_num,
-                datas.name = json.status.field4
+                datas.name = json.status.field4,
+                datas.createdAt=new Date()
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);

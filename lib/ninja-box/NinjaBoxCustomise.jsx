@@ -1891,6 +1891,7 @@ const NinjaBoxCustomise = () => {
           //Storing the payment details
           .then(async function (json) {
             json.datas = datas
+            json.createdAt=new Date()
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -1913,6 +1914,7 @@ const NinjaBoxCustomise = () => {
                 (datas.email = json.status.email),
                 (datas.bank_ref_num = json.status.bank_ref_num),
                 (datas.OrderStatus = "");
+                datas.createdAt=new Date()
               // datas.name=json.status.field4
 
               // }
@@ -2141,7 +2143,7 @@ const NinjaBoxCustomise = () => {
                       type="date"
                       name="event_date"
                       value={startDate}
-                      onChange={(date) => setStartDate(date)}
+                      onChange={(event) => setStartDate(event.target.value)}
                       required
                     />
                   </div>
