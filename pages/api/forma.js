@@ -418,9 +418,9 @@ export default function handler(req, res) {
 
         transporter.sendMail(mailOptions, (error, response) => {
           if (error) {
-            return res.json({ success: false, message:error});
+             res.json({ success: false, message:error});
           } else {
-            return res.json({ success: true, message:mailOptions });
+             res.status(200).send({ success: true, message:mailOptions });
           }
         });
 
