@@ -40,15 +40,15 @@ const NinjaBoxViewPkg = () => {
   const [breadRiceData, setBreadRiceData] = useState([]);
   const [breadRiceData2, setBreadRiceData2] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime,setStartTime]=useState('')
+  const [startTime, setStartTime] = useState('')
 
 
   //code already done by sourav
 
-  
+
   const [showDiv, setShowDiv] = useState(false);
-  const [datas, setDatas]=useState()
-  const [EmailedToParser,setEmailedToParser]=useState(false)
+  const [datas, setDatas] = useState()
+  const [EmailedToParser, setEmailedToParser] = useState(false)
 
 
   const [city, setCity] = useState("");
@@ -62,25 +62,30 @@ const NinjaBoxViewPkg = () => {
   const [image, setImage] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const [ID, setId] = useState(0);
-  const [mealType, setMealType]=useState('')
+  const [mealType, setMealType] = useState('')
 
   //PLACE ORDER SUBMIT FORM
   const [name, setName] = useState("");
   const [packageName, setPackageName] = useState("");
-  
+
   const [mobileno, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [zipcodeError, setZipcodeError] = useState("");
 
+  //DATE LOGIC
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() + 2);
+  const minDateISO = minDate.toISOString().split('T')[0];
 
- 
+
+
   useEffect(() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
     console.log('dataselected', dataSelected)
     // sessionStorage.removeItem("dataSelected")
-    if(dataSelected){
+    if (dataSelected) {
       setCity(dataSelected["city"]);
       setVeg(dataSelected["vcount"]);
       setNonVeg(dataSelected["nvcount"]);
@@ -93,10 +98,10 @@ const NinjaBoxViewPkg = () => {
       setId(dataSelected.itemSelected["id"]);
       setStartTime(dataSelected['startTime'])
       setMealType(dataSelected["mealType"])
-      
+
       // console.log(dataSelected);
     }
-   
+
   }, []);
 
   //by Manoj
@@ -141,13 +146,13 @@ const NinjaBoxViewPkg = () => {
   //Adding menu items to preselection
 
   const preselection = async () => {
-    let itemData; 
+    let itemData;
     console.log('mtype', mealType)
     if (ID) {
       PreSelectMenuNinjaBox[mealType].filter((d) => d.id === ID)[0].items.forEach(
         (item) => {
           itemData = allMenus.filter((d) => d.name == item);
-          if(itemData.length>0){
+          if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
               handleStatersAdd(itemData[0].name);
             } else if (itemData[0].mealType === "Main course") {
@@ -159,11 +164,11 @@ const NinjaBoxViewPkg = () => {
             } else if (itemData[0].mealType === "Dessert") {
               handleDesertsAdd(itemData[0].name);
             }
-            else{
-              console.log("suspect",item)
+            else {
+              console.log("suspect", item)
             }
           }
-          
+
         }
       );
     } else {
@@ -767,7 +772,7 @@ const NinjaBoxViewPkg = () => {
       selling_price: dessert.selling_price,
     });
     setDesserts(temp);
-   
+
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
 
@@ -781,7 +786,7 @@ const NinjaBoxViewPkg = () => {
     return x;
   }
   useEffect(() => {
-    preselection(); 
+    preselection();
 
     let starterPrice = 0;
     let mainPrice = 0;
@@ -839,102 +844,102 @@ const NinjaBoxViewPkg = () => {
       ) +
       parseInt(getGst())
     );
-    
 
-    
+
+
 
   }, [starters, mains, desserts, breadRice, veg, nonVeg, buffet]);
 
-//details submissions here
+  //details submissions here
 
-//checking Zipcode
-useEffect(()=>{
-  if(zipcode.length>5){
-    if(ZipCodes.includes(zipcode)){
-      setZipcodeError("")
+  //checking Zipcode
+  useEffect(() => {
+    if (zipcode.length > 5) {
+      if (ZipCodes.includes(zipcode)) {
+        setZipcodeError("")
+      }
+      else {
+        setZipcodeError("Sorry, we are not servicable at provided PinCode Area.");
+      }
     }
-    else{
-      setZipcodeError("Sorry, we are not servicable at provided PinCode Area.");
+
+  }, [zipcode])
+
+  const submitUserData = async (e) => {
+    e.preventDefault();
+    let url_value = sessionStorage.getItem("first_url2");
+
+    if (!name || !mobileno || !email || !address || !zipcode) {
+      alert('Please fill in all fields');
+      return;
+    } else {
+
+      var final_gst = getGst();
+      var final_grandtotal =
+        parseInt(totalPrice) +
+        // parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        getGst();
+      setgrandTotal(
+        parseInt(totalPrice) +
+        // parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        getGst()
+      );
+
+      // yaha par user data set kardo aur payment ka popup daal do
+      let datas = {
+        name: name,
+        email: email,
+        mobileno: mobileno,
+        city: city,
+        occasion: occasion,
+        veg_c: veg,
+        nonveg_c: nonVeg,
+        people: people,
+        date: startDate,
+        time: startTime,
+        url: url_value,
+        meal: mealType,
+        cuisine: "All",
+        preference: "preference",
+        mealtype: mealType,
+        boolean: true,
+        appetizer: starters,
+        mainCourse: mains,
+        dessert: desserts,
+        breadRice: breadRice,
+        grandTotal: final_grandtotal,
+        buffet: buffet,
+        dessertClassname: "caterNinja_add_dessert_button",
+        totalPrice: totalPrice,
+        GST: final_gst,
+        showDessert: false,
+        emailedtoparser: EmailedToParser,
+        address: address,
+        zipcode: zipcode,
+        packageName: packageName,
+        packagePrice: packagePrice
+      };
+
+      setDatas(datas);
+      console.log("datas", datas)
+
+      await payumoney(e)
     }
-  }
-  
-},[zipcode])
+  };
 
-const submitUserData = async(e) => {
-  e.preventDefault();
-  let url_value = sessionStorage.getItem("first_url2");
-    
-  if (!name || !mobileno || !email || !address || !zipcode) {
-    alert('Please fill in all fields');
-    return;
-  } else {
-
-    var final_gst = getGst();
-    var final_grandtotal =
-      parseInt(totalPrice) +
-      // parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      getGst();
-    setgrandTotal(
-      parseInt(totalPrice) +
-      // parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      getGst()
+  function getGst() {
+    return parseInt(
+      ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
+        5) /
+      100
     );
-    
-    // yaha par user data set kardo aur payment ka popup daal do
-    let datas = {
-      name: name,
-      email: email,
-      mobileno: mobileno,
-      city: city,
-      occasion: occasion,
-      veg_c: veg,
-      nonveg_c: nonVeg,
-      people: people,
-      date: startDate,
-      time : startTime,
-      url: url_value,
-      meal: mealType,
-      cuisine: "All",
-      preference: "preference",
-      mealtype: mealType,
-      boolean: true,
-      appetizer: starters,
-      mainCourse: mains,
-      dessert: desserts,
-      breadRice: breadRice,
-      grandTotal: final_grandtotal,
-      buffet: buffet,
-      dessertClassname: "caterNinja_add_dessert_button",
-      totalPrice: totalPrice,
-      GST: final_gst,
-      showDessert: false,
-      emailedtoparser:EmailedToParser,
-      address:address,
-      zipcode:zipcode,
-      packageName:packageName,
-      packagePrice:packagePrice
-    };
-
-    setDatas(datas);
-    console.log("datas",datas)
-
-    await payumoney(e)
   }
-};
-
-function getGst() {
-  return parseInt(
-    ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
-      5) /
-    100
-  );
-}
 
 
 
-//Payment Part starts here
+  //Payment Part starts here
   const interakt = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -1006,24 +1011,24 @@ function getGst() {
           //Storing the payment details
           .then(async function (json) {
 
-            json.datas=datas,
-            
-            //API call for saving all the payment response whether it is success or failure
-            fetch("/api/RawPaymentAllDetails", {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(json),
-            })
+            json.datas = datas,
+
+              //API call for saving all the payment response whether it is success or failure
+              fetch("/api/RawPaymentAllDetails", {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(json),
+              })
 
             // if payment gets successful
 
             if (json.status.status === "success") {
 
               // let payData={
-                datas.txnid = json.status.txnid,
+              datas.txnid = json.status.txnid,
                 datas.phone = json.status.phone,
                 datas.productinfo = json.status.productinfo,
                 datas.amount = json.status.amount,
@@ -1069,7 +1074,7 @@ function getGst() {
     });
   };
 
-  const payumoney = async(e) => {
+  const payumoney = async (e) => {
     e.preventDefault();
 
     if (totalPrice < 2999) {
@@ -1078,7 +1083,7 @@ function getGst() {
     }
     //Create a Data object that is to be passed to LAUNCH method of Bolt
     let oid = "CaterNinja" + Math.floor(Math.random(6) * 1000000);
-    if(datas){
+    if (datas) {
       var pd = {
         key: "VKy9EEvW",
         txnid: oid,
@@ -1091,12 +1096,12 @@ function getGst() {
         furl: "https://new.caterninja.com",
         hash: "",
       };
-  
+
     }
-    else{
+    else {
       return
     }
-    
+
     // Data to be Sent to API to generate hash.
     let data = {
       txnid: pd.txnid,
@@ -1126,7 +1131,7 @@ function getGst() {
       });
   };
 
-  const confirmPkg = async(e) => {
+  const confirmPkg = async (e) => {
     e.preventDefault();
     setGST(getGst())
     setgrandTotal(
@@ -1194,33 +1199,33 @@ function getGst() {
             <div className='d-flex justify-content-between'>
               <p>Name:</p>
               <input type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}></input>
+                value={name}
+                onChange={(e) => setName(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Phone:</p>
               <input type="text"
-          value={mobileno}
-          onChange={(e) => setPhone(e.target.value)}></input>
+                value={mobileno}
+                onChange={(e) => setPhone(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Email:</p>
               <input type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}></input>
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Address:</p>
               <input type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}></input>
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
               <p>ZipCode:</p>
               <input type="number"
-              maxLength={6}
-          value={zipcode}
-          onChange={(e) => setZipcode(e.target.value)}></input>
+                maxLength={6}
+                value={zipcode}
+                onChange={(e) => setZipcode(e.target.value)}></input>
             </div>
             <p>{zipcodeError}</p>
           </div>
@@ -1244,35 +1249,35 @@ function getGst() {
                 <h6>{occasion}</h6>
               </div>
             </div>
-            <hr/>
+            <hr />
             <div className={styles.selectedItems}>
               <div>
                 <h4>- Starters -</h4>
                 {starters.map((item, index) => (
-               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
                 ))
-              }
+                }
               </div>
               <div>
                 <h4>- Mains -</h4>
                 {mains.map((item, index) => (
-               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
                 ))
-              }
-              {breadRice.map((item, index) => (
-               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                }
+                {breadRice.map((item, index) => (
+                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
                 ))
-              }
+                }
               </div>
               <div>
                 <h4>- Desserts -</h4>
                 {desserts.map((item, index) => (
-               <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
                 ))
-              }
+                }
               </div>
             </div>
-            <hr/>
+            <hr />
             <div className={styles.priceing}>
               <h6>GRAND TOTAL :</h6>
               <h6>{grandTotal}</h6>
@@ -1284,7 +1289,7 @@ function getGst() {
           </div>
         </div>}
         <div className={styles.redBg}>
-         
+
           <div className={styles.redContent}>
             <div className={styles.cityDateContainer}>
               <div>
@@ -1313,7 +1318,7 @@ function getGst() {
               <div>
                 <p>Date</p>
                 <div>
-                  <input type="date" value={startDate}></input>
+                  <input type="date" onChange={(event) => setStartDate(event.target.value)} value={startDate} min={minDateISO}></input>
                 </div>
               </div>
             </div>
@@ -1352,6 +1357,32 @@ function getGst() {
                       );
                     })}
                   </select>
+                </div>
+              </div>
+              <div>
+                <p>Delivery Time</p>
+                <div>
+                <select className="mx-auto" value={startTime} onChange={(e) => setStartTime(e.target.value)}>
+                  <option value="11:00 am">11:00 am</option>
+                  <option value="11:30 am">11:30 am</option>
+                  <option value="12:00 pm">12:00 pm</option>
+                  <option value="12:30 pm">12:30 pm</option>
+                  <option value="1:00 pm">1:00 pm</option>
+                  <option value="1:30 pm">1:30 pm</option>
+                  <option value="2:00 pm">2:00 pm</option>
+                  <option value="2:00 pm">2:00 pm</option>
+                  <option value="2:30 pm">2:30 pm</option>
+                  <option value="3:00 pm">3:00 pm</option>
+                  <option value="5:00 pm">5:00 pm</option>
+                  <option value="5:30 pm">5:30 pm</option>
+                  <option value="6:00 pm">6:00 pm</option>
+                  <option value="6:30 pm">6:30 pm</option>
+                  <option value="7:00 pm">7:00 pm</option>
+                  <option value="7:30 pm">7:30 pm</option>
+                  <option value="8:00 pm">8:00 pm</option>
+                  <option value="8:30 pm">8:30 pm</option>
+                  <option value="9:00 pm">9:30 pm</option>
+                </select>
                 </div>
               </div>
             </div>
@@ -1395,32 +1426,32 @@ function getGst() {
                     {starters.map((item, index) => (
                       <div className={styles.fstItem}>
                         {item.Images ? (
-                              <img
-                                className={styles.itemImage}
-                                src={item.Images}
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            ) : (
-                              <img
-                                className={styles.itemImage}
-                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            )}
+                          <img
+                            className={styles.itemImage}
+                            src={item.Images}
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        ) : (
+                          <img
+                            className={styles.itemImage}
+                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        )}
                         <div className={styles.itemDetailsContainer}>
-                        {item.veg === true ? (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/vegLogo.png"
-                                />
-                              ) : (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/Group 962.png"
-                                />
-                              )}
+                          {item.veg === true ? (
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/vegLogo.png"
+                            />
+                          ) : (
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/Group 962.png"
+                            />
+                          )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1443,32 +1474,32 @@ function getGst() {
                     {mains.map((item, index) => (
                       <div className={styles.fstItem}>
                         {item.Images ? (
-                              <img
-                                className={styles.itemImage}
-                                src={item.Images}
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            ) : (
-                              <img
-                                className={styles.itemImage}
-                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            )}
+                          <img
+                            className={styles.itemImage}
+                            src={item.Images}
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        ) : (
+                          <img
+                            className={styles.itemImage}
+                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        )}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/vegLogo.png"
-                                />
-                              ) : (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/Group 962.png"
-                                />
-                              )}
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/vegLogo.png"
+                            />
+                          ) : (
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/Group 962.png"
+                            />
+                          )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1483,39 +1514,39 @@ function getGst() {
 
                   </div>
                 </div>
-                
+
                 <div className={styles.startersContainer}>
                   <h5 className='mt-5'>Bread, Rice and Noodles</h5>
                   <div className={styles.starterItems}>
                     {breadRice.map((item, index) => (
                       <div className={styles.fstItem}>
                         {item.Images ? (
-                              <img
-                                className={styles.itemImage}
-                                src={item.Images}
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            ) : (
-                              <img
-                                className={styles.itemImage}
-                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            )}
+                          <img
+                            className={styles.itemImage}
+                            src={item.Images}
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        ) : (
+                          <img
+                            className={styles.itemImage}
+                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        )}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/vegLogo.png"
-                                />
-                              ) : (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/Group 962.png"
-                                />
-                              )}
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/vegLogo.png"
+                            />
+                          ) : (
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/Group 962.png"
+                            />
+                          )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1540,32 +1571,32 @@ function getGst() {
                     {desserts.map((item, index) => (
                       <div className={styles.fstItem}>
                         {item.Images ? (
-                              <img
-                                className={styles.itemImage}
-                                src={item.Images}
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            ) : (
-                              <img
-                                className={styles.itemImage}
-                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                width="30.05px"
-                                height="26.54px"
-                              />
-                            )}
+                          <img
+                            className={styles.itemImage}
+                            src={item.Images}
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        ) : (
+                          <img
+                            className={styles.itemImage}
+                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                            width="30.05px"
+                            height="26.54px"
+                          />
+                        )}
                         <div className={styles.itemDetailsContainer}>
                           {item.veg === true ? (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/vegLogo.png"
-                                />
-                              ) : (
-                                <img
-                                  className={styles.vegLogo}
-                                  src="/diy images/Group 962.png"
-                                />
-                              )}
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/vegLogo.png"
+                            />
+                          ) : (
+                            <img
+                              className={styles.vegLogo}
+                              src="/diy images/Group 962.png"
+                            />
+                          )}
                           <div>
                             <h4>{item.name}</h4>
                             <p>{item.description}</p>
@@ -1597,30 +1628,30 @@ function getGst() {
                             </div>
                         </div> */}
             <div className="mt-5">
-                            <div className={styles2.userInput}>
-                                <h4>Details*</h4>
-                                <form className={styles2.detailsInputLg}>
-                                    <input
-                                        placeholder="Name"
-                                        onInput={(e) => setName(e.target.value)}
-                                        required
-                                    />
-                                    <input
-                                        placeholder="Phone No."
-                                        name="mobileno"
-                                        onInput={(e) => setPhone(e.target.value)}
-                                        maxLength="10"
-                                        required
-                                    />
-                                    <input
-                                        placeholder="Email"
-                                        name="email"
-                                        onInput={(e) => setEmail(e.target.value)}
-                                        required
-                                    />
-                                </form>
-                            </div>
-                        </div>
+              <div className={styles2.userInput}>
+                <h4>Details*</h4>
+                <form className={styles2.detailsInputLg}>
+                  <input
+                    placeholder="Name"
+                    onInput={(e) => setName(e.target.value)}
+                    required
+                  />
+                  <input
+                    placeholder="Phone No."
+                    name="mobileno"
+                    onInput={(e) => setPhone(e.target.value)}
+                    maxLength="10"
+                    required
+                  />
+                  <input
+                    placeholder="Email"
+                    name="email"
+                    onInput={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </form>
+              </div>
+            </div>
             {/* <div className={styles.chefNote}>
                             <input placeholder='Special Restriction? Chef Note?' type="text" />
                         </div> */}
@@ -1702,8 +1733,8 @@ function getGst() {
                 <button onClick={() => placeOrderBtn()}>Place Order</button>
               </div>
               <div className={styles.orderBtn}>
-                                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20Package%20Menu"><button>Get Booking Help</button></Link>
-                            </div>
+                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20Package%20Menu"><button>Get Booking Help</button></Link>
+              </div>
             </div>)}
           </div>
         </div>

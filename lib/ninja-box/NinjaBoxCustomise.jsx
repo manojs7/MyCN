@@ -2139,7 +2139,7 @@ const NinjaBoxCustomise = () => {
                       type="date"
                       name="event_date"
                       value={startDate}
-                      onChange={(date) => setStartDate(date)}
+                      onChange={(event) => setStartDate(event.target.value)}
                       required
                     />
                   </div>
