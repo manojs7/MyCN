@@ -263,7 +263,7 @@ export default function handler(req, res) {
       // to:`${data.email},59drv2k@parser.zohocrm.com`,
       // to:`${data.email}, i4e16n207_bvnzocb@parser.zohocrm.com`,
 
-      to:`${data.email}, ${data.emailedtoparser?'':'i4e16n207_bvnzocb@parser.zohocrm.com'}`,
+      to:`${data.email}, caterninjadiy@gmail.com, ${data.emailedtoparser?'':'i4e16n207_bvnzocb@parser.zohocrm.com'}`,
 
       subject: `Final Quote ${data.name} | CaterNinja🤺| Party Quote.`,
 
@@ -367,7 +367,7 @@ export default function handler(req, res) {
       <h3>Box/Buffet Price : ${data.buffet?'NinjaBuffet':'NinjaBox'}</h3><br>
       <h3>GST: Rs ${data.GST}</h3><br>
       <h3>Grand Total : Rs ${data.grandTotal}</h3><br>
-      <h3>Need any help ${data.name} : Please call us at +917738096313</h3>
+      <h3>Need any help ${data.name} : Please call us at 08047176666</h3>
         
       <h2>Thank you!!! </h2<br>
     
@@ -418,9 +418,9 @@ export default function handler(req, res) {
 
         transporter.sendMail(mailOptions, (error, response) => {
           if (error) {
-            return res.json({ success: false, message:error});
+             res.json({ success: false, message:error});
           } else {
-            return res.json({ success: true, message:mailOptions });
+             res.status(200).send({ success: true, message:mailOptions });
           }
         });
 

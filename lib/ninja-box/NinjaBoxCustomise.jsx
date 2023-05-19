@@ -160,6 +160,8 @@ const NinjaBoxCustomise = () => {
 
       setMealType(SessionData["mealType"]);
     }
+
+    preselection();
     
 
   }, []);
@@ -1610,7 +1612,7 @@ const NinjaBoxCustomise = () => {
       parseInt(getGst())
     );
     setShowPriceList(false);
-    preselection();
+    
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
@@ -1738,18 +1740,18 @@ const NinjaBoxCustomise = () => {
     } catch (e) {
       console.log(e);
     }
-    // fetch("/api/forma", {
-    //     method: "POST",
-    //     body: data,
-    //     headers: { "Content-Type": "application/json; charset=UTF-8" },
-    // }).then((res) => {
-    //     console.log(res.message);
-    //     if (res.success) {
-    //         console.log("message sent");
-    //     } else {
-    //         console.log("Failed to send message");
-    //     }
-    // });
+    fetch("/api/forma", {
+        method: "POST",
+        body: data,
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
+    }).then((res) => {
+        console.log(res.message);
+        if (res.success) {
+            console.log("message sent");
+        } else {
+            console.log("Failed to send message");
+        }
+    });
   };
 
   const handlePlaceOrder = () => {
@@ -1889,6 +1891,7 @@ const NinjaBoxCustomise = () => {
           //Storing the payment details
           .then(async function (json) {
             json.datas = datas
+            json.createdAt=new Date()
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -1911,6 +1914,7 @@ const NinjaBoxCustomise = () => {
                 (datas.email = json.status.email),
                 (datas.bank_ref_num = json.status.bank_ref_num),
                 (datas.OrderStatus = "");
+                datas.createdAt=new Date()
               // datas.name=json.status.field4
 
               // }

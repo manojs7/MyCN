@@ -8,7 +8,9 @@ export default async function handler(req, res) {
     let myPost = await db.collection("RawPaymentAllDetails").insertOne(bodyObject);
     res.json(myPost);
   } else {
-    const allPosts = await db.collection("RawPaymentAllDetails").find({}).toArray();
-    res.json({ status: 200, data: allPosts });
+    const sort = { createdAt: -1 };
+    const allPosts = await db.collection("RawPaymentAllDetails").find({}).sort(sort).toArray();
+    const filtered= allPosts.filter((d)=>d.status.txnStatus==="CANCEL")
+    res.json({ status: 200, data: filtered });
   }
 }

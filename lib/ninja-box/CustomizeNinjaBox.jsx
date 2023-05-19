@@ -45,7 +45,7 @@ const CustomizeNinjaBox = () => {
   const [occasion, setOccasion] = useState("");
 
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setstartTime] = useState();
+  const [startTime, setStartTime] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
@@ -1876,6 +1876,7 @@ const CustomizeNinjaBox = () => {
           //Storing the payment details
           .then(function (json) {
             json.datas=datas,
+            json.createdAt=new Date()
 
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
@@ -1899,7 +1900,8 @@ const CustomizeNinjaBox = () => {
                 datas.status = json.status,
                 datas.email = json.status.email,
                 datas.bank_ref_num = json.status.bank_ref_num,
-                datas.name = json.status.field4
+                datas.name = json.status.field4,
+                datas.createdAt=new Date()
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -2217,7 +2219,7 @@ const CustomizeNinjaBox = () => {
                 </div>
                 <div>
                   <p>Delivery Time</p>
-                  <select className="form-select">
+                  <select className="form-select" onChange={(e)=>setStartTime(e.target.value)}>
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>

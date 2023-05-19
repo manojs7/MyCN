@@ -103,6 +103,11 @@ const NinjaBoxViewPkg = () => {
     }
 
   }, []);
+  // useEffect(()=>{
+  //   let itemSelected=sessionStorage.getItem("dataSelected").itemSelected
+  //   let dataSelected = { city: city, occasion: occasion, selectedDate: startDate, vcount: veg, nvcount: nonVeg, itemSelected: itemSelected, mealType: mealType, startTime:startTime }
+  //     sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
+  // },[startDate])
 
   //by Manoj
   useEffect(() => {
@@ -935,7 +940,8 @@ const NinjaBoxViewPkg = () => {
         5) /
       100
     );
-  }
+    
+    }
 
 
 
@@ -1012,6 +1018,8 @@ const NinjaBoxViewPkg = () => {
           .then(async function (json) {
 
             json.datas = datas,
+            json.createdAt=new Date()
+
 
               //API call for saving all the payment response whether it is success or failure
               fetch("/api/RawPaymentAllDetails", {
@@ -1036,6 +1044,7 @@ const NinjaBoxViewPkg = () => {
                 datas.email = json.status.email,
                 datas.bank_ref_num = json.status.bank_ref_num,
                 datas.OrderStatus = ""
+                datas.createdAt=new Date()
               // datas.name=json.status.field4
 
               // }
@@ -1140,18 +1149,122 @@ const NinjaBoxViewPkg = () => {
       ) +
       parseInt(getGst())
     );
+
+    if (
+      name.length == "" ||
+      mobileno.length == "" ||
+      !/^\d{10}$/.test(mobileno) ||
+      email.length == "" ||
+      !/\S+@\S+\.\S+/.test(email)
+    ) {
+      if (name.length == "") {
+        Swal.fire({
+          text: "Please enter your Name",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the name please");
+      } else if (mobileno.length == "") {
+        Swal.fire({
+          text: "Please enter your mob.no.",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Mobile No please");
+      } else if (!/^\d{10}$/.test(mobileno)) {
+        Swal.fire({
+          text: "Please enter a valid phone number",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Mobile No please");
+      } else if (email.length == "") {
+        Swal.fire({
+          text: "Please enter your Email",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Email please");
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        Swal.fire({
+          text: "Please enter valid Email",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Email please");
+      }
+      return false;
+    }
     setShowDiv(true);
-    //
-    // if (name.trim() === "" || phone.trim() === "" || email.trim() === "") {
-    //     //alert("Please fill out all details!");
-    //     Swal.fire({
-    //         text: "Please fill out all details!",
-    //         icon: "warning",
-    //         confirmButtonText: "OK",
-    //     });
-    // } else {
-    //     setShowDiv(true);
-    // }
+    let url_value = sessionStorage.getItem("first_url2");
+    var final_gst = getGst();
+    var final_grandtotal =
+      parseInt(totalPrice) +
+      getGst();
+    setgrandTotal(
+      parseInt(totalPrice) +
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst()
+    );
+   
+
+    let datas = {
+      name: name,
+      email: email,
+      mobileno: mobileno,
+      city: city,
+      occasion: occasion,
+      veg_c: veg,
+      nonveg_c: nonVeg,
+      people: people,
+      date: startDate,
+      time : startTime,
+      url: url_value,
+      meal: mealType,
+      cuisine: "All",
+      preference: "preference",
+      mealtype: mealType,
+      boolean: true,
+      appetizer: starters,
+      mainCourse: mains,
+      dessert: desserts,
+      breadRice: breadRice,
+      grandTotal: final_grandtotal,
+      buffet: buffet,
+      dessertClassname: "caterNinja_add_dessert_button",
+      totalPrice: totalPrice,
+      GST: final_gst,
+      showDessert: false,
+      emailedtoparser:EmailedToParser,
+      address:address,
+      zipcode:zipcode,
+      packageName:packageName,
+      packagePrice:packagePrice
+    };
+
+    setDatas(datas);
+    let data = "";
+    try {
+      data = JSON.stringify(datas);
+    } catch (e) {
+      console.log(e);
+    }
+   
+    await fetch("/api/forma", {
+      method: "POST",
+      body: data,
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+  }).then((res) => {
+      console.log(res.success);
+      setEmailedToParser(true)
+      if (res.success) {
+          console.log("message sent");
+      } else {
+          console.log("Failed to send message");
+      }
+  });
+    
   };
 
 
@@ -1664,7 +1777,7 @@ const NinjaBoxViewPkg = () => {
               </div>
             </div>
             <div className={styles.createNewPkg}>
-              <button onClick={() => window.open('/checkprice', '_blank')}>Create New Package</button>
+              {/* <button onClick={() => window.open('/checkprice', '_blank')}>Create New Package</button> */}
             </div>
             {/* <div style={{marginBottom: "10px"}} className={styles.instantQuoteBtn}>
                             <button>Get Instant Quote</button>
