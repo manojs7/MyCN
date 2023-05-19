@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "/styles/Custom_Package.module.scss";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faIndianRupeeSign, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 // import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
 // import Router from "next/router";
 // import BookThisPackageModal from "./BookThisPackageModal";
@@ -33,9 +33,43 @@ const Custom_Package = () => {
 
 
   //DATE LOGIC
-  const minDate = new Date();
-  minDate.setDate(minDate.getDate() + 2);
-  const minDateISO = minDate.toISOString().split('T')[0];
+  // const minDate = new Date();
+  // minDate.setDate(minDate.getDate() + 2);
+  // const minDateISO = minDate.toISOString().split('T')[0];
+
+  //select date logic
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const generateDateOptions = () => {
+    const options = [];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const twoDaysFromNow = new Date();
+    twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+    for (
+      let date = twoDaysFromNow;
+      date.getFullYear() === currentYear;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const optionValue = date.toISOString().slice(0, 10);
+      const optionLabel = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      options.push(
+        <option key={optionValue} value={optionValue}>
+          {optionLabel}
+        </option>
+      );
+    }
+
+    return options;
+  };
 
   const handleCity = (city) => {
     setCity(city);
@@ -59,7 +93,7 @@ const Custom_Package = () => {
       else {
         mealType = 'veg'
       }
-      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType, startTime:startTime }
+      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType, startTime: startTime }
       sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
       window.open('/ninjaBoxViewPkg', '_blank')
     }
@@ -101,7 +135,7 @@ const Custom_Package = () => {
 
   //SHOW NON-VEG PACKAGES
   const [showNonveg, setShowNonVeg] = useState(false);
-  const [startTime,setStartTime]=useState()
+  const [startTime, setStartTime] = useState()
 
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
@@ -291,10 +325,16 @@ const Custom_Package = () => {
           </div>
           <div>
             <h4>Date <span id={styles.urgentL} onMouseEnter={hoverLink}
-              onClick={hoverLink}>i</span></h4>
-            <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
+              onClick={hoverLink}><FontAwesomeIcon icon={faCircleInfo} size="sm" style={{ color: "#1245ba" }} /></span></h4>
+            {/* <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
               value={selectedDate}
-              min={minDateISO} /></div>
+              min={minDateISO} /></div> */}
+            <div className={styles.dateOptions}>
+              <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
+                <option value="">Select a date</option>
+                {generateDateOptions()}
+              </select>
+            </div>
           </div>
           {showUrgentLink && (<div id={styles.urgentLink}>
             <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
@@ -305,7 +345,7 @@ const Custom_Package = () => {
         </div>
         <div className={styles.deliveryTimeSecn}>
           <h4>Delivery Time</h4>
-          <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)}>
+          <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)}>
             <option value="11:00 am">11:00 am</option>
             <option value="11:30 am">11:30 am</option>
             <option value="12:00 pm">12:00 pm</option>

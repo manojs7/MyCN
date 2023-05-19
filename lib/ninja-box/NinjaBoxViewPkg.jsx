@@ -1657,10 +1657,10 @@ const NinjaBoxViewPkg = () => {
                         </div> */}
             <div className={styles.btnContnr}>
               <div>
-                <button onClick={confirmPkg} id={styles.cnfrmPkg}>Confirm Package</button>
+                <button onClick={confirmPkg} id={styles.cnfrmPkg}>Check Price</button>
               </div>
               <div>
-                <button onClick={() => window.open('/customiseNinjaBox', '_blank')} id={styles.custmPkg}>Customise Package</button>
+                <button onClick={() => window.open('/customiseNinjaBox')} id={styles.custmPkg}>Customise Package</button>
               </div>
             </div>
             <div className={styles.createNewPkg}>
