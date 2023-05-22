@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "/styles/Custom_Package.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faIndianRupeeSign, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faIndianRupeeSign, faCircleInfo, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 // import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
 // import Router from "next/router";
 // import BookThisPackageModal from "./BookThisPackageModal";
@@ -85,6 +85,13 @@ const Custom_Package = () => {
         icon: "warning",
         confirmButtonText: "OK",
       });
+    }
+    else if (number < 10) {
+      Swal.fire({
+        text: "please select at least 10 guest",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
     } else {
       let mealType;
       if (showNonveg) {
@@ -139,6 +146,11 @@ const Custom_Package = () => {
 
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
+    if (showNonveg) {
+      setNumber2(0)
+    } else {
+      setNumber2(10)
+    }
   };
 
 
@@ -389,7 +401,7 @@ const Custom_Package = () => {
           </div>
         </div>
         <div className={styles.cnfmBtn}>
-          <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+          <button onClick={closePopup} id={styles.cancelBtn}><span><FontAwesomeIcon icon={faArrowLeftLong} /></span> Go Back</button>
           <button onClick={() => navigateToOverview()} id={styles.viewBtn}>View Package</button>
         </div>
         {/* <div>
@@ -425,9 +437,9 @@ const Custom_Package = () => {
               Ninja<span>Box</span> Packages
             </h2>
             <h6 className="text-center" style={{ fontSize: "20px" }}>Select Your Ninja<span>Box</span> Package</h6>
-            <div className="checkbox-container my-4 mx-auto">
+            {/* <div className="checkbox-container my-4 mx-auto">
               <input type="checkbox" checked={showNonveg} onChange={checkForNonveg} />
-            </div>
+            </div> */}
             <div className="selectCityOcLg mt-5">
               <div>
                 <p>City</p>
@@ -605,16 +617,22 @@ const Custom_Package = () => {
               </div>
             ))}
           </div> */}
+          <div className="d-flex justify-content-center">
+            <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif", marginRight: "10px" }}>Veg Only</h3>
+            <label className={styles.toggle}>
+              <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+              <span className={styles.slider}></span>
+            </label>
+          </div>
+          {/* <div>
+            <label className={styles.toggle}>
+              <input type="checkbox" checked={showNonveg} onChange={checkForNonveg} />
+              <span className={styles.slider}></span>
+              <span className={styles.labels} data-on="Veg Only" data-off="OFF"></span>
+            </label>
+          </div> */}
           {!showNonveg && <div>
-            <div className="d-flex ms-3 mb-2">
-              <div>
-                <h3 style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</h3>
-              </div>
-              <div className="mt-2 ms-2">
-                <Image src="/diy images/vegLogo.png" width="20px" height="20px" />
-              </div>
-            </div>
-            <div className="d-flex">
+            <div className="d-flex mt-3">
               {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3>{item.name}</h3>
                 <div className="packageImg">
@@ -667,15 +685,15 @@ const Custom_Package = () => {
             </div>
           </div>}
           {showNonveg && <div>
-            <div className="d-flex ms-3 mb-2 mt-2">
+            {/* <div className="d-flex ms-3 mb-2 mt-2">
               <div>
                 <h3 style={{ color: "#BE2D30", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Non-Veg Packages</h3>
               </div>
               <div className="mt-2 ms-2">
                 <Image src="/diy images/Group 962.png" width="20px" height="20px" />
               </div>
-            </div>
-            <div className="d-flex">
+            </div> */}
+            <div className="d-flex mt-3">
               {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3>{item.name}</h3>
                 <div className="packageImg">
@@ -781,9 +799,9 @@ const Custom_Package = () => {
             <h1>Ninja<span>Box</span></h1>
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
-            <div className="checkbox-container my-4">
+            {/* <div className="checkbox-container my-4">
               <input type="checkbox" checked={showNonveg} onChange={checkForNonveg} />
-            </div>
+            </div> */}
             <div className="container">
               <div className="dropdown-label row">
                 <div className="col-6">
@@ -837,15 +855,15 @@ const Custom_Package = () => {
             </div>
           </div>
         </section> : ""}
+      <div className="d-flex justify-content-center">
+      <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
+        <label className={styles.toggle}>
+          <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+          <span className={styles.slider}></span>
+        </label>
+      </div>
       {!showNonveg && <div>
-        {isSmall ? <div className="d-flex mb-4 justify-content-center">
-          <div>
-            <p style={{ color: "green", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Packages</p>
-          </div>
-          <div className="ms-1">
-            <Image src="/diy images/vegLogo.png" width="10px" height="10px" />
-          </div>
-        </div> : ""}
+
         {isSmall ? <section>
           <div className="packageContainer">
             {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
@@ -901,14 +919,6 @@ const Custom_Package = () => {
         </section> : ""}
       </div>}
       {showNonveg && <div>
-        {isSmall ? <div className="d-flex mb-4 justify-content-center">
-          <div>
-            <p style={{ color: "#BE2D30", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Non-Veg Packages</p>
-          </div>
-          <div className="ms-1">
-            <Image src="/diy images/Group 962.png" width="10px" height="10px" />
-          </div>
-        </div> : ""}
         {isSmall ? <section>
           <div className="packageContainer">
             {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
