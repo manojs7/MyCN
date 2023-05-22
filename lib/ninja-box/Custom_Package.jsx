@@ -855,15 +855,14 @@ const Custom_Package = () => {
             </div>
           </div>
         </section> : ""}
-      <div className="d-flex justify-content-center">
-      <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
-        <label className={styles.toggle}>
-          <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
-          <span className={styles.slider}></span>
-        </label>
-      </div>
+        {isSmall ?<div className="d-flex justify-content-center">
+          <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
+          <label className={styles.toggle}>
+            <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+            <span className={styles.slider}></span>
+          </label>
+        </div> : "" }
       {!showNonveg && <div>
-
         {isSmall ? <section>
           <div className="packageContainer">
             {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
