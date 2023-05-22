@@ -940,8 +940,8 @@ const NinjaBoxViewPkg = () => {
         5) /
       100
     );
-    
-    }
+
+  }
 
 
 
@@ -1018,18 +1018,18 @@ const NinjaBoxViewPkg = () => {
           .then(async function (json) {
 
             json.datas = datas,
-            json.createdAt=new Date()
+              json.createdAt = new Date()
 
 
-              //API call for saving all the payment response whether it is success or failure
-              fetch("/api/RawPaymentAllDetails", {
-                method: "POST",
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(json),
-              })
+            //API call for saving all the payment response whether it is success or failure
+            fetch("/api/RawPaymentAllDetails", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(json),
+            })
 
             // if payment gets successful
 
@@ -1044,7 +1044,7 @@ const NinjaBoxViewPkg = () => {
                 datas.email = json.status.email,
                 datas.bank_ref_num = json.status.bank_ref_num,
                 datas.OrderStatus = ""
-                datas.createdAt=new Date()
+              datas.createdAt = new Date()
               // datas.name=json.status.field4
 
               // }
@@ -1207,7 +1207,7 @@ const NinjaBoxViewPkg = () => {
       // parseInt(deliveryCharge) +
       getGst()
     );
-   
+
 
     let datas = {
       name: name,
@@ -1219,7 +1219,7 @@ const NinjaBoxViewPkg = () => {
       nonveg_c: nonVeg,
       people: people,
       date: startDate,
-      time : startTime,
+      time: startTime,
       url: url_value,
       meal: mealType,
       cuisine: "All",
@@ -1236,11 +1236,11 @@ const NinjaBoxViewPkg = () => {
       totalPrice: totalPrice,
       GST: final_gst,
       showDessert: false,
-      emailedtoparser:EmailedToParser,
-      address:address,
-      zipcode:zipcode,
-      packageName:packageName,
-      packagePrice:packagePrice
+      emailedtoparser: EmailedToParser,
+      address: address,
+      zipcode: zipcode,
+      packageName: packageName,
+      packagePrice: packagePrice
     };
 
     setDatas(datas);
@@ -1250,21 +1250,21 @@ const NinjaBoxViewPkg = () => {
     } catch (e) {
       console.log(e);
     }
-   
+
     await fetch("/api/forma", {
       method: "POST",
       body: data,
       headers: { "Content-Type": "application/json; charset=UTF-8" },
-  }).then((res) => {
+    }).then((res) => {
       console.log(res.success);
       setEmailedToParser(true)
       if (res.success) {
-          console.log("message sent");
+        console.log("message sent");
       } else {
-          console.log("Failed to send message");
+        console.log("Failed to send message");
       }
-  });
-    
+    });
+
   };
 
 
@@ -1308,97 +1308,101 @@ const NinjaBoxViewPkg = () => {
         </div>
         {showPopup && <div className={styles.popupCnfrmPkg}>
           <h4>Details</h4>
-          <div className={styles.formDetails} >
-            <div className='d-flex justify-content-between'>
-              <p>Name:</p>
-              <input type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}></input>
-            </div>
-            <div className='d-flex justify-content-between'>
-              <p>Phone:</p>
-              <input type="text"
-                value={mobileno}
-                onChange={(e) => setPhone(e.target.value)}></input>
-            </div>
-            <div className='d-flex justify-content-between'>
-              <p>Email:</p>
-              <input type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}></input>
-            </div>
-            <div className='d-flex justify-content-between'>
-              <p>Address:</p>
-              <input type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}></input>
-            </div>
-            <div className='d-flex justify-content-between'>
-              <p>ZipCode:</p>
-              <input type="number"
-                maxLength={6}
-                value={zipcode}
-                onChange={(e) => setZipcode(e.target.value)}></input>
-            </div>
-            <p>{zipcodeError}</p>
-          </div>
-          <hr />
-          <div className={styles.selectedDetails}>
-            <div className={styles.data}>
-              <div>
-                <h6>City:</h6>
-                <h6>Date:</h6>
-                <h6>Time:</h6>
-                <h6>Veg Guest:</h6>
-                <h6>Non-veg Guest:</h6>
-                <h6>Occassion:</h6>
+          <div className={styles.scrldetails}>
+            <div className={styles.formDetails}>
+              <div className='d-flex justify-content-between'>
+                <p>Name:</p>
+                <input type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}></input>
               </div>
-              <div>
-                <h6>{city}</h6>
-                <h6>{startDate}</h6>
-                <h6>{startTime}</h6>
-                <h6>{veg}</h6>
-                <h6>{nonVeg}</h6>
-                <h6>{occasion}</h6>
+              <div className='d-flex justify-content-between'>
+                <p>Phone:</p>
+                <input type="text"
+                  value={mobileno}
+                  onChange={(e) => setPhone(e.target.value)}></input>
               </div>
+              <div className='d-flex justify-content-between'>
+                <p>Email:</p>
+                <input type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}></input>
+              </div>
+              <div className='d-flex justify-content-between'>
+                <p>Address:</p>
+                <input type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}></input>
+              </div>
+              <div className='d-flex justify-content-between'>
+                <p>ZipCode:</p>
+                <input type="number"
+                  maxLength={6}
+                  value={zipcode}
+                  onChange={(e) => setZipcode(e.target.value)}></input>
+              </div>
+              <p>{zipcodeError}</p>
             </div>
             <hr />
-            <div className={styles.selectedItems}>
-              <div>
-                <h4>- Starters -</h4>
-                {starters.map((item, index) => (
-                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
-                ))
-                }
+            <div className={styles.selectedDetails}>
+              <div className={styles.data}>
+                <div>
+                  <h6>City:</h6>
+                  <h6>Date:</h6>
+                  <h6>Time:</h6>
+                  <h6>Veg Guest:</h6>
+                  <h6>Non-veg Guest:</h6>
+                  <h6>Occassion:</h6>
+                </div>
+                <div>
+                  <h6>{city}</h6>
+                  <h6>{startDate}</h6>
+                  <h6>{startTime}</h6>
+                  <h6>{veg}</h6>
+                  <h6>{nonVeg}</h6>
+                  <h6>{occasion}</h6>
+                </div>
               </div>
-              <div>
-                <h4>- Mains -</h4>
-                {mains.map((item, index) => (
-                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
-                ))
-                }
-                {breadRice.map((item, index) => (
-                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
-                ))
-                }
-              </div>
-              <div>
-                <h4>- Desserts -</h4>
-                {desserts.map((item, index) => (
-                  <p>{item.name} ({item.quantity} {item.Qtype})</p>
-                ))
-                }
+              <hr />
+              <div className={styles.selectedItems}>
+                <div>
+                  <h4>- Starters -</h4>
+                  {starters.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div>
+                <div>
+                  <h4>- Mains -</h4>
+                  {mains.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                  {breadRice.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div>
+                <div>
+                  <h4>- Desserts -</h4>
+                  {desserts.map((item, index) => (
+                    <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div>
               </div>
             </div>
+          </div>
+          <div>
             <hr />
             <div className={styles.priceing}>
               <h6>GRAND TOTAL :</h6>
               <h6>{grandTotal}</h6>
             </div>
-          </div>
-          <div className={styles.cnfmBtn}>
-            <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
-            <button onClick={submitUserData} id={styles.viewBtn}>Payment</button>
+            <div className={styles.cnfmBtn}>
+              <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
+              <button onClick={submitUserData} id={styles.viewBtn}>Payment</button>
+            </div>
           </div>
         </div>}
         <div className={styles.redBg}>
@@ -1475,27 +1479,27 @@ const NinjaBoxViewPkg = () => {
               <div>
                 <p>Delivery Time</p>
                 <div>
-                <select className="mx-auto" value={startTime} onChange={(e) => setStartTime(e.target.value)}>
-                  <option value="11:00 am">11:00 am</option>
-                  <option value="11:30 am">11:30 am</option>
-                  <option value="12:00 pm">12:00 pm</option>
-                  <option value="12:30 pm">12:30 pm</option>
-                  <option value="1:00 pm">1:00 pm</option>
-                  <option value="1:30 pm">1:30 pm</option>
-                  <option value="2:00 pm">2:00 pm</option>
-                  <option value="2:00 pm">2:00 pm</option>
-                  <option value="2:30 pm">2:30 pm</option>
-                  <option value="3:00 pm">3:00 pm</option>
-                  <option value="5:00 pm">5:00 pm</option>
-                  <option value="5:30 pm">5:30 pm</option>
-                  <option value="6:00 pm">6:00 pm</option>
-                  <option value="6:30 pm">6:30 pm</option>
-                  <option value="7:00 pm">7:00 pm</option>
-                  <option value="7:30 pm">7:30 pm</option>
-                  <option value="8:00 pm">8:00 pm</option>
-                  <option value="8:30 pm">8:30 pm</option>
-                  <option value="9:00 pm">9:30 pm</option>
-                </select>
+                  <select className="mx-auto" value={startTime} onChange={(e) => setStartTime(e.target.value)}>
+                    <option value="11:00 am">11:00 am</option>
+                    <option value="11:30 am">11:30 am</option>
+                    <option value="12:00 pm">12:00 pm</option>
+                    <option value="12:30 pm">12:30 pm</option>
+                    <option value="1:00 pm">1:00 pm</option>
+                    <option value="1:30 pm">1:30 pm</option>
+                    <option value="2:00 pm">2:00 pm</option>
+                    <option value="2:00 pm">2:00 pm</option>
+                    <option value="2:30 pm">2:30 pm</option>
+                    <option value="3:00 pm">3:00 pm</option>
+                    <option value="5:00 pm">5:00 pm</option>
+                    <option value="5:30 pm">5:30 pm</option>
+                    <option value="6:00 pm">6:00 pm</option>
+                    <option value="6:30 pm">6:30 pm</option>
+                    <option value="7:00 pm">7:00 pm</option>
+                    <option value="7:30 pm">7:30 pm</option>
+                    <option value="8:00 pm">8:00 pm</option>
+                    <option value="8:30 pm">8:30 pm</option>
+                    <option value="9:00 pm">9:30 pm</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -1773,7 +1777,7 @@ const NinjaBoxViewPkg = () => {
                 <button onClick={confirmPkg} id={styles.cnfrmPkg}>Check Price</button>
               </div>
               <div>
-                <button onClick={() => window.open('/customiseNinjaBox')} id={styles.custmPkg}>Customise Package</button>
+                <a href="/customiseNinjaBox"><button id={styles.custmPkg}>Customise Package</button></a>
               </div>
             </div>
             <div className={styles.createNewPkg}>
@@ -1846,7 +1850,7 @@ const NinjaBoxViewPkg = () => {
                 <button onClick={() => placeOrderBtn()}>Place Order</button>
               </div>
               <div className={styles.orderBtn}>
-                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20Package%20Menu"><button>Get Booking Help</button></Link>
+                <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20Package%20Menu" target="_blank"><button style={{ backgroundColor: "white" }}>Get Booking Help</button></a>
               </div>
             </div>)}
           </div>

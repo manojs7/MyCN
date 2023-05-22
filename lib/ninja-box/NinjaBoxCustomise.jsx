@@ -3169,10 +3169,12 @@ const NinjaBoxCustomise = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                    {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
-                    </Link>
+                    </Link> */}
                     <button onClick={payumoney}>Place Order</button>
+                    <button style={{backgroundColor: "white"}} onClick={()=>window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
+                    
 
                     {/* <button onClick={initiatePayment}></button> */}
                   </div>
