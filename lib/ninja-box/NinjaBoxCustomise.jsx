@@ -118,13 +118,37 @@ const NinjaBoxCustomise = () => {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2000,
-  };
+  };  
+  useEffect(() => {
+    let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
+    console.log("here", SessionData);
+    if (SessionData) {
+      setCity(SessionData["city"]),
+        setVeg(SessionData["vcount"]),
+        setNonVeg(SessionData["nvcount"]),
+        setStartDate(SessionData["selectedDate"]),
+        setOccasion(SessionData["occasion"]);
+      //   setImage(dataSelected.itemSelected["img"]);
+      console.log("set",setId(SessionData.itemSelected["id"]), ID);
+      setStartTime(SessionData['startTime'])
+      setMealType(SessionData["mealType"]);
+      console.log("first", ID)
 
-  const preselection = async () => {
+      
+    }    
+
+  },[]);
+
+  useEffect(()=>{
+    preselection();
+  },[ID])
+ 
+  const preselection = async() => {
+    console.log("second")
     let itemData;
 
-    if (ID) {
-      PreSelectMenuNinjaBox[mealType]
+    if (ID) {  
+      await PreSelectMenuNinjaBox[mealType]
         .filter((d) => d.id === ID)[0]
         .items.forEach((item) => {
           itemData = allMenus.filter((d) => d.name === item);
@@ -139,35 +163,13 @@ const NinjaBoxCustomise = () => {
               handleDesertsAdd(item);
             } else {
               console.log("suspect", item);
-            }
+            } 
           }
-        });
+        }); 
     } else {
     }
   };
-  useEffect(() => {
-    let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
-    console.log("here", SessionData);
-    if (SessionData) {
-      setCity(SessionData["city"]),
-        setVeg(SessionData["vcount"]),
-        setNonVeg(SessionData["nvcount"]),
-        setStartDate(SessionData["selectedDate"]),
-        setOccasion(SessionData["occasion"]);
-      //   setImage(dataSelected.itemSelected["img"]);
-      setId(SessionData.itemSelected["id"]);
-      setStartTime(SessionData['startTime'])
-
-      setMealType(SessionData["mealType"]);
-    }
-
-    preselection();
-    
-
-  }, []);
-  // useEffect(()=>{
-  //   preselection();
-  // },[])
+ 
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -184,16 +186,6 @@ const NinjaBoxCustomise = () => {
       return 0;
     });
 
-    // removing duplicate
-    //  const result = allMenus?.reduce((finalArray, current) => {
-    //   let obj = finalArray?.find((item) => item.name === current.name);
-
-    //   // console.log('duplicate',result)
-    //   if (obj) {
-    //     return finalArray;
-    //   }
-    //   return finalArray.concat([current]);
-    // }, [])
     const result = allMenus;
     // reference url
     if (sessionStorage.getItem("first_url2") === null) {
@@ -218,6 +210,7 @@ const NinjaBoxCustomise = () => {
       return parseInt(b.selling_price) - parseInt(a.selling_price);
     });
     setHighestPrice(newMainData[0]);
+
   }, []);
 
   // filtering data according to cuisine
@@ -255,7 +248,8 @@ const NinjaBoxCustomise = () => {
     getDeliveryCharge(veg + nonVeg);
   };
 
-  const handleVegNonVegGuest = (name, value) => {
+  const handleVegNonVegGuest = async(name, value) => {
+    
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     } else {
@@ -264,6 +258,8 @@ const NinjaBoxCustomise = () => {
     console.log("guest", veg, nonVeg);
     people = veg + nonVeg;
     setPeople(people);
+
+    // preselection()
 
     if (name != "veg" && (value < 0 || !value)) {
       // showing only veg
@@ -434,6 +430,7 @@ const NinjaBoxCustomise = () => {
       }
     }
   };
+
 
   const handleCancelClick = () => {
     setShowSelectedMenu(false);
@@ -1564,8 +1561,7 @@ const NinjaBoxCustomise = () => {
         starterPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("startersPrice", starterPrice);
-    console.log("mains", mains);
+    
     mains.map((d) => {
       if (d.Qtype === "pcs") {
         mainPrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1573,7 +1569,7 @@ const NinjaBoxCustomise = () => {
         mainPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("mainprice", mainPrice);
+    
     desserts.map((d) => {
       if (d.Qtype === "pcs") {
         // expensive desserts should go 1 piece
@@ -1586,7 +1582,7 @@ const NinjaBoxCustomise = () => {
         dessertPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("dessertprice", dessertPrice);
+    
     breadRice.map((d) => {
       if (d.Qtype === "pcs") {
         bredRicePrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1594,7 +1590,7 @@ const NinjaBoxCustomise = () => {
         bredRicePrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("breadriceprice", bredRicePrice);
+    
     people = veg + nonVeg;
     setPeople(people);
     setTotalPrice(
@@ -1789,6 +1785,7 @@ const NinjaBoxCustomise = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+    
   }, []);
 
   // const selectedItems = filteredData.filter(item => item.checked);
@@ -2001,51 +1998,8 @@ const NinjaBoxCustomise = () => {
       });
   };
 
-  // const initiatePayment = async (e) => {
-  //     e.preventDefault();
-  //     let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
-  //     const data = { oid };
-  //     let a = await fetch("/api/paynow", {
-  //         method: "POST",
-  //         headers: {
-  //             "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(data),
-  //     });
-  //     var txnToken = await a.json();
+  
 
-  //     var config = {
-  //         root: "",
-  //         flow: "DEFAULT",
-  //         ENVIRONMENT: "staging",
-  //         REQUEST_TYPE: "DEFAULT",
-  //         INDUSTRY_TYPE_ID: "Retail",
-  //         WEBSITE: "WEBSTAGING",
-  //         data: {
-  //             orderId: oid,
-  //             token: txnToken /* update token value */,
-  //             tokenType: "TXN_TOKEN",
-  //             amount: "100" /* update amount */,
-  //         },
-  //         "handler": {
-  //             "notifyMerchant": function (eventName, data) {
-  //                 console.log("notifyMerchant handler function called");
-  //                 console.log("eventName => ", eventName);
-  //                 console.log("data => ", data);
-  //             },
-  //         },
-  //     };
-
-  //     // initialze configuration using init method
-  //     window.Paytm.CheckoutJS.init(config)
-  //         .then(function onSuccess() {
-  //             // after successfully updating configuration, invoke JS Checkout
-  //             window.Paytm.CheckoutJS.invoke();
-  //         })
-  //         .catch(function onError(error) {
-  //             console.log("error => ", error);
-  //         });
-  // };
 
   return (
     <div className={styles.customizeMainContainer}>

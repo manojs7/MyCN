@@ -1502,7 +1502,7 @@ const NinjaBoxViewPkg = () => {
           </div>
           <div className={styles.whiteBg}>
             <div className={styles.packageName}>
-              <h3>{name}</h3>
+              <h3>{packageName}</h3>
               <img src={image} height="150px" width="274.5px" />
               <h6>{details}</h6>
               {/* <div>
