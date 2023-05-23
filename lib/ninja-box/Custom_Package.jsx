@@ -78,7 +78,10 @@ const Custom_Package = () => {
     setOccasion(occasion);
   };
 
+
   const navigateToOverview = () => {
+    const totalCount = number + number2;
+    
     if (!selectedDate) {
       Swal.fire({
         text: "please select date",
@@ -93,9 +96,9 @@ const Custom_Package = () => {
         confirmButtonText: "OK",
       });
     }
-    else if (number < 10) {
+    else if (totalCount < 10) {
       Swal.fire({
-        text: "please select at least 10 guest",
+        text: "Guest count should be at least 10",
         icon: "warning",
         confirmButtonText: "OK",
       });
