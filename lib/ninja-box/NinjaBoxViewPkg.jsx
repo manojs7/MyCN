@@ -75,38 +75,9 @@ const NinjaBoxViewPkg = () => {
   const [zipcodeError, setZipcodeError] = useState("");
 
   //DATE LOGIC
-  // const minDate = new Date();
-  // minDate.setDate(minDate.getDate() + 2);
-  // const minDateISO = minDate.toISOString().split('T')[0];
-
-  const generateDateOptions = () => {
-    const options = [];
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const twoDaysFromNow = new Date();
-    twoDaysFromNow.setDate(currentDate.getDate() + 2);
-
-    for (
-      let date = twoDaysFromNow;
-      date.getFullYear() === currentYear;
-      date.setDate(date.getDate() + 1)
-    ) {
-      const optionValue = date.toISOString().slice(0, 10);
-      const optionLabel = date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-
-      options.push(
-        <option key={optionValue} value={optionValue}>
-          {optionLabel}
-        </option>
-      );
-    }
-
-    return options;
-  };
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() + 2);
+  const minDateISO = minDate.toISOString().split('T')[0];
 
 
 
@@ -187,36 +158,35 @@ const NinjaBoxViewPkg = () => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
     let ID2=dataSelected.itemSelected["id"];
     let mealType2=dataSelected["mealType"]
-    
-    let itemData;
+    // setMealType(dataSelected["mealType"]) 
+    let itemData; 
     console.log('mtype', mealType2, ID2)
     if (ID2) {
-        PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items.forEach(
-        (item) => {  
+       PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items.forEach(
+        async(item) => {  
           itemData = allMenus.filter((d) => d.name === item);
-         
           if (itemData.length > 0) {
-            console.log("itemdata", itemData[0].name) 
             if (itemData[0].mealType === "Starter") {
-              handleStatersAdd(itemData[0].name);
+              await handleStatersAdd(itemData[0].name);
+
             } else if (itemData[0].mealType === "Main course") {
-              handleMainAdd(itemData[0].name);
+               await handleMainAdd(itemData[0].name);
             } else if (itemData[0].mealType === "Bread+Rice") {
-               handleBreadRiceAdd(itemData[0].name);
+               await handleBreadRiceAdd(itemData[0].name);
             } else if (itemData[0].mealType === "Dessert") {
-              handleDesertsAdd(itemData[0].name);
+              await handleDesertsAdd(itemData[0].name);
             }
+            
             else {
               console.log("suspect", item)
             }
+            
           }
 
         }
       );
     } else {
     }
-    setId(dataSelected.itemSelected["id"])
-    
   };
 
   const handleStatersAdd = async(item_name, id) => {
@@ -396,7 +366,7 @@ const NinjaBoxViewPkg = () => {
       }
     }
 
-    await temp.forEach((item) => {
+    temp.forEach((item) => {
       if (item.veg) {
         if (
           item.menu_label === "Mains-dry" ||
@@ -443,12 +413,12 @@ const NinjaBoxViewPkg = () => {
       }
     });
 
-    await temp.push({
+    temp.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
       name: main.name,
       quantity: quantity,
-      Qtype: main.Qtype, 
+      Qtype: main.Qtype,
       veg: main.veg,
       Images: main.Images,
       selling_price: main.selling_price,
@@ -460,7 +430,7 @@ const NinjaBoxViewPkg = () => {
     // setMainData((prev) => prev.filter((d) => d.name !== item_name));
   };
 
-  const handleBreadRiceAdd = (item_name, id) => {
+  const handleBreadRiceAdd = async(item_name, id) => {
 
     // setIsBreadChange(!isBreadChange);
     if (veg === 0 && nonVeg === 0) return;
@@ -771,7 +741,7 @@ const NinjaBoxViewPkg = () => {
     setBreadRice(temp);
     // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   };
-  const handleDesertsAdd = (item_name, id) => {
+  const handleDesertsAdd = async(item_name, id) => {
     // setIsDessertChange(!isDessertChange);
     let temp = [...desserts];
     if (veg === 0 && nonVeg === 0) return;
@@ -830,7 +800,7 @@ const NinjaBoxViewPkg = () => {
     return x;
   }
   useEffect(() => {
-    preselection()
+    
 
     let starterPrice = 0;
     let mainPrice = 0;
@@ -1441,7 +1411,7 @@ const NinjaBoxViewPkg = () => {
             <hr />
             <div className={styles.priceing}>
               <h6>GRAND TOTAL :</h6>
-              <h6>₹ {grandTotal}</h6>
+              <h6>{grandTotal}</h6>
             </div>
             <div className={styles.cnfmBtn}>
               <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
@@ -1479,11 +1449,7 @@ const NinjaBoxViewPkg = () => {
               <div>
                 <p>Date</p>
                 <div>
-                  {/* <input type="date" onChange={(event) => setStartDate(event.target.value)} value={startDate} min={minDateISO}></input> */}
-                  <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate}>
-                    <option value="">Select a date</option>
-                    {generateDateOptions()}
-                  </select>
+                  <input type="date" onChange={(event) => setStartDate(event.target.value)} value={startDate} min={minDateISO}></input>
                 </div>
               </div>
             </div>
