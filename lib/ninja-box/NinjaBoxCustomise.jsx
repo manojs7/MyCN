@@ -143,31 +143,37 @@ const NinjaBoxCustomise = () => {
     preselection();
   },[ID])
  
-  const preselection = async() => {
-    console.log("second")
+  const preselection = () => {
+    
     let itemData;
+    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
+    let ID2=dataSelected.itemSelected["id"];
+    let mealType2=dataSelected["mealType"]
+    console.log("second", ID2, mealType2) 
 
-    if (ID) {  
-      await PreSelectMenuNinjaBox[mealType]
-        .filter((d) => d.id === ID)[0]
+    if (ID2) {  
+      PreSelectMenuNinjaBox[mealType2]
+        .filter((d) => d.id === ID2)[0]
         .items.forEach((item) => {
           itemData = allMenus.filter((d) => d.name === item);
           if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
               handleStatersAdd(item);
-            } else if (itemData[0].mealType === "Main course") {
+            } 
+            else if (itemData[0].mealType === "Main course") {
               handleMainAdd(item);
             } else if (itemData[0].mealType === "Bread+Rice") {
               handleBreadRiceAdd(item);
             } else if (itemData[0].mealType === "Dessert") {
               handleDesertsAdd(item);
             } else {
-              console.log("suspect", item);
+              console.log("suspect", item); 
             } 
           }
         }); 
     } else {
     }
+    setId(dataSelected.itemSelected["id"])
   };
  
 
@@ -613,7 +619,7 @@ const NinjaBoxCustomise = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
             }
           }
         } else {
@@ -1543,12 +1549,12 @@ const NinjaBoxCustomise = () => {
     setDesserts(temp);
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
-  console.log("desert", desserts);
   function handleBuffet(value) {
     setbuffet(value);
   }
   // cost calculation
   useEffect(() => {
+
     let starterPrice = 0;
     let mainPrice = 0;
     let dessertPrice = 0;

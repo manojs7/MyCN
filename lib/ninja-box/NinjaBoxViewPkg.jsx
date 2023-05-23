@@ -61,7 +61,7 @@ const NinjaBoxViewPkg = () => {
   const [packagePrice, setPackagePrice] = useState();
   const [image, setImage] = useState();
   const [showPopup, setShowPopup] = useState(false);
-  const [ID, setId] = useState(0);
+  const [ID, setId] = useState(4);
   const [mealType, setMealType] = useState('')
 
   //PLACE ORDER SUBMIT FORM
@@ -99,10 +99,10 @@ const NinjaBoxViewPkg = () => {
       setStartTime(dataSelected['startTime'])
       setMealType(dataSelected["mealType"])
 
-      // console.log(dataSelected);
     }
 
   }, []);
+
   // useEffect(()=>{
   //   let itemSelected=sessionStorage.getItem("dataSelected").itemSelected
   //   let dataSelected = { city: city, occasion: occasion, selectedDate: startDate, vcount: veg, nvcount: nonVeg, itemSelected: itemSelected, mealType: mealType, startTime:startTime }
@@ -111,13 +111,14 @@ const NinjaBoxViewPkg = () => {
 
   //by Manoj
   useEffect(() => {
+    
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
       if (nameA < nameB) {
         return -1;
       }
-      if (nameA > nameB) {
+      if (nameA > nameB) { 
         return 1;
       }
 
@@ -137,7 +138,6 @@ const NinjaBoxViewPkg = () => {
 
     let url_value = sessionStorage.getItem("first_url2");
     // setRefURL(url_value);
-
     setStartersData(result.filter((d) => d.mealType === "Starter"));
     setStartersData2(result.filter((d) => d.mealType === "Starter"));
     setMainData(result.filter((d) => d.mealType === "Main course"));
@@ -148,24 +148,32 @@ const NinjaBoxViewPkg = () => {
     setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
   }, []);
 
+  useEffect(()=>{
+    preselection()
+  },[ID])
+
   //Adding menu items to preselection
 
-  const preselection = async () => {
+  const preselection =  () => {
+    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
+    let ID2=dataSelected.itemSelected["id"];
+    let mealType2=dataSelected["mealType"]
+    
     let itemData;
-    console.log('mtype', mealType)
-    if (ID) {
-      PreSelectMenuNinjaBox[mealType].filter((d) => d.id === ID)[0].items.forEach(
-        (item) => {
-          itemData = allMenus.filter((d) => d.name == item);
+    console.log('mtype', mealType2, ID2)
+    if (ID2) {
+        PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items.forEach(
+        (item) => {  
+          itemData = allMenus.filter((d) => d.name === item);
+         
           if (itemData.length > 0) {
+            console.log("itemdata", itemData[0].name) 
             if (itemData[0].mealType === "Starter") {
               handleStatersAdd(itemData[0].name);
             } else if (itemData[0].mealType === "Main course") {
               handleMainAdd(itemData[0].name);
             } else if (itemData[0].mealType === "Bread+Rice") {
-              console.log("breadRice", breadRice)
-              handleBreadRiceAdd(itemData[0].name);
-              console.log("breadRice", breadRice)
+               handleBreadRiceAdd(itemData[0].name);
             } else if (itemData[0].mealType === "Dessert") {
               handleDesertsAdd(itemData[0].name);
             }
@@ -178,9 +186,11 @@ const NinjaBoxViewPkg = () => {
       );
     } else {
     }
+    setId(dataSelected.itemSelected["id"])
+    
   };
 
-  const handleStatersAdd = (item_name, id) => {
+  const handleStatersAdd = async(item_name, id) => {
     // setIsStarterChange(!isStarterChange);
     if (veg === 0 && nonVeg === 0) return;
 
@@ -246,7 +256,7 @@ const NinjaBoxViewPkg = () => {
 
     console.log("starters", starters);
   };
-  const handleMainAdd = (item_name, id) => {
+  const handleMainAdd = async(item_name, id) => {
     // setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
@@ -357,7 +367,7 @@ const NinjaBoxViewPkg = () => {
       }
     }
 
-    temp.forEach((item) => {
+    await temp.forEach((item) => {
       if (item.veg) {
         if (
           item.menu_label === "Mains-dry" ||
@@ -404,12 +414,12 @@ const NinjaBoxViewPkg = () => {
       }
     });
 
-    temp.push({
+    await temp.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
       name: main.name,
       quantity: quantity,
-      Qtype: main.Qtype,
+      Qtype: main.Qtype, 
       veg: main.veg,
       Images: main.Images,
       selling_price: main.selling_price,
@@ -791,7 +801,7 @@ const NinjaBoxViewPkg = () => {
     return x;
   }
   useEffect(() => {
-    preselection();
+    preselection()
 
     let starterPrice = 0;
     let mainPrice = 0;
@@ -873,6 +883,11 @@ const NinjaBoxViewPkg = () => {
   const submitUserData = async (e) => {
     e.preventDefault();
     let url_value = sessionStorage.getItem("first_url2");
+
+    if(zipcodeError){
+      alert("ZipCode is not servicable by us!")
+      return 
+    }
 
     if (!name || !mobileno || !email || !address || !zipcode) {
       alert('Please fill in all fields');
