@@ -483,6 +483,37 @@ const NinjaBoxCustomise = () => {
       handleDelete(index, type);
     }
   };
+
+  //DATE LOGIC
+  const generateDateOptions = () => {
+    const options = [];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const twoDaysFromNow = new Date();
+    twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+    for (
+      let date = twoDaysFromNow;
+      date.getFullYear() === currentYear;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const optionValue = date.toISOString().slice(0, 10);
+      const optionLabel = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      options.push(
+        <option key={optionValue} value={optionValue}>
+          {optionLabel}
+        </option>
+      );
+    }
+
+    return options;
+  };
+
   useEffect(() => {
     // sendRequest();
 
@@ -2099,13 +2130,17 @@ const NinjaBoxCustomise = () => {
                 <div>
                   <p>Date</p>
                   <div>
-                    <input
+                    {/* <input
                       type="date"
                       name="event_date"
                       value={startDate}
                       onChange={(event) => setStartDate(event.target.value)}
                       required
-                    />
+                    /> */}
+                    <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate} required>
+                    <option value="">Select a date</option>
+                    {generateDateOptions()}
+                  </select>
                   </div>
                 </div>
               </div>
@@ -2172,7 +2207,8 @@ const NinjaBoxCustomise = () => {
                 <div>
                   <p>Delivery Time</p>
                   <div>
-                  <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)}>
+                  <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)} value={startTime}>
+                    <option value="">Select Date</option>
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>
