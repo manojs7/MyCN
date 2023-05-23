@@ -8,7 +8,7 @@ export default function Float()
     return (
         <div className={styles.container}>
             <div className={styles.item}>
-            <button onClick={() => (window.open('tel:08047176666'))} className={styles.floatBtn}>
+            <button id="call" onClick={() => (window.open('tel:08047176666'))} className={styles.floatBtn}>
 
                     <span>Call a Ninja</span>
                     <br />Instant Order</button>
