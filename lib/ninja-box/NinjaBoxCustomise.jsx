@@ -118,33 +118,7 @@ const NinjaBoxCustomise = () => {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2000,
-  };
-
-  const preselection = async () => {
-    let itemData;
-
-    if (ID) {
-      PreSelectMenuNinjaBox[mealType]
-        .filter((d) => d.id === ID)[0]
-        .items.forEach((item) => {
-          itemData = allMenus.filter((d) => d.name === item);
-          if (itemData.length > 0) {
-            if (itemData[0].mealType === "Starter") {
-              handleStatersAdd(item);
-            } else if (itemData[0].mealType === "Main course") {
-              handleMainAdd(item);
-            } else if (itemData[0].mealType === "Bread+Rice") {
-              handleBreadRiceAdd(item);
-            } else if (itemData[0].mealType === "Dessert") {
-              handleDesertsAdd(item);
-            } else {
-              console.log("suspect", item);
-            }
-          }
-        });
-    } else {
-    }
-  };
+  };  
   useEffect(() => {
     let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
     console.log("here", SessionData);
@@ -155,19 +129,53 @@ const NinjaBoxCustomise = () => {
         setStartDate(SessionData["selectedDate"]),
         setOccasion(SessionData["occasion"]);
       //   setImage(dataSelected.itemSelected["img"]);
-      setId(SessionData.itemSelected["id"]);
+      console.log("set",setId(SessionData.itemSelected["id"]), ID);
       setStartTime(SessionData['startTime'])
-
       setMealType(SessionData["mealType"]);
-    }
+      console.log("first", ID)
 
+      
+    }    
+
+  },[]);
+
+  useEffect(()=>{
     preselection();
+  },[ID])
+ 
+  const preselection = () => {
     
+    let itemData;
+    let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
+    let ID2=dataSelected.itemSelected["id"];
+    let mealType2=dataSelected["mealType"]
+    console.log("second", ID2, mealType2) 
 
-  }, []);
-  // useEffect(()=>{
-  //   preselection();
-  // },[])
+    if (ID2) {  
+      PreSelectMenuNinjaBox[mealType2]
+        .filter((d) => d.id === ID2)[0]
+        .items.forEach((item) => {
+          itemData = allMenus.filter((d) => d.name === item);
+          if (itemData.length > 0) {
+            if (itemData[0].mealType === "Starter") {
+              handleStatersAdd(item);
+            } 
+            else if (itemData[0].mealType === "Main course") {
+              handleMainAdd(item);
+            } else if (itemData[0].mealType === "Bread+Rice") {
+              handleBreadRiceAdd(item);
+            } else if (itemData[0].mealType === "Dessert") {
+              handleDesertsAdd(item);
+            } else {
+              console.log("suspect", item); 
+            } 
+          }
+        }); 
+    } else {
+    }
+    setId(dataSelected.itemSelected["id"])
+  };
+ 
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -184,16 +192,6 @@ const NinjaBoxCustomise = () => {
       return 0;
     });
 
-    // removing duplicate
-    //  const result = allMenus?.reduce((finalArray, current) => {
-    //   let obj = finalArray?.find((item) => item.name === current.name);
-
-    //   // console.log('duplicate',result)
-    //   if (obj) {
-    //     return finalArray;
-    //   }
-    //   return finalArray.concat([current]);
-    // }, [])
     const result = allMenus;
     // reference url
     if (sessionStorage.getItem("first_url2") === null) {
@@ -218,6 +216,7 @@ const NinjaBoxCustomise = () => {
       return parseInt(b.selling_price) - parseInt(a.selling_price);
     });
     setHighestPrice(newMainData[0]);
+
   }, []);
 
   // filtering data according to cuisine
@@ -255,7 +254,8 @@ const NinjaBoxCustomise = () => {
     getDeliveryCharge(veg + nonVeg);
   };
 
-  const handleVegNonVegGuest = (name, value) => {
+  const handleVegNonVegGuest = async(name, value) => {
+    
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     } else {
@@ -264,6 +264,8 @@ const NinjaBoxCustomise = () => {
     console.log("guest", veg, nonVeg);
     people = veg + nonVeg;
     setPeople(people);
+
+    // preselection()
 
     if (name != "veg" && (value < 0 || !value)) {
       // showing only veg
@@ -434,6 +436,7 @@ const NinjaBoxCustomise = () => {
       }
     }
   };
+
 
   const handleCancelClick = () => {
     setShowSelectedMenu(false);
@@ -647,7 +650,7 @@ const NinjaBoxCustomise = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
             }
           }
         } else {
@@ -1577,12 +1580,12 @@ const NinjaBoxCustomise = () => {
     setDesserts(temp);
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
-  console.log("desert", desserts);
   function handleBuffet(value) {
     setbuffet(value);
   }
   // cost calculation
   useEffect(() => {
+
     let starterPrice = 0;
     let mainPrice = 0;
     let dessertPrice = 0;
@@ -1595,8 +1598,7 @@ const NinjaBoxCustomise = () => {
         starterPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("startersPrice", starterPrice);
-    console.log("mains", mains);
+    
     mains.map((d) => {
       if (d.Qtype === "pcs") {
         mainPrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1604,7 +1606,7 @@ const NinjaBoxCustomise = () => {
         mainPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("mainprice", mainPrice);
+    
     desserts.map((d) => {
       if (d.Qtype === "pcs") {
         // expensive desserts should go 1 piece
@@ -1617,7 +1619,7 @@ const NinjaBoxCustomise = () => {
         dessertPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("dessertprice", dessertPrice);
+    
     breadRice.map((d) => {
       if (d.Qtype === "pcs") {
         bredRicePrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1625,7 +1627,7 @@ const NinjaBoxCustomise = () => {
         bredRicePrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    console.log("breadriceprice", bredRicePrice);
+    
     people = veg + nonVeg;
     setPeople(people);
     setTotalPrice(
@@ -1820,6 +1822,7 @@ const NinjaBoxCustomise = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+    
   }, []);
 
   // const selectedItems = filteredData.filter(item => item.checked);
@@ -2032,51 +2035,8 @@ const NinjaBoxCustomise = () => {
       });
   };
 
-  // const initiatePayment = async (e) => {
-  //     e.preventDefault();
-  //     let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
-  //     const data = { oid };
-  //     let a = await fetch("/api/paynow", {
-  //         method: "POST",
-  //         headers: {
-  //             "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(data),
-  //     });
-  //     var txnToken = await a.json();
+  
 
-  //     var config = {
-  //         root: "",
-  //         flow: "DEFAULT",
-  //         ENVIRONMENT: "staging",
-  //         REQUEST_TYPE: "DEFAULT",
-  //         INDUSTRY_TYPE_ID: "Retail",
-  //         WEBSITE: "WEBSTAGING",
-  //         data: {
-  //             orderId: oid,
-  //             token: txnToken /* update token value */,
-  //             tokenType: "TXN_TOKEN",
-  //             amount: "100" /* update amount */,
-  //         },
-  //         "handler": {
-  //             "notifyMerchant": function (eventName, data) {
-  //                 console.log("notifyMerchant handler function called");
-  //                 console.log("eventName => ", eventName);
-  //                 console.log("data => ", data);
-  //             },
-  //         },
-  //     };
-
-  //     // initialze configuration using init method
-  //     window.Paytm.CheckoutJS.init(config)
-  //         .then(function onSuccess() {
-  //             // after successfully updating configuration, invoke JS Checkout
-  //             window.Paytm.CheckoutJS.invoke();
-  //         })
-  //         .catch(function onError(error) {
-  //             console.log("error => ", error);
-  //         });
-  // };
 
   return (
     <div className={styles.customizeMainContainer}>

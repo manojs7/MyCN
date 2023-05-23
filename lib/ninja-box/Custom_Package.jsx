@@ -149,7 +149,7 @@ const Custom_Package = () => {
 
   //SHOW NON-VEG PACKAGES
   const [showNonveg, setShowNonVeg] = useState(false);
-  const [startTime, setStartTime] = useState()
+  const [startTime, setStartTime] = useState('11:00 am')
 
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
