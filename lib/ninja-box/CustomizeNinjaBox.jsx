@@ -129,6 +129,35 @@ const CustomizeNinjaBox = () => {
   // const today = new Date();
   // const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
 
+  const generateDateOptions = () => {
+    const options = [];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const twoDaysFromNow = new Date();
+    twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+    for (
+      let date = twoDaysFromNow;
+      date.getFullYear() === currentYear;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const optionValue = date.toISOString().slice(0, 10);
+      const optionLabel = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      options.push(
+        <option key={optionValue} value={optionValue}>
+          {optionLabel}
+        </option>
+      );
+    }
+
+    return options;
+  };
+
   useEffect(() => {
     let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
     if (SessionData) {
@@ -1875,8 +1904,8 @@ const CustomizeNinjaBox = () => {
           })
           //Storing the payment details
           .then(function (json) {
-            json.datas=datas,
-            json.createdAt=new Date()
+            json.datas = datas,
+              json.createdAt = new Date()
 
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
@@ -1901,7 +1930,7 @@ const CustomizeNinjaBox = () => {
                 datas.email = json.status.email,
                 datas.bank_ref_num = json.status.bank_ref_num,
                 datas.name = json.status.field4,
-                datas.createdAt=new Date()
+                datas.createdAt = new Date()
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -2171,6 +2200,10 @@ const CustomizeNinjaBox = () => {
                   <input type="date" onChange={(event) => setStartDate(event.target.value)}
                     value={startDate}
                     min={minDateISO} />
+                  {/* <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate}>
+                    <option value="">Select a date</option>
+                    {generateDateOptions()}
+                  </select> */}
                 </div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Veg Guest</p>
@@ -2219,7 +2252,7 @@ const CustomizeNinjaBox = () => {
                 </div>
                 <div>
                   <p>Delivery Time</p>
-                  <select className="form-select" onChange={(e)=>setStartTime(e.target.value)}>
+                  <select className="form-select" onChange={(e) => setStartTime(e.target.value)}>
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>

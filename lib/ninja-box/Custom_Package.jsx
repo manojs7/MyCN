@@ -86,6 +86,13 @@ const Custom_Package = () => {
         confirmButtonText: "OK",
       });
     }
+    else if(!startTime) {
+      Swal.fire({
+        text: "please select Time",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    }
     else if (number < 10) {
       Swal.fire({
         text: "please select at least 10 guest",
@@ -358,6 +365,7 @@ const Custom_Package = () => {
         <div className={styles.deliveryTimeSecn}>
           <h4>Delivery Time</h4>
           <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)}>
+          <option value="">Select Time</option>
             <option value="11:00 am">11:00 am</option>
             <option value="11:30 am">11:30 am</option>
             <option value="12:00 pm">12:00 pm</option>

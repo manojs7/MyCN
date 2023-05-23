@@ -75,9 +75,38 @@ const NinjaBoxViewPkg = () => {
   const [zipcodeError, setZipcodeError] = useState("");
 
   //DATE LOGIC
-  const minDate = new Date();
-  minDate.setDate(minDate.getDate() + 2);
-  const minDateISO = minDate.toISOString().split('T')[0];
+  // const minDate = new Date();
+  // minDate.setDate(minDate.getDate() + 2);
+  // const minDateISO = minDate.toISOString().split('T')[0];
+
+  const generateDateOptions = () => {
+    const options = [];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const twoDaysFromNow = new Date();
+    twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+    for (
+      let date = twoDaysFromNow;
+      date.getFullYear() === currentYear;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const optionValue = date.toISOString().slice(0, 10);
+      const optionLabel = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      options.push(
+        <option key={optionValue} value={optionValue}>
+          {optionLabel}
+        </option>
+      );
+    }
+
+    return options;
+  };
 
 
 
@@ -1397,7 +1426,7 @@ const NinjaBoxViewPkg = () => {
             <hr />
             <div className={styles.priceing}>
               <h6>GRAND TOTAL :</h6>
-              <h6>{grandTotal}</h6>
+              <h6>₹ {grandTotal}</h6>
             </div>
             <div className={styles.cnfmBtn}>
               <button onClick={closePopup} id={styles.cancelBtn}>Go Back</button>
@@ -1435,7 +1464,11 @@ const NinjaBoxViewPkg = () => {
               <div>
                 <p>Date</p>
                 <div>
-                  <input type="date" onChange={(event) => setStartDate(event.target.value)} value={startDate} min={minDateISO}></input>
+                  {/* <input type="date" onChange={(event) => setStartDate(event.target.value)} value={startDate} min={minDateISO}></input> */}
+                  <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate}>
+                    <option value="">Select a date</option>
+                    {generateDateOptions()}
+                  </select>
                 </div>
               </div>
             </div>
