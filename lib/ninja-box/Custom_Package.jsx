@@ -78,7 +78,10 @@ const Custom_Package = () => {
     setOccasion(occasion);
   };
 
+
   const navigateToOverview = () => {
+    const totalCount = number + number2;
+    
     if (!selectedDate) {
       Swal.fire({
         text: "please select date",
@@ -93,9 +96,9 @@ const Custom_Package = () => {
         confirmButtonText: "OK",
       });
     }
-    else if (number < 10) {
+    else if (totalCount < 10) {
       Swal.fire({
-        text: "please select at least 10 guest",
+        text: "Guest count should be at least 10",
         icon: "warning",
         confirmButtonText: "OK",
       });
@@ -642,7 +645,7 @@ const Custom_Package = () => {
           {!showNonveg && <div>
             <div className="d-flex mt-3">
               {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-                <h3>{item.name}</h3>
+                <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
                 </div>
@@ -652,14 +655,14 @@ const Custom_Package = () => {
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
-                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">See Details</button>
+                  <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                   {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-4" id="customiseBtn">Customise</button> */}
                 </div>
               </div>))}
             </div>
             <div className="d-flex">
               {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-                <h3>{item.name}</h3>
+                <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
                 </div>
@@ -676,7 +679,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex">
               {thirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-                <h3>{item.name}</h3>
+                <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
                 </div>
@@ -703,7 +706,7 @@ const Custom_Package = () => {
             </div> */}
             <div className="d-flex mt-3">
               {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-                <h3>{item.name}</h3>
+                <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
                 </div>
@@ -720,7 +723,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex">
               {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-                <h3>{item.name}</h3>
+                <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
                 </div>
@@ -737,7 +740,7 @@ const Custom_Package = () => {
             </div>
             <div className="d-flex">
               {nvthirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
-                <h3>{item.name}</h3>
+                <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
                 </div>
@@ -874,7 +877,7 @@ const Custom_Package = () => {
         {isSmall ? <section>
           <div className="packageContainer">
             {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-              <h3>{item.name}</h3>
+              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -891,7 +894,7 @@ const Custom_Package = () => {
           </div>
           <div className="packageContainer">
             {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-              <h3>{item.name}</h3>
+              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -908,7 +911,7 @@ const Custom_Package = () => {
           </div>
           <div className="packageContainer">
             {thirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-              <h3>{item.name}</h3>
+              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -929,7 +932,7 @@ const Custom_Package = () => {
         {isSmall ? <section>
           <div className="packageContainer">
             {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-              <h3>{item.name}</h3>
+              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -946,7 +949,7 @@ const Custom_Package = () => {
           </div>
           <div className="packageContainer">
             {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-              <h3>{item.name}</h3>
+              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -963,7 +966,7 @@ const Custom_Package = () => {
           </div>
           <div className="packageContainer">
             {nvthirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
-              <h3>{item.name}</h3>
+              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
