@@ -545,7 +545,14 @@ const CustomizeNinjaBox = () => {
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
         data.quantity = 12;
         if (data.Qtype === "pcs") {
-          data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
+            data.quantity = (veg > 0 ? veg : nonVeg) * 3;
+          }
+          else{
+            data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          }
+          
+          
           if (data.quantity < 12) {
             data.quantity = 12;
           }
@@ -557,7 +564,12 @@ const CustomizeNinjaBox = () => {
 
         if (data.veg) {
           if (data.Qtype === "pcs") {
-            data.quantity = Math.round(veg * 2 + nonVeg * 1);
+            if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
+              data.quantity = Math.round(veg * 3 + nonVeg * 1);
+            }
+            else{
+              data.quantity = Math.round(veg * 2 + nonVeg * 1);
+            }
             if (data.quantity < 12) {
               data.quantity = 12;
             }
@@ -566,7 +578,12 @@ const CustomizeNinjaBox = () => {
           }
         } else {
           if (data.Qtype === "pcs") {
-            data.quantity = nonVeg * 2;
+            if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
+              data.quantity = Math.round((nonVeg) * 3);
+            }
+            else{
+              data.quantity = Math.round((nonVeg) * 2);
+            }
             if (data.quantity < 12) {
               data.quantity = 12;
             }
@@ -637,10 +654,10 @@ const CustomizeNinjaBox = () => {
           //Mains-gravy : same logic as above
           else if (data.menu_label === "Main-Gravy") {
             if (nonVegMainsGravyMainCount > 0) {
-              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+              data.quantity = HandleCeilFloorValue((veg * 0.15).toFixed(1));
             } else {
               data.quantity = HandleCeilFloorValue(
-                (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+                (veg * 0.15 + nonVeg * 0.1).toFixed(1)
               );
             }
           }
@@ -663,7 +680,7 @@ const CustomizeNinjaBox = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+              data.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1).toFixed(1);
             }
           }
         } else {
@@ -673,7 +690,7 @@ const CustomizeNinjaBox = () => {
           } else if (data.name === highestPrice.name) {
             data.quantity = (nonVeg * 0.15).toFixed(1);
           } else {
-            data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+            data.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
           }
         }
       }
@@ -701,11 +718,13 @@ const CustomizeNinjaBox = () => {
   }, [veg, nonVeg]);
   function HandleCeilFloorValue(x) {
     var decimals = (x - Math.floor(x)).toFixed(1);
-    if (decimals <= 0.4) {
-      x = Math.floor(x);
-    } else if (decimals >= 0.6) {
-      x = Math.floor(x);
+    if (decimals < 0.75) {
+      x = (Math.ceil(x)+Math.floor(x))/2;
+    } 
+      else if (decimals >= 0.75) {
+      x = Math.ceil(x);
     }
+   
     return x;
   }
   useEffect(() => {
@@ -740,7 +759,7 @@ const CustomizeNinjaBox = () => {
 
     let temp = [...starters];
     const starter = startersData.find((item) => item.name === item_name);
-    console.log("starterdata", startersData)
+    // console.log("starterdata", startersData)
     // removing selected item
     // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
@@ -753,7 +772,13 @@ const CustomizeNinjaBox = () => {
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       if (starter.Qtype === "pcs") {
-        quantity = (veg > 0 ? veg : nonVeg) * 2;
+        if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab") ){
+          quantity = (veg > 0 ? veg : nonVeg) * 3;
+        }
+        else{
+          quantity = (veg > 0 ? veg : nonVeg) * 2;
+        }
+        
         if (quantity < 12) {
           quantity = 12;
         }
@@ -765,7 +790,13 @@ const CustomizeNinjaBox = () => {
 
       if (starter.veg) {
         if (starter.Qtype === "pcs") {
-          quantity = Math.round((veg + nonVeg) * 1.5);
+          if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab")){
+            quantity = Math.round((veg + nonVeg) * 3);
+          }
+          else{
+            quantity = Math.round((veg + nonVeg) * 1.5);
+          }
+          // quantity = Math.round((veg + nonVeg) * 1.5);
           if (quantity < 12) {
             quantity = 12;
           }
@@ -774,7 +805,13 @@ const CustomizeNinjaBox = () => {
         }
       } else {
         if (starter.Qtype === "pcs") {
-          quantity = nonVeg * 2;
+          if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab")){
+            quantity = Math.round((nonVeg) * 3);
+          }
+          else{
+            quantity = Math.round((nonVeg) * 2);
+          }
+          // quantity = nonVeg * 2;
           if (quantity < 12) {
             quantity = 12;
           }
@@ -872,7 +909,7 @@ const CustomizeNinjaBox = () => {
             quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
           } else {
             quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+              (veg * 0.15 + nonVeg * 0.1).toFixed(1)
             );
           }
         }
@@ -906,57 +943,57 @@ const CustomizeNinjaBox = () => {
         } else if (main.name === highestPrice.name) {
           quantity = (nonVeg * 0.15).toFixed(1);
         } else {
-          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
         }
       }
     }
 
-    temp.forEach((item) => {
-      if (item.veg) {
-        if (
-          item.menu_label === "Mains-dry" ||
-          item.menu_label === "Mains-dal"
-        ) {
-          item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
-        } else if (item.menu_label === "Pasta") {
-          if (nonVegPastaMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-        //Mains-gravy : same logic as above
-        else if (item.menu_label === "Mains-Gravy") {
-          if (nonVegMainsGravyMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-        //Main -Thai : same logic as above
-        else if (item.menu_label === "Mains-Thai") {
-          if (nonVegMainThaiMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-      } else {
-        if (item.Qtype === "pcs") {
-          item.quantity = nonVeg * 1;
-        } else if (item.name === highestPrice.name) {
-          item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-        } else {
-          item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-        }
-      }
-    });
+    // temp.forEach((item) => {
+    //   if (item.veg) {
+    //     if (
+    //       item.menu_label === "Mains-dry" ||
+    //       item.menu_label === "Mains-dal"
+    //     ) {
+    //       item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
+    //     } else if (item.menu_label === "Pasta") {
+    //       if (nonVegPastaMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Mains-gravy : same logic as above
+    //     else if (item.menu_label === "Mains-Gravy") {
+    //       if (nonVegMainsGravyMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.15).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.15 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Main -Thai : same logic as above
+    //     else if (item.menu_label === "Mains-Thai") {
+    //       if (nonVegMainThaiMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //   } else {
+    //     if (item.Qtype === "pcs") {
+    //       item.quantity = nonVeg * 1;
+    //     } else if (item.name === highestPrice.name) {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
+    //     } else {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+    //     }
+    //   }
+    // });
 
     temp.push({
       // isRice: main.isRice,
@@ -1361,7 +1398,13 @@ const CustomizeNinjaBox = () => {
             if (count >= 3) {
               item.quantity = HandleCeilFloorValue(guests * 0.1);
             } else {
-              item.quantity = HandleCeilFloorValue(guests * 0.15);
+              if(item.veg){
+                item.quantity = HandleCeilFloorValue(guests * 0.25);
+              }
+              else{
+                item.quantity = HandleCeilFloorValue(nonVeg * 0.20);
+              }
+              
             }
             // item.quantity = 0.15 * guests;
           }
