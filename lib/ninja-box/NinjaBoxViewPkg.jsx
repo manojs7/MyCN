@@ -154,7 +154,7 @@ const NinjaBoxViewPkg = () => {
 
   //Adding menu items to preselection
 
-  const preselection =  () => {
+  const preselection =  async() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
     let ID2=dataSelected.itemSelected["id"];
     let mealType2=dataSelected["mealType"]
@@ -162,7 +162,7 @@ const NinjaBoxViewPkg = () => {
     let itemData; 
     console.log('mtype', mealType2, ID2)
     if (ID2) {
-       PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items.forEach(
+       await PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items.forEach(
         async(item) => {  
           itemData = allMenus.filter((d) => d.name === item);
           if (itemData.length > 0) {

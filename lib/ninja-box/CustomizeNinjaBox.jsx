@@ -565,7 +565,7 @@ const CustomizeNinjaBox = () => {
         if (data.veg) {
           if (data.Qtype === "pcs") {
             if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
-              data.quantity = Math.round(veg * 3 + nonVeg * 1);
+              data.quantity = Math.round((veg + nonVeg )*2.5);
             }
             else{
               data.quantity = Math.round(veg * 2 + nonVeg * 1);
@@ -579,7 +579,7 @@ const CustomizeNinjaBox = () => {
         } else {
           if (data.Qtype === "pcs") {
             if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
-              data.quantity = Math.round((nonVeg) * 3);
+              data.quantity = Math.round((veg + nonVeg )*2.5);
             }
             else{
               data.quantity = Math.round((nonVeg) * 2);
@@ -791,7 +791,7 @@ const CustomizeNinjaBox = () => {
       if (starter.veg) {
         if (starter.Qtype === "pcs") {
           if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab")){
-            quantity = Math.round((veg + nonVeg) * 3);
+            quantity = Math.round((veg + nonVeg) * 2.5);
           }
           else{
             quantity = Math.round((veg + nonVeg) * 1.5);
@@ -806,7 +806,7 @@ const CustomizeNinjaBox = () => {
       } else {
         if (starter.Qtype === "pcs") {
           if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab")){
-            quantity = Math.round((nonVeg) * 3);
+            quantity = Math.round((nonVeg) * 2.5);
           }
           else{
             quantity = Math.round((nonVeg) * 2);
