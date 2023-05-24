@@ -168,7 +168,6 @@ const NinjaBoxViewPkg = () => {
           if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
               await handleStatersAdd(itemData[0].name);
-
             } else if (itemData[0].mealType === "Main course") {
                await handleMainAdd(itemData[0].name);
             } else if (itemData[0].mealType === "Bread+Rice") {
