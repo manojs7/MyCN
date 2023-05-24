@@ -8,10 +8,10 @@ export default function Float()
     return (
         <div className={styles.container}>
             <div className={styles.item}>
-            <button id="call" onClick={() => (window.open('tel:08047176666'))} className={styles.floatBtn}>
+            <a href='tel:08047176666' id="call"><button  className={styles.floatBtn}>
 
                     <span>Call a Ninja</span>
-                    <br />Instant Order</button>
+                    <br />Instant Order</button></a>
                     {/* <img src='messaging.svg' color="white" alt=''/> */}
                     {/* <FontAwesomeIcon icon={faInstagram} className={styles.icon} /> */}
                     {/* <FontAwesomeIcon icon="fa-solid fa-message" /> */}

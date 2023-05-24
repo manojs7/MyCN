@@ -8,10 +8,10 @@ export default function Float2()
     return (
         <div className={styles.container}>
             <div className={styles.item}>
-            <button id="call" onClick={() => (window.open('tel:08047176666'))} className={styles.floatBtn}>
+            <a href='tel:08047176666' id="call"><button  className={styles.floatBtn}>
 
                     <span>Call a Ninja</span>
-                    <br />Instant Order</button>
+                    <br />Instant Order</button></a>
                     {/* <img src='messaging.svg' color="white" alt=''/> */}
                     {/* <FontAwesomeIcon icon={faInstagram} className={styles.icon} /> */}
                     {/* <FontAwesomeIcon icon="fa-solid fa-message" /> */}
@@ -23,11 +23,11 @@ export default function Float2()
             </div>
             <div className={styles.item}>
                
-                   <button id="wp" onClick={() => window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hi Need Menu and Prices', '_blank')} className={styles.floatBtn}>
+                   <a href='https://api.whatsapp.com/send?phone=917738096313&text=Hi Need Menu and Prices' target='_blank' id="wp"><button className={styles.floatBtn}>
                 <span>Chat with us</span>
                 <br />on Whatsapp
                 
-                </button>
+                </button></a>
             </div>
             {/* <div className={styles.item}>
 
