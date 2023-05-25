@@ -7,7 +7,7 @@ module.exports = withAnalyzer({
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
@@ -19,6 +19,6 @@ module.exports = withAnalyzer({
     domains: ['firebasestorage.googleapis.com']
   }
 })
-module.exports = {
-  reactStrictMode: false,
-}
+// module.exports = {
+//   reactStrictMode: false,
+// }
