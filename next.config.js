@@ -19,3 +19,6 @@ module.exports = withAnalyzer({
     domains: ['firebasestorage.googleapis.com']
   }
 })
+module.exports = {
+  reactStrictMode: false,
+}

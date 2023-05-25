@@ -25,8 +25,7 @@ import Link from "next/link";
 // import { Launch } from "@mui/icons-material";
 
 const CustomizeNinjaBox = () => {
-  const { menu, cuisines, allMenus, cities, occasions } =
-    useAppMenu();
+  const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -50,8 +49,7 @@ const CustomizeNinjaBox = () => {
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
   const [datas, setDatas] = useState();
-  const [EmailedToParser, setEmailedToParser] = useState(false)
-
+  const [EmailedToParser, setEmailedToParser] = useState(false);
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
@@ -107,7 +105,7 @@ const CustomizeNinjaBox = () => {
   const [showUrgentLink, setShowUrgentLink] = useState(false);
 
   function hoverLink() {
-    setShowUrgentLink(prevState => !prevState);
+    setShowUrgentLink((prevState) => !prevState);
   }
 
   function hoverLeaveLink() {
@@ -142,10 +140,10 @@ const CustomizeNinjaBox = () => {
       date.setDate(date.getDate() + 1)
     ) {
       const optionValue = date.toISOString().slice(0, 10);
-      const optionLabel = date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
+      const optionLabel = date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
       });
 
       options.push(
@@ -161,16 +159,15 @@ const CustomizeNinjaBox = () => {
   useEffect(() => {
     let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
     if (SessionData) {
-      setCity(SessionData['city']),
-        setVeg(SessionData['vcount']),
-        setNonVeg(SessionData['nvcount']),
+      setCity(SessionData["city"]),
+        setVeg(SessionData["vcount"]),
+        setNonVeg(SessionData["nvcount"]),
         // setStartDate(SessionData['selectedDate']),
-        setOccasion(SessionData['occasion'])
+        setOccasion(SessionData["occasion"]);
       // setstartTime(SessionData['evt_time'])
     }
-  }, [])
+  }, []);
   useEffect(() => {
-
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
@@ -328,11 +325,10 @@ const CustomizeNinjaBox = () => {
   const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
   const [showSelectedMenu4, setShowSelectedMenu4] = useState(false);
 
-
   //DATE LOGIC
   const minDate = new Date();
   minDate.setDate(minDate.getDate() + 2);
-  const minDateISO = minDate.toISOString().split('T')[0];
+  const minDateISO = minDate.toISOString().split("T")[0];
 
   //search Starter
   const searchStarter = (e) => {
@@ -545,14 +541,16 @@ const CustomizeNinjaBox = () => {
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
         data.quantity = 12;
         if (data.Qtype === "pcs") {
-          if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
+          if (
+            data.name.includes("Paneer Tikka") ||
+            data.name.includes("Chicken Tikka") ||
+            data.name.includes("Kebab")
+          ) {
             data.quantity = (veg > 0 ? veg : nonVeg) * 3;
-          }
-          else{
+          } else {
             data.quantity = (veg > 0 ? veg : nonVeg) * 2;
           }
-          
-          
+
           if (data.quantity < 12) {
             data.quantity = 12;
           }
@@ -564,10 +562,13 @@ const CustomizeNinjaBox = () => {
 
         if (data.veg) {
           if (data.Qtype === "pcs") {
-            if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
-              data.quantity = Math.round((veg + nonVeg )*2.5);
-            }
-            else{
+            if (
+              data.name.includes("Paneer Tikka") ||
+              data.name.includes("Chicken Tikka") ||
+              data.name.includes("Kebab")
+            ) {
+              data.quantity = Math.round((veg + nonVeg) * 2.5);
+            } else {
               data.quantity = Math.round(veg * 2 + nonVeg * 1);
             }
             if (data.quantity < 12) {
@@ -578,11 +579,14 @@ const CustomizeNinjaBox = () => {
           }
         } else {
           if (data.Qtype === "pcs") {
-            if(data.name.includes("Paneer Tikka") || data.name.includes("Chicken Tikka") || data.name.includes("Kebab")){
-              data.quantity = Math.round((veg + nonVeg )*2.5);
-            }
-            else{
-              data.quantity = Math.round((nonVeg) * 2);
+            if (
+              data.name.includes("Paneer Tikka") ||
+              data.name.includes("Chicken Tikka") ||
+              data.name.includes("Kebab")
+            ) {
+              data.quantity = Math.round((veg + nonVeg) * 2.5);
+            } else {
+              data.quantity = Math.round(nonVeg * 2);
             }
             if (data.quantity < 12) {
               data.quantity = 12;
@@ -680,7 +684,9 @@ const CustomizeNinjaBox = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1).toFixed(1);
+              data.quantity = HandleCeilFloorValue(
+                veg * 0.1 + nonVeg * 0.1
+              ).toFixed(1);
             }
           }
         } else {
@@ -719,12 +725,11 @@ const CustomizeNinjaBox = () => {
   function HandleCeilFloorValue(x) {
     var decimals = (x - Math.floor(x)).toFixed(1);
     if (decimals < 0.75) {
-      x = (Math.ceil(x)+Math.floor(x))/2;
-    } 
-      else if (decimals >= 0.75) {
+      x = (Math.ceil(x) + Math.floor(x)) / 2;
+    } else if (decimals >= 0.75) {
       x = Math.ceil(x);
     }
-   
+
     return x;
   }
   useEffect(() => {
@@ -772,13 +777,16 @@ const CustomizeNinjaBox = () => {
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       if (starter.Qtype === "pcs") {
-        if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab") ){
+        if (
+          starter.name.includes("Paneer Tikka") ||
+          starter.name.includes("Chicken Tikka") ||
+          starter.name.includes("Kebab")
+        ) {
           quantity = (veg > 0 ? veg : nonVeg) * 3;
-        }
-        else{
+        } else {
           quantity = (veg > 0 ? veg : nonVeg) * 2;
         }
-        
+
         if (quantity < 12) {
           quantity = 12;
         }
@@ -790,10 +798,13 @@ const CustomizeNinjaBox = () => {
 
       if (starter.veg) {
         if (starter.Qtype === "pcs") {
-          if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab")){
+          if (
+            starter.name.includes("Paneer Tikka") ||
+            starter.name.includes("Chicken Tikka") ||
+            starter.name.includes("Kebab")
+          ) {
             quantity = Math.round((veg + nonVeg) * 2.5);
-          }
-          else{
+          } else {
             quantity = Math.round((veg + nonVeg) * 1.5);
           }
           // quantity = Math.round((veg + nonVeg) * 1.5);
@@ -805,11 +816,14 @@ const CustomizeNinjaBox = () => {
         }
       } else {
         if (starter.Qtype === "pcs") {
-          if(starter.name.includes("Paneer Tikka") || starter.name.includes("Chicken Tikka") || starter.name.includes("Kebab")){
-            quantity = Math.round((nonVeg) * 2.5);
-          }
-          else{
-            quantity = Math.round((nonVeg) * 2);
+          if (
+            starter.name.includes("Paneer Tikka") ||
+            starter.name.includes("Chicken Tikka") ||
+            starter.name.includes("Kebab")
+          ) {
+            quantity = Math.round(nonVeg * 2.5);
+          } else {
+            quantity = Math.round(nonVeg * 2);
           }
           // quantity = nonVeg * 2;
           if (quantity < 12) {
@@ -1350,13 +1364,13 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(veg * 0.2))
         : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
       filterBreadRice.veg === false &&
-        filterBreadRice.menu_label === "Noodle" &&
-        nonVegNoodleCount > 0
+      filterBreadRice.menu_label === "Noodle" &&
+      nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
         : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
 
@@ -1398,13 +1412,11 @@ const CustomizeNinjaBox = () => {
             if (count >= 3) {
               item.quantity = HandleCeilFloorValue(guests * 0.1);
             } else {
-              if(item.veg){
+              if (item.veg) {
                 item.quantity = HandleCeilFloorValue(guests * 0.25);
+              } else {
+                item.quantity = HandleCeilFloorValue(nonVeg * 0.2);
               }
-              else{
-                item.quantity = HandleCeilFloorValue(nonVeg * 0.20);
-              }
-              
             }
             // item.quantity = 0.15 * guests;
           }
@@ -1650,7 +1662,6 @@ const CustomizeNinjaBox = () => {
     let dessertPrice = 0;
     let bredRicePrice = 0;
 
-
     starters.map((d) => {
       if (d.Qtype === "pcs") {
         starterPrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1701,22 +1712,19 @@ const CustomizeNinjaBox = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-      parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      parseInt(getGst())
+        parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        parseInt(getGst())
     );
     setShowPriceList(false);
-
-
-
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-      parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      parseInt(getGst())
+        parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        parseInt(getGst())
     );
   }, [buffet]);
 
@@ -1724,7 +1732,7 @@ const CustomizeNinjaBox = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-      100
+        100
     );
   }
 
@@ -1736,7 +1744,13 @@ const CustomizeNinjaBox = () => {
       return false;
     }
 
-    if (name.length == "" || mobileno.length == "" || (!/^\d{10}$/.test(mobileno)) || email.length == "" || (!/\S+@\S+\.\S+/.test(email))) {
+    if (
+      name.length == "" ||
+      mobileno.length == "" ||
+      !/^\d{10}$/.test(mobileno) ||
+      email.length == "" ||
+      !/\S+@\S+\.\S+/.test(email)
+    ) {
       if (name.length == "") {
         Swal.fire({
           text: "Please enter your Name",
@@ -1765,7 +1779,7 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the Email please");
-      } else if ((!/\S+@\S+\.\S+/.test(email))) {
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
         Swal.fire({
           text: "Please enter valid Email",
           icon: "warning",
@@ -1785,9 +1799,9 @@ const CustomizeNinjaBox = () => {
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-      parseInt(buffet) +
-      // parseInt(deliveryCharge) +
-      getGst()
+        parseInt(buffet) +
+        // parseInt(deliveryCharge) +
+        getGst()
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -1821,9 +1835,8 @@ const CustomizeNinjaBox = () => {
       totalPrice: totalPrice,
       GST: final_gst,
       showDessert: false,
-      emailedtoparser: EmailedToParser
+      emailedtoparser: EmailedToParser,
     };
-
 
     setDatas(datas);
 
@@ -1839,7 +1852,7 @@ const CustomizeNinjaBox = () => {
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
       console.log(res.message);
-      setEmailedToParser(true)
+      setEmailedToParser(true);
       if (res.success) {
         console.log("message sent");
       } else {
@@ -1888,19 +1901,33 @@ const CustomizeNinjaBox = () => {
   const interakt = () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
+    myHeaders.append(
+      "Authorization",
+      "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo="
+    );
 
-    var raw = { "phoneNumber": "7023405885", "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja": "{ninja}" } }
+    var raw = {
+      phoneNumber: "7023405885",
+      event: "Test",
+      traits: {
+        orderID: "{order_id}",
+        doe: "{doe}",
+        toe: "{time_of_ev}",
+        value: "{selling_pr}",
+        ninja: "{ninja}",
+      },
+    };
     var requestOptions = {
-      method: 'POST',
+      method: "POST",
       headers: myHeaders,
       body: raw,
-      redirect: 'follow'
+      redirect: "follow",
     };
 
-    axios.post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
-      .then(response => console.log("resot", response.json()))
-  }
+    axios
+      .post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+      .then((response) => console.log("resot", response.json()));
+  };
 
   const EmailOrderConfirmation = (datas) => {
     //post api for email
@@ -1909,15 +1936,19 @@ const CustomizeNinjaBox = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+      alert(
+        "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
+      );
 
       if (res.success) {
-        alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+        alert(
+          "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
+        );
       } else {
         console.log("Failed to send message");
       }
     });
-  }
+  };
 
   // const selectedItems = filteredData.filter(item => item.checked);
   // const unselectedItems = filteredData.filter(item => !item.checked);
@@ -1942,13 +1973,11 @@ const CustomizeNinjaBox = () => {
           body: JSON.stringify(response.response),
         })
           .then(function (a) {
-
             return a.json();
           })
           //Storing the payment details
           .then(function (json) {
-            json.datas = datas,
-              json.createdAt = new Date()
+            (json.datas = datas), (json.createdAt = new Date());
 
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
@@ -1958,22 +1987,21 @@ const CustomizeNinjaBox = () => {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(json),
-            })
+            });
 
             // if payment gets successful
 
             if (json.status.status === "success") {
-
               // let payData={
-              datas.txnid = json.status.txnid,
-                datas.phone = json.status.phone,
-                datas.productinfo = json.status.productinfo,
-                datas.amount = json.status.amount,
-                datas.status = json.status,
-                datas.email = json.status.email,
-                datas.bank_ref_num = json.status.bank_ref_num,
-                datas.name = json.status.field4,
-                datas.createdAt = new Date()
+              (datas.txnid = json.status.txnid),
+                (datas.phone = json.status.phone),
+                (datas.productinfo = json.status.productinfo),
+                (datas.amount = json.status.amount),
+                (datas.status = json.status),
+                (datas.email = json.status.email),
+                (datas.bank_ref_num = json.status.bank_ref_num),
+                (datas.name = json.status.field4),
+                (datas.createdAt = new Date());
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -1985,23 +2013,19 @@ const CustomizeNinjaBox = () => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(datas),
-              }).then((res) => console.log("successful"),
+              }).then(
+                (res) => console.log("successful"),
 
                 //Email the Order Confirmation
                 EmailOrderConfirmation(datas),
 
                 //Interakt Api message to hit my number with details
                 interakt()
-
-
               );
-            }
-            else {
-
+            } else {
               alert("Payment Failed! Please try again.");
             }
           });
-
       },
 
       // catchException: function (response) {
@@ -2227,11 +2251,22 @@ const CustomizeNinjaBox = () => {
                 </div>
 
                 <div className={styles.eventDate}>
-                  <p>Event Date <span onMouseEnter={hoverLink}
-                    onClick={hoverLink}>i</span></p>
-                  {showUrgentLink && (<div id={styles.urgentLink}>
-                    <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
-                  </div>)}
+                  <p>
+                    Event Date{" "}
+                    <span onMouseEnter={hoverLink} onClick={hoverLink}>
+                      i
+                    </span>
+                  </p>
+                  {showUrgentLink && (
+                    <div id={styles.urgentLink}>
+                      <a
+                        href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages"
+                        target="_blank"
+                      >
+                        Click here for urgent order!
+                      </a>
+                    </div>
+                  )}
                   {/* <DatePicker
                     name="event_date"
                     selected={startDate}
@@ -2240,9 +2275,12 @@ const CustomizeNinjaBox = () => {
                     dateFormat="dd MMMM yyyy"
                     required
                   /> */}
-                  <input type="date" onChange={(event) => setStartDate(event.target.value)}
+                  <input
+                    type="date"
+                    onChange={(event) => setStartDate(event.target.value)}
                     value={startDate}
-                    min={minDateISO} />
+                    min={minDateISO}
+                  />
                   {/* <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate}>
                     <option value="">Select a date</option>
                     {generateDateOptions()}
@@ -2295,7 +2333,10 @@ const CustomizeNinjaBox = () => {
                 </div>
                 <div>
                   <p>Delivery Time</p>
-                  <select className="form-select" onChange={(e) => setStartTime(e.target.value)}>
+                  <select
+                    className="form-select"
+                    onChange={(e) => setStartTime(e.target.value)}
+                  >
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>
@@ -3264,7 +3305,7 @@ const CustomizeNinjaBox = () => {
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
                       city === "Bangalore") &&
-                      people < 26 ? (
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3274,9 +3315,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3288,9 +3329,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3302,9 +3343,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3323,7 +3364,7 @@ const CustomizeNinjaBox = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                      people < 26 ? (
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3333,9 +3374,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3347,9 +3388,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3361,9 +3402,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3397,7 +3438,6 @@ const CustomizeNinjaBox = () => {
                       pattern="[789][0-9]{9}"
                       maxLength="10"
                       min="10"
-
                       required
                     />
                     <input
@@ -3526,7 +3566,7 @@ const CustomizeNinjaBox = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

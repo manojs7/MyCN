@@ -129,32 +129,29 @@ const NinjaBoxCustomise = () => {
         setStartDate(SessionData["selectedDate"]),
         setOccasion(SessionData["occasion"]);
       //   setImage(dataSelected.itemSelected["img"]);
-      console.log("set",setId(SessionData.itemSelected["id"]), ID);
+      setId(SessionData.itemSelected["id"]);
       setStartTime(SessionData['startTime'])
       setMealType(SessionData["mealType"]);
-      console.log("first", ID)
 
       
     }    
 
   },[]);
 
-  useEffect(()=>{
-    preselection();
-  },[ID])
+  
  
-  const preselection = () => {
+  useEffect(() => {
     
-    let itemData;
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
     let ID2=dataSelected.itemSelected["id"];
     let mealType2=dataSelected["mealType"]
-    console.log("second", ID2, mealType2) 
-
-    if (ID2) {  
-      PreSelectMenuNinjaBox[mealType2]
-        .filter((d) => d.id === ID2)[0]
-        .items.forEach((item) => {
+    // setMealType(dataSelected["mealType"]) 
+    let itemData;  
+    console.log('mtype', mealType2, ID2)
+    if (ID2) {
+       let itemDataArray= PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items
+        itemDataArray.map(
+        (item, index) => {  
           itemData = allMenus.filter((d) => d.name === item);
           if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
@@ -169,12 +166,11 @@ const NinjaBoxCustomise = () => {
             } else {
               console.log("suspect", item); 
             } 
-          }
+          } 
         }); 
     } else {
     }
-    setId(dataSelected.itemSelected["id"])
-  };
+  },[]);
  
 
   useEffect(() => {
@@ -247,10 +243,10 @@ const NinjaBoxCustomise = () => {
   };
   const handleCity = (city) => {
     setCity(city);
-    setStarters([]);
-    setMains([]);
-    setDesserts([]);
-    setBreadRice([]);
+    // setStarters([]);
+    // setMains([]);
+    // setDesserts([]);
+    // setBreadRice([]);
     getDeliveryCharge(veg + nonVeg);
   };
 
@@ -590,7 +586,7 @@ const NinjaBoxCustomise = () => {
     tempMain.map((data) => {
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
         // if not rice , bred, noodles
-        console.log("not rice , bred, noodles1");
+        // console.log("not rice , bred, noodles1");
         if (data.Qtype === "pcs") {
           data.quantity = (veg > 0 ? veg : nonVeg) * 1;
         } else if (data.name === highestPrice.name) {
@@ -782,10 +778,12 @@ const NinjaBoxCustomise = () => {
       selling_price: starter.selling_price,
       // description: starter.description,
     });
-    setStarters(temp);
-
+    setStarters(starters => ([...starters, ...temp]));
+    // setStarters(temp);
     console.log("starters", starters);
   };
+
+  //mains add
   const handleMainAdd = (item_name, id) => {
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
@@ -796,6 +794,7 @@ const NinjaBoxCustomise = () => {
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
+    
     let nonVegPastaMainCount = 0;
     let nonVegMainsGravyMainCount = 0;
     let nonVegMainThaiMainCount = 0;
@@ -819,7 +818,7 @@ const NinjaBoxCustomise = () => {
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       // if not rice , bred, noodles
-      console.log("not rice , bred, noodles1");
+      // console.log("not rice , bred, noodles1");
       if (main.Qtype === "pcs") {
         quantity = (veg > 0 ? veg : nonVeg) * 1;
       } else if (main.name === highestPrice.name) {
@@ -897,52 +896,52 @@ const NinjaBoxCustomise = () => {
       }
     }
 
-    temp.forEach((item) => {
-      if (item.veg) {
-        if (
-          item.menu_label === "Mains-dry" ||
-          item.menu_label === "Mains-dal"
-        ) {
-          item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
-        } else if (item.menu_label === "Pasta") {
-          if (nonVegPastaMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-        //Mains-gravy : same logic as above
-        else if (item.menu_label === "Mains-Gravy") {
-          if (nonVegMainsGravyMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-        //Main -Thai : same logic as above
-        else if (item.menu_label === "Mains-Thai") {
-          if (nonVegMainThaiMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-      } else {
-        if (item.Qtype === "pcs") {
-          item.quantity = nonVeg * 1;
-        } else if (item.name === highestPrice.name) {
-          item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-        } else {
-          item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-        }
-      }
-    });
+    // temp.forEach((item) => {
+    //   if (item.veg) {
+    //     if (
+    //       item.menu_label === "Mains-dry" ||
+    //       item.menu_label === "Mains-dal"
+    //     ) {
+    //       item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
+    //     } else if (item.menu_label === "Pasta") {
+    //       if (nonVegPastaMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Mains-gravy : same logic as above
+    //     else if (item.menu_label === "Mains-Gravy") {
+    //       if (nonVegMainsGravyMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Main -Thai : same logic as above
+    //     else if (item.menu_label === "Mains-Thai") {
+    //       if (nonVegMainThaiMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //   } else {
+    //     if (item.Qtype === "pcs") {
+    //       item.quantity = nonVeg * 1;
+    //     } else if (item.name === highestPrice.name) {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
+    //     } else {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+    //     }
+    //   }
+    // });
 
     temp.push({
       // isRice: main.isRice,
@@ -955,275 +954,12 @@ const NinjaBoxCustomise = () => {
       selling_price: main.selling_price,
       // description: main.description,
     });
-
-    setMains(temp);
+    console.log("mainshere", temp)
+    setMains(mains => ([...mains, ...temp]));
+    // setMains(temp);
     // handleAfterItemSelection(temp);
     // setMainData((prev) => prev.filter((d) => d.name !== item_name));
   };
-
-  function increment(value, index, type, item) {
-    setHideRecommenedQnty(true);
-    setHideMainsRecommenedQnty(true);
-    setHideBreadRecommenedQnty(true);
-    setHideDessertRecommenedQnty(true);
-    if (item.Qtype === "pcs") {
-      value += 6;
-    } else {
-      value = parseFloat(value) + 0.5;
-    }
-    handleChange(value, index, type);
-  }
-  function decrement(value, index, type, item) {
-    setHideRecommenedQnty(true);
-    setHideMainsRecommenedQnty(true);
-    setHideBreadRecommenedQnty(true);
-    setHideDessertRecommenedQnty(true);
-    if (item.Qtype === "pcs") {
-      if (value < 12) {
-        value = 12;
-        handleChange(value, index, type);
-        // return false;
-      } else {
-        value = parseInt(value) - 6;
-        if (value < 12) {
-          value = 12;
-          handleChange(value, index, type);
-          // return false;
-        }
-      }
-    } else {
-      if (value < 1) {
-        value = 1;
-        handleChange(value, index, type);
-        // return false;
-      } else {
-        value = parseFloat(value) - 0.5;
-        if (value < 1) {
-          value = 1;
-          handleChange(value, index, type);
-          // return false;
-        }
-      }
-    }
-    handleChange(value, index, type);
-  }
-  function checkFirstValidation() {
-    if (!city) {
-      if (!city) {
-        Swal.fire({
-          text: "Please select your City",
-          icon: "warning",
-          confirmButtonText: "OK",
-        });
-        // alert("Fill the City please");
-      } else if (!startTime) {
-        Swal.fire({
-          text: "Please fill the delivery time",
-          icon: "warning",
-          confirmButtonText: "OK",
-        });
-        //alert("Fill the Event time please");
-      }
-      return false;
-    } else {
-      return true;
-    }
-  }
-  function getDeliveryCharge(people) {
-    if (
-      city === "Mumbai" ||
-      city === "Banglore" ||
-      city === "Navi-Mumbai" ||
-      city === "Thane"
-    ) {
-      if (people <= 25) {
-        setDeliveryCharge(0);
-      } else if (people > 25 && people <= 40) {
-        setDeliveryCharge(0);
-      } else if (people >= 41 && people <= 60) {
-        setDeliveryCharge(1499);
-      } else if (people >= 61 && people <= 99) {
-        setDeliveryCharge(1999);
-      }
-    } else if (
-      city === "Delhi" ||
-      city === "Gurgaon" ||
-      city === "Noida" ||
-      city === "Ghaziabad"
-    ) {
-      if (people <= 25) {
-        setDeliveryCharge(499);
-      } else if (people > 25 && people <= 40) {
-        setDeliveryCharge(999);
-      } else if (people >= 41 && people <= 60) {
-        setDeliveryCharge(1499);
-      } else if (people >= 61 && people <= 99) {
-        setDeliveryCharge(1999);
-      }
-    }
-  }
-  function handleChange(value, index, type) {
-    if (type === "starters") {
-      let newStarters = [...starters];
-      newStarters[index].quantity = value;
-      setStarters(newStarters);
-    }
-    if (type === "mains") {
-      let newMains = [...mains];
-      newMains[index].quantity = value;
-      setMains(newMains);
-    }
-    if (type === "desserts") {
-      let newDesserts = [...desserts];
-      newDesserts[index].quantity = value;
-      setDesserts(newDesserts);
-    }
-    if (type === "Bread+Rice") {
-      let newDesserts = [...breadRice];
-      newDesserts[index].quantity = value;
-      setBreadRice(newDesserts);
-    }
-  }
-  function handleDelete(index, type) {
-    setIsDelete(!isDelete);
-    if (type === "starters") {
-      let temp = [...starters];
-      temp.splice(index, 1);
-      console.log("hey", temp, filteredData);
-      setStarters(temp);
-      let removedIndexes = [];
-      filteredData.forEach((item, index) => {
-        let innerData = temp.filter(
-          (innerItem) => innerItem?.name === item?.name
-        );
-        console.log("item", innerData);
-        if (!innerData?.length) {
-          removedIndexes.push(index);
-        }
-      });
-      for (let j = 0; j < filteredData.length; j++) {
-        if (!removedIndexes.includes(j)) {
-          filteredData[j].checked = "checked";
-        } else {
-          filteredData[j].checked = "";
-          setCheckedValues(
-            checkedValues.filter((v) => v.id !== filteredData[j].id)
-          );
-        }
-      }
-      // setStartersData(filteredData)
-      console.log("removed", filteredData, removedIndexes);
-    } else if (type === "mains") {
-      let temp = [...mains];
-      temp.splice(index, 1);
-      setMains(temp);
-    } else if (type === "desserts") {
-      let temp = [...desserts];
-      temp.splice(index, 1);
-      setDesserts(temp);
-    } else if (type === "Bread+Rice") {
-      let temp = [...breadRice];
-      temp.splice(index, 1);
-      // changing the value after deleting
-      let bread = 0;
-      let count = 0;
-      let isVeg = false;
-
-      temp.map((item) => {
-        item.menu_label === "Breads" ? (bread += 1) : bread;
-        item.menu_label === "Rice" ? (count += 1) : count;
-        item.veg ? (isVeg = true) : (isVeg = false);
-      });
-      temp.map((item) => {
-        if (item?.menu_label === "Breads" && item.name === "Pooris") {
-          if (bread === 1) {
-            item.quantity = (veg + nonVeg) * 3;
-          } else {
-            item.quantity = (veg + nonVeg) * 2;
-          }
-        } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
-          if (bread === 1) {
-            item.quantity = (veg + nonVeg) * 2;
-          } else {
-            item.quantity = (veg + nonVeg) * 1;
-          }
-        } else if (item?.menu_label === "Rice") {
-          console.log("rice", count);
-          if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
-            let guests = veg > 0 ? veg : nonVeg;
-            if (count >= 2) {
-              console.log("count2");
-              item.quantity = 0.15 * guests;
-            } else if (mains.length > 0 && count === 1) {
-              console.log("count1");
-
-              item.quantity = 0.2 * guests;
-            } else if (mains.length === 0 && count === 1) {
-              console.log("count1");
-              item.quantity = 0.3 * guests;
-            }
-          } else if (veg > 0 && nonVeg > 0) {
-            let guests = veg + nonVeg;
-            if (count >= 2) {
-              item.quantity = 0.15 * guests;
-            } else if (
-              count === 1 &&
-              mains.length === 0 &&
-              starters.length >= 2
-            ) {
-              if (item.veg === true) {
-                item.quantity = 0.25 * veg;
-              } else {
-                item.quantity = 0.25 * nonVeg;
-              }
-            } else if (
-              count === 1 &&
-              mains.length === 0 &&
-              starters.length <= 1
-            ) {
-              if (item.veg === true) {
-                item.quantity = 0.3 * veg;
-              } else {
-                item.quantity = 0.3 * nonVeg;
-              }
-            } else if (
-              count >= 1 &&
-              mains.length === 0 &&
-              starters.length <= 1
-            ) {
-              if (item.veg === true) {
-                item.quantity = 0.25 * veg;
-              } else {
-                item.quantity = 0.25 * nonVeg;
-              }
-            } else if (
-              count >= 1 &&
-              mains.length === 0 &&
-              starters.length >= 2
-            ) {
-              if (item.veg === true) {
-                item.quantity = 0.2 * veg;
-              } else {
-                item.quantity = 0.2 * nonVeg;
-              }
-            } else if (count === 1 && mains.length >= 1) {
-              item.quantity = 0.2 * guests;
-            } else {
-              if (item.veg === true) {
-                item.quantity = 0.15 * veg;
-              } else {
-                item.quantity = 0.15 * nonVeg;
-              }
-            }
-          }
-        }
-      });
-
-      console.log("hey", temp, filteredData);
-
-      setBreadRice(temp);
-    }
-  }
   const handleBreadRiceAdd = (item_name, id) => {
     setIsBreadChange(!isBreadChange);
     console.log(item_name);
@@ -1530,17 +1266,15 @@ const NinjaBoxCustomise = () => {
       selling_price: filterBreadRice?.selling_price,
       // description: main.description,
     });
-    setBreadRice(temp);
+    setBreadRice(breadRice => ([...breadRice, ...temp]));
+    // setBreadRice(temp);
     // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   };
   const handleDesertsAdd = (item_name, id) => {
     setIsDessertChange(!isDessertChange);
     let temp = [...desserts];
     if (veg === 0 && nonVeg === 0) return;
-    if (temp.find((item) => item.name === item_name)) {
-      return;
-    }
-
+   
     const dessert = allMenus.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
@@ -1548,7 +1282,7 @@ const NinjaBoxCustomise = () => {
     }
     if (dessert.Qtype === "pcs") {
       // expensive desserts should go 1 piece
-      if (dessert.cuisine === "Continental") {
+      if (dessert.cuisine === "Continental") { 
         quantity = Math.round(veg + nonVeg);
       } else {
         if (dessert.name === "Angoori Gulab Jamun") {
@@ -1577,9 +1311,277 @@ const NinjaBoxCustomise = () => {
       veg: dessert.veg,
       selling_price: dessert.selling_price,
     });
-    setDesserts(temp);
+    
+    // setDesserts(temp);
+
+    setDesserts(desserts => ([...desserts, ...temp]));
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
+
+  function increment(value, index, type, item) {
+    setHideRecommenedQnty(true);
+    setHideMainsRecommenedQnty(true);
+    setHideBreadRecommenedQnty(true);
+    setHideDessertRecommenedQnty(true);
+    if (item.Qtype === "pcs") {
+      value += 6;
+    } else {
+      value = parseFloat(value) + 0.5;
+    }
+    handleChange(value, index, type);
+  }
+  function decrement(value, index, type, item) {
+    setHideRecommenedQnty(true);
+    setHideMainsRecommenedQnty(true);
+    setHideBreadRecommenedQnty(true);
+    setHideDessertRecommenedQnty(true);
+    if (item.Qtype === "pcs") {
+      if (value < 12) {
+        value = 12;
+        handleChange(value, index, type);
+        // return false;
+      } else {
+        value = parseInt(value) - 6;
+        if (value < 12) {
+          value = 12;
+          handleChange(value, index, type);
+          // return false;
+        }
+      }
+    } else {
+      if (value < 1) {
+        value = 1;
+        handleChange(value, index, type);
+        // return false;
+      } else {
+        value = parseFloat(value) - 0.5;
+        if (value < 1) {
+          value = 1;
+          handleChange(value, index, type);
+          // return false;
+        }
+      }
+    }
+    handleChange(value, index, type);
+  }
+  function checkFirstValidation() {
+    if (!city) {
+      if (!city) {
+        Swal.fire({
+          text: "Please select your City",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        // alert("Fill the City please");
+      } else if (!startTime) {
+        Swal.fire({
+          text: "Please fill the delivery time",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Event time please");
+      }
+      return false;
+    } else {
+      return true;
+    }
+  }
+  function getDeliveryCharge(people) {
+    if (
+      city === "Mumbai" ||
+      city === "Banglore" ||
+      city === "Navi-Mumbai" ||
+      city === "Thane"
+    ) {
+      if (people <= 25) {
+        setDeliveryCharge(0);
+      } else if (people > 25 && people <= 40) {
+        setDeliveryCharge(0);
+      } else if (people >= 41 && people <= 60) {
+        setDeliveryCharge(1499);
+      } else if (people >= 61 && people <= 99) {
+        setDeliveryCharge(1999);
+      }
+    } else if (
+      city === "Delhi" ||
+      city === "Gurgaon" ||
+      city === "Noida" ||
+      city === "Ghaziabad"
+    ) {
+      if (people <= 25) {
+        setDeliveryCharge(499);
+      } else if (people > 25 && people <= 40) {
+        setDeliveryCharge(999);
+      } else if (people >= 41 && people <= 60) {
+        setDeliveryCharge(1499);
+      } else if (people >= 61 && people <= 99) {
+        setDeliveryCharge(1999);
+      }
+    }
+  }
+  function handleChange(value, index, type) {
+    if (type === "starters") {
+      let newStarters = [...starters];
+      newStarters[index].quantity = value;
+      setStarters(newStarters);
+    }
+    if (type === "mains") {
+      let newMains = [...mains];
+      newMains[index].quantity = value;
+      setMains(newMains);
+    }
+    if (type === "desserts") {
+      let newDesserts = [...desserts];
+      newDesserts[index].quantity = value;
+      setDesserts(newDesserts);
+    }
+    if (type === "Bread+Rice") {
+      let newDesserts = [...breadRice];
+      newDesserts[index].quantity = value;
+      setBreadRice(newDesserts);
+    }
+  }
+  function handleDelete(index, type) {
+    setIsDelete(!isDelete);
+    if (type === "starters") {
+      let temp = [...starters];
+      temp.splice(index, 1);
+      console.log("hey", temp, filteredData);
+      setStarters(temp);
+      let removedIndexes = [];
+      filteredData.forEach((item, index) => {
+        let innerData = temp.filter(
+          (innerItem) => innerItem?.name === item?.name
+        );
+        console.log("item", innerData);
+        if (!innerData?.length) {
+          removedIndexes.push(index);
+        }
+      });
+      for (let j = 0; j < filteredData.length; j++) {
+        if (!removedIndexes.includes(j)) {
+          filteredData[j].checked = "checked";
+        } else {
+          filteredData[j].checked = "";
+          setCheckedValues(
+            checkedValues.filter((v) => v.id !== filteredData[j].id)
+          );
+        }
+      }
+      // setStartersData(filteredData)
+      console.log("removed", filteredData, removedIndexes);
+    } else if (type === "mains") {
+      let temp = [...mains];
+      temp.splice(index, 1);
+      setMains(temp);
+    } else if (type === "desserts") {
+      let temp = [...desserts];
+      temp.splice(index, 1);
+      setDesserts(temp);
+    } else if (type === "Bread+Rice") {
+      let temp = [...breadRice];
+      temp.splice(index, 1);
+      // changing the value after deleting
+      let bread = 0;
+      let count = 0;
+      let isVeg = false;
+
+      temp.map((item) => {
+        item.menu_label === "Breads" ? (bread += 1) : bread;
+        item.menu_label === "Rice" ? (count += 1) : count;
+        item.veg ? (isVeg = true) : (isVeg = false);
+      });
+      temp.map((item) => {
+        if (item?.menu_label === "Breads" && item.name === "Pooris") {
+          if (bread === 1) {
+            item.quantity = (veg + nonVeg) * 3;
+          } else {
+            item.quantity = (veg + nonVeg) * 2;
+          }
+        } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+          if (bread === 1) {
+            item.quantity = (veg + nonVeg) * 2;
+          } else {
+            item.quantity = (veg + nonVeg) * 1;
+          }
+        } else if (item?.menu_label === "Rice") {
+          console.log("rice", count);
+          if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+            let guests = veg > 0 ? veg : nonVeg;
+            if (count >= 2) {
+              console.log("count2");
+              item.quantity = 0.15 * guests;
+            } else if (mains.length > 0 && count === 1) {
+              console.log("count1");
+
+              item.quantity = 0.2 * guests;
+            } else if (mains.length === 0 && count === 1) {
+              console.log("count1");
+              item.quantity = 0.3 * guests;
+            }
+          } else if (veg > 0 && nonVeg > 0) {
+            let guests = veg + nonVeg;
+            if (count >= 2) {
+              item.quantity = 0.15 * guests;
+            } else if (
+              count === 1 &&
+              mains.length === 0 &&
+              starters.length >= 2
+            ) {
+              if (item.veg === true) {
+                item.quantity = 0.25 * veg;
+              } else {
+                item.quantity = 0.25 * nonVeg;
+              }
+            } else if (
+              count === 1 &&
+              mains.length === 0 &&
+              starters.length <= 1
+            ) {
+              if (item.veg === true) {
+                item.quantity = 0.3 * veg;
+              } else {
+                item.quantity = 0.3 * nonVeg;
+              }
+            } else if (
+              count >= 1 &&
+              mains.length === 0 &&
+              starters.length <= 1
+            ) {
+              if (item.veg === true) {
+                item.quantity = 0.25 * veg;
+              } else {
+                item.quantity = 0.25 * nonVeg;
+              }
+            } else if (
+              count >= 1 &&
+              mains.length === 0 &&
+              starters.length >= 2
+            ) {
+              if (item.veg === true) {
+                item.quantity = 0.2 * veg;
+              } else {
+                item.quantity = 0.2 * nonVeg;
+              }
+            } else if (count === 1 && mains.length >= 1) {
+              item.quantity = 0.2 * guests;
+            } else {
+              if (item.veg === true) {
+                item.quantity = 0.15 * veg;
+              } else {
+                item.quantity = 0.15 * nonVeg;
+              }
+            }
+          }
+        }
+      });
+
+      console.log("hey", temp, filteredData);
+
+      setBreadRice(temp);
+    }
+  }
+ 
   function handleBuffet(value) {
     setbuffet(value);
   }
