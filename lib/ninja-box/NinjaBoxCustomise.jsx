@@ -168,14 +168,16 @@ const NinjaBoxCustomise = () => {
             if (itemData[0].mealType === "Starter") {
               handleStatersAdd(item);
             } 
-            else if (itemData[0].mealType === "Main course") {
-              handleMainAdd(item);
-            } else if (itemData[0].mealType === "Bread+Rice") {
-              handleBreadRiceAdd(item);
-            } else if (itemData[0].mealType === "Dessert") {
-              handleDesertsAdd(item);
-              
-            } else {
+            if (itemData[0].mealType === "Main course") {
+              handleMainAdd(itemData[0].name);
+            } 
+             if (itemData[0].mealType === "Bread+Rice") {
+              handleBreadRiceAdd(itemData[0].name);
+            } 
+             if (itemData[0].mealType === "Dessert") {
+              handleDesertsAdd(itemData[0].name);
+            }
+            else {
               console.log("suspect", item); 
             } 
           } 
@@ -674,7 +676,7 @@ const NinjaBoxCustomise = () => {
       }
     });
 
-    setMains(tempMain);
+    // setMains(tempMain);
 
     //  dessert value change after veg anf=d non-veg guest change
 
@@ -692,15 +694,16 @@ const NinjaBoxCustomise = () => {
       }
     });
 
-    setDesserts(tempDessert);
+    // setDesserts(tempDessert);
   }, [veg, nonVeg]);
   function HandleCeilFloorValue(x) {
     var decimals = (x - Math.floor(x)).toFixed(1);
-    if (decimals <= 0.4) {
-      x = Math.floor(x);
-    } else if (decimals >= 0.6) {
-      x = Math.floor(x);
+    if (decimals < 0.75) {
+      x = (Math.ceil(x) + Math.floor(x)) / 2;
+    } else if (decimals >= 0.75) {
+      x = Math.ceil(x);
     }
+
     return x;
   }
   useEffect(() => {
@@ -960,7 +963,7 @@ const NinjaBoxCustomise = () => {
       menu_label: main.menu_label,
       name: main.name,
       quantity: quantity,
-      Qtype: main.Qtype,
+      Qtype: main.Qtype, 
       veg: main.veg,
       Images: main.Images,
       selling_price: main.selling_price,
@@ -1329,7 +1332,7 @@ const NinjaBoxCustomise = () => {
     });
     // setDesserts(temp);
     console.log("temp", temp)
-    setDesserts(dessert => ([...dessert, ...temp]));
+    setDesserts(desserts => ([...desserts, ...temp]));
 
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };

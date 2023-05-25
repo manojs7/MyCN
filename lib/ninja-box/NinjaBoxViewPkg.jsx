@@ -800,11 +800,12 @@ const NinjaBoxViewPkg = () => {
 
   function HandleCeilFloorValue(x) {
     var decimals = (x - Math.floor(x)).toFixed(1);
-    if (decimals <= 0.4) {
-      x = Math.floor(x);
-    } else if (decimals >= 0.6) {
-      x = Math.floor(x);
+    if (decimals < 0.75) {
+      x = (Math.ceil(x) + Math.floor(x)) / 2;
+    } else if (decimals >= 0.75) {
+      x = Math.ceil(x);
     }
+
     return x;
   }
   useEffect(() => {
