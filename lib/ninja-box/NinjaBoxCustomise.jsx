@@ -174,6 +174,7 @@ const NinjaBoxCustomise = () => {
               handleBreadRiceAdd(item);
             } else if (itemData[0].mealType === "Dessert") {
               handleDesertsAdd(item);
+              
             } else {
               console.log("suspect", item); 
             } 
@@ -181,7 +182,7 @@ const NinjaBoxCustomise = () => {
         }); 
     } else {
     }
-  },[]);
+  },[veg,nonVeg]);
  
 
   useEffect(() => {
@@ -1281,19 +1282,23 @@ const NinjaBoxCustomise = () => {
     // setBreadRice(temp);
     // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   };
-  const handleDesertsAdd = (item_name, id) => {
-    setIsDessertChange(!isDessertChange);
+ const handleDesertsAdd = async(item_name, id) => {
+    // setIsDessertChange(!isDessertChange);
     let temp = [...desserts];
     if (veg === 0 && nonVeg === 0) return;
-   
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+
     const dessert = allMenus.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
+    
     if (dessert.Qtype === "pcs") {
       // expensive desserts should go 1 piece
-      if (dessert.cuisine === "Continental") { 
+      if (dessert.cuisine === "Continental") {
         quantity = Math.round(veg + nonVeg);
       } else {
         if (dessert.name === "Angoori Gulab Jamun") {
@@ -1322,10 +1327,9 @@ const NinjaBoxCustomise = () => {
       veg: dessert.veg,
       selling_price: dessert.selling_price,
     });
-    
     // setDesserts(temp);
+    setDesserts(dessert => ([...dessert, ...temp]));
 
-    setDesserts(desserts => ([...desserts, ...temp]));
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
 
@@ -1603,6 +1607,7 @@ const NinjaBoxCustomise = () => {
     let mainPrice = 0;
     let dessertPrice = 0;
     let bredRicePrice = 0;
+
 
     starters.map((d) => {
       if (d.Qtype === "pcs") {
