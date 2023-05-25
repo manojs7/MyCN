@@ -1328,6 +1328,7 @@ const NinjaBoxCustomise = () => {
       selling_price: dessert.selling_price,
     });
     // setDesserts(temp);
+    console.log("temp", temp)
     setDesserts(dessert => ([...dessert, ...temp]));
 
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
