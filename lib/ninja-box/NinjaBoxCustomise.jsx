@@ -12,6 +12,7 @@ import {
 import styles from "/styles/NewCustomizePkg.module.scss";
 import styles2 from "/styles/NewDiy.module.scss";
 import styles3 from "/styles/NinjaBoxCustomise.module.scss";
+import styles4 from "/styles/ViewPackage.module.scss";
 
 import "bootstrap/dist/css/bootstrap.css";
 import { useRouter } from "next/router";
@@ -108,6 +109,7 @@ const NinjaBoxCustomise = () => {
   const [mealType, setMealType] = useState("veg");
 
   const [showPriceList, setShowPriceList] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const settings = {
     dots: true,
@@ -118,7 +120,16 @@ const NinjaBoxCustomise = () => {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2000,
-  };  
+  };
+  
+  const placeOrderBtn = (e) => {
+    e.preventDefault();
+    setShowPopup(true);
+  }
+  const closePopup = () => {
+    setShowPopup(false);
+  }
+  
   useEffect(() => {
     let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
     console.log("here", SessionData);
@@ -2040,6 +2051,105 @@ const NinjaBoxCustomise = () => {
 
   return (
     <div className={styles.customizeMainContainer}>
+      {showPopup &&<div className={styles4.popupCnfrmPkg}>
+          <h4>Details</h4>
+          <div className={styles4.scrldetails}>
+            <div className={styles4.formDetails}>
+              <div className='d-flex justify-content-between'>
+                <p>Name:</p>
+                <input type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}></input>
+              </div>
+              <div className='d-flex justify-content-between'>
+                <p>Phone:</p>
+                <input type="text"
+                  value={mobileno}
+                  onChange={(e) => setPhone(e.target.value)}></input>
+              </div>
+              <div className='d-flex justify-content-between'>
+                <p>Email:</p>
+                <input type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}></input>
+              </div>
+              <div className='d-flex justify-content-between'>
+                <p>Address:</p>
+                <input type="text"
+                  // value={address}
+                  onChange={(e) => setAddress(e.target.value)}></input>
+              </div>
+              <div className='d-flex justify-content-between'>
+                <p>ZipCode:</p>
+                <input type="number"
+                  maxLength={6}
+                  // value={zipcode}
+                  onChange={(e) => setZipcode(e.target.value)}></input>
+              </div>
+              {/* <p>{zipcodeError}</p> */}
+            </div>
+            <hr />
+            <div className={styles4.selectedDetails}>
+              <div className={styles4.data}>
+                <div>
+                  <h6>City:</h6>
+                  <h6>Date:</h6>
+                  <h6>Time:</h6>
+                  <h6>Veg Guest:</h6>
+                  <h6>Non-veg Guest:</h6>
+                  <h6>Occassion:</h6>
+                </div>
+                <div>
+                  <h6>{city}</h6>
+                  <h6>{startDate}</h6>
+                  <h6>{startTime}</h6>
+                  <h6>{veg}</h6>
+                  <h6>{nonVeg}</h6>
+                  <h6>{occasion}</h6>
+                </div>
+              </div>
+              <hr />
+              <div className={styles4.selectedItems}>
+                {/* <div>
+                  <h4>- Starters -</h4>
+                  {starters.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div>
+                <div>
+                  <h4>- Mains -</h4>
+                  {mains.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                  {breadRice.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div>
+                <div>
+                  <h4>- Desserts -</h4>
+                  {desserts.map((item, index) => (
+                    <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div> */}
+              </div>
+            </div>
+          </div>
+          <div>
+            <hr />
+            <div className={styles4.priceing}>
+              <h6>GRAND TOTAL :</h6>
+              <h6>₹ {grandTotal}</h6>
+            </div>
+            <div className={styles4.cnfmBtn}>
+              <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
+              <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
+            </div>
+          </div>
+        </div>}
       <div className={styles.customizeMainContainer}>
         <div className={styles.header}>
           <div className={styles.headerContent}>
@@ -3214,7 +3324,7 @@ const NinjaBoxCustomise = () => {
                     {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link> */}
-                    <button onClick={payumoney}>Place Order</button>
+                    <button onClick={placeOrderBtn}>Place Order</button>
                     <button style={{backgroundColor: "white"}} onClick={()=>window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
                     
 
