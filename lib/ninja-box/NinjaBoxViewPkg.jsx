@@ -148,34 +148,38 @@ const NinjaBoxViewPkg = () => {
     setBreadRiceData2(result.filter((d) => d.mealType === "Bread+Rice"));
   }, []);
 
-  useEffect(()=>{
-    preselection()
-  },[ID])
+  // useEffect(()=>{
+  //   preselection()
+  // },[ID])
 
   //Adding menu items to preselection
 
-  const preselection =  async() => {
+  useEffect(() => {
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
     let ID2=dataSelected.itemSelected["id"];
     let mealType2=dataSelected["mealType"]
     // setMealType(dataSelected["mealType"]) 
-    let itemData; 
+    let itemData;  
     console.log('mtype', mealType2, ID2)
     if (ID2) {
-       await PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items.forEach(
-        async(item) => {  
+       let itemDataArray= PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items
+        itemDataArray.map(
+        (item) => {  
           itemData = allMenus.filter((d) => d.name === item);
           if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
-              await handleStatersAdd(itemData[0].name);
-            } else if (itemData[0].mealType === "Main course") {
-               await handleMainAdd(itemData[0].name);
-            } else if (itemData[0].mealType === "Bread+Rice") {
-               await handleBreadRiceAdd(itemData[0].name);
-            } else if (itemData[0].mealType === "Dessert") {
-              await handleDesertsAdd(itemData[0].name);
-            }
+              handleStatersAdd(itemData[0].name);
+            }  
             
+             if (itemData[0].mealType === "Main course") {
+              handleMainAdd(itemData[0].name);
+            } 
+             if (itemData[0].mealType === "Bread+Rice") {
+              handleBreadRiceAdd(itemData[0].name);
+            } 
+             if (itemData[0].mealType === "Dessert") {
+              handleDesertsAdd(itemData[0].name);
+            }
             else {
               console.log("suspect", item)
             }
@@ -186,7 +190,8 @@ const NinjaBoxViewPkg = () => {
       );
     } else {
     }
-  };
+    // preselection()
+  },[]);
 
   const handleStatersAdd = async(item_name, id) => {
     // setIsStarterChange(!isStarterChange);
@@ -250,7 +255,8 @@ const NinjaBoxViewPkg = () => {
       selling_price: starter.selling_price,
       // description: starter.description,
     });
-    setStarters(temp);
+    setStarters(starters => ([...starters, ...temp]));
+    // setStarters(temp);
 
     console.log("starters", starters);
   };
@@ -424,7 +430,8 @@ const NinjaBoxViewPkg = () => {
       // description: main.description,
     });
 
-    setMains(temp);
+    setMains(mains => ([...mains, ...temp]));
+    // setMains(temp);
     // handleAfterItemSelection(temp);
     // setMainData((prev) => prev.filter((d) => d.name !== item_name));
   };
@@ -434,7 +441,7 @@ const NinjaBoxViewPkg = () => {
     // setIsBreadChange(!isBreadChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...breadRice];
-    const filterBreadRice = breadRiceData.find(
+    const filterBreadRice = allMenus.find(
       (item) => item.name === item_name
     );
     let quantity;
@@ -737,7 +744,8 @@ const NinjaBoxViewPkg = () => {
       selling_price: filterBreadRice?.selling_price,
       // description: main.description,
     });
-    setBreadRice(temp);
+    setBreadRice(breadRice => ([...breadRice, ...temp]));
+    // setBreadRice(temp);
     // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   };
   const handleDesertsAdd = async(item_name, id) => {
@@ -784,18 +792,20 @@ const NinjaBoxViewPkg = () => {
       veg: dessert.veg,
       selling_price: dessert.selling_price,
     });
-    setDesserts(temp);
+    // setDesserts(temp);
+    setDesserts(dessert => ([...dessert, ...temp]));
 
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
 
   function HandleCeilFloorValue(x) {
     var decimals = (x - Math.floor(x)).toFixed(1);
-    if (decimals <= 0.4) {
-      x = Math.floor(x);
-    } else if (decimals >= 0.6) {
-      x = Math.floor(x);
+    if (decimals < 0.75) {
+      x = (Math.ceil(x) + Math.floor(x)) / 2;
+    } else if (decimals >= 0.75) {
+      x = Math.ceil(x);
     }
+
     return x;
   }
   useEffect(() => {
