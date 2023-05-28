@@ -1800,7 +1800,7 @@ const NinjaBoxViewPkg = () => {
                 <button onClick={confirmPkg} id={styles.cnfrmPkg}>Check Price</button>
               </div>
               <div>
-                <a href="/customiseNinjaBox"><button id={styles.custmPkg}>Customise Package</button></a>
+                <Link href="/customiseNinjaBox"><button id={styles.custmPkg}>Customise Package</button></Link>
               </div>
             </div>
             <div className={styles.createNewPkg}>
@@ -1873,7 +1873,7 @@ const NinjaBoxViewPkg = () => {
                 <button onClick={() => placeOrderBtn()}>Place Order</button>
               </div>
               <div className={styles.orderBtn}>
-                <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20Package%20Menu" target="_blank"><button style={{ backgroundColor: "white" }}>Get Booking Help</button></a>
+                <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20Package%20Menu" target="_blank"><button style={{backgroundColor: "green", color: "white"}}>Get Booking Help</button></a>
               </div>
             </div>)}
           </div>
