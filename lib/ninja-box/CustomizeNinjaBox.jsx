@@ -3649,7 +3649,7 @@ const CustomizeNinjaBox = () => {
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link>
-                    <button onClick={placeOrderBtn}>Place Order</button>
+                    {/* <button onClick={placeOrderBtn}>Place Order</button> */}
                   </div>
                 </div>
               )}

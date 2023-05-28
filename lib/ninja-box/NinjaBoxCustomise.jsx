@@ -184,7 +184,7 @@ const NinjaBoxCustomise = () => {
         }); 
     } else {
     }
-  },[veg,nonVeg]);
+  },[]);
  
 
   useEffect(() => {
@@ -542,7 +542,16 @@ const NinjaBoxCustomise = () => {
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
         data.quantity = 12;
         if (data.Qtype === "pcs") {
-          data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          if (
+            data.name.includes("Paneer Tikka") ||
+            data.name.includes("Chicken Tikka") ||
+            data.name.includes("Kebab")
+          ) {
+            data.quantity = (veg > 0 ? veg : nonVeg) * 3;
+          } else {
+            data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          }
+
           if (data.quantity < 12) {
             data.quantity = 12;
           }
@@ -554,7 +563,15 @@ const NinjaBoxCustomise = () => {
 
         if (data.veg) {
           if (data.Qtype === "pcs") {
-            data.quantity = Math.round(veg * 2 + nonVeg * 1);
+            if (
+              data.name.includes("Paneer Tikka") ||
+              data.name.includes("Chicken Tikka") ||
+              data.name.includes("Kebab")
+            ) {
+              data.quantity = Math.round((veg + nonVeg) * 2.5);
+            } else {
+              data.quantity = Math.round(veg * 2 + nonVeg * 1);
+            }
             if (data.quantity < 12) {
               data.quantity = 12;
             }
@@ -563,7 +580,15 @@ const NinjaBoxCustomise = () => {
           }
         } else {
           if (data.Qtype === "pcs") {
-            data.quantity = nonVeg * 2;
+            if (
+              data.name.includes("Paneer Tikka") ||
+              data.name.includes("Chicken Tikka") ||
+              data.name.includes("Kebab")
+            ) {
+              data.quantity = Math.round((veg + nonVeg) * 2.5);
+            } else {
+              data.quantity = Math.round(nonVeg * 2);
+            }
             if (data.quantity < 12) {
               data.quantity = 12;
             }
@@ -600,7 +625,7 @@ const NinjaBoxCustomise = () => {
     tempMain.map((data) => {
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
         // if not rice , bred, noodles
-        // console.log("not rice , bred, noodles1");
+        console.log("not rice , bred, noodles1");
         if (data.Qtype === "pcs") {
           data.quantity = (veg > 0 ? veg : nonVeg) * 1;
         } else if (data.name === highestPrice.name) {
@@ -634,10 +659,10 @@ const NinjaBoxCustomise = () => {
           //Mains-gravy : same logic as above
           else if (data.menu_label === "Main-Gravy") {
             if (nonVegMainsGravyMainCount > 0) {
-              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+              data.quantity = HandleCeilFloorValue((veg * 0.15).toFixed(1));
             } else {
               data.quantity = HandleCeilFloorValue(
-                (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+                (veg * 0.15 + nonVeg * 0.1).toFixed(1)
               );
             }
           }
@@ -660,7 +685,9 @@ const NinjaBoxCustomise = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
+              data.quantity = HandleCeilFloorValue(
+                veg * 0.1 + nonVeg * 0.1
+              ).toFixed(1);
             }
           }
         } else {
@@ -670,12 +697,12 @@ const NinjaBoxCustomise = () => {
           } else if (data.name === highestPrice.name) {
             data.quantity = (nonVeg * 0.15).toFixed(1);
           } else {
-            data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+            data.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
           }
         }
       }
     });
-
+    
     // setMains(tempMain);
 
     //  dessert value change after veg anf=d non-veg guest change
@@ -738,6 +765,7 @@ const NinjaBoxCustomise = () => {
 
     let temp = [...starters];
     const starter = allMenus.find((item) => item.name === item_name);
+    // console.log("starterdata", startersData)
     // removing selected item
     // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
@@ -750,28 +778,55 @@ const NinjaBoxCustomise = () => {
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       if (starter.Qtype === "pcs") {
-        quantity = (veg > 0 ? veg : nonVeg) * 2;
+        if (
+          starter.name.includes("Paneer Tikka") ||
+          starter.name.includes("Chicken Tikka") ||
+          starter.name.includes("Kebab")
+        ) {
+          quantity = (veg > 0 ? veg : nonVeg) * 3;
+        } else {
+          quantity = (veg > 0 ? veg : nonVeg) * 2;
+        }
+
         if (quantity < 12) {
           quantity = 12;
         }
       } else {
-        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+        quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1));
       }
     } else {
       // if both guest is available
 
       if (starter.veg) {
         if (starter.Qtype === "pcs") {
-          quantity = Math.round((veg + nonVeg) * 1.5);
+          if (
+            starter.name.includes("Paneer Tikka") ||
+            starter.name.includes("Chicken Tikka") ||
+            starter.name.includes("Kebab")
+          ) {
+            quantity = Math.round((veg + nonVeg) * 2.5);
+          } else {
+            quantity = Math.round((veg + nonVeg) * 1.5);
+          }
+          // quantity = Math.round((veg + nonVeg) * 1.5);
           if (quantity < 12) {
             quantity = 12;
           }
         } else {
-          quantity = (veg * 0.05 + nonVeg * 0.05).toFixed(1);
+          quantity = HandleCeilFloorValue((veg * 0.05 + nonVeg * 0.05).toFixed(1));
         }
       } else {
         if (starter.Qtype === "pcs") {
-          quantity = nonVeg * 2;
+          if (
+            starter.name.includes("Paneer Tikka") ||
+            starter.name.includes("Chicken Tikka") ||
+            starter.name.includes("Kebab")
+          ) {
+            quantity = Math.round(nonVeg * 2.5);
+          } else {
+            quantity = Math.round(nonVeg * 2);
+          }
+          // quantity = nonVeg * 2;
           if (quantity < 12) {
             quantity = 12;
           }
@@ -780,7 +835,8 @@ const NinjaBoxCustomise = () => {
         }
       }
     }
-    temp.push({
+    let temp2=[]
+    temp2.push({
       id: starter.id,
       city: starter.city,
       cuisine: starter.cuisine,
@@ -793,13 +849,13 @@ const NinjaBoxCustomise = () => {
       selling_price: starter.selling_price,
       // description: starter.description,
     });
-    setStarters(starters => ([...starters, ...temp]));
+    setStarters(starters => ([...starters, ...temp2]));
     // setStarters(temp);
     console.log("starters", starters);
   };
 
   //mains add
-  const handleMainAdd = (item_name, id) => {
+  const handleMainAdd = async(item_name, id) => {
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
@@ -957,8 +1013,8 @@ const NinjaBoxCustomise = () => {
     //     }
     //   }
     // });
-
-    temp.push({
+    let temp2=[];
+    temp2.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
       name: main.name,
@@ -969,9 +1025,9 @@ const NinjaBoxCustomise = () => {
       selling_price: main.selling_price,
       // description: main.description,
     });
-    console.log("mainshere", temp)
-    setMains(mains => ([...mains, ...temp]));
-    // setMains(temp);
+    
+    setMains(mains => ([...mains, ...temp2]));
+    // setMains(temp); 
     // handleAfterItemSelection(temp);
     // setMainData((prev) => prev.filter((d) => d.name !== item_name));
   };
@@ -1270,7 +1326,8 @@ const NinjaBoxCustomise = () => {
       }
       console.log("rice", count);
     }
-    temp.push({
+    let temp2=[]
+    temp2.push({
       // isRice: main.isRice,
       menu_label: filterBreadRice?.menu_label,
       name: filterBreadRice?.name,
@@ -1281,7 +1338,7 @@ const NinjaBoxCustomise = () => {
       selling_price: filterBreadRice?.selling_price,
       // description: main.description,
     });
-    setBreadRice(breadRice => ([...breadRice, ...temp]));
+    setBreadRice(breadRice => ([...breadRice, ...temp2]));
     // setBreadRice(temp);
     // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   };
@@ -1313,7 +1370,8 @@ const NinjaBoxCustomise = () => {
     } else {
       quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
     }
-    temp.push({
+    let temp2=[]
+    temp2.push({
       // name: dessert.name,
       // quantity: quantity,
       // Qtype: dessert.Qtype,
@@ -1332,7 +1390,7 @@ const NinjaBoxCustomise = () => {
     });
     // setDesserts(temp);
     console.log("temp", temp)
-    setDesserts(desserts => ([...desserts, ...temp]));
+    setDesserts(desserts => ([...desserts, ...temp2]));
 
     // setDessertData((prev) => prev.filter((d) => d.id !== item_name));
   };
