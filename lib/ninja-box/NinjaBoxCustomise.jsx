@@ -855,7 +855,7 @@ const NinjaBoxCustomise = () => {
   };
 
   //mains add
-  const handleMainAdd = async(item_name, id) => {
+  const handleMainAdd = (item_name, id) => {
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
@@ -865,7 +865,6 @@ const NinjaBoxCustomise = () => {
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
-    
     let nonVegPastaMainCount = 0;
     let nonVegMainsGravyMainCount = 0;
     let nonVegMainThaiMainCount = 0;
@@ -889,7 +888,7 @@ const NinjaBoxCustomise = () => {
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       // if not rice , bred, noodles
-      // console.log("not rice , bred, noodles1");
+      console.log("not rice , bred, noodles1");
       if (main.Qtype === "pcs") {
         quantity = (veg > 0 ? veg : nonVeg) * 1;
       } else if (main.name === highestPrice.name) {
@@ -928,7 +927,7 @@ const NinjaBoxCustomise = () => {
             quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
           } else {
             quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+              (veg * 0.15 + nonVeg * 0.1).toFixed(1)
             );
           }
         }
@@ -962,10 +961,11 @@ const NinjaBoxCustomise = () => {
         } else if (main.name === highestPrice.name) {
           quantity = (nonVeg * 0.15).toFixed(1);
         } else {
-          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
         }
       }
     }
+
 
     // temp.forEach((item) => {
     //   if (item.veg) {
