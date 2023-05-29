@@ -738,6 +738,104 @@ const NinjaBoxCustomise = () => {
     
     // setMains(tempMain);
 
+    //BreadRice updation
+    let tempBreadRice = [...breadRice];
+        let bread = 0;
+        let count = 0;
+        let isVeg = false;
+
+        tempBreadRice.map((item) => {
+          item.menu_label === "Breads" ? (bread += 1) : bread;
+          item.menu_label === "Rice" ? (count += 1) : count;
+          item.veg ? (isVeg = true) : (isVeg = false);
+        });
+        tempBreadRice.map((item) => {
+          if (item?.menu_label === "Breads" && item.name === "Pooris") {
+            if (bread === 1) {
+              item.quantity = (veg + nonVeg) * 3;
+            } else {
+              item.quantity = (veg + nonVeg) * 2;
+            }
+          } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+            if (bread === 1) {
+              item.quantity = (veg + nonVeg) * 2;
+            } else {
+              item.quantity = (veg + nonVeg) * 1;
+            }
+          } else if (item?.menu_label === "Rice") {
+            console.log("rice", count);
+            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+              let guests = veg > 0 ? veg : nonVeg;
+              if (count >= 2) {
+                console.log("count2");
+                item.quantity = 0.15 * guests;
+              } else if (mains.length > 0 && count === 1) {
+                console.log("count1");
+
+                item.quantity = 0.2 * guests;
+              } else if (mains.length === 0 && count === 1) {
+                console.log("count1");
+                item.quantity = 0.3 * guests;
+              }
+            } else if (veg > 0 && nonVeg > 0) {
+              let guests = veg + nonVeg;
+              if (count >= 2) {
+                item.quantity = 0.15 * guests;
+              }
+              else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.25 * veg;
+                } else {
+                  item.quantity = 0.25 * nonVeg;
+                }
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.3 * veg;
+                } else {
+                  item.quantity = 0.3 * nonVeg;
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.25 * veg;
+                } else {
+                  item.quantity = 0.25 * nonVeg;
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = 0.2 * veg;
+                } else {
+                  item.quantity = 0.2 * nonVeg;
+                }
+              } else if (count === 1 && mains.length >= 1) {
+                item.quantity = 0.2 * guests;
+              } else {
+                if (item.veg === true) {
+                  item.quantity = 0.15 * guests;
+                } else {
+                  item.quantity = 0.15 * nonVeg;
+                }
+              }
+            }
+          }
+        });
+
+
     //  dessert value change after veg anf=d non-veg guest change
 
     let tempDessert = [...desserts];
