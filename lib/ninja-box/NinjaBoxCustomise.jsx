@@ -255,6 +255,39 @@ const NinjaBoxCustomise = () => {
   const handleOccasion = (occasion) => {
     setOccasion(occasion);
   };
+  function getDeliveryCharge(people) {
+    if (
+      city === "Mumbai" ||
+      city === "Banglore" ||
+      city === "Navi-Mumbai" ||
+      city === "Thane" || city==="Chennai" || city === "Pune"
+    ) {
+      if (people <= 25) {
+        setDeliveryCharge(0);
+      } else if (people > 25 && people <= 40) {
+        setDeliveryCharge(0);
+      } else if (people >= 41 && people <= 60) {
+        setDeliveryCharge(1499);
+      } else if (people >= 61 && people <= 99) {
+        setDeliveryCharge(1999);
+      }
+    } else if (
+      city === "Delhi" ||
+      city === "Gurgaon" ||
+      city === "Noida" ||
+      city === "Ghaziabad"
+    ) {
+      if (people <= 25) {
+        setDeliveryCharge(499);
+      } else if (people > 25 && people <= 40) {
+        setDeliveryCharge(999);
+      } else if (people >= 41 && people <= 60) {
+        setDeliveryCharge(1499);
+      } else if (people >= 61 && people <= 99) {
+        setDeliveryCharge(1999);
+      }
+    }
+  }
   const handleCity = (city) => {
     setCity(city);
     // setStarters([]);
@@ -1870,7 +1903,7 @@ const NinjaBoxCustomise = () => {
   const handlePlaceOrder = () => {
     let msg = "Hey,! Please Help me to make my DIY menu order!";
 
-    if (city === "Bangalore") {
+    if (city === "Bangalore" || city ==="Chennai" || city==="Pune") {
       window.location.href =
         "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
@@ -3293,7 +3326,7 @@ const NinjaBoxCustomise = () => {
                     {(city === "Mumbai" ||
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
-                      city === "Bangalore") &&
+                      city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                     people < 26 ? (
                       <>
                         <option value="0" defaultValue>
@@ -3306,7 +3339,7 @@ const NinjaBoxCustomise = () => {
                     ) : (city === "Mumbai" ||
                         city === "Navi-Mumbai" ||
                         city === "Thane" ||
-                        city === "Bangalore") &&
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3320,7 +3353,7 @@ const NinjaBoxCustomise = () => {
                     ) : (city === "Mumbai" ||
                         city === "Navi-Mumbai" ||
                         city === "Thane" ||
-                        city === "Bangalore") &&
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3334,7 +3367,7 @@ const NinjaBoxCustomise = () => {
                     ) : (city === "Mumbai" ||
                         city === "Navi-Mumbai" ||
                         city === "Thane" ||
-                        city === "Bangalore") &&
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
