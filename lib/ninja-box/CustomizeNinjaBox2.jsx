@@ -1751,18 +1751,32 @@ const CustomizeNinjaBox = () => {
     } catch (e) {
       console.log(e);
     }
-    fetch("/api/forma", {
+    // fetch("/api/forma", {
+    //   method: "POST",
+    //   body: data,
+    //   headers: { "Content-Type": "application/json; charset=UTF-8" },
+    // }).then((res) => {
+    //   console.log(res.message);
+    //   setEmailedToParser(true)
+    //   if (res.success) {
+    //     console.log("message sent");
+    //   } else {
+    //     console.log("Failed to send message");
+    //   }
+    // });
+
+    let zohodata={
+      "data":[
+          datas
+      ]
+  }
+
+    fetch("https://www.zohoapis.com/crm/v2/Leads", {
       method: "POST",
-      body: data,
-      headers: { "Content-Type": "application/json; charset=UTF-8" },
+      body: JSON.stringify(zohodata),
+      headers: { "Content-Type": "application/json", "Authorization":"Zoho-oauthtoken 1000.4162e988f273ef14cbee6e1b1f6fde4e.a9d176907bc0a43eba92b193cb930231" },
     }).then((res) => {
-      console.log(res.message);
-      setEmailedToParser(true)
-      if (res.success) {
-        console.log("message sent");
-      } else {
-        console.log("Failed to send message");
-      }
+      console.log(res)
     });
   };
 
