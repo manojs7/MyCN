@@ -1771,13 +1771,15 @@ const CustomizeNinjaBox = () => {
       ]
   }
 
-    fetch("https://www.zohoapis.com/crm/v2/Leads", {
+    fetch("/api/testZoho", {
       method: "POST",
-      body: JSON.stringify(zohodata),
-      headers: { "Content-Type": "application/json", "Authorization":"Zoho-oauthtoken 1000.4162e988f273ef14cbee6e1b1f6fde4e.a9d176907bc0a43eba92b193cb930231" },
+      body: data,
+      headers: { "Content-Type": "application/json"},
     }).then((res) => {
       console.log(res)
     });
+
+    
   };
 
   const handlePlaceOrder = () => {
