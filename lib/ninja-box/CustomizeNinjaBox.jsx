@@ -568,7 +568,7 @@ const CustomizeNinjaBox = () => {
               data.name.includes("Chicken Tikka") ||
               data.name.includes("Kebab")
             ) {
-              data.quantity = Math.round((veg + nonVeg) * 2.5);
+              data.quantity = Math.round((veg + nonVeg) * 3);
             } else {
               data.quantity = Math.round(veg * 2 + nonVeg * 1);
             }
@@ -586,7 +586,7 @@ const CustomizeNinjaBox = () => {
               data.name.includes("Chicken Tikka") ||
               data.name.includes("Kebab")
             ) {
-              data.quantity = Math.round((veg + nonVeg) * 2.5);
+              data.quantity = Math.round((veg + nonVeg) * 3);
             } else {
               data.quantity = Math.round(nonVeg * 2);
             }
@@ -905,7 +905,7 @@ const CustomizeNinjaBox = () => {
             starter.name.includes("Chicken Tikka") ||
             starter.name.includes("Kebab")
           ) {
-            quantity = Math.round((veg + nonVeg) * 2.5);
+            quantity = Math.round((veg + nonVeg) * 3);
           } else {
             quantity = Math.round((veg + nonVeg) * 1.5);
           }
@@ -924,7 +924,7 @@ const CustomizeNinjaBox = () => {
             starter.name.includes("Chicken Tikka") ||
             starter.name.includes("Kebab")
           ) {
-            quantity = Math.round(nonVeg * 2.5);
+            quantity = Math.round(nonVeg * 3);
           } else {
             quantity = Math.round(nonVeg * 2);
           }
@@ -1425,9 +1425,11 @@ const CustomizeNinjaBox = () => {
         quantity = Math.round((veg + nonVeg) * 3);
       } else {
         temp.forEach((item) => {
+          if(item.Qtype==="pcs"){
           item.name === "Poori - 4" && item.menu_label === "Breads"
             ? (item.quantity = Math.round((veg + nonVeg) * 2))
             : (item.quantity = Math.round((veg + nonVeg) * 1));
+          }
         });
         quantity = Math.round((veg + nonVeg) * 2);
       }
