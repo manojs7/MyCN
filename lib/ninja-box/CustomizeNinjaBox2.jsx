@@ -1751,19 +1751,35 @@ const CustomizeNinjaBox = () => {
     } catch (e) {
       console.log(e);
     }
-    fetch("/api/forma", {
+    // fetch("/api/forma", {
+    //   method: "POST",
+    //   body: data,
+    //   headers: { "Content-Type": "application/json; charset=UTF-8" },
+    // }).then((res) => {
+    //   console.log(res.message);
+    //   setEmailedToParser(true)
+    //   if (res.success) {
+    //     console.log("message sent");
+    //   } else {
+    //     console.log("Failed to send message");
+    //   }
+    // });
+
+    let zohodata={
+      "data":[
+          datas
+      ]
+  }
+
+    fetch("/api/testZoho", {
       method: "POST",
       body: data,
-      headers: { "Content-Type": "application/json; charset=UTF-8" },
+      headers: { "Content-Type": "application/json"},
     }).then((res) => {
-      console.log(res.message);
-      setEmailedToParser(true)
-      if (res.success) {
-        console.log("message sent");
-      } else {
-        console.log("Failed to send message");
-      }
+      console.log(res)
     });
+
+    
   };
 
   const handlePlaceOrder = () => {

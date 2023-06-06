@@ -227,21 +227,6 @@ const CustomizeNinjaBox = () => {
 
     // console.log("work in progress");
 
-    let itemData;
-
-    // PreSelected.forEach((item) => {
-    //   itemData = allMenus.filter((d) => d.name === item);
-    //   if (itemData[0].mealType === "Starter") {
-    //     // handleStatersAdd(item);
-    //   } else if (itemData[0].mealType === "Main course") {
-    //     // handleMainAdd(item);
-    //   } else if (itemData[0].mealType === "Bread+Rice") {
-    //     // handleBreadRiceAdd(item);
-    //   } else if (itemData[0].mealType === "Dessert") {
-    //     // handleDesertsAdd(item);
-    //   }
-    //   console.log("here", itemData);
-    // });
 
     const newMainData = allMenus.filter((d) => d.mealType === "Main course");
 
@@ -307,7 +292,12 @@ const CustomizeNinjaBox = () => {
   const handleVegNonVegGuest = (name, value) => {
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
-    } else {
+    } 
+    else if(value<5){
+      alert("Minimum "+ name +" guest count should be 5")
+      name === "veg" ? setVeg(5) : setNonVeg(5);
+    }
+    else {
       name === "veg" ? setVeg(value) : setNonVeg(value);
     }
     console.log("guest", veg, nonVeg);
@@ -568,7 +558,7 @@ const CustomizeNinjaBox = () => {
             data.quantity = 12;
           }
         } else {
-          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+          data.quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1));
         }
       } else {
         // if both guest is available
@@ -580,7 +570,7 @@ const CustomizeNinjaBox = () => {
               data.name.includes("Chicken Tikka") ||
               data.name.includes("Kebab")
             ) {
-              data.quantity = Math.round((veg + nonVeg) * 2.5);
+              data.quantity = Math.round((veg + nonVeg) * 3);
             } else {
               data.quantity = Math.round(veg * 2 + nonVeg * 1);
             }
@@ -588,7 +578,8 @@ const CustomizeNinjaBox = () => {
               data.quantity = 12;
             }
           } else {
-            data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
+            // data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
+            data.quantity = HandleCeilFloorValue(((veg +nonVeg) * 0.075).toFixed(1));
           }
         } else {
           if (data.Qtype === "pcs") {
@@ -597,7 +588,7 @@ const CustomizeNinjaBox = () => {
               data.name.includes("Chicken Tikka") ||
               data.name.includes("Kebab")
             ) {
-              data.quantity = Math.round((veg + nonVeg) * 2.5);
+              data.quantity = Math.round((veg + nonVeg) * 3);
             } else {
               data.quantity = Math.round(nonVeg * 2);
             }
@@ -717,7 +708,107 @@ const CustomizeNinjaBox = () => {
 
     setMains(tempMain);
 
+    //Bread Rice update
+    let tempBreadRice=[...breadRice]
+    let bread = 0;
+        let count = 0;
+        let isVeg = false;
+
+        tempBreadRice.map((item) => {
+          item.menu_label === "Breads" ? (bread += 1) : bread;
+          item.menu_label === "Rice" ? (count += 1) : count;
+          item.veg ? (isVeg = true) : (isVeg = false);
+        });
+        tempBreadRice.map((item) => {
+          if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
+            if (bread === 1) {
+              item.quantity = Math.round((veg + nonVeg) * 3);
+            } else {
+              item.quantity = Math.round((veg + nonVeg) * 2);
+            }
+          } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
+            if (bread === 1) {
+              item.quantity = Math.round((veg + nonVeg) * 2);
+            } else {
+              item.quantity = Math.round((veg + nonVeg) * 1);
+            }
+          } else if (item?.menu_label === "Rice") {
+            console.log("rice", count);
+            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+              let guests = veg > 0 ? veg : nonVeg;
+              if (count >= 2) {
+                console.log("count2");
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              } else if (mains.length > 0 && count === 1) {
+                console.log("count1");
+
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
+              } else if (mains.length === 0 && count === 1) {
+                console.log("count1");
+                item.quantity = HandleCeilFloorValue(0.3 * guests);
+              }
+            } else if (veg > 0 && nonVeg > 0) {
+              let guests = veg + nonVeg;
+              if (count >= 2) {
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+                }
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.3 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.2 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+                }
+              } else if (count === 1 && mains.length >= 1) {
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
+              } else {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.15 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+                }
+              }
+            }
+          }
+        });
+
+
+
     //  dessert value change after veg anf=d non-veg guest change
+
+
 
     let tempDessert = [...desserts];
 
@@ -776,7 +867,7 @@ const CustomizeNinjaBox = () => {
     if (veg === 0 && nonVeg === 0) return;
 
     let temp = [...starters];
-    const starter = startersData.find((item) => item.name === item_name);
+    const starter = allMenus.find((item) => item.name === item_name);
     // console.log("starterdata", startersData)
     // removing selected item
     // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
@@ -804,7 +895,7 @@ const CustomizeNinjaBox = () => {
           quantity = 12;
         }
       } else {
-        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+        quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1));
       }
     } else {
       // if both guest is available
@@ -816,7 +907,7 @@ const CustomizeNinjaBox = () => {
             starter.name.includes("Chicken Tikka") ||
             starter.name.includes("Kebab")
           ) {
-            quantity = Math.round((veg + nonVeg) * 2.5);
+            quantity = Math.round((veg + nonVeg) * 3);
           } else {
             quantity = Math.round((veg + nonVeg) * 1.5);
           }
@@ -825,16 +916,17 @@ const CustomizeNinjaBox = () => {
             quantity = 12;
           }
         } else {
-          quantity = (veg * 0.05 + nonVeg * 0.05).toFixed(1);
+          // quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
+          quantity = HandleCeilFloorValue(((veg + nonVeg) * 0.075).toFixed(1));
         }
-      } else {
+      } else { 
         if (starter.Qtype === "pcs") {
           if (
             starter.name.includes("Paneer Tikka") ||
             starter.name.includes("Chicken Tikka") ||
             starter.name.includes("Kebab")
           ) {
-            quantity = Math.round(nonVeg * 2.5);
+            quantity = Math.round(nonVeg * 3);
           } else {
             quantity = Math.round(nonVeg * 2);
           }
@@ -1214,13 +1306,13 @@ const CustomizeNinjaBox = () => {
         item.veg ? (isVeg = true) : (isVeg = false);
       });
       temp.map((item) => {
-        if (item?.menu_label === "Breads" && item.name === "Pooris") {
+        if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
           if (bread === 1) {
             item.quantity = Math.round((veg + nonVeg) * 3);
           } else {
             item.quantity = Math.round((veg + nonVeg) * 2);
           }
-        } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+        } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
           if (bread === 1) {
             item.quantity = Math.round((veg + nonVeg) * 2);
           } else {
@@ -1308,7 +1400,7 @@ const CustomizeNinjaBox = () => {
     console.log(item_name);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...breadRice];
-    const filterBreadRice = breadRiceData.find(
+    const filterBreadRice = allMenus.find(
       (item) => item.name === item_name
     );
     let quantity;
@@ -1318,36 +1410,39 @@ const CustomizeNinjaBox = () => {
 
     // Rice + Noodles + Breads
 
-    //Breads Pooris
+    //Breads Poori - 4
     if (
       filterBreadRice?.menu_label === "Breads" &&
-      filterBreadRice.name === "Pooris"
+      filterBreadRice.name === "Poori - 4"
     ) {
       let bread = 1;
 
       temp.map((item) => {
         item.menu_label === "Breads" ? (bread += 1) : bread;
       });
+      
       bread === 1
         ? (quantity = Math.round((veg + nonVeg) * 3))
         : (quantity = Math.round((veg + nonVeg) * 2));
       if (bread === 1) {
         quantity = Math.round((veg + nonVeg) * 3);
       } else {
-        // temp.forEach((item) => {
-        //   item.name === "Pooris" && item.menu_label === "Breads"
-        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
-        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
-        // });
+        temp.forEach((item) => {
+          if(item.Qtype==="pcs"){
+          item.name === "Poori - 4" && item.menu_label === "Breads"
+            ? (item.quantity = Math.round((veg + nonVeg) * 2))
+            : (item.quantity = Math.round((veg + nonVeg) * 1));
+          }
+        });
         quantity = Math.round((veg + nonVeg) * 2);
       }
       // checking for bread
     }
 
-    //Breads but not Pooris
+    //Breads but not Poori - 4
     else if (
       filterBreadRice?.menu_label === "Breads" &&
-      filterBreadRice?.name !== "Pooris"
+      filterBreadRice?.name !== "Poori - 4"
     ) {
       let bread = 1;
 
@@ -1356,14 +1451,16 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       if (bread === 1) {
-        quantity = Math.round((veg + nonVeg) * 1.5);
+        quantity = Math.round((veg + nonVeg) * 2);
       } else {
-        // temp.forEach((item) => {
-        //   item.name === "Pooris" && item.menu_label === "Breads"
-        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
-        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
-
-        // });
+        temp.forEach((item) => {
+          if(item.Qtype==="pcs"){
+          item.name === "Poori - 4" && item.menu_label === "Breads"
+            ? (item.quantity = Math.round((veg + nonVeg) * 2))
+            : (item.quantity = Math.round((veg + nonVeg) * 1));
+            
+          }
+        });
         quantity = Math.round((veg + nonVeg) * 1);
       }
     }
@@ -1409,7 +1506,6 @@ const CustomizeNinjaBox = () => {
         item.menu_label === "Rice" ? (count += 1) : count;
         item.veg ? (isVeg = true) : (isNonVeg = true);
       });
-      console.log("rice", count);
       if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
         let guests = veg > 0 ? veg : nonVeg;
         if (mains.length === 0 && count === 1) {
@@ -1463,7 +1559,7 @@ const CustomizeNinjaBox = () => {
           } else if (count >= 3) {
             quantity = HandleCeilFloorValue(veg * 0.1);
           } else {
-            quantity = HandleCeilFloorValue(veg * 0.15);
+            quantity = HandleCeilFloorValue(guests * 0.15);
           }
         } else {
           //non veg rice handelling
@@ -1488,13 +1584,13 @@ const CustomizeNinjaBox = () => {
           item.veg ? (isVeg = true) : (isVeg = false);
         });
         temp.map((item) => {
-          if (item?.menu_label === "Breads" && item.name === "Pooris") {
+          if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
             if (bread === 1) {
               item.quantity = Math.round((veg + nonVeg) * 3);
             } else {
               item.quantity = Math.round((veg + nonVeg) * 2);
             }
-          } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+          } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
             if (bread === 1) {
               item.quantity = Math.round((veg + nonVeg) * 2);
             } else {
