@@ -1,86 +1,333 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet');
-.mainBody{
+
+.mainBody {
     font-family: "Montserrat", sans-serif;
-    background-color: #FFF2DE;
-    padding-top: 20px;
+    background-color: #FFE8CA;
+    //padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.header{
-    h2{
+.header {
+    h2 {
         text-align: center;
-        font-size: 20px;
-        font-weight: 700;
-        color: #FFC31A;
+        font-size: 22.2402px;
+        font-weight: 900;
+        color: #F1A42B;
         background-color: black;
+        line-height: 27px;
         padding-inline: 15px;
         padding-block: 5px;
         border-radius: 50px;
-        span{
-            color: white;
+
+        span {
+            color: #FEEEDD;
         }
     }
 
-    .btmContent{
+    .btmContent {
         margin-top: -5px;
         display: flex;
         justify-content: space-evenly;
         margin-inline: 80px;
         height: 25px;
-        h6{
+
+        h6 {
+            padding-top: 2px;
+            text-align: center;
+            width: 86px;
+            height: 13px;
             margin-top: 5px;
             background-color: black;
             color: white;
-            font-size: 10px;
-            font-weight: 600;
-            padding-inline: 5px;
-            border-radius: 50px;
+            font-size: 7.62837px;
+            font-weight: 800;
+            //padding-inline: 5px;
+            line-height: 9px;
+            border-radius: 6.71px;
         }
-    
-        p{
-            margin-top: 2px;
-            font-weight: 600;
-            color: green;
-            font-size: 10PX;
-            span{
-                color: red;
+
+        p {
+            margin-top: 6px;
+            font-weight: 800;
+            color: #547A17;
+            font-size: 8.2593px;
+            line-height: 10px;
+
+            span {
+                color: #BC0A01;
             }
         }
     }
 }
 
-.pkgContainer{
+.packages {
+    margin-top: 30px;
+}
+
+.packagesContainer {
+    margin-top: 20px;
+
+    h3 {
+        text-align: center;
+        font-weight: 800;
+        font-size: 18.4952px;
+        line-height: 23px;
+        color: #222221;
+    }
+
+    .firstRow {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+
+        p {
+            position: absolute;
+            margin-top: -12px;
+            margin-left: 55px;
+
+            font-weight: 800;
+            font-size: 15.2882px;
+            line-height: 19px;
+            color: #222221;
+        }
+    }
+
+    .secondRow {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+
+        p {
+            position: absolute;
+            margin-top: -12px;
+            margin-left: 55px;
+
+            font-weight: 800;
+            font-size: 15.2882px;
+            line-height: 19px;
+            color: #222221;
+        }
+    }
+
+    .goldPkg {
+        width: 169.26px;
+        height: 121.52px;
+        border: 0.9px solid #4D7104;
+        border-radius: 10px;
+
+        .blackbg {
+            position: relative;
+            margin: auto;
+            margin-top: 5px;
+            width: 154.47px;
+            height: 107.97px;
+            background-color: #222221;
+            border-radius: 7px;
+            box-shadow: 0px 0.896924px 0.896924px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .selectBtn {
+        margin-top: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+
+        button {
+            padding-top: 2px;
+            border: none;
+            width: 110px;
+            height: 18.61px;
+            background: #FFC31A;
+            box-shadow: 0px 2.05082px 2.05082px rgba(0, 0, 0, 0.25);
+            border-radius: 11.3342px;
+            font-weight: 700;
+            font-size: 7.83878px;
+            color: #FFFFFF;
+        }
+
+        button:hover {
+            background: #E23D1C;
+        }
+    }
+
+    .nvGoldPkg {
+        width: 169.26px;
+        height: 155.89px;
+        border: 0.9px solid #BC0A01;
+        border-radius: 10px;
+
+        .blackbg {
+            position: relative;
+            margin: auto;
+            margin-top: 5px;
+            width: 154.47px;
+            height: 138.61px;
+            background-color: #222221;
+            border-radius: 7px;
+            box-shadow: 0px 0.896924px 0.896924px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    #vector {
+        margin-left: 2px;
+        position: absolute;
+        text-align: center;
+        margin-top: -16px;
+        padding-inline: 20px;
+    }
+
+    .insideContent {
+        padding-top: 10px;
+
+        h4 {
+            text-align: center;
+            color: #FEEEDD;
+            font-size: 12.26px;
+            font-weight: 800;
+        }
+
+        p {
+            margin-top: -15px;
+            text-align: center;
+            color: #FEEEDD;
+            font-size: 7.34px;
+            font-weight: 500;
+        }
+
+        .btns {
+            margin-top: 13px;
+            display: flex;
+            justify-content: space-around;
+
+            h6 {
+                font-weight: 600;
+                font-size: 9.47506px;
+                color: #FEEEDD;
+            }
+
+            #greenBtn {
+                h6 {
+                    padding-top: 1px;
+                    // margin-block: 4px;
+                    // padding-inline: 5px;
+                    width: 43.29px;
+                    height: 12.47px;
+                    font-weight: 700;
+                    font-size: 8.4643px;
+                    text-align: center;
+                    color: #F6F6F6;
+                    background-color: #547A17;
+                    box-shadow: 0.825115px 1.10015px 2.75038px rgba(0, 0, 0, 0.25);
+                    border-radius: 7.29px;
+                }
+            }
+        }
+    }
+}
+
+.bottomSectn {
+    margin-top: 30px;
+    height: 285.77px;
+    padding-top: 55px;
+    margin-bottom: -20px;
+
+    .top {
+        display: flex;
+        justify-content: space-evenly;
+        margin-inline: 48px;
+
+        h6 {
+            margin-block: 2px;
+            font-weight: 800;
+            font-size: 9.52997px;
+            line-height: 12px;
+            color: #222221;
+        }
+
+        button {
+            margin-top: 8px;
+            width: 80.15px;
+            height: 14.39px;
+            border-radius: 10.79px;
+            font-weight: 600;
+            font-size: 8.3457px;
+            line-height: 10px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.29);
+            border: 0.372043px solid #FFFFFF;
+        }
+    }
+
+    .btm {
+        margin-top: 112px;
+        text-align: center;
+
+        button {
+            margin-top: 20px;
+            width: 96.92px;
+            height: 18.61px;
+            border-radius: 11.33px;
+            background: #E23D1C;
+            border: none;
+            font-weight: 700;
+            font-size: 7.83878px;
+            line-height: 140%;
+            text-decoration-line: underline;
+            color: #F6F6F6;
+        }
+
+        .ninjaWithBtn {
+            display: flex;
+            justify-content: space-between;
+            margin-inline: 100px;
+        }
+    }
+}
+
+
+
+//second Package Row Container
+
+
+.pkgContainer {
     margin-top: 15px;
-    h3{
+
+    h3 {
         text-align: center;
         font-size: 18px;
         font-weight: 700;
     }
 
-    .pkgCards{
+    .pkgCards {
         display: flex;
         justify-content: space-evenly;
     }
 
-    .pkg1{
+    .pkg1 {
         padding: 5px;
         border: 1px solid black;
         position: relative;
         text-align: center;
-        h5{
+
+        h5 {
             position: absolute;
             margin-top: -12px;
             margin-left: 50px;
             font-weight: 700;
             background-color: gold;
         }
-        h4{
+
+        h4 {
             margin-top: 15px;
         }
+
         // .cardBg{
         //     background-color: black;
         // }
-        button{
+        button {
             background-color: green;
             width: 45px;
             height: 20px;
@@ -88,27 +335,31 @@
             color: white;
         }
 
-        .vegSnackOptions{
+        .vegSnackOptions {
             background-color: #FFC31A;
             position: absolute;
             width: 140px;
             text-align: center;
             margin-left: 150px;
             z-index: 1;
-            ul{
+
+            ul {
                 text-align: center;
                 padding-left: 0%;
                 padding-bottom: 0%;
                 padding-top: 10px;
             }
-            li{
+
+            li {
                 text-align: center;
                 display: flex;
                 justify-content: space-around;
-                input{
+
+                input {
                     width: 10px;
                 }
-                p{
+
+                p {
                     font-size: 12px;
                 }
             }
@@ -116,41 +367,174 @@
     }
 }
 
-.itemSelector{
+.itemSelector {
     border: 1px solid red;
 }
 
 .slidercontainer {
     display: flex;
     overflow-x: auto;
-  }
-  
-  .slider {
+}
+
+.slider {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px;
-  }
-  
-  .item {
+}
+
+.item {
     background-color: #ccc;
     margin-bottom: 10px;
     width: calc(33.33% - 10px);
     padding: 10px;
     box-sizing: border-box;
-  }
-  
-  @media (max-width: 767px) {
+}
+
+@media (max-width: 767px) {
     .slider {
-      width: calc(100% + 20px);
-      margin-left: -10px;
-      margin-right: -10px;
-      justify-content: flex-start;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        margin-right: -10px;
+        justify-content: flex-start;
     }
-  
+
     .item {
-      width: calc(100% / 3 - 10px);
-      margin-left: 10px;
-      margin-right: 10px;
+        width: calc(100% / 3 - 10px);
+        margin-left: 10px;
+        margin-right: 10px;
     }
-  }
+}
+
+
+/*****************************CUSTOMISE BIRTHDAY PAGE****************************************/
+.customisePkgContainer {
+    margin-top: 30px;
+
+    h4 {
+        text-align: center;
+        font-weight: 800;
+        font-size: 18.4952px;
+        line-height: 23px;
+        color: #222221;
+    }
+
+    .pkgCard {
+        margin-top: 30px !important;
+        margin: auto;
+        width: 169.26px;
+        height: 155.89px;
+        border: 0.9px solid #BC0A01;
+        border-radius: 10px;
+
+        #titlebg {
+            margin-top: -15px;
+            position: relative;
+            margin-inline: 20px;
+
+            h4 {
+                font-weight: 800;
+                font-size: 18.69px;
+                line-height: 23px;
+                text-align: center;
+                color: #222221;
+            }
+        }
+
+        .blackbg {
+            margin-left: 7px;
+            position: absolute;
+            margin-top: 5px;
+            width: 154.47px;
+            height: 138.61px;
+            background-color: #222221;
+            border-radius: 7px;
+            box-shadow: 0px 0.896924px 0.896924px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .cardinsideContent {
+        margin-top: -8px;
+
+        h4 {
+            font-weight: 800;
+            font-size: 14.9873px;
+            line-height: 18px;
+            text-align: center;
+            color: #FEEEDD;
+            margin-bottom: -10px;
+        }
+
+        p {
+            color: #FEEEDD;
+            font-weight: 500;
+            font-size: 7.36px;
+            line-height: 8.98px;
+        }
+    }
+
+    .btns {
+        margin-top: -5px;
+        display: flex;
+        justify-content: space-around;
+
+        h6 {
+            font-weight: 600;
+            font-size: 9.47506px;
+            color: #FEEEDD;
+        }
+
+        #greenBtn {
+            h6 {
+                padding-top: 1px;
+                // margin-block: 4px;
+                // padding-inline: 5px;
+                width: 43.29px;
+                height: 12.47px;
+                font-weight: 700;
+                font-size: 8.4643px;
+                text-align: center;
+                color: #F6F6F6;
+                background-color: #547A17;
+                box-shadow: 0.825115px 1.10015px 2.75038px rgba(0, 0, 0, 0.25);
+                border-radius: 7.29px;
+            }
+        }
+    }
+}
+
+.itemsSelectionContainer {
+    margin-top: 30px;
+
+    h3 {
+        margin-bottom: 15px;
+        text-align: center;
+        font-weight: 800;
+        font-size: 18.4952px;
+        line-height: 23px;
+        color: #222221;
+    }
+
+    .vegSnackContainer {
+
+        .selectItemSearchBox {
+            margin: auto;
+            width: 327px;
+            height: 31px;
+            background: #FFE9D9;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5.02177px;
+            display: flex;
+            justify-content: space-around;
+
+            h6 {
+                margin-block: 8px;
+                font-weight: 600;
+                font-size: 12.1784px;
+                line-height: 15px;
+                letter-spacing: 0.05em;
+                color: rgba(44, 51, 56, 0.66);
+            }
+        }
+    }
+}
