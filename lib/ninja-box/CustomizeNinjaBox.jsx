@@ -380,10 +380,11 @@ const CustomizeNinjaBox = () => {
       showDiv2: true,
     });
 
+    //filteredData - total
+    //selectedIds = results - total - selected
     const results = filteredData.filter(
       ({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1)
     );
-
     let selectedIds = [];
     for (let i = 0; i < results.length; i++) {
       selectedIds.push(results[i].id);
@@ -520,7 +521,8 @@ const CustomizeNinjaBox = () => {
       setCheckedValues([...checkedValues, value]);
     } else {
       value.checked = "";
-      setCheckedValues(checkedValues.filter((v) => v.id !== value.id));
+      checkedValues = checkedValues.filter((v) => v.id !== value.id)
+      setCheckedValues(checkedValues);
       handleDelete(index, type);
     }
   };
@@ -1279,12 +1281,13 @@ const CustomizeNinjaBox = () => {
           filteredData[j].checked = "checked";
         } else {
           filteredData[j].checked = "";
+          checkedValues = checkedValues.filter((v) => v.id !== filteredData[j].id)
           setCheckedValues(
-            checkedValues.filter((v) => v.id !== filteredData[j].id)
+            checkedValues
           );
         }
       }
-      // setStartersData(filteredData)
+      setStartersData(filteredData)
       console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
       let temp = [...mains];
@@ -1477,13 +1480,13 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(veg * 0.2))
         : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
       filterBreadRice.veg === false &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
         : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
 
@@ -1824,9 +1827,9 @@ const CustomizeNinjaBox = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
     setShowPriceList(false);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
@@ -1834,9 +1837,9 @@ const CustomizeNinjaBox = () => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
   }, [buffet]);
 
@@ -1844,7 +1847,7 @@ const CustomizeNinjaBox = () => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-        100
+      100
     );
   }
 
@@ -1911,9 +1914,9 @@ const CustomizeNinjaBox = () => {
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        getGst()
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst()
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -2246,66 +2249,66 @@ const CustomizeNinjaBox = () => {
 
   return (
     <div className={styles.customizeMainContainer}>
-      {showPopup &&<div className={styles4.popupCnfrmPkg}>
-          <h4>Details</h4>
-          <div className={styles4.scrldetails}>
-            <div className={styles4.formDetails}>
-              <div className='d-flex justify-content-between'>
-                <p>Name:</p>
-                <input type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}></input>
+      {showPopup && <div className={styles4.popupCnfrmPkg}>
+        <h4>Details</h4>
+        <div className={styles4.scrldetails}>
+          <div className={styles4.formDetails}>
+            <div className='d-flex justify-content-between'>
+              <p>Name:</p>
+              <input type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Phone:</p>
+              <input type="text"
+                value={mobileno}
+                onChange={(e) => setPhone(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Email:</p>
+              <input type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Address:</p>
+              <input type="text"
+                // value={address}
+                onChange={(e) => setAddress(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>ZipCode:</p>
+              <input type="number"
+                maxLength={6}
+                // value={zipcode}
+                onChange={(e) => setZipcode(e.target.value)}></input>
+            </div>
+            {/* <p>{zipcodeError}</p> */}
+          </div>
+          <hr />
+          <div className={styles4.selectedDetails}>
+            <div className={styles4.data}>
+              <div>
+                <h6>City:</h6>
+                <h6>Date:</h6>
+                <h6>Time:</h6>
+                <h6>Veg Guest:</h6>
+                <h6>Non-veg Guest:</h6>
+                <h6>Occassion:</h6>
               </div>
-              <div className='d-flex justify-content-between'>
-                <p>Phone:</p>
-                <input type="text"
-                  value={mobileno}
-                  onChange={(e) => setPhone(e.target.value)}></input>
+              <div>
+                <h6>{city}</h6>
+                <h6>{startDate}</h6>
+                <h6>{startTime}</h6>
+                <h6>{veg}</h6>
+                <h6>{nonVeg}</h6>
+                <h6>{occasion}</h6>
               </div>
-              <div className='d-flex justify-content-between'>
-                <p>Email:</p>
-                <input type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}></input>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>Address:</p>
-                <input type="text"
-                  // value={address}
-                  onChange={(e) => setAddress(e.target.value)}></input>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>ZipCode:</p>
-                <input type="number"
-                  maxLength={6}
-                  // value={zipcode}
-                  onChange={(e) => setZipcode(e.target.value)}></input>
-              </div>
-              {/* <p>{zipcodeError}</p> */}
             </div>
             <hr />
-            <div className={styles4.selectedDetails}>
-              <div className={styles4.data}>
-                <div>
-                  <h6>City:</h6>
-                  <h6>Date:</h6>
-                  <h6>Time:</h6>
-                  <h6>Veg Guest:</h6>
-                  <h6>Non-veg Guest:</h6>
-                  <h6>Occassion:</h6>
-                </div>
-                <div>
-                  <h6>{city}</h6>
-                  <h6>{startDate}</h6>
-                  <h6>{startTime}</h6>
-                  <h6>{veg}</h6>
-                  <h6>{nonVeg}</h6>
-                  <h6>{occasion}</h6>
-                </div>
-              </div>
-              <hr />
-              <div className={styles4.selectedItems}>
-                {/* <div>
+            <div className={styles4.selectedItems}>
+              {/* <div>
                   <h4>- Starters -</h4>
                   {starters.map((item, index) => (
                     <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
@@ -2330,21 +2333,21 @@ const CustomizeNinjaBox = () => {
                   ))
                   }
                 </div> */}
-              </div>
             </div>
           </div>
-          <div>
-            <hr />
-            <div className={styles4.priceing}>
-              <h6>GRAND TOTAL :</h6>
-              <h6>₹ {grandTotal}</h6>
-            </div>
-            <div className={styles4.cnfmBtn}>
-              <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
-              <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
-            </div>
+        </div>
+        <div>
+          <hr />
+          <div className={styles4.priceing}>
+            <h6>GRAND TOTAL :</h6>
+            <h6>₹ {grandTotal}</h6>
           </div>
-        </div>}
+          <div className={styles4.cnfmBtn}>
+            <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
+            <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
+          </div>
+        </div>
+      </div>}
       <div className={styles.customizeMainContainer}>
         <Slider {...settings}>
           <div className={styles.header}>
@@ -2548,6 +2551,7 @@ const CustomizeNinjaBox = () => {
                     className="form-select"
                     onChange={(e) => setStartTime(e.target.value)}
                   >
+                    <option value="">Select a Date</option>
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>
@@ -2687,22 +2691,6 @@ const CustomizeNinjaBox = () => {
                   {/* starters add */}
                   <div className={styles.startersContainer}>
                     <h5>Starters</h5>
-                    {showDropdown && (
-                      <div
-                        onClick={handleDiv1Click}
-                        className={styles.starterSearchBtn}
-                        id="srchbr"
-                      >
-                        <p>
-                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
-                          Starter
-                        </p>
-                        <span>
-                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
-                          select
-                        </span>
-                      </div>
-                    )}
                     <div
                       className={styles.selectedStarterContainer}
                       style={{ marginTop: "20px" }}
@@ -2796,6 +2784,22 @@ const CustomizeNinjaBox = () => {
                           </div>
                         ))}
                     </div>
+                    {showDropdown && (
+                      <div
+                        onClick={handleDiv1Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Starter
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
                     {showSelectedMenu && (
                       <div
                         ref={outerDivRef}
@@ -3516,7 +3520,7 @@ const CustomizeNinjaBox = () => {
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
                       city === "Bangalore") &&
-                    people < 26 ? (
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3526,9 +3530,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3540,9 +3544,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3554,9 +3558,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3575,7 +3579,7 @@ const CustomizeNinjaBox = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                    people < 26 ? (
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3585,9 +3589,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3599,9 +3603,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3613,9 +3617,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3749,7 +3753,7 @@ const CustomizeNinjaBox = () => {
                   <div className={styles.orderBtn}>
                     {/* <button onClick={placeOrderBtn}>Place Order</button> */}
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
-                      <button style={{backgroundColor: "green", color: "white"}}>Get Booking Help</button>
+                      <button style={{ backgroundColor: "green", color: "white" }}>Get Booking Help</button>
                     </Link>
                   </div>
                 </div>

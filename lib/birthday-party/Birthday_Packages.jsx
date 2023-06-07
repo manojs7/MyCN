@@ -1,28 +1,30 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '/styles/BirthdayParty.module.scss';
+import Image from 'next/image';
 
-const items = [
-    { name: 'Item 1', price: 10 },
-    { name: 'Item 2', price: 20 },
-    { name: 'Item 3', price: 30 },
-    { name: 'Item 4', price: 40 },
-    { name: 'Item 5', price: 50 },
-    { name: 'Item 6', price: 60 },
-    { name: 'Item 7', price: 70 },
-    { name: 'Item 8', price: 80 },
-  ];
-  
-  function Item({ name, price }) {
-    return (
-      <div className="item">
-        <h3>{name}</h3>
-        <p>Price: {price}</p>
-      </div>
-    );
-  }
+// const items = [
+//     { name: 'Item 1', price: 10 },
+//     { name: 'Item 2', price: 20 },
+//     { name: 'Item 3', price: 30 },
+//     { name: 'Item 4', price: 40 },
+//     { name: 'Item 5', price: 50 },
+//     { name: 'Item 6', price: 60 },
+//     { name: 'Item 7', price: 70 },
+//     { name: 'Item 8', price: 80 },
+//   ];
+
+//   function Item({ name, price }) {
+//     return (
+//       <div className="item">
+//         <h3>{name}</h3>
+//         <p>Price: {price}</p>
+//       </div>
+//     );
+//   }
 
 const Birthday_Packages = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
+    const [extraStarter, setExtraStarter] = useState([]);
 
     const options = [
         { id: 'option-1', label: 'Option 1' },
@@ -31,6 +33,12 @@ const Birthday_Packages = () => {
         { id: 'option-4', label: 'Option 4' },
         { id: 'option-5', label: 'Option 5' },
         { id: 'option-6', label: 'Option 6' },
+    ];
+
+    const extraOptions = [
+        { id: 'option-7', label: 'Option 7' },
+        { id: 'option-8', label: 'Option 8' },
+        { id: 'option-9', label: 'Option 9' }
     ];
 
     const handleOptionSelect = (optionId) => {
@@ -61,21 +69,214 @@ const Birthday_Packages = () => {
         }
     };
 
+    //extra Starter selector
+    const handleCheckboxChange = (optionId) => {
+        const isOptionSelected = extraStarter.includes(optionId);
+
+        if (isOptionSelected) {
+            setExtraStarter(extraStarter.filter((id) => id !== optionId));
+        } else {
+            setExtraStarter([...extraStarter, optionId]);
+        }
+    };
+
+    //click list to check
+    const handleLiClick = (optionId) => {
+        const checkbox = document.getElementById(optionId);
+        checkbox.click();
+    };
+
+
     const handleHover = () => {
         setShowDiv(true);
     };
 
+    //background image
+    const backgroundStyle = {
+        backgroundImage: 'url("/birthdayParty/birthdayBg.png")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
+    };
+
+    //small png bg
+    const smallPng = {
+        backgroundImage: 'url("/birthdayParty/doodle 3.png")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
+    };
+
+    //bottom png bg
+    const btmPng = {
+        backgroundImage: 'url("/birthdayParty/doodle 2.png")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
+    };
+
+    //bottom png card bg
+    const btmPngCard = {
+        backgroundImage: 'url("/birthdayParty/Vector3.png")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
+    };
 
     return (
-        <div className={styles.mainBody}>
-            <div className={styles.header}>
-                <h2>BIRTHDAY <span>PARTY</span></h2>
-                <div className={styles.btmContent}>
-                    <h6>Outdoor Catering</h6>
-                    <p>veg <span>Non-Veg</span></p>
+        <div style={backgroundStyle} className={styles.mainBody}>
+            <div style={smallPng}>
+                <div className={styles.header}>
+                    <div className='pt-5 text-center'>
+                        <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" />
+                    </div>
+                    <h2>BIRTHDAY <span>PARTY</span></h2>
+                    <div className={styles.btmContent}>
+                        <h6>Outdoor Catering</h6>
+                        <p>VEG <span> NON-VEG</span></p>
+                    </div>
                 </div>
             </div>
-            <div className={styles.pkgContainer}>
+            <div className={styles.packagesContainer}>
+                <h3>1. Select a package</h3>
+                <div className={styles.packages}>
+                    <div className={styles.firstRow}>
+                        <div className={styles.goldPkg}>
+                            <div className={styles.blackbg}>
+                                <div>
+                                    <div id={styles.vector}>
+                                        <Image src="/birthdayParty/Vectorr.png" height="24.6px" width="108.53px" />
+                                    </div>
+                                    <p>GOLD</p>
+                                </div>
+                                <div className={styles.insideContent}>
+                                    <h4>₹ 550/-</h4>
+                                    <p>Per Person</p>
+                                    <div className={styles.btns}>
+                                        <div id={styles.btnName}>
+                                            <h6>Veg Snack</h6>
+                                            <h6>Veg Heavy Snack</h6>
+                                            <h6>Dessert</h6>
+                                        </div>
+                                        <div id={styles.greenBtn}>
+                                            <h6>Any 4</h6>
+                                            <h6>Any 3</h6>
+                                            <h6>Any 2</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.goldPkg}>
+                            <div className={styles.blackbg}>
+                                <div>
+                                    <div id={styles.vector}>
+                                        <Image src="/birthdayParty/Vector2.png" height="24.6px" width="108.53px" />
+                                    </div>
+                                    <p style={{ marginLeft: "50px" }}>SILVER</p>
+                                </div>
+                                <div className={styles.insideContent}>
+                                    <h4>₹ 450/-</h4>
+                                    <p>Per Person</p>
+                                    <div className={styles.btns}>
+                                        <div id={styles.btnName}>
+                                            <h6>Veg Snack</h6>
+                                            <h6>Veg Heavy Snack</h6>
+                                            <h6>Dessert</h6>
+                                        </div>
+                                        <div id={styles.greenBtn}>
+                                            <h6>Any 3</h6>
+                                            <h6>Any 2</h6>
+                                            <h6>Any 1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.selectBtn}>
+                        <button>Select This Package</button>
+                        <button>Select This Package</button>
+                    </div>
+                    <div className={styles.secondRow}>
+                        <div className={styles.nvGoldPkg}>
+                            <div className={styles.blackbg}>
+                                <div>
+                                    <div id={styles.vector}>
+                                        <Image src="/birthdayParty/Vectorr.png" height="24.6px" width="108.53px" />
+                                    </div>
+                                    <p style={{ marginLeft: "40px" }}>GOLD NV</p>
+                                </div>
+                                <div className={styles.insideContent}>
+                                    <h4>₹ 650/-</h4>
+                                    <p>Per Person</p>
+                                    <div className={styles.btns}>
+                                        <div id={styles.btnName}>
+                                            <h6>Veg Snack</h6>
+                                            <h6>Non Veg Snack</h6>
+                                            <h6>Veg Heavy Snack</h6>
+                                            <h6>NV Heavy Snack</h6>
+                                            <h6>Dessert</h6>
+                                        </div>
+                                        <div id={styles.greenBtn}>
+                                            <h6>Any 2</h6>
+                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 3</h6>
+                                            <h6>Any 2</h6>
+                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 1</h6>
+                                            <h6>Any 2</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.nvGoldPkg}>
+                            <div className={styles.blackbg}>
+                                <div>
+                                    <div id={styles.vector}>
+                                        <Image src="/birthdayParty/Vector2.png" height="24.6px" width="108.53px" />
+                                    </div>
+                                    <p style={{ marginLeft: "33px" }}>SILVER NV</p>
+                                </div>
+                                <div className={styles.insideContent}>
+                                    <h4>₹ 570/-</h4>
+                                    <p>Per Person</p>
+                                    <div className={styles.btns}>
+                                        <div id={styles.btnName}>
+                                            <h6>Veg Snack</h6>
+                                            <h6>Non Veg Snack</h6>
+                                            <h6>Veg Heavy Snack</h6>
+                                            <h6>NV Heavy Snack</h6>
+                                            <h6>Dessert</h6>
+                                        </div>
+                                        <div id={styles.greenBtn}>
+                                            <h6>Any 2</h6>
+                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 2</h6>
+                                            <h6>Any 1</h6>
+                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 1</h6>
+                                            <h6>Any 1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.selectBtn}>
+                        <button>Select This Package</button>
+                        <button>Select This Package</button>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.bottomSectn} style={btmPng}>
+                <div className={styles.top} style={btmPngCard}>
+                    <h6>Fun Eatables, Live Counters<br/>Main Course Add On's</h6>
+                    <button>On Next Page</button>
+                </div>
+                <div className={styles.btm}>
+                    <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" /><br/>
+                    <div className={styles.ninjaWithBtn}>
+                        <Image src="/birthdayParty/leftNinja.png" height="60.37px" width="35.71px" />
+                        <button>Visit Our Website</button>
+                        <Image src="/birthdayParty/rightNinja.png" height="60.37px" width="35.71px" />
+                    </div>
+                </div>
+            </div>
+            {/* <div className={styles.pkgContainer}>
                 <h3>-Packages-</h3>
                 <div className={styles.pkgCards}>
                     <div className={styles.pkg1}>
@@ -83,7 +284,7 @@ const Birthday_Packages = () => {
                         <div className={styles.cardBg}>
                             <h4>Rs.550/-</h4>
                             <div>
-                                <div className='d-flex'>
+                                <div className='d-flex justify-content-between'>
                                     <p>Veg Snack-</p>
                                     <button onMouseEnter={handleHover}>Any 4</button>
                                     {showDiv && (<div className={styles.vegSnackOptions} ref={ref}>
@@ -101,14 +302,28 @@ const Birthday_Packages = () => {
                                                 </li>
                                             ))}
                                         </ul>
+                                        <hr />
+                                        <ul>
+                                            {extraOptions.map((option) => (
+                                                <li key={option.id} onClick={() => handleLiClick(option.id)}>
+                                                    <p>{option.label}{!extraStarter.includes(option.id) && extraStarter.length >= 2 && <span>Ex</span>}</p>
+                                                    <input htmlFor={option.id}
+                                                        type="checkbox"
+                                                        id={option.id}
+                                                        checked={extraStarter.includes(option.id)}
+                                                        onChange={() => handleCheckboxChange(option.id)}
+                                                    />
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>)}
                                 </div>
-                                <div className='d-flex'>
-                                    <p>Veg Snack-</p>
+                                <div className='d-flex justify-content-between'>
+                                    <p style={{ textAlign: "start" }}>Veg Heavy Snack-</p>
                                     <button>Any 3</button>
                                 </div>
-                                <div className='d-flex'>
-                                    <p>Veg Snack-</p>
+                                <div className='d-flex justify-content-between'>
+                                    <p>Dessert-</p>
                                     <button>Any 2</button>
                                 </div>
                             </div>
@@ -120,21 +335,29 @@ const Birthday_Packages = () => {
                         <div>
                             <div className='d-flex'>
                                 <p>Veg Snack-</p>
-                                <button>View</button>
+                                <button>Any 3</button>
+                                <div className={styles.silverVegSnackContainer}>
+                                        <ul>
+                                            <li>
+                                                <p>title</p>
+                                                <input type="checkbox" />
+                                            </li>
+                                        </ul>
+                                    </div>
                             </div>
                             <div className='d-flex'>
-                                <p>Veg Snack-</p>
-                                <button>View</button>
+                                <p>Veg Heavy Snack-</p>
+                                <button>Any 2</button>
                             </div>
                             <div className='d-flex'>
-                                <p>Veg Snack-</p>
-                                <button>View</button>
+                                <p>Dessert-</p>
+                                <button>Any 1</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
                 <p>Selected options:</p>
                 <ul>
                     {selectedOptions.map((optionId) => {
@@ -144,6 +367,15 @@ const Birthday_Packages = () => {
                 </ul>
             </div>
             <div>
+                <p>Extra items:</p>
+                <ul>
+                    {extraStarter.map((optionId) => {
+                        const extraStarter = extraOptions.find((option) => option.id === optionId);
+                        return <li key={extraStarter.id}>{extraStarter.label}</li>;
+                    })}
+                </ul>
+            </div> */}
+            {/* <div>
                 <div className={styles.slidercontainer}>
                     <div className={styles.slider}>
                         {items.map((item, index) => (
@@ -151,7 +383,7 @@ const Birthday_Packages = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
