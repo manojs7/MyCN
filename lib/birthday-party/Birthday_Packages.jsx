@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '/styles/BirthdayParty.module.scss';
 import Image from 'next/image';
+import { WindowSharp } from '@mui/icons-material';
 
 // const items = [
 //     { name: 'Item 1', price: 10 },
@@ -25,6 +26,107 @@ import Image from 'next/image';
 const Birthday_Packages = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [extraStarter, setExtraStarter] = useState([]);
+    const [goldPackage, setGoldPackage] = useState([]);
+    const [silverPackage, setSilverPackage] = useState([]);
+    const [nvGoldPackage, setNvGoldPackage] = useState([]);
+    const [nvSilverPackage, setNvSilverPackage] = useState([]);
+
+    //packages
+        const vegPackages = {
+            goldPackage: {
+                name: "GOLD",
+                veg: true,
+                price: "550",
+                items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
+                quantity: ["Any", "Any 3", "Any 2"]
+            },
+            silverPackage: {
+                name: "SILVER",
+                veg: true,
+                price: "550",
+                items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
+                quantity: ["Any 3", "Any 3", "Any 2"]
+            },
+            nvGoldPackage: {
+                name: "GOLD NV",
+                veg: false,
+                price: "650",
+                items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
+                quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"]
+            },
+            nvSilverPackage: {
+                name: "SILVER NV",
+                veg: false,
+                price: "570",
+                items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
+                quantity: ["Any 2", "Any 2", "Any 1", "Any 1", "Any 1"]
+            },
+        }
+        // const packageTwo = 
+        // {
+        //     name: "SILVER",
+        //     veg: true,
+        //     price: "550",
+        //     items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
+        //     quantity: ["Any 3", "Any 3", "Any 2"]
+        // }
+        
+
+        const selectPackageOne = () => {
+            // Save packageOne data in session storage
+            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.goldPackage));
+        
+            // Set the packageData state to trigger a re-render
+            setGoldPackage(vegPackages.goldPackage);
+        
+            // Open new page to show the data
+            window.open('/customiseBirthdayPkg');
+            // return () => {
+            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+            //   };
+          };
+
+          const selectPackageTwo = () => {
+            // Save packageOne data in session storage
+            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.silverPackage));
+        
+            // Set the packageData state to trigger a re-render
+            setSilverPackage(vegPackages.silverPackage);
+        
+            // Open new page to show the data
+            window.open('/customiseBirthdayPkg');
+            // return () => {
+            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+            //   };
+          };
+
+          const selectPackageThree = () => {
+            // Save packageOne data in session storage
+            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.nvGoldPackage));
+        
+            // Set the packageData state to trigger a re-render
+            setNvGoldPackage(vegPackages.nvGoldPackage);
+        
+            // Open new page to show the data
+            window.open('/customiseBirthdayPkg');
+            // return () => {
+            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+            //   };
+          };
+
+          const selectPackageFour = () => {
+            // Save packageOne data in session storage
+            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.nvSilverPackage));
+        
+            // Set the packageData state to trigger a re-render
+            setNvSilverPackage(vegPackages.nvSilverPackage);
+        
+            // Open new page to show the data
+            window.open('/customiseBirthdayPkg');
+            // return () => {
+            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+            //   };
+          };
 
     const options = [
         { id: 'option-1', label: 'Option 1' },
@@ -107,7 +209,7 @@ const Birthday_Packages = () => {
 
     //bottom png bg
     const btmPng = {
-        backgroundImage: 'url("/birthdayParty/doodle 2.png")',
+        backgroundImage: 'url("/birthdayParty/bottomPng.png")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
     };
@@ -121,7 +223,7 @@ const Birthday_Packages = () => {
 
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
-            <div style={smallPng}>
+            {/* <div style={smallPng}>
                 <div className={styles.header}>
                     <div className='pt-5 text-center'>
                         <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" />
@@ -132,9 +234,26 @@ const Birthday_Packages = () => {
                         <p>VEG <span> NON-VEG</span></p>
                     </div>
                 </div>
+            </div> */}
+            <div className={styles.headerSectn}>
+                <div className={styles.logo}>
+                    <Image src="/birthdayParty/birthdayPartyLogo.png" width="91px" height="74px"/>
+                </div>
+                <div className={styles.headerDetails}>
+                    <div>
+                        <h6>City: <span>Bangalore</span></h6>
+                        <h6>Veg Count: <span>10</span></h6>
+                    </div>
+                    <div>
+                        <h6>Date: <span>30-09-2023</span></h6>
+                        <h6>NV Count: <span>10</span></h6>
+                    </div>
+                </div>
             </div>
             <div className={styles.packagesContainer}>
-                <h3>1. Select a package</h3>
+                <h3>Select Your package</h3>
+                <hr />
+                <h4 id={styles.custTitle}>Customization Available</h4>
                 <div className={styles.packages}>
                     <div className={styles.firstRow}>
                         <div className={styles.goldPkg}>
@@ -143,7 +262,7 @@ const Birthday_Packages = () => {
                                     <div id={styles.vector}>
                                         <Image src="/birthdayParty/Vectorr.png" height="24.6px" width="108.53px" />
                                     </div>
-                                    <p>GOLD</p>
+                                    <p>{vegPackages.goldPackage.name}</p>
                                 </div>
                                 <div className={styles.insideContent}>
                                     <h4>₹ 550/-</h4>
@@ -191,8 +310,8 @@ const Birthday_Packages = () => {
                         </div>
                     </div>
                     <div className={styles.selectBtn}>
-                        <button>Select This Package</button>
-                        <button>Select This Package</button>
+                        <button onClick={selectPackageOne}>Select This Package</button>
+                        <button onClick={selectPackageTwo}>Select This Package</button>
                     </div>
                     <div className={styles.secondRow}>
                         <div className={styles.nvGoldPkg}>
@@ -257,23 +376,15 @@ const Birthday_Packages = () => {
                         </div>
                     </div>
                     <div className={styles.selectBtn}>
-                        <button>Select This Package</button>
-                        <button>Select This Package</button>
+                        <button onClick={selectPackageThree}>Select This Package</button>
+                        <button onClick={selectPackageFour}>Select This Package</button>
                     </div>
                 </div>
             </div>
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>
-                    <h6>Fun Eatables, Live Counters<br/>Main Course Add On's</h6>
+                    <h6>Fun Eatables, Live Counters<br />Main Course Add On's</h6>
                     <button>On Next Page</button>
-                </div>
-                <div className={styles.btm}>
-                    <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" /><br/>
-                    <div className={styles.ninjaWithBtn}>
-                        <Image src="/birthdayParty/leftNinja.png" height="60.37px" width="35.71px" />
-                        <button>Visit Our Website</button>
-                        <Image src="/birthdayParty/rightNinja.png" height="60.37px" width="35.71px" />
-                    </div>
                 </div>
             </div>
             {/* <div className={styles.pkgContainer}>

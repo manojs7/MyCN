@@ -14,6 +14,27 @@ const CustomiseBirthdayPkg = () => {
     const [isShown, setIsShown] = useState(false);
     const [data, setData] = useState([])
 
+    const [packageName, setPackageName] = useState();
+    const [packagePrice, setPackagePrice] = useState();
+    const [itemsTypeName, setItemsTypeName] = useState([]);
+    const [itemQuantity, setItemQuantity] = useState([]);
+
+    useEffect(() => {
+        const fetchPackageData = () => {
+            // Retrieve the packageOne data from session storage
+            const packageOneData = sessionStorage.getItem('packageOne');
+            if (packageOneData) {
+                const data = JSON.parse(packageOneData);
+                setPackageName(data.name);
+                setPackagePrice(data.price);
+                setItemsTypeName(data.items);
+                setItemQuantity(data.quantity);
+            }
+        };
+
+        fetchPackageData();
+    }, []);
+
     const [state, setState] = useState({
         showDiv1: true,
         showDiv2: false
@@ -149,7 +170,7 @@ const CustomiseBirthdayPkg = () => {
 
     //bottom png bg
     const btmPng = {
-        backgroundImage: 'url("/birthdayParty/doodle 2.png")',
+        backgroundImage: 'url("/birthdayParty/bottomPng.png")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
     };
@@ -170,7 +191,7 @@ const CustomiseBirthdayPkg = () => {
 
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
-            <div style={smallPng}>
+            {/* <div style={smallPng}>
                 <div className={styles.header}>
                     <div className='pt-5 text-center'>
                         <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" />
@@ -181,29 +202,41 @@ const CustomiseBirthdayPkg = () => {
                         <p>VEG <span> NON-VEG</span></p>
                     </div>
                 </div>
+            </div> */}
+            <div className={styles.headerSectn}>
+                <div className={styles.logo}>
+                    <Image src="/birthdayParty/birthdayPartyLogo.png" width="91px" height="74px" />
+                </div>
+                <div className={styles.headerDetails}>
+                    <div>
+                        <h6>City: <span>Bangalore</span></h6>
+                        <h6>Veg Count: <span>10</span></h6>
+                    </div>
+                    <div>
+                        <h6>Date: <span>30-09-2023</span></h6>
+                        <h6>NV Count: <span>10</span></h6>
+                    </div>
+                </div>
             </div>
             <div className={styles.customisePkgContainer}>
-                <h4>2. Select Your Menu</h4>
+                <h3>Customise Your package</h3>
+                <hr />
                 <div className={styles.pkgCard}>
                     <div className={styles.blackbg}>
                         <div style={titlebg} id={styles.titlebg}>
-                            <h4>GOLD</h4>
+                            <h4>{packageName}</h4>
                         </div>
                         <div className={styles.cardinsideContent}>
                             <div className='text-center'>
-                                <h4>₹ 550/-</h4>
+                                <h4>{packagePrice}</h4>
                                 <p>Per Person</p>
                             </div>
                             <div className={styles.btns}>
                                 <div id={styles.btnName}>
-                                    <h6>Veg Snack</h6>
-                                    <h6>Veg Heavy Snack</h6>
-                                    <h6>Dessert</h6>
+                                    {itemsTypeName.map((iname, index) => (<h6 key={index}>{iname}</h6>))}
                                 </div>
                                 <div id={styles.greenBtn}>
-                                    <h6>Any 4</h6>
-                                    <h6>Any 3</h6>
-                                    <h6>Any 2</h6>
+                                    {itemQuantity.map((iqtnty, index) => (<h6 key={index}>{iqtnty}</h6>))}
                                 </div>
                             </div>
                         </div>
@@ -212,17 +245,171 @@ const CustomiseBirthdayPkg = () => {
             </div>
             <div className={styles.itemsSelectionContainer}>
                 <div className={styles.vegSnackContainer}>
-                    <h3>VegSnack</h3>
-                    {/* <div className={styles.selectItemSearchBox}>
-                        <h6>Select a Snack</h6>
-                        <h6>Click here to select</h6>
-                    </div> */}
+                    <h3>Veg Snack</h3>
+                    {showDropdown && (<div onClick={handleDiv1Click} className={styles.selectItemSearchBox} id="srchbr">
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select a Snack</h6>
+                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                    </div>)}
                 </div>
-                {showDropdown && (<div onClick={handleDiv1Click} className={styles2.starterSearchBtn} id="srchbr">
+                {/* {showDropdown && (<div onClick={handleDiv1Click} className={styles2.starterSearchBtn} id="srchbr">
                     <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
                     <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
                 </div>
-                )}
+                )} */}
+                <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                    {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                        <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                        <div className={styles2.itemDetailsContainer}>
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                            </div>
+                            <div>
+                                <div className={styles2.quantityBtn}>
+                                    <button>-</button>
+                                    <h6>00pcs</h6>
+                                    <button>+</button>
+                                </div>
+                                <div className={styles2.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu(item)} />
+                            </div>
+                        </div>
+                    </div>
+                    ))}
+                </div>
+                {showSelectedMenu && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                    <div id={styles2.starterSearchContent}>
+                        <div>
+                            <input type="text"
+                                value={searchValue}
+                                onChange={searchStarter}
+                                placeholder="Search Starter" />
+                            <div id={styles2.starterList}>
+                                <ul>
+                                    {filteredData.map((item, index) => (
+                                        <li key={item.id}>
+                                            <div className='d-flex justify-content-between'>
+                                                <div id={styles2.insideDivLi}>
+                                                    <img src={item.image} width="30.05px" height="26.54px" />
+                                                    {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                                                    <p>{item.name}<br /><span>{item.description}</span></p>
+                                                </div>
+                                                <div>
+                                                    <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, item)} />
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div id={styles2.listInsideBtn}>
+                                <button onClick={handleCancelClick}>Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>)}
+                <div className={styles2.starterBtmLine}>
+                    <hr />
+                </div>
+                <div className={styles2.addMoreBtn}>
+                    <button onClick={handleDiv1Click}>+ Add More</button>
+                </div>
+            </div>
+            <div className={styles.itemsSelectionContainer}>
+                <div className={styles.vegSnackContainer}>
+                    <h3>Veg Heavy Snack</h3>
+                    {showDropdown && (<div onClick={handleDiv1Click} className={styles.selectItemSearchBox} id="srchbr">
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select a Snack</h6>
+                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                    </div>)}
+                </div>
+                {/* {showDropdown && (<div onClick={handleDiv1Click} className={styles2.starterSearchBtn} id="srchbr">
+                    <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                    <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                </div>
+                )} */}
+                <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                    {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                        <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                        <div className={styles2.itemDetailsContainer}>
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                            </div>
+                            <div>
+                                <div className={styles2.quantityBtn}>
+                                    <button>-</button>
+                                    <h6>00pcs</h6>
+                                    <button>+</button>
+                                </div>
+                                <div className={styles2.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={() => deleteMenu(item)} />
+                            </div>
+                        </div>
+                    </div>
+                    ))}
+                </div>
+                {showSelectedMenu && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                    <div id={styles2.starterSearchContent}>
+                        <div>
+                            <input type="text"
+                                value={searchValue}
+                                onChange={searchStarter}
+                                placeholder="Search Starter" />
+                            <div id={styles2.starterList}>
+                                <ul>
+                                    {filteredData.map((item, index) => (
+                                        <li key={item.id}>
+                                            <div className='d-flex justify-content-between'>
+                                                <div id={styles2.insideDivLi}>
+                                                    <img src={item.image} width="30.05px" height="26.54px" />
+                                                    {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                                                    <p>{item.name}<br /><span>{item.description}</span></p>
+                                                </div>
+                                                <div>
+                                                    <input id={item.id} type="checkbox" checked={item.checked} value={item.id} onChange={(e) => handleCheckboxChange(e, item)} />
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div id={styles2.listInsideBtn}>
+                                <button onClick={handleCancelClick}>Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>)}
+                <div className={styles2.starterBtmLine}>
+                    <hr />
+                </div>
+                <div className={styles2.addMoreBtn}>
+                    <button onClick={handleDiv1Click}>+ Add More</button>
+                </div>
+            </div>
+            <div className={styles.itemsSelectionContainer}>
+                <div className={styles.vegSnackContainer}>
+                    <h3>Dessert</h3>
+                    {showDropdown && (<div onClick={handleDiv1Click} className={styles.selectItemSearchBox} id="srchbr">
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select a Snack</h6>
+                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                    </div>)}
+                </div>
+                {/* {showDropdown && (<div onClick={handleDiv1Click} className={styles2.starterSearchBtn} id="srchbr">
+                    <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
+                    <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
+                </div>
+                )} */}
                 <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
                     {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles2.fstItem} key={index}>
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
@@ -291,14 +478,6 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles.top} style={btmPngCard}>
                     <h6>Fun Eatables, Live Counters<br />Main Course Add On's</h6>
                     <button>On Next Page</button>
-                </div>
-                <div className={styles.btm}>
-                    <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" /><br />
-                    <div className={styles.ninjaWithBtn}>
-                        <Image src="/birthdayParty/leftNinja.png" height="60.37px" width="35.71px" />
-                        <button>Visit Our Website</button>
-                        <Image src="/birthdayParty/rightNinja.png" height="60.37px" width="35.71px" />
-                    </div>
                 </div>
             </div>
         </div>
