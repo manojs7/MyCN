@@ -1366,6 +1366,7 @@ const NinjaBoxViewPkg = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
+      setShowPopup(false);
       alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
 
       if (res.success) {
