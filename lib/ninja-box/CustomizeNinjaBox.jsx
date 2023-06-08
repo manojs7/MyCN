@@ -813,13 +813,18 @@ const CustomizeNinjaBox = () => {
     let tempDessert = [...desserts];
 
     tempDessert.map((data) => {
+      
       if (data.Qtype === "pcs") {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
         } else {
-          data.quantity = Math.round((veg + nonVeg) * 1.5);
-        }
-      } else {
+          if (dessert.name === "Angoori Gulab Jamun") {
+            data.quantity = Math.round((veg + nonVeg) * 3);
+          } else {
+            data.quantity = Math.round((veg + nonVeg) * 1.5);
+          }
+      } 
+    }else {
         data.quantity = (Math.round(veg + nonVeg) * 0.075).toFixed(1);
       }
     });
@@ -3746,7 +3751,7 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    <button onClick={placeOrderBtn}>Place Order</button>
+                    {/* <button onClick={placeOrderBtn}>Place Order</button> */}
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button style={{ backgroundColor: "green", color: "white" }}>Get Booking Help</button>
                     </Link>
