@@ -1459,7 +1459,9 @@ const NinjaBoxViewPkg = () => {
                 await EmailOrderConfirmation(datas),
 
                 //Interakt Api message to hit my number with details
-                await interakt()
+                await interakt(),
+
+                // window.location.href='/'
 
 
               );

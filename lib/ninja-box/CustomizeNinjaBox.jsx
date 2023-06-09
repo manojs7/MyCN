@@ -26,7 +26,7 @@ import Link from "next/link";
 // import { Launch } from "@mui/icons-material";
 
 const CustomizeNinjaBox = () => {
-  const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
+  const { menu, cuisines, allMenus, cities, occasions, PreSelectMenuNinjaBox, ZipCodes } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -100,6 +100,10 @@ const CustomizeNinjaBox = () => {
   const [isBreadChange, setIsBreadChange] = useState(false);
   const [isDessertChange, setIsDessertChange] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [zipcodeError, setZipcodeError] = useState("");
 
   const [showPriceList, setShowPriceList] = useState(false);
 
@@ -1209,7 +1213,7 @@ const CustomizeNinjaBox = () => {
       city === "Mumbai" ||
       city === "Banglore" ||
       city === "Navi-Mumbai" ||
-      city === "Thane"
+      city === "Thane" || city==="Chennai" || city === "Pune"
     ) {
       if (people <= 25) {
         setDeliveryCharge(0);
@@ -1259,15 +1263,9 @@ const CustomizeNinjaBox = () => {
       setBreadRice(newDesserts);
     }
   }
-  function handleDelete(index, type) {
-    setIsDelete(!isDelete);
-    if (type === "starters") {
-      let temp = [...starters];
-      temp.splice(index, 1);
-      console.log("hey", temp, filteredData);
-      setStarters(temp);
-      let removedIndexes = [];
-      filteredData.forEach((item, index) => {
+  function uncheckAfterDelete(a,temp){
+    let removedIndexes = [];
+      a.forEach((item, index) => {
         let innerData = temp.filter(
           (innerItem) => innerItem?.name === item?.name
         );
@@ -1276,30 +1274,47 @@ const CustomizeNinjaBox = () => {
           removedIndexes.push(index);
         }
       });
-      for (let j = 0; j < filteredData.length; j++) {
+      for (let j = 0; j < a.length; j++) {
         if (!removedIndexes.includes(j)) {
-          filteredData[j].checked = "checked";
+          a[j].checked = "checked";
         } else {
-          filteredData[j].checked = "";
-          checkedValues = checkedValues.filter((v) => v.id !== filteredData[j].id)
+          a[j].checked = "";
+          checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
           setCheckedValues(
             checkedValues
           );
         }
       }
-      setStartersData(filteredData)
-      console.log("removed", filteredData, removedIndexes);
+      return a
+  }
+  function handleDelete(index, type) {
+    setIsDelete(!isDelete);
+    let temp;
+    let updated;
+    if (type === "starters") {
+      temp = [...starters];
+      temp.splice(index, 1);
+      setStarters(temp);
+      updated=uncheckAfterDelete(filteredData,temp);
+      setStartersData(updated)
+      // console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
-      let temp = [...mains];
+      temp = [...mains];
       temp.splice(index, 1);
       setMains(temp);
+      updated=uncheckAfterDelete(filteredMainsData,temp);
+      setMainData(updated)
     } else if (type === "desserts") {
-      let temp = [...desserts];
+      temp = [...desserts];
       temp.splice(index, 1);
       setDesserts(temp);
+      updated=uncheckAfterDelete(filteredDessertData,temp);
+      setDessertData(updated)
     } else if (type === "Bread+Rice") {
-      let temp = [...breadRice];
+      temp = [...breadRice];
       temp.splice(index, 1);
+      updated=uncheckAfterDelete(filteredBreadData,temp);
+      setBreadRiceData(updated)
       // changing the value after deleting
       let bread = 0;
       let count = 0;
@@ -2044,35 +2059,32 @@ const CustomizeNinjaBox = () => {
       .then((response) => console.log("resot", response.json()));
   };
 
-  const EmailOrderConfirmation = (datas) => {
+  const EmailOrderConfirmation = async (datas) => {
+
     //post api for email
-    fetch("/api/EmailOrderConfirmation", {
+    await fetch("/api/EmailOrderConfirmation", {
       method: "POST",
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      alert(
-        "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
-      );
+      setShowPopup(false);
+      alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
 
       if (res.success) {
-        alert(
-          "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
-        );
-      } else {
+        alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+        //show pop up here
+      }
+      else if (res.message === "Parameter missing") {
+        alert("Email or Name is Missing");
+
+
+      }
+      else {
         console.log("Failed to send message");
       }
     });
-  };
-
-  // const selectedItems = filteredData.filter(item => item.checked);
-  // const unselectedItems = filteredData.filter(item => !item.checked);
-
-  // selectedItems.sort((a, b) => a.name.localeCompare(b.name));
-
-  // const sortedData = selectedItems.concat(unselectedItems);
-
-  const redirectToPayU = (pd) => {
+  }
+  const redirectToPayU = async (pd) => {
     console.log("pd", pd);
     //use window.bolt.launch if you face an error in bolt.launch
 
@@ -2091,9 +2103,9 @@ const CustomizeNinjaBox = () => {
             return a.json();
           })
           //Storing the payment details
-          .then(function (json) {
-            (json.datas = datas), (json.createdAt = new Date());
-
+          .then(async function (json) {
+            json.datas = datas
+            json.createdAt=new Date()
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -2115,8 +2127,9 @@ const CustomizeNinjaBox = () => {
                 (datas.status = json.status),
                 (datas.email = json.status.email),
                 (datas.bank_ref_num = json.status.bank_ref_num),
-                (datas.name = json.status.field4),
-                (datas.createdAt = new Date());
+                (datas.OrderStatus = "");
+                datas.createdAt=new Date()
+              // datas.name=json.status.field4
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -2132,11 +2145,15 @@ const CustomizeNinjaBox = () => {
                 (res) => console.log("successful"),
 
                 //Email the Order Confirmation
-                EmailOrderConfirmation(datas),
+                await EmailOrderConfirmation(datas),
 
                 //Interakt Api message to hit my number with details
-                interakt()
-              );
+                await interakt(),
+
+                // window.location.href='/'
+
+              )
+              
             } else {
               alert("Payment Failed! Please try again.");
             }
@@ -2149,6 +2166,17 @@ const CustomizeNinjaBox = () => {
       // },
     });
   };
+  useEffect(() => {
+    if (zipcode.length > 5) {
+      if (ZipCodes.includes(zipcode)) {
+        setZipcodeError("")
+      }
+      else {
+        setZipcodeError("Sorry, we are not servicable at provided PinCode Area.");
+      }
+    }
+
+  }, [zipcode])
 
   const payumoney = (e) => {
     e.preventDefault();
@@ -2157,18 +2185,27 @@ const CustomizeNinjaBox = () => {
       alert("Order value must be greater than 3000");
       return;
     }
+    if(zipcodeError){
+      alert("ZipCode is not servicable by us!")
+      return; 
+    }
+    if (!name || !mobileno || !email || !address || !zipcode) {
+      alert('Please fill in all fields');
+      return;
+    }
     //Create a Data object that is to be passed to LAUNCH method of Bolt
-    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000);
+    let oid = "CaterNinjaDIY" + Math.floor(Math.random(6) * 1000000);
     console.log(oid);
     var pd = {
       key: "VKy9EEvW",
       txnid: oid,
-      amount: "1",
-      firstname: name,
-      email: email,
-      phone: "7023405885",
+      amount: datas.grandTotal,
+      // amount:"1",
+      firstname: datas.name,
+      email: datas.email,
+      phone: datas.mobileno,
       productinfo: "test",
-      surl: "https://caterninja.com",
+      surl: "https://new.caterninja.com",
       furl: "https://new.caterninja.com",
       hash: "",
     };
@@ -2201,51 +2238,7 @@ const CustomizeNinjaBox = () => {
         redirectToPayU(pd);
       });
   };
-  // const initiatePayment = async (e) => {
-  //   e.preventDefault();
-  //   let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
-  //   const data = { oid };
-  //   let a = await fetch("/api/paynow", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   });
-  //   var txnToken = await a.json();
 
-  //   var config = {
-  //     root: "",
-  //     flow: "DEFAULT",
-  //     ENVIRONMENT: "staging",
-  //     REQUEST_TYPE: "DEFAULT",
-  //     INDUSTRY_TYPE_ID: "Retail",
-  //     WEBSITE: "WEBSTAGING",
-  //     data: {
-  //       orderId: oid,
-  //       token: txnToken /* update token value */,
-  //       tokenType: "TXN_TOKEN",
-  //       amount: "100" /* update amount */,
-  //     },
-  //     "handler": {
-  //       "notifyMerchant": function (eventName, data) {
-  //         console.log("notifyMerchant handler function called");
-  //         console.log("eventName => ", eventName);
-  //         console.log("data => ", data);
-  //       },
-  //     },
-  //   };
-
-  //   // initialze configuration using init method
-  //   window.Paytm.CheckoutJS.init(config)
-  //     .then(function onSuccess() {
-  //       // after successfully updating configuration, invoke JS Checkout
-  //       window.Paytm.CheckoutJS.invoke();
-  //     })
-  //     .catch(function onError(error) {
-  //       console.log("error => ", error);
-  //     });
-  // };
 
   return (
     <div className={styles.customizeMainContainer}>
@@ -2284,7 +2277,7 @@ const CustomizeNinjaBox = () => {
                 // value={zipcode}
                 onChange={(e) => setZipcode(e.target.value)}></input>
             </div>
-            {/* <p>{zipcodeError}</p> */}
+            <p>{zipcodeError}</p>
           </div>
           <hr />
           <div className={styles4.selectedDetails}>
@@ -2493,7 +2486,7 @@ const CustomizeNinjaBox = () => {
                     type="date"
                     onChange={(event) => setStartDate(event.target.value)}
                     value={startDate}
-                    min={minDateISO}
+                    min={minDateISO.toString()}
                   />
                   {/* <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate}>
                     <option value="">Select a date</option>
@@ -3519,8 +3512,8 @@ const CustomizeNinjaBox = () => {
                     {(city === "Mumbai" ||
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
-                      city === "Bangalore") &&
-                      people < 26 ? (
+                      city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3530,9 +3523,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3544,9 +3537,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3558,9 +3551,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3579,7 +3572,7 @@ const CustomizeNinjaBox = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                      people < 26 ? (
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3589,9 +3582,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3603,9 +3596,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3617,9 +3610,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3751,7 +3744,7 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    {/* <button onClick={placeOrderBtn}>Place Order</button> */}
+                    <button onClick={placeOrderBtn}>Place Order</button>
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button style={{ backgroundColor: "green", color: "white" }}>Get Booking Help</button>
                     </Link>
