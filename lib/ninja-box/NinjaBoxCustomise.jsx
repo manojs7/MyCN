@@ -32,6 +32,7 @@ const NinjaBoxCustomise = () => {
     cities,
     occasions,
     PreSelectMenuNinjaBox,
+    ZipCodes
   } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
@@ -108,8 +109,15 @@ const NinjaBoxCustomise = () => {
   const [ID, setId] = useState(0);
   const [mealType, setMealType] = useState("veg");
 
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [zipcodeError, setZipcodeError] = useState("");
+
   const [showPriceList, setShowPriceList] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+
+
+  const [checkedValues, setCheckedValues] = React.useState([]);
 
   const settings = {
     dots: true,
@@ -180,11 +188,16 @@ const NinjaBoxCustomise = () => {
             else {
               console.log("suspect", item); 
             } 
+            let value=itemData[0];
+            value.checked = "checked";
+          setCheckedValues([...checkedValues, value]);
           } 
         }); 
     } else {
     }
   },[]);
+
+  
  
 
   useEffect(() => {
@@ -496,11 +509,11 @@ const NinjaBoxCustomise = () => {
     });
   };
 
+
   const deleteMenu = (item) => {
     setCheckedValues(checkedValues.filter((v) => v.name !== item.name));
   };
 
-  const [checkedValues, setCheckedValues] = React.useState([]);
 
   const handleCheckboxChange = (e, index, item, type) => {
     if (type === "starters") {
@@ -1657,15 +1670,9 @@ const NinjaBoxCustomise = () => {
       setBreadRice(newDesserts);
     }
   }
-  function handleDelete(index, type) {
-    setIsDelete(!isDelete);
-    if (type === "starters") {
-      let temp = [...starters];
-      temp.splice(index, 1);
-      console.log("hey", temp, filteredData);
-      setStarters(temp);
-      let removedIndexes = [];
-      filteredData.forEach((item, index) => {
+  function uncheckAfterDelete(a,temp){
+    let removedIndexes = [];
+      a.forEach((item, index) => {
         let innerData = temp.filter(
           (innerItem) => innerItem?.name === item?.name
         );
@@ -1674,29 +1681,47 @@ const NinjaBoxCustomise = () => {
           removedIndexes.push(index);
         }
       });
-      for (let j = 0; j < filteredData.length; j++) {
+      for (let j = 0; j < a.length; j++) {
         if (!removedIndexes.includes(j)) {
-          filteredData[j].checked = "checked";
+          a[j].checked = "checked";
         } else {
-          filteredData[j].checked = "";
+          a[j].checked = "";
+          checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
           setCheckedValues(
-            checkedValues.filter((v) => v.id !== filteredData[j].id)
+            checkedValues
           );
         }
       }
-      // setStartersData(filteredData)
-      console.log("removed", filteredData, removedIndexes);
+      return a
+  }
+  function handleDelete(index, type) {
+    setIsDelete(!isDelete);
+    let temp;
+    let updated;
+    if (type === "starters") {
+      temp = [...starters];
+      temp.splice(index, 1);
+      setStarters(temp);
+      updated=uncheckAfterDelete(filteredData,temp);
+      setStartersData(updated)
+      // console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
-      let temp = [...mains];
+      temp = [...mains];
       temp.splice(index, 1);
       setMains(temp);
+      updated=uncheckAfterDelete(filteredMainsData,temp);
+      setMainData(updated)
     } else if (type === "desserts") {
-      let temp = [...desserts];
+      temp = [...desserts];
       temp.splice(index, 1);
       setDesserts(temp);
+      updated=uncheckAfterDelete(filteredDessertData,temp);
+      setDessertData(updated)
     } else if (type === "Bread+Rice") {
-      let temp = [...breadRice];
+      temp = [...breadRice];
       temp.splice(index, 1);
+      updated=uncheckAfterDelete(filteredBreadData,temp);
+      setBreadRiceData(updated)
       // changing the value after deleting
       let bread = 0;
       let count = 0;
@@ -1708,17 +1733,17 @@ const NinjaBoxCustomise = () => {
         item.veg ? (isVeg = true) : (isVeg = false);
       });
       temp.map((item) => {
-        if (item?.menu_label === "Breads" && item.name === "Pooris") {
+        if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
           if (bread === 1) {
-            item.quantity = (veg + nonVeg) * 3;
+            item.quantity = Math.round((veg + nonVeg) * 3);
           } else {
-            item.quantity = (veg + nonVeg) * 2;
+            item.quantity = Math.round((veg + nonVeg) * 2);
           }
-        } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+        } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
           if (bread === 1) {
-            item.quantity = (veg + nonVeg) * 2;
+            item.quantity = Math.round((veg + nonVeg) * 2);
           } else {
-            item.quantity = (veg + nonVeg) * 1;
+            item.quantity = Math.round((veg + nonVeg) * 1);
           }
         } else if (item?.menu_label === "Rice") {
           console.log("rice", count);
@@ -1726,28 +1751,28 @@ const NinjaBoxCustomise = () => {
             let guests = veg > 0 ? veg : nonVeg;
             if (count >= 2) {
               console.log("count2");
-              item.quantity = 0.15 * guests;
+              item.quantity = HandleCeilFloorValue(0.15 * guests);
             } else if (mains.length > 0 && count === 1) {
               console.log("count1");
 
-              item.quantity = 0.2 * guests;
+              item.quantity = HandleCeilFloorValue(0.2 * guests);
             } else if (mains.length === 0 && count === 1) {
               console.log("count1");
-              item.quantity = 0.3 * guests;
+              item.quantity = HandleCeilFloorValue(0.3 * guests);
             }
           } else if (veg > 0 && nonVeg > 0) {
             let guests = veg + nonVeg;
             if (count >= 2) {
-              item.quantity = 0.15 * guests;
+              item.quantity = HandleCeilFloorValue(0.15 * guests);
             } else if (
               count === 1 &&
               mains.length === 0 &&
               starters.length >= 2
             ) {
               if (item.veg === true) {
-                item.quantity = 0.25 * veg;
+                item.quantity = HandleCeilFloorValue(0.25 * veg);
               } else {
-                item.quantity = 0.25 * nonVeg;
+                item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
               }
             } else if (
               count === 1 &&
@@ -1755,9 +1780,9 @@ const NinjaBoxCustomise = () => {
               starters.length <= 1
             ) {
               if (item.veg === true) {
-                item.quantity = 0.3 * veg;
+                item.quantity = HandleCeilFloorValue(0.3 * veg);
               } else {
-                item.quantity = 0.3 * nonVeg;
+                item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
               }
             } else if (
               count >= 1 &&
@@ -1765,9 +1790,9 @@ const NinjaBoxCustomise = () => {
               starters.length <= 1
             ) {
               if (item.veg === true) {
-                item.quantity = 0.25 * veg;
+                item.quantity = HandleCeilFloorValue(0.25 * veg);
               } else {
-                item.quantity = 0.25 * nonVeg;
+                item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
               }
             } else if (
               count >= 1 &&
@@ -1775,17 +1800,17 @@ const NinjaBoxCustomise = () => {
               starters.length >= 2
             ) {
               if (item.veg === true) {
-                item.quantity = 0.2 * veg;
+                item.quantity = HandleCeilFloorValue(0.2 * veg);
               } else {
-                item.quantity = 0.2 * nonVeg;
+                item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
               }
             } else if (count === 1 && mains.length >= 1) {
-              item.quantity = 0.2 * guests;
+              item.quantity = HandleCeilFloorValue(0.2 * guests);
             } else {
               if (item.veg === true) {
-                item.quantity = 0.15 * veg;
+                item.quantity = HandleCeilFloorValue(0.15 * veg);
               } else {
-                item.quantity = 0.15 * nonVeg;
+                item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
               }
             }
           }
@@ -2093,6 +2118,7 @@ const NinjaBoxCustomise = () => {
     alert(
       "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
     );
+    setShowPopup(false);
     if (a.success) {
       alert(
         "Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation."
@@ -2100,8 +2126,7 @@ const NinjaBoxCustomise = () => {
     } else {
       console.log("Failed to send message");
     }
-    window.location.href='/'
-
+    
     // .then(async(res) => {
     //     if (res.success) {
     //         alert(
@@ -2187,8 +2212,12 @@ const NinjaBoxCustomise = () => {
                 await EmailOrderConfirmation(datas),
 
                 //Interakt Api message to hit my number with details
-                await interakt()
-              );
+                await interakt(),
+
+                // window.location.href='/'
+
+              )
+              
             } else {
               alert("Payment Failed! Please try again.");
             }
@@ -2201,12 +2230,30 @@ const NinjaBoxCustomise = () => {
       // },
     });
   };
+  useEffect(() => {
+    if (zipcode.length > 5) {
+      if (ZipCodes.includes(zipcode)) {
+        setZipcodeError("")
+      }
+      else {
+        setZipcodeError("Sorry, we are not servicable at provided PinCode Area.");
+      }
+    }
 
+  }, [zipcode])
   const payumoney = (e) => {
     e.preventDefault();
 
     if (totalPrice < 3000) {
       alert("Order value must be greater than 3000");
+      return;
+    }
+    if(zipcodeError){
+      alert("ZipCode is not servicable by us!")
+      return; 
+    }
+    if (!name || !mobileno || !email || !address || !zipcode) {
+      alert('Please fill in all fields');
       return;
     }
     //Create a Data object that is to be passed to LAUNCH method of Bolt
@@ -2294,7 +2341,7 @@ const NinjaBoxCustomise = () => {
                   // value={zipcode}
                   onChange={(e) => setZipcode(e.target.value)}></input>
               </div>
-              {/* <p>{zipcodeError}</p> */}
+              <p>{zipcodeError}</p>
             </div>
             <hr />
             <div className={styles4.selectedDetails}>

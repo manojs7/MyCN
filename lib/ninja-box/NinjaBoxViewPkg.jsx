@@ -498,7 +498,7 @@ const NinjaBoxViewPkg = () => {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
         } else {
-          if (dessert.name === "Angoori Gulab Jamun") {
+          if (data.name === "Angoori Gulab Jamun") {
             data.quantity = Math.round((veg + nonVeg) * 3);
           } else {
             data.quantity = Math.round((veg + nonVeg) * 1.5);
@@ -1459,7 +1459,9 @@ const NinjaBoxViewPkg = () => {
                 await EmailOrderConfirmation(datas),
 
                 //Interakt Api message to hit my number with details
-                await interakt()
+                await interakt(),
+
+                // window.location.href='/'
 
 
               );
