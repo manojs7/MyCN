@@ -31,6 +31,11 @@ const Birthday_Packages = () => {
     const [nvGoldPackage, setNvGoldPackage] = useState([]);
     const [nvSilverPackage, setNvSilverPackage] = useState([]);
 
+    const [city, setCity] = useState();
+    const [selectedDate, setSelectedDate] = useState();
+    const [vegCount, setVegCount] = useState();
+    const [nvCount, setNvCount] = useState();
+
     //packages
         const vegPackages = {
             goldPackage: {
@@ -221,6 +226,19 @@ const Birthday_Packages = () => {
         backgroundSize: 'cover'
     };
 
+    useEffect(() => {
+        let selectedBirthdayPkg = JSON.parse(sessionStorage.getItem("selectedBirthdayPkg"));
+        console.log('selectedBirthdayPkg', selectedBirthdayPkg)
+        // sessionStorage.removeItem("dataSelected")
+        if (selectedBirthdayPkg) {
+          setCity(selectedBirthdayPkg["city"]);
+          setSelectedDate(selectedBirthdayPkg["selectedDate"]);
+          setVegCount(selectedBirthdayPkg["vegCount"]);
+          setNvCount(selectedBirthdayPkg["nvCount"]);
+    
+        }
+      }, []);
+
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
             {/* <div style={smallPng}>
@@ -241,12 +259,12 @@ const Birthday_Packages = () => {
                 </div>
                 <div className={styles.headerDetails}>
                     <div>
-                        <h6>City: <span>Bangalore</span></h6>
-                        <h6>Veg Count: <span>10</span></h6>
+                        <h6>City: <span>{city}</span></h6>
+                        <h6>Veg Count: <span>{vegCount}</span></h6>
                     </div>
                     <div>
-                        <h6>Date: <span>30-09-2023</span></h6>
-                        <h6>NV Count: <span>10</span></h6>
+                        <h6>Date: <span>{selectedDate}</span></h6>
+                        <h6>NV Count: <span>{nvCount}</span></h6>
                     </div>
                 </div>
             </div>
