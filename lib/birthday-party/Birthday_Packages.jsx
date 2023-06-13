@@ -43,7 +43,7 @@ const Birthday_Packages = () => {
                 veg: true,
                 price: "550",
                 items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
-                quantity: ["Any", "Any 3", "Any 2"]
+                quantity: ["Any 4", "Any 3", "Any 2"]
             },
             silverPackage: {
                 name: "SILVER",
