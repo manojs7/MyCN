@@ -638,6 +638,7 @@ const CustomizeNinjaBox = () => {
         } else if (data.name === highestPrice.name) {
           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
         } else {
+          
           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
         }
       } else {
@@ -1409,9 +1410,6 @@ const CustomizeNinjaBox = () => {
           }
         }
       });
-
-      console.log("hey", temp, filteredData);
-
       setBreadRice(temp);
     }
   }
@@ -2821,6 +2819,17 @@ const CustomizeNinjaBox = () => {
                               </div>
                             </div> */}
                             <div id={styles.starterList}>
+                              <div className="row ml-2">
+                                <div className="col-md-4">
+                              <button className="btn btn-secondary">veg only</button>
+                              </div>
+                              <div className="col-md-4">
+                              <button className="btn btn-secondary">Tandoori</button>
+                              </div>
+                              <div className="col-md-4">
+                              <button className="btn btn-secondary">Rice</button>
+                              </div>
+                              </div>
                               <ul>
                                 {filteredData.map((item, index) => (
                                   <li key={item.id}>

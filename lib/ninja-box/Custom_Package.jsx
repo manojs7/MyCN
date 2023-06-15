@@ -112,7 +112,7 @@ const Custom_Package = () => {
       }
       let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType, startTime: startTime }
       sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
-      window.open('/ninjaBoxViewPkg', '_blank')
+      window.open('/customiseNinjaBox', '_blank')
     }
   }
 
