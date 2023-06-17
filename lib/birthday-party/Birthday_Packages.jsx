@@ -273,14 +273,14 @@ const Birthday_Packages = () => {
                 <hr />
                 <h4 id={styles.custTitle}>Customization Available</h4>
                 <div className={styles.packages}>
-                    <div className={styles.firstRow}>
+                    { nvCount >= 1 ? "" :<div className={styles.firstRow}>
                         <div className={styles.goldPkg}>
                             <div className={styles.blackbg}>
                                 <div>
                                     <div id={styles.vector}>
                                         <Image src="/birthdayParty/Vectorr.png" height="24.6px" width="108.53px" />
                                     </div>
-                                    <p>{vegPackages.goldPackage.name}</p>
+                                    <p>GOLD</p>
                                 </div>
                                 <div className={styles.insideContent}>
                                     <h4>₹ 550/-</h4>
@@ -326,12 +326,12 @@ const Birthday_Packages = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.selectBtn}>
+                    </div>}
+                    { nvCount >= 1 ? "" :<div className={styles.selectBtn}>
                         <button onClick={selectPackageOne}>Select This Package</button>
                         <button onClick={selectPackageTwo}>Select This Package</button>
-                    </div>
-                    <div className={styles.secondRow}>
+                    </div>}
+                    {nvCount >= 1 ? <div className={styles.secondRow}>
                         <div className={styles.nvGoldPkg}>
                             <div className={styles.blackbg}>
                                 <div>
@@ -392,11 +392,11 @@ const Birthday_Packages = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.selectBtn}>
+                    </div> : ""}
+                    {nvCount >= 1 ?<div className={styles.selectBtn}>
                         <button onClick={selectPackageThree}>Select This Package</button>
                         <button onClick={selectPackageFour}>Select This Package</button>
-                    </div>
+                    </div> : "" }
                 </div>
             </div>
             <div className={styles.bottomSectn} style={btmPng}>

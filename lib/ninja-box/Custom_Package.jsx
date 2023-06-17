@@ -152,7 +152,7 @@ const Custom_Package = () => {
 
   //SHOW NON-VEG PACKAGES
   const [showNonveg, setShowNonVeg] = useState(false);
-  const [startTime, setStartTime] = useState('11:00 am')
+  const [startTime, setStartTime] = useState("")
 
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
@@ -262,14 +262,16 @@ const Custom_Package = () => {
   const handleButtonClick = (item) => {
     setItemSelected(item)
     if (!city) {
+      document.getElementById("cityId").focus();
       Swal.fire({
-        text: "Please select the city",
+        text: "Please select your City",
         icon: "warning",
         confirmButtonText: "OK",
       });
     } else if (!occasion) {
+      document.getElementById("occasionId").focus();
       Swal.fire({
-        text: "Please select the occasion",
+        text: "Please select your occasion",
         icon: "warning",
         confirmButtonText: "OK",
       });
@@ -455,6 +457,7 @@ const Custom_Package = () => {
               <div>
                 <p>City</p>
                 <select
+                id="cityId"
                   name="city"
                   aria-label="Default select example"
                   value={city}
@@ -476,6 +479,7 @@ const Custom_Package = () => {
               <div>
                 <p>Occasion</p>
                 <select
+                id="occasionId"
                   name="occasion"
                   aria-label="Default select example"
                   value={occasion}

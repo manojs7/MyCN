@@ -15,12 +15,12 @@
 }
 
 .birthdayHomeHeader {
+    margin-top: -10px;
     text-align: center;
-    margin-top: 10px;
     height: 160px;
 
     h6 {
-        padding-top: 20px;
+        padding-top: 10px;
         font-weight: 500;
         font-size: 9.52997px;
         line-height: 12px;
@@ -151,6 +151,7 @@
 .inputBox {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 30px;
 
     h6 {
         font-weight: 700;
@@ -162,7 +163,7 @@
     }
 
     select {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         width: 127.95px;
         height: 23.15px;
         background: #FAFAFA;
@@ -194,6 +195,7 @@
 .seePackageBtn {
     margin-top: 30px;
     text-align: center;
+    margin-bottom: 40px;
 
     button {
         width: 148px;
@@ -211,11 +213,13 @@
 }
 
 .packages {
-    margin-top: 30px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .packagesContainer {
     margin-top: 20px;
+    margin-bottom: 60px;
 
     h3 {
         font-weight: 700;
@@ -224,6 +228,7 @@
         text-align: center;
         letter-spacing: 0.05em;
         color: #2C3338;
+        margin-bottom: 10px;
     }
 
     hr {
@@ -390,12 +395,14 @@
     padding-top: 60px;
 
     .top {
+        margin: auto;
+        width: 329px;
+        height: 37px;
         display: flex;
         justify-content: space-evenly;
-        margin-inline: 48px;
+        padding-top: 7px;
 
         h6 {
-            margin-block: 2px;
             font-weight: 800;
             font-size: 9.52997px;
             line-height: 12px;
@@ -403,7 +410,7 @@
         }
 
         button {
-            margin-top: 8px;
+            margin-top: 5px;
             width: 80.15px;
             height: 14.39px;
             border-radius: 10.79px;
@@ -599,31 +606,36 @@
     .pkgCard {
         margin-top: 30px !important;
         margin: auto;
-        width: 169.26px;
-        height: 155.89px;
-        border: 0.9px solid #4D7104;
+        // width: 169.26px;
+        // height: 155.89px;
+        width: 251px;
+        height: 155px;
+        border: 0.9px solid #BE2D30;        ;
         border-radius: 10px;
 
         #titlebg {
-            margin-top: -15px;
+            margin-top: -20px;
             position: relative;
-            margin-inline: 20px;
+            margin-inline: 50px;
+
 
             h4 {
+                padding-top: 3px;
                 font-weight: 800;
                 font-size: 18.69px;
-                line-height: 23px;
                 text-align: center;
                 color: #222221;
             }
         }
 
         .blackbg {
-            margin-left: 7px;
+            margin-left: 10px;
             position: absolute;
-            margin-top: 5px;
-            width: 154.47px;
-            height: 138.61px;
+            margin-top: 10px;
+            // width: 154.47px;
+            // height: 138.61px;
+            width: 229px;
+            height: 133px;
             background-color: #222221;
             border-radius: 7px;
             box-shadow: 0px 0.896924px 0.896924px rgba(0, 0, 0, 0.25);
@@ -631,7 +643,7 @@
     }
 
     .cardinsideContent {
-        margin-top: -8px;
+        margin-top: 25px;
 
         h4 {
             font-weight: 800;
@@ -657,24 +669,24 @@
 
         h6 {
             font-weight: 600;
-            font-size: 9.47506px;
+            font-size: 11.5834px;
             color: #FEEEDD;
+            line-height: 12px;
         }
 
         #greenBtn {
             h6 {
-                padding-top: 1px;
                 // margin-block: 4px;
                 // padding-inline: 5px;
                 width: 43.29px;
                 height: 12.47px;
-                font-weight: 700;
-                font-size: 8.4643px;
+                font-weight: 500;
+                font-size: 10.3477px;
                 text-align: center;
                 color: #F6F6F6;
-                background-color: #547A17;
-                box-shadow: 0.825115px 1.10015px 2.75038px rgba(0, 0, 0, 0.25);
-                border-radius: 7.29px;
+                background: #547A17;
+                box-shadow: 1.00871px 1.34495px 3.36237px rgba(0, 0, 0, 0.25);
+                border-radius: 8.91029px;
             }
         }
     }

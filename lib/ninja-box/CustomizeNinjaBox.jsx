@@ -44,7 +44,7 @@ const CustomizeNinjaBox = () => {
   const [city, setCity] = useState("");
   const [occasion, setOccasion] = useState("");
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState("");
   const [startTime, setStartTime] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState();
@@ -142,6 +142,41 @@ const CustomizeNinjaBox = () => {
   // const today = new Date();
   // const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
 
+  // const generateDateOptions = () => {
+  //   const options = [];
+  //   const currentDate = new Date();
+  //   const currentYear = currentDate.getFullYear();
+  //   const twoDaysFromNow = new Date();
+  //   twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+  //   for (
+  //     let date = twoDaysFromNow;
+  //     date.getFullYear() === currentYear;
+  //     date.setDate(date.getDate() + 1)
+  //   ) {
+  //     const optionValue = date.toISOString().slice(0, 10);
+  //     const optionLabel = date.toLocaleDateString("en-US", {
+  //       year: "numeric",
+  //       month: "long",
+  //       day: "numeric",
+  //     });
+
+  //     options.push(
+  //       <option key={optionValue} value={optionValue}>
+  //         {optionLabel}
+  //       </option>
+  //     );
+  //   }
+
+  //   return options;
+  // };
+
+  //select date logic
+  const handleDateChange = (event) => {
+    setStartDate(event.target.value);
+    // setSelectedDate(event.target.value);
+  };
+
   const generateDateOptions = () => {
     const options = [];
     const currentDate = new Date();
@@ -155,10 +190,10 @@ const CustomizeNinjaBox = () => {
       date.setDate(date.getDate() + 1)
     ) {
       const optionValue = date.toISOString().slice(0, 10);
-      const optionLabel = date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
+      const optionLabel = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
       });
 
       options.push(
@@ -296,9 +331,9 @@ const CustomizeNinjaBox = () => {
   const handleVegNonVegGuest = (name, value) => {
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
-    } 
-    else if(value<5){
-      alert("Minimum "+ name +" guest count should be 5")
+    }
+    else if (value < 5) {
+      alert("Minimum " + name + " guest count should be 5")
       name === "veg" ? setVeg(5) : setNonVeg(5);
     }
     else {
@@ -583,7 +618,7 @@ const CustomizeNinjaBox = () => {
             }
           } else {
             // data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
-            data.quantity = HandleCeilFloorValue(((veg +nonVeg) * 0.075).toFixed(1));
+            data.quantity = HandleCeilFloorValue(((veg + nonVeg) * 0.075).toFixed(1));
           }
         } else {
           if (data.Qtype === "pcs") {
@@ -714,100 +749,100 @@ const CustomizeNinjaBox = () => {
     setMains(tempMain);
 
     //Bread Rice update
-    let tempBreadRice=[...breadRice]
+    let tempBreadRice = [...breadRice]
     let bread = 0;
-        let count = 0;
-        let isVeg = false;
+    let count = 0;
+    let isVeg = false;
 
-        tempBreadRice.map((item) => {
-          item.menu_label === "Breads" ? (bread += 1) : bread;
-          item.menu_label === "Rice" ? (count += 1) : count;
-          item.veg ? (isVeg = true) : (isVeg = false);
-        });
-        tempBreadRice.map((item) => {
-          if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
-            if (bread === 1) {
-              item.quantity = Math.round((veg + nonVeg) * 3);
-            } else {
-              item.quantity = Math.round((veg + nonVeg) * 2);
-            }
-          } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
-            if (bread === 1) {
-              item.quantity = Math.round((veg + nonVeg) * 2);
-            } else {
-              item.quantity = Math.round((veg + nonVeg) * 1);
-            }
-          } else if (item?.menu_label === "Rice") {
-            console.log("rice", count);
-            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
-              let guests = veg > 0 ? veg : nonVeg;
-              if (count >= 2) {
-                console.log("count2");
-                item.quantity = HandleCeilFloorValue(0.15 * guests);
-              } else if (mains.length > 0 && count === 1) {
-                console.log("count1");
+    tempBreadRice.map((item) => {
+      item.menu_label === "Breads" ? (bread += 1) : bread;
+      item.menu_label === "Rice" ? (count += 1) : count;
+      item.veg ? (isVeg = true) : (isVeg = false);
+    });
+    tempBreadRice.map((item) => {
+      if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
+        if (bread === 1) {
+          item.quantity = Math.round((veg + nonVeg) * 3);
+        } else {
+          item.quantity = Math.round((veg + nonVeg) * 2);
+        }
+      } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
+        if (bread === 1) {
+          item.quantity = Math.round((veg + nonVeg) * 2);
+        } else {
+          item.quantity = Math.round((veg + nonVeg) * 1);
+        }
+      } else if (item?.menu_label === "Rice") {
+        console.log("rice", count);
+        if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+          let guests = veg > 0 ? veg : nonVeg;
+          if (count >= 2) {
+            console.log("count2");
+            item.quantity = HandleCeilFloorValue(0.15 * guests);
+          } else if (mains.length > 0 && count === 1) {
+            console.log("count1");
 
-                item.quantity = HandleCeilFloorValue(0.2 * guests);
-              } else if (mains.length === 0 && count === 1) {
-                console.log("count1");
-                item.quantity = HandleCeilFloorValue(0.3 * guests);
-              }
-            } else if (veg > 0 && nonVeg > 0) {
-              let guests = veg + nonVeg;
-              if (count >= 2) {
-                item.quantity = HandleCeilFloorValue(0.15 * guests);
-              } else if (
-                count === 1 &&
-                mains.length === 0 &&
-                starters.length >= 2
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.25 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
-                }
-              } else if (
-                count === 1 &&
-                mains.length === 0 &&
-                starters.length <= 1
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.3 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
-                }
-              } else if (
-                count >= 1 &&
-                mains.length === 0 &&
-                starters.length <= 1
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.25 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
-                }
-              } else if (
-                count >= 1 &&
-                mains.length === 0 &&
-                starters.length >= 2
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.2 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
-                }
-              } else if (count === 1 && mains.length >= 1) {
-                item.quantity = HandleCeilFloorValue(0.2 * guests);
-              } else {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.15 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
-                }
-              }
+            item.quantity = HandleCeilFloorValue(0.2 * guests);
+          } else if (mains.length === 0 && count === 1) {
+            console.log("count1");
+            item.quantity = HandleCeilFloorValue(0.3 * guests);
+          }
+        } else if (veg > 0 && nonVeg > 0) {
+          let guests = veg + nonVeg;
+          if (count >= 2) {
+            item.quantity = HandleCeilFloorValue(0.15 * guests);
+          } else if (
+            count === 1 &&
+            mains.length === 0 &&
+            starters.length >= 2
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.25 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+            }
+          } else if (
+            count === 1 &&
+            mains.length === 0 &&
+            starters.length <= 1
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.3 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+            }
+          } else if (
+            count >= 1 &&
+            mains.length === 0 &&
+            starters.length <= 1
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.25 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+            }
+          } else if (
+            count >= 1 &&
+            mains.length === 0 &&
+            starters.length >= 2
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.2 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+            }
+          } else if (count === 1 && mains.length >= 1) {
+            item.quantity = HandleCeilFloorValue(0.2 * guests);
+          } else {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.15 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
             }
           }
-        });
+        }
+      }
+    });
 
 
 
@@ -818,7 +853,7 @@ const CustomizeNinjaBox = () => {
     let tempDessert = [...desserts];
 
     tempDessert.map((data) => {
-      
+
       if (data.Qtype === "pcs") {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
@@ -828,8 +863,8 @@ const CustomizeNinjaBox = () => {
           } else {
             data.quantity = Math.round((veg + nonVeg) * 1.5);
           }
-      } 
-    }else {
+        }
+      } else {
         data.quantity = (Math.round(veg + nonVeg) * 0.075).toFixed(1);
       }
     });
@@ -929,7 +964,7 @@ const CustomizeNinjaBox = () => {
           // quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
           quantity = HandleCeilFloorValue(((veg + nonVeg) * 0.075).toFixed(1));
         }
-      } else { 
+      } else {
         if (starter.Qtype === "pcs") {
           if (
             starter.name.includes("Paneer Tikka") ||
@@ -1188,17 +1223,35 @@ const CustomizeNinjaBox = () => {
     handleChange(value, index, type);
   }
   function checkFirstValidation() {
-    if (!city || !startTime) {
+    if (!city || !occasion || !startDate || !startTime) {
       if (!city) {
+        document.getElementById("cityField").focus();
         Swal.fire({
           text: "Please select your City",
           icon: "warning",
           confirmButtonText: "OK",
         });
-        // alert("Fill the City please");
-      } else if (!startTime) {
+      } else if (!occasion) {
+        document.getElementById("occasionId").focus();
         Swal.fire({
-          text: "Please fill the delivery time",
+          text: "Please select your Occasion",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Event time please");
+      } else if (!startDate) {
+        document.getElementById("dateSelect").focus();
+        Swal.fire({
+          text: "Please select the event date",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        //alert("Fill the Event time please");
+      }
+      else if (!startTime) {
+        document.getElementById("time").focus();
+        Swal.fire({
+          text: "Please select delivery time",
           icon: "warning",
           confirmButtonText: "OK",
         });
@@ -1214,7 +1267,7 @@ const CustomizeNinjaBox = () => {
       city === "Mumbai" ||
       city === "Banglore" ||
       city === "Navi-Mumbai" ||
-      city === "Thane" || city==="Chennai" || city === "Pune"
+      city === "Thane" || city === "Chennai" || city === "Pune"
     ) {
       if (people <= 25) {
         setDeliveryCharge(0);
@@ -1264,29 +1317,29 @@ const CustomizeNinjaBox = () => {
       setBreadRice(newDesserts);
     }
   }
-  function uncheckAfterDelete(a,temp){
+  function uncheckAfterDelete(a, temp) {
     let removedIndexes = [];
-      a.forEach((item, index) => {
-        let innerData = temp.filter(
-          (innerItem) => innerItem?.name === item?.name
-        );
-        console.log("item", innerData);
-        if (!innerData?.length) {
-          removedIndexes.push(index);
-        }
-      });
-      for (let j = 0; j < a.length; j++) {
-        if (!removedIndexes.includes(j)) {
-          a[j].checked = "checked";
-        } else {
-          a[j].checked = "";
-          checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
-          setCheckedValues(
-            checkedValues
-          );
-        }
+    a.forEach((item, index) => {
+      let innerData = temp.filter(
+        (innerItem) => innerItem?.name === item?.name
+      );
+      console.log("item", innerData);
+      if (!innerData?.length) {
+        removedIndexes.push(index);
       }
-      return a
+    });
+    for (let j = 0; j < a.length; j++) {
+      if (!removedIndexes.includes(j)) {
+        a[j].checked = "checked";
+      } else {
+        a[j].checked = "";
+        checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
+        setCheckedValues(
+          checkedValues
+        );
+      }
+    }
+    return a
   }
   function handleDelete(index, type) {
     setIsDelete(!isDelete);
@@ -1296,25 +1349,25 @@ const CustomizeNinjaBox = () => {
       temp = [...starters];
       temp.splice(index, 1);
       setStarters(temp);
-      updated=uncheckAfterDelete(filteredData,temp);
+      updated = uncheckAfterDelete(filteredData, temp);
       setStartersData(updated)
       // console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
       temp = [...mains];
       temp.splice(index, 1);
       setMains(temp);
-      updated=uncheckAfterDelete(filteredMainsData,temp);
+      updated = uncheckAfterDelete(filteredMainsData, temp);
       setMainData(updated)
     } else if (type === "desserts") {
       temp = [...desserts];
       temp.splice(index, 1);
       setDesserts(temp);
-      updated=uncheckAfterDelete(filteredDessertData,temp);
+      updated = uncheckAfterDelete(filteredDessertData, temp);
       setDessertData(updated)
     } else if (type === "Bread+Rice") {
       temp = [...breadRice];
       temp.splice(index, 1);
-      updated=uncheckAfterDelete(filteredBreadData,temp);
+      updated = uncheckAfterDelete(filteredBreadData, temp);
       setBreadRiceData(updated)
       // changing the value after deleting
       let bread = 0;
@@ -1438,7 +1491,7 @@ const CustomizeNinjaBox = () => {
       temp.map((item) => {
         item.menu_label === "Breads" ? (bread += 1) : bread;
       });
-      
+
       bread === 1
         ? (quantity = Math.round((veg + nonVeg) * 3))
         : (quantity = Math.round((veg + nonVeg) * 2));
@@ -1446,10 +1499,10 @@ const CustomizeNinjaBox = () => {
         quantity = Math.round((veg + nonVeg) * 3);
       } else {
         temp.forEach((item) => {
-          if(item.Qtype==="pcs"){
-          item.name === "Poori - 4" && item.menu_label === "Breads"
-            ? (item.quantity = Math.round((veg + nonVeg) * 2))
-            : (item.quantity = Math.round((veg + nonVeg) * 1));
+          if (item.Qtype === "pcs") {
+            item.name === "Poori - 4" && item.menu_label === "Breads"
+              ? (item.quantity = Math.round((veg + nonVeg) * 2))
+              : (item.quantity = Math.round((veg + nonVeg) * 1));
           }
         });
         quantity = Math.round((veg + nonVeg) * 2);
@@ -1472,11 +1525,11 @@ const CustomizeNinjaBox = () => {
         quantity = Math.round((veg + nonVeg) * 2);
       } else {
         temp.forEach((item) => {
-          if(item.Qtype==="pcs"){
-          item.name === "Poori - 4" && item.menu_label === "Breads"
-            ? (item.quantity = Math.round((veg + nonVeg) * 2))
-            : (item.quantity = Math.round((veg + nonVeg) * 1));
-            
+          if (item.Qtype === "pcs") {
+            item.name === "Poori - 4" && item.menu_label === "Breads"
+              ? (item.quantity = Math.round((veg + nonVeg) * 2))
+              : (item.quantity = Math.round((veg + nonVeg) * 1));
+
           }
         });
         quantity = Math.round((veg + nonVeg) * 1);
@@ -1873,13 +1926,23 @@ const CustomizeNinjaBox = () => {
     }
 
     if (
+      starters.length + mains.length + desserts.length + breadRice.length == "0" ||
       name.length == "" ||
       mobileno.length == "" ||
       !/^\d{10}$/.test(mobileno) ||
       email.length == "" ||
       !/\S+@\S+\.\S+/.test(email)
     ) {
-      if (name.length == "") {
+      if (starters.length + mains.length + desserts.length + breadRice.length == "0") {
+        Swal.fire({
+          text: "Please Create Your Menu",
+          icon: "warning",
+          confirmButtonText: "OK",
+        }).then(() => {
+          document.getElementById("srchbr").scrollIntoView();
+        });
+      }
+      else if (name.length == "") {
         Swal.fire({
           text: "Please enter your Name",
           icon: "warning",
@@ -2103,7 +2166,7 @@ const CustomizeNinjaBox = () => {
           //Storing the payment details
           .then(async function (json) {
             json.datas = datas
-            json.createdAt=new Date()
+            json.createdAt = new Date()
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -2127,7 +2190,7 @@ const CustomizeNinjaBox = () => {
                 (datas.email = json.status.email),
                 (datas.bank_ref_num = json.status.bank_ref_num),
                 (datas.OrderStatus = "");
-                datas.createdAt=new Date()
+              datas.createdAt = new Date()
               // datas.name=json.status.field4
 
               // }
@@ -2152,7 +2215,7 @@ const CustomizeNinjaBox = () => {
                 // window.location.href='/'
 
               )
-              
+
             } else {
               alert("Payment Failed! Please try again.");
             }
@@ -2184,9 +2247,9 @@ const CustomizeNinjaBox = () => {
       alert("Order value must be greater than 3000");
       return;
     }
-    if(zipcodeError){
+    if (zipcodeError) {
       alert("ZipCode is not servicable by us!")
-      return; 
+      return;
     }
     if (!name || !mobileno || !email || !address || !zipcode) {
       alert('Please fill in all fields');
@@ -2436,6 +2499,7 @@ const CustomizeNinjaBox = () => {
                   <p>City</p>
 
                   <select
+                    id="cityField"
                     className="form-select"
                     name="city"
                     aria-label="Default select example"
@@ -2481,12 +2545,17 @@ const CustomizeNinjaBox = () => {
                     dateFormat="dd MMMM yyyy"
                     required
                   /> */}
-                  <input
+                  {/* <input
+                  id="dateId"
                     type="date"
                     onChange={(event) => setStartDate(event.target.value)}
                     value={startDate}
                     min={minDateISO.toString()}
-                  />
+                  /> */}
+                  <select id="dateSelect" className="form-select" value={startDate} onChange={handleDateChange}>
+                    <option value="">Select a date</option>
+                    {generateDateOptions()}
+                  </select>
                   {/* <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate}>
                     <option value="">Select a date</option>
                     {generateDateOptions()}
@@ -2519,6 +2588,7 @@ const CustomizeNinjaBox = () => {
                 <div style={{ marginBottom: "40px" }}>
                   <p>Occasion</p>
                   <select
+                    id="occasionId"
                     className="form-select"
                     name="occasion"
                     aria-label="Default select example"
@@ -2540,10 +2610,11 @@ const CustomizeNinjaBox = () => {
                 <div>
                   <p>Delivery Time</p>
                   <select
+                    id="time"
                     className="form-select"
                     onChange={(e) => setStartTime(e.target.value)}
                   >
-                    <option value="">Select a Date</option>
+                    <option value="">Select a Time</option>
                     <option value="11:00 am">11:00 am</option>
                     <option value="11:30 am">11:30 am</option>
                     <option value="12:00 pm">12:00 pm</option>
@@ -3519,8 +3590,8 @@ const CustomizeNinjaBox = () => {
                     {(city === "Mumbai" ||
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
-                      city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
-                    people < 26 ? (
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3530,9 +3601,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3544,9 +3615,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3558,9 +3629,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3579,7 +3650,7 @@ const CustomizeNinjaBox = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                    people < 26 ? (
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3589,9 +3660,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3603,9 +3674,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3617,9 +3688,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
