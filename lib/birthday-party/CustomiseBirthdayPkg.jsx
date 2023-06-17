@@ -659,9 +659,10 @@ const CustomiseBirthdayPkg = () => {
 
     //pkg card
     const titlebg = {
-        backgroundImage: 'url("/birthdayParty/Vectorr.png")',
+        backgroundImage: 'url("/birthdayParty/customisePkgnamecard.png")',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        height: "27px"
     };
 
     return (
@@ -696,16 +697,16 @@ const CustomiseBirthdayPkg = () => {
             <div className={styles.customisePkgContainer}>
                 <h3>Customise Your package</h3>
                 <hr />
-                <div className={styles.pkgCard}>
+                <div className={styles.pkgCard}  >
                     <div className={styles.blackbg}>
                         <div style={titlebg} id={styles.titlebg}>
                             <h4>{packageName}</h4>
                         </div>
                         <div className={styles.cardinsideContent}>
-                            <div className='text-center'>
+                            {/* <div className='text-center'>
                                 <h4>₹ {packagePrice}</h4>
                                 <p>Per Person</p>
-                            </div>
+                            </div> */}
                             <div className={styles.btns}>
                                 <div id={styles.btnName}>
                                     {itemsTypeName.map((iname, index) => (<h6 key={index}>{iname}</h6>))}
@@ -914,7 +915,7 @@ const CustomiseBirthdayPkg = () => {
 
             {/* NON VEG SNACK */}
 
-            <div className={styles.itemsSelectionContainer}>
+            {nvCount >= 1 ?<div className={styles.itemsSelectionContainer}>
                 <div className={styles.vegSnackContainer}>
                     <h3>Non Veg Snack</h3>
                     {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
@@ -991,10 +992,10 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles2.addMoreBtn}>
                     <button onClick={selectNonVegSnack}>+ Add More</button>
                 </div>
-            </div>
+            </div> : "" }
             {/* NON VEG HEAVY SNACK */}
 
-            <div className={styles.itemsSelectionContainer}>
+            {nvCount >= 1 ?<div className={styles.itemsSelectionContainer}>
                 <div className={styles.vegSnackContainer}>
                     <h3>Non Veg Heavy Snack</h3>
                     {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
@@ -1071,7 +1072,7 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles2.addMoreBtn}>
                     <button onClick={selectNonVegHeavySnack}>+ Add More</button>
                 </div>
-            </div>
+            </div> : "" }
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>
                     <h6>Fun Eatables, Live Counters<br />Main Course Add On's</h6>
