@@ -4,6 +4,7 @@ import styles2 from '/styles/NewDiy.module.scss';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong, faArrowLeftLong, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 const CustomiseBirthdayPkg = () => {
 
@@ -553,7 +554,12 @@ const CustomiseBirthdayPkg = () => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues.length >= 4 && !alertShown) {
-                alert("If you choose more items, there will be additional charges.");
+                Swal.fire({
+                    title: "Reminder",
+                    text: "Respective Charges will be applied to extra selected items in final quote.",
+                    icon: "warning",
+                    confirmButtonText: "OK",
+                });
                 setAlertShown(true);
             }
             value.checked = 'checked';
@@ -568,7 +574,12 @@ const CustomiseBirthdayPkg = () => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues2.length >= 3 && !alertShown2) {
-                alert("If you choose more items, there will be additional charges.");
+                Swal.fire({
+                    title: "Reminder",
+                    text: "Respective Charges will be applied to extra selected items in final quote.",
+                    icon: "warning",
+                    confirmButtonText: "OK",
+                });
                 setAlertShown2(true);
             }
             value.checked = 'checked';
@@ -583,7 +594,12 @@ const CustomiseBirthdayPkg = () => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues3.length >= 3 && !alertShown3) {
-                alert("If you choose more items, there will be additional charges.");
+                Swal.fire({
+                    title: "Reminder",
+                    text: "Respective Charges will be applied to extra selected items in final quote.",
+                    icon: "warning",
+                    confirmButtonText: "OK",
+                });
                 setAlertShown3(true);
             }
             value.checked = 'checked';
@@ -598,7 +614,12 @@ const CustomiseBirthdayPkg = () => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues4.length >= 3 && !alertShown4) {
-                alert("If you choose more items, there will be additional charges.");
+                Swal.fire({
+                    title: "Reminder",
+                    text: "Respective Charges will be applied to extra selected items in final quote.",
+                    icon: "warning",
+                    confirmButtonText: "OK",
+                });
                 setAlertShown4(true);
             }
             value.checked = 'checked';

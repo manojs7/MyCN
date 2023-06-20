@@ -2877,7 +2877,7 @@ const CustomizeNinjaBox = () => {
                               onChange={searchStarter}
                               placeholder="Search Starter"
                             />
-                            {/* <div className={styles.radioFilter}>
+                            <div className={styles.radioFilter}>
                               <div className="form-check form-check-inline">
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
                                 <label className="form-check-label" for="inlineRadio1">All</label>
@@ -2890,7 +2890,7 @@ const CustomizeNinjaBox = () => {
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
                                 <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
                               </div>
-                            </div> */}
+                            </div>
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredData.map((item, index) => (
@@ -3082,7 +3082,7 @@ const CustomizeNinjaBox = () => {
                               onChange={searchMains}
                               placeholder="Search Mains"
                             />
-                            {/* <div className={styles.radioFilter}>
+                            <div className={styles.radioFilter}>
                               <div className="form-check form-check-inline">
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
                                 <label className="form-check-label" for="inlineRadio1">All</label>
@@ -3095,7 +3095,7 @@ const CustomizeNinjaBox = () => {
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
                                 <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
                               </div>
-                            </div> */}
+                            </div>
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredMainsData.map((item, index) => (
@@ -3289,6 +3289,20 @@ const CustomizeNinjaBox = () => {
                               onChange={searchBread}
                               placeholder="Search Bread Rice Noodles"
                             />
+                            <div className={styles.radioFilter}>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
+                                <label className="form-check-label" for="inlineRadio1">All</label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="veg" />
+                                <label style={{color: "green"}} className="form-check-label" for="inlineRadio2">Veg</label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
+                                <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
+                              </div>
+                            </div>
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredBreadData.map((item, index) => (
