@@ -2924,12 +2924,12 @@ const CustomizeNinjaBox = () => {
                                   <label for="sf3">Popular Gravys</label>
                                 </div>
                                 <div className={styles.filterName}>
-                                  <input type="radio" id="sf4" name="starterFilter" />
+                                  <input type="radio" id="sf4" name="starterFilter"/>
                                   <label for="sf4">All Gravys</label>
                                 </div>
                               </div>
                             </div>}
-                            <div className={styles.radioFilter}>
+                            {/* <div className={styles.radioFilter}>
                               <div className="form-check form-check-inline">
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
                                 <label className="form-check-label" for="inlineRadio1">All</label>
@@ -2942,7 +2942,7 @@ const CustomizeNinjaBox = () => {
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
                                 <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
                               </div>
-                            </div>
+                            </div> */}
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredData.map((item, index) => (
@@ -3134,7 +3134,32 @@ const CustomizeNinjaBox = () => {
                               onChange={searchMains}
                               placeholder="Search Mains"
                             />
-                            <div className={styles.radioFilter}>
+                            <h6 onClick={openStarterFilter}><span><FontAwesomeIcon icon={faSortDown} /></span>Filter By</h6>
+                            { showStarterFilter && <div className={styles.filterSectn}>
+                              <div className={styles.insideFiilter}>
+                                {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf1" name="starterFilter"/>
+                                  <label for="sf1">Paneer Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf2" name="starterFilter" />
+                                  <label for="sf2">Vegetable Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf3" name="starterFilter" />
+                                  <label for="sf3">Popular Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf4" name="starterFilter" />
+                                  <label for="sf4">All Gravys</label>
+                                </div>
+                              </div>
+                            </div>}
+                            {/* <div className={styles.radioFilter}>
                               <div className="form-check form-check-inline">
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
                                 <label className="form-check-label" for="inlineRadio1">All</label>
@@ -3147,7 +3172,7 @@ const CustomizeNinjaBox = () => {
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
                                 <label style={{ color: "red" }} className="form-check-label" for="inlineRadio3">NonVeg</label>
                               </div>
-                            </div>
+                            </div> */}
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredMainsData.map((item, index) => (
@@ -3341,7 +3366,28 @@ const CustomizeNinjaBox = () => {
                               onChange={searchBread}
                               placeholder="Search Bread Rice Noodles"
                             />
-                            <div className={styles.radioFilter}>
+                            <h6 onClick={openStarterFilter}><span><FontAwesomeIcon icon={faSortDown} /></span>Filter By</h6>
+                            { showStarterFilter && <div className={styles.filterSectn}>
+                              <div className={styles.insideFiilter}>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf1" name="starterFilter"/>
+                                  <label for="sf1">Paneer Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf2" name="starterFilter" />
+                                  <label for="sf2">Vegetable Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf3" name="starterFilter" />
+                                  <label for="sf3">Popular Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf4" name="starterFilter" />
+                                  <label for="sf4">All Gravys</label>
+                                </div>
+                              </div>
+                            </div>}
+                            {/* <div className={styles.radioFilter}>
                               <div className="form-check form-check-inline">
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
                                 <label className="form-check-label" for="inlineRadio1">All</label>
@@ -3354,7 +3400,7 @@ const CustomizeNinjaBox = () => {
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
                                 <label style={{ color: "red" }} className="form-check-label" for="inlineRadio3">NonVeg</label>
                               </div>
-                            </div>
+                            </div> */}
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredBreadData.map((item, index) => (
@@ -3547,6 +3593,31 @@ const CustomizeNinjaBox = () => {
                               onChange={searchDessert}
                               placeholder="Search Desserts"
                             />
+                            <h6 onClick={openStarterFilter}><span><FontAwesomeIcon icon={faSortDown} /></span>Filter By</h6>
+                            { showStarterFilter && <div className={styles.filterSectn}>
+                              <div className={styles.insideFiilter}>
+                                {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf1" name="starterFilter"/>
+                                  <label for="sf1">Paneer Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf2" name="starterFilter" />
+                                  <label for="sf2">Vegetable Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf3" name="starterFilter" />
+                                  <label for="sf3">Popular Gravys</label>
+                                </div>
+                                <div className={styles.filterName}>
+                                  <input type="radio" id="sf4" name="starterFilter"/>
+                                  <label for="sf4">All Gravys</label>
+                                </div>
+                              </div>
+                            </div>}
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredDessertData.map((item, index) => (
