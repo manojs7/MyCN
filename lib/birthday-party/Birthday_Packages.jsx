@@ -43,29 +43,45 @@ const Birthday_Packages = () => {
                 veg: true,
                 price: "550",
                 items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
-                quantity: ["Any 4", "Any 3", "Any 2"]
+                quantity: ["Any 4", "Any 3", "Any 2"],
+                vegSnackQnty: 4,
+                vegHeavySnackQnty: 3,
+                dessertQnty: 2
             },
             silverPackage: {
                 name: "SILVER",
                 veg: true,
                 price: "550",
                 items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
-                quantity: ["Any 3", "Any 3", "Any 2"]
+                quantity: ["Any 3", "Any 3", "Any 2"],
+                vegSnackQnty: 3,
+                vegHeavySnackQnty: 3,
+                dessertQnty: 2
             },
             nvGoldPackage: {
                 name: "GOLD NV",
                 veg: false,
                 price: "650",
                 items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
-                quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"]
+                quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
+                vegSnackQnty: 2,
+                nonVegSnackQnty: 3,
+                vegHeavySnackQnty: 2,
+                nonVegHeavySnackQnty: 1,
+                dessertQnty: 2
             },
             nvSilverPackage: {
                 name: "SILVER NV",
                 veg: false,
                 price: "570",
                 items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
-                quantity: ["Any 2", "Any 2", "Any 1", "Any 1", "Any 1"]
-            },
+                quantity: ["Any 2", "Any 2", "Any 1", "Any 1", "Any 1"],
+                vegSnackQnty: 2,
+                nonVegSnackQnty: 2,
+                vegHeavySnackQnty: 1,
+                nonVegHeavySnackQnty: 1,
+                dessertQnty: 1
+            }
         }
         // const packageTwo = 
         // {
