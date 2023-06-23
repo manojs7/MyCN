@@ -2876,7 +2876,14 @@ const CustomizeNinjaBox = () => {
                               onChange={searchStarter}
                               placeholder="Search Starter"
                             />
-                            {/* <div className={styles.radioFilter}>
+                            <div className={styles.radioFilter}>
+                            <div className="d-flex justify-content-center">
+            <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif", marginRight: "10px" }}>Veg Only</h3>
+            <label className={styles.toggle}>
+              <input type="checkbox" />
+              <span className={styles.slider}></span>
+            </label>
+          </div>
                               <div className="form-check form-check-inline">
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" />
                                 <label className="form-check-label" for="inlineRadio1">All</label>
@@ -2889,7 +2896,7 @@ const CustomizeNinjaBox = () => {
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
                                 <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
                               </div>
-                            </div> */}
+                            </div>
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredData

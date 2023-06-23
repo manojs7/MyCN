@@ -39,8 +39,8 @@ const NinjaBoxCustomise = () => {
   const handleShowModal = () => setShowModal(true);
   const router = useRouter();
   const [veg, setVeg] = useState(10);
-  const [nonVeg, setNonVeg] = useState(10);
-  const [people, setPeople] = useState(20);
+  const [nonVeg, setNonVeg] = useState(0);
+  const [people, setPeople] = useState(10);
 
   const [cuisine, setCuisine] = useState("All");
   const [knowMore, setKnowMore] = useState([]);
@@ -724,9 +724,9 @@ const NinjaBoxCustomise = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = HandleCeilFloorValue(
-                veg * 0.1 + nonVeg * 0.1
-              ).toFixed(1);
+              data.quantity = HandleCeilFloorValue((
+                veg * 0.1 + nonVeg * 0.1)
+              .toFixed(1));
             }
           }
         } else {
@@ -851,7 +851,7 @@ const NinjaBoxCustomise = () => {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
         } else {
-          if (dessert.name === "Angoori Gulab Jamun") {
+          if (data.name === "Angoori Gulab Jamun") {
             data.quantity = Math.round((veg + nonVeg) * 3);
           } else {
             data.quantity = Math.round((veg + nonVeg) * 1.5);

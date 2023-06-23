@@ -44,7 +44,7 @@ const ConfirmOrder = () => {
       .then(function (a) {
         return a.json();
       }).then(function (json) {
-        console.log("prodcuts2",json.data)
+        // console.log("prodcuts2",json.data)
        setProducts(json.data)
       })
     }
