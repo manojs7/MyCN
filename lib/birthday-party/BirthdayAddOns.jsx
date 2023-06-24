@@ -131,14 +131,6 @@ const BirthdayAddOns = () => {
                         <button><FontAwesomeIcon icon={faPlus} style={{marginRight: "10px", color: "white"}}/>Add</button>
                     </div>
                 </div>))}
-                <div className={styles.itemsListContainer}>
-                    <div className={styles.list}>
-                        <h4>🔥 Veg Pasta Station</h4>
-                    </div>
-                    <div>
-                        <button><FontAwesomeIcon icon={faPlus} style={{marginRight: "10px", color: "white"}}/>Add</button>
-                    </div>
-                </div>
             </div>
             <hr />
             <div className={styles.checkpriceBtn}>
