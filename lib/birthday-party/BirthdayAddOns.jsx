@@ -52,6 +52,8 @@ const BirthdayAddOns = () => {
         { id: 3, name: 'Waffle Station', price: "₹120/-" },
     ]
 
+    const totalGuestCount = vegCount + nvCount ;
+
     useEffect(() => {
         let selectedBirthdayPkg = JSON.parse(sessionStorage.getItem("selectedBirthdayPkg"));
         console.log('selectedBirthdayPkg', selectedBirthdayPkg)
@@ -96,7 +98,8 @@ const BirthdayAddOns = () => {
                         <h4>🔥 {items.name}</h4>
                     </div>
                     <div>
-                        <button><FontAwesomeIcon icon={faPlus} style={{marginRight: "10px", color: "white"}}/>{items.price}</button>
+                        { totalGuestCount >= 50 ?<button><FontAwesomeIcon icon={faPlus} style={{marginRight: "10px", color: "white"}}/>{items.price}</button> :
+                        <button><FontAwesomeIcon icon={faPlus} style={{marginRight: "10px", color: "white"}}/>Add</button>}
                     </div>
                 </div>))}
             </div>
