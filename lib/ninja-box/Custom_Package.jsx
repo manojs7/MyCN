@@ -646,7 +646,7 @@ const Custom_Package = () => {
               <span className={styles.labels} data-on="Veg Only" data-off="OFF"></span>
             </label>
           </div> */}
-          {!showNonveg && <div>
+          {!showNonveg && <div style={{marginInline: "70px"}}>
             <div className="d-flex mt-3">
               {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>

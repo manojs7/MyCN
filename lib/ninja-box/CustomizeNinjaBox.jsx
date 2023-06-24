@@ -2608,7 +2608,6 @@ const CustomizeNinjaBox = () => {
                 </div>
               </div>
               <div>
-
                 <div style={{ marginBottom: "40px" }}>
                   <p>Occasion</p>
                   <select
@@ -2678,16 +2677,15 @@ const CustomizeNinjaBox = () => {
                   />
                 </div>
               </div>
-            
-              </div>
-        {/* Display Starters, mains etc count */}
-        <div className={styles.whiteBg}>
-          {/* MANOJ <div className={styles.packageName}>
+            </div>
+            {/* Display Starters, mains etc count */}
+            <div className={styles.whiteBg}>
+              {/* MANOJ <div className={styles.packageName}>
                                 <h3>PACKAGE NAME</h3>
                                 <img src='555.png' height="150px" width="274.5px" />
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
-          {/* <div className={styles.selfService}>
+              {/* <div className={styles.selfService}>
                 {
                   <Slider {...settings}>
                     <div>
@@ -2721,37 +2719,37 @@ const CustomizeNinjaBox = () => {
                   </Slider>
                 }
               </div> */}
-          <div className={styles.pkgSliderContainerLG}>
-            {
-              <Slider {...settings}>
-                <div className={styles.pkgSlider}>
-                  <h3>
-                    SELF - SERVICE
-                    <br />
-                    NINJA<span>BOX</span>
-                  </h3>
-                  <img src="555.png" />
-                </div>
-                <div className={styles.pkgSlider}>
-                  <h3>
-                    SELF - SERVICE
-                    <br />
-                    NINJA<span>BUFFET</span>
-                  </h3>
-                  <img src="Frame 769.png" />
-                </div>
-                <div className={styles.pkgSlider}>
-                  <h3>
-                    PREMIUM BUFFET
-                    <br />
-                    NINJA<span>CLASSIC</span>
-                  </h3>
-                  <img src="Group 1254.png" />
-                </div>
-              </Slider>
-            }
-          </div>
-          {/* <div className={styles.pkgDetails}>
+              <div className={styles.pkgSliderContainerLG}>
+                {
+                  <Slider {...settings}>
+                    <div className={styles.pkgSlider}>
+                      <h3>
+                        SELF - SERVICE
+                        <br />
+                        NINJA<span>BOX</span>
+                      </h3>
+                      <img src="555.png" />
+                    </div>
+                    <div className={styles.pkgSlider}>
+                      <h3>
+                        SELF - SERVICE
+                        <br />
+                        NINJA<span>BUFFET</span>
+                      </h3>
+                      <img src="Frame 769.png" />
+                    </div>
+                    <div className={styles.pkgSlider}>
+                      <h3>
+                        PREMIUM BUFFET
+                        <br />
+                        NINJA<span>CLASSIC</span>
+                      </h3>
+                      <img src="Group 1254.png" />
+                    </div>
+                  </Slider>
+                }
+              </div>
+              {/* <div className={styles.pkgDetails}>
                 <div>
                   <h3>PACKAGE NAME</h3>
                   <h5>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h5>
@@ -2761,1286 +2759,1329 @@ const CustomizeNinjaBox = () => {
                   <img id={styles.pkgImg} src='555.png' width="366px" height="200px" />
                 </div>
               </div> */}
-          <div>
-            <div className={styles.menuContainer}>
-              <div className={styles.createYourMenuHead}>
-                <h3>Create Your Menu</h3>
-                <hr
-                  style={{
-                    border: "0.4px dashed #42484E",
-                    margin: "auto",
-                    width: "196px",
-                    backgroundColor: "white",
-                  }}
-                />
-              </div>
+              <div>
+                <div className={styles.menuContainer}>
+                  <div className={styles.createYourMenuHead}>
+                    <h3>Create Your Menu</h3>
+                    <hr
+                      style={{
+                        border: "0.4px dashed #42484E",
+                        margin: "auto",
+                        width: "196px",
+                        backgroundColor: "white",
+                      }}
+                    />
+                  </div>
 
-              {/* starters add */}
-              <div className={styles.startersContainer}>
-                <h5>Starters</h5>
+                  {/* starters add */}
+                  <div className={styles.startersContainer}>
+                    <h5>Starters</h5>
+                    <div
+                      className={styles.selectedStarterContainer}
+                      style={{ marginTop: "20px" }}
+                    >
+                      {!showSelectedMenu &&
+                        starters.map((item, index) => (
+                          <div id="d1" className={styles.fstItem} key={index}>
+                            {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
+
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                width="30.05px"
+                                height="26.54px"
+                              />
+                            )}
+
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "starters",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "starters",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                  </div>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() =>
+                                    handleDelete(index, "starters")
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                    {showDropdown && (
+                      <div
+                        onClick={handleDiv1Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Starter
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
+                    {showSelectedMenu && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchValue}
+                              onChange={searchStarter}
+                              placeholder={"Search Starter"}
+                            />
+                            <h6 onClick={openStarterFilter}>
+                              <span>
+                                <FontAwesomeIcon icon={faSortDown} />
+                              </span>
+                              Filter By
+                            </h6>
+                            {showStarterFilter && (
+                              <div className={styles.filterSectn}>
+                                <div className={styles.insideFiilter}>
+                                  {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf1"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf1">Paneer Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf2"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf2">Vegetable Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf3"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf3">Popular Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf4"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf4">All Gravys</label>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            <div className="d-flex">
+                              <div className={styles.vegSwitch}>
+                                <p>Veg Only</p>
+                                <label className={styles.switch}>
+                                  <input type="checkbox" />
+                                  <span className={styles.slider}></span>
+                                </label>
+                              </div>
+                              <div className={styles.nonVegSwitch}>
+                                <p>Non Veg Only</p>
+                                <label className={styles.switch}>
+                                  <input type="checkbox" />
+                                  <span className={styles.slider}></span>
+                                </label>
+                              </div>
+                            </div>
+                            <div className={styles.radioFilter}>
+                              <div className="form-check form-check-inline">
+                                <input
+                                  className="form-check-input"
+                                  type="radio"
+                                  name="inlineRadioOptions"
+                                  id="inlineRadio1"
+                                  value="all"
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="inlineRadio1"
+                                >
+                                  All
+                                </label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input
+                                  className="form-check-input"
+                                  type="radio"
+                                  name="inlineRadioOptions"
+                                  id="inlineRadio2"
+                                  value="veg"
+                                />
+                                <label
+                                  style={{ color: "green" }}
+                                  className="form-check-label"
+                                  for="inlineRadio2"
+                                >
+                                  Veg
+                                </label>
+                              </div>
+                              <div className="form-check form-check-inline">
+                                <input
+                                  className="form-check-input"
+                                  type="radio"
+                                  name="inlineRadioOptions"
+                                  id="inlineRadio3"
+                                  value="nonVeg"
+                                />
+                                <label
+                                  style={{ color: "red" }}
+                                  className="form-check-label"
+                                  for="inlineRadio3"
+                                >
+                                  NonVeg
+                                </label>
+                              </div>
+                            </div>
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredData
+                                  .sort((a, b) =>
+                                    a.checked === b.checked
+                                      ? 0
+                                      : a.checked
+                                      ? -1
+                                      : 1
+                                  )
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "starters"
+                                              )
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                    </li>
+                                  ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc} id="d2">
+                    <p>*Images are for representation purpose only</p>
+                  </div>
+                  {/* mains add */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Mains</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu2 &&
+                        mains.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "mains",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "mains",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideMainsRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                  </div>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() => handleDelete(index, "mains")}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                    {showDropdown2 && (
+                      <div
+                        onClick={handleDiv2Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr2"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Mains
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
+                    {showSelectedMenu2 && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchMainsValue}
+                              onChange={searchMains}
+                              placeholder="Search Mains"
+                            />
+                            <h6 onClick={openStarterFilter}>
+                              <span>
+                                <FontAwesomeIcon icon={faSortDown} />
+                              </span>
+                              Filter By
+                            </h6>
+                            {showStarterFilter && (
+                              <div className={styles.filterSectn}>
+                                <div className={styles.insideFiilter}>
+                                  {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf1"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf1">Paneer Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf2"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf2">Vegetable Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf3"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf3">Popular Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf4"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf4">All Gravys</label>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            <div className="d-flex">
+                              <div className={styles.vegSwitch}>
+                                <p>Veg Only</p>
+                                <label className={styles.switch}>
+                                  <input type="checkbox" />
+                                  <span className={styles.slider}></span>
+                                </label>
+                              </div>
+                              <div className={styles.nonVegSwitch}>
+                                <p>Non Veg Only</p>
+                                <label className={styles.switch}>
+                                  <input type="checkbox" />
+                                  <span className={styles.slider}></span>
+                                </label>
+                              </div>
+                            </div>
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredMainsData
+                                  .sort((a, b) =>
+                                    a.checked === b.checked
+                                      ? 0
+                                      : a.checked
+                                      ? -1
+                                      : 1
+                                  )
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "mains"
+                                              )
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                    </li>
+                                  ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
+                  {/* Bread rice noodles */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Bread Rice and Noodles</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu3 &&
+                        breadRice.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "Bread+Rice",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "Bread+Rice",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideBreadRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                  </div>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() =>
+                                    handleDelete(index, "Bread+Rice")
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                    {showDropdown3 && (
+                      <div
+                        onClick={handleDiv3Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr2"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Breads Rice{" "}
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
+                    {showSelectedMenu3 && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchBreadValue}
+                              onChange={searchBread}
+                              placeholder="Search Bread Rice Noodles"
+                            />
+                            <h6 onClick={openStarterFilter}>
+                              <span>
+                                <FontAwesomeIcon icon={faSortDown} />
+                              </span>
+                              Filter By
+                            </h6>
+                            {showStarterFilter && (
+                              <div className={styles.filterSectn}>
+                                <div className={styles.insideFiilter}>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf1"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf1">Paneer Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf2"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf2">Vegetable Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf3"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf3">Popular Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf4"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf4">All Gravys</label>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            <div className="d-flex">
+                              <div className={styles.vegSwitch}>
+                                <p>Veg Only</p>
+                                <label className={styles.switch}>
+                                  <input type="checkbox" />
+                                  <span className={styles.slider}></span>
+                                </label>
+                              </div>
+                              <div className={styles.nonVegSwitch}>
+                                <p>Non Veg Only</p>
+                                <label className={styles.switch}>
+                                  <input type="checkbox" />
+                                  <span className={styles.slider}></span>
+                                </label>
+                              </div>
+                            </div>
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredBreadData
+                                  .sort((a, b) =>
+                                    a.checked === b.checked
+                                      ? 0
+                                      : a.checked
+                                      ? -1
+                                      : 1
+                                  )
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "Bread+Rice"
+                                              )
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                    </li>
+                                  ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <hr className={styles.MenuHr} />
+                  <div className={styles.imgDesc}>
+                    <p>*Images are for representation purpose only</p>
+                  </div>
+                  {/* dessert add */}
+                  <div className={styles.mainsContainer}>
+                    <h5>Desserts</h5>
+                    <div className={styles.selectedMainsContainer}>
+                      {!showSelectedMenu4 &&
+                        desserts.map((item, index) => (
+                          <div className={styles.fstItem} key={index}>
+                            {item.Images ? (
+                              <img
+                                className={styles.itemImage}
+                                src={item.Images}
+                              />
+                            ) : (
+                              <img
+                                className={styles.itemImage}
+                                src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                              />
+                            )}
+                            <div className={styles.itemDetailsContainer}>
+                              {item.veg === true ? (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/vegLogo.png"
+                                />
+                              ) : (
+                                <img
+                                  className={styles.vegLogo}
+                                  src="/diy images/Group 962.png"
+                                />
+                              )}
+                              <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                              </div>
+                              <div>
+                                <div className={styles.quantityBtn}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      decrement(
+                                        item.quantity,
+                                        index,
+                                        "desserts",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <h6>
+                                    {item.quantity}
+                                    {item.Qtype}
+                                  </h6>
+                                  <button
+                                    type="button"
+                                    onClick={(e) =>
+                                      increment(
+                                        item.quantity,
+                                        index,
+                                        "desserts",
+                                        item
+                                      )
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                {!hideDessertRecommenedQnty && (
+                                  <div className={styles.recQnty}>
+                                    <p>Recommended Qt.</p>
+                                  </div>
+                                )}
+                              </div>
+                              <div>
+                                <img
+                                  className={styles.trassLogo}
+                                  src="/diy images/trash-alt.png"
+                                  onClick={() =>
+                                    handleDelete(index, "desserts")
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                    {showDropdown4 && (
+                      <div
+                        onClick={handleDiv4Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr2"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Desserts{" "}
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
+                    {showSelectedMenu4 && (
+                      <div
+                        ref={outerDivRef}
+                        className={styles2.starterMenuContainer}
+                      >
+                        <div id={styles.starterSearchContent}>
+                          <div>
+                            <input
+                              type="text"
+                              value={searchDessertValue}
+                              onChange={searchDessert}
+                              placeholder="Search Desserts"
+                            />
+                            <h6 onClick={openStarterFilter}>
+                              <span>
+                                <FontAwesomeIcon icon={faSortDown} />
+                              </span>
+                              Filter By
+                            </h6>
+                            {showStarterFilter && (
+                              <div className={styles.filterSectn}>
+                                <div className={styles.insideFiilter}>
+                                  {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
+                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf1"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf1">Paneer Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf2"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf2">Vegetable Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf3"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf3">Popular Gravys</label>
+                                  </div>
+                                  <div className={styles.filterName}>
+                                    <input
+                                      type="radio"
+                                      id="sf4"
+                                      name="starterFilter"
+                                    />
+                                    <label for="sf4">All Gravys</label>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            <div id={styles.starterList}>
+                              <ul>
+                                {filteredDessertData
+                                  .sort((a, b) =>
+                                    a.checked === b.checked
+                                      ? 0
+                                      : a.checked
+                                      ? -1
+                                      : 1
+                                  )
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "desserts"
+                                              )
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                    </li>
+                                  ))}
+                              </ul>
+                            </div>
+                            <div id={styles.listInsideBtn}>
+                              <button onClick={handleCancelClick}>Done</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <hr className={styles.MenuHr} />
+              <div className={styles.imgDesc}>
+                <p>*Images are for representation purpose only</p>
+              </div>
+              <div className="text-center mt-3" id={styles.itemsQnty}>
+                <h6>
+                  {starters?.length} Starters +{" "}
+                  {mains?.length + breadRice.length} Mains + {desserts?.length}{" "}
+                  Desserts
+                </h6>
+              </div>
+              <div className={styles.finalPriceSection}>
                 <div
-                  className={styles.selectedStarterContainer}
-                  style={{ marginTop: "20px" }}
+                  id={styles.drdwnCnt}
+                  className="d-flex justify-content-between"
                 >
-                  {!showSelectedMenu &&
-                    starters.map((item, index) => (
-                      <div id="d1" className={styles.fstItem} key={index}>
-                        {/* <img cclassName={styles.itemImage} src='https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169' /> */}
+                  <select
+                    aria-label="Default select example"
+                    className="form-select"
+                    id="fontR"
+                    name="buffet"
+                    value={buffet}
+                    onChange={(e) => handleBuffet(e.target.value)}
+                  >
+                    {(city === "Mumbai" ||
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" ||
+                      city === "Chennai" ||
+                      city === "Pune") &&
+                    people < 26 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="4000">
+                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Mumbai" ||
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" ||
+                        city === "Chennai" ||
+                        city === "Pune") &&
+                      people > 25 &&
+                      people < 41 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="5000">
+                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Mumbai" ||
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" ||
+                        city === "Chennai" ||
+                        city === "Pune") &&
+                      people > 40 &&
+                      people < 61 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="6000">
+                          Buffet setup + Service (+ ₹ 6,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Mumbai" ||
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" ||
+                        city === "Chennai" ||
+                        city === "Pune") &&
+                      people > 60 &&
+                      people < 100 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Delivery Only
+                        </option>
+                        <option value="7500">
+                          Buffet setup + Service (+ ₹ 7,500.00)
+                        </option>
+                      </>
+                    ) : null}
 
-                        {item.Images ? (
-                          <img
-                            className={styles.itemImage}
-                            src={item.Images}
-                            width="30.05px"
-                            height="26.54px"
-                          />
-                        ) : (
-                          <img
-                            className={styles.itemImage}
-                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                            width="30.05px"
-                            height="26.54px"
-                          />
-                        )}
+                    {/* ------------------------------------- */}
 
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/vegLogo.png"
-                            />
-                          ) : (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/Group 962.png"
-                            />
-                          )}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  decrement(
-                                    item.quantity,
-                                    index,
-                                    "starters",
-                                    item
-                                  )
-                                }
-                              >
-                                -
-                              </button>
-                              <h6>
-                                {item.quantity}
-                                {item.Qtype}
-                              </h6>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  increment(
-                                    item.quantity,
-                                    index,
-                                    "starters",
-                                    item
-                                  )
-                                }
-                              >
-                                +
-                              </button>
-                            </div>
-                            {!hideRecommenedQnty && (
-                              <div className={styles.recQnty}>
-                                <p>Recommended Qt.</p>
-                              </div>
-                            )}
-                          </div>
-                          <div>
-                            <img
-                              className={styles.trassLogo}
-                              src="/diy images/trash-alt.png"
-                              onClick={() => handleDelete(index, "starters")}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                    {(city === "Delhi" ||
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
+                    people < 26 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Bulk Food Delivery
+                        </option>
+                        <option value="4000">
+                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Delhi" ||
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
+                      people > 25 &&
+                      people < 41 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox - Bulk Food Delivery
+                        </option>
+                        <option value="5000">
+                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Delhi" ||
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
+                      people > 40 &&
+                      people < 61 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox -Bulk Food Delivery
+                        </option>
+                        <option value="6000">
+                          Buffet setup + Service (+ ₹ 6,000.00)
+                        </option>
+                      </>
+                    ) : (city === "Delhi" ||
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
+                      people > 60 &&
+                      people < 100 ? (
+                      <>
+                        <option value="0" defaultValue>
+                          Ninjabox -Bulk Food Delivery
+                        </option>
+                        <option value="7500">
+                          Buffet setup + Service (+ ₹ 7,500.00)
+                        </option>
+                      </>
+                    ) : null}
+                  </select>
+
+                  <p style={{ fontWeight: "600" }}>₹{buffet}</p>
                 </div>
-                {showDropdown && (
-                  <div
-                    onClick={handleDiv1Click}
-                    className={styles.starterSearchBtn}
-                    id="srchbr"
-                  >
-                    <p>
-                      <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
-                      Starter
-                    </p>
-                    <span>
-                      <FontAwesomeIcon icon={faAngleDown} /> Click here to
-                      select
-                    </span>
-                  </div>
-                )}
-                {showSelectedMenu && (
-                  <div
-                    ref={outerDivRef}
-                    className={styles2.starterMenuContainer}
-                  >
-                    <div id={styles.starterSearchContent}>
-                      <div>
-                        <input
-                          type="text"
-                          value={searchValue}
-                          onChange={searchStarter}
-                          placeholder={"Search Starter"}
-                        />
-                        <h6 onClick={openStarterFilter}>
-                          <span>
-                            <FontAwesomeIcon icon={faSortDown} />
-                          </span>
-                          Filter By
-                        </h6>
-                        {showStarterFilter && (
-                          <div className={styles.filterSectn}>
-                            <div className={styles.insideFiilter}>
-                              {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf1"
-                                  name="starterFilter"
-                                />
-                                <label for="sf1">Paneer Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf2"
-                                  name="starterFilter"
-                                />
-                                <label for="sf2">Vegetable Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf3"
-                                  name="starterFilter"
-                                />
-                                <label for="sf3">Popular Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf4"
-                                  name="starterFilter"
-                                />
-                                <label for="sf4">All Gravys</label>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div className="d-flex">
-                          <div className={styles.vegSwitch}>
-                            <p>Veg Only</p>
-                            <label className={styles.switch}>
-                              <input type="checkbox" />
-                              <span className={styles.slider}></span>
-                            </label>
-                          </div>
-                          <div className={styles.nonVegSwitch}>
-                            <p>Non Veg Only</p>
-                            <label className={styles.switch}>
-                              <input type="checkbox" />
-                              <span className={styles.slider}></span>
-                            </label>
-                          </div>
-                        </div>
-                        <div className={styles.radioFilter}>
-                          <div className="form-check form-check-inline">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="inlineRadioOptions"
-                              id="inlineRadio1"
-                              value="all"
-                            />
-                            <label
-                              className="form-check-label"
-                              for="inlineRadio1"
-                            >
-                              All
-                            </label>
-                          </div>
-                          <div className="form-check form-check-inline">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="inlineRadioOptions"
-                              id="inlineRadio2"
-                              value="veg"
-                            />
-                            <label
-                              style={{ color: "green" }}
-                              className="form-check-label"
-                              for="inlineRadio2"
-                            >
-                              Veg
-                            </label>
-                          </div>
-                          <div className="form-check form-check-inline">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="inlineRadioOptions"
-                              id="inlineRadio3"
-                              value="nonVeg"
-                            />
-                            <label
-                              style={{ color: "red" }}
-                              className="form-check-label"
-                              for="inlineRadio3"
-                            >
-                              NonVeg
-                            </label>
-                          </div>
-                        </div>
-                        <div id={styles.starterList}>
-                          <ul>
-                            {filteredData
-                              .sort((a, b) =>
-                                a.checked === b.checked ? 0 : a.checked ? -1 : 1
-                              )
-                              .map((item, index) => (
-                                <li key={item.id}>
-                                  <div className="d-flex justify-content-between">
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? (
-                                        <img
-                                          src={item.Images}
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      ) : (
-                                        <img
-                                          src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      )}
-
-                                      {item.veg === true ? (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.vegLogoLg}
-                                          src="/diy images/vegLogo.png"
-                                        />
-                                      ) : (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.nvegLogoLg}
-                                          src="/diy images/Group 962.png"
-                                        />
-                                      )}
-                                      <p
-                                        onClick={() =>
-                                          document
-                                            .getElementById(item.id)
-                                            .click()
-                                        }
-                                      >
-                                        {item.name}
-                                        <br />
-                                        <span>{item.description}</span>
-                                      </p>
-                                    </div>
-                                    <div>
-                                      <input
-                                        id={item.id}
-                                        type="checkbox"
-                                        checked={item.checked}
-                                        value={item.id}
-                                        onChange={(e) =>
-                                          handleCheckboxChange(
-                                            e,
-                                            index,
-                                            item,
-                                            "starters"
-                                          )
-                                        }
-                                      />
-                                    </div>
-                                  </div>
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
-                        <div id={styles.listInsideBtn}>
-                          <button onClick={handleCancelClick}>Done</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
               </div>
-              <hr className={styles.MenuHr} />
-              <div className={styles.imgDesc} id="d2">
-                <p>*Images are for representation purpose only</p>
-              </div>
-              {/* mains add */}
-              <div className={styles.mainsContainer}>
-                <h5>Mains</h5>
-                <div className={styles.selectedMainsContainer}>
-                  {!showSelectedMenu2 &&
-                    mains.map((item, index) => (
-                      <div className={styles.fstItem} key={index}>
-                        {item.Images ? (
-                          <img className={styles.itemImage} src={item.Images} />
-                        ) : (
-                          <img
-                            className={styles.itemImage}
-                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                          />
-                        )}
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/vegLogo.png"
-                            />
-                          ) : (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/Group 962.png"
-                            />
-                          )}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  decrement(item.quantity, index, "mains", item)
-                                }
-                              >
-                                -
-                              </button>
-                              <h6>
-                                {item.quantity}
-                                {item.Qtype}
-                              </h6>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  increment(item.quantity, index, "mains", item)
-                                }
-                              >
-                                +
-                              </button>
-                            </div>
-                            {!hideMainsRecommenedQnty && (
-                              <div className={styles.recQnty}>
-                                <p>Recommended Qt.</p>
-                              </div>
-                            )}
-                          </div>
-                          <div>
-                            <img
-                              className={styles.trassLogo}
-                              src="/diy images/trash-alt.png"
-                              onClick={() => handleDelete(index, "mains")}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+              <div className="mt-5">
+                <div className={styles.userInput}>
+                  <h4>Details*</h4>
+                  <div className={styles.detailsInputLg}>
+                    <input
+                      placeholder="Name"
+                      onInput={(e) => setName(e.target.value)}
+                      required
+                    />
+                    <input
+                      placeholder="Phone No."
+                      name="mobileno"
+                      onInput={(e) => setPhone(e.target.value)}
+                      pattern="[789][0-9]{9}"
+                      maxLength="10"
+                      min="10"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      onInput={(e) => setEmail(e.target.value)}
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      required
+                    />
+                  </div>
                 </div>
-                {showDropdown2 && (
-                  <div
-                    onClick={handleDiv2Click}
-                    className={styles.starterSearchBtn}
-                    id="srchbr2"
-                  >
-                    <p>
-                      <FontAwesomeIcon icon={faMagnifyingGlass} /> Select Mains
-                    </p>
-                    <span>
-                      <FontAwesomeIcon icon={faAngleDown} /> Click here to
-                      select
-                    </span>
-                  </div>
-                )}
-                {showSelectedMenu2 && (
-                  <div
-                    ref={outerDivRef}
-                    className={styles2.starterMenuContainer}
-                  >
-                    <div id={styles.starterSearchContent}>
-                      <div>
-                        <input
-                          type="text"
-                          value={searchMainsValue}
-                          onChange={searchMains}
-                          placeholder="Search Mains"
-                        />
-                        <h6 onClick={openStarterFilter}>
-                          <span>
-                            <FontAwesomeIcon icon={faSortDown} />
-                          </span>
-                          Filter By
-                        </h6>
-                        {showStarterFilter && (
-                          <div className={styles.filterSectn}>
-                            <div className={styles.insideFiilter}>
-                              {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf1"
-                                  name="starterFilter"
-                                />
-                                <label for="sf1">Paneer Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf2"
-                                  name="starterFilter"
-                                />
-                                <label for="sf2">Vegetable Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf3"
-                                  name="starterFilter"
-                                />
-                                <label for="sf3">Popular Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf4"
-                                  name="starterFilter"
-                                />
-                                <label for="sf4">All Gravys</label>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div className="d-flex">
-                          <div className={styles.vegSwitch}>
-                            <p>Veg Only</p>
-                            <label className={styles.switch}>
-                              <input type="checkbox" />
-                              <span className={styles.slider}></span>
-                            </label>
-                          </div>
-                          <div className={styles.nonVegSwitch}>
-                            <p>Non Veg Only</p>
-                            <label className={styles.switch}>
-                              <input type="checkbox" />
-                              <span className={styles.slider}></span>
-                            </label>
-                          </div>
-                        </div>
-                        <div id={styles.starterList}>
-                          <ul>
-                            {filteredMainsData
-                              .sort((a, b) =>
-                                a.checked === b.checked ? 0 : a.checked ? -1 : 1
-                              )
-                              .map((item, index) => (
-                                <li key={item.id}>
-                                  <div className="d-flex justify-content-between">
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? (
-                                        <img
-                                          src={item.Images}
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      ) : (
-                                        <img
-                                          src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      )}
-                                      {item.veg === true ? (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.vegLogoLg}
-                                          src="/diy images/vegLogo.png"
-                                        />
-                                      ) : (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.nvegLogoLg}
-                                          src="/diy images/Group 962.png"
-                                        />
-                                      )}
-                                      <p
-                                        onClick={() =>
-                                          document
-                                            .getElementById(item.id)
-                                            .click()
-                                        }
-                                      >
-                                        {item.name}
-                                        <br />
-                                        <span>{item.description}</span>
-                                      </p>
-                                    </div>
-                                    <div>
-                                      <input
-                                        id={item.id}
-                                        type="checkbox"
-                                        checked={item.checked}
-                                        value={item.id}
-                                        onChange={(e) =>
-                                          handleCheckboxChange(
-                                            e,
-                                            index,
-                                            item,
-                                            "mains"
-                                          )
-                                        }
-                                      />
-                                    </div>
-                                  </div>
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
-                        <div id={styles.listInsideBtn}>
-                          <button onClick={handleCancelClick}>Done</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </div>
 
-              <hr className={styles.MenuHr} />
-              <div className={styles.imgDesc}>
-                <p>*Images are for representation purpose only</p>
+              <div className={styles.chefNote}>
+                <p>Special Restriction? Chef Note?</p>
+                <input type="text" />
               </div>
-              {/* Bread rice noodles */}
-              <div className={styles.mainsContainer}>
-                <h5>Bread Rice and Noodles</h5>
-                <div className={styles.selectedMainsContainer}>
-                  {!showSelectedMenu3 &&
-                    breadRice.map((item, index) => (
-                      <div className={styles.fstItem} key={index}>
-                        {item.Images ? (
-                          <img className={styles.itemImage} src={item.Images} />
-                        ) : (
-                          <img
-                            className={styles.itemImage}
-                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                          />
-                        )}
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/vegLogo.png"
-                            />
-                          ) : (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/Group 962.png"
-                            />
-                          )}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  decrement(
-                                    item.quantity,
-                                    index,
-                                    "Bread+Rice",
-                                    item
-                                  )
-                                }
-                              >
-                                -
-                              </button>
-                              <h6>
-                                {item.quantity}
-                                {item.Qtype}
-                              </h6>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  increment(
-                                    item.quantity,
-                                    index,
-                                    "Bread+Rice",
-                                    item
-                                  )
-                                }
-                              >
-                                +
-                              </button>
-                            </div>
-                            {!hideBreadRecommenedQnty && (
-                              <div className={styles.recQnty}>
-                                <p>Recommended Qt.</p>
-                              </div>
-                            )}
-                          </div>
-                          <div>
-                            <img
-                              className={styles.trassLogo}
-                              src="/diy images/trash-alt.png"
-                              onClick={() => handleDelete(index, "Bread+Rice")}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-                {showDropdown3 && (
-                  <div
-                    onClick={handleDiv3Click}
-                    className={styles.starterSearchBtn}
-                    id="srchbr2"
-                  >
-                    <p>
-                      <FontAwesomeIcon icon={faMagnifyingGlass} /> Select Breads
-                      Rice{" "}
-                    </p>
-                    <span>
-                      <FontAwesomeIcon icon={faAngleDown} /> Click here to
-                      select
-                    </span>
-                  </div>
-                )}
-                {showSelectedMenu3 && (
-                  <div
-                    ref={outerDivRef}
-                    className={styles2.starterMenuContainer}
-                  >
-                    <div id={styles.starterSearchContent}>
-                      <div>
-                        <input
-                          type="text"
-                          value={searchBreadValue}
-                          onChange={searchBread}
-                          placeholder="Search Bread Rice Noodles"
-                        />
-                        <h6 onClick={openStarterFilter}>
-                          <span>
-                            <FontAwesomeIcon icon={faSortDown} />
-                          </span>
-                          Filter By
-                        </h6>
-                        {showStarterFilter && (
-                          <div className={styles.filterSectn}>
-                            <div className={styles.insideFiilter}>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf1"
-                                  name="starterFilter"
-                                />
-                                <label for="sf1">Paneer Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf2"
-                                  name="starterFilter"
-                                />
-                                <label for="sf2">Vegetable Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf3"
-                                  name="starterFilter"
-                                />
-                                <label for="sf3">Popular Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf4"
-                                  name="starterFilter"
-                                />
-                                <label for="sf4">All Gravys</label>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div className="d-flex">
-                          <div className={styles.vegSwitch}>
-                            <p>Veg Only</p>
-                            <label className={styles.switch}>
-                              <input type="checkbox" />
-                              <span className={styles.slider}></span>
-                            </label>
-                          </div>
-                          <div className={styles.nonVegSwitch}>
-                            <p>Non Veg Only</p>
-                            <label className={styles.switch}>
-                              <input type="checkbox" />
-                              <span className={styles.slider}></span>
-                            </label>
-                          </div>
-                        </div>
-                        <div id={styles.starterList}>
-                          <ul>
-                            {filteredBreadData
-                              .sort((a, b) =>
-                                a.checked === b.checked ? 0 : a.checked ? -1 : 1
-                              )
-                              .map((item, index) => (
-                                <li key={item.id}>
-                                  <div className="d-flex justify-content-between">
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? (
-                                        <img
-                                          src={item.Images}
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      ) : (
-                                        <img
-                                          src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      )}
-                                      {item.veg === true ? (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.vegLogoLg}
-                                          src="/diy images/vegLogo.png"
-                                        />
-                                      ) : (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.nvegLogoLg}
-                                          src="/diy images/Group 962.png"
-                                        />
-                                      )}
-                                      <p
-                                        onClick={() =>
-                                          document
-                                            .getElementById(item.id)
-                                            .click()
-                                        }
-                                      >
-                                        {item.name}
-                                        <br />
-                                        <span>{item.description}</span>
-                                      </p>
-                                    </div>
-                                    <div>
-                                      <input
-                                        id={item.id}
-                                        type="checkbox"
-                                        checked={item.checked}
-                                        value={item.id}
-                                        onChange={(e) =>
-                                          handleCheckboxChange(
-                                            e,
-                                            index,
-                                            item,
-                                            "Bread+Rice"
-                                          )
-                                        }
-                                      />
-                                    </div>
-                                  </div>
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
-                        <div id={styles.listInsideBtn}>
-                          <button onClick={handleCancelClick}>Done</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+              <div className={styles.instantQuoteBtn}>
+                <button onClick={formSubmit}>Check Price</button>
               </div>
-              <hr className={styles.MenuHr} />
-              <div className={styles.imgDesc}>
-                <p>*Images are for representation purpose only</p>
-              </div>
-              {/* dessert add */}
-              <div className={styles.mainsContainer}>
-                <h5>Desserts</h5>
-                <div className={styles.selectedMainsContainer}>
-                  {!showSelectedMenu4 &&
-                    desserts.map((item, index) => (
-                      <div className={styles.fstItem} key={index}>
-                        {item.Images ? (
-                          <img className={styles.itemImage} src={item.Images} />
-                        ) : (
-                          <img
-                            className={styles.itemImage}
-                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                          />
-                        )}
-                        <div className={styles.itemDetailsContainer}>
-                          {item.veg === true ? (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/vegLogo.png"
-                            />
-                          ) : (
-                            <img
-                              className={styles.vegLogo}
-                              src="/diy images/Group 962.png"
-                            />
-                          )}
-                          <div>
-                            <h4>{item.name}</h4>
-                            <p>{item.description}</p>
-                          </div>
-                          <div>
-                            <div className={styles.quantityBtn}>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  decrement(
-                                    item.quantity,
-                                    index,
-                                    "desserts",
-                                    item
-                                  )
-                                }
-                              >
-                                -
-                              </button>
-                              <h6>
-                                {item.quantity}
-                                {item.Qtype}
-                              </h6>
-                              <button
-                                type="button"
-                                onClick={(e) =>
-                                  increment(
-                                    item.quantity,
-                                    index,
-                                    "desserts",
-                                    item
-                                  )
-                                }
-                              >
-                                +
-                              </button>
-                            </div>
-                            {!hideDessertRecommenedQnty && (
-                              <div className={styles.recQnty}>
-                                <p>Recommended Qt.</p>
-                              </div>
-                            )}
-                          </div>
-                          <div>
-                            <img
-                              className={styles.trassLogo}
-                              src="/diy images/trash-alt.png"
-                              onClick={() => handleDelete(index, "desserts")}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-                {showDropdown4 && (
-                  <div
-                    onClick={handleDiv4Click}
-                    className={styles.starterSearchBtn}
-                    id="srchbr2"
-                  >
-                    <p>
-                      <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
-                      Desserts{" "}
-                    </p>
-                    <span>
-                      <FontAwesomeIcon icon={faAngleDown} /> Click here to
-                      select
-                    </span>
-                  </div>
-                )}
-                {showSelectedMenu4 && (
-                  <div
-                    ref={outerDivRef}
-                    className={styles2.starterMenuContainer}
-                  >
-                    <div id={styles.starterSearchContent}>
-                      <div>
-                        <input
-                          type="text"
-                          value={searchDessertValue}
-                          onChange={searchDessert}
-                          placeholder="Search Desserts"
-                        />
-                        <h6 onClick={openStarterFilter}>
-                          <span>
-                            <FontAwesomeIcon icon={faSortDown} />
-                          </span>
-                          Filter By
-                        </h6>
-                        {showStarterFilter && (
-                          <div className={styles.filterSectn}>
-                            <div className={styles.insideFiilter}>
-                              {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f2" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f3" name="starterFilter" /></span>Paneer Gravys</p>
-                                <p><span><input type="radio" id="f4" name="starterFilter" /></span>Paneer Gravys</p> */}
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf1"
-                                  name="starterFilter"
-                                />
-                                <label for="sf1">Paneer Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf2"
-                                  name="starterFilter"
-                                />
-                                <label for="sf2">Vegetable Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf3"
-                                  name="starterFilter"
-                                />
-                                <label for="sf3">Popular Gravys</label>
-                              </div>
-                              <div className={styles.filterName}>
-                                <input
-                                  type="radio"
-                                  id="sf4"
-                                  name="starterFilter"
-                                />
-                                <label for="sf4">All Gravys</label>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div id={styles.starterList}>
-                          <ul>
-                            {filteredDessertData
-                              .sort((a, b) =>
-                                a.checked === b.checked ? 0 : a.checked ? -1 : 1
-                              )
-                              .map((item, index) => (
-                                <li key={item.id}>
-                                  <div className="d-flex justify-content-between">
-                                    <div id={styles.insideDivLi}>
-                                      {item.Images ? (
-                                        <img
-                                          src={item.Images}
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      ) : (
-                                        <img
-                                          src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                          width="30.05px"
-                                          height="26.54px"
-                                        />
-                                      )}
-                                      {item.veg === true ? (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.vegLogoLg}
-                                          src="/diy images/vegLogo.png"
-                                        />
-                                      ) : (
-                                        <img
-                                          className={styles.vegLogo}
-                                          id={styles.nvegLogoLg}
-                                          src="/diy images/Group 962.png"
-                                        />
-                                      )}
-                                      <p
-                                        onClick={() =>
-                                          document
-                                            .getElementById(item.id)
-                                            .click()
-                                        }
-                                      >
-                                        {item.name}
-                                        <br />
-                                        <span>{item.description}</span>
-                                      </p>
-                                    </div>
-                                    <div>
-                                      <input
-                                        id={item.id}
-                                        type="checkbox"
-                                        checked={item.checked}
-                                        value={item.id}
-                                        onChange={(e) =>
-                                          handleCheckboxChange(
-                                            e,
-                                            index,
-                                            item,
-                                            "desserts"
-                                          )
-                                        }
-                                      />
-                                    </div>
-                                  </div>
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
-                        <div id={styles.listInsideBtn}>
-                          <button onClick={handleCancelClick}>Done</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-          <hr className={styles.MenuHr} />
-          <div className={styles.imgDesc}>
-            <p>*Images are for representation purpose only</p>
-          </div>
-          <div className="text-center mt-3" id={styles.itemsQnty}>
-            <h6>
-              {starters?.length} Starters + {mains?.length + breadRice.length}{" "}
-              Mains + {desserts?.length} Desserts
-            </h6>
-          </div>
-          <div className={styles.finalPriceSection}>
-            <div
-              id={styles.drdwnCnt}
-              className="d-flex justify-content-between"
-            >
-              <select
-                aria-label="Default select example"
-                className="form-select"
-                id="fontR"
-                name="buffet"
-                value={buffet}
-                onChange={(e) => handleBuffet(e.target.value)}
-              >
-                {(city === "Mumbai" ||
-                  city === "Navi-Mumbai" ||
-                  city === "Thane" ||
-                  city === "Bangalore" ||
-                  city === "Chennai" ||
-                  city === "Pune") &&
-                people < 26 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox - Delivery Only
-                    </option>
-                    <option value="4000">
-                      Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                    </option>
-                  </>
-                ) : (city === "Mumbai" ||
-                    city === "Navi-Mumbai" ||
-                    city === "Thane" ||
-                    city === "Bangalore" ||
-                    city === "Chennai" ||
-                    city === "Pune") &&
-                  people > 25 &&
-                  people < 41 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox - Delivery Only
-                    </option>
-                    <option value="5000">
-                      Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                    </option>
-                  </>
-                ) : (city === "Mumbai" ||
-                    city === "Navi-Mumbai" ||
-                    city === "Thane" ||
-                    city === "Bangalore" ||
-                    city === "Chennai" ||
-                    city === "Pune") &&
-                  people > 40 &&
-                  people < 61 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox - Delivery Only
-                    </option>
-                    <option value="6000">
-                      Buffet setup + Service (+ ₹ 6,000.00)
-                    </option>
-                  </>
-                ) : (city === "Mumbai" ||
-                    city === "Navi-Mumbai" ||
-                    city === "Thane" ||
-                    city === "Bangalore" ||
-                    city === "Chennai" ||
-                    city === "Pune") &&
-                  people > 60 &&
-                  people < 100 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox - Delivery Only
-                    </option>
-                    <option value="7500">
-                      Buffet setup + Service (+ ₹ 7,500.00)
-                    </option>
-                  </>
-                ) : null}
-
-                {/* ------------------------------------- */}
-
-                {(city === "Delhi" ||
-                  city === "Noida" ||
-                  city === "Ghaziabad" ||
-                  city === "Gurgaon") &&
-                people < 26 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox - Bulk Food Delivery
-                    </option>
-                    <option value="4000">
-                      Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                    </option>
-                  </>
-                ) : (city === "Delhi" ||
-                    city === "Noida" ||
-                    city === "Ghaziabad" ||
-                    city === "Gurgaon") &&
-                  people > 25 &&
-                  people < 41 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox - Bulk Food Delivery
-                    </option>
-                    <option value="5000">
-                      Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                    </option>
-                  </>
-                ) : (city === "Delhi" ||
-                    city === "Noida" ||
-                    city === "Ghaziabad" ||
-                    city === "Gurgaon") &&
-                  people > 40 &&
-                  people < 61 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox -Bulk Food Delivery
-                    </option>
-                    <option value="6000">
-                      Buffet setup + Service (+ ₹ 6,000.00)
-                    </option>
-                  </>
-                ) : (city === "Delhi" ||
-                    city === "Noida" ||
-                    city === "Ghaziabad" ||
-                    city === "Gurgaon") &&
-                  people > 60 &&
-                  people < 100 ? (
-                  <>
-                    <option value="0" defaultValue>
-                      Ninjabox -Bulk Food Delivery
-                    </option>
-                    <option value="7500">
-                      Buffet setup + Service (+ ₹ 7,500.00)
-                    </option>
-                  </>
-                ) : null}
-              </select>
-
-              <p style={{ fontWeight: "600" }}>₹{buffet}</p>
-            </div>
-            <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
-          </div>
-          <div className="mt-5">
-            <div className={styles.userInput}>
-              <h4>Details*</h4>
-              <div className={styles.detailsInputLg}>
-                <input
-                  placeholder="Name"
-                  onInput={(e) => setName(e.target.value)}
-                  required
-                />
-                <input
-                  placeholder="Phone No."
-                  name="mobileno"
-                  onInput={(e) => setPhone(e.target.value)}
-                  pattern="[789][0-9]{9}"
-                  maxLength="10"
-                  min="10"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  onInput={(e) => setEmail(e.target.value)}
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.chefNote}>
-            <p>Special Restriction? Chef Note?</p>
-            <input type="text" />
-          </div>
-          <div className={styles.instantQuoteBtn}>
-            <button onClick={formSubmit}>Check Price</button>
-          </div>
-          {/* <div className={styles.applyCoupon}>
+              {/* <div className={styles.applyCoupon}>
                 <input type="text" placeholder='Enter Coupon Code' />
                 <button>Apply</button>
               </div> */}
-          {showPriceList && (
-            <div className={styles.pricing}>
-              <div style={{ marginTop: "10px" }}>
-                <div className={styles.pricingTitle4}>
-                  <div>
-                    <h4>Buffet Service</h4>
-                  </div>
-                  <div>
-                    <p>₹{buffet}</p>
-                  </div>
-                </div>
-                <div className={styles.pricingTitle1}>
-                  <div>
-                    <h4>Items Total</h4>
-                  </div>
-                  <div>
-                    <p style={{ fontWeight: "600" }}>
-                      ₹{totalPrice.toLocaleString("en-US")}
-                    </p>
-                  </div>
-                </div>
-                {/* <div className={styles.pricingTitle11}>
+              {showPriceList && (
+                <div className={styles.pricing}>
+                  <div style={{ marginTop: "10px" }}>
+                    <div className={styles.pricingTitle4}>
+                      <div>
+                        <h4>Buffet Service</h4>
+                      </div>
+                      <div>
+                        <p>₹{buffet}</p>
+                      </div>
+                    </div>
+                    <div className={styles.pricingTitle1}>
+                      <div>
+                        <h4>Items Total</h4>
+                      </div>
+                      <div>
+                        <p style={{ fontWeight: "600" }}>
+                          ₹{totalPrice.toLocaleString("en-US")}
+                        </p>
+                      </div>
+                    </div>
+                    {/* <div className={styles.pricingTitle11}>
                     <div>
                       <h4>NinjaBox Service</h4>
                     </div>
@@ -4048,7 +4089,7 @@ const CustomizeNinjaBox = () => {
                       <p>₹0000</p>
                     </div>
                   </div> */}
-                {/* <div className={styles.pricingTitle2}>
+                    {/* <div className={styles.pricingTitle2}>
                       <div>
                         <h4>
                           Delivery Charges <span></span>
@@ -4058,8 +4099,8 @@ const CustomizeNinjaBox = () => {
                         <p>As Per Actual</p>
                       </div>
                     </div> */}
-                <hr className={styles.hr1} />
-                {/* <div className={styles.pricingTitle3}>
+                    <hr className={styles.hr1} />
+                    {/* <div className={styles.pricingTitle3}>
                       <div className={styles.applyCoupon}>
                         <input type="text" placeholder="Enter Coupon Code" />
                         <button>Apply</button>
@@ -4068,43 +4109,44 @@ const CustomizeNinjaBox = () => {
                         <p>₹0</p>
                       </div>
                     </div> */}
-                <div className={styles.pricingTitle4}>
-                  <div>
-                    <h4>GST</h4>
+                    <div className={styles.pricingTitle4}>
+                      <div>
+                        <h4>GST</h4>
+                      </div>
+                      <div>
+                        <p>₹{GST}</p>
+                      </div>
+                    </div>
+                    <hr id={styles.hr2} />
                   </div>
-                  <div>
-                    <p>₹{GST}</p>
+                  <div className={styles.grandTotal}>
+                    <div>
+                      <h4>Grand Total</h4>
+                    </div>
+                    <div>
+                      <p style={{ fontWeight: "600" }}>
+                        ₹{grandTotal.toLocaleString("en-US")}
+                      </p>
+                    </div>
+                  </div>
+                  <div className={styles.dlvryChrg}>
+                    <p>*Delivery charges as per actual</p>
+                  </div>
+                  <div className={styles.orderBtn}>
+                    {/* <button onClick={placeOrderBtn}>Place Order</button> */}
+                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                      <button
+                        style={{ backgroundColor: "green", color: "white" }}
+                      >
+                        Get Booking Help
+                      </button>
+                    </Link>
                   </div>
                 </div>
-                <hr id={styles.hr2} />
-              </div>
-              <div className={styles.grandTotal}>
-                <div>
-                  <h4>Grand Total</h4>
-                </div>
-                <div>
-                  <p style={{ fontWeight: "600" }}>
-                    ₹{grandTotal.toLocaleString("en-US")}
-                  </p>
-                </div>
-              </div>
-              <div className={styles.dlvryChrg}>
-                <p>*Delivery charges as per actual</p>
-              </div>
-              <div className={styles.orderBtn}>
-                {/* <button onClick={placeOrderBtn}>Place Order</button> */}
-                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
-                  <button style={{ backgroundColor: "green", color: "white" }}>
-                    Get Booking Help
-                  </button>
-                </Link>
-              </div>
+              )}
             </div>
-          )}
-         </div>
-        </div>
+          </div>
         </form>
-        
 
         <div className={styles.createYourOwnPkg}>
           <div>
@@ -4125,7 +4167,6 @@ const CustomizeNinjaBox = () => {
             </a>
           </div>
         </div>
-        
       </div>
     </div>
   );
