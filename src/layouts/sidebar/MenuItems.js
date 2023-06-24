@@ -15,6 +15,11 @@ const Menuitems = [
     href: "/Admin/createOrder",
   },
   {
+    title: "Menu Calculator",
+    icon: "layout",
+    href: "/Admin/calculator",
+  },
+  {
     title: "Send Email",
     icon: "info",
     href: "sendEmail",
