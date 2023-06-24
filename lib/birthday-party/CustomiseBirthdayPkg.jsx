@@ -1094,6 +1094,9 @@ const CustomiseBirthdayPkg = () => {
                     <button onClick={selectNonVegHeavySnack}>+ Add More</button>
                 </div>
             </div> : "" }
+            <div className={styles.addonsbtn}>
+                <button onClick={(()=>{window.open('/birthdayAddOns')})}>Add Ons</button>
+            </div>
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>
                     <h6>Fun Eatables, Live Counters<br />Main Course Add On's</h6>

@@ -2929,7 +2929,7 @@ const CustomizeNinjaBox = () => {
                                 </div>
                               </div>
                             </div>}
-                            <div className="d-flex">
+                            <div className="d-flex pt-1 mb-2">
                               <div className={styles.vegSwitch}>
                                 <p>Veg Only</p>
                                 <label className={styles.switch}>
@@ -2938,7 +2938,7 @@ const CustomizeNinjaBox = () => {
                                 </label>
                               </div>
                               <div className={styles.nonVegSwitch}>
-                                <p>Non Veg Only</p>
+                                <p>Non-Veg Only</p>
                                 <label className={styles.switch}>
                                   <input type="checkbox" />
                                   <span className={styles.slider}></span>
@@ -3175,7 +3175,7 @@ const CustomizeNinjaBox = () => {
                                 </div>
                               </div>
                             </div>}
-                            <div className="d-flex">
+                            <div className="d-flex pt-1 mb-2">
                               <div className={styles.vegSwitch}>
                                 <p>Veg Only</p>
                                 <label className={styles.switch}>
@@ -3184,7 +3184,7 @@ const CustomizeNinjaBox = () => {
                                 </label>
                               </div>
                               <div className={styles.nonVegSwitch}>
-                                <p>Non Veg Only</p>
+                                <p>Non-Veg Only</p>
                                 <label className={styles.switch}>
                                   <input type="checkbox" />
                                   <span className={styles.slider}></span>
@@ -3405,7 +3405,7 @@ const CustomizeNinjaBox = () => {
                                 </div>
                               </div>
                             </div>}
-                            <div className="d-flex">
+                            <div className="d-flex pt-1 mb-2">
                               <div className={styles.vegSwitch}>
                                 <p>Veg Only</p>
                                 <label className={styles.switch}>
@@ -3414,7 +3414,7 @@ const CustomizeNinjaBox = () => {
                                 </label>
                               </div>
                               <div className={styles.nonVegSwitch}>
-                                <p>Non Veg Only</p>
+                                <p>Non-Veg Only</p>
                                 <label className={styles.switch}>
                                   <input type="checkbox" />
                                   <span className={styles.slider}></span>
