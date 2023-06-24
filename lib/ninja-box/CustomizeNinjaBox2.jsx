@@ -11,6 +11,7 @@ import {
 
 import styles from "/styles/NewCustomizePkg.module.scss";
 import styles2 from "/styles/NewDiy.module.scss";
+import styles4 from "/styles/ViewPackage.module.scss";
 
 import "bootstrap/dist/css/bootstrap.css";
 import { useRouter } from "next/router";
@@ -25,8 +26,7 @@ import Link from "next/link";
 // import { Launch } from "@mui/icons-material";
 
 const CustomizeNinjaBox = () => {
-  const { menu, cuisines, allMenus, cities, occasions } =
-    useAppMenu();
+  const { menu, cuisines, allMenus, cities, occasions, PreSelectMenuNinjaBox, ZipCodes } = useAppMenu();
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -45,12 +45,12 @@ const CustomizeNinjaBox = () => {
   const [occasion, setOccasion] = useState("");
 
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setstartTime] = useState();
+  const [startTime, setStartTime] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState();
   const [data, setData] = useState([]);
   const [datas, setDatas] = useState();
-  const [EmailedToParser,setEmailedToParser]=useState(false)
+  const [EmailedToParser, setEmailedToParser] = useState(false);
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledStarter, setIsDisabledStarter] = useState(true);
@@ -101,7 +101,31 @@ const CustomizeNinjaBox = () => {
   const [isDessertChange, setIsDessertChange] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [zipcodeError, setZipcodeError] = useState("");
+
   const [showPriceList, setShowPriceList] = useState(false);
+
+  const [showUrgentLink, setShowUrgentLink] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  //payment popup
+  const placeOrderBtn = (e) => {
+    e.preventDefault();
+    setShowPopup(true);
+  }
+  const closePopup = () => {
+    setShowPopup(false);
+  }
+
+  function hoverLink() {
+    setShowUrgentLink((prevState) => !prevState);
+  }
+
+  function hoverLeaveLink() {
+    setShowUrgentLink(false);
+  }
 
   const settings = {
     dots: true,
@@ -115,11 +139,50 @@ const CustomizeNinjaBox = () => {
   };
 
   //DATE LOGIC
-  const today = new Date();
-  const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
+  // const today = new Date();
+  // const minDate = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
+
+  const generateDateOptions = () => {
+    const options = [];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const twoDaysFromNow = new Date();
+    twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+    for (
+      let date = twoDaysFromNow;
+      date.getFullYear() === currentYear;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const optionValue = date.toISOString().slice(0, 10);
+      const optionLabel = date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      options.push(
+        <option key={optionValue} value={optionValue}>
+          {optionLabel}
+        </option>
+      );
+    }
+
+    return options;
+  };
 
   useEffect(() => {
-
+    let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
+    if (SessionData) {
+      setCity(SessionData["city"]),
+        setVeg(SessionData["vcount"]),
+        setNonVeg(SessionData["nvcount"]),
+        // setStartDate(SessionData['selectedDate']),
+        setOccasion(SessionData["occasion"]);
+      // setstartTime(SessionData['evt_time'])
+    }
+  }, []);
+  useEffect(() => {
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
@@ -168,21 +231,6 @@ const CustomizeNinjaBox = () => {
 
     // console.log("work in progress");
 
-    let itemData;
-
-    // PreSelected.forEach((item) => {
-    //   itemData = allMenus.filter((d) => d.name === item);
-    //   if (itemData[0].mealType === "Starter") {
-    //     // handleStatersAdd(item);
-    //   } else if (itemData[0].mealType === "Main course") {
-    //     // handleMainAdd(item);
-    //   } else if (itemData[0].mealType === "Bread+Rice") {
-    //     // handleBreadRiceAdd(item);
-    //   } else if (itemData[0].mealType === "Dessert") {
-    //     // handleDesertsAdd(item);
-    //   }
-    //   console.log("here", itemData);
-    // });
 
     const newMainData = allMenus.filter((d) => d.mealType === "Main course");
 
@@ -248,7 +296,12 @@ const CustomizeNinjaBox = () => {
   const handleVegNonVegGuest = (name, value) => {
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
-    } else {
+    } 
+    else if(value<5){
+      alert("Minimum "+ name +" guest count should be 5")
+      name === "veg" ? setVeg(5) : setNonVeg(5);
+    }
+    else {
       name === "veg" ? setVeg(value) : setNonVeg(value);
     }
     console.log("guest", veg, nonVeg);
@@ -276,6 +329,11 @@ const CustomizeNinjaBox = () => {
   const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
   const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
   const [showSelectedMenu4, setShowSelectedMenu4] = useState(false);
+
+  //DATE LOGIC
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() + 2);
+  const minDateISO = minDate.toISOString().split("T")[0];
 
   //search Starter
   const searchStarter = (e) => {
@@ -326,10 +384,11 @@ const CustomizeNinjaBox = () => {
       showDiv2: true,
     });
 
+    //filteredData - total
+    //selectedIds = results - total - selected
     const results = filteredData.filter(
       ({ id: id1 }) => !checkedValues.some(({ id: id2 }) => id2 === id1)
     );
-
     let selectedIds = [];
     for (let i = 0; i < results.length; i++) {
       selectedIds.push(results[i].id);
@@ -466,7 +525,8 @@ const CustomizeNinjaBox = () => {
       setCheckedValues([...checkedValues, value]);
     } else {
       value.checked = "";
-      setCheckedValues(checkedValues.filter((v) => v.id !== value.id));
+      checkedValues = checkedValues.filter((v) => v.id !== value.id)
+      setCheckedValues(checkedValues);
       handleDelete(index, type);
     }
   };
@@ -488,34 +548,54 @@ const CustomizeNinjaBox = () => {
       if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
         data.quantity = 12;
         if (data.Qtype === "pcs") {
-          data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          if (
+            data.name.includes("Paneer Tikka") ||
+            data.name.includes("Chicken Tikka") ||
+            data.name.includes("Kebab")
+          ) {
+            data.quantity = (veg > 0 ? veg : nonVeg) * 3;
+          } else {
+            data.quantity = (veg > 0 ? veg : nonVeg) * 2;
+          }
+
           if (data.quantity < 12) {
             data.quantity = 12;
           }
         } else {
-          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+          data.quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1));
         }
       } else {
         // if both guest is available
 
         if (data.veg) {
           if (data.Qtype === "pcs") {
-            data.quantity = Math.round(veg * 2 + nonVeg * 1);
+            if (
+              data.name.includes("Paneer Tikka") ||
+              data.name.includes("Chicken Tikka") ||
+              data.name.includes("Kebab")
+            ) {
+              data.quantity = Math.round((veg + nonVeg) * 3);
+            } else {
+              data.quantity = Math.round(veg * 2 + nonVeg * 1);
+            }
             if (data.quantity < 12) {
               data.quantity = 12;
             }
           } else {
-            data.quantity = (veg * 0.1 + nonVeg * 0.05).toFixed(1);
+            // data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
+            data.quantity = HandleCeilFloorValue(((veg +nonVeg) * 0.075).toFixed(1));
           }
         } else {
           if (data.Qtype === "pcs") {
-            if(data.name==="Punjabi Tangdi"){
-              data.quantity=nonVeg;
+            if (
+              data.name.includes("Paneer Tikka") ||
+              data.name.includes("Chicken Tikka") ||
+              data.name.includes("Kebab")
+            ) {
+              data.quantity = Math.round((veg + nonVeg) * 3);
+            } else {
+              data.quantity = Math.round(nonVeg * 2);
             }
-            else{
-              data.quantity = nonVeg * 2;
-            }
-            // data.quantity = nonVeg * 2;
             if (data.quantity < 12) {
               data.quantity = 12;
             }
@@ -558,6 +638,7 @@ const CustomizeNinjaBox = () => {
         } else if (data.name === highestPrice.name) {
           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
         } else {
+          
           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
         }
       } else {
@@ -586,10 +667,10 @@ const CustomizeNinjaBox = () => {
           //Mains-gravy : same logic as above
           else if (data.menu_label === "Main-Gravy") {
             if (nonVegMainsGravyMainCount > 0) {
-              data.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+              data.quantity = HandleCeilFloorValue((veg * 0.15).toFixed(1));
             } else {
               data.quantity = HandleCeilFloorValue(
-                (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+                (veg * 0.15 + nonVeg * 0.1).toFixed(1)
               );
             }
           }
@@ -612,7 +693,9 @@ const CustomizeNinjaBox = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = (veg * 0.1 + nonVeg * 0.1).toFixed(1);
+              data.quantity = HandleCeilFloorValue(
+                veg * 0.1 + nonVeg * 0.1
+              ).toFixed(1);
             }
           }
         } else {
@@ -622,7 +705,7 @@ const CustomizeNinjaBox = () => {
           } else if (data.name === highestPrice.name) {
             data.quantity = (nonVeg * 0.15).toFixed(1);
           } else {
-            data.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+            data.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
           }
         }
       }
@@ -630,18 +713,123 @@ const CustomizeNinjaBox = () => {
 
     setMains(tempMain);
 
+    //Bread Rice update
+    let tempBreadRice=[...breadRice]
+    let bread = 0;
+        let count = 0;
+        let isVeg = false;
+
+        tempBreadRice.map((item) => {
+          item.menu_label === "Breads" ? (bread += 1) : bread;
+          item.menu_label === "Rice" ? (count += 1) : count;
+          item.veg ? (isVeg = true) : (isVeg = false);
+        });
+        tempBreadRice.map((item) => {
+          if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
+            if (bread === 1) {
+              item.quantity = Math.round((veg + nonVeg) * 3);
+            } else {
+              item.quantity = Math.round((veg + nonVeg) * 2);
+            }
+          } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
+            if (bread === 1) {
+              item.quantity = Math.round((veg + nonVeg) * 2);
+            } else {
+              item.quantity = Math.round((veg + nonVeg) * 1);
+            }
+          } else if (item?.menu_label === "Rice") {
+            console.log("rice", count);
+            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+              let guests = veg > 0 ? veg : nonVeg;
+              if (count >= 2) {
+                console.log("count2");
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              } else if (mains.length > 0 && count === 1) {
+                console.log("count1");
+
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
+              } else if (mains.length === 0 && count === 1) {
+                console.log("count1");
+                item.quantity = HandleCeilFloorValue(0.3 * guests);
+              }
+            } else if (veg > 0 && nonVeg > 0) {
+              let guests = veg + nonVeg;
+              if (count >= 2) {
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+                }
+              } else if (
+                count === 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.3 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length <= 1
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.25 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+                }
+              } else if (
+                count >= 1 &&
+                mains.length === 0 &&
+                starters.length >= 2
+              ) {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.2 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+                }
+              } else if (count === 1 && mains.length >= 1) {
+                item.quantity = HandleCeilFloorValue(0.2 * guests);
+              } else {
+                if (item.veg === true) {
+                  item.quantity = HandleCeilFloorValue(0.15 * veg);
+                } else {
+                  item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+                }
+              }
+            }
+          }
+        });
+
+
+
     //  dessert value change after veg anf=d non-veg guest change
+
+
 
     let tempDessert = [...desserts];
 
     tempDessert.map((data) => {
+      
       if (data.Qtype === "pcs") {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
         } else {
-          data.quantity = Math.round((veg + nonVeg) * 1.5);
-        }
-      } else {
+          if (dessert.name === "Angoori Gulab Jamun") {
+            data.quantity = Math.round((veg + nonVeg) * 3);
+          } else {
+            data.quantity = Math.round((veg + nonVeg) * 1.5);
+          }
+      } 
+    }else {
         data.quantity = (Math.round(veg + nonVeg) * 0.075).toFixed(1);
       }
     });
@@ -650,11 +838,12 @@ const CustomizeNinjaBox = () => {
   }, [veg, nonVeg]);
   function HandleCeilFloorValue(x) {
     var decimals = (x - Math.floor(x)).toFixed(1);
-    if (decimals <= 0.4) {
-      x = Math.floor(x);
-    } else if (decimals >= 0.6) {
-      x = Math.floor(x);
+    if (decimals < 0.75) {
+      x = (Math.ceil(x) + Math.floor(x)) / 2;
+    } else if (decimals >= 0.75) {
+      x = Math.ceil(x);
     }
+
     return x;
   }
   useEffect(() => {
@@ -688,8 +877,8 @@ const CustomizeNinjaBox = () => {
     if (veg === 0 && nonVeg === 0) return;
 
     let temp = [...starters];
-    const starter = startersData.find((item) => item.name === item_name);
-    console.log("starterdata", startersData)
+    const starter = allMenus.find((item) => item.name === item_name);
+    // console.log("starterdata", startersData)
     // removing selected item
     // setStartersData((prev) => prev.filter((d) => d.name !== item_name));
 
@@ -702,40 +891,56 @@ const CustomizeNinjaBox = () => {
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
       if (starter.Qtype === "pcs") {
-        if(starter.name==="Punjabi Tangdi"){
-          quantity=nonVeg;
-        }
-        else{
+        if (
+          starter.name.includes("Paneer Tikka") ||
+          starter.name.includes("Chicken Tikka") ||
+          starter.name.includes("Kebab")
+        ) {
+          quantity = (veg > 0 ? veg : nonVeg) * 3;
+        } else {
           quantity = (veg > 0 ? veg : nonVeg) * 2;
         }
-        
+
         if (quantity < 12) {
           quantity = 12;
         }
       } else {
-        quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+        quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1));
       }
     } else {
       // if both guest is available
 
       if (starter.veg) {
         if (starter.Qtype === "pcs") {
-          quantity = Math.round((veg + nonVeg) * 1.5);
+          if (
+            starter.name.includes("Paneer Tikka") ||
+            starter.name.includes("Chicken Tikka") ||
+            starter.name.includes("Kebab")
+          ) {
+            quantity = Math.round((veg + nonVeg) * 3);
+          } else {
+            quantity = Math.round((veg + nonVeg) * 1.5);
+          }
+          // quantity = Math.round((veg + nonVeg) * 1.5);
           if (quantity < 12) {
             quantity = 12;
           }
         } else {
-          quantity = (veg * 0.05 + nonVeg * 0.05).toFixed(1);
+          // quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
+          quantity = HandleCeilFloorValue(((veg + nonVeg) * 0.075).toFixed(1));
         }
-      } else {
+      } else { 
         if (starter.Qtype === "pcs") {
-          if(starter.name==="Punjabi Tangdi"){
-            quantity=nonVeg;
+          if (
+            starter.name.includes("Paneer Tikka") ||
+            starter.name.includes("Chicken Tikka") ||
+            starter.name.includes("Kebab")
+          ) {
+            quantity = Math.round(nonVeg * 3);
+          } else {
+            quantity = Math.round(nonVeg * 2);
           }
-          else{
-            quantity = nonVeg * 2;
-          }
-          
+          // quantity = nonVeg * 2;
           if (quantity < 12) {
             quantity = 12;
           }
@@ -833,7 +1038,7 @@ const CustomizeNinjaBox = () => {
             quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
           } else {
             quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+              (veg * 0.15 + nonVeg * 0.1).toFixed(1)
             );
           }
         }
@@ -867,57 +1072,57 @@ const CustomizeNinjaBox = () => {
         } else if (main.name === highestPrice.name) {
           quantity = (nonVeg * 0.15).toFixed(1);
         } else {
-          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
         }
       }
     }
 
-    temp.forEach((item) => {
-      if (item.veg) {
-        if (
-          item.menu_label === "Mains-dry" ||
-          item.menu_label === "Mains-dal"
-        ) {
-          item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
-        } else if (item.menu_label === "Pasta") {
-          if (nonVegPastaMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-        //Mains-gravy : same logic as above
-        else if (item.menu_label === "Mains-Gravy") {
-          if (nonVegMainsGravyMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-        //Main -Thai : same logic as above
-        else if (item.menu_label === "Mains-Thai") {
-          if (nonVegMainThaiMainCount > 0) {
-            item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } else {
-            item.quantity = HandleCeilFloorValue(
-              (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-            );
-          }
-        }
-      } else {
-        if (item.Qtype === "pcs") {
-          item.quantity = nonVeg * 1;
-        } else if (item.name === highestPrice.name) {
-          item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-        } else {
-          item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-        }
-      }
-    });
+    // temp.forEach((item) => {
+    //   if (item.veg) {
+    //     if (
+    //       item.menu_label === "Mains-dry" ||
+    //       item.menu_label === "Mains-dal"
+    //     ) {
+    //       item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
+    //     } else if (item.menu_label === "Pasta") {
+    //       if (nonVegPastaMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Mains-gravy : same logic as above
+    //     else if (item.menu_label === "Mains-Gravy") {
+    //       if (nonVegMainsGravyMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.15).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.15 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Main -Thai : same logic as above
+    //     else if (item.menu_label === "Mains-Thai") {
+    //       if (nonVegMainThaiMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //   } else {
+    //     if (item.Qtype === "pcs") {
+    //       item.quantity = nonVeg * 1;
+    //     } else if (item.name === highestPrice.name) {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
+    //     } else {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+    //     }
+    //   }
+    // });
 
     temp.push({
       // isRice: main.isRice,
@@ -1009,7 +1214,7 @@ const CustomizeNinjaBox = () => {
       city === "Mumbai" ||
       city === "Banglore" ||
       city === "Navi-Mumbai" ||
-      city === "Thane"
+      city === "Thane" || city==="Chennai" || city === "Pune"
     ) {
       if (people <= 25) {
         setDeliveryCharge(0);
@@ -1059,15 +1264,9 @@ const CustomizeNinjaBox = () => {
       setBreadRice(newDesserts);
     }
   }
-  function handleDelete(index, type) {
-    setIsDelete(!isDelete);
-    if (type === "starters") {
-      let temp = [...starters];
-      temp.splice(index, 1);
-      console.log("hey", temp, filteredData);
-      setStarters(temp);
-      let removedIndexes = [];
-      filteredData.forEach((item, index) => {
+  function uncheckAfterDelete(a,temp){
+    let removedIndexes = [];
+      a.forEach((item, index) => {
         let innerData = temp.filter(
           (innerItem) => innerItem?.name === item?.name
         );
@@ -1076,29 +1275,47 @@ const CustomizeNinjaBox = () => {
           removedIndexes.push(index);
         }
       });
-      for (let j = 0; j < filteredData.length; j++) {
+      for (let j = 0; j < a.length; j++) {
         if (!removedIndexes.includes(j)) {
-          filteredData[j].checked = "checked";
+          a[j].checked = "checked";
         } else {
-          filteredData[j].checked = "";
+          a[j].checked = "";
+          checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
           setCheckedValues(
-            checkedValues.filter((v) => v.id !== filteredData[j].id)
+            checkedValues
           );
         }
       }
-      // setStartersData(filteredData)
-      console.log("removed", filteredData, removedIndexes);
+      return a
+  }
+  function handleDelete(index, type) {
+    setIsDelete(!isDelete);
+    let temp;
+    let updated;
+    if (type === "starters") {
+      temp = [...starters];
+      temp.splice(index, 1);
+      setStarters(temp);
+      updated=uncheckAfterDelete(filteredData,temp);
+      setStartersData(updated)
+      // console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
-      let temp = [...mains];
+      temp = [...mains];
       temp.splice(index, 1);
       setMains(temp);
+      updated=uncheckAfterDelete(filteredMainsData,temp);
+      setMainData(updated)
     } else if (type === "desserts") {
-      let temp = [...desserts];
+      temp = [...desserts];
       temp.splice(index, 1);
       setDesserts(temp);
+      updated=uncheckAfterDelete(filteredDessertData,temp);
+      setDessertData(updated)
     } else if (type === "Bread+Rice") {
-      let temp = [...breadRice];
+      temp = [...breadRice];
       temp.splice(index, 1);
+      updated=uncheckAfterDelete(filteredBreadData,temp);
+      setBreadRiceData(updated)
       // changing the value after deleting
       let bread = 0;
       let count = 0;
@@ -1110,13 +1327,13 @@ const CustomizeNinjaBox = () => {
         item.veg ? (isVeg = true) : (isVeg = false);
       });
       temp.map((item) => {
-        if (item?.menu_label === "Breads" && item.name === "Pooris") {
+        if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
           if (bread === 1) {
             item.quantity = Math.round((veg + nonVeg) * 3);
           } else {
             item.quantity = Math.round((veg + nonVeg) * 2);
           }
-        } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+        } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
           if (bread === 1) {
             item.quantity = Math.round((veg + nonVeg) * 2);
           } else {
@@ -1193,9 +1410,6 @@ const CustomizeNinjaBox = () => {
           }
         }
       });
-
-      console.log("hey", temp, filteredData);
-
       setBreadRice(temp);
     }
   }
@@ -1204,7 +1418,7 @@ const CustomizeNinjaBox = () => {
     console.log(item_name);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...breadRice];
-    const filterBreadRice = breadRiceData.find(
+    const filterBreadRice = allMenus.find(
       (item) => item.name === item_name
     );
     let quantity;
@@ -1214,36 +1428,39 @@ const CustomizeNinjaBox = () => {
 
     // Rice + Noodles + Breads
 
-    //Breads Pooris
+    //Breads Poori - 4
     if (
       filterBreadRice?.menu_label === "Breads" &&
-      filterBreadRice.name === "Pooris"
+      filterBreadRice.name === "Poori - 4"
     ) {
       let bread = 1;
 
       temp.map((item) => {
         item.menu_label === "Breads" ? (bread += 1) : bread;
       });
+      
       bread === 1
         ? (quantity = Math.round((veg + nonVeg) * 3))
         : (quantity = Math.round((veg + nonVeg) * 2));
       if (bread === 1) {
         quantity = Math.round((veg + nonVeg) * 3);
       } else {
-        // temp.forEach((item) => {
-        //   item.name === "Pooris" && item.menu_label === "Breads"
-        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
-        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
-        // });
+        temp.forEach((item) => {
+          if(item.Qtype==="pcs"){
+          item.name === "Poori - 4" && item.menu_label === "Breads"
+            ? (item.quantity = Math.round((veg + nonVeg) * 2))
+            : (item.quantity = Math.round((veg + nonVeg) * 1));
+          }
+        });
         quantity = Math.round((veg + nonVeg) * 2);
       }
       // checking for bread
     }
 
-    //Breads but not Pooris
+    //Breads but not Poori - 4
     else if (
       filterBreadRice?.menu_label === "Breads" &&
-      filterBreadRice?.name !== "Pooris"
+      filterBreadRice?.name !== "Poori - 4"
     ) {
       let bread = 1;
 
@@ -1252,14 +1469,16 @@ const CustomizeNinjaBox = () => {
       });
       // console.log("naan");
       if (bread === 1) {
-        quantity = Math.round((veg + nonVeg) * 1.5);
+        quantity = Math.round((veg + nonVeg) * 2);
       } else {
-        // temp.forEach((item) => {
-        //   item.name === "Pooris" && item.menu_label === "Breads"
-        //     ? (item.quantity = Math.round((veg + nonVeg) * 2))
-        //     : (item.quantity = Math.round((veg + nonVeg) * 0).2);
-
-        // });
+        temp.forEach((item) => {
+          if(item.Qtype==="pcs"){
+          item.name === "Poori - 4" && item.menu_label === "Breads"
+            ? (item.quantity = Math.round((veg + nonVeg) * 2))
+            : (item.quantity = Math.round((veg + nonVeg) * 1));
+            
+          }
+        });
         quantity = Math.round((veg + nonVeg) * 1);
       }
     }
@@ -1305,7 +1524,6 @@ const CustomizeNinjaBox = () => {
         item.menu_label === "Rice" ? (count += 1) : count;
         item.veg ? (isVeg = true) : (isNonVeg = true);
       });
-      console.log("rice", count);
       if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
         let guests = veg > 0 ? veg : nonVeg;
         if (mains.length === 0 && count === 1) {
@@ -1322,7 +1540,11 @@ const CustomizeNinjaBox = () => {
             if (count >= 3) {
               item.quantity = HandleCeilFloorValue(guests * 0.1);
             } else {
-              item.quantity = HandleCeilFloorValue(guests * 0.15);
+              if (item.veg) {
+                item.quantity = HandleCeilFloorValue(guests * 0.25);
+              } else {
+                item.quantity = HandleCeilFloorValue(nonVeg * 0.2);
+              }
             }
             // item.quantity = 0.15 * guests;
           }
@@ -1355,7 +1577,7 @@ const CustomizeNinjaBox = () => {
           } else if (count >= 3) {
             quantity = HandleCeilFloorValue(veg * 0.1);
           } else {
-            quantity = HandleCeilFloorValue(veg * 0.15);
+            quantity = HandleCeilFloorValue(guests * 0.15);
           }
         } else {
           //non veg rice handelling
@@ -1380,13 +1602,13 @@ const CustomizeNinjaBox = () => {
           item.veg ? (isVeg = true) : (isVeg = false);
         });
         temp.map((item) => {
-          if (item?.menu_label === "Breads" && item.name === "Pooris") {
+          if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
             if (bread === 1) {
               item.quantity = Math.round((veg + nonVeg) * 3);
             } else {
               item.quantity = Math.round((veg + nonVeg) * 2);
             }
-          } else if (item?.menu_label === "Breads" && item.name !== "Pooris") {
+          } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
             if (bread === 1) {
               item.quantity = Math.round((veg + nonVeg) * 2);
             } else {
@@ -1567,7 +1789,6 @@ const CustomizeNinjaBox = () => {
     let mainPrice = 0;
     let dessertPrice = 0;
     let bredRicePrice = 0;
-    
 
     starters.map((d) => {
       if (d.Qtype === "pcs") {
@@ -1624,9 +1845,6 @@ const CustomizeNinjaBox = () => {
       parseInt(getGst())
     );
     setShowPriceList(false);
-   
-
-
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
@@ -1654,7 +1872,13 @@ const CustomizeNinjaBox = () => {
       return false;
     }
 
-    if (name.length == "" || mobileno.length == "" || (!/^\d{10}$/.test(mobileno)) || email.length == "" || (!/\S+@\S+\.\S+/.test(email))) {
+    if (
+      name.length == "" ||
+      mobileno.length == "" ||
+      !/^\d{10}$/.test(mobileno) ||
+      email.length == "" ||
+      !/\S+@\S+\.\S+/.test(email)
+    ) {
       if (name.length == "") {
         Swal.fire({
           text: "Please enter your Name",
@@ -1683,7 +1907,7 @@ const CustomizeNinjaBox = () => {
           confirmButtonText: "OK",
         });
         //alert("Fill the Email please");
-      } else if ((!/\S+@\S+\.\S+/.test(email))) {
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
         Swal.fire({
           text: "Please enter valid Email",
           icon: "warning",
@@ -1739,47 +1963,30 @@ const CustomizeNinjaBox = () => {
       totalPrice: totalPrice,
       GST: final_gst,
       showDessert: false,
-      emailedtoparser:EmailedToParser
+      emailedtoparser: EmailedToParser,
     };
-   
 
     setDatas(datas);
-    
+
     let data = "";
     try {
       data = JSON.stringify(datas);
     } catch (e) {
       console.log(e);
     }
-    // fetch("/api/forma", {
-    //   method: "POST",
-    //   body: data,
-    //   headers: { "Content-Type": "application/json; charset=UTF-8" },
-    // }).then((res) => {
-    //   console.log(res.message);
-    //   setEmailedToParser(true)
-    //   if (res.success) {
-    //     console.log("message sent");
-    //   } else {
-    //     console.log("Failed to send message");
-    //   }
-    // });
-
-    let zohodata={
-      "data":[
-          datas
-      ]
-  }
-
-    fetch("/api/testZoho", {
+    fetch("/api/forma", {
       method: "POST",
       body: data,
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      console.log(res)
+      console.log(res.message);
+      setEmailedToParser(true);
+      if (res.success) {
+        console.log("message sent");
+      } else {
+        console.log("Failed to send message");
+      }
     });
-
-    
   };
 
   const handlePlaceOrder = () => {
@@ -1819,24 +2026,38 @@ const CustomizeNinjaBox = () => {
     };
   }, []);
 
-  const interakt=async()=>{
+  const interakt = () => {
     var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo=");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append(
+      "Authorization",
+      "Basic dkVfdTBDWUZzV3lPTE8yUlE2MHBleXIwRVZWUzN6OFJncGxJYl9aejZZUTo="
+    );
 
-        var raw={ "phoneNumber": datas.mobileno, "event": "Test", "traits": { "orderID": "{order_id}", "doe": "{doe}", "toe": "{time_of_ev}", "value": "{selling_pr}", "ninja":"{ninja}" } }
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: JSON.stringify(raw),
-            redirect: 'follow'
-          };
-          
-        await fetch("https://api.interakt.ai/v1/public/track/events/", requestOptions)
-            .then(response => console.log("resot",response.json()))
-  }
+    var raw = {
+      phoneNumber: "7023405885",
+      event: "Test",
+      traits: {
+        orderID: "{order_id}",
+        doe: "{doe}",
+        toe: "{time_of_ev}",
+        value: "{selling_pr}",
+        ninja: "{ninja}",
+      },
+    };
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-  const EmailOrderConfirmation=async(datas)=>{
+    axios
+      .post("https://api.interakt.ai/v1/public/track/events/", requestOptions)
+      .then((response) => console.log("resot", response.json()));
+  };
+
+  const EmailOrderConfirmation = async (datas) => {
 
     //post api for email
     await fetch("/api/EmailOrderConfirmation", {
@@ -1844,29 +2065,24 @@ const CustomizeNinjaBox = () => {
       body: JSON.stringify(datas),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-      if(res.success) {
+      setShowPopup(false);
+      alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
+
+      if (res.success) {
         alert("Hurray! Your Order has been placed successfully, Our Ninja will connect you shortly for confirmation.");
-//show pop up here
+        //show pop up here
       }
-      else if (res.message==="Parameter missing"){
+      else if (res.message === "Parameter missing") {
         alert("Email or Name is Missing");
 
-        
+
       }
       else {
         console.log("Failed to send message");
       }
     });
   }
-
-  // const selectedItems = filteredData.filter(item => item.checked);
-  // const unselectedItems = filteredData.filter(item => !item.checked);
-
-  // selectedItems.sort((a, b) => a.name.localeCompare(b.name));
-
-  // const sortedData = selectedItems.concat(unselectedItems);
-
-  const redirectToPayU = async(pd) => {
+  const redirectToPayU = async (pd) => {
     console.log("pd", pd);
     //use window.bolt.launch if you face an error in bolt.launch
 
@@ -1882,14 +2098,12 @@ const CustomizeNinjaBox = () => {
           body: JSON.stringify(response.response),
         })
           .then(function (a) {
-            
             return a.json();
-            
           })
           //Storing the payment details
           .then(async function (json) {
-            
-            console.log("a",json.status)
+            json.datas = datas
+            json.createdAt=new Date()
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -1897,23 +2111,24 @@ const CustomizeNinjaBox = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(json.status),
-            })
+              body: JSON.stringify(json),
+            });
 
             // if payment gets successful
 
-            if(json.status.status==="success"){
-            
+            if (json.status.status === "success") {
               // let payData={
-                datas.txnid=json.status.txnid,
-                datas.phone=json.status.phone,
-                datas.productinfo=json.status.productinfo,
-                datas.amount=json.status.amount,
-                datas.status=json.status,
-                datas.email=json.status.email,
-                datas.bank_ref_num=json.status.bank_ref_num,
-                datas.OrderStatus=""
-                // datas.name=json.status.field4
+              (datas.txnid = json.status.txnid),
+              (datas.address = json.status.address),
+                (datas.phone = json.status.phone),
+                (datas.productinfo = json.status.productinfo),
+                (datas.amount = json.status.amount),
+                (datas.status = json.status),
+                (datas.email = json.status.email),
+                (datas.bank_ref_num = json.status.bank_ref_num),
+                (datas.OrderStatus = "");
+                datas.createdAt=new Date()
+              // datas.name=json.status.field4
 
               // }
               // let userData= JSON.stringify(datas)+JSON.stringify(payData);
@@ -1925,50 +2140,70 @@ const CustomizeNinjaBox = () => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(datas),
-              }).then((res)=>console.log("successful"),
+              }).then(
+                (res) => console.log("successful"),
 
-              //Email the Order Confirmation
-              await EmailOrderConfirmation(datas),
-              
+                //Email the Order Confirmation
+                await EmailOrderConfirmation(datas),
+
                 //Interakt Api message to hit my number with details
-              await interakt()
+                await interakt(),
 
-                
-              );
-            }
-            else{
+                // window.location.href='/'
+
+              )
               
+            } else {
               alert("Payment Failed! Please try again.");
             }
           });
-          
       },
-      
+
       // catchException: function (response) {
       //   // the code you use to handle the integration errors goes here
       //   // Make any UI changes to convey the error to the user
       // },
     });
   };
+  useEffect(() => {
+    if (zipcode.length > 5) {
+      if (ZipCodes.includes(zipcode)) {
+        setZipcodeError("")
+      }
+      else {
+        setZipcodeError("Sorry, we are not servicable at provided PinCode Area.");
+      }
+    }
+
+  }, [zipcode])
 
   const payumoney = (e) => {
     e.preventDefault();
 
-    if(totalPrice<3000){
+    if (totalPrice < 3000) {
       alert("Order value must be greater than 3000");
       return;
     }
+    if(zipcodeError){
+      alert("ZipCode is not servicable by us!")
+      return; 
+    }
+    if (!name || !mobileno || !email || !address || !zipcode) {
+      alert('Please fill in all fields');
+      return;
+    }
     //Create a Data object that is to be passed to LAUNCH method of Bolt
-    let oid = "RSGI" + Math.floor(Math.random(6) * 1000000);
+    let oid = "CaterNinjaDIY" + Math.floor(Math.random(6) * 1000000);
     console.log(oid);
     var pd = {
       key: "VKy9EEvW",
       txnid: oid,
-      amount: "1",
+      amount: datas.grandTotal,
+      // amount:"1",
       firstname: datas.name,
       email: datas.email,
       phone: datas.mobileno,
-      productinfo: "CaterNinja",
+      productinfo: "test",
       surl: "https://new.caterninja.com",
       furl: "https://new.caterninja.com",
       hash: "",
@@ -2002,54 +2237,109 @@ const CustomizeNinjaBox = () => {
         redirectToPayU(pd);
       });
   };
-  // const initiatePayment = async (e) => {
-  //   e.preventDefault();
-  //   let oid = "RSGI" + Math.floor(Math.random(6) * 1000000)
-  //   const data = { oid };
-  //   let a = await fetch("/api/paynow", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   });
-  //   var txnToken = await a.json();
 
-  //   var config = {
-  //     root: "",
-  //     flow: "DEFAULT",
-  //     ENVIRONMENT: "staging",
-  //     REQUEST_TYPE: "DEFAULT",
-  //     INDUSTRY_TYPE_ID: "Retail",
-  //     WEBSITE: "WEBSTAGING",
-  //     data: {
-  //       orderId: oid,
-  //       token: txnToken /* update token value */,
-  //       tokenType: "TXN_TOKEN",
-  //       amount: "100" /* update amount */,
-  //     },
-  //     "handler": {
-  //       "notifyMerchant": function (eventName, data) {
-  //         console.log("notifyMerchant handler function called");
-  //         console.log("eventName => ", eventName);
-  //         console.log("data => ", data);
-  //       },
-  //     },
-  //   };
-
-  //   // initialze configuration using init method
-  //   window.Paytm.CheckoutJS.init(config)
-  //     .then(function onSuccess() {
-  //       // after successfully updating configuration, invoke JS Checkout
-  //       window.Paytm.CheckoutJS.invoke();
-  //     })
-  //     .catch(function onError(error) {
-  //       console.log("error => ", error);
-  //     });
-  // };
 
   return (
     <div className={styles.customizeMainContainer}>
+      {showPopup && <div className={styles4.popupCnfrmPkg}>
+        <h4>Details</h4>
+        <div className={styles4.scrldetails}>
+          <div className={styles4.formDetails}>
+            <div className='d-flex justify-content-between'>
+              <p>Name:</p>
+              <input type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Phone:</p>
+              <input type="text"
+                value={mobileno}
+                onChange={(e) => setPhone(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Email:</p>
+              <input type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Address:</p>
+              <input type="text"
+                // value={address}
+                onChange={(e) => setAddress(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>ZipCode:</p>
+              <input type="number"
+                maxLength={6}
+                // value={zipcode}
+                onChange={(e) => setZipcode(e.target.value)}></input>
+            </div>
+            <p>{zipcodeError}</p>
+          </div>
+          <hr />
+          <div className={styles4.selectedDetails}>
+            <div className={styles4.data}>
+              <div>
+                <h6>City:</h6>
+                <h6>Date:</h6>
+                <h6>Time:</h6>
+                <h6>Veg Guest:</h6>
+                <h6>Non-veg Guest:</h6>
+                <h6>Occassion:</h6>
+              </div>
+              <div>
+                <h6>{city}</h6>
+                <h6>{startDate}</h6>
+                <h6>{startTime}</h6>
+                <h6>{veg}</h6>
+                <h6>{nonVeg}</h6>
+                <h6>{occasion}</h6>
+              </div>
+            </div>
+            <hr />
+            <div className={styles4.selectedItems}>
+              {/* <div>
+                  <h4>- Starters -</h4>
+                  {starters.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div>
+                <div>
+                  <h4>- Mains -</h4>
+                  {mains.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                  {breadRice.map((item, index) => (
+                    <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div>
+                <div>
+                  <h4>- Desserts -</h4>
+                  {desserts.map((item, index) => (
+                    <p>{item.name} ({item.quantity} {item.Qtype})</p>
+                  ))
+                  }
+                </div> */}
+            </div>
+          </div>
+        </div>
+        <div>
+          <hr />
+          <div className={styles4.priceing}>
+            <h6>GRAND TOTAL :</h6>
+            <h6>₹ {grandTotal}</h6>
+          </div>
+          <div className={styles4.cnfmBtn}>
+            <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
+            <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
+          </div>
+        </div>
+      </div>}
       <div className={styles.customizeMainContainer}>
         <Slider {...settings}>
           <div className={styles.header}>
@@ -2167,15 +2457,40 @@ const CustomizeNinjaBox = () => {
                 </div>
 
                 <div className={styles.eventDate}>
-                  <p>Event Date</p>
-                  <DatePicker
+                  <p>
+                    Event Date{" "}
+                    <span onMouseEnter={hoverLink} onClick={hoverLink}>
+                      i
+                    </span>
+                  </p>
+                  {showUrgentLink && (
+                    <div id={styles.urgentLink}>
+                      <a
+                        href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages"
+                        target="_blank"
+                      >
+                        Click here for urgent order!
+                      </a>
+                    </div>
+                  )}
+                  {/* <DatePicker
                     name="event_date"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     minDate={minDate}
                     dateFormat="dd MMMM yyyy"
                     required
+                  /> */}
+                  <input
+                    type="date"
+                    onChange={(event) => setStartDate(event.target.value)}
+                    value={startDate}
+                    min={minDateISO.toString()}
                   />
+                  {/* <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate}>
+                    <option value="">Select a date</option>
+                    {generateDateOptions()}
+                  </select> */}
                 </div>
                 <div style={{ marginBottom: "40px" }}>
                   <p>Veg Guest</p>
@@ -2224,12 +2539,37 @@ const CustomizeNinjaBox = () => {
                 </div>
                 <div>
                   <p>Delivery Time</p>
-                  <input
+                  <select
+                    className="form-select"
+                    onChange={(e) => setStartTime(e.target.value)}
+                  >
+                    <option value="">Select a Date</option>
+                    <option value="11:00 am">11:00 am</option>
+                    <option value="11:30 am">11:30 am</option>
+                    <option value="12:00 pm">12:00 pm</option>
+                    <option value="12:30 pm">12:30 pm</option>
+                    <option value="1:00 pm">1:00 pm</option>
+                    <option value="1:30 pm">1:30 pm</option>
+                    <option value="2:00 pm">2:00 pm</option>
+                    <option value="2:00 pm">2:00 pm</option>
+                    <option value="2:30 pm">2:30 pm</option>
+                    <option value="3:00 pm">3:00 pm</option>
+                    <option value="5:00 pm">5:00 pm</option>
+                    <option value="5:30 pm">5:30 pm</option>
+                    <option value="6:00 pm">6:00 pm</option>
+                    <option value="6:30 pm">6:30 pm</option>
+                    <option value="7:00 pm">7:00 pm</option>
+                    <option value="7:30 pm">7:30 pm</option>
+                    <option value="8:00 pm">8:00 pm</option>
+                    <option value="8:30 pm">8:30 pm</option>
+                    <option value="9:00 pm">9:30 pm</option>
+                  </select>
+                  {/* <input
                     type="time"
                     name="event_time"
                     onChange={(time) => setstartTime(time)}
                     required
-                  ></input>
+                  ></input> */}
                 </div>
                 <div style={{ marginTop: "40px" }}>
                   <p>Non Veg Guest</p>
@@ -2343,22 +2683,6 @@ const CustomizeNinjaBox = () => {
                   {/* starters add */}
                   <div className={styles.startersContainer}>
                     <h5>Starters</h5>
-                    {showDropdown && (
-                      <div
-                        onClick={handleDiv1Click}
-                        className={styles.starterSearchBtn}
-                        id="srchbr"
-                      >
-                        <p>
-                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
-                          Starter
-                        </p>
-                        <span>
-                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
-                          select
-                        </span>
-                      </div>
-                    )}
                     <div
                       className={styles.selectedStarterContainer}
                       style={{ marginTop: "20px" }}
@@ -2452,6 +2776,22 @@ const CustomizeNinjaBox = () => {
                           </div>
                         ))}
                     </div>
+                    {showDropdown && (
+                      <div
+                        onClick={handleDiv1Click}
+                        className={styles.starterSearchBtn}
+                        id="srchbr"
+                      >
+                        <p>
+                          <FontAwesomeIcon icon={faMagnifyingGlass} /> Select
+                          Starter
+                        </p>
+                        <span>
+                          <FontAwesomeIcon icon={faAngleDown} /> Click here to
+                          select
+                        </span>
+                      </div>
+                    )}
                     {showSelectedMenu && (
                       <div
                         ref={outerDivRef}
@@ -2480,8 +2820,21 @@ const CustomizeNinjaBox = () => {
                               </div>
                             </div> */}
                             <div id={styles.starterList}>
+                              <div className="row ml-2">
+                                <div className="col-md-4">
+                              <button className="btn btn-secondary">veg only</button>
+                              </div>
+                              <div className="col-md-4">
+                              <button className="btn btn-secondary">Tandoori</button>
+                              </div>
+                              <div className="col-md-4">
+                              <button className="btn btn-secondary">Rice</button>
+                              </div>
+                              </div>
                               <ul>
-                                {filteredData.map((item, index) => (
+                                {filteredData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -2686,7 +3039,9 @@ const CustomizeNinjaBox = () => {
                             </div> */}
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredMainsData.map((item, index) => (
+                                {filteredMainsData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -2879,7 +3234,9 @@ const CustomizeNinjaBox = () => {
                             />
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredBreadData.map((item, index) => (
+                                {filteredBreadData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3071,7 +3428,9 @@ const CustomizeNinjaBox = () => {
                             />
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredDessertData.map((item, index) => (
+                                {filteredDessertData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3171,8 +3530,8 @@ const CustomizeNinjaBox = () => {
                     {(city === "Mumbai" ||
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
-                      city === "Bangalore") &&
-                      people < 26 ? (
+                      city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3182,9 +3541,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3196,9 +3555,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3210,9 +3569,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore") &&
+                        city === "Navi-Mumbai" ||
+                        city === "Thane" ||
+                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3231,7 +3590,7 @@ const CustomizeNinjaBox = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                      people < 26 ? (
+                    people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3241,9 +3600,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3255,9 +3614,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3269,9 +3628,9 @@ const CustomizeNinjaBox = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
+                        city === "Noida" ||
+                        city === "Ghaziabad" ||
+                        city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3305,7 +3664,6 @@ const CustomizeNinjaBox = () => {
                       pattern="[789][0-9]{9}"
                       maxLength="10"
                       min="10"
-
                       required
                     />
                     <input
@@ -3404,10 +3762,10 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
-                      <button>Get Booking Help</button>
-                    </Link> */}
-                    <button onClick={payumoney}>Place Order</button>
+                    <button onClick={placeOrderBtn}>Place Order</button>
+                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                      <button style={{ backgroundColor: "green", color: "white" }}>Get Booking Help</button>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -3434,7 +3792,7 @@ const CustomizeNinjaBox = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

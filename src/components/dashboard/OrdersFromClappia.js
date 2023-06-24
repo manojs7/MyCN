@@ -16,7 +16,7 @@ import {format} from 'date-fns';
 import { paginate } from "../paginate";
 
 
-const ConfirmOrder = () => {
+const OrdersFromClappia = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 5;
@@ -30,31 +30,61 @@ const ConfirmOrder = () => {
  };
   //calling the data from database
   useEffect(() => {
-    fetchData();
+    fetchDataFromClappia();
   },[]);
 
-  const fetchData=async ()=>{
-    await fetch("/api/saveCompletedOrderDetails", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      })
-      .then(function (a) {
-        return a.json();
-      }).then(function (json) {
-        // console.log("prodcuts2",json.data)
-       setProducts(json.data)
-      })
-    }
+    const fetchDataFromClappia=async ()=>{
+      await fetch("https://api-public-v3.clappia.com/submissions/getSubmissions", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "x-api-key":"cat51996896100f61ff96467198b93c81ff5e3ba0",
+          },
+          body: JSON.stringify({
+            "workplaceId": "CAT519968",
+            "appId": "ORD392190",
+            "forward": true,
+            "requestingUserEmailAddress": "takmanoj369@gmail.com",
+            "pageSize": 0,
+            "filters": {
+              "queries": [
+                {
+                  "queries": [
+                    {}
+                  ],
+                  "conditions": [
+                    {
+                      "operator": "string",
+                      "filterKeyType": "string",
+                      "key": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "operator": "string"
+                }
+              ],
+              "conditions": [
+                {}
+              ],
+              "operator": "string"
+            }
+          }),
+        })
+        .then(function (res) {
+          console.log("response",res.metadata )
+          setProducts(res)
+        })
+      }
     
 
   return (
-    <BaseCard title="Orders Submitted" sx={{
+    <BaseCard title="Orders From Clappia" sx={{
       overflow: "auto",
     }}>
-      <Table
+     
+
+<Table
         aria-label="simple table"
         sx={{
           mt: 3,
@@ -93,11 +123,6 @@ const ConfirmOrder = () => {
                 CreatedAt
               </Typography>
             </TableCell>
-            <TableCell align="right">
-              <Typography color="textSecondary" variant="h6">
-                Action
-              </Typography>
-            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -112,7 +137,7 @@ const ConfirmOrder = () => {
                     fontWeight: "500",
                   }}
                 >
-                  {product.name}
+                  {product.datas.name}
                 </Typography>
               </TableCell>
               <TableCell>
@@ -129,7 +154,7 @@ const ConfirmOrder = () => {
                         fontWeight: "600",
                       }}
                     >
-                      {product.mobileno}
+                      {product.datas.mobileno}
                     </Typography>
                     <Typography
                       color="textSecondary"
@@ -137,14 +162,14 @@ const ConfirmOrder = () => {
                         fontSize: "13px",
                       }}
                     >
-                     {product.email}
+                     {product.datas.email}
                     </Typography>
                   </Box>
                 </Box>
               </TableCell>
               <TableCell>
                 <Typography color="textSecondary" variant="h6">
-                {(product.people)}[{product.veg_c}v+{product.nonveg_c} nv]
+                {(product.datas.people)}[{product.datas.veg_c}v+{product.datas.nonveg_c} nv]
 
                 </Typography>
               </TableCell>
@@ -174,7 +199,7 @@ const ConfirmOrder = () => {
                         fontWeight: "600",
                       }}
                     >
-                      {product.time} {format(new Date(product.date), 'dd/MM/yyyy')}
+                      {product.datas.time} {format(new Date(product.datas.date), 'dd/MM/yyyy')}
                       
                     </Typography>
                     <Typography
@@ -185,43 +210,31 @@ const ConfirmOrder = () => {
                     >
                      <select style={{maxWidth:"120px"}}>
                             <option value="">Selected Menu</option>
-                            {product.appetizer.map((item,index)=>(
+                            {product.datas.appetizer.map((item,index)=>(
                                 <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
                             ))}
-                            
 
-                            {product.mainCourse.map((item,index)=>(
+                            {product.datas.mainCourse.map((item,index)=>(
                                 <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
                             ))}
-                            {product.breadRice.map((item,index)=>(
+                            {product.datas.breadRice.map((item,index)=>(
                                 <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
                             ))}
-                            {product.dessert.map((item,index)=>(
+                            {product.datas.dessert.map((item,index)=>(
                                 <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
                             ))}
                             
                         </select>
                     </Typography>
-                    
                   </Box>
                 </Box>
                 
               </TableCell>
               <TableCell align="right">
-                <Typography variant="h6">{product.grandTotal}</Typography>
+                <Typography variant="h6">{product.datas.grandTotal}</Typography>
               </TableCell>
               <TableCell align="right">
                 <Typography variant="h6">{format(new Date(product.createdAt), 'p, dd/MM/yyyy')}</Typography>
-              </TableCell>
-              <TableCell>
-              <Typography variant="h6"
-                      sx={{
-                        fontWeight: "600",
-                      }}>
-                      <button className="btn btn-primary">
-                        Punch to Clappia
-                      </button>
-                    </Typography>
               </TableCell>
             </TableRow>
           ))
@@ -236,7 +249,8 @@ const ConfirmOrder = () => {
         />
     </BaseCard>
     
+    
   );
 };
 
-export default ConfirmOrder;
+export default OrdersFromClappia;

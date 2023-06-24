@@ -39,8 +39,8 @@ const NinjaBoxCustomise = () => {
   const handleShowModal = () => setShowModal(true);
   const router = useRouter();
   const [veg, setVeg] = useState(10);
-  const [nonVeg, setNonVeg] = useState(10);
-  const [people, setPeople] = useState(20);
+  const [nonVeg, setNonVeg] = useState(0);
+  const [people, setPeople] = useState(10);
 
   const [cuisine, setCuisine] = useState("All");
   const [knowMore, setKnowMore] = useState([]);
@@ -724,9 +724,9 @@ const NinjaBoxCustomise = () => {
             if (data.Qtype === "pcs") {
               data.quantity = veg * 1;
             } else {
-              data.quantity = HandleCeilFloorValue(
-                veg * 0.1 + nonVeg * 0.1
-              ).toFixed(1);
+              data.quantity = HandleCeilFloorValue((
+                veg * 0.1 + nonVeg * 0.1)
+              .toFixed(1));
             }
           }
         } else {
@@ -851,7 +851,7 @@ const NinjaBoxCustomise = () => {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
         } else {
-          if (dessert.name === "Angoori Gulab Jamun") {
+          if (data.name === "Angoori Gulab Jamun") {
             data.quantity = Math.round((veg + nonVeg) * 3);
           } else {
             data.quantity = Math.round((veg + nonVeg) * 1.5);
@@ -2185,6 +2185,7 @@ const NinjaBoxCustomise = () => {
             if (json.status.status === "success") {
               // let payData={
               (datas.txnid = json.status.txnid),
+              (datas.address = json.status.address),
                 (datas.phone = json.status.phone),
                 (datas.productinfo = json.status.productinfo),
                 (datas.amount = json.status.amount),
@@ -2786,7 +2787,9 @@ const NinjaBoxCustomise = () => {
                             />
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredData.map((item, index) => (
+                                {filteredData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -2993,7 +2996,9 @@ const NinjaBoxCustomise = () => {
                             />
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredMainsData.map((item, index) => (
+                                {filteredMainsData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3186,7 +3191,9 @@ const NinjaBoxCustomise = () => {
                             />
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredBreadData.map((item, index) => (
+                                {filteredBreadData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3378,7 +3385,9 @@ const NinjaBoxCustomise = () => {
                             />
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredDessertData.map((item, index) => (
+                                {filteredDessertData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>

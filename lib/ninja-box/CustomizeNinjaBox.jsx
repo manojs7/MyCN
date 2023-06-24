@@ -700,6 +700,7 @@ const CustomizeNinjaBox = () => {
         } else if (data.name === highestPrice.name) {
           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
         } else {
+          
           data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
         }
       } else {
@@ -1489,9 +1490,6 @@ const CustomizeNinjaBox = () => {
           }
         }
       });
-
-      console.log("hey", temp, filteredData);
-
       setBreadRice(temp);
     }
   }
@@ -2127,7 +2125,7 @@ const CustomizeNinjaBox = () => {
     );
 
     var raw = {
-      phoneNumber: "7023405885",
+      phoneNumber: datas.mobileno,
       event: "Test",
       traits: {
         orderID: "{order_id}",
@@ -2211,6 +2209,7 @@ const CustomizeNinjaBox = () => {
             if (json.status.status === "success") {
               // let payData={
               (datas.txnid = json.status.txnid),
+              (datas.address = json.status.address),
                 (datas.phone = json.status.phone),
                 (datas.productinfo = json.status.productinfo),
                 (datas.amount = json.status.amount),
@@ -2958,10 +2957,12 @@ const CustomizeNinjaBox = () => {
                                 <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="nonVeg" />
                                 <label style={{color: "red"}} className="form-check-label" for="inlineRadio3">NonVeg</label>
                               </div>
-                            </div> */}
+                            </div>
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredData.map((item, index) => (
+                                {filteredData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3193,7 +3194,9 @@ const CustomizeNinjaBox = () => {
                             </div>
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredMainsData.map((item, index) => (
+                                {filteredMainsData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3423,7 +3426,9 @@ const CustomizeNinjaBox = () => {
                             </div>
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredBreadData.map((item, index) => (
+                                {filteredBreadData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3640,7 +3645,9 @@ const CustomizeNinjaBox = () => {
                             </div>}
                             <div id={styles.starterList}>
                               <ul>
-                                {filteredDessertData.map((item, index) => (
+                                {filteredDessertData
+                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                .map((item, index) => (
                                   <li key={item.id}>
                                     <div className="d-flex justify-content-between">
                                       <div id={styles.insideDivLi}>
@@ -3972,7 +3979,7 @@ const CustomizeNinjaBox = () => {
                     <p>*Delivery charges as per actual</p>
                   </div>
                   <div className={styles.orderBtn}>
-                    <button onClick={placeOrderBtn}>Place Order</button>
+                    {/* <button onClick={placeOrderBtn}>Place Order</button> */}
                     <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button style={{ backgroundColor: "green", color: "white" }}>Get Booking Help</button>
                     </Link>
@@ -3980,9 +3987,14 @@ const CustomizeNinjaBox = () => {
                 </div>
               )}
             </div>
+            )}
           </div>
+          </div>
+          </div>
+          </div>
+        </div>
         </form>
-        <div className={styles.createYourOwnPkg}>
+        {/* <div className={styles.createYourOwnPkg}>
           <div>
             <img src="Group 1097.png" />
           </div>
@@ -4000,9 +4012,10 @@ const CustomizeNinjaBox = () => {
               <button>SEE ALL THE SERVICES</button>
             </a>
           </div>
+        </div> */}
         </div>
-      </div>
-    </div>
+        </div>
+    
   );
 };
 
