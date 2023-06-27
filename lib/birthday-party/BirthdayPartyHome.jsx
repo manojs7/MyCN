@@ -73,7 +73,7 @@ const BirthdayPartyHome = () => {
       };
 
     const handleSubmit = () => {
-        const totalCount = vegCount + nvCount;
+        const totalGuestCount = Number(vegCount) + Number(nvCount);
         if (!city) {
             Swal.fire({
                 text: "please select your city",
@@ -88,7 +88,7 @@ const BirthdayPartyHome = () => {
                 confirmButtonText: "OK",
             });
         }
-        else if (totalCount < 10) {
+        else if (totalGuestCount < 10) {
             Swal.fire({
                 text: "Guest count should be at least 10",
                 icon: "warning",
@@ -99,7 +99,8 @@ const BirthdayPartyHome = () => {
               city,
               selectedDate,
               vegCount,
-              nvCount
+              nvCount,
+              totalGuestCount
             }
             setIsFormValid(false);
             // let selectedBirthdayPkg = { city: city, selectedDate: selectedDate, vegCount: vegCount, nvCount: nvCount }

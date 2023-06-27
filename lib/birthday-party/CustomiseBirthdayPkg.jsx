@@ -31,6 +31,12 @@ const CustomiseBirthdayPkg = () => {
     const [vegCount, setVegCount] = useState();
     const [nvCount, setNvCount] = useState();
 
+    const [vegSnackQnty, setVegSnackQnty] = useState();
+    const [nvegSnackQnty, setNvegSnackQnty] = useState();
+    const [vegHeavySnackQnty, setVegHeavySnackQnty] = useState();
+    const [nonVegHeavySnackQnty, setNonVegHeavySnackQnty] = useState();
+    const [dessertQnty, setDessertQnty] = useState();
+
     useEffect(() => {
         let selectedBirthdayPkg = JSON.parse(sessionStorage.getItem("selectedBirthdayPkg"));
         console.log('selectedBirthdayPkg', selectedBirthdayPkg)
@@ -51,6 +57,10 @@ const CustomiseBirthdayPkg = () => {
                 setPackagePrice(data.price);
                 setItemsTypeName(data.items);
                 setItemQuantity(data.quantity);
+                setVegSnackQnty(data.vegSnackQnty);
+                setNvegSnackQnty(data.nonVegSnackQnty);
+                setVegHeavySnackQnty(data.vegHeavySnackQnty);
+                setNonVegHeavySnackQnty(data.nonVegHeavySnackQnty);
             }
         };
 
@@ -553,7 +563,7 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues.length >= 4 && !alertShown) {
+            if (checkedValues.length >= vegSnackQnty && !alertShown) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
@@ -573,7 +583,7 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange2 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues2.length >= 3 && !alertShown2) {
+            if (checkedValues2.length >= vegHeavySnackQnty && !alertShown2) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
@@ -593,7 +603,7 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange3 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues3.length >= 3 && !alertShown3) {
+            if (checkedValues3.length >= nvegSnackQnty && !alertShown3) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
@@ -613,7 +623,7 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange4 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues4.length >= 3 && !alertShown4) {
+            if (checkedValues4.length >= nonVegHeavySnackQnty && !alertShown4) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
@@ -849,7 +859,7 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectVegSnack}>+ Add More</button>
+                    <button onClick={selectVegSnack}>+ Add {vegSnackQnty} items</button>
                 </div>
             </div>
 
@@ -930,7 +940,7 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectVegHeavySnack}>+ Add More</button>
+                    <button onClick={selectVegHeavySnack}>+ Add {vegHeavySnackQnty} Items</button>
                 </div>
             </div>
 
@@ -1011,7 +1021,7 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectNonVegSnack}>+ Add More</button>
+                    <button onClick={selectNonVegSnack}>+ Add {nvegSnackQnty} items</button>
                 </div>
             </div> : "" }
             {/* NON VEG HEAVY SNACK */}
@@ -1091,7 +1101,7 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectNonVegHeavySnack}>+ Add More</button>
+                    <button onClick={selectNonVegHeavySnack}>+ Add {nonVegHeavySnackQnty} items</button>
                 </div>
             </div> : "" }
             <div className={styles.addonsbtn}>

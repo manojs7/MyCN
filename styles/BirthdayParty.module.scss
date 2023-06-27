@@ -4,7 +4,7 @@
     font-family: "Montserrat", sans-serif;
     background-color: #FFE8CA;
     //padding-top: 20px;
-    padding-bottom: 20px;
+    //padding-bottom: 20px;
 
     hr {
         margin: auto;
@@ -862,12 +862,14 @@
         }
     }
 
-    
+
 }
 
 .checkpriceBtn {
     margin-top: 30px;
     text-align: center;
+    margin-bottom: 30px;
+
     button {
         border: none;
         padding: 6.788px 14.933px 5.43px 14.933px;
@@ -882,5 +884,341 @@
         font-weight: 600;
         letter-spacing: 0.407px;
 
+    }
+}
+
+.addonsBtmSectn {
+    height: 126px;
+
+    h6 {
+        margin-top: 30px !important;
+        margin: auto;
+        width: 275px;
+        color: #222221;
+        text-align: center;
+        font-size: 7.91px;
+        font-weight: 500;
+
+        span {
+            font-weight: 600;
+        }
+    }
+}
+
+.detailsPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 278px;
+    height: 317px;
+    background-color: #FFFFFF;
+    border-radius: 26px;
+    padding-top: 35px;
+    box-shadow: 0px 4px 250px rgba(0, 0, 0, 0.75);
+
+    .inputfield {
+        margin: auto;
+        width: 226px;
+        height: 162px;
+        background-color: #FFC31A;
+        border-radius: 10px;
+        padding-top: 20px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+        h5 {
+            color: #BE2D30;
+            text-align: center;
+            font-size: 15.45px;
+            font-weight: 600;
+            letter-spacing: 0.772px;
+            text-transform: capitalize;
+
+            span {
+                color: #222221;
+            }
+        }
+
+        input {
+            margin: auto;
+            width: 170.462px;
+            height: 25.784px;
+            border-radius: 7.162px;
+            background: #FFF;
+            color: #222221;
+            font-size: 9.61px;
+            margin-bottom: 10px !important;
+        }
+
+        input::placeholder {
+            color: #E78A8C;
+            font-size: 9.61px;
+            font-family: Montserrat;
+            letter-spacing: 0.48px;
+        }
+    }
+
+    #instantQuoteBtn {
+        border: none;
+        width: 183px;
+        border-radius: 6.985px;
+        background: #BE2D30;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        color: #FFF;
+        text-align: center;
+        font-size: 15.059px;
+        font-weight: 500;
+        letter-spacing: 0.452px;
+    }
+
+    #backBtn {
+        margin-top: 30px;
+        border: none;
+        background: none;
+        color: #BE2D30;
+        text-align: center;
+        font-size: 10.383px;
+        font-weight: 500;
+        letter-spacing: 0.311px;
+    }
+}
+
+/***************************************CHECK PRICE PAGE***********************************************/
+
+#checkpriceHeader {
+    padding-top: 30px;
+    color: #2C3338;
+    text-align: center;
+    font-size: 19.05px;
+    font-weight: 700;
+    letter-spacing: 0.952px;
+}
+
+.checkpriceheadersection {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+
+    h4 {
+        margin-top: 7px;
+        padding: 4.922px 10.829px 3.938px 10.829px;
+        gap: 0.984px;
+        color: #FFF;
+        text-align: center;
+        font-size: 9.112px;
+        font-weight: 500;
+        letter-spacing: 0.273px;
+        width: 103px;
+        height: 20.84px;
+        border-radius: 4.226px;
+        background: #F1A42B;
+        box-shadow: 0px 1.210191011428833px 2.420382022857666px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    h5 {
+        margin-top: 7px;
+        width: 69px;
+        height: 20.84px;
+        color: #FFF;
+        text-align: center;
+        font-size: 9.112px;
+        font-weight: 500;
+        letter-spacing: 0.273px;
+        padding: 4.922px 10.829px 3.938px 10.829px;
+        border-radius: 4.226px;
+        background: #F1A42B;
+        box-shadow: 0px 1.210191011428833px 2.420382022857666px 0px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.selectedItems {
+    margin-top: 30px;
+    margin-left: 30px;
+
+    h5 {
+        color: #BE2D30;
+        font-size: 11.257px;
+        font-style: italic;
+        font-weight: 500;
+        letter-spacing: 0.563px;
+        text-transform: capitalize;
+    }
+
+    h6 {
+        margin-top: 4px;
+        margin-left: 5px;
+        color: #2C3338;
+        font-size: 11.933px;
+        font-weight: 600;
+        letter-spacing: 0.597px;
+        text-transform: capitalize;
+    }
+}
+
+.cpaddons {
+    margin-left: 30px;
+    width: 113.71px;
+    height: 18.17px;
+    margin-bottom: 20px;
+
+    h2 {
+        margin-top: 30px;
+        padding-top: 2px;
+        color: #2C3338;
+        font-size: 11.257px;
+        font-weight: 600;
+        letter-spacing: 0.563px;
+        text-transform: capitalize;
+    }
+}
+
+.addonsSelectedList {
+    margin-top: 5px;
+    margin-left: 30px;
+    display: flex;
+
+    .addonsName {
+        margin-left: 10px;
+        width: 208.513px;
+        height: 20.071px;
+        flex-shrink: 0;
+        border-radius: 10.035px;
+        background: linear-gradient(90deg, #FCDB96 0%, rgba(243, 164, 0, 0.00) 100%);
+
+        h4 {
+            margin-top: -2px;
+            margin-left: 5px;
+            color: #222221;
+            font-size: 11.406px;
+            font-weight: 600;
+            line-height: 27.988px;
+        }
+    }
+}
+
+#addmoreitemCP {
+    margin-top: 10px;
+    color: #BE2D30;
+    text-align: center;
+    font-size: 10.383px;
+    font-weight: 500;
+    letter-spacing: 0.311px;
+}
+
+.priceSection {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 30px;
+
+    .priceDropdown {
+        select {
+            border: none;
+            width: 150.652px;
+            height: 22px;
+            flex-shrink: 0;
+            border-radius: 4.783px;
+            background: #FBA003;
+            color: #FFF;
+            font-size: 8.13px;
+            font-weight: 600;
+            letter-spacing: 0.407px;
+        }
+    }
+
+    h6 {
+        color: #000;
+        font-size: 11.17px;
+        font-weight: 500;
+        line-height: 16.5px;
+        letter-spacing: 0.559px;
+        text-transform: capitalize;
+    }
+}
+
+.priceL {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 30px;
+    margin-top: 30px;
+
+    h6 {
+        margin-top: 4px;
+        color: #000;
+        font-size: 11.17px;
+        font-weight: 500;
+        line-height: 16.5px;
+        letter-spacing: 0.559px;
+        text-transform: capitalize;
+    }
+
+    h5 {
+        color: #363D42;
+        font-size: 11.17px;
+        font-weight: 600;
+        line-height: 20.5px;
+        letter-spacing: 0.559px;
+    }
+}
+
+.simpleHR {
+    hr {
+        width: 348px;
+        height: 0;
+        border: 0.25px #363D42 solid;
+    }
+}
+
+.grandtotal {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 30px;
+
+    h3 {
+        color: #000;
+        font-size: 14.17px;
+        font-weight: 600;
+        letter-spacing: 0.709px;
+        text-transform: capitalize;
+    }
+}
+
+.orderbuttonsectn {
+    margin-top: 30px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-evenly;
+
+    .bookinghelpbtn {
+        button {
+            box-shadow: 0px 2.71500563621521px 2.71500563621521px 0px rgba(0, 0, 0, 0.25);
+            width: 160.87px;
+            height: 30.08px;
+            border: none;
+            border-radius: 5.828px;
+            background: #FFF;
+            color: #3C7311;
+            text-align: center;
+            font-size: 13.575px;
+            font-weight: 600;
+            letter-spacing: 0.407px;
+        }
+    }
+
+    .placeorderbtn {
+        button {
+            box-shadow: 0px 2.71500563621521px 2.71500563621521px 0px rgba(0, 0, 0, 0.25);
+            width: 119.5px;
+            height: 30.08px;
+            border: none;
+            border-radius: 5.828px;
+            background: #BE2D30;
+            color: #FFF;
+            font-size: 13.575px;
+            font-weight: 600;
+            letter-spacing: 0.407px;
+        }
     }
 }
