@@ -15,11 +15,13 @@ const CustomiseBirthdayPkg = () => {
     const [showDropdown2, setShowDropdown2] = useState(true)
     const [showDropdown3, setShowDropdown3] = useState(true)
     const [showDropdown4, setShowDropdown4] = useState(true)
+    const [showDropdown5, setShowDropdown5] = useState(true)
     const [isShown, setIsShown] = useState(false);
     const [data, setData] = useState([])
     const [data2, setData2] = useState([])
     const [data3, setData3] = useState([])
     const [data4, setData4] = useState([])
+    const [data5, setData5] = useState([])
 
     const [packageName, setPackageName] = useState();
     const [packagePrice, setPackagePrice] = useState();
@@ -61,6 +63,7 @@ const CustomiseBirthdayPkg = () => {
                 setNvegSnackQnty(data.nonVegSnackQnty);
                 setVegHeavySnackQnty(data.vegHeavySnackQnty);
                 setNonVegHeavySnackQnty(data.nonVegHeavySnackQnty);
+                setDessertQnty(data.dessertQnty);
             }
         };
 
@@ -168,16 +171,42 @@ const CustomiseBirthdayPkg = () => {
         }
     };
 
+    //DESSERT SELECTION
+    const selectDessert = () => {
+        setShowSelectedMenu5(true);
+        setShowDropdown5(false)
+        setSearchValue5("")
+
+        setState({
+            showDiv1: false,
+            showDiv2: true
+        });
+
+        const results = dessertData.filter(({ id: id1 }) => !checkedValues5.some(({ id: id2 }) => id2 === id1));
+
+        let selectedIds = [];
+        for (let i = 0; i < results.length; i++) {
+            selectedIds.push(results[i].id);
+        }
+        for (let j = 0; j < dessertData.length; j++) {
+            if (!(selectedIds.includes(dessertData[j].id))) {
+                dessertData[j].checked = 'checked';
+            }
+        }
+    };
+
     const handleCancelClick = () => {
 
         setShowSelectedMenu(false);
         setShowSelectedMenu2(false);
         setShowSelectedMenu3(false);
         setShowSelectedMenu4(false);
+        setShowSelectedMenu5(false);
         setShowDropdown(true);
         setShowDropdown2(true);
         setShowDropdown3(true);
         setShowDropdown4(true);
+        setShowDropdown5(true);
         setState({
             showDiv1: true,
             showDiv2: false
@@ -228,6 +257,18 @@ const CustomiseBirthdayPkg = () => {
         } else {
             value.checked = '';
             setCheckedValues4(checkedValues4.filter(v => v.id !== value.id));
+        }
+        // setCheckedValues(checkedValues.filter(v => v.id !== item.id));
+    }
+
+    const deleteDessert = (e, item) => {
+        const value = item;
+        if (e.target.checked) {
+            value.checked = '';
+            setCheckedValues5([...checkedValues5, value]);
+        } else {
+            value.checked = '';
+            setCheckedValues5(checkedValues5.filter(v => v.id !== value.id));
         }
         // setCheckedValues(checkedValues.filter(v => v.id !== item.id));
     }
@@ -512,14 +553,60 @@ const CustomiseBirthdayPkg = () => {
         }
     ]
 
+    //non veg heavy snack data
+    const dessertDataList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Dessert 1',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Dessert 2',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Dessert 3',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false
+        },
+        {
+            id: 4,
+            image: '/diy images/starter/image 23.png',
+            name: 'Dessert 4',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false
+        },
+        {
+            id: 5,
+            image: '/diy images/starter/image 23.png',
+            name: 'Dessert 5',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false
+        }
+    ]
+
     const [searchValue, setSearchValue] = React.useState('');
     const [searchValue2, setSearchValue2] = React.useState('');
     const [searchValue3, setSearchValue3] = React.useState('');
     const [searchValue4, setSearchValue4] = React.useState('');
+    const [searchValue5, setSearchValue5] = React.useState('');
     const [showSelectedMenu, setShowSelectedMenu] = useState(false);
     const [showSelectedMenu2, setShowSelectedMenu2] = useState(false);
     const [showSelectedMenu3, setShowSelectedMenu3] = useState(false);
     const [showSelectedMenu4, setShowSelectedMenu4] = useState(false);
+    const [showSelectedMenu5, setShowSelectedMenu5] = useState(false);
 
     const searchStarter = (e) => {
         setSearchValue(e.target.value);
@@ -537,6 +624,10 @@ const CustomiseBirthdayPkg = () => {
         setSearchValue4(e.target.value);
     };
 
+    const searchStarter5 = (e) => {
+        setSearchValue5(e.target.value);
+    };
+
     const filteredData = data.filter((temp) =>
         temp.name.toLowerCase().includes(searchValue.toLowerCase())
     );
@@ -549,16 +640,21 @@ const CustomiseBirthdayPkg = () => {
     const nonVegHeavySnackData = data4.filter((temp) =>
         temp.name.toLowerCase().includes(searchValue4.toLowerCase())
     );
+    const dessertData = data5.filter((temp) =>
+        temp.name.toLowerCase().includes(searchValue5.toLowerCase())
+    );
 
     const [checkedValues, setCheckedValues] = React.useState([]);
     const [checkedValues2, setCheckedValues2] = React.useState([]);
     const [checkedValues3, setCheckedValues3] = React.useState([]);
     const [checkedValues4, setCheckedValues4] = React.useState([]);
+    const [checkedValues5, setCheckedValues5] = React.useState([]);
 
     const [alertShown, setAlertShown] = useState(false);
     const [alertShown2, setAlertShown2] = useState(false);
     const [alertShown3, setAlertShown3] = useState(false);
     const [alertShown4, setAlertShown4] = useState(false);
+    const [alertShown5, setAlertShown5] = useState(false);
 
     const handleCheckboxChange = (e, item) => {
         const value = item;
@@ -640,6 +736,46 @@ const CustomiseBirthdayPkg = () => {
         }
     };
 
+    const handleCheckboxChange5 = (e, item) => {
+        const value = item;
+        if (e.target.checked) {
+            if (checkedValues5.length >= dessertQnty && !alertShown5) {
+                Swal.fire({
+                    title: "Reminder",
+                    text: "Respective Charges will be applied to extra selected items in final quote.",
+                    icon: "warning",
+                    confirmButtonText: "OK",
+                });
+                setAlertShown5(true);
+            }
+            value.checked = 'checked';
+            setCheckedValues5([...checkedValues5, value]);
+        } else {
+            value.checked = '';
+            setCheckedValues5(checkedValues5.filter((v) => v.id !== value.id));
+        }
+    };
+
+    //SAVE THE ALL SNACKS DATA
+    const addAlldata = () => {
+        const sum =
+            checkedValues.length +
+            checkedValues2.length +
+            checkedValues3.length +
+            checkedValues4.length +
+            checkedValues5.length;
+        if (sum > 0) {
+            sessionStorage.setItem('checkedValues', JSON.stringify(checkedValues));
+            sessionStorage.setItem('checkedValues2', JSON.stringify(checkedValues2));
+            sessionStorage.setItem('checkedValues3', JSON.stringify(checkedValues3));
+            sessionStorage.setItem('checkedValues4', JSON.stringify(checkedValues4));
+            sessionStorage.setItem('checkedValues5', JSON.stringify(checkedValues5));
+            window.open('/birthdayAddOns')
+        } else {
+            alert('No data to save!');
+        }
+    };
+
     const outerDivRef = useRef(null);
 
     useEffect(() => {
@@ -647,6 +783,7 @@ const CustomiseBirthdayPkg = () => {
         setData2(vegHeavySnackDataList)
         setData3(nonVegSnackDataList)
         setData4(nonVegHeavySnackDataList)
+        setData5(dessertDataList)
         function handleClickOutside(event) {
             if (outerDivRef.current && !outerDivRef.current.contains(event.target)) {
                 handleCancelClick();
@@ -798,7 +935,7 @@ const CustomiseBirthdayPkg = () => {
                             <input type="text"
                                 value={searchValue}
                                 onChange={searchStarter}
-                                placeholder="Search Starter" />
+                                placeholder="Search Veg Snack" />
                             <div id={styles2.starterList}>
                                 {/* OLD CODE <ul>
                                     {filteredData.map((item, index) => (
@@ -895,7 +1032,7 @@ const CustomiseBirthdayPkg = () => {
                             <input type="text"
                                 value={searchValue2}
                                 onChange={searchStarter2}
-                                placeholder="Search Starter" />
+                                placeholder="Search Veg Heavy Snack" />
                             <div id={styles2.starterList}>
                                 <ul>
                                     {vegHeavySnackData
@@ -946,7 +1083,7 @@ const CustomiseBirthdayPkg = () => {
 
             {/* NON VEG SNACK */}
 
-            {nvCount >= 1 ?<div className={styles.itemsSelectionContainer}>
+            {nvCount >= 1 ? <div className={styles.itemsSelectionContainer}>
                 <div className={styles.vegSnackContainer}>
                     <h3>Non Veg Snack</h3>
                     {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
@@ -976,7 +1113,7 @@ const CustomiseBirthdayPkg = () => {
                             <input type="text"
                                 value={searchValue3}
                                 onChange={searchStarter3}
-                                placeholder="Search Starter" />
+                                placeholder="Search Non-Veg Snack" />
                             <div id={styles2.starterList}>
                                 <ul>
                                     {nonVegSnackData
@@ -1023,10 +1160,10 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles2.addMoreBtn}>
                     <button onClick={selectNonVegSnack}>+ Add {nvegSnackQnty} items</button>
                 </div>
-            </div> : "" }
+            </div> : ""}
             {/* NON VEG HEAVY SNACK */}
 
-            {nvCount >= 1 ?<div className={styles.itemsSelectionContainer}>
+            {nvCount >= 1 ? <div className={styles.itemsSelectionContainer}>
                 <div className={styles.vegSnackContainer}>
                     <h3>Non Veg Heavy Snack</h3>
                     {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
@@ -1056,7 +1193,7 @@ const CustomiseBirthdayPkg = () => {
                             <input type="text"
                                 value={searchValue4}
                                 onChange={searchStarter4}
-                                placeholder="Search Starter" />
+                                placeholder="Search Non-Veg Heavy Snack" />
                             <div id={styles2.starterList}>
                                 <ul>
                                     {nonVegHeavySnackData
@@ -1103,9 +1240,90 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles2.addMoreBtn}>
                     <button onClick={selectNonVegHeavySnack}>+ Add {nonVegHeavySnackQnty} items</button>
                 </div>
-            </div> : "" }
+            </div> : ""}
+
+            {/* DESSERTS */}
+
+            <div className={styles.itemsSelectionContainer}>
+                <div className={styles.vegSnackContainer}>
+                    <h3>Dessert</h3>
+                    {showDropdown5 && (<div onClick={selectDessert} className={styles.selectItemSearchBox} id="srchbr">
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Dessert</h6>
+                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                    </div>)}
+                </div>
+                <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                    {!showSelectedMenu5 && checkedValues5.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                        <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                        <div className={styles2.itemDetailsContainer}>
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            <div>
+                                <h4>{item.name}</h4>
+                                <p>{item.description}</p>
+                            </div>
+                            <div>
+                                <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteDessert(e, item)} />
+                            </div>
+                        </div>
+                    </div>
+                    ))}
+                </div>
+                {showSelectedMenu5 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                    <div id={styles2.starterSearchContent}>
+                        <div>
+                            <input type="text"
+                                value={searchValue5}
+                                onChange={searchStarter5}
+                                placeholder="Search Dessert" />
+                            <div id={styles2.starterList}>
+                                <ul>
+                                    {dessertData
+                                        .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                        .map((item, index) => (
+                                            <li key={item.id}>
+                                                <div className='d-flex justify-content-between'>
+                                                    <div id={styles2.insideDivLi}>
+                                                        <img src={item.image} width="30.05px" height="26.54px" />
+                                                        {item.veg === true ? (
+                                                            <img className={styles2.vegLogo} src='/diy images/vegLogo.png' />
+                                                        ) : (
+                                                            <img className={styles2.vegLogo} src='/diy images/Group 962.png' />
+                                                        )}
+                                                        <p>
+                                                            {item.name}
+                                                            <br />
+                                                            <span>{item.description}</span>
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <input
+                                                            id={item.id}
+                                                            type="checkbox"
+                                                            checked={item.checked}
+                                                            value={item.id}
+                                                            onChange={(e) => handleCheckboxChange5(e, item)}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        ))}
+                                </ul>
+                            </div>
+                            <div id={styles2.listInsideBtn}>
+                                <button onClick={handleCancelClick}>Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>)}
+                <div className={styles2.starterBtmLine}>
+                    <hr />
+                </div>
+                <div className={styles2.addMoreBtn}>
+                    <button onClick={selectDessert}>+ Add {dessertQnty} Items</button>
+                </div>
+            </div>
             <div className={styles.addonsbtn}>
-                <button onClick={(()=>{window.open('/birthdayAddOns')})}>Add Ons</button>
+                <button onClick={addAlldata}>Add Ons</button>
             </div>
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>

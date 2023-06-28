@@ -105,7 +105,7 @@ const BirthdayPartyHome = () => {
             setIsFormValid(false);
             // let selectedBirthdayPkg = { city: city, selectedDate: selectedDate, vegCount: vegCount, nvCount: nvCount }
             sessionStorage.setItem("selectedBirthdayPkg", JSON.stringify(selectedBirthdayPkg))
-            window.open('/birthdayParty', '_blank')
+            window.open('/birthdayParty', '_self')
         }
     }
 

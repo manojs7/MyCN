@@ -101,7 +101,7 @@ const Birthday_Packages = () => {
             setGoldPackage(vegPackages.goldPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };

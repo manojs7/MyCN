@@ -9,6 +9,12 @@ const BirthdayPartyCheckPrice = () => {
 
     const [totalGuestCount, setTotalGuestCount] = useState();
 
+    const [checkedValues, setCheckedValues] = React.useState([]);
+    const [checkedValues2, setCheckedValues2] = React.useState([]);
+    const [checkedValues3, setCheckedValues3] = React.useState([]);
+    const [checkedValues4, setCheckedValues4] = React.useState([]);
+    const [checkedValues5, setCheckedValues5] = React.useState([]);
+
     //background image
     const backgroundStyle = {
         backgroundImage: 'url("/birthdayParty/birthdayBg.png")',
@@ -39,6 +45,30 @@ const BirthdayPartyCheckPrice = () => {
         }
     }, []);
 
+    React.useEffect(() => {
+        const savedCheckedValues = sessionStorage.getItem('checkedValues');
+        const savedCheckedValues2 = sessionStorage.getItem('checkedValues2');
+        const savedCheckedValues3 = sessionStorage.getItem('checkedValues3');
+        const savedCheckedValues4 = sessionStorage.getItem('checkedValues4');
+        const savedCheckedValues5 = sessionStorage.getItem('checkedValues5');
+      
+        if (savedCheckedValues) {
+          setCheckedValues(JSON.parse(savedCheckedValues));
+        }
+        if (savedCheckedValues2) {
+          setCheckedValues2(JSON.parse(savedCheckedValues2));
+        }
+        if (savedCheckedValues3) {
+          setCheckedValues3(JSON.parse(savedCheckedValues3));
+        }
+        if (savedCheckedValues4) {
+          setCheckedValues4(JSON.parse(savedCheckedValues4));
+        }
+        if (savedCheckedValues5) {
+          setCheckedValues5(JSON.parse(savedCheckedValues5));
+        }
+      }, []);
+
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
             <h3 id={styles.checkpriceHeader}>Review Your Menu</h3>
@@ -52,60 +82,58 @@ const BirthdayPartyCheckPrice = () => {
             </div>
             <div className={styles.selectedItems}>
                 <h5>Veg Snack</h5>
-                <div className='d-flex'>
+                { checkedValues.map((vegSnackdata, index)=>(<div key={index} className='d-flex'>
                     <div>
                         <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
-                        <h6>Paneer Butter Masala</h6>
+                        <h6>{vegSnackdata.name}</h6>
                     </div>
-                </div>
-                <div className='d-flex'>
-                    <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
-                    </div>
-                    <div>
-                        <h6>Paneer Butter Masala</h6>
-                    </div>
-                </div>
+                </div>))}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Veg Heavy Snack</h5>
-                <div className='d-flex'>
+                { checkedValues2.map((vegHeavySnackdata, index)=>(<div key={index} className='d-flex'>
                     <div>
                         <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
-                        <h6>Paneer Butter Masala</h6>
+                        <h6>{vegHeavySnackdata.name}</h6>
                     </div>
-                </div>
-                <div className='d-flex'>
+                </div>))}
+            </div>
+            <div className={styles.selectedItems}>
+                <h5>Non-Veg Snack</h5>
+                { checkedValues3.map((nonVegSnackData, index)=>(<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                        <Image src="/diy images/Group 962.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
-                        <h6>Paneer Butter Masala</h6>
+                        <h6>{nonVegSnackData.name}</h6>
                     </div>
-                </div>
+                </div>))}
+            </div>
+            <div className={styles.selectedItems}>
+                <h5>Non-Veg Heavy Snack</h5>
+                { checkedValues4.map((nonVegHeavySnackData, index)=>(<div key={index} className='d-flex'>
+                    <div>
+                        <Image src="/diy images/Group 962.png" width="11.852px" height="11.852px" />
+                    </div>
+                    <div>
+                        <h6>{nonVegHeavySnackData.name}</h6>
+                    </div>
+                </div>))}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Dessert</h5>
-                <div className='d-flex'>
+                { checkedValues5.map((dessertData, index)=>(<div key={index} className='d-flex'>
                     <div>
                         <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
-                        <h6>Paneer Butter Masala</h6>
+                        <h6>{dessertData.name}</h6>
                     </div>
-                </div>
-                <div className='d-flex'>
-                    <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
-                    </div>
-                    <div>
-                        <h6>Paneer Butter Masala</h6>
-                    </div>
-                </div>
+                </div>))}
             </div>
             <div className={styles.cpaddons} style={addons}>
                 <h2>Add On's -</h2>
