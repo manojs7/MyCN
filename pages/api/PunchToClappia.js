@@ -16,7 +16,7 @@ export default async function handler(req, res) {
               "client_nam":orderData.address,
               "contact_nu": "7023405885",
               "customer_e": "takmanoj369@gmail.com",
-              "pax": "10",
+              "pax": orderData.veg_c+ orderData.nonveg_c,
               "service_":"NinjaBox",
               "buff_type":"",
               "buff_char":"",
