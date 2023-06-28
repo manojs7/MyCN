@@ -74,8 +74,8 @@ const Birthday_Packages = () => {
                 name: "SILVER NV",
                 veg: false,
                 price: "570",
-                items: [{name: "Veg Snack",qty: "Any 2", chosenQty: 2}, "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
-                quantity: [{qty: "Any 2", chosenQty: 2}, {qty: "Any 2", chosenQty: 2}, {qty: "Any 1", chosenQty: 1}, {qty: "Any 1", chosenQty: 1}, {qty: "Any 1", chosenQty: 1}],
+                items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
+                quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
                 vegSnackQnty: 2,
                 nonVegSnackQnty: 2,
                 vegHeavySnackQnty: 1,
@@ -101,7 +101,7 @@ const Birthday_Packages = () => {
             setGoldPackage(vegPackages.goldPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };
