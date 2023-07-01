@@ -7,6 +7,8 @@ const LoginPage = () => {
 
   const handleLogin = (selectedRole) => {
     setRole(selectedRole);
+    localStorage.setItem("role", selectedRole)
+    window.location.href="/Admin";
   };
 
   return (
@@ -14,6 +16,7 @@ const LoginPage = () => {
       {role ? (
         <div className='container mt-3 mb-3 '>
           <h2>Welcome, {role}!</h2>
+          
           {/* Place your admin dashboard content here */}
         </div>
       ) : (

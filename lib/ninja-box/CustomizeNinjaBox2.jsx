@@ -240,17 +240,6 @@ const CustomizeNinjaBox = () => {
     };
   }, []);
 
-  function filterHandeling(menu_type, field, value, checked) {
-    if (field === "veg") {
-      if (menu_type === "mains") {
-        setMainData((prev) => prev.filter((d) => d.veg === value));
-      }
-    } else if (field === "name") {
-      if (menu_type === "mains") {
-        setMainData((prev) => prev.filter((d) => d.name.includes(value)));
-      }
-    }
-  }
   useEffect(() => {
     allMenus.sort(function (a, b) {
       const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
@@ -432,6 +421,42 @@ const CustomizeNinjaBox = () => {
   const filteredMainsData = mainData.filter((temp) =>
     temp.name.toLowerCase().includes(searchMainsValue.toLowerCase())
   );
+
+  const [filters, setFilters] = useState({
+    veg: false,
+    nonveg: false,
+    fried: false,
+    price: false,
+  });
+
+  const handleFilterChange = (filter) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filter]: !prevFilters[filter],
+    }));
+    
+  };
+
+  useEffect(()=>{
+    setMainData(
+      mainData2.filter((item) => {
+        if (filters.veg && item.veg !== true) {
+          return false;
+        }
+        if (filters.nonveg && item.veg !== false) {
+          return false;
+        }
+        if (filters.fried && item.type !== "fried") {
+          return false;
+        }
+        if (filters.price && item.selling_price < 800) {
+          return false;
+        }
+        return true;
+      })
+    );
+  },[filters])
+  
 
   //search Bread
   const searchBread = (e) => {
@@ -3239,14 +3264,8 @@ const CustomizeNinjaBox = () => {
                                       type="radio"
                                       id="sf1"
                                       name="starterFilter"
-                                      onChange={(event) =>
-                                        filterHandeling(
-                                          "mains",
-                                          "name",
-                                          "Paneer",
-                                          event
-                                        )
-                                      }
+                                      value="Paneer"
+                                      onChange={searchMains}
                                     />
                                     <label for="sf1">Paneer Gravys</label>
                                   </div>
@@ -3255,14 +3274,8 @@ const CustomizeNinjaBox = () => {
                                       type="radio"
                                       id="sf2"
                                       name="starterFilter"
-                                      onChange={(event) =>
-                                        filterHandeling(
-                                          "mains",
-                                          "name",
-                                          "veg",
-                                          event
-                                        )
-                                      }
+                                      value="veg"
+                                      onChange={searchMains}
                                     />
                                     <label for="sf2">Vegetable Gravys</label>
                                   </div>
@@ -3271,14 +3284,8 @@ const CustomizeNinjaBox = () => {
                                       type="radio"
                                       id="sf3"
                                       name="starterFilter"
-                                      onChange={(event) =>
-                                        filterHandeling(
-                                          "mains",
-                                          "name",
-                                          "Paneer",
-                                          event
-                                        )
-                                      }
+                                      value="Gravy"
+                                      onChange={searchMains}
                                     />
                                     <label for="sf3">Popular Gravys</label>
                                   </div>
@@ -3287,14 +3294,8 @@ const CustomizeNinjaBox = () => {
                                       type="radio"
                                       id="sf4"
                                       name="starterFilter"
-                                      onChange={(event) =>
-                                        filterHandeling(
-                                          "mains",
-                                          "name",
-                                          "gravy",
-                                          event
-                                        ) 
-                                      }
+                                      value="Gravy"
+                                      onChange={searchMains}
                                     />
                                     <label for="sf4">All Gravys</label>
                                   </div>
@@ -3307,22 +3308,23 @@ const CustomizeNinjaBox = () => {
                                 <label className={styles.switch}>
                                   <input
                                     type="checkbox"
-                                    onChange={(event) =>
-                                      filterHandeling(
-                                        "mains",
-                                        "veg",
-                                        true,
-                                        event
-                                      )
-                                    }
+                                    checked={filters.veg}
+                                    onChange={() => handleFilterChange("veg")}
                                   />
+
                                   <span className={styles.slider}></span>
                                 </label>
                               </div>
                               <div className={styles.nonVegSwitch}>
                                 <p>Non Veg Only</p>
                                 <label className={styles.switch}>
-                                  <input type="checkbox" />
+                                  <input
+                                    type="checkbox"
+                                    checked={filters.nonveg}
+                                    onChange={() =>
+                                      handleFilterChange("nonveg")
+                                    }
+                                  />
                                   <span className={styles.slider}></span>
                                 </label>
                               </div>

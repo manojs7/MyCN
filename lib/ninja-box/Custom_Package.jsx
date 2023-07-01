@@ -215,49 +215,9 @@ const Custom_Package = () => {
       console.log(' Checkbox is NOT checked');
     }
   }
-  // const handleGuestAdd = (e) => {
-  //   vegNonVeg === 'nonVeg' ? setNonVegGuest(e.target.value) : setVegGuest(e.target.value)
-  //   console.log(vegGuest, nonVegGuest)
-  // }
-  // function handleClick(index) {
-  //   const starters = Ninja_Package_Data[index].starters;
-  //   const mains = Ninja_Package_Data[index].mains;
-  //   const desserts = Ninja_Package_Data[index].desserts;
-  //   const veg = Ninja_Package_Data[index].veg;
-  //   const nonveg = Ninja_Package_Data[index].nonveg;
-  //   Router.push(
-  //     {
-  //       pathname: "/custom",
-  //       query: {
-  //         data: JSON.stringify({
-  //           starters: starters,
-  //           mains: mains,
-  //           desserts: desserts,
-  //           veg: veg,
-  //           nonVeg: nonveg,
-  //         }),
-  //       },
-  //     },
-  //     "/custom"
-  //   );
-  // }
-
+  
   //SHOW/HIDE POPUP
   const [showDiv, setShowDiv] = useState(false);
-  // const ref = useRef(null);
-
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
-
-  // const handleClickOutside = (event) => {
-  //   if (ref.current && !ref.current.contains(event.target)) {
-  //     setShowDiv(false);
-  //   }
-  // };
 
   const handleButtonClick = (item) => {
     setItemSelected(item)
