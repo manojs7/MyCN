@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
   Chip,
+  Button
 } from "@mui/material";
 import BaseCard from "../baseCard/BaseCard";
 import Pagination from "../Pagination";
@@ -35,7 +36,6 @@ const ConfirmOrder = () => {
     //get order detail from here and show detail box here
 
     let orderData= products.filter((d)=>d._id===id)
-    console.log(orderData)
 
     //sending this id to backend and saving the data
     let res=await fetch("/api/PunchToClappia",{
@@ -48,6 +48,7 @@ const ConfirmOrder = () => {
         orderData : orderData,
       }),
     });
+    console.log("response received", res)
   }
 
   const fetchData = async () => {
@@ -259,12 +260,13 @@ const ConfirmOrder = () => {
                         fontWeight: "600",
                       }}
                     >
-                      <button
-                        className="btn btn-primary"
-                        onClick={event=>PunchToClappia(product._id)}
-                      >
-                        Punch to Clappia
-                      </button>
+                      {product.OrderStatus!=="Punched"?
+                     
+                      <Button variant="contained" color="success" 
+                      onClick={(event)=>PunchToClappia(product._id)}>
+                      Punch to Clappia
+                    </Button>
+                      :<span><b>Punched </b></span>}
                     </Typography>
                   </TableCell>
                 </TableRow>

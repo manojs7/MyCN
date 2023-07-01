@@ -9,37 +9,59 @@ export default async function handler(req, res) {
     if(!req.body.orderData[0]){
       res.status(401).json("data variable is empty");
     }
+
     var orderData=req.body.orderData[0];
+    var starters="";
+    var mainCourse="";    
+    var breadRice="";    
+    var dessert="";
+    var city="";
+    var city_ops;
+
+    orderData.appetizer.forEach((item, index)=>{
+      starters+=item.name + " ";
+    })
+    orderData.mainCourse.forEach((item, index)=>{
+      mainCourse+=item.name + " ";
+    })
+    orderData.breadRice.forEach((item, index)=>{
+      breadRice+=item.name + " ";
+    })
+    orderData.dessert.forEach((item, index)=>{
+      dessert+=item.name + " ";
+    })
+
+    if(orderData.city==="Banglore"){
+      city="BLR";
+      city_ops="BLR||cnopsbanglore@gmail.com";
+    }
 
     var data={
               "ninja": "Anup",
               "client_nam":orderData.address,
-              "contact_nu": "7023405885",
-              "customer_e": "takmanoj369@gmail.com",
-              "pax": "10",
+              "contact_nu": orderData.phone,
+              "customer_e": orderData.email,
+              "pax": orderData.veg_c+ orderData.nonveg_c,
               "service_":"NinjaBox",
               "buff_type":"",
               "buff_char":"",
-              "date_of_ev":"09-05-2023",
-              "time_of_ev":"12:30 PM",
-              "address":"",
+              "date_of_ev":orderData.date,
+              "time_of_ev":orderData.time,
+              "address":orderData.address,
               "google_lin":"",
-  
               "payment_mo":"Payu",
               "selling_pr":orderData.grandTotal,
-              "city":"BLR",
-              "city_ops":"BLR||cnopsbanglore@gmail.com",
+              "city":city,
+              "city_ops":city_ops,
               "order_sub":"New Order",
   
-              "test_start":"Achaari Paneer Tikka",
-              "test_mains":"Kadai veg",
-              "test_bread":"curd rice",
-              "test_desse":"Angoori gulab jamun",
+              "test_start":starters,
+              "test_mains":mainCourse,
+              "test_bread":breadRice,
+              "test_desse":dessert
   
-              "visit_location": "23.554,81.9283"
             }
-    console.log(data)
-
+            let myposts=await db.collection("saveCompletedOrderDetails").findOneAndUpdate({_id:orderData._id}, {$set:{OrderStatus:"Punched"}} , { upsert: true });
     // await fetch("https://api-public-v3.clappia.com/submissions/create", {
     //   method: "POST",
     //   headers: {
@@ -52,40 +74,15 @@ export default async function handler(req, res) {
     //       "appId": "CNB468071",
     //       "workplaceId": "CAT519968",
     //       "requestingUserEmailAddress": "takmanoj369@gmail.com",
-    //       "data": {
-    //         "ninja": "Anup",
-    //         "client_nam":"Test Manoj",
-    //         "contact_nu": "7023405885",
-    //         "customer_e": "takmanoj369@gmail.com",
-    //         "pax": "10",
-    //         "service_":"NinjaBox",
-    //         "buff_type":"",
-    //         "buff_char":"",
-    //         "date_of_ev":"09-05-2023",
-    //         "time_of_ev":"12:30 PM",
-    //         "address":"",
-    //         "google_lin":"",
-
-    //         "payment_mo":"Payu",
-    //         "selling_pr":"1",
-    //         "city":"BLR",
-    //         "city_ops":"BLR||cnopsbanglore@gmail.com",
-    //         "order_sub":"New Order",
-
-    //         "test_start":"Achaari Paneer Tikka",
-    //         "test_mains":"Kadai veg",
-    //         "test_bread":"curd rice",
-    //         "test_desse":"Angoori gulab jamun",
-
-    //         "visit_location": "23.554,81.9283"
-    //       }
+    //       "data": data,
     //     }
     //   ),
     // }).then(function (res) {
+    //   db.collection("saveCompletedOrderDetails").updateOne({_id:orderData._id}, {OrderStatus:"Punched"});
     //   res.json(res);
     // })
     
-    res.json("hey")
+    res.json(myposts)
   } else {
     await fetch("https://api-public-v3.clappia.com/submissions/getSubmissions", {
       method: "POST",

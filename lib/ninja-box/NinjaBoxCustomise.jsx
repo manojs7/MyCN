@@ -58,11 +58,6 @@ const NinjaBoxCustomise = () => {
   const [data, setData] = useState([]);
   const [datas, setDatas] = useState([]);
 
-  // const [isDisabled, setIsDisabled] = useState(true);
-  // const [isDisabledStarter, setIsDisabledStarter] = useState(true);
-  // const [isDisabledMains, setIsDisabledMains] = useState(true);
-  // const [isDisabledBread, setIsDisabledBread] = useState(true);
-  // const [isDisabledRice, setIsDisabledRice] = useState(true);
   const [showDropdown, setShowDropdown] = useState(true);
   const [showDropdown2, setShowDropdown2] = useState(true);
   const [showDropdown3, setShowDropdown3] = useState(true);
@@ -116,7 +111,6 @@ const NinjaBoxCustomise = () => {
   const [showPriceList, setShowPriceList] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
-
   const [checkedValues, setCheckedValues] = React.useState([]);
 
   const settings = {
@@ -150,15 +144,10 @@ const NinjaBoxCustomise = () => {
       //   setImage(dataSelected.itemSelected["img"]);
       setId(SessionData.itemSelected["id"]);
       setStartTime(SessionData['startTime'])
-      setMealType(SessionData["mealType"]);
-
-      
-    }    
-
+      setMealType(SessionData["mealType"]); 
+    }
   },[]);
 
-  
- 
   useEffect(() => {
     
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
@@ -196,9 +185,6 @@ const NinjaBoxCustomise = () => {
     } else {
     }
   },[]);
-
-  
- 
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -513,8 +499,6 @@ const NinjaBoxCustomise = () => {
   const deleteMenu = (item) => {
     setCheckedValues(checkedValues.filter((v) => v.name !== item.name));
   };
-
-
   const handleCheckboxChange = (e, index, item, type) => {
     if (type === "starters") {
       handleStatersAdd(item.name, item.id);
@@ -539,7 +523,6 @@ const NinjaBoxCustomise = () => {
       handleDelete(index, type);
     }
   };
-
   //DATE LOGIC
   const generateDateOptions = () => {
     const options = [];
@@ -995,7 +978,6 @@ const NinjaBoxCustomise = () => {
     // setStarters(temp);
     console.log("starters", starters);
   };
-
   //mains add
   const handleMainAdd = (item_name, id) => {
     setIsMainChange(!isMainChange);
@@ -1822,7 +1804,6 @@ const NinjaBoxCustomise = () => {
       setBreadRice(temp);
     }
   }
- 
   function handleBuffet(value) {
     setbuffet(value);
   }
@@ -1908,7 +1889,6 @@ const NinjaBoxCustomise = () => {
       100
     );
   }
-
   const formSubmit = (e) => {
     e.preventDefault();
     if (!checkFirstValidation()) {
@@ -2030,7 +2010,6 @@ const NinjaBoxCustomise = () => {
         }
     });
   };
-
   const handlePlaceOrder = () => {
     let msg = "Hey,! Please Help me to make my DIY menu order!";
 
@@ -2069,12 +2048,7 @@ const NinjaBoxCustomise = () => {
     
   }, []);
 
-  // const selectedItems = filteredData.filter(item => item.checked);
-  // const unselectedItems = filteredData.filter(item => !item.checked);
-
-  // selectedItems.sort((a, b) => a.name.localeCompare(b.name));
-
-  // const sortedData = selectedItems.concat(unselectedItems);
+  //Payment Section
 
   const interakt = async () => {
     var myHeaders = new Headers();
@@ -2140,13 +2114,6 @@ const NinjaBoxCustomise = () => {
     //     }
     // });
   };
-
-  // const selectedItems = filteredData.filter(item => item.checked);
-  // const unselectedItems = filteredData.filter(item => !item.checked);
-
-  // selectedItems.sort((a, b) => a.name.localeCompare(b.name));
-
-  // const sortedData = selectedItems.concat(unselectedItems);
 
   const redirectToPayU = async (pd) => {
     console.log("pd", pd);
@@ -2231,6 +2198,7 @@ const NinjaBoxCustomise = () => {
       // },
     });
   };
+
   useEffect(() => {
     if (zipcode.length > 5) {
       if (ZipCodes.includes(zipcode)) {

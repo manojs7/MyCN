@@ -5,11 +5,7 @@ export default async function handler(req, res) {
   const db = client.db("CaterNinja");
   if (req.method === "POST") {
     let bodyObject = (req.body);
-    let myPost = await db.collection("saveCompletedOrderDetails").insertOne(bodyObject);
-
-    // Email to User, Anup@caterninja, Anurag sir, myself
-    
-
+    let myPost = await db.collection("saveCompletedOrderDetails").insertOne(bodyObject);    
 
     res.json(myPost);
   } else {
