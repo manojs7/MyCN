@@ -77,10 +77,10 @@ const Birthday_Packages = () => {
                 items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
                 quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
                 vegSnackQnty: 2,
-                nonVegSnackQnty: 2,
-                vegHeavySnackQnty: 1,
+                nonVegSnackQnty: 3,
+                vegHeavySnackQnty: 2,
                 nonVegHeavySnackQnty: 1,
-                dessertQnty: 1
+                dessertQnty: 2
             }
         }
         // const packageTwo = 
