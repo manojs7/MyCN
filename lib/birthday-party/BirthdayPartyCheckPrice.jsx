@@ -8,6 +8,7 @@ import styles2 from "/styles/NewCustomizePkg.module.scss";
 const BirthdayPartyCheckPrice = () => {
 
     const [totalGuestCount, setTotalGuestCount] = useState();
+    const [liveCounterItems, setLiveCounterItems] = useState([]);
 
     const [checkedValues, setCheckedValues] = React.useState([]);
     const [checkedValues2, setCheckedValues2] = React.useState([]);
@@ -42,6 +43,14 @@ const BirthdayPartyCheckPrice = () => {
         // sessionStorage.removeItem("dataSelected")
         if (selectedBirthdayPkg) {
             setTotalGuestCount(selectedBirthdayPkg.totalGuestCount);
+        }
+    }, []);
+
+    useEffect(() => {
+        const addedItems = JSON.parse(sessionStorage.getItem("addedItems"));
+        console.log('addedItems', addedItems)
+        if (addedItems) {
+            setLiveCounterItems(addedItems);
         }
     }, []);
 
@@ -138,14 +147,14 @@ const BirthdayPartyCheckPrice = () => {
             <div className={styles.cpaddons} style={addons}>
                 <h2>Add On's -</h2>
             </div>
-            <div className={styles.addonsSelectedList}>
+            { liveCounterItems.map((item, index)=>(<div key={index} className={styles.addonsSelectedList}>
                 <div>
                     <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
                 </div>
                 <div className={styles.addonsName}>
-                    <h4>Veg Dum Biryani</h4>
+                    <h4>{item.name}</h4>
                 </div>
-            </div>
+            </div>))}
             <div className={styles.addonsSelectedList}>
                 <div>
                     <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
