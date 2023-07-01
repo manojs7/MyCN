@@ -609,6 +609,46 @@
         // width: 169.26px;
         // height: 155.89px;
         width: 251px;
+        height: 125px;
+        border: 0.9px solid #3C7311;
+        ;
+        border-radius: 10px;
+
+        #titlebg {
+            margin-top: -20px;
+            position: relative;
+            margin-inline: 50px;
+
+
+            h4 {
+                padding-top: 3px;
+                font-weight: 800;
+                font-size: 18.69px;
+                text-align: center;
+                color: #222221;
+            }
+        }
+
+        .blackbg {
+            margin-left: 10px;
+            position: absolute;
+            margin-top: 10px;
+            // width: 154.47px;
+            // height: 138.61px;
+            width: 229px;
+            height: 100px;
+            background-color: #222221;
+            border-radius: 7px;
+            box-shadow: 0px 0.896924px 0.896924px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .pkgCard2 {
+        margin-top: 30px !important;
+        margin: auto;
+        // width: 169.26px;
+        // height: 155.89px;
+        width: 251px;
         height: 155px;
         border: 0.9px solid #BE2D30;
         ;
@@ -1189,7 +1229,8 @@
     margin-top: 30px;
     padding-bottom: 50px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin-inline: 30px;
 
     .bookinghelpbtn {
         button {
@@ -1201,7 +1242,7 @@
             background: #FFF;
             color: #3C7311;
             text-align: center;
-            font-size: 13.575px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.407px;
         }
@@ -1216,7 +1257,7 @@
             border-radius: 5.828px;
             background: #BE2D30;
             color: #FFF;
-            font-size: 13.575px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.407px;
         }

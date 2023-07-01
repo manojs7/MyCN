@@ -8,7 +8,10 @@ import styles2 from "/styles/NewCustomizePkg.module.scss";
 const BirthdayPartyCheckPrice = () => {
 
     const [totalGuestCount, setTotalGuestCount] = useState();
+    const [vcount, setVcount] = useState();
     const [liveCounterItems, setLiveCounterItems] = useState([]);
+    const [mainCourseItems, setMainCourseItems] = useState([]);
+    const [funEatablesItems, setFunEatablesItems] = useState([]);
 
     const [checkedValues, setCheckedValues] = React.useState([]);
     const [checkedValues2, setCheckedValues2] = React.useState([]);
@@ -43,14 +46,23 @@ const BirthdayPartyCheckPrice = () => {
         // sessionStorage.removeItem("dataSelected")
         if (selectedBirthdayPkg) {
             setTotalGuestCount(selectedBirthdayPkg.totalGuestCount);
+            setVcount(selectedBirthdayPkg.nvCount);
         }
     }, []);
 
     useEffect(() => {
         const addedItems = JSON.parse(sessionStorage.getItem("addedItems"));
+        const addedMainCourse = JSON.parse(sessionStorage.getItem("addedMainCourse"));
+        const addedFunEatables = JSON.parse(sessionStorage.getItem("addedFunEatables"));
         console.log('addedItems', addedItems)
         if (addedItems) {
             setLiveCounterItems(addedItems);
+        }
+        if(addedMainCourse){
+            setMainCourseItems(addedMainCourse);
+        }
+        if(addedFunEatables){
+            setFunEatablesItems(addedFunEatables);
         }
     }, []);
 
@@ -87,13 +99,13 @@ const BirthdayPartyCheckPrice = () => {
                     <Image src="/birthdayParty/checkpriceheader.png" width="99px" height="33.69px" />
                 </div>
                 <h4>Total Guest - {totalGuestCount}</h4>
-                <h5>Veg Only</h5>
+                { vcount ? "" : <h5>Veg Only</h5>}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Veg Snack</h5>
                 { checkedValues.map((vegSnackdata, index)=>(<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{vegSnackdata.name}</h6>
@@ -104,7 +116,7 @@ const BirthdayPartyCheckPrice = () => {
                 <h5>Veg Heavy Snack</h5>
                 { checkedValues2.map((vegHeavySnackdata, index)=>(<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{vegHeavySnackdata.name}</h6>
@@ -115,7 +127,7 @@ const BirthdayPartyCheckPrice = () => {
                 <h5>Non-Veg Snack</h5>
                 { checkedValues3.map((nonVegSnackData, index)=>(<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/Group 962.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/nvlogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{nonVegSnackData.name}</h6>
@@ -126,7 +138,7 @@ const BirthdayPartyCheckPrice = () => {
                 <h5>Non-Veg Heavy Snack</h5>
                 { checkedValues4.map((nonVegHeavySnackData, index)=>(<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/Group 962.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/nvlogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{nonVegHeavySnackData.name}</h6>
@@ -137,7 +149,7 @@ const BirthdayPartyCheckPrice = () => {
                 <h5>Dessert</h5>
                 { checkedValues5.map((dessertData, index)=>(<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{dessertData.name}</h6>
@@ -149,20 +161,30 @@ const BirthdayPartyCheckPrice = () => {
             </div>
             { liveCounterItems.map((item, index)=>(<div key={index} className={styles.addonsSelectedList}>
                 <div>
-                    <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                    {item.veg === true ? <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" /> :
+                    <Image src="/birthdayParty/nvlogo.png" width="11.852px" height="11.852px" />}
                 </div>
                 <div className={styles.addonsName}>
                     <h4>{item.name}</h4>
                 </div>
             </div>))}
-            <div className={styles.addonsSelectedList}>
+            { mainCourseItems.map((item, index)=>(<div key={index} className={styles.addonsSelectedList}>
                 <div>
-                    <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                    {item.veg === true ? <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" /> :
+                    <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />}
                 </div>
                 <div className={styles.addonsName}>
-                    <h4>Veg Dum Biryani</h4>
+                    <h4>{item.name}</h4>
                 </div>
-            </div>
+            </div>))}
+            { funEatablesItems.map((item, index)=>(<div key={index} className={styles.addonsSelectedList}>
+                <div>
+                    <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
+                </div>
+                <div className={styles.addonsName}>
+                    <h4>{item.name}</h4>
+                </div>
+            </div>))}
             <div className="mt-4">
                 <hr />
             </div>

@@ -561,7 +561,7 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 1',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: true
         },
         {
             id: 2,
@@ -569,7 +569,7 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 2',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: true
         },
         {
             id: 3,
@@ -577,7 +577,7 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 3',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: true
         },
         {
             id: 4,
@@ -585,7 +585,7 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 4',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: true
         },
         {
             id: 5,
@@ -593,7 +593,7 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 5',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: true
         }
     ]
 
@@ -865,7 +865,7 @@ const CustomiseBirthdayPkg = () => {
             <div className={styles.customisePkgContainer}>
                 <h3>Customise Your package</h3>
                 <hr />
-                <div className={styles.pkgCard}  >
+                {nvCount == 0 || nvCount == "" ? <div className={styles.pkgCard}  >
                     <div className={styles.blackbg}>
                         <div style={titlebg} id={styles.titlebg}>
                             <h4>{packageName}</h4>
@@ -885,7 +885,28 @@ const CustomiseBirthdayPkg = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> :
+                    <div className={styles.pkgCard2}>
+                        <div className={styles.blackbg}>
+                            <div style={titlebg} id={styles.titlebg}>
+                                <h4>{packageName}</h4>
+                            </div>
+                            <div className={styles.cardinsideContent}>
+                                {/* <div className='text-center'>
+                            <h4>₹ {packagePrice}</h4>
+                            <p>Per Person</p>
+                        </div> */}
+                                <div className={styles.btns}>
+                                    <div id={styles.btnName}>
+                                        {itemsTypeName.map((iname, index) => (<h6 key={index}>{iname}</h6>))}
+                                    </div>
+                                    <div id={styles.greenBtn}>
+                                        {itemQuantity.map((iqtnty, index) => (<h6 key={index}>{iqtnty}</h6>))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>}
             </div>
 
             {/* VEG SNACKS SELECTION */}
@@ -907,7 +928,7 @@ const CustomiseBirthdayPkg = () => {
                     {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles2.fstItem} key={index}>
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div>
                                 <h4>{item.name}</h4>
                                 <p>{item.description}</p>
@@ -962,9 +983,9 @@ const CustomiseBirthdayPkg = () => {
                                                     <div id={styles2.insideDivLi}>
                                                         <img src={item.image} width="30.05px" height="26.54px" />
                                                         {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/diy images/vegLogo.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
                                                         ) : (
-                                                            <img className={styles2.vegLogo} src='/diy images/Group 962.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
                                                         )}
                                                         <p>
                                                             {item.name}
@@ -1014,7 +1035,7 @@ const CustomiseBirthdayPkg = () => {
                     {!showSelectedMenu2 && checkedValues2.map((item, index) => (<div className={styles2.fstItem} key={index}>
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div>
                                 <h4>{item.name}</h4>
                                 <p>{item.description}</p>
@@ -1043,9 +1064,9 @@ const CustomiseBirthdayPkg = () => {
                                                     <div id={styles2.insideDivLi}>
                                                         <img src={item.image} width="30.05px" height="26.54px" />
                                                         {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/diy images/vegLogo.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
                                                         ) : (
-                                                            <img className={styles2.vegLogo} src='/diy images/Group 962.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
                                                         )}
                                                         <p>
                                                             {item.name}
@@ -1095,7 +1116,7 @@ const CustomiseBirthdayPkg = () => {
                     {!showSelectedMenu3 && checkedValues3.map((item, index) => (<div className={styles2.fstItem} key={index}>
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div>
                                 <h4>{item.name}</h4>
                                 <p>{item.description}</p>
@@ -1124,9 +1145,9 @@ const CustomiseBirthdayPkg = () => {
                                                     <div id={styles2.insideDivLi}>
                                                         <img src={item.image} width="30.05px" height="26.54px" />
                                                         {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/diy images/vegLogo.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
                                                         ) : (
-                                                            <img className={styles2.vegLogo} src='/diy images/Group 962.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
                                                         )}
                                                         <p>
                                                             {item.name}
@@ -1175,7 +1196,7 @@ const CustomiseBirthdayPkg = () => {
                     {!showSelectedMenu4 && checkedValues4.map((item, index) => (<div className={styles2.fstItem} key={index}>
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div>
                                 <h4>{item.name}</h4>
                                 <p>{item.description}</p>
@@ -1204,9 +1225,9 @@ const CustomiseBirthdayPkg = () => {
                                                     <div id={styles2.insideDivLi}>
                                                         <img src={item.image} width="30.05px" height="26.54px" />
                                                         {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/diy images/vegLogo.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
                                                         ) : (
-                                                            <img className={styles2.vegLogo} src='/diy images/Group 962.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
                                                         )}
                                                         <p>
                                                             {item.name}
@@ -1256,7 +1277,7 @@ const CustomiseBirthdayPkg = () => {
                     {!showSelectedMenu5 && checkedValues5.map((item, index) => (<div className={styles2.fstItem} key={index}>
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/diy images/vegLogo.png' /> : <img className={styles2.vegLogo} src='/diy images/Group 962.png' />}
+                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div>
                                 <h4>{item.name}</h4>
                                 <p>{item.description}</p>
@@ -1285,9 +1306,9 @@ const CustomiseBirthdayPkg = () => {
                                                     <div id={styles2.insideDivLi}>
                                                         <img src={item.image} width="30.05px" height="26.54px" />
                                                         {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/diy images/vegLogo.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
                                                         ) : (
-                                                            <img className={styles2.vegLogo} src='/diy images/Group 962.png' />
+                                                            <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
                                                         )}
                                                         <p>
                                                             {item.name}
