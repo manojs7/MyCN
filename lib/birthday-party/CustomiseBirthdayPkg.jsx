@@ -27,6 +27,7 @@ const CustomiseBirthdayPkg = () => {
     const [packagePrice, setPackagePrice] = useState();
     const [itemsTypeName, setItemsTypeName] = useState([]);
     const [itemQuantity, setItemQuantity] = useState([]);
+    const [isVeg, setIsVeg] = useState();
 
     const [city, setCity] = useState();
     const [selectedDate, setSelectedDate] = useState();
@@ -64,6 +65,7 @@ const CustomiseBirthdayPkg = () => {
                 setVegHeavySnackQnty(data.vegHeavySnackQnty);
                 setNonVegHeavySnackQnty(data.nonVegHeavySnackQnty);
                 setDessertQnty(data.dessertQnty);
+                setIsVeg(data.veg);
             }
         };
 
@@ -281,7 +283,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Cheese Balls',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
         {
             id: 2,
@@ -289,7 +292,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'French Fries',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
         {
             id: 3,
@@ -297,7 +301,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Honey Chilly Potato',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
         {
             id: 4,
@@ -305,7 +310,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Spring Roll',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
         {
             id: 5,
@@ -313,7 +319,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Veg Ball Manchurian',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
         {
             id: 6,
@@ -321,7 +328,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Crispy Fried Corn',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
         {
             id: 7,
@@ -329,7 +337,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Cottage Cheese Finger',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
         {
             id: 8,
@@ -337,7 +346,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Cocktail Samosa',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 50,
         },
     ]
 
@@ -349,7 +359,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Veg Sandwich',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 2,
@@ -357,7 +368,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Pv Bhaji / Vada Pav',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 3,
@@ -365,7 +377,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Noodles & Manchurian',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 4,
@@ -373,7 +386,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Mini Sliders / Veg Burger',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 5,
@@ -381,7 +395,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Hot Dog Paneer',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 6,
@@ -389,7 +404,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Soya Kheema Pav',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 7,
@@ -397,7 +413,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Pasta-White/Tomato Sauce',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 8,
@@ -405,7 +422,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Noodles',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
         {
             id: 9,
@@ -413,7 +431,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Fried Rice',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 70,
         },
     ]
 
@@ -425,7 +444,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Tikka',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         },
         {
             id: 2,
@@ -433,7 +453,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Nuggets',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         },
         {
             id: 3,
@@ -441,7 +462,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Manchurian',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         },
         {
             id: 4,
@@ -449,7 +471,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Crispy Fried Chicken',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         },
         {
             id: 5,
@@ -457,7 +480,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Fish Finger',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         },
         {
             id: 6,
@@ -465,7 +489,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Fish 65',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         },
         {
             id: 7,
@@ -473,7 +498,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Tikka',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         },
         {
             id: 8,
@@ -481,7 +507,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Spring Roll',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 100
         }
     ]
 
@@ -493,7 +520,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Hot Dog Chicken',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         },
         {
             id: 2,
@@ -501,7 +529,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Sandwiches',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         },
         {
             id: 3,
@@ -509,7 +538,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Kheema Pav',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         },
         {
             id: 4,
@@ -517,7 +547,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Burger',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         },
         {
             id: 5,
@@ -525,7 +556,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken White Sauce Pasta',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         },
         {
             id: 6,
@@ -533,7 +565,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Red Sauce Pasta',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         },
         {
             id: 7,
@@ -541,7 +574,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Noodles',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         },
         {
             id: 8,
@@ -549,7 +583,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Chicken Fried Rice',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false
+            veg: false,
+            price: 150
         }
     ]
 
@@ -561,7 +596,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 1',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 40
         },
         {
             id: 2,
@@ -569,7 +605,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 2',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 40
         },
         {
             id: 3,
@@ -577,7 +614,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 3',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 40
         },
         {
             id: 4,
@@ -585,7 +623,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 4',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 40
         },
         {
             id: 5,
@@ -593,7 +632,8 @@ const CustomiseBirthdayPkg = () => {
             name: 'Dessert 5',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: true
+            veg: true,
+            price: 40
         }
     ]
 
@@ -659,14 +699,14 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues.length >= vegSnackQnty && !alertShown) {
+            if (checkedValues.length + 1 === vegSnackQnty) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
                     icon: "warning",
                     confirmButtonText: "OK",
                 });
-                setAlertShown(true);
+                //setAlertShown(true);
             }
             value.checked = 'checked';
             setCheckedValues([...checkedValues, value]);
@@ -679,14 +719,13 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange2 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues2.length >= vegHeavySnackQnty && !alertShown2) {
+            if (checkedValues2.length + 1 === vegHeavySnackQnty) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
                     icon: "warning",
                     confirmButtonText: "OK",
                 });
-                setAlertShown2(true);
             }
             value.checked = 'checked';
             setCheckedValues2([...checkedValues2, value]);
@@ -699,14 +738,13 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange3 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues3.length >= nvegSnackQnty && !alertShown3) {
+            if (checkedValues3.length + 1 === nvegSnackQnty) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
                     icon: "warning",
                     confirmButtonText: "OK",
                 });
-                setAlertShown3(true);
             }
             value.checked = 'checked';
             setCheckedValues3([...checkedValues3, value]);
@@ -719,14 +757,22 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange4 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues4.length >= nonVegHeavySnackQnty && !alertShown4) {
+            // if (checkedValues4.length + 1 === nonVegHeavySnackQnty && !alertShown4) {
+            //     Swal.fire({
+            //         title: "Reminder",
+            //         text: "Respective Charges will be applied to extra selected items in final quote.",
+            //         icon: "warning",
+            //         confirmButtonText: "OK",
+            //     });
+            //     setAlertShown4(true);
+            // }
+            if (checkedValues4.length + 1 === nonVegHeavySnackQnty) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
                     icon: "warning",
                     confirmButtonText: "OK",
                 });
-                setAlertShown4(true);
             }
             value.checked = 'checked';
             setCheckedValues4([...checkedValues4, value]);
@@ -739,14 +785,13 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange5 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues5.length >= dessertQnty && !alertShown5) {
+            if (checkedValues5.length + 1 === dessertQnty) {
                 Swal.fire({
                     title: "Reminder",
                     text: "Respective Charges will be applied to extra selected items in final quote.",
                     icon: "warning",
                     confirmButtonText: "OK",
                 });
-                setAlertShown5(true);
             }
             value.checked = 'checked';
             setCheckedValues5([...checkedValues5, value]);
@@ -865,7 +910,7 @@ const CustomiseBirthdayPkg = () => {
             <div className={styles.customisePkgContainer}>
                 <h3>Customise Your package</h3>
                 <hr />
-                {nvCount == 0 || nvCount == "" ? <div className={styles.pkgCard}  >
+                { isVeg === true ? <div className={styles.pkgCard}  >
                     <div className={styles.blackbg}>
                         <div style={titlebg} id={styles.titlebg}>
                             <h4>{packageName}</h4>
@@ -915,7 +960,7 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles.vegSnackContainer}>
                     <h3>Veg Snack</h3>
                     {showDropdown && (<div onClick={selectVegSnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select a Snack</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegSnackQnty} Snack</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1017,7 +1062,7 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectVegSnack}>+ Add {vegSnackQnty} items</button>
+                    <button onClick={selectVegSnack}>+ Add More</button>
                 </div>
             </div>
 
@@ -1027,7 +1072,7 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles.vegSnackContainer}>
                     <h3>Veg Heavy Snack</h3>
                     {showDropdown2 && (<div onClick={selectVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select a Snack</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegHeavySnackQnty} Snack</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1098,17 +1143,17 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectVegHeavySnack}>+ Add {vegHeavySnackQnty} Items</button>
+                    <button onClick={selectVegHeavySnack}>+ Add More</button>
                 </div>
             </div>
 
             {/* NON VEG SNACK */}
 
-            {nvCount >= 1 ? <div className={styles.itemsSelectionContainer}>
+            {isVeg === true ? "" :<div className={styles.itemsSelectionContainer}>
                 <div className={styles.vegSnackContainer}>
                     <h3>Non Veg Snack</h3>
                     {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select a Snack</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {nvegSnackQnty} Snack</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1179,16 +1224,16 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectNonVegSnack}>+ Add {nvegSnackQnty} items</button>
+                    <button onClick={selectNonVegSnack}>+ Add More</button>
                 </div>
-            </div> : ""}
+            </div> }
             {/* NON VEG HEAVY SNACK */}
 
-            {nvCount >= 1 ? <div className={styles.itemsSelectionContainer}>
+            {isVeg === true ? "" :<div className={styles.itemsSelectionContainer}>
                 <div className={styles.vegSnackContainer}>
                     <h3>Non Veg Heavy Snack</h3>
                     {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select a Snack</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {nonVegHeavySnackQnty} Snack</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1259,9 +1304,9 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectNonVegHeavySnack}>+ Add {nonVegHeavySnackQnty} items</button>
+                    <button onClick={selectNonVegHeavySnack}>+ Add More</button>
                 </div>
-            </div> : ""}
+            </div>}
 
             {/* DESSERTS */}
 
@@ -1269,7 +1314,7 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles.vegSnackContainer}>
                     <h3>Dessert</h3>
                     {showDropdown5 && (<div onClick={selectDessert} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Dessert</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {dessertQnty} Dessert</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1340,7 +1385,7 @@ const CustomiseBirthdayPkg = () => {
                     <hr />
                 </div>
                 <div className={styles2.addMoreBtn}>
-                    <button onClick={selectDessert}>+ Add {dessertQnty} Items</button>
+                    <button onClick={selectDessert}>+ Add More</button>
                 </div>
             </div>
             <div className={styles.addonsbtn}>
