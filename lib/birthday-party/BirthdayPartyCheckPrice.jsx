@@ -4,17 +4,54 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import styles2 from "/styles/NewCustomizePkg.module.scss";
+import Link from 'next/link';
 
 const BirthdayPartyCheckPrice = () => {
 
     const [totalGuestCount, setTotalGuestCount] = useState();
+    const [vegCount, setVegCount] = useState();
+    const [nvCount, setNvcount] = useState();
     const [liveCounterItems, setLiveCounterItems] = useState([]);
+    const [mainCourseItems, setMainCourseItems] = useState([]);
+    const [funEatablesItems, setFunEatablesItems] = useState([]);
+
+    const [liveCounterPrice, setLiveCounterPrice] = useState();
+    const [funEatablePrice, setFunEatablesPrice] = useState();
 
     const [checkedValues, setCheckedValues] = React.useState([]);
     const [checkedValues2, setCheckedValues2] = React.useState([]);
     const [checkedValues3, setCheckedValues3] = React.useState([]);
     const [checkedValues4, setCheckedValues4] = React.useState([]);
     const [checkedValues5, setCheckedValues5] = React.useState([]);
+
+    useEffect(() => {
+        if (liveCounterItems.length > 0) {
+          if (totalGuestCount <= 100) {
+            setLiveCounterPrice(5000);
+          } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
+            setLiveCounterPrice(7500);
+          } else {
+            setLiveCounterPrice(10000);
+          }
+        } else {
+            setLiveCounterPrice(0);
+        }
+      }, [liveCounterItems, totalGuestCount]);
+
+      useEffect(() => {
+        if (funEatablesItems.length > 0) {
+          if (totalGuestCount <= 100) {
+            setFunEatablesPrice(5000);
+          } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
+            setFunEatablesPrice(7500);
+          } else {
+            setFunEatablesPrice(10000);
+          }
+        } else {
+            setFunEatablesPrice(0);
+        }
+      }, [funEatablesItems, totalGuestCount]);
+    
 
     //background image
     const backgroundStyle = {
@@ -37,20 +74,95 @@ const BirthdayPartyCheckPrice = () => {
         backgroundSize: 'cover'
     };
 
+    //PRICING
+    // Calculate the total price
+    const mainCoursePrice = mainCourseItems.reduce((sum, item) => sum + item.price, 0)* totalGuestCount;
+
+    const lcprc = (liveCounterItems.length + funEatablesItems.length) * liveCounterPrice ;
+
+    const totalAddOnsPrice = mainCoursePrice + lcprc ;
+    const addonsprice = totalAddOnsPrice.toLocaleString();
+    console.log(liveCounterPrice);
+
+
+    // Calculate the GST charges (18% of the total price)
+    //const gstCharges = (totalPrice * 0.18).toFixed(2);
+
+    // Calculate the grand price (total price + GST charges)
+    //const grandPrice = (totalPrice + parseFloat(gstCharges)).toFixed(2);
+
+    // const vegSnackPrice = checkedValues.reduce((sum, item) => sum + item.price, 0);
+    // const vegHeavySnackPrice = checkedValues2.reduce((sum, item) => sum + item.price, 0);
+    // const nvSnackPrice = checkedValues3.reduce((sum, item) => sum + item.price, 0);
+    // const nvHeavySnackPrice = checkedValues4.reduce((sum, item) => sum + item.price, 0);
+    // const dessrtPrice = checkedValues5.reduce((sum, item) => sum + item.price, 0);
+
+    // const totalPrice = vegSnackPrice + vegHeavySnackPrice + nvSnackPrice + nvHeavySnackPrice + dessrtPrice;
+
+    // const gstCharges = (totalPrice * 0.18).toFixed(2);
+
+    // const grandTotal = (totalPrice + parseFloat(gstCharges)).toFixed(2);
+
+    // Calculate the price for veg snacks based on the number of veg people
+    console.log(nvCount);
+    let vegSnackPrice = 0;
+    if((vegCount == "" || vegCount == 0) && (nvCount != "" || nvCount != 0)){
+        vegCount = nvCount;
+        vegSnackPrice = (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount;
+    }else{
+        vegSnackPrice = (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount;
+    }
+    //const vegSnackPrice = ((vegCount !== "" && vegCount !== 0) ? (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount : checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * nvCount;
+    // Calculate the price for non-veg snacks based on the number of non-veg people
+    console.log(vegSnackPrice)
+    const nvSnackPrice = (checkedValues3.reduce((sum, item) => sum + item.price, 0) + checkedValues4.reduce((sum, item) => sum + item.price, 0)) * nvCount;
+    console.log(nvSnackPrice)
+    // Calculate the dessert price based on the total number of people
+    const dessertPrice = checkedValues5.reduce((sum, item) => sum + item.price, 0) * totalGuestCount;
+    console.log(dessertPrice)
+
+    //Total Package Price
+
+    const totalPackagePrice = vegSnackPrice + nvSnackPrice + dessertPrice;
+
+    // Calculate the total price
+    const totalPrice = vegSnackPrice + nvSnackPrice + dessertPrice + totalAddOnsPrice;
+    console.log(totalPrice)
+
+    // Calculate the GST charges
+    const gstCharges = (totalPrice * 0.18).toFixed(2);
+
+    // Calculate the grand total
+    const grandTotal = (totalPrice + parseFloat(gstCharges)).toFixed(2);
+
+    const formattedTotalPrice = totalPackagePrice.toLocaleString();
+    const formattedGstCharges = parseFloat(gstCharges).toLocaleString();
+    const formattedGrandTotal = parseFloat(grandTotal).toLocaleString();
+
     useEffect(() => {
         let selectedBirthdayPkg = JSON.parse(sessionStorage.getItem("selectedBirthdayPkg"));
         console.log('selectedBirthdayPkg', selectedBirthdayPkg)
         // sessionStorage.removeItem("dataSelected")
         if (selectedBirthdayPkg) {
             setTotalGuestCount(selectedBirthdayPkg.totalGuestCount);
+            setVegCount(selectedBirthdayPkg.vegCount);
+            setNvcount(selectedBirthdayPkg.nvCount);
         }
     }, []);
 
     useEffect(() => {
         const addedItems = JSON.parse(sessionStorage.getItem("addedItems"));
+        const addedMainCourse = JSON.parse(sessionStorage.getItem("addedMainCourse"));
+        const addedFunEatables = JSON.parse(sessionStorage.getItem("addedFunEatables"));
         console.log('addedItems', addedItems)
         if (addedItems) {
             setLiveCounterItems(addedItems);
+        }
+        if (addedMainCourse) {
+            setMainCourseItems(addedMainCourse);
+        }
+        if (addedFunEatables) {
+            setFunEatablesItems(addedFunEatables);
         }
     }, []);
 
@@ -60,23 +172,23 @@ const BirthdayPartyCheckPrice = () => {
         const savedCheckedValues3 = sessionStorage.getItem('checkedValues3');
         const savedCheckedValues4 = sessionStorage.getItem('checkedValues4');
         const savedCheckedValues5 = sessionStorage.getItem('checkedValues5');
-      
+
         if (savedCheckedValues) {
-          setCheckedValues(JSON.parse(savedCheckedValues));
+            setCheckedValues(JSON.parse(savedCheckedValues));
         }
         if (savedCheckedValues2) {
-          setCheckedValues2(JSON.parse(savedCheckedValues2));
+            setCheckedValues2(JSON.parse(savedCheckedValues2));
         }
         if (savedCheckedValues3) {
-          setCheckedValues3(JSON.parse(savedCheckedValues3));
+            setCheckedValues3(JSON.parse(savedCheckedValues3));
         }
         if (savedCheckedValues4) {
-          setCheckedValues4(JSON.parse(savedCheckedValues4));
+            setCheckedValues4(JSON.parse(savedCheckedValues4));
         }
         if (savedCheckedValues5) {
-          setCheckedValues5(JSON.parse(savedCheckedValues5));
+            setCheckedValues5(JSON.parse(savedCheckedValues5));
         }
-      }, []);
+    }, []);
 
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
@@ -87,105 +199,106 @@ const BirthdayPartyCheckPrice = () => {
                     <Image src="/birthdayParty/checkpriceheader.png" width="99px" height="33.69px" />
                 </div>
                 <h4>Total Guest - {totalGuestCount}</h4>
-                <h5>Veg Only</h5>
+                {nvCount ? <h5>Non-Veg</h5> : <h5>Veg Only</h5>}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Veg Snack</h5>
-                { checkedValues.map((vegSnackdata, index)=>(<div key={index} className='d-flex'>
+                {checkedValues.length > 0 ? (checkedValues.map((vegSnackdata, index) => (<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{vegSnackdata.name}</h6>
                     </div>
-                </div>))}
+                </div>))) : <h6>- Not selected -</h6>}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Veg Heavy Snack</h5>
-                { checkedValues2.map((vegHeavySnackdata, index)=>(<div key={index} className='d-flex'>
+                {checkedValues2.length > 0 ? (checkedValues2.map((vegHeavySnackdata, index) => (<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{vegHeavySnackdata.name}</h6>
                     </div>
-                </div>))}
+                </div>))) : <h6>- Not selected -</h6>}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Non-Veg Snack</h5>
-                { checkedValues3.map((nonVegSnackData, index)=>(<div key={index} className='d-flex'>
+                {checkedValues3.length > 0 ? (checkedValues3.map((nonVegSnackData, index) => (<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/Group 962.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/nvlogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{nonVegSnackData.name}</h6>
                     </div>
-                </div>))}
+                </div>))) : <h6>- Not selected -</h6>}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Non-Veg Heavy Snack</h5>
-                { checkedValues4.map((nonVegHeavySnackData, index)=>(<div key={index} className='d-flex'>
+                {checkedValues4.length > 0 ? (checkedValues4.map((nonVegHeavySnackData, index) => (<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/Group 962.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/nvlogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{nonVegHeavySnackData.name}</h6>
                     </div>
-                </div>))}
+                </div>))) : <h6>- Not selected -</h6>}
             </div>
             <div className={styles.selectedItems}>
                 <h5>Dessert</h5>
-                { checkedValues5.map((dessertData, index)=>(<div key={index} className='d-flex'>
+                {checkedValues5.length > 0 ? (checkedValues5.map((dessertData, index) => (<div key={index} className='d-flex'>
                     <div>
-                        <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
                     </div>
                     <div>
                         <h6>{dessertData.name}</h6>
                     </div>
-                </div>))}
+                </div>))) : <h6>- Not selected -</h6>}
             </div>
             <div className={styles.cpaddons} style={addons}>
                 <h2>Add On's -</h2>
             </div>
-            { liveCounterItems.map((item, index)=>(<div key={index} className={styles.addonsSelectedList}>
+            {liveCounterItems.map((item, index) => (<div key={index} className={styles.addonsSelectedList}>
                 <div>
-                    <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                    {item.veg === true ? <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" /> :
+                        <Image src="/birthdayParty/nvlogo.png" width="11.852px" height="11.852px" />}
                 </div>
                 <div className={styles.addonsName}>
                     <h4>{item.name}</h4>
                 </div>
             </div>))}
-            <div className={styles.addonsSelectedList}>
+            {mainCourseItems.map((item, index) => (<div key={index} className={styles.addonsSelectedList}>
                 <div>
-                    <Image src="/diy images/vegLogo.png" width="11.852px" height="11.852px" />
+                    {item.veg === true ? <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" /> :
+                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />}
                 </div>
                 <div className={styles.addonsName}>
-                    <h4>Veg Dum Biryani</h4>
+                    <h4>{item.name}</h4>
                 </div>
-            </div>
+            </div>))}
+            {funEatablesItems.map((item, index) => (<div key={index} className={styles.addonsSelectedList}>
+                <div>
+                    <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />
+                </div>
+                <div className={styles.addonsName}>
+                    <h4>{item.name}</h4>
+                </div>
+            </div>))}
             <div className="mt-4">
                 <hr />
             </div>
-            <h6 id={styles.addmoreitemCP}><FontAwesomeIcon icon={faPlus} /> Add More Items</h6>
-            <div className={styles.priceSection}>
-                <div className={styles.priceDropdown}>
-                    <select>
-                        <option>NinjaBox-Delivery (Free)</option>
-                        <option>Ninja Buffet</option>
-                    </select>
-                </div>
-                <div>
-                    <h6>₹0000</h6>
-                </div>
-            </div>
+            {/* <h6 id={styles.addmoreitemCP}><FontAwesomeIcon icon={faPlus} /> Add More Items</h6> */}
             <div className={styles.priceL}>
                 <div>
-                    <h5>Item Total</h5>
+                    <h5>Total Package Price</h5>
+                    <h5>Total Add On's Price</h5>
                     <h5>Delivery Charges (As Per Actual)</h5>
                 </div>
                 <div>
-                    <h6>₹0000</h6>
-                    <h6>₹0000</h6>
+                    <h6>₹ {formattedTotalPrice}</h6>
+                    <h6>₹ {addonsprice}</h6>
+                    <h6>₹ 0000</h6>
                 </div>
             </div>
             <hr />
@@ -194,7 +307,7 @@ const BirthdayPartyCheckPrice = () => {
                     <h5>GST</h5>
                 </div>
                 <div>
-                    <h6>₹0000</h6>
+                    <h6>₹ {formattedGstCharges}</h6>
                 </div>
             </div>
             <div className={styles.simpleHR}>
@@ -202,20 +315,20 @@ const BirthdayPartyCheckPrice = () => {
             </div>
             <div className={styles.grandtotal}>
                 <h3>Grand Total</h3>
-                <h3>₹0000</h3>
+                <h3>₹ {formattedGrandTotal}</h3>
             </div>
             <div className={styles.orderbuttonsectn}>
-                <div className={styles.bookinghelpbtn}>
-                    <button>Get Booking Help</button>
+                <div className={styles.bookinghelpbtn} style={{margin: "auto"}}>
+                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20BirthdayParty"><button>Get Booking Help</button></Link>
                 </div>
-                <div className={styles.placeorderbtn}>
+                {/* <div className={styles.placeorderbtn}>
                     <button>Place Order</button>
-                </div>
+                </div> */}
             </div>
             <div className={styles.addonsBtmSectn} style={btmPng}>
 
             </div>
-            <div className={styles2.createYourOwnPkg} style={{marginTop: "0px"}}>
+            <div className={styles2.createYourOwnPkg} style={{ marginTop: "0px" }}>
                 <div>
                     <img src="Group 1097.png" />
                 </div>

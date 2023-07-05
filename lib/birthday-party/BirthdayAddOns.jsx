@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { WindowSharp } from '@mui/icons-material';
+import Swal from "sweetalert2";
 
 const BirthdayAddOns = () => {
 
@@ -21,6 +22,20 @@ const BirthdayAddOns = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     const [addedItems, setAddedItems] = useState([]);
+    const [addedMainCourse, setAddedMainCourse] = useState([]);
+    const [addedFunEatables, setAddedFunEatables] = useState([]);
+
+    const [price, setPrice] = useState(0);
+
+    useEffect(() => {
+        if (totalGuestCount <= 100) {
+          setPrice("5,000");
+        } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
+          setPrice("7,500");
+        } else if (totalGuestCount > 150) {
+          setPrice("10,000");
+        }
+      }, [totalGuestCount]);
 
     //background image
     const backgroundStyle = {
@@ -43,21 +58,22 @@ const BirthdayAddOns = () => {
     };
 
     const liveCounterList = [
-        { id: 1, name: 'Veg Pasta Station', price: "₹70/-", checked: "" },
-        { id: 2, name: 'Chicken Pasta Station', price: "₹70/-", checked: "" },
-        { id: 3, name: 'Poori Bhaji / Chole', price: "₹70/-", checked: "" },
-        { id: 4, name: 'Chole Bhatture', price: "₹70/-", checked: "" },
-        { id: 5, name: 'Chole Kulche', desc: '(Backed)', price: "₹70/-", checked: "" },
-        { id: 6, name: 'Momo Veg / Chicken', price: "₹70/-", checked: "" },
-        { id: 7, name: 'Chaat Station', desc: '(Paani Puri Papdi Chaat)', price: "₹70/-", checked: "" },
-        { id: 8, name: 'Appam With Stew', price: "₹70/-", checked: "" },
-        { id: 9, name: 'Dosa Station', desc: '(With Chutny)', price: "₹70/-", checked: "" },
+        { id: 1, name: 'Veg Pasta Station', price: "₹70/-", veg: true },
+        { id: 2, name: 'Chicken Pasta Station', price: "₹70/-", veg: false },
+        { id: 3, name: 'Poori Bhaji / Chole', price: "₹70/-", veg: true },
+        { id: 4, name: 'Chole Bhatture', price: "₹70/-", veg: true },
+        { id: 5, name: 'Chole Kulche', desc: '(Backed)', price: "₹70/-", veg: true },
+        { id: 6, name: 'Veg Momos', price: "₹70/-", veg: true },
+        { id: 7, name: 'Chaat Station', desc: '(Paani Puri Papdi Chaat)', price: "₹70/-", veg: true },
+        { id: 8, name: 'Appam With Stew', price: "₹70/-", veg: true },
+        { id: 9, name: 'Dosa Station', desc: '(With Chutny)', price: "₹70/-", veg: true },
+        { id: 10, name: 'Chicken Momos', price: "₹70/-", veg: false }
     ];
 
     const mainCourseList = [
-        { id: 1, name: 'Veg Dum Biryani', price: "₹35/-" },
-        { id: 2, name: 'Chicken Dum Biryani', price: "₹70/-" },
-        { id: 3, name: 'Mutton Dum Biryani', price: "₹120/-" },
+        { id: 1, name: 'Veg Dum Biryani', price: 35, veg: true },
+        { id: 2, name: 'Chicken Dum Biryani', price: 70, veg: false },
+        { id: 3, name: 'Mutton Dum Biryani', price: 120, veg: false }
     ]
 
     const funEatablesList = [
@@ -91,9 +107,16 @@ const BirthdayAddOns = () => {
             sessionStorage.setItem('birthdayPartyUserDetails', JSON.stringify(birthdayPartyUserDetails));
 
             sessionStorage.setItem('addedItems', JSON.stringify(addedItems));
-            alert('Items saved successfully!');
+            sessionStorage.setItem('addedMainCourse', JSON.stringify(addedMainCourse));
+            sessionStorage.setItem('addedFunEatables', JSON.stringify(addedFunEatables));
+            //alert('Items saved successfully!');
+            Swal.fire({
+                title: "Items Added",
+                icon: "success",
+                confirmButtonText: "OK",
+            });
 
-            window.open("/birthdayPartyCheckPrice");
+            window.open("/birthdayPartyCheckPrice", '_self');
         }
     }
 
@@ -120,6 +143,29 @@ const BirthdayAddOns = () => {
             setAddedItems(updatedCartItems);
         }
     };
+
+    const addMainCourse = (id) => {
+        const itemToAddMainCourse = mainCourseList.find((item) => item.id === id);
+
+        if (!addedMainCourse.some((item) => item.id === id)) {
+            setAddedMainCourse([...addedMainCourse, itemToAddMainCourse]);
+        } else {
+            const updateMainCourseItems = addedMainCourse.filter((item) => item.id !== id);
+            setAddedMainCourse(updateMainCourseItems);
+        }
+    };
+
+    const addFunEatables = (id) => {
+        const itemToAddFunEatables = funEatablesList.find((item) => item.id === id);
+
+        if (!addedFunEatables.some((item) => item.id === id)) {
+            setAddedFunEatables([...addedFunEatables, itemToAddFunEatables]);
+        } else {
+            const updateFunEatableItems = addedFunEatables.filter((item) => item.id !== id);
+            setAddedFunEatables(updateFunEatableItems);
+        }
+    };
+
 
     useEffect(() => {
         let selectedBirthdayPkg = JSON.parse(sessionStorage.getItem("selectedBirthdayPkg"));
@@ -159,9 +205,8 @@ const BirthdayAddOns = () => {
                 <div className={styles.header} style={livecounterheader}>
                     <h4 >🔥 Live Counters 🔥</h4>
                 </div>
-                {totalGuestCount >= 50 ? <h6>Per <span>Person</span> Prices</h6> :
-                    <h6>Per <span>Counter</span> Prices</h6>}
-                {totalGuestCount >= 50 ? "" : <h5 className='mb-3'>₹5,000/-</h5>}
+                    <h6>Per <span>Counter</span> Prices</h6>
+                    <h5 className='mb-3'>₹{price}/-</h5>
                 {liveCounterList.map((item, index) => (<div key={index} className={styles.itemsListContainer}>
                     <div className={styles.list}>
                         <h4>🔥 {item.name}</h4>
@@ -175,7 +220,6 @@ const BirthdayAddOns = () => {
                         {totalGuestCount <= 50 ? <button onClick={() => addLiveCounter(item.id)}>{addedItems.some((cartItem) => cartItem.id === item.id) ? 'Added' : item.price}<FontAwesomeIcon icon={faPlus} style={{color: "white" }}/></button> :
                             <button onClick={() => addLiveCounter(item.id)}>{addedItems.some((cartItem) => cartItem.id === item.id) ? 'Added' : 'Add'}<FontAwesomeIcon icon={faPlus} style={{color: "white" }}/></button>}
                     </div> */}
-                    {totalGuestCount <= 50 ? (
                         <button
                             onClick={() => addLiveCounter(item.id)}
                             style={{
@@ -189,25 +233,8 @@ const BirthdayAddOns = () => {
                         >
                             {addedItems.some((cartItem) => cartItem.id === item.id)
                                 ? 'Added'
-                                : item.price}
+                                : 'Add +'}
                         </button>
-                    ) : (
-                        <button
-                            onClick={() => addLiveCounter(item.id)}
-                            style={{
-                                backgroundColor: addedItems.some((cartItem) => cartItem.id === item.id)
-                                    ? '#BE2D30'
-                                    : '',
-                                color: addedItems.some((cartItem) => cartItem.id === item.id)
-                                    ? 'white'
-                                    : ''
-                            }}
-                        >
-                            {addedItems.some((cartItem) => cartItem.id === item.id)
-                                ? 'Added'
-                                : 'Add'}
-                        </button>
-                    )}
                 </div>))}
             </div>
             <hr />
@@ -221,7 +248,21 @@ const BirthdayAddOns = () => {
                         <h4>{item.name}</h4>
                     </div>
                     <div>
-                        <button><FontAwesomeIcon icon={faPlus} style={{ color: "white" }} />{item.price}</button>
+                        <button
+                            onClick={() => addMainCourse(item.id)}
+                            style={{
+                                backgroundColor: addedMainCourse.some((cartItem) => cartItem.id === item.id)
+                                    ? '#BE2D30'
+                                    : '',
+                                color: addedMainCourse.some((cartItem) => cartItem.id === item.id)
+                                    ? 'white'
+                                    : ''
+                            }}
+                        >
+                            {addedMainCourse.some((cartItem) => cartItem.id === item.id)
+                                ? 'Added'
+                                : `+ ${item.price}`}
+                        </button>
                     </div>
                 </div>))}
             </div>
@@ -231,14 +272,28 @@ const BirthdayAddOns = () => {
                     <h4 >Fun Eatables</h4>
                 </div>
                 <h6>Per <span>Counter</span> Prices</h6>
-                <h5>₹5,000/-</h5>
+                <h5>₹{price}/-</h5>
                 <h3>(Max 100 Qty Counters)</h3>
-                {funEatablesList.map((items, index) => (<div key={index} className={styles.itemsListContainer}>
+                {funEatablesList.map((item, index) => (<div key={index} className={styles.itemsListContainer}>
                     <div className={styles.list}>
-                        <h4>{items.name}</h4>
+                        <h4>{item.name}</h4>
                     </div>
                     <div>
-                        <button><FontAwesomeIcon icon={faPlus} style={{ marginRight: "10px", color: "white" }} />Add</button>
+                    <button
+                            onClick={() => addFunEatables(item.id)}
+                            style={{
+                                backgroundColor: addedFunEatables.some((cartItem) => cartItem.id === item.id)
+                                    ? '#BE2D30'
+                                    : '',
+                                color: addedFunEatables.some((cartItem) => cartItem.id === item.id)
+                                    ? 'white'
+                                    : ''
+                            }}
+                        >
+                            {addedFunEatables.some((cartItem) => cartItem.id === item.id)
+                                ? 'Added'
+                                : '+ Add'}
+                        </button>
                     </div>
                 </div>))}
             </div>

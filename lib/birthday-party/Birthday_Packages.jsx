@@ -115,7 +115,7 @@ const Birthday_Packages = () => {
             setSilverPackage(vegPackages.silverPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };
@@ -129,7 +129,7 @@ const Birthday_Packages = () => {
             setNvGoldPackage(vegPackages.nvGoldPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };
@@ -143,7 +143,7 @@ const Birthday_Packages = () => {
             setNvSilverPackage(vegPackages.nvSilverPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };
@@ -289,7 +289,7 @@ const Birthday_Packages = () => {
                 <hr />
                 <h4 id={styles.custTitle}>Customization Available</h4>
                 <div className={styles.packages}>
-                    { nvCount >= 1 ? "" :<div className={styles.firstRow}>
+                    <div className={styles.firstRow}>
                         <div className={styles.goldPkg}>
                             <div className={styles.blackbg}>
                                 <div>
@@ -342,11 +342,11 @@ const Birthday_Packages = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>}
-                    { nvCount >= 1 ? "" :<div className={styles.selectBtn}>
+                    </div>
+                    <div className={styles.selectBtn}>
                         <button onClick={selectPackageOne}>Select This Package</button>
                         <button onClick={selectPackageTwo}>Select This Package</button>
-                    </div>}
+                    </div>
                     {nvCount >= 1 ? <div className={styles.secondRow}>
                         <div className={styles.nvGoldPkg}>
                             <div className={styles.blackbg}>
