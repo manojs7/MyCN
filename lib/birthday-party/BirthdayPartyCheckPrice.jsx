@@ -4,21 +4,54 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import styles2 from "/styles/NewCustomizePkg.module.scss";
+import Link from 'next/link';
 
 const BirthdayPartyCheckPrice = () => {
 
     const [totalGuestCount, setTotalGuestCount] = useState();
-    const [vcount, setVcount] = useState();
+    const [vegCount, setVegCount] = useState();
     const [nvCount, setNvcount] = useState();
     const [liveCounterItems, setLiveCounterItems] = useState([]);
     const [mainCourseItems, setMainCourseItems] = useState([]);
     const [funEatablesItems, setFunEatablesItems] = useState([]);
+
+    const [liveCounterPrice, setLiveCounterPrice] = useState();
+    const [funEatablePrice, setFunEatablesPrice] = useState();
 
     const [checkedValues, setCheckedValues] = React.useState([]);
     const [checkedValues2, setCheckedValues2] = React.useState([]);
     const [checkedValues3, setCheckedValues3] = React.useState([]);
     const [checkedValues4, setCheckedValues4] = React.useState([]);
     const [checkedValues5, setCheckedValues5] = React.useState([]);
+
+    useEffect(() => {
+        if (liveCounterItems.length > 0) {
+          if (totalGuestCount < 100) {
+            setLiveCounterPrice(5000);
+          } else if (totalGuestCount >= 100 && totalGuestCount <= 150) {
+            setLiveCounterPrice(7500);
+          } else {
+            setLiveCounterPrice(10000);
+          }
+        } else {
+            setLiveCounterPrice(0);
+        }
+      }, [liveCounterItems, totalGuestCount]);
+
+      useEffect(() => {
+        if (funEatablesItems.length > 0) {
+          if (totalGuestCount < 100) {
+            setFunEatablesPrice(5000);
+          } else if (totalGuestCount >= 100 && totalGuestCount <= 150) {
+            setFunEatablesPrice(7500);
+          } else {
+            setFunEatablesPrice(10000);
+          }
+        } else {
+            setFunEatablesPrice(0);
+        }
+      }, [funEatablesItems, totalGuestCount]);
+    
 
     //background image
     const backgroundStyle = {
@@ -43,7 +76,12 @@ const BirthdayPartyCheckPrice = () => {
 
     //PRICING
     // Calculate the total price
-    //const totalPrice = checkedValues.reduce((sum, item) => sum + item.price, 0);
+    const mainCoursePrice = mainCourseItems.reduce((sum, item) => sum + item.price, 0);
+
+    const totalAddOnsPrice = mainCoursePrice + liveCounterPrice + funEatablePrice;
+    const addonsprice = totalAddOnsPrice.toLocaleString();
+    console.log(liveCounterPrice);
+
 
     // Calculate the GST charges (18% of the total price)
     //const gstCharges = (totalPrice * 0.18).toFixed(2);
@@ -64,16 +102,30 @@ const BirthdayPartyCheckPrice = () => {
     // const grandTotal = (totalPrice + parseFloat(gstCharges)).toFixed(2);
 
     // Calculate the price for veg snacks based on the number of veg people
-    const vegSnackPrice = (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vcount;
-
+    console.log(nvCount);
+    let vegSnackPrice = 0;
+    if((vegCount == "" || vegCount == 0) && (nvCount != "" || nvCount != 0)){
+        vegCount = nvCount;
+        vegSnackPrice = (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount;
+    }else{
+        vegSnackPrice = (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount;
+    }
+    //const vegSnackPrice = ((vegCount !== "" && vegCount !== 0) ? (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount : checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * nvCount;
     // Calculate the price for non-veg snacks based on the number of non-veg people
+    console.log(vegSnackPrice)
     const nvSnackPrice = (checkedValues3.reduce((sum, item) => sum + item.price, 0) + checkedValues4.reduce((sum, item) => sum + item.price, 0)) * nvCount;
-
+    console.log(nvSnackPrice)
     // Calculate the dessert price based on the total number of people
-    const dessertPrice = checkedValues5.reduce((sum, item) => sum + item.price, 0) * (vcount + nvCount);
+    const dessertPrice = checkedValues5.reduce((sum, item) => sum + item.price, 0) * totalGuestCount;
+    console.log(dessertPrice)
+
+    //Total Package Price
+
+    const totalPackagePrice = vegSnackPrice + nvSnackPrice + dessertPrice;
 
     // Calculate the total price
-    const totalPrice = vegSnackPrice + nvSnackPrice + dessertPrice;
+    const totalPrice = vegSnackPrice + nvSnackPrice + dessertPrice + totalAddOnsPrice;
+    console.log(totalPrice)
 
     // Calculate the GST charges
     const gstCharges = (totalPrice * 0.18).toFixed(2);
@@ -81,7 +133,7 @@ const BirthdayPartyCheckPrice = () => {
     // Calculate the grand total
     const grandTotal = (totalPrice + parseFloat(gstCharges)).toFixed(2);
 
-    const formattedTotalPrice = totalPrice.toLocaleString();
+    const formattedTotalPrice = totalPackagePrice.toLocaleString();
     const formattedGstCharges = parseFloat(gstCharges).toLocaleString();
     const formattedGrandTotal = parseFloat(grandTotal).toLocaleString();
 
@@ -91,7 +143,7 @@ const BirthdayPartyCheckPrice = () => {
         // sessionStorage.removeItem("dataSelected")
         if (selectedBirthdayPkg) {
             setTotalGuestCount(selectedBirthdayPkg.totalGuestCount);
-            setVcount(selectedBirthdayPkg.vegCount);
+            setVegCount(selectedBirthdayPkg.vegCount);
             setNvcount(selectedBirthdayPkg.nvCount);
         }
     }, []);
@@ -237,12 +289,14 @@ const BirthdayPartyCheckPrice = () => {
             {/* <h6 id={styles.addmoreitemCP}><FontAwesomeIcon icon={faPlus} /> Add More Items</h6> */}
             <div className={styles.priceL}>
                 <div>
-                    <h5>Item Total</h5>
+                    <h5>Total Package Price</h5>
+                    <h5>Total Add On's Price</h5>
                     <h5>Delivery Charges (As Per Actual)</h5>
                 </div>
                 <div>
                     <h6>₹ {formattedTotalPrice}</h6>
-                    <h6>₹0000</h6>
+                    <h6>₹ {addonsprice}</h6>
+                    <h6>₹ 0000</h6>
                 </div>
             </div>
             <hr />
@@ -262,12 +316,12 @@ const BirthdayPartyCheckPrice = () => {
                 <h3>₹ {formattedGrandTotal}</h3>
             </div>
             <div className={styles.orderbuttonsectn}>
-                <div className={styles.bookinghelpbtn}>
-                    <button>Get Booking Help</button>
+                <div className={styles.bookinghelpbtn} style={{margin: "auto"}}>
+                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20BirthdayParty"><button>Get Booking Help</button></Link>
                 </div>
-                <div className={styles.placeorderbtn}>
+                {/* <div className={styles.placeorderbtn}>
                     <button>Place Order</button>
-                </div>
+                </div> */}
             </div>
             <div className={styles.addonsBtmSectn} style={btmPng}>
 

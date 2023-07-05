@@ -204,22 +204,26 @@ const BirthdayPartyHome = () => {
                 </div>
             </div>
             {showPopup && (<div className={styles.homepageAlert}>
-                <h1>Minimum 50 guest are required for this service.<br/>Please select our other services below</h1>
-                <div className={styles.insideContainer}>
-                    <h2><span>NinjaBox</span> Service</h2>
-                    <h3>For minimum guest : _</h3>
-                    <a href='/ninjaBox'>Click here to select</a>
+                <h1>Minimum 50 guest are required for this service.<br />Please select our other services below</h1>
+                <div className={styles.serviceImg}>
+                    <a href='/ninjabox' target="_blank"><Image src="/birthdayParty/NBS.PNG" width="291.01px" height="171.75px" /></a>
                 </div>
-                <div className={styles.insideContainer}>
-                    <h2><span>NinjaBuffet</span> Service</h2>
-                    <h3>For minimum guest : _</h3>
-                    <a href='/ninjaBuffet'>Click here to select</a>
+                <div className={styles.serviceImg}>
+                    <a href='/ninjabuffet' target="_blank"><Image src="/birthdayParty/NBUS.PNG" width="291.01px" height="171.75px" /></a>
                 </div>
                 <div style={{ textAlign: "center", marginTop: "25px" }}>
                     <button onClick={goBackBtn} id={styles.backBtn}><FontAwesomeIcon icon={faArrowLeft} />  Go Back</button>
                 </div>
             </div>)}
         </div>
+
+        // addons - live 50-60 - price- 
+        // 100 - 5000
+
+        // checkprice -
+        // addon ons - dlt button
+        // item total - package total
+        // addon total - 
     )
 }
 

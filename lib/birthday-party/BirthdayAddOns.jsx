@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { WindowSharp } from '@mui/icons-material';
+import Swal from "sweetalert2";
 
 const BirthdayAddOns = () => {
 
@@ -23,6 +24,18 @@ const BirthdayAddOns = () => {
     const [addedItems, setAddedItems] = useState([]);
     const [addedMainCourse, setAddedMainCourse] = useState([]);
     const [addedFunEatables, setAddedFunEatables] = useState([]);
+
+    const [price, setPrice] = useState(0);
+
+    useEffect(() => {
+        if (totalGuestCount < 100) {
+          setPrice("5,000");
+        } else if (totalGuestCount >= 100 && totalGuestCount <= 150) {
+          setPrice("7,500");
+        } else if (totalGuestCount > 150) {
+          setPrice("10,000");
+        }
+      }, [totalGuestCount]);
 
     //background image
     const backgroundStyle = {
@@ -58,9 +71,9 @@ const BirthdayAddOns = () => {
     ];
 
     const mainCourseList = [
-        { id: 1, name: 'Veg Dum Biryani', price: "₹35/-", veg: true },
-        { id: 2, name: 'Chicken Dum Biryani', price: "₹70/-", veg: false },
-        { id: 3, name: 'Mutton Dum Biryani', price: "₹120/-", veg: false }
+        { id: 1, name: 'Veg Dum Biryani', price: 35, veg: true },
+        { id: 2, name: 'Chicken Dum Biryani', price: 70, veg: false },
+        { id: 3, name: 'Mutton Dum Biryani', price: 120, veg: false }
     ]
 
     const funEatablesList = [
@@ -96,9 +109,14 @@ const BirthdayAddOns = () => {
             sessionStorage.setItem('addedItems', JSON.stringify(addedItems));
             sessionStorage.setItem('addedMainCourse', JSON.stringify(addedMainCourse));
             sessionStorage.setItem('addedFunEatables', JSON.stringify(addedFunEatables));
-            alert('Items saved successfully!');
+            //alert('Items saved successfully!');
+            Swal.fire({
+                title: "Items Added",
+                icon: "success",
+                confirmButtonText: "OK",
+            });
 
-            window.open("/birthdayPartyCheckPrice");
+            window.open("/birthdayPartyCheckPrice", '_self');
         }
     }
 
@@ -187,9 +205,8 @@ const BirthdayAddOns = () => {
                 <div className={styles.header} style={livecounterheader}>
                     <h4 >🔥 Live Counters 🔥</h4>
                 </div>
-                {totalGuestCount >= 50 ? <h6>Per <span>Person</span> Prices</h6> :
-                    <h6>Per <span>Counter</span> Prices</h6>}
-                {totalGuestCount >= 50 ? "" : <h5 className='mb-3'>₹5,000/-</h5>}
+                    <h6>Per <span>Counter</span> Prices</h6>
+                    <h5 className='mb-3'>₹{price}/-</h5>
                 {liveCounterList.map((item, index) => (<div key={index} className={styles.itemsListContainer}>
                     <div className={styles.list}>
                         <h4>🔥 {item.name}</h4>
@@ -203,23 +220,6 @@ const BirthdayAddOns = () => {
                         {totalGuestCount <= 50 ? <button onClick={() => addLiveCounter(item.id)}>{addedItems.some((cartItem) => cartItem.id === item.id) ? 'Added' : item.price}<FontAwesomeIcon icon={faPlus} style={{color: "white" }}/></button> :
                             <button onClick={() => addLiveCounter(item.id)}>{addedItems.some((cartItem) => cartItem.id === item.id) ? 'Added' : 'Add'}<FontAwesomeIcon icon={faPlus} style={{color: "white" }}/></button>}
                     </div> */}
-                    {totalGuestCount <= 50 ? (
-                        <button
-                            onClick={() => addLiveCounter(item.id)}
-                            style={{
-                                backgroundColor: addedItems.some((cartItem) => cartItem.id === item.id)
-                                    ? '#BE2D30'
-                                    : '',
-                                color: addedItems.some((cartItem) => cartItem.id === item.id)
-                                    ? 'white'
-                                    : ''
-                            }}
-                        >
-                            {addedItems.some((cartItem) => cartItem.id === item.id)
-                                ? 'Added'
-                                : item.price}
-                        </button>
-                    ) : (
                         <button
                             onClick={() => addLiveCounter(item.id)}
                             style={{
@@ -235,7 +235,6 @@ const BirthdayAddOns = () => {
                                 ? 'Added'
                                 : 'Add +'}
                         </button>
-                    )}
                 </div>))}
             </div>
             <hr />

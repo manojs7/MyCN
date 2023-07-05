@@ -115,7 +115,7 @@ const Birthday_Packages = () => {
             setSilverPackage(vegPackages.silverPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };
@@ -129,7 +129,7 @@ const Birthday_Packages = () => {
             setNvGoldPackage(vegPackages.nvGoldPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };
@@ -143,7 +143,7 @@ const Birthday_Packages = () => {
             setNvSilverPackage(vegPackages.nvSilverPackage);
         
             // Open new page to show the data
-            window.open('/customiseBirthdayPkg');
+            window.open('/customiseBirthdayPkg', '_self');
             // return () => {
             //     sessionStorage.removeItem('packageOne' && 'packageTwo');
             //   };
