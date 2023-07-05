@@ -992,9 +992,9 @@ const CustomiseBirthdayPkg = () => {
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles2.itemDetailsContainer}>
                             {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                            <div>
+                            <div style={{width: "238px"}}>
                                 <h4>{item.name}</h4>
-                                <p>{item.description}</p>
+                                {/* <p>{item.description}</p> */}
                             </div>
                             {/* <div>
                                 <div className={styles2.quantityBtn}>
@@ -1053,7 +1053,7 @@ const CustomiseBirthdayPkg = () => {
                                                         <p onClick={() => document.getElementById(item.id).click()} >
                                                             { item.name }
                                                             < br />
-                                                            <span>{item.description}</span>
+                                                            {/* <span>{item.description}</span> */}
                                                         </p>
                                                 </div>
                                                 <div>
@@ -1079,9 +1079,9 @@ const CustomiseBirthdayPkg = () => {
             <div className={styles2.starterBtmLine}>
                 <hr />
             </div>
-            <div className={styles2.addMoreBtn}>
-                <button onClick={selectVegSnack}>+ Add More</button>
-            </div>
+            { checkedValues.length !== vegSnackQnty ? <div className={styles2.addMoreBtn}>
+                <button onClick={selectVegSnack}>+ Add {checkedValues.length === 0 ? "snacks" : "More"}</button>
+            </div> : ""}
         </div>
 
             {/* VEG HEAVY SNACK */ }
@@ -1099,9 +1099,9 @@ const CustomiseBirthdayPkg = () => {
                 <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                 <div className={styles2.itemDetailsContainer}>
                     {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                    <div>
+                    <div style={{width: "238px"}}>
                         <h4>{item.name}</h4>
-                        <p>{item.description}</p>
+                        {/* <p>{item.description}</p> */}
                     </div>
                     <div>
                         <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deletVegHeavySnack(e, item)} />
@@ -1134,7 +1134,7 @@ const CustomiseBirthdayPkg = () => {
                                                 <p onClick={() => document.getElementById(item.id).click()}>
                                                     {item.name}
                                                     <br />
-                                                    <span>{item.description}</span>
+                                                    {/* <span>{item.description}</span> */}
                                                 </p>
                                             </div>
                                             <div>
@@ -1160,9 +1160,9 @@ const CustomiseBirthdayPkg = () => {
         <div className={styles2.starterBtmLine}>
             <hr />
         </div>
-        <div className={styles2.addMoreBtn}>
-            <button onClick={selectVegHeavySnack}>+ Add More</button>
-        </div>
+        { checkedValues2.length !== vegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
+                <button onClick={selectVegHeavySnack}>+ Add {checkedValues2.length === 0 ? "snacks" : "More"}</button>
+            </div> : ""}
     </div>
 
     {/* NON VEG SNACK */ }
@@ -1181,9 +1181,9 @@ const CustomiseBirthdayPkg = () => {
                     <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                     <div className={styles2.itemDetailsContainer}>
                         {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                        <div>
+                        <div style={{width: "238px"}}>
                             <h4>{item.name}</h4>
-                            <p>{item.description}</p>
+                            {/* <p>{item.description}</p> */}
                         </div>
                         <div>
                             <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegSnack(e, item)} />
@@ -1216,7 +1216,7 @@ const CustomiseBirthdayPkg = () => {
                                                     <p onClick={() => document.getElementById(item.id).click()}>
                                                         {item.name}
                                                         <br />
-                                                        <span>{item.description}</span>
+                                                        {/* <span>{item.description}</span> */}
                                                     </p>
                                                 </div>
                                                 <div>
@@ -1242,9 +1242,9 @@ const CustomiseBirthdayPkg = () => {
             <div className={styles2.starterBtmLine}>
                 <hr />
             </div>
-            <div className={styles2.addMoreBtn}>
-                <button onClick={selectNonVegSnack}>+ Add More</button>
-            </div>
+            { checkedValues3.length !== nvegSnackQnty ? <div className={styles2.addMoreBtn}>
+                <button onClick={selectNonVegSnack}>+ Add {checkedValues3.length === 0 ? "snacks" : "More"}</button>
+            </div> : ""}
         </div>
     }
     {/* NON VEG HEAVY SNACK */ }
@@ -1263,9 +1263,9 @@ const CustomiseBirthdayPkg = () => {
                     <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                     <div className={styles2.itemDetailsContainer}>
                         {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                        <div>
+                        <div style={{width: "238px"}}>
                             <h4>{item.name}</h4>
-                            <p>{item.description}</p>
+                            {/* <p>{item.description}</p> */}
                         </div>
                         <div>
                             <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegHeavySnack(e, item)} />
@@ -1298,7 +1298,7 @@ const CustomiseBirthdayPkg = () => {
                                                     <p onClick={() => document.getElementById(item.id).click()}>
                                                         {item.name}
                                                         <br />
-                                                        <span>{item.description}</span>
+                                                        {/* <span>{item.description}</span> */}
                                                     </p>
                                                 </div>
                                                 <div>
@@ -1324,9 +1324,9 @@ const CustomiseBirthdayPkg = () => {
             <div className={styles2.starterBtmLine}>
                 <hr />
             </div>
-            <div className={styles2.addMoreBtn}>
-                <button onClick={selectNonVegHeavySnack}>+ Add More</button>
-            </div>
+            { checkedValues4.length !== nonVegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
+                <button onClick={selectNonVegHeavySnack}>+ Add {checkedValues4.length === 0 ? "snacks" : "More"}</button>
+            </div> : ""}
         </div>
     }
 
@@ -1345,9 +1345,9 @@ const CustomiseBirthdayPkg = () => {
                         <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                         <div className={styles2.itemDetailsContainer}>
                             {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                            <div>
+                            <div style={{width: "238px"}}>
                                 <h4>{item.name}</h4>
-                                <p>{item.description}</p>
+                                {/* <p>{item.description}</p> */}
                             </div>
                             <div>
                                 <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteDessert(e, item)} />
@@ -1380,7 +1380,7 @@ const CustomiseBirthdayPkg = () => {
                                                         <p onClick={() => document.getElementById(item.id).click()}>
                                                             {item.name}
                                                             <br />
-                                                            <span>{item.description}</span>
+                                                            {/* <span>{item.description}</span> */}
                                                         </p>
                                                     </div>
                                                     <div>
@@ -1406,9 +1406,9 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles2.starterBtmLine}>
                     <hr />
                 </div>
-                <div className={styles2.addMoreBtn}>
-                    <button onClick={selectDessert}>+ Add More</button>
-                </div>
+                { checkedValues5.length !== dessertQnty ? <div className={styles2.addMoreBtn}>
+                <button onClick={selectDessert}>+ Add {checkedValues5.length === 0 ? "Dessert" : "More"}</button>
+            </div> : ""}
             </div>
             <div className={styles.addonsbtn}>
                 <button onClick={addAlldata}>Add Ons</button>

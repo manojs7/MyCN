@@ -26,9 +26,9 @@ const BirthdayPartyCheckPrice = () => {
 
     useEffect(() => {
         if (liveCounterItems.length > 0) {
-          if (totalGuestCount < 100) {
+          if (totalGuestCount <= 100) {
             setLiveCounterPrice(5000);
-          } else if (totalGuestCount >= 100 && totalGuestCount <= 150) {
+          } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
             setLiveCounterPrice(7500);
           } else {
             setLiveCounterPrice(10000);
@@ -40,9 +40,9 @@ const BirthdayPartyCheckPrice = () => {
 
       useEffect(() => {
         if (funEatablesItems.length > 0) {
-          if (totalGuestCount < 100) {
+          if (totalGuestCount <= 100) {
             setFunEatablesPrice(5000);
-          } else if (totalGuestCount >= 100 && totalGuestCount <= 150) {
+          } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
             setFunEatablesPrice(7500);
           } else {
             setFunEatablesPrice(10000);
@@ -76,9 +76,11 @@ const BirthdayPartyCheckPrice = () => {
 
     //PRICING
     // Calculate the total price
-    const mainCoursePrice = mainCourseItems.reduce((sum, item) => sum + item.price, 0);
+    const mainCoursePrice = mainCourseItems.reduce((sum, item) => sum + item.price, 0)* totalGuestCount;
 
-    const totalAddOnsPrice = mainCoursePrice + liveCounterPrice + funEatablePrice;
+    const lcprc = (liveCounterItems.length + funEatablesItems.length) * liveCounterPrice ;
+
+    const totalAddOnsPrice = mainCoursePrice + lcprc ;
     const addonsprice = totalAddOnsPrice.toLocaleString();
     console.log(liveCounterPrice);
 

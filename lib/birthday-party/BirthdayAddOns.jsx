@@ -28,9 +28,9 @@ const BirthdayAddOns = () => {
     const [price, setPrice] = useState(0);
 
     useEffect(() => {
-        if (totalGuestCount < 100) {
+        if (totalGuestCount <= 100) {
           setPrice("5,000");
-        } else if (totalGuestCount >= 100 && totalGuestCount <= 150) {
+        } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
           setPrice("7,500");
         } else if (totalGuestCount > 150) {
           setPrice("10,000");
