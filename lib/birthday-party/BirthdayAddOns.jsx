@@ -272,7 +272,7 @@ const BirthdayAddOns = () => {
                     <h4 >Fun Eatables</h4>
                 </div>
                 <h6>Per <span>Counter</span> Prices</h6>
-                <h5>₹5,000/-</h5>
+                <h5>₹{price}/-</h5>
                 <h3>(Max 100 Qty Counters)</h3>
                 {funEatablesList.map((item, index) => (<div key={index} className={styles.itemsListContainer}>
                     <div className={styles.list}>
