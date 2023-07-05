@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 const ProfileDD = () => {
   const [anchorEl4, setAnchorEl4] = React.useState(null);
-
+  // const role= localStorage.getitem('role');
   const handleClick4 = (event) => {
     setAnchorEl4(event.currentTarget);
   };
@@ -64,7 +64,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Ninja
+              Admin Ninja
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>
