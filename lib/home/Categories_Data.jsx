@@ -19,18 +19,22 @@ export const categories_1 = [
 
 export const categories_2 = [
   {
+    link:"/checkprice",
     image: "/home/categories/cate5.webp",
     title:'Great Buffet Caterers'
   },
   {
+    link:"/checkprice",
     image: "/home/categories/cate6.webp",
     title:'House Party Caterers'
   },
   {
+    link:"/checkprice",
     image: "/home/categories/cate7.webp",
     title:'Wedding Caterers'
   },
   {
+    link:"/birthdayPartyHome",
     image: "/home/categories/cate8.webp",
     title:'Birthday Party Caterers'
   },

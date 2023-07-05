@@ -148,7 +148,7 @@ const BirthdayPartyHome = () => {
             </div>
             <div className={styles.birthdayHomeHeader} style={smallPng}>
                 <h6>Easiest To Book Your Blockbuster<br />Birthday Party Catering!</h6>
-                <h3>Select Your City</h3>
+                <h3>Select Your Details</h3>
                 <hr />
             </div>
             <div className={styles.inputBox}>
