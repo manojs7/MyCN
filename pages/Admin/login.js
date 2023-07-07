@@ -7,7 +7,7 @@ const LoginPage = () => {
 
   const handleLogin = (selectedRole) => {
     setRole(selectedRole);
-    localStorage.setItem("role", selectedRole)
+    sessionStorage.setItem("role", selectedRole)
     window.location.href="/Admin";
   };
 

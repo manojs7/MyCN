@@ -129,9 +129,9 @@ const Custom_Package = () => {
       { id: 8, name: 'House Pooja 2', price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
     ],
     nonVeg: [
-      { id: 1, name: 'House Party 1', price: '6,999', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
-      { id: 2, name: 'House Party 2', price: '4,999', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
-      { id: 3, name: "House Party 3", price: '4,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
+      { id: 1, name: 'House Party 1', price: '8,599', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
+      { id: 2, name: 'House Party 2', price: '7,999', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
+      { id: 3, name: "House Party 3", price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
       { id: 4, name: 'House Party 4', price: '6,599', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
       { id: 5, name: 'Cocktail Party 1', price: '6,599', img: '/ninja-box/packages/NBP5.png', details: "6 Starters + 2 Mains", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
       { id: 6, name: 'Cocktail Party 2', price: '5,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] },
@@ -159,6 +159,7 @@ const Custom_Package = () => {
     if (showNonveg) {
       setNumber2(0)
     } else {
+      setNumber(5)
       setNumber2(10)
     }
   };
@@ -459,139 +460,7 @@ const Custom_Package = () => {
               </div>
             </div>
           </div>
-          {/* <div className="row mb-md-5 mb-0 filter">
-            <h5>Choose City</h5>
-            <div className="col-md-6 mb-md-0 mb-3 d-flex justify-content-start align-items-center flex-md-row flex-column">
-              <input
-                type="radio"
-                className="btn-check"
-                name="city"
-                id="city_mumbai"
-                required
-                value="mumbai"
-              />
-              <label
-                id="city"
-                className="btn-outline-warning d-flex justify-content-center p-0"
-                htmlFor="city_mumbai"
-              >
-                <img
-                  src="../cities/mumbai.png"
-                  id="city_mumbai"
-                  height="100px"
-                  width="100px"
-                  alt=""
-                />
-              </label>
-
-              <input
-                type="radio"
-                className="btn-check"
-                name="city"
-                id="city-bangalore"
-                required
-                value="bangalore"
-              />
-              <label
-                id="city"
-                className="btn-outline-warning p-0"
-                htmlFor="city-bangalore"
-              >
-                <img
-                  src="../cities/bangalore.png"
-                  id="city-bangalore"
-                  height="100px"
-                  width="100px"
-                  alt=""
-                />
-              </label>
-
-              <input
-                type="radio"
-                className="btn-check"
-                name="city"
-                id="city-delhi"
-                required
-                value="bangalore"
-              />
-              <label
-                id="city"
-                className="btn-outline-warning p-0"
-                htmlFor="city-delhi"
-              >
-                <img
-                  src="../cities/delhi.png"
-                  id="city-delhi"
-                  height="100px"
-                  width="100px"
-                  alt=""
-                />
-              </label>
-            </div>
-            <div className="col-md-6 mb-md-0 mb-5 d-flex justify-content-md-center align-items-center flex-md-row flex-column">
-              <label htmlFor="guests" >No: Of Guests</label>
-              <select onChange={handleGuestAdd} value={vegNonVeg === 'Veg' ? vegGuest : nonVegGuest} name="guests" id="guests">
-                <option value="10">10</option>
-                <option value="8">15</option>
-                <option value="6">20</option>
-                <option value="6">25</option>
-                <option value="6">30</option>
-                <option value="6">35</option>
-                <option value="6">40</option>
-              </select>
-            </div>
-          </div> */}
-          {/* <div className="checkbox-container mb-5">
-            <input onChange={handleChange} type="checkbox" value='veg' name="Veg" id="" />
-          </div> */}
-          {/* <div className="ninja-package-description">
-            {Ninja_Package_Data.map((item, index) => (
-              <div className="ninja-package-item" key={index}>
-                <div className="row mb-md-3 mb-0">
-                  <div className="col-md-6 mb-md-0 mb-3 d-flex justify-content-center align-items-left flex-column">
-                    <div className="package-name">{item.name}</div>
-                    <div className="package-content">{item.content}</div>
-                    <div className="package-price">
-                      <span>
-                        <FontAwesomeIcon icon={faIndianRupeeSign} />
-                      </span>
-                      {item.price}
-                    </div>
-                  </div>
-                  <div className="col-md-6 mb-md-0 mb-3 d-flex justify-content-center align-items-center">
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="img-fluid hoverZoom"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-md-4 mb-0">
-                  <div className="col-md-4 mb-md-0 mb-3 d-flex justify-content-md-start justify-content-center"></div>
-                  <div className="col-md-8 mb-md-0 mb-3 d-flex justify-content-evenly flex-md-row flex-column">
-                    {/* <button className="bg-white mb-md-0 mb-2" onClick={() => window.location.href = '/view-details'}>
-											View Details
-										</button> */}
-          {/*<button
-                      className="bg-red my-2"
-                      onClick={handleShow}
-                    // onClick={() => (window.location.href = "/view-details")}
-                    >
-                      Book This Package
-                    </button>
-                    {/* modal */}
-
-          {/*<button
-                      className="bg-white my-2"
-                      onClick={() => handleClick(index)}
-                    >
-                      Customise & Book Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div> */}
+          
           <div className="d-flex justify-content-center">
             <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif", marginRight: "10px" }}>Veg Only</h3>
             <label className={styles.toggle}>
@@ -677,7 +546,7 @@ const Custom_Package = () => {
                 <div className="packagesName">
                   <h4>{item.details}</h4>
                   <h3>₹ {item.price}/-<span> Onwards</span></h3>
-                  <p>(Min. Order 10 Guests)</p>
+                  <p>(Approx Price for 15 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
                   <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
@@ -694,7 +563,7 @@ const Custom_Package = () => {
                 <div className="packagesName">
                   <h4>{item.details}</h4>
                   <h3>₹ {item.price}/-<span> Onwards</span></h3>
-                  <p>(Min. Order 10 Guests)</p>
+                  <p>(Approx Price for 15 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
                   <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>

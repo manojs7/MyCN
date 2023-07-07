@@ -827,11 +827,88 @@ const CustomizeNinjaBox = () => {
     let count = 0;
     let isVeg = false;
 
-    tempBreadRice.map((item) => {
-      item.menu_label === "Breads" ? (bread += 1) : bread;
-      item.menu_label === "Rice" ? (count += 1) : count;
-      item.veg ? (isVeg = true) : (isVeg = false);
-    });
+    // tempBreadRice.map((item) => {
+    //   item.menu_label === "Breads" ? (bread += 1) : bread;
+    //   item.menu_label === "Rice" ? (count += 1) : count;
+    //   item.veg ? (isVeg = true) : (isVeg = false);
+    // });
+    // tempBreadRice.map((item) => {
+    //   if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
+    //     if (bread === 1) {
+    //       item.quantity = Math.round((veg + nonVeg) * 3);
+    //     } else {
+    //       item.quantity = Math.round((veg + nonVeg) * 2);
+    //     }
+    //   } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
+    //     if (bread === 1) {
+    //       item.quantity = Math.round((veg + nonVeg) * 2);
+    //     } else {
+    //       item.quantity = Math.round((veg + nonVeg) * 1);
+    //     }
+    //   } else if (item?.menu_label === "Rice") {
+    //     console.log("rice", count);
+    //     if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+    //       let guests = veg > 0 ? veg : nonVeg;
+    //       if (count >= 2) {
+    //         console.log("count2");
+    //         item.quantity = HandleCeilFloorValue(0.15 * guests);
+    //       } else if (mains.length > 0 && count === 1) {
+    //         console.log("count1");
+
+    //         item.quantity = HandleCeilFloorValue(0.2 * guests);
+    //       } else if (mains.length === 0 && count === 1) {
+    //         console.log("count1");
+    //         item.quantity = HandleCeilFloorValue(0.3 * guests);
+    //       }
+    //     } else if (veg > 0 && nonVeg > 0) {
+    //       let guests = veg + nonVeg;
+    //       if (count >= 2) {
+    //         item.quantity = HandleCeilFloorValue(0.15 * guests);
+    //       } else if (
+    //         count === 1 &&
+    //         mains.length === 0 &&
+    //         starters.length >= 2
+    //       ) {
+    //         if (item.veg === true) {
+    //           item.quantity = HandleCeilFloorValue(0.25 * veg);
+    //         } else {
+    //           item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+    //         }
+    //       } else if (
+    //         count === 1 &&
+    //         mains.length === 0 &&
+    //         starters.length <= 1
+    //       ) {
+    //         if (item.veg === true) {
+    //           item.quantity = HandleCeilFloorValue(0.3 * veg);
+    //         } else {
+    //           item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+    //         }
+    //       } else if (count >= 1 && mains.length === 0 && starters.length <= 1) {
+    //         if (item.veg === true) {
+    //           item.quantity = HandleCeilFloorValue(0.25 * veg);
+    //         } else {
+    //           item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+    //         }
+    //       } else if (count >= 1 && mains.length === 0 && starters.length >= 2) {
+    //         if (item.veg === true) {
+    //           item.quantity = HandleCeilFloorValue(0.2 * veg);
+    //         } else {
+    //           item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+    //         }
+    //       } else if (count === 1 && mains.length >= 1) {
+    //         item.quantity = HandleCeilFloorValue(0.2 * guests);
+    //       } else {
+    //         if (item.veg === true) {
+    //           item.quantity = HandleCeilFloorValue(0.15 * veg);
+    //         } else {
+    //           item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+    //         }
+    //       }
+    //     }
+    //   }
+    // });
+
     tempBreadRice.map((item) => {
       if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
         if (bread === 1) {
@@ -849,60 +926,56 @@ const CustomizeNinjaBox = () => {
         console.log("rice", count);
         if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
           let guests = veg > 0 ? veg : nonVeg;
-          if (count >= 2) {
-            console.log("count2");
-            item.quantity = HandleCeilFloorValue(0.15 * guests);
-          } else if (mains.length > 0 && count === 1) {
-            console.log("count1");
-
-            item.quantity = HandleCeilFloorValue(0.2 * guests);
-          } else if (mains.length === 0 && count === 1) {
-            console.log("count1");
-            item.quantity = HandleCeilFloorValue(0.3 * guests);
+          if(mains.length>0 || starters.length>4 ){
+            if(count===1){
+              item.quantity = HandleCeilFloorValue(0.20 * guests);
+            }
+            else{
+              item.quantity = HandleCeilFloorValue(0.15 * guests);
+            }
           }
+          else if(mains.length==0 || starters.length<4){
+            if(count===1){
+              item.quantity = HandleCeilFloorValue(0.30 * guests);
+            }
+            else{
+              item.quantity = HandleCeilFloorValue(0.15 * guests);
+            }
+          }
+         
         } else if (veg > 0 && nonVeg > 0) {
           let guests = veg + nonVeg;
-          if (count >= 2) {
-            item.quantity = HandleCeilFloorValue(0.15 * guests);
-          } else if (
-            count === 1 &&
-            mains.length === 0 &&
-            starters.length >= 2
-          ) {
-            if (item.veg === true) {
-              item.quantity = HandleCeilFloorValue(0.25 * veg);
-            } else {
-              item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+
+          if(mains.length>0 || starters.length>4){
+            if(count===1){
+              item.quantity = HandleCeilFloorValue(0.2*guests)
             }
-          } else if (
-            count === 1 &&
-            mains.length === 0 &&
-            starters.length <= 1
-          ) {
-            if (item.veg === true) {
-              item.quantity = HandleCeilFloorValue(0.3 * veg);
-            } else {
-              item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+            else if (count>=2){
+              item.quantity = HandleCeilFloorValue(0.15*guests)
             }
-          } else if (count >= 1 && mains.length === 0 && starters.length <= 1) {
-            if (item.veg === true) {
-              item.quantity = HandleCeilFloorValue(0.25 * veg);
-            } else {
-              item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+
+          }
+          else if (mains.length===0 || starters.length<4){
+            if(count===1){
+              item.quantity = HandleCeilFloorValue(0.3*guests)
             }
-          } else if (count >= 1 && mains.length === 0 && starters.length >= 2) {
-            if (item.veg === true) {
-              item.quantity = HandleCeilFloorValue(0.2 * veg);
-            } else {
-              item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+            else if (count===2){
+              if(item.veg){
+                item.quantity = HandleCeilFloorValue(0.30*veg)
+              }
+              else{
+                item.quantity = HandleCeilFloorValue(0.20*nonVeg)
+              }
+            
+              
             }
-          } else if (count === 1 && mains.length >= 1) {
-            item.quantity = HandleCeilFloorValue(0.2 * guests);
-          } else {
-            if (item.veg === true) {
-              item.quantity = HandleCeilFloorValue(0.15 * veg);
-            } else {
-              item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+            else if(count>2){
+              if(item.veg){
+                item.quantity = HandleCeilFloorValue(0.15*guests)
+              }
+              else{
+                item.quantity = HandleCeilFloorValue(0.20*nonVeg)
+              }
             }
           }
         }
@@ -1434,10 +1507,14 @@ const CustomizeNinjaBox = () => {
       let bread = 0;
       let count = 0;
       let isVeg = false;
+      let countVR=0;
+      let countNVR=0;
 
       temp.map((item) => {
         item.menu_label === "Breads" ? (bread += 1) : bread;
         item.menu_label === "Rice" ? (count += 1) : count;
+        item.menu_label === "Rice" && item.veg ? (countVR += 1) : countVR;
+        item.menu_label === "Rice" && item.veg ? (countNVR += 1) : countNVR;
         item.veg ? (isVeg = true) : (isVeg = false);
       });
       temp.map((item) => {
@@ -1457,70 +1534,119 @@ const CustomizeNinjaBox = () => {
           console.log("rice", count);
           if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
             let guests = veg > 0 ? veg : nonVeg;
-            if (count >= 2) {
-              console.log("count2");
-              item.quantity = HandleCeilFloorValue(0.15 * guests);
-            } else if (mains.length > 0 && count === 1) {
-              console.log("count1");
-
-              item.quantity = HandleCeilFloorValue(0.2 * guests);
-            } else if (mains.length === 0 && count === 1) {
-              console.log("count1");
-              item.quantity = HandleCeilFloorValue(0.3 * guests);
+            if(mains.length>0 || starters.length>4 ){
+              if(count===1){
+                item.quantity = HandleCeilFloorValue(0.20 * guests);
+              }
+              else{
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              }
             }
+            else if(mains.length==0 || starters.length<4){
+              if(count===1){
+                item.quantity = HandleCeilFloorValue(0.30 * guests);
+              }
+              else{
+                item.quantity = HandleCeilFloorValue(0.15 * guests);
+              }
+            }
+            // if (count >= 2) {
+              
+            //   item.quantity = HandleCeilFloorValue(0.15 * guests);
+            // } else if (mains.length > 0 && count === 1) {
+              
+
+            //   item.quantity = HandleCeilFloorValue(0.2 * guests);
+            // } else if (mains.length === 0 && count === 1) {
+              
+            //   item.quantity = HandleCeilFloorValue(0.3 * guests);
+            // }
           } else if (veg > 0 && nonVeg > 0) {
             let guests = veg + nonVeg;
-            if (count >= 2) {
-              item.quantity = HandleCeilFloorValue(0.15 * guests);
-            } else if (
-              count === 1 &&
-              mains.length === 0 &&
-              starters.length >= 2
-            ) {
-              if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue(0.25 * veg);
-              } else {
-                item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+
+            if(mains.length>0 || starters.length>4){
+              if(count===1){
+                item.quantity = HandleCeilFloorValue(0.2*guests)
               }
-            } else if (
-              count === 1 &&
-              mains.length === 0 &&
-              starters.length <= 1
-            ) {
-              if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue(0.3 * veg);
-              } else {
-                item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+              else if (count>=2){
+                item.quantity = HandleCeilFloorValue(0.15*guests)
               }
-            } else if (
-              count >= 1 &&
-              mains.length === 0 &&
-              starters.length <= 1
-            ) {
-              if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue(0.25 * veg);
-              } else {
-                item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+
+            }
+            else if (mains.length===0 || starters.length<4){
+              if(count===1){
+                item.quantity = HandleCeilFloorValue(0.3*guests)
               }
-            } else if (
-              count >= 1 &&
-              mains.length === 0 &&
-              starters.length >= 2
-            ) {
-              if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue(0.2 * veg);
-              } else {
-                item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+              else if (count===2){
+                if(item.veg){
+                  item.quantity = HandleCeilFloorValue(0.20*veg)
+                }
+                else{
+                  item.quantity = HandleCeilFloorValue(0.20*nonVeg)
+                }
+              
+                
               }
-            } else if (count === 1 && mains.length >= 1) {
-              item.quantity = HandleCeilFloorValue(0.2 * guests);
-            } else {
-              if (item.veg === true) {
-                item.quantity = HandleCeilFloorValue(0.15 * veg);
-              } else {
-                item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+              else if(count>2){
+                if(item.veg){
+                  item.quantity = HandleCeilFloorValue(0.15*guests)
+                }
+                else{
+                  item.quantity = HandleCeilFloorValue(0.20*nonVeg)
+                }
               }
             }
+            // if (count >= 2) {
+            //   item.quantity = HandleCeilFloorValue(0.15 * guests);
+            // } else if (
+            //   count === 1 &&
+            //   mains.length === 0 &&
+            //   starters.length >= 2
+            // ) {
+            //   if (item.veg === true) {
+            //     item.quantity = HandleCeilFloorValue(0.25 * veg);
+            //   } else {
+            //     item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+            //   }
+            // } else if (
+            //   count === 1 &&
+            //   mains.length === 0 &&
+            //   starters.length <= 1
+            // ) {
+            //   if (item.veg === true) {
+            //     item.quantity = HandleCeilFloorValue(0.3 * veg);
+            //   } else {
+            //     item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+            //   }
+            // } else if (
+            //   count >= 1 &&
+            //   mains.length === 0 &&
+            //   starters.length <= 1
+            // ) {
+            //   if (item.veg === true) {
+            //     item.quantity = HandleCeilFloorValue(0.25 * veg);
+            //   } else {
+            //     item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+            //   }
+            // } else if (
+            //   count >= 1 &&
+            //   mains.length === 0 &&
+            //   starters.length >= 2
+            // ) {
+            //   if (item.veg === true) {
+            //     item.quantity = HandleCeilFloorValue(0.2 * veg);
+            //   } else {
+            //     item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+            //   }
+            // } else if (count === 1 && mains.length >= 1) {
+            //   item.quantity = HandleCeilFloorValue(0.2 * guests);
+            // } else {
+            //   if (item.veg === true) {
+            //     item.quantity = HandleCeilFloorValue(0.15 * veg);
+            //   } else {
+            //     item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+            //   }
+            // }
           }
         }
       });
@@ -1630,206 +1756,144 @@ const CustomizeNinjaBox = () => {
       let count = 1;
       let isVeg = false;
       let isNonVeg = false;
-
+      let countVR=0;
+      let countNVR=0;
       temp.map((item) => {
         item.menu_label === "Rice" ? (count += 1) : count;
-        item.veg ? (isVeg = true) : (isNonVeg = true);
+        item.menu_label === "Rice" && item.veg ? (countVR += 1) : countVR;
+        item.menu_label === "Rice" && item.veg ? (countNVR += 1) : countNVR;
       });
-      if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
-        let guests = veg > 0 ? veg : nonVeg;
-        if (mains.length === 0 && count === 1) {
-          quantity = HandleCeilFloorValue(guests * 0.3);
-        } else if (mains.length > 0 && count === 1) {
-          quantity = HandleCeilFloorValue(guests * 0.2);
-        } else if (count >= 3) {
-          quantity = HandleCeilFloorValue(guests * 0.1);
-        } else {
-          quantity = HandleCeilFloorValue(guests * 0.15);
-        }
-        temp.forEach((item) => {
-          if (item.menu_label === "Rice") {
-            if (count >= 3) {
-              item.quantity = HandleCeilFloorValue(guests * 0.1);
-            } else {
-              if (item.veg) {
-                item.quantity = HandleCeilFloorValue(guests * 0.25);
+
+          console.log("rice", count);
+          if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+            let guests = veg > 0 ? veg : nonVeg;
+            if(mains.length>0 || starters.length>4 ){
+              if(count===1){
+                quantity = HandleCeilFloorValue(0.20 * guests);
+              }
+              else{
+                quantity = HandleCeilFloorValue(0.15 * guests);
+              }
+            }
+            else if(mains.length==0 || starters.length<4){
+              if(count===1){
+                quantity = HandleCeilFloorValue(0.30 * guests);
+              }
+              else{
+                quantity = HandleCeilFloorValue(0.15 * guests);
+              }
+            }
+           
+          } else if (veg > 0 && nonVeg > 0) {
+            let guests = veg + nonVeg;
+
+            if(mains.length>0 || starters.length>4){
+              if(count===1){
+                quantity = HandleCeilFloorValue(0.2*guests)
+              }
+              else if (count>=2){
+                quantity = HandleCeilFloorValue(0.15*guests)
+              }
+
+            }
+            else if (mains.length===0 || starters.length<4){
+              if(count===1){
+                quantity = HandleCeilFloorValue(0.3*guests)
+              }
+              else if (count===2){
+                if(filterBreadRice.veg){
+                  quantity = HandleCeilFloorValue(0.20*veg)
+                }
+                else{
+                  quantity = HandleCeilFloorValue(0.20*nonVeg)
+                }
+              
+                
+              }
+              else if(count>2){
+                if(filterBreadRice.veg){
+                  quantity = HandleCeilFloorValue(0.15*guests)
+                }
+                else{
+                  quantity = HandleCeilFloorValue(0.20*nonVeg)
+                }
+              }
+            }
+           
+          }
+
+          temp.map((item) => {
+            if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
+              if (bread === 1) {
+                item.quantity = Math.round((veg + nonVeg) * 3);
               } else {
-                item.quantity = HandleCeilFloorValue(nonVeg * 0.2);
+                item.quantity = Math.round((veg + nonVeg) * 2);
               }
-            }
-            // item.quantity = 0.15 * guests;
-          }
-        });
-
-        // if (count >= 1) {
-        //   console.log("count2");
-        //   quantity = 0.30 * guests;
-        //   temp.forEach((item) => {
-        //     if (item.menu_label === "Rice") {
-        //       item.quantity = 0.15 * guests;
-        //     }
-        //   });
-        // } else if (mains.length > 0 && count === 1) {
-        //   console.log("count1");
-
-        //   quantity = 0.15 * guests;
-        // } else if (mains.length === 0 && count === 1) {
-        //   console.log("count1");
-        //   quantity = 0.3 * guests;
-        // }
-      } else if (veg > 0 && nonVeg > 0) {
-        let guests = veg + nonVeg;
-
-        if (filterBreadRice.veg) {
-          if (mains.length === 0 && count === 1) {
-            quantity = HandleCeilFloorValue(guests * 0.3);
-          } else if (mains.length > 0 && count === 1) {
-            quantity = HandleCeilFloorValue(guests * 0.2);
-          } else if (count >= 3) {
-            quantity = HandleCeilFloorValue(veg * 0.1);
-          } else {
-            quantity = HandleCeilFloorValue(guests * 0.15);
-          }
-        } else {
-          //non veg rice handelling
-
-          if (mains.length === 0 && count === 1) {
-            quantity = HandleCeilFloorValue(nonVeg * 0.3);
-          } else if (mains.length > 0 && count === 1) {
-            quantity = HandleCeilFloorValue(nonVeg * 0.2);
-          } else if (count >= 3) {
-            quantity = HandleCeilFloorValue(nonVeg * 0.1);
-          } else {
-            quantity = HandleCeilFloorValue(nonVeg * 0.15);
-          }
-        }
-        let bread = 0;
-        let count = 0;
-        let isVeg = false;
-
-        temp.map((item) => {
-          item.menu_label === "Breads" ? (bread += 1) : bread;
-          item.menu_label === "Rice" ? (count += 1) : count;
-          item.veg ? (isVeg = true) : (isVeg = false);
-        });
-        temp.map((item) => {
-          if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
-            if (bread === 1) {
-              item.quantity = Math.round((veg + nonVeg) * 3);
-            } else {
-              item.quantity = Math.round((veg + nonVeg) * 2);
-            }
-          } else if (
-            item?.menu_label === "Breads" &&
-            item.name !== "Poori - 4"
-          ) {
-            if (bread === 1) {
-              item.quantity = Math.round((veg + nonVeg) * 2);
-            } else {
-              item.quantity = Math.round((veg + nonVeg) * 1);
-            }
-          } else if (item?.menu_label === "Rice") {
-            console.log("rice", count);
-            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
-              let guests = veg > 0 ? veg : nonVeg;
-              if (count >= 2) {
-                console.log("count2");
-                item.quantity = HandleCeilFloorValue(0.15 * guests);
-              } else if (mains.length > 0 && count === 1) {
-                console.log("count1");
-
-                item.quantity = HandleCeilFloorValue(0.2 * guests);
-              } else if (mains.length === 0 && count === 1) {
-                console.log("count1");
-                item.quantity = HandleCeilFloorValue(0.3 * guests);
-              }
-            } else if (veg > 0 && nonVeg > 0) {
-              let guests = veg + nonVeg;
-              if (count >= 2) {
-                item.quantity = HandleCeilFloorValue(0.15 * guests);
-              } else if (
-                count === 1 &&
-                mains.length === 0 &&
-                starters.length >= 2
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.25 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
-                }
-              } else if (
-                count === 1 &&
-                mains.length === 0 &&
-                starters.length <= 1
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.3 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
-                }
-              } else if (
-                count >= 1 &&
-                mains.length === 0 &&
-                starters.length <= 1
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.25 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
-                }
-              } else if (
-                count >= 1 &&
-                mains.length === 0 &&
-                starters.length >= 2
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.2 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
-                }
-              } else if (count === 1 && mains.length >= 1) {
-                item.quantity = HandleCeilFloorValue(0.2 * guests);
+            } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
+              if (bread === 1) {
+                item.quantity = Math.round((veg + nonVeg) * 2);
               } else {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.15 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
+                item.quantity = Math.round((veg + nonVeg) * 1);
+              }
+            } else if (item?.menu_label === "Rice") {
+              console.log("rice", count);
+              if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+                let guests = veg > 0 ? veg : nonVeg;
+                if(mains.length>0 || starters.length>4 ){
+                  if(count===1){
+                    item.quantity = HandleCeilFloorValue(0.20 * guests);
+                  }
+                  else{
+                    item.quantity = HandleCeilFloorValue(0.15 * guests);
+                  }
+                }
+                else if(mains.length==0 || starters.length<4){
+                  if(count===1){
+                    item.quantity = HandleCeilFloorValue(0.30 * guests);
+                  }
+                  else{
+                    item.quantity = HandleCeilFloorValue(0.15 * guests);
+                  }
+                }
+               
+              } else if (veg > 0 && nonVeg > 0) {
+                let guests = veg + nonVeg;
+    
+                if(mains.length>0 || starters.length>4){
+                  if(count===1){
+                    item.quantity = HandleCeilFloorValue(0.2*guests)
+                  }
+                  else if (count>=2){
+                    item.quantity = HandleCeilFloorValue(0.15*guests)
+                  }
+    
+                }
+                else if (mains.length===0 || starters.length<4){
+                  if(count===1){
+                    item.quantity = HandleCeilFloorValue(0.3*guests)
+                  }
+                  else if (count===2){
+                    if(item.veg){
+                      item.quantity = HandleCeilFloorValue(0.30*veg)
+                    }
+                    else{
+                      item.quantity = HandleCeilFloorValue(0.20*nonVeg)
+                    }
+                  
+                    
+                  }
+                  else if(count>2){
+                    if(item.veg){
+                      item.quantity = HandleCeilFloorValue(0.15*guests)
+                    }
+                    else{
+                      item.quantity = HandleCeilFloorValue(0.20*nonVeg)
+                    }
+                  }
                 }
               }
             }
-          }
-        });
-
-        // temp.forEach((item) => {
-        //   if (count >= 3) {
-        //     if (item.menu_label === "Rice" && item.veg === true) {
-        //       item.quantity = 0.1 * veg;
-        //     }
-        //     if (item.menu_label === "Rice" && item.veg === false) {
-        //       item.quantity = 0.1 * nonVeg;
-        //     }
-        //   } else {
-        //     if (item.menu_label === "Rice" && item.veg === true) {
-        //       item.quantity = 0.15 * veg;
-        //     }
-        //     if (item.menu_label === "Rice" && item.veg === false) {
-        //       item.quantity = 0.15 * nonVeg;
-        //     }
-        //   }
-        // });
-
-        // if (count >= 2) {
-        //   quantity = 0.15 * guests;
-        //   temp.forEach((item) => {
-        //     if (item.menu_label === "Rice" && item.veg === true) {
-        //       item.quantity = 0.15 * guests;
-        //     }
-        //     if (item.menu_label === "Rice" && item.veg === false) {
-        //       item.quantity = 0.15 * nonVeg;
-        //     }
-        //   });
-        // }
-      }
+          });
       console.log("rice", count);
     }
     temp.push({
@@ -2718,7 +2782,7 @@ const CustomizeNinjaBox = () => {
             <div className={styles.whiteBg}>
               {/* MANOJ <div className={styles.packageName}>
                                 <h3>PACKAGE NAME</h3>
-                                <img src='555.png' height="150px" width="274.5px" />
+                                <img src='555.png' height="0.15px" width="274.5px" />
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
               {/* <div className={styles.selfService}>

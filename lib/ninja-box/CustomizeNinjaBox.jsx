@@ -965,7 +965,7 @@ const CustomizeNinjaBox = () => {
         }
       } else {
         quantity = HandleCeilFloorValue(
-          ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1)
+          ((veg > 0 ? veg : nonVeg) * 0.075).toFixed(1)
         );
       }
     } else {
@@ -1006,7 +1006,7 @@ const CustomizeNinjaBox = () => {
             quantity = 12;
           }
         } else {
-          quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+          quantity = HandleCeilFloorValue((nonVeg * 0.075).toFixed(1));
         }
       }
     }
@@ -1616,7 +1616,7 @@ const CustomizeNinjaBox = () => {
               item.quantity = HandleCeilFloorValue(guests * 0.1);
             } else {
               if (item.veg) {
-                item.quantity = HandleCeilFloorValue(guests * 0.25);
+                item.quantity = HandleCeilFloorValue(guests * 0.15);
               } else {
                 item.quantity = HandleCeilFloorValue(nonVeg * 0.2);
               }
