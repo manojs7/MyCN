@@ -1,27 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '/styles/BirthdayParty.module.scss';
 import Image from 'next/image';
-import { WindowSharp } from '@mui/icons-material';
-
-// const items = [
-//     { name: 'Item 1', price: 10 },
-//     { name: 'Item 2', price: 20 },
-//     { name: 'Item 3', price: 30 },
-//     { name: 'Item 4', price: 40 },
-//     { name: 'Item 5', price: 50 },
-//     { name: 'Item 6', price: 60 },
-//     { name: 'Item 7', price: 70 },
-//     { name: 'Item 8', price: 80 },
-//   ];
-
-//   function Item({ name, price }) {
-//     return (
-//       <div className="item">
-//         <h3>{name}</h3>
-//         <p>Price: {price}</p>
-//       </div>
-//     );
-//   }
 
 const Birthday_Packages = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -83,14 +62,6 @@ const Birthday_Packages = () => {
                 dessertQnty: 2
             }
         }
-        // const packageTwo = 
-        // {
-        //     name: "SILVER",
-        //     veg: true,
-        //     price: "550",
-        //     items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
-        //     quantity: ["Any 3", "Any 3", "Any 2"]
-        // }
         
 
         const selectPackageOne = () => {
@@ -149,31 +120,6 @@ const Birthday_Packages = () => {
             //   };
           };
 
-    const options = [
-        { id: 'option-1', label: 'Option 1' },
-        { id: 'option-2', label: 'Option 2' },
-        { id: 'option-3', label: 'Option 3' },
-        { id: 'option-4', label: 'Option 4' },
-        { id: 'option-5', label: 'Option 5' },
-        { id: 'option-6', label: 'Option 6' },
-    ];
-
-    const extraOptions = [
-        { id: 'option-7', label: 'Option 7' },
-        { id: 'option-8', label: 'Option 8' },
-        { id: 'option-9', label: 'Option 9' }
-    ];
-
-    const handleOptionSelect = (optionId) => {
-        if (selectedOptions.indexOf(optionId) === -1 && selectedOptions.length < 4) {
-            setSelectedOptions([...selectedOptions, optionId]);
-        } else if (selectedOptions.indexOf(optionId) !== -1) {
-            setSelectedOptions(selectedOptions.filter((id) => id !== optionId));
-        } else {
-            alert('You can only select up to 4 options');
-        }
-    };
-
     //Starter selector
     const [showDiv, setShowDiv] = useState(false);
     const ref = useRef(null);
@@ -190,28 +136,6 @@ const Birthday_Packages = () => {
         if (ref.current && !ref.current.contains(event.target)) {
             setShowDiv(false);
         }
-    };
-
-    //extra Starter selector
-    const handleCheckboxChange = (optionId) => {
-        const isOptionSelected = extraStarter.includes(optionId);
-
-        if (isOptionSelected) {
-            setExtraStarter(extraStarter.filter((id) => id !== optionId));
-        } else {
-            setExtraStarter([...extraStarter, optionId]);
-        }
-    };
-
-    //click list to check
-    const handleLiClick = (optionId) => {
-        const checkbox = document.getElementById(optionId);
-        checkbox.click();
-    };
-
-
-    const handleHover = () => {
-        setShowDiv(true);
     };
 
     //background image
@@ -257,18 +181,6 @@ const Birthday_Packages = () => {
 
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
-            {/* <div style={smallPng}>
-                <div className={styles.header}>
-                    <div className='pt-5 text-center'>
-                        <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" />
-                    </div>
-                    <h2>BIRTHDAY <span>PARTY</span></h2>
-                    <div className={styles.btmContent}>
-                        <h6>Outdoor Catering</h6>
-                        <p>VEG <span> NON-VEG</span></p>
-                    </div>
-                </div>
-            </div> */}
             <div className={styles.headerSectn}>
                 <div className={styles.logo}>
                     <Image src="/birthdayParty/birthdayPartyLogo.png" width="91px" height="74px"/>

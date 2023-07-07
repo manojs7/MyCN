@@ -945,7 +945,7 @@
     }
 }
 
-.homepageAlert{
+.homepageAlert {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -957,14 +957,15 @@
     border-radius: 26px;
     padding-top: 35px;
     box-shadow: 0px 4px 250px rgba(0, 0, 0, 0.75);
-    h1{
+
+    h1 {
         font-size: 12px;
         text-align: center;
         font-weight: 600;
         margin-bottom: 15px;
     }
 
-    .serviceImg{
+    .serviceImg {
         text-align: center;
         margin-bottom: 10px;
     }
@@ -978,7 +979,7 @@
         font-weight: 600;
         letter-spacing: 0.311px;
     }
-    
+
 }
 
 .detailsPopup {
@@ -1297,5 +1298,76 @@
             font-weight: 600;
             letter-spacing: 0.407px;
         }
+    }
+}
+
+.reminderPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 278px;
+    height: 85px;
+    border-radius: 10px;
+    background-color: #FFF;
+    filter: drop-shadow(0px 4px 250px rgba(0, 0, 0, 0.75));
+    display: flex;
+    justify-content: space-around;
+
+    .reminder {
+        margin-top: 10px;
+        width: 177px;
+        height: 64px;
+        flex-shrink: 0;
+        border-radius: 10.789px;
+        border: 0.372px solid #BE2D30;
+        background: rgba(190, 45, 48, 0.10);
+        padding-left: 15px;
+    }
+
+    h3 {
+        color: #BE2D30;
+        font-size: 10.35px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.518px;
+        text-transform: capitalize;
+        display: flex;
+        width: 140px;
+        margin-top: 5px;
+    }
+
+    h5 {
+        color: #BE2D30;
+        font-size: 8.346px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.417px;
+        width: 140px;
+        height: 29px;
+        span{
+            font-weight: 600;
+        }
+    }
+
+    button {
+        margin-top: 35px;
+        border: none;
+        width: 57px;
+        height: 17.435px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 4.684px;
+        color: #FFF;
+        text-align: center;
+        font-size: 10.098px;
+        font-weight: 500;
+        letter-spacing: 0.303px;
+        background: #BE2D30;
+        box-shadow: 0px 1.3411765098571777px 2.6823530197143555px 0px rgba(0, 0, 0, 0.25);
     }
 }

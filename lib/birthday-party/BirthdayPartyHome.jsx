@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styles from '/styles/BirthdayParty.module.scss';
 import Image from 'next/image';
 import { useAppMenu } from "$lib/menuContext";
-import { WindowSharp } from '@mui/icons-material';
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -148,7 +147,7 @@ const BirthdayPartyHome = () => {
             </div>
             <div className={styles.birthdayHomeHeader} style={smallPng}>
                 <h6>Easiest To Book Your Blockbuster<br />Birthday Party Catering!</h6>
-                <h3>Select Your City</h3>
+                <h3>Select Your Details</h3>
                 <hr />
             </div>
             <div className={styles.inputBox}>
