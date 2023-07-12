@@ -845,10 +845,9 @@ const Custom_Package = () => {
             <div>
               <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "150px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
                 <option value="all">By Price</option>
-                <option value="2000-4000">₹2000 - ₹4000</option>
-                <option value="4001-5000">₹4001 - ₹5000</option>
-                <option value="5001-6000">₹5001 - ₹6000</option>
-                <option value="6001+">₹6000 +</option>
+                <option value="2000-3500">200 - 350</option>
+                <option value="3501-5000">350 - 500</option>
+                <option value="5001+">500 +</option>
               </select>
             </div>
           </div>
