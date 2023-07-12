@@ -651,9 +651,9 @@ const NinjaBoxCustomise = () => {
         if (data.Qtype === "pcs") {
           data.quantity = (veg > 0 ? veg : nonVeg) * 1;
         } else if (data.name === highestPrice.name) {
-          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1);
+          data.quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1));
         } else {
-          data.quantity = ((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1);
+          data.quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1));
         }
       } else {
         if (data.veg) {
@@ -3690,7 +3690,7 @@ const NinjaBoxCustomise = () => {
                     {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link> */}
-                    <button onClick={placeOrderBtn}>Place Order</button>
+                    {/* <button onClick={placeOrderBtn}>Place Order</button> */}
                     <button style={{backgroundColor: "green", color: "white"}} onClick={()=>window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
                     
 

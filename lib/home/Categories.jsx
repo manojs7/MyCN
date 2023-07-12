@@ -19,8 +19,8 @@ const Categories = () => {
           ))}
         {categories_2.map((item, index) => (
             <div className="categories-item" key={index}>
-              <a href="/checkprice" target="_blank"><img async src={item.image} alt="" className="img-fluid " /></a>
-              <Link href="/checkprice"><p>{item.title}</p></Link>
+              <a href={item.link} target="_blank"><img async src={item.image} alt="" className="img-fluid " /></a>
+              <Link href={item.link}><p>{item.title}</p></Link>
             </div>
           ))}
 

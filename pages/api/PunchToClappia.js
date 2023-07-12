@@ -35,6 +35,20 @@ export default async function handler(req, res) {
       city="BLR";
       city_ops="BLR||cnopsbanglore@gmail.com";
     }
+    else if (orderData.city==="delhi"){
+      city="DEL";
+      city_ops="DEL||cnopsdelhi@gmail.com";
+    }
+    else if (orderData.city==="mumbai"){
+      city="MUM";
+      city_ops="MUM||cnopsmumbai@gmail.com";
+    }
+    else{
+      city="BLR";
+      city_ops="BLR||cnopsbanglore@gmail.com";
+    }
+   
+
 
     var data={
               "ninja": "Anup",
@@ -61,26 +75,26 @@ export default async function handler(req, res) {
               "test_desse":dessert
   
             }
-            let myposts=await db.collection("saveCompletedOrderDetails").findOneAndUpdate({_id:orderData._id}, {$set:{OrderStatus:"Punched"}} , { upsert: true });
-    // await fetch("https://api-public-v3.clappia.com/submissions/create", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     "x-api-key":"cat51996896100f61ff96467198b93c81ff5e3ba0",
-    //   },
-    //   body: JSON.stringify(
-    //     {
-    //       "appId": "CNB468071",
-    //       "workplaceId": "CAT519968",
-    //       "requestingUserEmailAddress": "takmanoj369@gmail.com",
-    //       "data": data,
-    //     }
-    //   ),
-    // }).then(function (res) {
-    //   db.collection("saveCompletedOrderDetails").updateOne({_id:orderData._id}, {OrderStatus:"Punched"});
-    //   res.json(res);
-    // })
+    let myposts=await db.collection("saveCompletedOrderDetails").findOneAndUpdate({_id:orderData._id}, {$set:{OrderStatus:"Punched"}} , { upsert: true });
+    await fetch("https://api-public-v3.clappia.com/submissions/create", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "x-api-key":"cat51996896100f61ff96467198b93c81ff5e3ba0",
+      },
+      body: JSON.stringify(
+        {
+          "appId": "CNB468071",
+          "workplaceId": "CAT519968",
+          "requestingUserEmailAddress": "takmanoj369@gmail.com",
+          "data": data,
+        }
+      ),
+    }).then(function (res) {
+      db.collection("saveCompletedOrderDetails").updateOne({_id:orderData._id}, {OrderStatus:"Punched"});
+      res.json(res);
+    })
     
     res.json(myposts)
   } else {

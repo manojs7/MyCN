@@ -8,6 +8,7 @@ import {ThemeProvider} from "@mui/material";
 // import "../../styles/style.css";
 import theme from "../../src/theme/theme";
 import CreateForm from "src/components/createForm";
+import CaptainForm from "src/components/captainFormStep";
 
 export default function Index() {
   return (
@@ -19,6 +20,9 @@ export default function Index() {
       <Grid item xs={12} lg={12}>
         <CreateForm />
       </Grid>
+      {/* <Grid item xs={12} lg={12}>
+        <CaptainForm />
+      </Grid> */}
 
      
      

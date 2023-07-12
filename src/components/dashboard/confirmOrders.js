@@ -23,6 +23,7 @@ const ConfirmOrder = () => {
   const pageSize = 5;
   const paginatedPosts = paginate(products, currentPage, pageSize);
 
+  
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
@@ -193,7 +194,7 @@ const ConfirmOrder = () => {
                           }}
                         >
                           {product.time}{" "}
-                          {format(new Date(product.date), "dd/MM/yyyy")}
+                          {/* {format(new Date(product.date), "dd/MM/yyyy")} */}
                         </Typography>
                         <Typography
                           color="textSecondary"
@@ -203,7 +204,7 @@ const ConfirmOrder = () => {
                         >
                           <select style={{ maxWidth: "120px" }}>
                             <option value="">Selected Menu</option>
-                            {product.appetizer.map((item, index) => (
+                            {/* {product.appetizer.map((item, index) => (
                               <option value={item.name}>
                                 {item.name} [
                                 <b>
@@ -211,9 +212,9 @@ const ConfirmOrder = () => {
                                 </b>
                                 ]
                               </option>
-                            ))}
+                            ))} */}
 
-                            {product.mainCourse.map((item, index) => (
+                            {/* {product.mainCourse.map((item, index) => (
                               <option value={item.name}>
                                 {item.name} [
                                 <b>
@@ -239,7 +240,7 @@ const ConfirmOrder = () => {
                                 </b>
                                 ]
                               </option>
-                            ))}
+                            ))} */}
                           </select>
                         </Typography>
                       </Box>
@@ -250,7 +251,7 @@ const ConfirmOrder = () => {
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="h6">
-                      {format(new Date(product.createdAt), "p, dd/MM/yyyy")}
+                      {/* {format(new Date(product.createdAt), "p, dd/MM/yyyy")} */}
                     </Typography>
                   </TableCell>
                   <TableCell>

@@ -1,92 +1,204 @@
-import {
-  Grid,
-  Stack,
-  TextField,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
-  FormLabel,
-  FormControl,
-  Button,
-} from "@mui/material";
-import BaseCard from "../../src/components/baseCard/BaseCard";
+import React, { useState } from 'react';
+import styles from '../../styles/Admin/captainForm.module.scss'; // Make sure to update the path based on your project structure
+import BaseCard from './baseCard/BaseCard';
+import { Slack } from 'feather-icons-react/build/IconComponents';
+import { Select } from '@mui/base';
 
 const CreateForm = () => {
-  return (
-        <BaseCard title="Form Layout">
-          <Stack spacing={3}>
-            <TextField
-              id="name-basic"
-              label="Name"
-              variant="outlined"
-              defaultValue="Nirav Joshi"
-            />
-            <TextField id="email-basic" label="Email" variant="outlined" />
-            <TextField
-              id="pass-basic"
-              label="Password"
-              type="password"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-multiline-static"
-              label="Text Area"
-              multiline
-              rows={4}
-              defaultValue="Default Value"
-            />
-            <TextField
-              error
-              id="er-basic"
-              label="Error"
-              defaultValue="ad1avi"
-              variant="outlined"
-            />
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label="Terms & Condition"
-              />
-              <FormControlLabel
-                disabled
-                control={<Checkbox />}
-                label="Disabled"
-              />
-            </FormGroup>
-            <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
-                name="radio-buttons-group"
-              >
-                <FormControlLabel
-                  value="female"
-                  control={<Radio />}
-                  label="Female"
-                />
-                <FormControlLabel
-                  value="male"
-                  control={<Radio />}
-                  label="Male"
-                />
-                <FormControlLabel
-                  value="other"
-                  control={<Radio />}
-                  label="Other"
-                />
-              </RadioGroup>
-            </FormControl>
-          </Stack>
-          <br />
-          <Button variant="contained" mt={2}>
-            Submit
-          </Button>
-        </BaseCard>
+  const [formData, setFormData] = useState({
+    ninja:"",
+    dateOfEvent: '',
+    dispatchTime: '',
+    kitchenName: '',
+    orderID: '',
+    clientName: '',
+    productName: '',
+    menuSelected: '',
+    specialInstructions: '',
+    deliveryAgent: '',
+    deliveryAgentContact: '',
+    guestCount: '',
+    modifiedSection: '',
+    city: '',
+    kitchenCode: '',
+  });
 
-      
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validateForm(formData);
+    if (Object.keys(validationErrors).length === 0) {
+      // Your form submission logic here
+      console.log('Form submitted:', formData);
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
+  const validateForm = (data) => {
+    const errors = {};
+
+    // Add your validation rules here
+    if (!data.dateOfEvent) {
+      errors.dateOfEvent = 'Date of Event is required.';
+    }
+
+    // Add more validation rules for other fields
+
+    return errors;
+  };
+
+  return (
+    <BaseCard>  
+    <form className={styles['form-group']} onSubmit={handleSubmit}>
+    <div className='container'>
+      <div className='row'>
+      <div className="col-md-4">
+        <label>Ninja:</label>
+        <Select
+        className='form-control'
+          name="ninja"
+          value={formData.ninja}
+          onChange={handleChange}
+        >
+          <option value={''}>Select Ninja</option>
+          <option value={'Anup'}>Anup</option>
+        </Select>
+
+      </div>
+
+      <div className="col-md-4">
+        <label>Date of Event:</label>
+        <input
+        className='form-control'
+          type="date"
+          name="dateOfEvent"
+          value={formData.dateOfEvent}
+          onChange={handleChange}
+        />
+        {errors.dateOfEvent && <span className={styles.error}>{errors.dateOfEvent}</span>}
+      </div>
+
+      <div className="col-md-4">
+        <label>Dispatch Time (AM/PM format):</label>
+        <input
+        className='form-control'
+          type="time"
+          name="dispatchTime"
+          value={formData.dispatchTime}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+      <div className="col-md-4">
+        <label>Kitchen Name:</label>
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+        {/* Add validation error span if needed */}
+      </div>
+
+      {/* Add other input fields here */}
+
+      </div>
+      <button type="submit" className='btn btn-primary col-md-4' maxLength={10} >Submit</button>
+
+    </div>
+    </form>
+    
+    </BaseCard>
   );
 };
 

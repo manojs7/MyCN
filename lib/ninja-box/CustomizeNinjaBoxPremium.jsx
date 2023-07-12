@@ -26,7 +26,7 @@ import Link from "next/link";
 // import { Bolt } from "@mui/icons-material";
 // import { Launch } from "@mui/icons-material";
 
-const CustomizeNinjaBox = () => {
+const CustomizeNinjaBoxPremium = () => {
   const {
     menu,
     cuisines,
@@ -809,7 +809,8 @@ const CustomizeNinjaBox = () => {
         } else {
           item.quantity = Math.round((veg + nonVeg) * 1);
         }
-      } else if (item?.menu_label === "Rice") {
+      }
+      else if (item?.menu_label === "Rice") {
         console.log("rice", count);
         if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
           let guests = veg > 0 ? veg : nonVeg;
@@ -4172,4 +4173,4 @@ const CustomizeNinjaBox = () => {
   );
 };
 
-export default CustomizeNinjaBox;
+export default CustomizeNinjaBoxPremium;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FeatherIcon from "feather-icons-react";
 import Image from "next/image";
 import userimg from "../../../public/assets/images/users/user2.jpg";
@@ -64,7 +64,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Ninja
+              Ninja Admin
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>

@@ -195,6 +195,7 @@ const Custom_Package = () => {
     if (showNonveg) {
       setNumber2(0)
     } else {
+      setNumber(5)
       setNumber2(10)
     }
   };
@@ -725,7 +726,7 @@ const Custom_Package = () => {
                 <div className="packagesName">
                   <h4>{item.details}</h4>
                   <h3>₹ {item.price}/-<span> Onwards</span></h3>
-                  <p>(Min. Order 10 Guests)</p>
+                  <p>(Approx Price for 15 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
                   <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
@@ -742,7 +743,7 @@ const Custom_Package = () => {
                 <div className="packagesName">
                   <h4>{item.details}</h4>
                   <h3>₹ {item.price}/-<span> Onwards</span></h3>
-                  <p>(Min. Order 10 Guests)</p>
+                  <p>(Approx Price for 15 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
                   <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
