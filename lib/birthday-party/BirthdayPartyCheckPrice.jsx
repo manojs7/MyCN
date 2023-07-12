@@ -26,32 +26,32 @@ const BirthdayPartyCheckPrice = () => {
 
     useEffect(() => {
         if (liveCounterItems.length > 0) {
-          if (totalGuestCount <= 100) {
-            setLiveCounterPrice(5000);
-          } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
-            setLiveCounterPrice(7500);
-          } else {
-            setLiveCounterPrice(10000);
-          }
+            if (totalGuestCount <= 100) {
+                setLiveCounterPrice(5000);
+            } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
+                setLiveCounterPrice(7500);
+            } else {
+                setLiveCounterPrice(10000);
+            }
         } else {
             setLiveCounterPrice(0);
         }
-      }, [liveCounterItems, totalGuestCount]);
+    }, [liveCounterItems, totalGuestCount]);
 
-      useEffect(() => {
+    useEffect(() => {
         if (funEatablesItems.length > 0) {
-          if (totalGuestCount <= 100) {
-            setFunEatablesPrice(5000);
-          } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
-            setFunEatablesPrice(7500);
-          } else {
-            setFunEatablesPrice(10000);
-          }
+            if (totalGuestCount <= 100) {
+                setFunEatablesPrice(5000);
+            } else if (totalGuestCount >= 101 && totalGuestCount <= 150) {
+                setFunEatablesPrice(7500);
+            } else {
+                setFunEatablesPrice(10000);
+            }
         } else {
             setFunEatablesPrice(0);
         }
-      }, [funEatablesItems, totalGuestCount]);
-    
+    }, [funEatablesItems, totalGuestCount]);
+
 
     //background image
     const backgroundStyle = {
@@ -74,13 +74,45 @@ const BirthdayPartyCheckPrice = () => {
         backgroundSize: 'cover'
     };
 
+    //Remove Live Counter Item
+    const removeLiveCounter = (index) => {
+        // Remove the item from the liveCounterItems array
+        liveCounterItems.splice(index, 1);
+
+        // Update the state or re-render the component with the modified liveCounterItems array
+        // For example, if you are using React state:
+        setLiveCounterItems([...liveCounterItems]);
+    };
+
+    //Remove Mains Item
+    const removeMains = (index) => {
+        // Remove the item from the liveCounterItems array
+        mainCourseItems.splice(index, 1);
+
+        // Update the state or re-render the component with the modified liveCounterItems array
+        // For example, if you are using React state:
+        setMainCourseItems([...mainCourseItems]);
+    };
+
+    //Remove Fun Eatables Item
+    const removeFunEatable = (index) => {
+        // Remove the item from the liveCounterItems array
+        funEatablesItems.splice(index, 1);
+
+        // Update the state or re-render the component with the modified liveCounterItems array
+        // For example, if you are using React state:
+        setFunEatablesItems([...funEatablesItems]);
+    };
+
     //PRICING
-    // Calculate the total price
-    const mainCoursePrice = mainCourseItems.reduce((sum, item) => sum + item.price, 0)* totalGuestCount;
+    // Calculate the total add ons price
+    const mainCoursePrice = mainCourseItems.reduce((sum, item) => sum + item.price, 0) * totalGuestCount;
 
-    const lcprc = (liveCounterItems.length + funEatablesItems.length) * liveCounterPrice ;
+    const lcprc = liveCounterItems.length * liveCounterPrice;
+    const funeatableprc = funEatablesItems.length * funEatablePrice;
+    const totallf = lcprc + funeatableprc;
 
-    const totalAddOnsPrice = mainCoursePrice + lcprc ;
+    const totalAddOnsPrice = mainCoursePrice + totallf;
     const addonsprice = totalAddOnsPrice.toLocaleString();
     console.log(liveCounterPrice);
 
@@ -106,10 +138,10 @@ const BirthdayPartyCheckPrice = () => {
     // Calculate the price for veg snacks based on the number of veg people
     console.log(nvCount);
     let vegSnackPrice = 0;
-    if((vegCount == "" || vegCount == 0) && (nvCount != "" || nvCount != 0)){
+    if ((vegCount == "" || vegCount == 0) && (nvCount != "" || nvCount != 0)) {
         vegCount = nvCount;
         vegSnackPrice = (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount;
-    }else{
+    } else {
         vegSnackPrice = (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount;
     }
     //const vegSnackPrice = ((vegCount !== "" && vegCount !== 0) ? (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount : checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * nvCount;
@@ -267,14 +299,20 @@ const BirthdayPartyCheckPrice = () => {
                 <div className={styles.addonsName}>
                     <h4>{item.name}</h4>
                 </div>
+                <div className="remove" onClick={() => removeLiveCounter(index)}>
+                    <Image src="/diy images/trash-alt.png" width="11px" height="11px" />
+                </div>
             </div>))}
             {mainCourseItems.map((item, index) => (<div key={index} className={styles.addonsSelectedList}>
                 <div>
                     {item.veg === true ? <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" /> :
-                        <Image src="/birthdayParty/vegLogo.png" width="11.852px" height="11.852px" />}
+                        <Image src="/birthdayParty/nvlogo.png" width="11.852px" height="11.852px" />}
                 </div>
                 <div className={styles.addonsName}>
                     <h4>{item.name}</h4>
+                </div>
+                <div className="remove" onClick={() => removeMains(index)}>
+                    <Image src="/diy images/trash-alt.png" width="11px" height="11px" />
                 </div>
             </div>))}
             {funEatablesItems.map((item, index) => (<div key={index} className={styles.addonsSelectedList}>
@@ -283,6 +321,9 @@ const BirthdayPartyCheckPrice = () => {
                 </div>
                 <div className={styles.addonsName}>
                     <h4>{item.name}</h4>
+                </div>
+                <div className="remove" onClick={() => removeFunEatable(index)}>
+                    <Image src="/diy images/trash-alt.png" width="11px" height="11px" />
                 </div>
             </div>))}
             <div className="mt-4">
@@ -318,8 +359,8 @@ const BirthdayPartyCheckPrice = () => {
                 <h3>₹ {formattedGrandTotal}</h3>
             </div>
             <div className={styles.orderbuttonsectn}>
-                <div className={styles.bookinghelpbtn} style={{margin: "auto"}}>
-                <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20BirthdayParty"><button>Get Booking Help</button></Link>
+                <div className={styles.bookinghelpbtn} style={{ margin: "auto" }}>
+                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20BirthdayParty"><button>Get Booking Help</button></Link>
                 </div>
                 {/* <div className={styles.placeorderbtn}>
                     <button>Place Order</button>

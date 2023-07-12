@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styles from '/styles/BirthdayParty.module.scss';
 import Image from 'next/image';
 import { useAppMenu } from "$lib/menuContext";
-import { WindowSharp } from '@mui/icons-material';
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";

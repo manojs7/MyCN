@@ -33,17 +33,16 @@ const OurServices = () => {
                     </div>
                     <div className="image">
                       <Image
-                        src="/home/ourServices/osf1.webp"
-                        width={230} height={210}
+                        src="/home/ourServices/ninjabox2.png"
+                        width={240} height={160}
                         alt=""
                         className="img-fluid hoverZoom"
                       />
                     </div>
                     <div className="content">
                       <p>
-                        {" "}
-                        Door Step Delivery in a Convenient{" "}
-                        <span>Ready-to-Serve</span> box
+                        Bulk Food Delivery in<br/>Convenient
+                        <span> Table-Display</span> box
                       </p>
                     </div>
                   </div>
@@ -374,13 +373,12 @@ const OurServices = () => {
                       Box
                     </div>
                     <div className="image1">
-                      <Image src="/home/ourServices/osf1.webp" width={166.9} height={129.11} alt="" className="hoverZoom" />
+                      <Image src="/home/ourServices/ninjabox2.png" width={166.9} height={129.11} alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
-                      <p>
-                        {" "}
-                        Door Step Delivery in a <br /> Convenient{" "}
-                        <span>Ready-to-Serve</span> box
+                    <p>
+                        Bulk Food Delivery in<br/>Convenient
+                        <span> Table-Display</span> box
                       </p>
                     </div>
                   </div>

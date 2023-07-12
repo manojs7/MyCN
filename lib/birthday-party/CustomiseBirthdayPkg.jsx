@@ -288,7 +288,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 2,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/French+Fries.jpg',
             name: 'French Fries',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
@@ -297,7 +297,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 3,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Honey+Chilli+Baby+Potato.jpg',
             name: 'Honey Chilly Potato',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
@@ -315,7 +315,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 5,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Veg+Manchurian+Dry.jpg',
             name: 'Veg Ball Manchurian',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
@@ -324,7 +324,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 6,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Crispy+Corn.jpg',
             name: 'Crispy Fried Corn',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
@@ -364,8 +364,8 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 2,
-            image: '/diy images/starter/image 23.png',
-            name: 'Pv Bhaji / Vada Pav',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Heavy+Snacks/Pav+Bhaji.jpg',
+            name: 'Pav Bhaji / Vada Pav',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -373,7 +373,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 3,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Noodles/Veg-Hakka-Noodles.jpg',
             name: 'Noodles & Manchurian',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
@@ -409,7 +409,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 7,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Pasta/Pasta+Alfredo.jpg',
             name: 'Pasta-White/Tomato Sauce',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
@@ -427,7 +427,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 9,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Rice/Veg+Fried+Rice.jpg',
             name: 'Fried Rice',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
@@ -440,7 +440,7 @@ const CustomiseBirthdayPkg = () => {
     const nonVegSnackDataList = [
         {
             id: 1,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Chicken+Tikka+_+Drumstick+Platter.jpg',
             name: 'Chicken Tikka',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
@@ -458,7 +458,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 3,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Mains-Gravy/Chicken+manchurian+Gravy.jpg',
             name: 'Chicken Manchurian',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
@@ -494,7 +494,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 7,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Kalmi+Chicken+Tikka.jpg',
             name: 'Chicken Tikka',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
@@ -552,7 +552,7 @@ const CustomiseBirthdayPkg = () => {
         },
         {
             id: 5,
-            image: '/diy images/starter/image 23.png',
+            image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Pasta/Pasta+Alfredo-+Chicken.jpg',
             name: 'Chicken White Sauce Pasta',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
@@ -593,7 +593,7 @@ const CustomiseBirthdayPkg = () => {
         {
             id: 1,
             image: '/diy images/starter/image 23.png',
-            name: 'Dessert 1',
+            name: 'Angoori Gulab Jamun',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -602,7 +602,7 @@ const CustomiseBirthdayPkg = () => {
         {
             id: 2,
             image: '/diy images/starter/image 23.png',
-            name: 'Dessert 2',
+            name: 'Rice Kheer',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -611,7 +611,7 @@ const CustomiseBirthdayPkg = () => {
         {
             id: 3,
             image: '/diy images/starter/image 23.png',
-            name: 'Dessert 3',
+            name: 'Fruit Custard',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -620,7 +620,7 @@ const CustomiseBirthdayPkg = () => {
         {
             id: 4,
             image: '/diy images/starter/image 23.png',
-            name: 'Dessert 4',
+            name: 'Phirni',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -629,7 +629,16 @@ const CustomiseBirthdayPkg = () => {
         {
             id: 5,
             image: '/diy images/starter/image 23.png',
-            name: 'Dessert 5',
+            name: 'Semiya Payasam',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 6,
+            image: '/diy images/starter/image 23.png',
+            name: 'Sheer Korma',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -710,16 +719,15 @@ const CustomiseBirthdayPkg = () => {
     //     }
     // };
 
+    const [reminder, setReminder] = useState(false);
+    const [reminderName, setReminderName] = useState("");
+
     const handleCheckboxChange = (e, item) => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues.length === vegSnackQnty) {
-                Swal.fire({
-                    title: "Reminder",
-                    text: "You have reached the maximum number of selections for Veg Snacks.",
-                    icon: "warning",
-                    confirmButtonText: "OK",
-                });
+                setReminder(true);
+                setReminderName("Veg Snack")
                 return; // Exit early if maximum selections reached
             }
             value.checked = 'checked';
@@ -734,12 +742,8 @@ const CustomiseBirthdayPkg = () => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues2.length === vegHeavySnackQnty) {
-                Swal.fire({
-                    title: "Reminder",
-                    text: "You have reached the maximum number of selections for Veg Heavy Snacks.",
-                    icon: "warning",
-                    confirmButtonText: "OK",
-                });
+                setReminder(true);
+                setReminderName("Veg Heavy Snack")
                 return;
             }
             value.checked = 'checked';
@@ -754,12 +758,8 @@ const CustomiseBirthdayPkg = () => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues3.length === nvegSnackQnty) {
-                Swal.fire({
-                    title: "Reminder",
-                    text: "You have reached the maximum number of selections for Non-Veg Snacks.",
-                    icon: "warning",
-                    confirmButtonText: "OK",
-                });
+                setReminder(true);
+                setReminderName("Non-Veg Snack")
                 return;
             }
             value.checked = 'checked';
@@ -783,12 +783,8 @@ const CustomiseBirthdayPkg = () => {
             //     setAlertShown4(true);
             // }
             if (checkedValues4.length === nonVegHeavySnackQnty) {
-                Swal.fire({
-                    title: "Reminder",
-                    text: "You have reached the maximum number of selections for Non-Veg Heavy Snacks.",
-                    icon: "warning",
-                    confirmButtonText: "OK",
-                });
+                setReminder(true);
+                setReminderName("Non-Veg Heavy Snack")
                 return;
             }
             value.checked = 'checked';
@@ -803,12 +799,8 @@ const CustomiseBirthdayPkg = () => {
         const value = item;
         if (e.target.checked) {
             if (checkedValues5.length === dessertQnty) {
-                Swal.fire({
-                    title: "Reminder",
-                    text: "You have reached the maximum number of selections for Dessert.",
-                    icon: "warning",
-                    confirmButtonText: "OK",
-                });
+                setReminder(true);
+                setReminderName("Dessert")
                 return;
             }
             value.checked = 'checked';
@@ -818,6 +810,11 @@ const CustomiseBirthdayPkg = () => {
             setCheckedValues5(checkedValues5.filter((v) => v.id !== value.id));
         }
     };
+
+    //Reminder
+    const closeReminder = ()=> {
+        setReminder(false);
+    }
 
     //SAVE THE ALL SNACKS DATA
     const addAlldata = () => {
@@ -1293,7 +1290,7 @@ const CustomiseBirthdayPkg = () => {
                                                     {item.veg === true ? (
                                                         <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
                                                     ) : (
-                                                        <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
+                                                        <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
                                                     )}
                                                     <p onClick={() => document.getElementById(item.id).click()}>
                                                         {item.name}
@@ -1419,6 +1416,15 @@ const CustomiseBirthdayPkg = () => {
                     <button>On <span>Next</span> Page</button>
                 </div>
             </div>
+            { reminder && (<div className={styles.reminderPopup}>
+                <div className={styles.reminder}>
+                    <h3>Reminder</h3>
+                    <h5>You Have Reached Maximum Number Of Selections For<br/><span>{reminderName}</span></h5>
+                </div>
+                <div>
+                    <button onClick={closeReminder}>Got It!</button>
+                </div>                 
+            </div>)}
         </div >
     )
 }
