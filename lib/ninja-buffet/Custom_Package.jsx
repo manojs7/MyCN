@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
 import Router from "next/router";
 import BookThisPackageModal from "./BookThisPackageModal";
 import { Carousel } from "react-bootstrap";
+import { useAppMenu } from "$lib/menuContext";
+import styles from "/styles/Custom_Package.module.scss";
+import Image from "next/image";
+import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faIndianRupeeSign, faCircleInfo, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 
 const Custom_Package = () => {
   const images = [
@@ -22,6 +26,13 @@ const Custom_Package = () => {
 
   const [indexPhoto, setIndexPhoto] = useState(null);
 
+  const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
+  const [city, setCity] = useState("");
+  const [occasion, setOccasion] = useState("");
+  const [itemSelected, setItemSelected] = useState()
+  const [selectedDate, setSelectedDate] = useState("")
+  const [showUrgentLink, setShowUrgentLink] = useState(false);
+
   // const handlePhotoChange = (index) => {
   //   setPhoto(images[index]);
   //   setIndexPhoto(index);
@@ -37,6 +48,188 @@ const Custom_Package = () => {
   //   // clearTimeout(myTimeout);
   // }, [indexPhoto])
 
+  //select date logic
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const generateDateOptions = () => {
+    const options = [];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const twoDaysFromNow = new Date();
+    twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+    for (
+      let date = twoDaysFromNow;
+      date.getFullYear() === currentYear;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const optionValue = date.toISOString().slice(0, 10);
+      const optionLabel = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      options.push(
+        <option key={optionValue} value={optionValue}>
+          {optionLabel}
+        </option>
+      );
+    }
+
+    return options;
+  };
+
+  function hoverLink() {
+    setShowUrgentLink(prevState => !prevState);
+  }
+
+  //SHOW/HIDE POPUP
+  const [showDiv, setShowDiv] = useState(false);
+
+  const handleButtonClick = (item) => {
+    setItemSelected(item)
+    if (!city) {
+      document.getElementById("cityId").focus();
+      Swal.fire({
+        text: "Please select your City",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else if (!occasion) {
+      document.getElementById("occasionId").focus();
+      Swal.fire({
+        text: "Please select your occasion",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else
+      setShowDiv(!showDiv);
+  };
+  const closePopup = () => {
+    setShowDiv(!showDiv);
+  };
+
+  //VEG - GUEST COUNT
+  const [number, setNumber] = useState(10);
+
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    if (value !== "" && /^\d+$/.test(value)) {
+      setNumber(parseInt(value));
+    } else {
+      setNumber(0);
+    }
+  };
+
+  const handleInputClick = () => {
+    setNumber("");
+  };
+
+  const handleIncreaseClick = () => {
+    setNumber(number + 1);
+  };
+
+  const handleDecreaseClick = () => {
+    if (number > 0) {
+      setNumber(number - 1);
+    }
+  };
+
+  const [number2, setNumber2] = useState(0);
+
+  const handleInputChange2 = (event) => {
+    const value2 = event.target.value;
+    if (value2 !== "" && /^\d+$/.test(value2)) {
+      setNumber2(parseInt(value2));
+    } else {
+      setNumber2(0);
+    }
+  };
+
+  const handleInputClick2 = () => {
+    setNumber2("");
+  };
+
+  const handleIncreaseClick2 = () => {
+    setNumber2(number2 + 1);
+  };
+
+  const handleDecreaseClick2 = () => {
+    if (number2 > 0) {
+      setNumber2(number2 - 1);
+    }
+  };
+
+  //PACKAGES
+  const packages = {
+    veg: [
+      { id: 1, name: 'Punjabi NinjaBuffet', prc: 8799, price: '8,799', img: '/ninja-buffy/packages/BuffetP1.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Veggie Fingers", "Cajun Spice Potato", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta", "Chole Masala", "Dal Makhni", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal halwa", "Raita"] },
+      { id: 2, name: 'NinjaBuffet Indian', prc: 7999, price: '7,999', img: '/ninja-buffy/packages/BuffetP2.png', details: "2 Starters + 4 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Malai Paneer Tikka", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Kadhai Veg", "Yellow Dal Fry", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
+      { id: 3, name: "B'Day NinjaBuffet", prc: 7199, price: '7,199', img: '/ninja-buffy/packages/BuffetP3.png', details: "1 Starters + 4 Mains + 1 Dessert", items: ["Cheezy Triangles", "Malai Paneer Tikka", "Veg Manchurian", "Honey Chilly Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
+      { id: 4, name: 'Fusion NinjaBuffet', prc: 3999, price: '3,999', img: '/ninja-buffy/packages/BuffetP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Crispy corn", "Cajun Spiced Potato", "Veg Fried Rice", "Veg Hakka Noodles", "Paneer Manchurian Gravy", "Fruit Custard"] },
+      { id: 5, name: 'Asian NinjaBuffet', prc: 3599, price: '3,599', img: '/ninja-buffy/packages/BuffetP5.png', details: "5 Starters + 1 Mains", items: ["Malai Paneer tikka", "Tandoori malai chaap", "Churasco Pineapple", "Veggie Fingers", "Crispy Corn", "Mushroom Munchurian Dry", "Veg Dum Biryani", "Raita", "Salad"] },
+      { id: 6, name: 'Cocktail Party', prc: 3599, price: '3,599', img: '/ninja-buffy/packages/BuffetP6.png', details: "6 Starters + 2 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] }
+    ],
+    nonVeg: [
+      { id: 1, name: 'House Party 1', prc: 6999, price: '6,999', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
+      { id: 2, name: 'House Party 2', prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
+      { id: 3, name: "House Party 3", prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
+      { id: 4, name: 'House Party 4', prc: 6599, price: '6,599', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
+      { id: 5, name: 'Cocktail Party 1', prc: 6599, price: '6,599', img: '/ninja-box/packages/NBP5.png', details: "6 Starters + 2 Mains", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
+      { id: 6, name: 'Cocktail Party 2', prc: 5599, price: '5,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] }
+    ]
+  };
+
+  //price filter
+  //200-350, 350-500, 500+
+
+  const [priceFilter, setPriceFilter] = useState('all');
+
+  const handlePriceFilterChange = (e) => {
+    setPriceFilter(e.target.value);
+  };
+
+  const filteredItems = packages.veg.filter((item) => {
+    if (priceFilter === 'all') {
+      return true;
+    } else if (priceFilter === '2000-3500') {
+      return item.prc >= 2000 && item.prc <= 3500;
+    } else if (priceFilter === '3501-5000') {
+      return item.prc >= 3501 && item.prc <= 5000;
+    } else {
+      return item.prc >= 5001;
+    }
+  })
+
+  const nonVegFilterdeItems = packages.nonVeg.filter((item) => {
+    if (priceFilter === 'all') {
+      return true;
+    } else if (priceFilter === '2000-4000') {
+      return item.prc >= 2000 && item.prc <= 4000;
+    } else if (priceFilter === '4001-5000') {
+      return item.prc >= 4001 && item.prc <= 5000;
+    } else if (priceFilter === '5001-6000') {
+      return item.prc >= 5001 && item.prc <= 6000;
+    } else {
+      return item.prc >= 6001;
+    }
+  })
+
+
+  //Separate Row for veg packages
+  const firstRow = filteredItems.slice(0, 3);
+  const secondRow = filteredItems.slice(3, 6);
+  const thirdRow = filteredItems.slice(6);
+  //Separate Row for Non-veg packages
+  const nvfirstRow = nonVegFilterdeItems.slice(0, 3);
+  const nvsecondRow = nonVegFilterdeItems.slice(3, 6);
+  const nvthirdRow = nonVegFilterdeItems.slice(6);
+
+
+
   const handleClose = (value) => {
     if (value === 'close') {
       setShow(false)
@@ -48,6 +241,19 @@ const Custom_Package = () => {
 
   };
   const handleShow = () => setShow(true);
+
+  //SHOW NON-VEG PACKAGES
+  const [showNonveg, setShowNonVeg] = useState(false);
+  const [startTime, setStartTime] = useState("")
+
+  const checkForNonveg = () => {
+    setShowNonVeg(!showNonveg);
+    // if (showNonveg) {
+    //   setNumber2(0)
+    // } else {
+    //   setNumber2(10)
+    // }
+  };
 
   //veg non-veg check
   const handleChange = (event) => {
@@ -85,6 +291,51 @@ const Custom_Package = () => {
   //   );
   // }
 
+  const handleCity = (city) => {
+    setCity(city);
+  }
+  const handleOccasion = (occasion) => {
+    setOccasion(occasion);
+  };
+
+  //Submit form
+  const navigateToOverview = () => {
+    const totalCount = number + number2;
+
+    if (!selectedDate) {
+      Swal.fire({
+        text: "please select date",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    }
+    else if (!startTime) {
+      Swal.fire({
+        text: "please select Time",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    }
+    else if (totalCount < 10) {
+      Swal.fire({
+        text: "Guest count should be at least 10",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else {
+      let mealType;
+      if (showNonveg) {
+        mealType = 'nonVeg'
+      }
+      else {
+        mealType = 'veg'
+      }
+      let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType, startTime: startTime }
+      sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
+      window.open('/customiseNinjaBuffet', '_blank')
+    }
+  }
+
   useEffect(() => {
     setIsSmall(window.innerWidth <= 939);
     window.addEventListener("resize", () =>
@@ -94,12 +345,154 @@ const Custom_Package = () => {
 
   return (
     <div>
+      {showDiv && (<div className={styles.popupguestcount}>
+        <h3>Additional <span>Info</span></h3>
+        <div className={styles.dateContainer}>
+          <div>
+            <img src="miniNinjaLeft.png" width="24.03" height="43.92" />
+          </div>
+          <div>
+            <h4>Date <span id={styles.urgentL} onMouseEnter={hoverLink}
+              onClick={hoverLink}><FontAwesomeIcon icon={faCircleInfo} size="sm" style={{ color: "#1245ba" }} /></span></h4>
+            {/* <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
+              value={selectedDate}
+              min={minDateISO} /></div> */}
+            <div className={styles.dateOptions}>
+              <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
+                <option value="">Select a date</option>
+                {generateDateOptions()}
+              </select>
+            </div>
+          </div>
+          {showUrgentLink && (<div id={styles.urgentLink}>
+            <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
+          </div>)}
+          <div>
+            <img src="miniNinjaRight.png" width={24.03} height={43.92} />
+          </div>
+        </div>
+        <div className={styles.deliveryTimeSecn}>
+          <h4>Delivery Time</h4>
+          <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)}>
+            <option value="">Select Time</option>
+            <option value="11:00 am">11:00 am</option>
+            <option value="11:30 am">11:30 am</option>
+            <option value="12:00 pm">12:00 pm</option>
+            <option value="12:30 pm">12:30 pm</option>
+            <option value="1:00 pm">1:00 pm</option>
+            <option value="1:30 pm">1:30 pm</option>
+            <option value="2:00 pm">2:00 pm</option>
+            <option value="2:00 pm">2:00 pm</option>
+            <option value="2:30 pm">2:30 pm</option>
+            <option value="3:00 pm">3:00 pm</option>
+            <option value="5:00 pm">5:00 pm</option>
+            <option value="5:30 pm">5:30 pm</option>
+            <option value="6:00 pm">6:00 pm</option>
+            <option value="6:30 pm">6:30 pm</option>
+            <option value="7:00 pm">7:00 pm</option>
+            <option value="7:30 pm">7:30 pm</option>
+            <option value="8:00 pm">8:00 pm</option>
+            <option value="8:30 pm">8:30 pm</option>
+            <option value="9:00 pm">9:30 pm</option>
+          </select>
+        </div>
+        <div className={styles.guestCountCn}>
+          <h3>Guest Count</h3>
+          <div className={styles.guestcountCN}>
+            <div>
+              <p>Veg Guest</p>
+              <div className={styles.numBtn}>
+                <button onClick={handleDecreaseClick}>-</button>
+                <input id={styles.vNum} type="number" value={number} onChange={handleInputChange} onClick={handleInputClick} />
+                <button onClick={handleIncreaseClick}>+</button>
+              </div>
+            </div>
+            {showNonveg && <div>
+              <p>NV Guest</p>
+              <div className={styles.numBtn}>
+                <button onClick={handleDecreaseClick2}>-</button>
+                <input id={styles.nvNum} type="number" value={number2} onChange={handleInputChange2} onClick={handleInputClick2} />
+                <button onClick={handleIncreaseClick2}>+</button>
+              </div>
+            </div>}
+          </div>
+        </div>
+        <div className={styles.cnfmBtn}>
+          <button onClick={closePopup} id={styles.cancelBtn}><span><FontAwesomeIcon icon={faArrowLeftLong} /></span> Go Back</button>
+          <button onClick={() => navigateToOverview()} id={styles.viewBtn}>View Package</button>
+        </div>
+      </div>)}
       {!isSmall ? <section className="custom-package py-5">
         <div className="container" id="buffeyPkg">
           <div className="section-title">
             <h2>
               Ninja<span>Buffet</span> Packages
             </h2>
+            <h6 className="text-center" style={{ fontSize: "20px" }}>Select Your Ninja<span>Buffet</span> Package</h6>
+            <div className="selectCityOcLg mt-5">
+              <div>
+                <p>City</p>
+                <select
+                  id="cityId"
+                  name="city"
+                  aria-label="Default select example"
+                  value={city}
+                  onChange={(e) => handleCity(e.target.value)}
+                  required
+                >
+                  <option value="" selected>
+                    Select City
+                  </option>
+                  {cities.map((item, index) => {
+                    return (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div>
+                <p>Occasion</p>
+                <select
+                  id="occasionId"
+                  name="occasion"
+                  aria-label="Default select example"
+                  value={occasion}
+                  onChange={(e) => handleOccasion(e.target.value)}
+                >
+                  <option value="" selected>
+                    Select Occasion
+                  </option>
+                  {occasions.map((item, index) => {
+                    return (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+          </div>
+          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center" }}>Sort By</h4>
+          <hr />
+          <div className="d-flex" style={{ justifyContent: "space-between", marginInline: "100px" }}>
+            <div className="d-flex">
+              <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif", marginRight: "10px", fontSize: "20px", marginTop: "5px" }}>Veg Only</h3>
+              <label className={styles.toggle}>
+                <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+                <span className={styles.slider}></span>
+              </label>
+            </div>
+            <div>
+              <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "170px" }}>
+                <option value="all">By Price</option>
+                <option value="2000-3500">200 - 350</option>
+                <option value="3501-5000">350 - 500</option>
+                <option value="5001+">500 +</option>
+              </select>
+            </div>
           </div>
           {/* <div className="row mb-md-5 mb-0 filter">
             <h5>Choose City</h5>
@@ -234,100 +627,74 @@ const Custom_Package = () => {
               </div>
             ))}
           </div> */}
-          <div className="d-flex">
-            <div className="packageNameSection text-center me-4">
-              <h3>Punjabi NinjaBuffet</h3>
+          {!showNonveg && (<div className="d-flex gap-4 mt-3">
+            {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
+              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src="/ninja-buffy/packages/BuffetP1.png" />
+                <img src={item.img} />
               </div>
               <div className="packagesName">
-                <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 8,799/-</h3>
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
-            </div>
-            <div className="packageNameSection text-center me-4">
-              <h3>NinjaBuffet Indian</h3>
+            </div>))}
+          </div>)}
+          {!showNonveg && (<div className="d-flex gap-4">
+            {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
+              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src="/ninja-buffy/packages/BuffetP2.png" />
+                <img src={item.img} />
               </div>
               <div className="packagesName">
-                <h4>2 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 7,999/-</h3>
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
-            </div>
-            <div className="packageNameSection text-center">
-              <h3>B&apos;Day NinjaBuffet</h3>
+            </div>))}
+          </div>)}
+          {showNonveg && (<div className="d-flex gap-4 mt-3">
+            {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
+              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src="/ninja-buffy/packages/BuffetP3.png" />
+                <img src={item.img} />
               </div>
               <div className="packagesName">
-                <h4>1 Starter + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 7,199/-</h3>
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
-            </div>
-          </div>
-          <div className="d-flex">
-            <div className="packageNameSection text-center me-4">
-              <h3>Fusion NinjaBuffet</h3>
+            </div>))}
+          </div>)}
+          {showNonveg && (<div className="d-flex gap-4">
+            {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
+              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src="/ninja-buffy/packages/BuffetP4.png" />
+                <img src={item.img} />
               </div>
               <div className="packagesName">
-                <h4>2 Starters + 3 Mains + 1 Dessert</h4>
-                <h3>₹ 9,499/-</h3>
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
-            </div>
-            <div className="packageNameSection text-center me-4">
-              <h3>Asian NinjaBuffet</h3>
-              <div className="packageImg">
-                <img src="/ninja-buffy/packages/BuffetP5.png" />
-              </div>
-              <div className="packagesName">
-                <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-                <h3>₹ 7,699/-</h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-              </div>
-            </div>
-            <div className="packageNameSection text-center">
-              <h3>Cocktail Party</h3>
-              <div className="packageImg">
-                <img src="/ninja-buffy/packages/BuffetP6.png" />
-              </div>
-              <div className="packagesName">
-                <h4>6 Starters + 1 Mains</h4>
-                <h3>₹ 7,699/-</h3>
-                <p>(Min. Order 10 Guests)</p>
-              </div>
-              <div className="d-flex justify-content-evenly">
-                {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-                <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-              </div>
-            </div>
-          </div>
+            </div>))}
+          </div>)}
         </div>
       </section> : ""}
       {/* {!isSmall ? <section className="custom-package-lower">
@@ -377,10 +744,61 @@ const Custom_Package = () => {
         </div>
       </secction> : ""}
       {isSmall ? <section>
-        <div className="custom-package-smallD text-center mb-5">
+        <div className="custom-package-smallD text-center mb-3">
           <h1>Ninja<span>Buffet</span></h1>
           <h2>Packages</h2>
           <h6>Select Your Ninja<span>Buffet</span> Package</h6>
+          <div className="container">
+            <div className="dropdown-label row">
+              <div className="col-6">
+                <p>City</p>
+                <div className="selectCityDropdown">
+                  <select
+                    className="form-select"
+                    name="city"
+                    aria-label="Default select example"
+                    value={city}
+                    onChange={(e) => handleCity(e.target.value)}
+                    required
+                  >
+                    <option value="" selected>
+                      Select City
+                    </option>
+                    {cities.map((item, index) => {
+                      return (
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
+              <div className="col-6">
+                <p>Occasion</p>
+                <div className="selectOccasionDropdown">
+                  <select
+                    className="form-select"
+                    name="occasion"
+                    aria-label="Default select example"
+                    value={occasion}
+                    onChange={(e) => handleOccasion(e.target.value)}
+                  >
+                    <option value="" selected>
+                      Select Occasion
+                    </option>
+                    {occasions.map((item, index) => {
+                      return (
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
           {/* <div className="checkbox-container my-4">
               <input onChange={handleChange} type="checkbox" value='veg' name="Veg" id="" />
             </div> */}
@@ -414,102 +832,104 @@ const Custom_Package = () => {
             </div> */}
         </div>
       </section> : ""}
-      {isSmall ? <section>
-        <div className="packageContainer">
-          <div className="packageNameSection text-center ms-2 me-4">
-            <h3>Punjabi NinjaBuffet</h3>
-            <div className="packageImg">
-              <img src="/ninja-buffy/packages/BuffetP1.png" />
-            </div>
-            <div className="packagesName">
-              <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 8,799/-</h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
+      {isSmall ?
+        <div className="mb-3">
+          <h4 style={{ textAlign: "center", fontWeight: "bolder", fontFamily: "'Montserrat', sans-serif", fontSize: "20px", color: "#BE2D30" }}>Sort By</h4>
+          <div className="d-flex justify-content-around"> <div className="d-flex justify-content-center">
+            <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
+            <label className={styles.toggle}>
+              <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+              <span className={styles.slider}></span>
+            </label>
+          </div>
+            <div>
+              <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "150px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
+                <option value="all">By Price</option>
+                <option value="2000-4000">₹2000 - ₹4000</option>
+                <option value="4001-5000">₹4001 - ₹5000</option>
+                <option value="5001-6000">₹5001 - ₹6000</option>
+                <option value="6001+">₹6000 +</option>
+              </select>
             </div>
           </div>
-          <div className="packageNameSection text-center me-3">
-            <h3>NinjaBuffet Indian</h3>
-            <div className="packageImg">
-              <img src="/ninja-buffy/packages/BuffetP2.png" />
-            </div>
-            <div className="packagesName">
-              <h4>2 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 7,999/-</h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
+        </div> : ""}
+      {!showNonveg && <div>
+        {isSmall ? <section>
+          <div className="packageContainer">
+            {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
+              </div>
+            </div>))}
           </div>
-          <div className="packageNameSection text-center">
-            <h3>B&apos;Day NinjaBuffet</h3>
-            <div className="packageImg">
-              <img src="/ninja-buffy/packages/BuffetP3.png" />
-            </div>
-            <div className="packagesName">
-              <h4>1 Starter + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 7,199/-</h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
+          <div className="packageContainer">
+            {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
+              </div>
+            </div>))}
           </div>
-        </div>
-        <div className="packageContainer">
-          <div className="packageNameSection text-center ms-2 me-4">
-            <h3>Fusion NinjaBuffet</h3>
-            <div className="packageImg">
-              <img src="/ninja-buffy/packages/BuffetP4.png" />
-            </div>
-            <div className="packagesName">
-              <h4>2 Starters + 3 Mains + 1 Dessert</h4>
-              <h3>₹ 9,499/-</h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
+        </section> : ""}
+      </div>}
+      {showNonveg && <div>
+        {isSmall ? <section>
+          <div className="packageContainer">
+            {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
+              </div>
+            </div>))}
           </div>
-          <div className="packageNameSection text-center me-3">
-            <h3>Asian NinjaBuffet</h3>
-            <div className="packageImg">
-              <img src="/ninja-buffy/packages/BuffetP5.png" />
-            </div>
-            <div className="packagesName">
-              <h4>3 Starters + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 7,699</h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
+          <div className="packageContainer">
+            {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
+              <h3>{item.name}</h3>
+              <div className="packageImg">
+                <img src={item.img} />
+              </div>
+              <div className="packagesName">
+                <h4>{item.details}</h4>
+                <h3>₹ {item.price}/-</h3>
+                <p>(Min. Order 10 Guests)</p>
+              </div>
+              <div className="d-flex justify-content-evenly">
+                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
+              </div>
+            </div>))}
           </div>
-          <div className="packageNameSection text-center">
-            <h3>Cocktail Party</h3>
-            <div className="packageImg">
-              <img src="/ninja-buffy/packages/BuffetP6.png" />
-            </div>
-            <div className="packagesName">
-              <h4>1 Starter + 4 Mains + 1 Dessert</h4>
-              <h3>₹ 7,699</h3>
-              <p>(Min. Order 10 Guests)</p>
-            </div>
-            <div className="d-flex justify-content-evenly">
-              {/* <button type="button" className="btn btn-sm" id="selectBtn">Select Package</button> */}
-              <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button>
-            </div>
-          </div>
-        </div>
-      </section> : ""}
+        </section> : ""}
+      </div>}
+
       {isSmall ? <section>
         <div className="create-your-own-package">
           <div className="row container">

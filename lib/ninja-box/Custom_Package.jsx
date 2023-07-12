@@ -81,7 +81,7 @@ const Custom_Package = () => {
 
   const navigateToOverview = () => {
     const totalCount = number + number2;
-    
+
     if (!selectedDate) {
       Swal.fire({
         text: "please select date",
@@ -89,7 +89,7 @@ const Custom_Package = () => {
         confirmButtonText: "OK",
       });
     }
-    else if(!startTime) {
+    else if (!startTime) {
       Swal.fire({
         text: "please select Time",
         icon: "warning",
@@ -119,35 +119,71 @@ const Custom_Package = () => {
   //PACKAGES
   const packages = {
     veg: [
-      { id: 1, name: 'House Party 1', price: '5,499', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["Veggie Fingers", "Cajun Spice Potato", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta", "Chole Masala", "Dal Makhni", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal halwa", "Raita"] },
-      { id: 2, name: 'House Party 2', price: '5,499', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Malai Paneer Tikka", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Kadhai Veg", "Yellow Dal Fry", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
-      { id: 3, name: "House Party 3", price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Cheezy Triangles", "Malai Paneer Tikka", "Veg Manchurian", "Honey Chilly Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
-      { id: 4, name: 'House Party 4', price: '3,999', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Crispy corn", "Cajun Spiced Potato", "Veg Fried Rice", "Veg Hakka Noodles", "Paneer Manchurian Gravy", "Fruit Custard"] },
-      { id: 5, name: 'Cocktail Party 1', price: '3,599', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Mains", items: ["Malai Paneer tikka", "Tandoori malai chaap", "Churasco Pineapple", "Veggie Fingers", "Crispy Corn", "Mushroom Munchurian Dry", "Veg Dum Biryani", "Raita", "Salad"] },
-      { id: 6, name: 'Cocktail Party 2', price: '3,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 2 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] },
-      { id: 7, name: 'House Pooja 1', price: '4,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 5 Mains + 1 Dessert", items: ["Pudina Paneer Tikka", "Malai Broccoli", "Subz e Bahar", "Paneer Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
-      { id: 8, name: 'House Pooja 2', price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
+      { id: 1, name: 'House Party 1', prc: 5499, price: '5,499', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["Veggie Fingers", "Cajun Spice Potato", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta", "Chole Masala", "Dal Makhni", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal halwa", "Raita"] },
+      { id: 2, name: 'House Party 2', prc: 5499, price: '5,499', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Malai Paneer Tikka", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Kadhai Veg", "Yellow Dal Fry", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
+      { id: 3, name: "House Party 3", prc: 3999, price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Cheezy Triangles", "Malai Paneer Tikka", "Veg Manchurian", "Honey Chilly Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
+      { id: 4, name: 'House Party 4', prc: 3999, price: '3,999', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Crispy corn", "Cajun Spiced Potato", "Veg Fried Rice", "Veg Hakka Noodles", "Paneer Manchurian Gravy", "Fruit Custard"] },
+      { id: 5, name: 'Cocktail Party 1', prc: 3599, price: '3,599', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Mains", items: ["Malai Paneer tikka", "Tandoori malai chaap", "Churasco Pineapple", "Veggie Fingers", "Crispy Corn", "Mushroom Munchurian Dry", "Veg Dum Biryani", "Raita", "Salad"] },
+      { id: 6, name: 'Cocktail Party 2', prc: 3599, price: '3,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 2 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] },
+      { id: 7, name: 'House Pooja 1', prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 5 Mains + 1 Dessert", items: ["Pudina Paneer Tikka", "Malai Broccoli", "Subz e Bahar", "Paneer Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
+      { id: 8, name: 'House Pooja 2', prc: 4299, price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
     ],
     nonVeg: [
-      { id: 1, name: 'House Party 1', price: '6,999', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
-      { id: 2, name: 'House Party 2', price: '4,999', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
-      { id: 3, name: "House Party 3", price: '4,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
-      { id: 4, name: 'House Party 4', price: '6,599', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
-      { id: 5, name: 'Cocktail Party 1', price: '6,599', img: '/ninja-box/packages/NBP5.png', details: "6 Starters + 2 Mains", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
-      { id: 6, name: 'Cocktail Party 2', price: '5,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] },
-      { id: 7, name: 'Fusion Party', price: '6,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Coastal BBQ Fish Tikka", "Cheesy Triangles", "Paneer Kadai", "Chicken Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
-      { id: 8, name: 'Punjabi Party', price: '7,599', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Punjabi Tangdi", "Dahi Ke Kebab", "Paneer Kofta Gravy", "Punjabi Chicken Curry", "Veg Dum Biryani", "Lachha Paratha", "Shahi Meeta", "Raita"] },
+      { id: 1, name: 'House Party 1', prc: 6999, price: '6,999', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
+      { id: 2, name: 'House Party 2', prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
+      { id: 3, name: "House Party 3", prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
+      { id: 4, name: 'House Party 4', prc: 6599, price: '6,599', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
+      { id: 5, name: 'Cocktail Party 1', prc: 6599, price: '6,599', img: '/ninja-box/packages/NBP5.png', details: "6 Starters + 2 Mains", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
+      { id: 6, name: 'Cocktail Party 2', prc: 5599, price: '5,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] },
+      { id: 7, name: 'Fusion Party', prc: 6999, price: '6,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Coastal BBQ Fish Tikka", "Cheesy Triangles", "Paneer Kadai", "Chicken Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
+      { id: 8, name: 'Punjabi Party', prc: 7599, price: '7,599', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Punjabi Tangdi", "Dahi Ke Kebab", "Paneer Kofta Gravy", "Punjabi Chicken Curry", "Veg Dum Biryani", "Lachha Paratha", "Shahi Meeta", "Raita"] },
     ]
   };
 
+  //price filter
+  //200-350, 350-500, 500+
+
+  const [priceFilter, setPriceFilter] = useState('all');
+
+  const handlePriceFilterChange = (e) => {
+    setPriceFilter(e.target.value);
+  };
+
+  const filteredItems = packages.veg.filter((item) => {
+    if (priceFilter === 'all') {
+      return true;
+    } else if (priceFilter === '2000-3500') {
+      return item.prc >= 2000 && item.prc <= 3500;
+    } else if (priceFilter === '3501-5000') {
+      return item.prc >= 3501 && item.prc <= 5000;
+    } else {
+      return item.prc >= 5001;
+    }
+  })
+
+  const nonVegFilterdeItems = packages.nonVeg.filter((item) => {
+    if (priceFilter === 'all') {
+      return true;
+    } else if (priceFilter === '2000-4000') {
+      return item.prc >= 2000 && item.prc <= 4000;
+    } else if (priceFilter === '4001-5000') {
+      return item.prc >= 4001 && item.prc <= 5000;
+    } else if (priceFilter === '5001-6000') {
+      return item.prc >= 5001 && item.prc <= 6000;
+    } else {
+      return item.prc >= 6001;
+    }
+  })
+
+
   //Separate Row for veg packages
-  const firstRow = packages.veg.slice(0, 3);
-  const secondRow = packages.veg.slice(3, 6);
-  const thirdRow = packages.veg.slice(6);
+  const firstRow = filteredItems.slice(0, 3);
+  const secondRow = filteredItems.slice(3, 6);
+  const thirdRow = filteredItems.slice(6);
   //Separate Row for Non-veg packages
-  const nvfirstRow = packages.nonVeg.slice(0, 3);
-  const nvsecondRow = packages.nonVeg.slice(3, 6);
-  const nvthirdRow = packages.nonVeg.slice(6);
+  const nvfirstRow = nonVegFilterdeItems.slice(0, 3);
+  const nvsecondRow = nonVegFilterdeItems.slice(3, 6);
+  const nvthirdRow = nonVegFilterdeItems.slice(6);
 
 
   //SHOW NON-VEG PACKAGES
@@ -215,7 +251,7 @@ const Custom_Package = () => {
       console.log(' Checkbox is NOT checked');
     }
   }
-  
+
   //SHOW/HIDE POPUP
   const [showDiv, setShowDiv] = useState(false);
 
@@ -330,7 +366,7 @@ const Custom_Package = () => {
         <div className={styles.deliveryTimeSecn}>
           <h4>Delivery Time</h4>
           <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)}>
-          <option value="">Select Time</option>
+            <option value="">Select Time</option>
             <option value="11:00 am">11:00 am</option>
             <option value="11:30 am">11:30 am</option>
             <option value="12:00 pm">12:00 pm</option>
@@ -417,7 +453,7 @@ const Custom_Package = () => {
               <div>
                 <p>City</p>
                 <select
-                id="cityId"
+                  id="cityId"
                   name="city"
                   aria-label="Default select example"
                   value={city}
@@ -439,7 +475,7 @@ const Custom_Package = () => {
               <div>
                 <p>Occasion</p>
                 <select
-                id="occasionId"
+                  id="occasionId"
                   name="occasion"
                   aria-label="Default select example"
                   value={occasion}
@@ -592,12 +628,24 @@ const Custom_Package = () => {
               </div>
             ))}
           </div> */}
-          <div className="d-flex justify-content-center">
-            <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif", marginRight: "10px" }}>Veg Only</h3>
-            <label className={styles.toggle}>
-              <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
-              <span className={styles.slider}></span>
-            </label>
+          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center" }}>Sort By</h4>
+          <hr />
+          <div className="d-flex" style={{ justifyContent: "space-between", marginInline: "100px" }}>
+            <div className="d-flex">
+              <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif", marginRight: "10px", fontSize: "20px", marginTop: "5px" }}>Veg Only</h3>
+              <label className={styles.toggle}>
+                <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+                <span className={styles.slider}></span>
+              </label>
+            </div>
+            <div>
+              <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "170px" }}>
+                <option value="all">By Price</option>
+                <option value="2000-3500">200 - 350</option>
+                <option value="3501-5000">350 - 500</option>
+                <option value="5001+">500 +</option>
+              </select>
+            </div>
           </div>
           {/* <div>
             <label className={styles.toggle}>
@@ -606,7 +654,7 @@ const Custom_Package = () => {
               <span className={styles.labels} data-on="Veg Only" data-off="OFF"></span>
             </label>
           </div> */}
-          {!showNonveg && <div style={{marginInline: "70px"}}>
+          {!showNonveg && <div style={{ marginInline: "70px" }}>
             <div className="d-flex mt-3">
               {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
@@ -641,7 +689,7 @@ const Custom_Package = () => {
                 </div>
               </div>))}
             </div>
-            <div className="d-flex">
+            <div className="d-flex" style={{ marginInline: "90px" }}>
               {thirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
@@ -659,7 +707,7 @@ const Custom_Package = () => {
               </div>))}
             </div>
           </div>}
-          {showNonveg && <div>
+          {showNonveg && <div style={{ marginInline: "70px" }}>
             {/* <div className="d-flex ms-3 mb-2 mt-2">
               <div>
                 <h3 style={{ color: "#BE2D30", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Non-Veg Packages</h3>
@@ -702,7 +750,7 @@ const Custom_Package = () => {
                 </div>
               </div>))}
             </div>
-            <div className="d-flex">
+            <div className="d-flex" style={{ marginInline: "90px" }}>
               {nvthirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
                 <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
@@ -830,13 +878,27 @@ const Custom_Package = () => {
             </div>
           </div>
         </section> : ""}
-        {isSmall ?<div className="d-flex justify-content-center">
-          <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
-          <label className={styles.toggle}>
-            <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
-            <span className={styles.slider}></span>
-          </label>
-        </div> : "" }
+      {isSmall ?
+        <div className="mb-3">
+          <h4 style={{ textAlign: "center", fontWeight: "bolder", fontFamily: "'Montserrat', sans-serif", fontSize: "20px", color: "#BE2D30" }}>Sort By</h4>
+          <div className="d-flex justify-content-around"> <div className="d-flex justify-content-center">
+            <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
+            <label className={styles.toggle}>
+              <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+              <span className={styles.slider}></span>
+            </label>
+          </div>
+            <div>
+              <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "150px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
+                <option value="all">By Price</option>
+                <option value="2000-4000">₹2000 - ₹4000</option>
+                <option value="4001-5000">₹4001 - ₹5000</option>
+                <option value="5001-6000">₹5001 - ₹6000</option>
+                <option value="6001+">₹6000 +</option>
+              </select>
+            </div>
+          </div>
+        </div> : ""}
       {!showNonveg && <div>
         {isSmall ? <section>
           <div className="packageContainer">

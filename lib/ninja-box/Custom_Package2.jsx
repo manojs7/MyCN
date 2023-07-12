@@ -705,7 +705,7 @@ const Custom_Package = () => {
               </div>
             </div> */}
             <div className="d-flex mt-3">
-              {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+              {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-3">
                 <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
