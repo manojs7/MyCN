@@ -82,7 +82,19 @@ const Custom_Package = () => {
   const navigateToOverview = () => {
     const totalCount = number + number2;
 
-    if (!selectedDate) {
+    if (!city) {
+      Swal.fire({
+        text: "Please select your City",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else if (!occasion) {
+      Swal.fire({
+        text: "Please select your occasion",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else if (!selectedDate) {
       Swal.fire({
         text: "please select date",
         icon: "warning",
@@ -112,6 +124,7 @@ const Custom_Package = () => {
       }
       let dataSelected = { city: city, occasion: occasion, selectedDate: selectedDate, vcount: number, nvcount: number2, itemSelected: itemSelected, mealType: mealType, startTime: startTime }
       sessionStorage.setItem("dataSelected", JSON.stringify(dataSelected))
+      setShowDiv(!showDiv);
       window.open('/customiseNinjaBox', '_blank')
     }
   }
@@ -258,22 +271,22 @@ const Custom_Package = () => {
 
   const handleButtonClick = (item) => {
     setItemSelected(item)
-    if (!city) {
-      document.getElementById("cityId").focus();
-      Swal.fire({
-        text: "Please select your City",
-        icon: "warning",
-        confirmButtonText: "OK",
-      });
-    } else if (!occasion) {
-      document.getElementById("occasionId").focus();
-      Swal.fire({
-        text: "Please select your occasion",
-        icon: "warning",
-        confirmButtonText: "OK",
-      });
-    } else
-      setShowDiv(!showDiv);
+    // if (!city) {
+    //   document.getElementById("cityId").focus();
+    //   Swal.fire({
+    //     text: "Please select your City",
+    //     icon: "warning",
+    //     confirmButtonText: "OK",
+    //   });
+    // } else if (!occasion) {
+    //   document.getElementById("occasionId").focus();
+    //   Swal.fire({
+    //     text: "Please select your occasion",
+    //     icon: "warning",
+    //     confirmButtonText: "OK",
+    //   });
+    // } else
+    setShowDiv(!showDiv);
   };
   const closePopup = () => {
     setShowDiv(!showDiv);
@@ -339,58 +352,110 @@ const Custom_Package = () => {
   return (
     <div>
       {showDiv && (<div className={styles.popupguestcount}>
-        <h3>Additional <span>Info</span></h3>
-        <div className={styles.dateContainer}>
+        <div className="d-flex justify-content-evenly mt-3">
           <div>
             <img src="miniNinjaLeft.png" width="24.03" height="43.92" />
           </div>
           <div>
-            <h4>Date <span id={styles.urgentL} onMouseEnter={hoverLink}
-              onClick={hoverLink}><FontAwesomeIcon icon={faCircleInfo} size="sm" style={{ color: "#1245ba" }} /></span></h4>
-            {/* <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
-              value={selectedDate}
-              min={minDateISO} /></div> */}
-            <div className={styles.dateOptions}>
-              <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
-                <option value="">Select a date</option>
-                {generateDateOptions()}
-              </select>
-            </div>
+            <h3>Additional <span>Info</span></h3>
           </div>
-          {showUrgentLink && (<div id={styles.urgentLink}>
-            <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
-          </div>)}
           <div>
             <img src="miniNinjaRight.png" width={24.03} height={43.92} />
           </div>
         </div>
-        <div className={styles.deliveryTimeSecn}>
-          <h4>Delivery Time</h4>
-          <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)}>
-            <option value="">Select Time</option>
-            <option value="11:00 am">11:00 am</option>
-            <option value="11:30 am">11:30 am</option>
-            <option value="12:00 pm">12:00 pm</option>
-            <option value="12:30 pm">12:30 pm</option>
-            <option value="1:00 pm">1:00 pm</option>
-            <option value="1:30 pm">1:30 pm</option>
-            <option value="2:00 pm">2:00 pm</option>
-            <option value="2:00 pm">2:00 pm</option>
-            <option value="2:30 pm">2:30 pm</option>
-            <option value="3:00 pm">3:00 pm</option>
-            <option value="5:00 pm">5:00 pm</option>
-            <option value="5:30 pm">5:30 pm</option>
-            <option value="6:00 pm">6:00 pm</option>
-            <option value="6:30 pm">6:30 pm</option>
-            <option value="7:00 pm">7:00 pm</option>
-            <option value="7:30 pm">7:30 pm</option>
-            <option value="8:00 pm">8:00 pm</option>
-            <option value="8:30 pm">8:30 pm</option>
-            <option value="9:00 pm">9:30 pm</option>
-          </select>
+        <div className={styles.cityOccasionContnent}>
+          <div>
+            <h4>City</h4>
+            <select
+              style={{ fontFamily: "'Montserrat', SansSerif " }}
+              id="cityId"
+              name="city"
+              aria-label="Default select example"
+              value={city}
+              onChange={(e) => handleCity(e.target.value)}
+              required
+            >
+              <option value="" selected>
+                Select City
+              </option>
+              {cities.map((item, index) => {
+                return (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <h4>Occasion</h4>
+            <select
+              style={{ fontFamily: "'Montserrat', SansSerif " }}
+              id="occasionId"
+              name="occasion"
+              aria-label="Default select example"
+              value={occasion}
+              onChange={(e) => handleOccasion(e.target.value)}
+            >
+              <option value="" selected>
+                Select Occasion
+              </option>
+              {occasions.map((item, index) => {
+                return (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="d-flex justify-content-evenly">
+          <div className={styles.dateContainer}>
+            <div>
+              <h4>Date <span id={styles.urgentL} onMouseEnter={hoverLink}
+                onClick={hoverLink}><FontAwesomeIcon icon={faCircleInfo} size="sm" style={{ color: "#1245ba" }} /></span></h4>
+              {/* <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
+              value={selectedDate}
+              min={minDateISO} /></div> */}
+              <div className={styles.dateOptions}>
+                <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
+                  <option value="">Select a date</option>
+                  {generateDateOptions()}
+                </select>
+              </div>
+            </div>
+            {showUrgentLink && (<div id={styles.urgentLink}>
+              <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
+            </div>)}
+          </div>
+          <div className={styles.deliveryTimeSecn}>
+            <h4>Delivery Time</h4>
+            <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)} value={startTime}>
+              <option value="">Select Time</option>
+              <option value="11:00 am">11:00 am</option>
+              <option value="11:30 am">11:30 am</option>
+              <option value="12:00 pm">12:00 pm</option>
+              <option value="12:30 pm">12:30 pm</option>
+              <option value="1:00 pm">1:00 pm</option>
+              <option value="1:30 pm">1:30 pm</option>
+              <option value="2:00 pm">2:00 pm</option>
+              <option value="2:00 pm">2:00 pm</option>
+              <option value="2:30 pm">2:30 pm</option>
+              <option value="3:00 pm">3:00 pm</option>
+              <option value="5:00 pm">5:00 pm</option>
+              <option value="5:30 pm">5:30 pm</option>
+              <option value="6:00 pm">6:00 pm</option>
+              <option value="6:30 pm">6:30 pm</option>
+              <option value="7:00 pm">7:00 pm</option>
+              <option value="7:30 pm">7:30 pm</option>
+              <option value="8:00 pm">8:00 pm</option>
+              <option value="8:30 pm">8:30 pm</option>
+              <option value="9:00 pm">9:30 pm</option>
+            </select>
+          </div>
         </div>
         <div className={styles.guestCountCn}>
-          <h3>Guest Count</h3>
           <div className={styles.guestcountCN}>
             <div>
               <p>Veg Guest</p>
@@ -446,14 +511,15 @@ const Custom_Package = () => {
             <h2>
               Ninja<span>Box</span> Packages
             </h2>
-            <h6 className="text-center" style={{ fontSize: "20px" }}>Select Your Ninja<span>Box</span> Package</h6>
+            <h6 className="text-center" style={{ fontSize: "20px", fontFamily: "'Montserrat', SansSerif " }}>Select Your Ninja<span>Box</span> Package</h6>
             {/* <div className="checkbox-container my-4 mx-auto">
               <input type="checkbox" checked={showNonveg} onChange={checkForNonveg} />
             </div> */}
             <div className="selectCityOcLg mt-5">
               <div>
-                <p>City</p>
+                <p style={{ fontFamily: "'Montserrat', SansSerif " }}>City</p>
                 <select
+                  style={{ fontFamily: "'Montserrat', SansSerif " }}
                   id="cityId"
                   name="city"
                   aria-label="Default select example"
@@ -474,8 +540,9 @@ const Custom_Package = () => {
                 </select>
               </div>
               <div>
-                <p>Occasion</p>
+                <p style={{ fontFamily: "'Montserrat', SansSerif " }}>Occasion</p>
                 <select
+                  style={{ fontFamily: "'Montserrat', SansSerif " }}
                   id="occasionId"
                   name="occasion"
                   aria-label="Default select example"
@@ -629,11 +696,11 @@ const Custom_Package = () => {
               </div>
             ))}
           </div> */}
-          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center" }}>Sort By</h4>
+          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center", fontFamily: "'Montserrat', SansSerif" }}>Sort By</h4>
           <hr />
           <div className="d-flex" style={{ justifyContent: "space-between", marginInline: "100px" }}>
             <div className="d-flex">
-              <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif", marginRight: "10px", fontSize: "20px", marginTop: "5px" }}>Veg Only</h3>
+              <h3 style={{ fontWeight: "600", fontFamily: "'Montserrat', sansSerif", marginRight: "10px", fontSize: "20px", marginTop: "5px" }}>Veg Only</h3>
               <label className={styles.toggle}>
                 <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
                 <span className={styles.slider}></span>
@@ -642,9 +709,9 @@ const Custom_Package = () => {
             <div>
               <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "170px" }}>
                 <option value="all">By Price</option>
-                <option value="2000-3500">200 - 350</option>
-                <option value="3501-5000">350 - 500</option>
-                <option value="5001+">500 +</option>
+                <option value="2000-3500">₹200 - ₹350</option>
+                <option value="3501-5000">₹350 - ₹500</option>
+                <option value="5001+">₹500 +</option>
               </select>
             </div>
           </div>
@@ -655,9 +722,9 @@ const Custom_Package = () => {
               <span className={styles.labels} data-on="Veg Only" data-off="OFF"></span>
             </label>
           </div> */}
-          {!showNonveg && <div style={{ marginInline: "70px" }}>
-            <div className="d-flex mt-3">
-              {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+          {!showNonveg && <div style={{ marginTop: "50px" }}>
+            <div className="d-flex mt-3 gap-4">
+              {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
                 <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -673,8 +740,8 @@ const Custom_Package = () => {
                 </div>
               </div>))}
             </div>
-            <div className="d-flex">
-              {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+            <div className="d-flex gap-4">
+              {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
                 <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -690,8 +757,8 @@ const Custom_Package = () => {
                 </div>
               </div>))}
             </div>
-            <div className="d-flex" style={{ marginInline: "90px" }}>
-              {thirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+            <div className="d-flex gap-4">
+              {thirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
                 <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -708,7 +775,7 @@ const Custom_Package = () => {
               </div>))}
             </div>
           </div>}
-          {showNonveg && <div style={{ marginInline: "70px" }}>
+          {showNonveg && <div className="mt-5">
             {/* <div className="d-flex ms-3 mb-2 mt-2">
               <div>
                 <h3 style={{ color: "#BE2D30", fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Non-Veg Packages</h3>
@@ -717,8 +784,8 @@ const Custom_Package = () => {
                 <Image src="/diy images/Group 962.png" width="20px" height="20px" />
               </div>
             </div> */}
-            <div className="d-flex mt-3">
-              {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+            <div className="d-flex mt-3 gap-4">
+              {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
                 <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -734,8 +801,8 @@ const Custom_Package = () => {
                 </div>
               </div>))}
             </div>
-            <div className="d-flex">
-              {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+            <div className="d-flex gap-4">
+              {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
                 <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -751,8 +818,8 @@ const Custom_Package = () => {
                 </div>
               </div>))}
             </div>
-            <div className="d-flex" style={{ marginInline: "90px" }}>
-              {nvthirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center mx-2">
+            <div className="d-flex gap-4">
+              {nvthirdRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
                 <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
                 <div className="packageImg">
                   <img src={item.img} />
@@ -819,7 +886,7 @@ const Custom_Package = () => {
       </secction> : ""}
       {isSmall ?
         <section>
-          <div className="custom-package-smallD text-center mb-3">
+          <div className="custom-package-smallD text-center mb-5">
             <h1>Ninja<span>Box</span></h1>
             <h2>Packages</h2>
             <h6>Select Your Ninja<span>Box</span> Package</h6>
@@ -877,12 +944,9 @@ const Custom_Package = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </section> : ""}
-      {isSmall ?
-        <div className="mb-3">
+            <div className="mt-4">
           <h4 style={{ textAlign: "center", fontWeight: "bolder", fontFamily: "'Montserrat', sans-serif", fontSize: "20px", color: "#BE2D30" }}>Sort By</h4>
-          <div className="d-flex justify-content-around"> <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-between" style={{marginInline: "10px"}}> <div className="d-flex justify-content-center">
             <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
             <label className={styles.toggle}>
               <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
@@ -892,13 +956,15 @@ const Custom_Package = () => {
             <div>
               <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "150px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
                 <option value="all">By Price</option>
-                <option value="2000-3500">200 - 350</option>
-                <option value="3501-5000">350 - 500</option>
-                <option value="5001+">500 +</option>
+                <option value="2000-3500">₹200 - ₹350</option>
+                <option value="3501-5000">₹350 - ₹500</option>
+                <option value="5001+">₹500 +</option>
               </select>
             </div>
           </div>
-        </div> : ""}
+        </div>
+          </div>
+        </section> : ""}
       {!showNonveg && <div>
         {isSmall ? <section>
           <div className="packageContainer">

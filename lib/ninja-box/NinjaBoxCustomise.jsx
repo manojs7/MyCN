@@ -113,6 +113,18 @@ const NinjaBoxCustomise = () => {
 
   const [checkedValues, setCheckedValues] = React.useState([]);
 
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const scrollToSection = () => {
+      if (sectionRef.current) {
+        sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    scrollToSection();
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -123,7 +135,7 @@ const NinjaBoxCustomise = () => {
     autoplay: true,
     autoplaySpeed: 2000,
   };
-  
+
   const placeOrderBtn = (e) => {
     e.preventDefault();
     setShowPopup(true);
@@ -131,7 +143,7 @@ const NinjaBoxCustomise = () => {
   const closePopup = () => {
     setShowPopup(false);
   }
-  
+
   useEffect(() => {
     let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
     console.log("here", SessionData);
@@ -144,47 +156,47 @@ const NinjaBoxCustomise = () => {
       //   setImage(dataSelected.itemSelected["img"]);
       setId(SessionData.itemSelected["id"]);
       setStartTime(SessionData['startTime'])
-      setMealType(SessionData["mealType"]); 
+      setMealType(SessionData["mealType"]);
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
-    
+
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
-    let ID2=dataSelected.itemSelected["id"];
-    let mealType2=dataSelected["mealType"]
+    let ID2 = dataSelected.itemSelected["id"];
+    let mealType2 = dataSelected["mealType"]
     // setMealType(dataSelected["mealType"]) 
-    let itemData;  
+    let itemData;
     console.log('mtype', mealType2, ID2)
     if (ID2) {
-       let itemDataArray= PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items
-        itemDataArray.map(
-        (item, index) => {  
+      let itemDataArray = PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items
+      itemDataArray.map(
+        (item, index) => {
           itemData = allMenus.filter((d) => d.name === item);
           if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
               handleStatersAdd(item);
-            } 
+            }
             if (itemData[0].mealType === "Main course") {
               handleMainAdd(itemData[0].name);
-            } 
-             if (itemData[0].mealType === "Bread+Rice") {
+            }
+            if (itemData[0].mealType === "Bread+Rice") {
               handleBreadRiceAdd(itemData[0].name);
-            } 
-             if (itemData[0].mealType === "Dessert") {
+            }
+            if (itemData[0].mealType === "Dessert") {
               handleDesertsAdd(itemData[0].name);
             }
             else {
-              console.log("suspect", item); 
-            } 
-            let value=itemData[0];
+              console.log("suspect", item);
+            }
+            let value = itemData[0];
             value.checked = "checked";
-          setCheckedValues([...checkedValues, value]);
-          } 
-        }); 
+            setCheckedValues([...checkedValues, value]);
+          }
+        });
     } else {
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -259,7 +271,7 @@ const NinjaBoxCustomise = () => {
       city === "Mumbai" ||
       city === "Banglore" ||
       city === "Navi-Mumbai" ||
-      city === "Thane" || city==="Chennai" || city === "Pune"
+      city === "Thane" || city === "Chennai" || city === "Pune"
     ) {
       if (people <= 25) {
         setDeliveryCharge(0);
@@ -296,8 +308,8 @@ const NinjaBoxCustomise = () => {
     getDeliveryCharge(veg + nonVeg);
   };
 
-  const handleVegNonVegGuest = async(name, value) => {
-    
+  const handleVegNonVegGuest = async (name, value) => {
+
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     } else {
@@ -599,7 +611,7 @@ const NinjaBoxCustomise = () => {
             }
           } else {
             // data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
-            data.quantity = HandleCeilFloorValue(((veg +nonVeg) * 0.075).toFixed(1));
+            data.quantity = HandleCeilFloorValue(((veg + nonVeg) * 0.075).toFixed(1));
           }
         } else {
           if (data.Qtype === "pcs") {
@@ -709,7 +721,7 @@ const NinjaBoxCustomise = () => {
             } else {
               data.quantity = HandleCeilFloorValue((
                 veg * 0.1 + nonVeg * 0.1)
-              .toFixed(1));
+                .toFixed(1));
             }
           }
         } else {
@@ -724,112 +736,112 @@ const NinjaBoxCustomise = () => {
         }
       }
     });
-    
+
     // setMains(tempMain);
 
 
     //BreadRice updation
     let tempBreadRice = [...breadRice];
-        let bread = 0;
-        let count = 0;
-        let isVeg = false;
+    let bread = 0;
+    let count = 0;
+    let isVeg = false;
 
-        tempBreadRice.map((item) => {
-          item.menu_label === "Breads" ? (bread += 1) : bread;
-          item.menu_label === "Rice" ? (count += 1) : count;
-          item.veg ? (isVeg = true) : (isVeg = false);
-        });
-        tempBreadRice.map((item) => {
-          if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
-            if (bread === 1) {
-              item.quantity = Math.round((veg + nonVeg) * 3);
-            } else {
-              item.quantity = Math.round((veg + nonVeg) * 2);
-            }
-          } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
-            if (bread === 1) {
-              item.quantity = Math.round((veg + nonVeg) * 2);
-            } else {
-              item.quantity = Math.round((veg + nonVeg) * 1);
-            }
-          } else if (item?.menu_label === "Rice") {
-            console.log("rice", count);
-            if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
-              let guests = veg > 0 ? veg : nonVeg;
-              if (count >= 2) {
-                console.log("count2");
-                item.quantity = HandleCeilFloorValue(0.15 * guests);
-              } else if (mains.length > 0 && count === 1) {
-                console.log("count1");
+    tempBreadRice.map((item) => {
+      item.menu_label === "Breads" ? (bread += 1) : bread;
+      item.menu_label === "Rice" ? (count += 1) : count;
+      item.veg ? (isVeg = true) : (isVeg = false);
+    });
+    tempBreadRice.map((item) => {
+      if (item?.menu_label === "Breads" && item.name === "Poori - 4") {
+        if (bread === 1) {
+          item.quantity = Math.round((veg + nonVeg) * 3);
+        } else {
+          item.quantity = Math.round((veg + nonVeg) * 2);
+        }
+      } else if (item?.menu_label === "Breads" && item.name !== "Poori - 4") {
+        if (bread === 1) {
+          item.quantity = Math.round((veg + nonVeg) * 2);
+        } else {
+          item.quantity = Math.round((veg + nonVeg) * 1);
+        }
+      } else if (item?.menu_label === "Rice") {
+        console.log("rice", count);
+        if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+          let guests = veg > 0 ? veg : nonVeg;
+          if (count >= 2) {
+            console.log("count2");
+            item.quantity = HandleCeilFloorValue(0.15 * guests);
+          } else if (mains.length > 0 && count === 1) {
+            console.log("count1");
 
-                item.quantity = HandleCeilFloorValue(0.2 * guests);
-              } else if (mains.length === 0 && count === 1) {
-                console.log("count1");
-                item.quantity = HandleCeilFloorValue(0.3 * guests);
-              }
-            } else if (veg > 0 && nonVeg > 0) {
-              let guests = veg + nonVeg;
-              if (count >= 2) {
-                item.quantity = HandleCeilFloorValue(0.15 * guests);
-              } else if (
-                count === 1 &&
-                mains.length === 0 &&
-                starters.length >= 2
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.25 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
-                }
-              } else if (
-                count === 1 &&
-                mains.length === 0 &&
-                starters.length <= 1
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.3 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
-                }
-              } else if (
-                count >= 1 &&
-                mains.length === 0 &&
-                starters.length <= 1
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.25 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
-                }
-              } else if (
-                count >= 1 &&
-                mains.length === 0 &&
-                starters.length >= 2
-              ) {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.2 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
-                }
-              } else if (count === 1 && mains.length >= 1) {
-                item.quantity = HandleCeilFloorValue(0.2 * guests);
-              } else {
-                if (item.veg === true) {
-                  item.quantity = HandleCeilFloorValue(0.15 * veg);
-                } else {
-                  item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
-                }
-              }
+            item.quantity = HandleCeilFloorValue(0.2 * guests);
+          } else if (mains.length === 0 && count === 1) {
+            console.log("count1");
+            item.quantity = HandleCeilFloorValue(0.3 * guests);
+          }
+        } else if (veg > 0 && nonVeg > 0) {
+          let guests = veg + nonVeg;
+          if (count >= 2) {
+            item.quantity = HandleCeilFloorValue(0.15 * guests);
+          } else if (
+            count === 1 &&
+            mains.length === 0 &&
+            starters.length >= 2
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.25 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+            }
+          } else if (
+            count === 1 &&
+            mains.length === 0 &&
+            starters.length <= 1
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.3 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.3 * nonVeg);
+            }
+          } else if (
+            count >= 1 &&
+            mains.length === 0 &&
+            starters.length <= 1
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.25 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.25 * nonVeg);
+            }
+          } else if (
+            count >= 1 &&
+            mains.length === 0 &&
+            starters.length >= 2
+          ) {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.2 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.2 * nonVeg);
+            }
+          } else if (count === 1 && mains.length >= 1) {
+            item.quantity = HandleCeilFloorValue(0.2 * guests);
+          } else {
+            if (item.veg === true) {
+              item.quantity = HandleCeilFloorValue(0.15 * veg);
+            } else {
+              item.quantity = HandleCeilFloorValue(0.15 * nonVeg);
             }
           }
-        });
+        }
+      }
+    });
 
     //  dessert value change after veg anf=d non-veg guest change
 
     let tempDessert = [...desserts];
 
     tempDessert.map((data) => {
-      
+
       if (data.Qtype === "pcs") {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
@@ -839,8 +851,8 @@ const NinjaBoxCustomise = () => {
           } else {
             data.quantity = Math.round((veg + nonVeg) * 1.5);
           }
-      } 
-    }else {
+        }
+      } else {
         data.quantity = HandleCeilFloorValue((Math.round(veg + nonVeg) * 0.075).toFixed(1));
       }
     });
@@ -940,7 +952,7 @@ const NinjaBoxCustomise = () => {
           // quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
           quantity = HandleCeilFloorValue(((veg + nonVeg) * 0.075).toFixed(1));
         }
-      } else { 
+      } else {
         if (starter.Qtype === "pcs") {
           if (
             starter.name.includes("Paneer Tikka") ||
@@ -960,7 +972,7 @@ const NinjaBoxCustomise = () => {
         }
       }
     }
-    let temp2=[]
+    let temp2 = []
     temp2.push({
       id: starter.id,
       city: starter.city,
@@ -1049,7 +1061,7 @@ const NinjaBoxCustomise = () => {
         else if (main.menu_label === "Mains-Gravy") {
           if (nonVegMainsGravyMainCount > 0) {
             quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-          } 
+          }
           else {
             quantity = HandleCeilFloorValue(
               (veg * 0.15 + nonVeg * 0.1).toFixed(1)
@@ -1138,19 +1150,19 @@ const NinjaBoxCustomise = () => {
     //     }
     //   }
     // });
-    let temp2=[];
+    let temp2 = [];
     temp2.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
       name: main.name,
       quantity: quantity,
-      Qtype: main.Qtype, 
+      Qtype: main.Qtype,
       veg: main.veg,
       Images: main.Images,
       selling_price: main.selling_price,
       // description: main.description,
     });
-    
+
     setMains(mains => ([...mains, ...temp2]));
     // setMains(temp); 
     // handleAfterItemSelection(temp);
@@ -1179,7 +1191,7 @@ const NinjaBoxCustomise = () => {
       temp.map((item) => {
         item.menu_label === "Breads" ? (bread += 1) : bread;
       });
-      
+
       bread === 1
         ? (quantity = Math.round((veg + nonVeg) * 3))
         : (quantity = Math.round((veg + nonVeg) * 2));
@@ -1187,10 +1199,10 @@ const NinjaBoxCustomise = () => {
         quantity = Math.round((veg + nonVeg) * 3);
       } else {
         temp.forEach((item) => {
-          if(item.Qtype==="pcs"){
-          item.name === "Poori - 4" && item.menu_label === "Breads"
-            ? (item.quantity = Math.round((veg + nonVeg) * 2))
-            : (item.quantity = Math.round((veg + nonVeg) * 1));
+          if (item.Qtype === "pcs") {
+            item.name === "Poori - 4" && item.menu_label === "Breads"
+              ? (item.quantity = Math.round((veg + nonVeg) * 2))
+              : (item.quantity = Math.round((veg + nonVeg) * 1));
           }
         });
         quantity = Math.round((veg + nonVeg) * 2);
@@ -1213,11 +1225,11 @@ const NinjaBoxCustomise = () => {
         quantity = Math.round((veg + nonVeg) * 2);
       } else {
         temp.forEach((item) => {
-          if(item.Qtype==="pcs"){
-          item.name === "Poori - 4" && item.menu_label === "Breads"
-            ? (item.quantity = Math.round((veg + nonVeg) * 2))
-            : (item.quantity = Math.round((veg + nonVeg) * 1));
-            
+          if (item.Qtype === "pcs") {
+            item.name === "Poori - 4" && item.menu_label === "Breads"
+              ? (item.quantity = Math.round((veg + nonVeg) * 2))
+              : (item.quantity = Math.round((veg + nonVeg) * 1));
+
           }
         });
         quantity = Math.round((veg + nonVeg) * 1);
@@ -1234,13 +1246,13 @@ const NinjaBoxCustomise = () => {
       });
       // console.log("naan");
       filterBreadRice.veg === true &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(veg * 0.2))
         : (quantity = HandleCeilFloorValue((veg + nonVeg) * 0.1));
       filterBreadRice.veg === false &&
-      filterBreadRice.menu_label === "Noodle" &&
-      nonVegNoodleCount > 0
+        filterBreadRice.menu_label === "Noodle" &&
+        nonVegNoodleCount > 0
         ? (quantity = HandleCeilFloorValue(nonVeg * 0.15))
         : (quantity = HandleCeilFloorValue(nonVeg * 0.2));
 
@@ -1458,9 +1470,9 @@ const NinjaBoxCustomise = () => {
         // }
       }
       console.log("rice", count);
-    
+
     }
-    let temp2=[]
+    let temp2 = []
     temp2.push({
       // isRice: main.isRice,
       menu_label: filterBreadRice?.menu_label,
@@ -1476,7 +1488,7 @@ const NinjaBoxCustomise = () => {
     // setBreadRice(temp);
     // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   };
- const handleDesertsAdd = async(item_name, id) => {
+  const handleDesertsAdd = async (item_name, id) => {
     // setIsDessertChange(!isDessertChange);
     let temp = [...desserts];
     if (veg === 0 && nonVeg === 0) return;
@@ -1489,7 +1501,7 @@ const NinjaBoxCustomise = () => {
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
-    
+
     if (dessert.Qtype === "pcs") {
       // expensive desserts should go 1 piece
       if (dessert.cuisine === "Continental") {
@@ -1504,7 +1516,7 @@ const NinjaBoxCustomise = () => {
     } else {
       quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
     }
-    let temp2=[]
+    let temp2 = []
     temp2.push({
       // name: dessert.name,
       // quantity: quantity,
@@ -1652,29 +1664,29 @@ const NinjaBoxCustomise = () => {
       setBreadRice(newDesserts);
     }
   }
-  function uncheckAfterDelete(a,temp){
+  function uncheckAfterDelete(a, temp) {
     let removedIndexes = [];
-      a.forEach((item, index) => {
-        let innerData = temp.filter(
-          (innerItem) => innerItem?.name === item?.name
-        );
-        console.log("item", innerData);
-        if (!innerData?.length) {
-          removedIndexes.push(index);
-        }
-      });
-      for (let j = 0; j < a.length; j++) {
-        if (!removedIndexes.includes(j)) {
-          a[j].checked = "checked";
-        } else {
-          a[j].checked = "";
-          checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
-          setCheckedValues(
-            checkedValues
-          );
-        }
+    a.forEach((item, index) => {
+      let innerData = temp.filter(
+        (innerItem) => innerItem?.name === item?.name
+      );
+      console.log("item", innerData);
+      if (!innerData?.length) {
+        removedIndexes.push(index);
       }
-      return a
+    });
+    for (let j = 0; j < a.length; j++) {
+      if (!removedIndexes.includes(j)) {
+        a[j].checked = "checked";
+      } else {
+        a[j].checked = "";
+        checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
+        setCheckedValues(
+          checkedValues
+        );
+      }
+    }
+    return a
   }
   function handleDelete(index, type) {
     setIsDelete(!isDelete);
@@ -1684,25 +1696,25 @@ const NinjaBoxCustomise = () => {
       temp = [...starters];
       temp.splice(index, 1);
       setStarters(temp);
-      updated=uncheckAfterDelete(filteredData,temp);
+      updated = uncheckAfterDelete(filteredData, temp);
       setStartersData(updated)
       // console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
       temp = [...mains];
       temp.splice(index, 1);
       setMains(temp);
-      updated=uncheckAfterDelete(filteredMainsData,temp);
+      updated = uncheckAfterDelete(filteredMainsData, temp);
       setMainData(updated)
     } else if (type === "desserts") {
       temp = [...desserts];
       temp.splice(index, 1);
       setDesserts(temp);
-      updated=uncheckAfterDelete(filteredDessertData,temp);
+      updated = uncheckAfterDelete(filteredDessertData, temp);
       setDessertData(updated)
     } else if (type === "Bread+Rice") {
       temp = [...breadRice];
       temp.splice(index, 1);
-      updated=uncheckAfterDelete(filteredBreadData,temp);
+      updated = uncheckAfterDelete(filteredBreadData, temp);
       setBreadRiceData(updated)
       // changing the value after deleting
       let bread = 0;
@@ -1823,7 +1835,7 @@ const NinjaBoxCustomise = () => {
         starterPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     mains.map((d) => {
       if (d.Qtype === "pcs") {
         mainPrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1831,7 +1843,7 @@ const NinjaBoxCustomise = () => {
         mainPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     desserts.map((d) => {
       if (d.Qtype === "pcs") {
         // expensive desserts should go 1 piece
@@ -1844,7 +1856,7 @@ const NinjaBoxCustomise = () => {
         dessertPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     breadRice.map((d) => {
       if (d.Qtype === "pcs") {
         bredRicePrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1852,7 +1864,7 @@ const NinjaBoxCustomise = () => {
         bredRicePrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     people = veg + nonVeg;
     setPeople(people);
     setTotalPrice(
@@ -1870,7 +1882,7 @@ const NinjaBoxCustomise = () => {
       parseInt(getGst())
     );
     setShowPriceList(false);
-    
+
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
@@ -1969,7 +1981,7 @@ const NinjaBoxCustomise = () => {
       nonveg_c: nonVeg,
       people: people,
       date: startDate,
-      time : startTime,
+      time: startTime,
       url: refURL,
       meal: "meal",
       cuisine: cuisine,
@@ -1998,22 +2010,22 @@ const NinjaBoxCustomise = () => {
       console.log(e);
     }
     fetch("/api/forma", {
-        method: "POST",
-        body: data,
-        headers: { "Content-Type": "application/json; charset=UTF-8" },
+      method: "POST",
+      body: data,
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-        console.log(res.message);
-        if (res.success) {
-            console.log("message sent");
-        } else {
-            console.log("Failed to send message");
-        }
+      console.log(res.message);
+      if (res.success) {
+        console.log("message sent");
+      } else {
+        console.log("Failed to send message");
+      }
     });
   };
   const handlePlaceOrder = () => {
     let msg = "Hey,! Please Help me to make my DIY menu order!";
 
-    if (city === "Bangalore" || city ==="Chennai" || city==="Pune") {
+    if (city === "Bangalore" || city === "Chennai" || city === "Pune") {
       window.location.href =
         "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
@@ -2045,7 +2057,7 @@ const NinjaBoxCustomise = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-    
+
   }, []);
 
   //Payment Section
@@ -2100,7 +2112,7 @@ const NinjaBoxCustomise = () => {
     } else {
       console.log("Failed to send message");
     }
-    
+
     // .then(async(res) => {
     //     if (res.success) {
     //         alert(
@@ -2136,7 +2148,7 @@ const NinjaBoxCustomise = () => {
           //Storing the payment details
           .then(async function (json) {
             json.datas = datas
-            json.createdAt=new Date()
+            json.createdAt = new Date()
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -2152,7 +2164,7 @@ const NinjaBoxCustomise = () => {
             if (json.status.status === "success") {
               // let payData={
               (datas.txnid = json.status.txnid),
-              (datas.address = json.status.address),
+                (datas.address = json.status.address),
                 (datas.phone = json.status.phone),
                 (datas.productinfo = json.status.productinfo),
                 (datas.amount = json.status.amount),
@@ -2160,7 +2172,7 @@ const NinjaBoxCustomise = () => {
                 (datas.email = json.status.email),
                 (datas.bank_ref_num = json.status.bank_ref_num),
                 (datas.OrderStatus = "");
-                datas.createdAt=new Date()
+              datas.createdAt = new Date()
               // datas.name=json.status.field4
 
               // }
@@ -2185,7 +2197,7 @@ const NinjaBoxCustomise = () => {
                 // window.location.href='/'
 
               )
-              
+
             } else {
               alert("Payment Failed! Please try again.");
             }
@@ -2217,9 +2229,9 @@ const NinjaBoxCustomise = () => {
       alert("Order value must be greater than 3000");
       return;
     }
-    if(zipcodeError){
+    if (zipcodeError) {
       alert("ZipCode is not servicable by us!")
-      return; 
+      return;
     }
     if (!name || !mobileno || !email || !address || !zipcode) {
       alert('Please fill in all fields');
@@ -2270,71 +2282,71 @@ const NinjaBoxCustomise = () => {
       });
   };
 
-  
+
 
 
   return (
     <div className={styles.customizeMainContainer}>
-      {showPopup &&<div className={styles4.popupCnfrmPkg}>
-          <h4>Details</h4>
-          <div className={styles4.scrldetails}>
-            <div className={styles4.formDetails}>
-              <div className='d-flex justify-content-between'>
-                <p>Name:</p>
-                <input type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}></input>
+      {showPopup && <div className={styles4.popupCnfrmPkg}>
+        <h4>Details</h4>
+        <div className={styles4.scrldetails}>
+          <div className={styles4.formDetails}>
+            <div className='d-flex justify-content-between'>
+              <p>Name:</p>
+              <input type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Phone:</p>
+              <input type="text"
+                value={mobileno}
+                onChange={(e) => setPhone(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Email:</p>
+              <input type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Address:</p>
+              <input type="text"
+                // value={address}
+                onChange={(e) => setAddress(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>ZipCode:</p>
+              <input type="number"
+                maxLength={6}
+                // value={zipcode}
+                onChange={(e) => setZipcode(e.target.value)}></input>
+            </div>
+            <p>{zipcodeError}</p>
+          </div>
+          <hr />
+          <div className={styles4.selectedDetails}>
+            <div className={styles4.data}>
+              <div>
+                <h6>City:</h6>
+                <h6>Date:</h6>
+                <h6>Time:</h6>
+                <h6>Veg Guest:</h6>
+                <h6>Non-veg Guest:</h6>
+                <h6>Occassion:</h6>
               </div>
-              <div className='d-flex justify-content-between'>
-                <p>Phone:</p>
-                <input type="text"
-                  value={mobileno}
-                  onChange={(e) => setPhone(e.target.value)}></input>
+              <div>
+                <h6>{city}</h6>
+                <h6>{startDate}</h6>
+                <h6>{startTime}</h6>
+                <h6>{veg}</h6>
+                <h6>{nonVeg}</h6>
+                <h6>{occasion}</h6>
               </div>
-              <div className='d-flex justify-content-between'>
-                <p>Email:</p>
-                <input type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}></input>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>Address:</p>
-                <input type="text"
-                  // value={address}
-                  onChange={(e) => setAddress(e.target.value)}></input>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>ZipCode:</p>
-                <input type="number"
-                  maxLength={6}
-                  // value={zipcode}
-                  onChange={(e) => setZipcode(e.target.value)}></input>
-              </div>
-              <p>{zipcodeError}</p>
             </div>
             <hr />
-            <div className={styles4.selectedDetails}>
-              <div className={styles4.data}>
-                <div>
-                  <h6>City:</h6>
-                  <h6>Date:</h6>
-                  <h6>Time:</h6>
-                  <h6>Veg Guest:</h6>
-                  <h6>Non-veg Guest:</h6>
-                  <h6>Occassion:</h6>
-                </div>
-                <div>
-                  <h6>{city}</h6>
-                  <h6>{startDate}</h6>
-                  <h6>{startTime}</h6>
-                  <h6>{veg}</h6>
-                  <h6>{nonVeg}</h6>
-                  <h6>{occasion}</h6>
-                </div>
-              </div>
-              <hr />
-              <div className={styles4.selectedItems}>
-                {/* <div>
+            <div className={styles4.selectedItems}>
+              {/* <div>
                   <h4>- Starters -</h4>
                   {starters.map((item, index) => (
                     <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
@@ -2359,21 +2371,21 @@ const NinjaBoxCustomise = () => {
                   ))
                   }
                 </div> */}
-              </div>
             </div>
           </div>
-          <div>
-            <hr />
-            <div className={styles4.priceing}>
-              <h6>GRAND TOTAL :</h6>
-              <h6>₹ {grandTotal}</h6>
-            </div>
-            <div className={styles4.cnfmBtn}>
-              <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
-              <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
-            </div>
+        </div>
+        <div>
+          <hr />
+          <div className={styles4.priceing}>
+            <h6>GRAND TOTAL :</h6>
+            <h6>₹ {grandTotal}</h6>
           </div>
-        </div>}
+          <div className={styles4.cnfmBtn}>
+            <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
+            <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
+          </div>
+        </div>
+      </div>}
       <div className={styles.customizeMainContainer}>
         <div className={styles.header}>
           <div className={styles.headerContent}>
@@ -2472,9 +2484,9 @@ const NinjaBoxCustomise = () => {
                       required
                     /> */}
                     <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate} required>
-                    <option value="">Select a date</option>
-                    {generateDateOptions()}
-                  </select>
+                      <option value="">Select a date</option>
+                      {generateDateOptions()}
+                    </select>
                   </div>
                 </div>
               </div>
@@ -2541,28 +2553,28 @@ const NinjaBoxCustomise = () => {
                 <div>
                   <p>Delivery Time</p>
                   <div>
-                  <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)} value={startTime}>
-                    <option value="">Select Date</option>
-                    <option value="11:00 am">11:00 am</option>
-                    <option value="11:30 am">11:30 am</option>
-                    <option value="12:00 pm">12:00 pm</option>
-                    <option value="12:30 pm">12:30 pm</option>
-                    <option value="1:00 pm">1:00 pm</option>
-                    <option value="1:30 pm">1:30 pm</option>
-                    <option value="2:00 pm">2:00 pm</option>
-                    <option value="2:00 pm">2:00 pm</option>
-                    <option value="2:30 pm">2:30 pm</option>
-                    <option value="3:00 pm">3:00 pm</option>
-                    <option value="5:00 pm">5:00 pm</option>
-                    <option value="5:30 pm">5:30 pm</option>
-                    <option value="6:00 pm">6:00 pm</option>
-                    <option value="6:30 pm">6:30 pm</option>
-                    <option value="7:00 pm">7:00 pm</option>
-                    <option value="7:30 pm">7:30 pm</option>
-                    <option value="8:00 pm">8:00 pm</option>
-                    <option value="8:30 pm">8:30 pm</option>
-                    <option value="9:00 pm">9:30 pm</option>
-                  </select>
+                    <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)} value={startTime}>
+                      <option value="">Select Date</option>
+                      <option value="11:00 am">11:00 am</option>
+                      <option value="11:30 am">11:30 am</option>
+                      <option value="12:00 pm">12:00 pm</option>
+                      <option value="12:30 pm">12:30 pm</option>
+                      <option value="1:00 pm">1:00 pm</option>
+                      <option value="1:30 pm">1:30 pm</option>
+                      <option value="2:00 pm">2:00 pm</option>
+                      <option value="2:00 pm">2:00 pm</option>
+                      <option value="2:30 pm">2:30 pm</option>
+                      <option value="3:00 pm">3:00 pm</option>
+                      <option value="5:00 pm">5:00 pm</option>
+                      <option value="5:30 pm">5:30 pm</option>
+                      <option value="6:00 pm">6:00 pm</option>
+                      <option value="6:30 pm">6:30 pm</option>
+                      <option value="7:00 pm">7:00 pm</option>
+                      <option value="7:30 pm">7:30 pm</option>
+                      <option value="8:00 pm">8:00 pm</option>
+                      <option value="8:30 pm">8:30 pm</option>
+                      <option value="9:00 pm">9:30 pm</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -2574,7 +2586,7 @@ const NinjaBoxCustomise = () => {
                                 <img src='555.png' height="150px" width="274.5px" />
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
-              <div className={styles3.packageName}>
+              {/* <div className={styles3.packageName}>
                 <h3>
                   {ID
                     ? PreSelectMenuNinjaBox[mealType].filter(
@@ -2588,6 +2600,48 @@ const NinjaBoxCustomise = () => {
                   {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
                   Desserts
                 </h6>
+              </div> */}
+              <div className={styles.packageName}>
+                <h3>{ID
+                    ? PreSelectMenuNinjaBox[mealType].filter(
+                      (d) => d.id === ID
+                    )[0].name
+                    : ""}</h3>
+                <img src="555.png" height="150px" width="274.5px" />
+                <h6>{starters?.length} Starters +{" "}
+                  {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
+                  Desserts</h6>
+                {/* <div>
+                                <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
+                                <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
+                            </div> */}
+                {/* <h5>₹ {price}</h5> */}
+              </div>
+              <div className={styles.pkgDetails}>
+                <div>
+                  {/* <h3>{ID? PreSelectMenuNinjaBox[mealType].filter((d)=>d.id===ID)[0].name:''}</h3> */}
+                  <h3>{ID
+                    ? PreSelectMenuNinjaBox[mealType].filter(
+                      (d) => d.id === ID
+                    )[0].name
+                    : ""}</h3>
+                  <h5>{starters?.length} Starters +{" "}
+                  {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
+                  Desserts</h5>
+                  <div>
+                    <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
+                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
+                  </div>
+                  {/* <div>
+                  <h6>₹ {packagePrice }</h6>
+                </div> */}
+                  {/* <div>
+                                    <h6>₹ {price}</h6>
+                                </div> */}
+                </div>
+                <div>
+                  <img id={styles.pkgImg} src="555.png" width="366px" height="200px" />
+                </div>
               </div>
               {/* <div className={styles.pkgSliderContainerLG}>
                                 {
@@ -2632,7 +2686,7 @@ const NinjaBoxCustomise = () => {
               <div>
                 <div className={styles.menuContainer}>
                   <div className={styles.createYourMenuHead}>
-                    <h3>Customize Your Package</h3>
+                    <h3 ref={sectionRef}>Customize Your Package</h3>
                     <hr
                       style={{
                         border: "0.4px dashed #42484E",
@@ -2756,69 +2810,69 @@ const NinjaBoxCustomise = () => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
 
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "starters"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "starters"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -2965,68 +3019,68 @@ const NinjaBoxCustomise = () => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredMainsData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "mains"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
-                                          />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "mains"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -3160,68 +3214,68 @@ const NinjaBoxCustomise = () => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredBreadData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "Bread+Rice"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
-                                          />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "Bread+Rice"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -3354,68 +3408,68 @@ const NinjaBoxCustomise = () => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredDessertData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "desserts"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
-                                          />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "desserts"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -3456,8 +3510,8 @@ const NinjaBoxCustomise = () => {
                     {(city === "Mumbai" ||
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
-                      city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
-                    people < 26 ? (
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3467,9 +3521,9 @@ const NinjaBoxCustomise = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3481,9 +3535,9 @@ const NinjaBoxCustomise = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3495,9 +3549,9 @@ const NinjaBoxCustomise = () => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3516,7 +3570,7 @@ const NinjaBoxCustomise = () => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                    people < 26 ? (
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3526,9 +3580,9 @@ const NinjaBoxCustomise = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3540,9 +3594,9 @@ const NinjaBoxCustomise = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3554,9 +3608,9 @@ const NinjaBoxCustomise = () => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3691,8 +3745,8 @@ const NinjaBoxCustomise = () => {
                       <button>Get Booking Help</button>
                     </Link> */}
                     {/* <button onClick={placeOrderBtn}>Place Order</button> */}
-                    <button style={{backgroundColor: "green", color: "white"}} onClick={()=>window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
-                    
+                    <button style={{ backgroundColor: "green", color: "white" }} onClick={() => window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
+
 
                     {/* <button onClick={initiatePayment}></button> */}
                   </div>

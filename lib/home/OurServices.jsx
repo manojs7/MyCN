@@ -41,7 +41,7 @@ const OurServices = () => {
                     </div>
                     <div className="content">
                       <p>
-                        Bulk Food Delivery in<br/>Convenient
+                        Bulk Food Delivery in<br />Convenient
                         <span> Table-Display</span> box
                       </p>
                     </div>
@@ -75,6 +75,9 @@ const OurServices = () => {
                     Sample Pricing
                   </button>
                 </div>
+              </div>
+              <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
+                <Image src="/home/ourServices/min10.png" width="112px" height="19.1px" />
               </div>
             </div>
 
@@ -123,13 +126,16 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/ninjabuffet"><button className="view-details">View Details</button></Link>
+                  <Link href="/ninjabuffet"><button className="view-details">View Details</button></Link>
                   <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
                   </button>
                 </div>
+              </div>
+              <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
+                <Image src="/home/ourServices/min10.png" width="112px" height="19.1px" />
               </div>
             </div>
 
@@ -175,8 +181,8 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/gourmet"><button
-                  className="view-details mt-5 mx-auto">View Details</button></Link>
+                  <Link href="/gourmet"><button
+                    className="view-details mt-5 mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
                     className="sample-pricing mt-5"
@@ -189,7 +195,7 @@ const OurServices = () => {
             {/* </div>
           <div className="row mb-4 justify-content-center"> */}
             {/* card 4*/}
-            <div className="col-12 col-sm-6 col-md-4  mb-5">
+            <div className="col-12 col-sm-6 col-md-4  mb-5 mt-5">
               <div className="our-services-box">
                 <div className="our-services-box-hover">
                   <div className="service-face service-face2">
@@ -231,8 +237,8 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/ninjaclassic"><button
-                  className="view-details mt-2 mx-auto">View Details</button></Link>
+                  <Link href="/ninjaclassic"><button
+                    className="view-details mt-2 mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
                     className="sample-pricing mt-2"
@@ -242,9 +248,9 @@ const OurServices = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* card 5 */}
-            <div className="col-12 col-sm-6 col-md-4 mb-md-0 mb-5">
+            <div className="col-12 col-sm-6 col-md-4 mb-md-0 mb-5 mt-5">
               <div className="our-services-box">
                 <div className="our-services-box-hover">
                   <div className="service-face service-face2">
@@ -286,8 +292,8 @@ const OurServices = () => {
                 </div>
 
                 <div className="buttons">
-                  <Link href = "/mealbox"><button
-                  className="view-details mt-3 mx-auto">View Details</button></Link>
+                  <Link href="/mealbox"><button
+                    className="view-details mt-3 mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                     className="sample-pricing mt-3"
@@ -296,9 +302,12 @@ const OurServices = () => {
                   </button> */}
                 </div>
               </div>
+              <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
+                <Image src="/home/ourServices/min15.png" width="112px" height="19.1px" />
+              </div>
             </div>
             {/* card 6 */}
-            <div className="col-12 col-sm-6 col-md-4 mb-md-0 mb-5">
+            <div className="col-12 col-sm-6 col-md-4 mb-md-0 mb-5 mt-5">
               <div className="our-services-box">
                 <div className="our-services-box-hover">
                   <div className="service-face service-face2">
@@ -339,8 +348,8 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/snackbox"><button
-                  className="view-details mx-auto">View Details</button></Link>
+                  <Link href="/snackbox"><button
+                    className="view-details mx-auto">View Details</button></Link>
                   {/* <button
                     onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                     className="sample-pricing"
@@ -348,6 +357,9 @@ const OurServices = () => {
                     Sample Pricing
                   </button> */}
                 </div>
+              </div>
+              <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
+                <Image src="/home/ourServices/min15.png" width="112px" height="19.1px" />
               </div>
             </div>
           </div>
@@ -376,8 +388,8 @@ const OurServices = () => {
                       <Image src="/home/ourServices/ninjabox2.png" width={166.9} height={129.11} alt="" className="hoverZoom" />
                     </div>
                     <div className="content">
-                    <p>
-                        Bulk Food Delivery in<br/>Convenient
+                      <p>
+                        Bulk Food Delivery in<br />Convenient
                         <span> Table-Display</span> box
                       </p>
                     </div>
@@ -401,7 +413,7 @@ const OurServices = () => {
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/ninjabox"><button
+                  <Link href="/ninjabox"><button
                     className="view-details"
                   >
                     View Details
@@ -412,6 +424,9 @@ const OurServices = () => {
                     Sample Pricing
                   </button>
                 </div>
+              </div>
+              <div style={{ position: "relative", marginTop: "-313px", marginLeft: "5px" }}>
+                <Image src="/home/ourServices/min10.png" width="112px" height="19.1px" />
               </div>
             </div>
             {/* card 2 */}
@@ -459,11 +474,11 @@ const OurServices = () => {
                     width={210} height={140}
                     alt=""
                     className="hoverZoom"
-                    //className="img-fluid hoverZoom"
+                  //className="img-fluid hoverZoom"
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/ninjabuffet"><button className="view-details">
+                  <Link href="/ninjabuffet"><button className="view-details">
                     View Details
                   </button></Link>
                   <button onClick={() => window.open('/checkprice', '_blank')}
@@ -473,71 +488,13 @@ const OurServices = () => {
                   </button>
                 </div>
               </div>
+              <div style={{ position: "relative", marginTop: "-313px", marginLeft: "5px" }}>
+                <Image src="/home/ourServices/min10.png" width="112px" height="19.1px" />
+              </div>
             </div>
 
             {/* card 3 */}
-            <div className="mb-5">
-            <div className="our-services-box">
-              <div className="our-services-box-hover">
-                <div className="service-face service-face2">
-                  <div className="flip-card">
-                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
-                  </div>
-                  <div className="title">
-                    <span> Ninja</span>
-                    Gourmet
-                  </div>
-                  <div className="image6">
-                    <Image
-                        src="/home/ourServices/osf3.webp"
-                        width={129.57} height={148.77}
-                      alt=""
-                      className="img-fluid hoverZoom"
-                    />
-                  </div>
-                  <div className="content">
-                    <p>
-                      Premium Buffet of High-end <br /> <span>Lavish Cuisine</span>{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="service-back">
-                <p>
-                  {" "}
-                  ✅ 1-2 Trained Captains <br />
-                  ✅ Outdoor Catering <br />
-                  ✅ Quick Setup - Clean up <br />✅ Hot and Delicious Food
-                </p>
-              </div>
-              <div className="service-back-picmb">
-                <Image
-                    src="/home/ourServices/backpic6.webp"
-                    width={180} height={130}
-                  alt=""
-                  className="img-fluid hoverZoom"
-                />
-              </div>
-              <div className="buttons">
-                <Link href = "/gourmet"><button
-                className="view-details mx-auto">View Details</button></Link>
-                {/* <button
-                  onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
-                  className="sample-pricing"
-                >
-                  Sample Pricing
-                </button> */}
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-
-        {/* </Slider> */}
-
-        {/* slider 2 */}
-        <div className="mobile-card-container">
-        <div className="">
+            <div className="">
               <div className="our-services-box">
                 <div className="our-services-box-hover">
                   <div className="service-face service-face2">
@@ -545,19 +502,20 @@ const OurServices = () => {
                       <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
                     </div>
                     <div className="title">
-                      <span> Ninja</span>Classic
+                      <span> Ninja</span>
+                      Gourmet
                     </div>
-                    <div className="image3">
+                    <div className="image6">
                       <Image
-                        src="/home/ourServices/nc1.webp"
-                        width={180} height={148.77}
+                        src="/home/ourServices/osf3.webp"
+                        width={129.57} height={148.77}
                         alt=""
                         className="img-fluid hoverZoom"
                       />
                     </div>
                     <div className="content">
                       <p>
-                        Catering for <span> large gatherings </span> <br /> of 50+ guests
+                        Premium Buffet of High-end <br /> <span>Lavish Cuisine</span>{" "}
                       </p>
                     </div>
                   </div>
@@ -566,34 +524,94 @@ const OurServices = () => {
                   <p>
                     {" "}
                     ✅ 1-2 Trained Captains <br />
-                    ✅ Outdoor Catering
-                    <br />
-                    ✅ Quick Setup - Clean up
-                    <br />✅ Hot and Delicious Food
+                    ✅ Outdoor Catering <br />
+                    ✅ Quick Setup - Clean up <br />✅ Hot and Delicious Food
                   </p>
                 </div>
                 <div className="service-back-picmb">
                   <Image
-                    src="/home/ourServices/backpic3.webp"
-                    width={210} height={135}
+                    src="/home/ourServices/backpic6.webp"
+                    width={180} height={130}
                     alt=""
                     className="img-fluid hoverZoom"
                   />
                 </div>
                 <div className="buttons">
-                  <Link href = "/ninjaclassic"><button
-                  className="view-details mx-auto">View Details</button></Link>
+                  <Link href="/gourmet"><button
+                    className="view-details mx-auto">View Details</button></Link>
                   {/* <button
+                  onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Gourmet%20options%20")}
+                  className="sample-pricing"
+                >
+                  Sample Pricing
+                </button> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* </Slider> */}
+
+        {/* slider 2 */}
+        <div className="mobile-card-container">
+          <div className="">
+            <div className="our-services-box">
+              <div className="our-services-box-hover">
+                <div className="service-face service-face2">
+                  <div className="flip-card">
+                    <FontAwesomeIcon icon={faCaretUp} className="fs-1 text-danger" />
+                  </div>
+                  <div className="title">
+                    <span> Ninja</span>Classic
+                  </div>
+                  <div className="image3">
+                    <Image
+                      src="/home/ourServices/nc1.webp"
+                      width={180} height={148.77}
+                      alt=""
+                      className="img-fluid hoverZoom"
+                    />
+                  </div>
+                  <div className="content">
+                    <p>
+                      Catering for <span> large gatherings </span> <br /> of 50+ guests
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="service-back">
+                <p>
+                  {" "}
+                  ✅ 1-2 Trained Captains <br />
+                  ✅ Outdoor Catering
+                  <br />
+                  ✅ Quick Setup - Clean up
+                  <br />✅ Hot and Delicious Food
+                </p>
+              </div>
+              <div className="service-back-picmb">
+                <Image
+                  src="/home/ourServices/backpic3.webp"
+                  width={210} height={135}
+                  alt=""
+                  className="img-fluid hoverZoom"
+                />
+              </div>
+              <div className="buttons">
+                <Link href="/ninjaclassic"><button
+                  className="view-details mx-auto">View Details</button></Link>
+                {/* <button
                     onClick={() => (window.location.href = "https://caterninja.com/shop/catering")}
                     className="sample-pricing"
                   >
                     Sample Pricing
                   </button> */}
-                </div>
               </div>
             </div>
-        
-          
+          </div>
+
+
           {/* card 5 */}
           <div className="mb-5">
             <div className="our-services-box">
@@ -608,8 +626,8 @@ const OurServices = () => {
                   </div>
                   <div className="image4">
                     <Image
-                        src="/home/ourServices/osf4.webp"
-                        width={158.65} height={141.72}
+                      src="/home/ourServices/osf4.webp"
+                      width={158.65} height={141.72}
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -632,16 +650,16 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <Image
-                    src="/home/ourServices/backpic4.webp"
-                    width={210} height={140}
+                  src="/home/ourServices/backpic4.webp"
+                  width={210} height={140}
                   alt=""
                   className="img-fluid hoverZoom"
                 />
               </div>
 
               <div className="buttons">
-                <Link href = "/mealbox"><button 
-                className="view-details mx-auto">View Details</button></Link>
+                <Link href="/mealbox"><button
+                  className="view-details mx-auto">View Details</button></Link>
                 {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Meal%20box%20options%20")}
                   className="sample-pricing"
@@ -650,8 +668,11 @@ const OurServices = () => {
                 </button> */}
               </div>
             </div>
+            <div style={{ position: "relative", marginTop: "-313px", marginLeft: "5px" }}>
+                <Image src="/home/ourServices/min15.png" width="112px" height="19.1px" />
+              </div>
           </div>
-          
+
           {/* card 6 */}
           <div className="mb-5">
             <div className="our-services-box">
@@ -666,8 +687,8 @@ const OurServices = () => {
                   </div>
                   <div className="image5">
                     <Image
-                        src="/home/ourServices/ezgif.com-gif-maker.webp"
-                        width={152.92} height={134.75}
+                      src="/home/ourServices/ezgif.com-gif-maker.webp"
+                      width={152.92} height={134.75}
                       alt=""
                       className="img-fluid hoverZoom"
                     />
@@ -690,15 +711,15 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <Image
-                    src="/home/ourServices/backpic5.webp"
-                    width={150} height={130}
+                  src="/home/ourServices/backpic5.webp"
+                  width={150} height={130}
                   alt=""
                   className="img-fluid hoverZoom"
                 />
               </div>
               <div className="buttons">
-                <Link href = "/snackbox"><button 
-                className="view-details mx-auto">View Details</button></Link>
+                <Link href="/snackbox"><button
+                  className="view-details mx-auto">View Details</button></Link>
                 {/* <button
                   onClick={() => (window.location.href = "http://api.whatsapp.com/send?phone=917738096313&text=Hey!%20looking%20for%20Snack%20box%20options%20")}
                   className="sample-pricing"
@@ -707,6 +728,9 @@ const OurServices = () => {
                 </button> */}
               </div>
             </div>
+            <div style={{ position: "relative", marginTop: "-313px", marginLeft: "5px" }}>
+                <Image src="/home/ourServices/min15.png" width="112px" height="19.1px" />
+              </div>
           </div>
         </div>
       </div>
