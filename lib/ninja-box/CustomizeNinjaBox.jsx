@@ -2736,7 +2736,7 @@ const CustomizeNinjaBox = () => {
                         <br />
                         NINJA<span>BUFFET</span>
                       </h3>
-                      <img src="Frame 769.png" />
+                      <img src="/CustomizeImg/ckprc.png" />
                     </div>
                     <div className={styles.pkgSlider}>
                       <h3>

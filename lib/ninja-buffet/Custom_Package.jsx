@@ -694,7 +694,7 @@ const Custom_Package = () => {
           </div> */}
           {!showNonveg && (<div className="d-flex gap-4 mt-3">
             {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/vlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -711,7 +711,7 @@ const Custom_Package = () => {
           </div>)}
           {!showNonveg && (<div className="d-flex gap-4">
             {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/vlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -728,7 +728,7 @@ const Custom_Package = () => {
           </div>)}
           {showNonveg && (<div className="d-flex gap-4 mt-3">
             {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/nvlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -745,7 +745,7 @@ const Custom_Package = () => {
           </div>)}
           {showNonveg && (<div className="d-flex gap-4">
             {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/nvlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
