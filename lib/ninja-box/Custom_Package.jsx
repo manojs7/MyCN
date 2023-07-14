@@ -13,7 +13,15 @@ import Swal from "sweetalert2";
 import Link from "next/link";
 
 const Custom_Package = () => {
-  const { menu, cuisines, allMenus, cities, occasions } = useAppMenu();
+  const {
+    menu,
+    cuisines,
+    allMenus,
+    cities,
+    occasions,
+    PreSelectMenuNinjaBox,
+    ZipCodes,
+  } = useAppMenu();
   const [city, setCity] = useState("");
   const [occasion, setOccasion] = useState("");
   const [itemSelected, setItemSelected] = useState()
@@ -117,28 +125,9 @@ const Custom_Package = () => {
   }
 
   //PACKAGES
-  const packages = {
-    veg: [
-      { id: 1, name: 'House Party 1', prc: 5499, price: '5,499', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["Veggie Fingers", "Cajun Spice Potato", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta", "Chole Masala", "Dal Makhni", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal halwa", "Raita"] },
-      { id: 2, name: 'House Party 2', prc: 5499, price: '5,499', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Malai Paneer Tikka", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Kadhai Veg", "Yellow Dal Fry", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
-      { id: 3, name: "House Party 3", prc: 3999, price: '3,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Cheezy Triangles", "Malai Paneer Tikka", "Veg Manchurian", "Honey Chilly Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
-      { id: 4, name: 'House Party 4', prc: 3999, price: '3,999', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Veg Sheekh Kabab", "Crispy corn", "Cajun Spiced Potato", "Veg Fried Rice", "Veg Hakka Noodles", "Paneer Manchurian Gravy", "Fruit Custard"] },
-      { id: 5, name: 'Cocktail Party 1', prc: 3599, price: '3,599', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Mains", items: ["Malai Paneer tikka", "Tandoori malai chaap", "Churasco Pineapple", "Veggie Fingers", "Crispy Corn", "Mushroom Munchurian Dry", "Veg Dum Biryani", "Raita", "Salad"] },
-      { id: 6, name: 'Cocktail Party 2', prc: 3599, price: '3,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 2 Mains", items: ["Veg Sheek Kabab", "Honey Chilly Baby Potato", "Cheesy Triangles", "Veg Manchurian Dry", "Tandoori Malai Chaap", "Crispy Corn", "Veg Hakka Noodle", "Veg Manchurian Gravy"] },
-      { id: 7, name: 'House Pooja 1', prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 5 Mains + 1 Dessert", items: ["Pudina Paneer Tikka", "Malai Broccoli", "Subz e Bahar", "Paneer Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
-      { id: 8, name: 'House Pooja 2', prc: 4299, price: '4,299', img: '/ninja-box/packages/NBP5.png', details: "5 Starters + 1 Dessert", items: ["Paneer butter Masala", "Chole Masala", "Jeera Aloo", "Veg Pulao", "Lachha Paratha", "Shahi Meetha", "Raita"] },
-    ],
-    nonVeg: [
-      { id: 1, name: 'House Party 1', prc: 6999, price: '6,999', img: '/ninja-box/packages/NBP-1.png', details: "4 Starters + 5 Mains + 1 Dessert", items: ["BBQ Chicken Wings", "Kalmi Chicken Tikka", "Crispy Corn", "Tandoori Paneer Tikka", "Malai Kofta Gravy", "Butter Chicken Masala", "Sabz E Bahar", "Veg Dum Biryani", "Lachha Paratha", "Angoori Gulab Jamun", "Raita"] },
-      { id: 2, name: 'House Party 2', prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP2.png', details: "4 Starters + 4 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Chilly Garlic Prawns", "Tandoori Malai Chaap", "Cajun Spice Potatos", "Paneer Butter Masala", "Chicken Kadai", "Veg Dum Biryani", "Lachha Paratha", "Kesariya Phirni", "Raita"] },
-      { id: 3, name: "House Party 3", prc: 4999, price: '4,999', img: '/ninja-box/packages/NBP3.png', details: "4 Starters + 3 Mains + 1 Dessert", items: ["Kalmi Chicken Tikka", "Tandoori Fish Tikka", "Churasco Pineapple", "Honey Chilly Baby Potatos", "Veg Hakka Noodles", "Veg Manchurian Gravy", "Alfredo Pasta (White Sauce)", "Chocolate Pastry"] },
-      { id: 4, name: 'House Party 4', prc: 6599, price: '6,599', img: '/ninja-box/packages/NBP4.png', details: "3 Starters + 3 Mains + 1 Dessert", items: ["Chicken Seekh Kebab", "French Fries", "Crispy corn", "Veg Fried Rice", "Chicken Fried Rice", "Paneer Manchurian Gravy", "Fruit Custard"] },
-      { id: 5, name: 'Cocktail Party 1', prc: 6599, price: '6,599', img: '/ninja-box/packages/NBP5.png', details: "6 Starters + 2 Mains", items: ["Tandoori Fish Tikka", "Chicken Sheekh Kebab", "Chilli Garlic Prawns", "Chicken Malai Tikka", "Tandoori Malai Chap", "Achari Paneer Tikka", "Veg Dum Biryani", "Chicken Dum Biryani", "Raita"] },
-      { id: 6, name: 'Cocktail Party 2', prc: 5599, price: '5,599', img: '/ninja-box/packages/NBP6.png', details: "6 Starters + 1 Mains", items: ["Punjabi Tangdi", "Coastal BBQ Fish Tikka", "BBQ Chicken Wings", "Chicken Achari Tikka", "Tandoori Malai Chaap", "Honey Chilly Baby Potato", "Veg Hakka Noodles", "Veg Manchurian Gravy"] },
-      { id: 7, name: 'Fusion Party', prc: 6999, price: '6,999', img: '/ninja-box/packages/NBP4.png', details: "2 Starters + 3 Mains + 1 Dessert", items: ["Coastal BBQ Fish Tikka", "Cheesy Triangles", "Paneer Kadai", "Chicken Lababdar", "Chole Masala", "Veg Dum Biryani", "Lachha Paratha", "Moong Dal Halwa", "Raita"] },
-      { id: 8, name: 'Punjabi Party', prc: 7599, price: '7,599', img: '/ninja-box/packages/NBP5.png', details: "3 Starters + 4 Mains + 1 Dessert", items: ["Punjabi Tangdi", "Dahi Ke Kebab", "Paneer Kofta Gravy", "Punjabi Chicken Curry", "Veg Dum Biryani", "Lachha Paratha", "Shahi Meeta", "Raita"] },
-    ]
-  };
+
+  const packages=PreSelectMenuNinjaBox;
+
 
   //price filter
   //200-350, 350-500, 500+
@@ -153,11 +142,11 @@ const Custom_Package = () => {
     if (priceFilter === 'all') {
       return true;
     } else if (priceFilter === '2000-3500') {
-      return item.prc >= 2000 && item.prc <= 3500;
+      return item.price >= 2000 && item.price <= 3500;
     } else if (priceFilter === '3501-5000') {
-      return item.prc >= 3501 && item.prc <= 5000;
+      return item.price >= 3501 && item.price <= 5000;
     } else {
-      return item.prc >= 5001;
+      return item.price >= 5001;
     }
   })
 
@@ -165,13 +154,13 @@ const Custom_Package = () => {
     if (priceFilter === 'all') {
       return true;
     } else if (priceFilter === '2000-4000') {
-      return item.prc >= 2000 && item.prc <= 4000;
+      return item.price >= 2000 && item.price <= 4000;
     } else if (priceFilter === '4001-5000') {
-      return item.prc >= 4001 && item.prc <= 5000;
+      return item.price >= 4001 && item.price <= 5000;
     } else if (priceFilter === '5001-6000') {
-      return item.prc >= 5001 && item.prc <= 6000;
+      return item.price >= 5001 && item.price <= 6000;
     } else {
-      return item.prc >= 6001;
+      return item.price >= 6001;
     }
   })
 
@@ -664,7 +653,7 @@ const Custom_Package = () => {
                 </div>
                 <div className="packagesName">
                   <h4>{item.details}</h4>
-                  <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                  <h3>₹ {(item.price).toLocaleString("en-US")}/-<span> Onwards</span></h3>
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">
@@ -681,7 +670,7 @@ const Custom_Package = () => {
                 </div>
                 <div className="packagesName">
                   <h4>{item.details}</h4>
-                  <h3>₹ {item.price}/-<span> Onwards</span></h3>
+                  <h3>₹ {item.price.toLocaleString("en-US")}/-<span> Onwards</span></h3>
                   <p>(Min. Order 10 Guests)</p>
                 </div>
                 <div className="d-flex justify-content-evenly">

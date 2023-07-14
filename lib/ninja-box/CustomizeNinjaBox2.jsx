@@ -106,6 +106,8 @@ const CustomizeNinjaBox = () => {
   const [buffet, setbuffet] = useState(0);
   const [GST, setGST] = useState(0);
   const [extraAdd, setExtraAdd] = useState(500);
+  const [discount, setDiscount] = useState(400);
+
 
   const [isStarterChange, setIsStarterChange] = useState(false);
   const [isMainChange, setIsMainChange] = useState(false);
@@ -4198,8 +4200,12 @@ const CustomizeNinjaBox = () => {
                         <p>₹{GST}</p>
                       </div>
                     </div>
+
+                   
                     <hr id={styles.hr2} />
                   </div>
+                  
+
                   <div className={styles.grandTotal}>
                     <div>
                       <h4>Grand Total</h4>
@@ -4210,8 +4216,27 @@ const CustomizeNinjaBox = () => {
                       </p>
                     </div>
                   </div>
+
+                  
                   <div className={styles.dlvryChrg}>
                     <p>*Delivery charges as per actual</p>
+                  </div>
+
+                  <hr id={styles.hr2} />
+
+                  <div className={styles.grandTotal}>
+                    <div>
+                      <h4>Instant Discount(10%)</h4>
+                    </div>
+                    <div>
+                      <p style={{ fontWeight: "600" }}>
+                        ₹{discount.toLocaleString("en-US")}
+                      </p>
+                    </div>
+                    
+                  </div>
+                  <div className={styles.dlvryChrg}>
+                    <p style={{color:"red"}}>*only if you order within next 24 hrs</p>
                   </div>
                   <div className={styles.orderBtn}>
                     <button onClick={placeOrderBtn}>Place Order</button>
