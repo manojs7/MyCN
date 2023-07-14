@@ -113,6 +113,18 @@ const NinjaBuffetCustomise = () => {
 
     const [checkedValues, setCheckedValues] = React.useState([]);
 
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const scrollToSection = () => {
+            if (sectionRef.current) {
+                sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        scrollToSection();
+    }, []);
+
     const settings = {
         dots: true,
         infinite: true,
@@ -2555,7 +2567,7 @@ const NinjaBuffetCustomise = () => {
                                 <img src='555.png' height="150px" width="274.5px" />
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
-                            <div className={styles3.packageName}>
+                            {/* <div className={styles3.packageName}>
                                 <h3>
                                     {ID
                                         ? PreSelectMenuNinjaBox[mealType].filter(
@@ -2569,6 +2581,48 @@ const NinjaBuffetCustomise = () => {
                                     {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
                                     Desserts
                                 </h6>
+                            </div> */}
+                            <div className={styles.packageName}>
+                                <h3>{ID
+                                    ? PreSelectMenuNinjaBox[mealType].filter(
+                                        (d) => d.id === ID
+                                    )[0].name
+                                    : ""}</h3>
+                                <img src="/CustomizeImg/Group 1012.png" height="150px" width="274.5px" />
+                                <h6>{starters?.length} Starters +{" "}
+                                    {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
+                                    Desserts</h6>
+                                {/* <div>
+                                <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
+                                <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
+                            </div> */}
+                                {/* <h5>₹ {price}</h5> */}
+                            </div>
+                            <div className={styles.pkgDetails}>
+                                <div>
+                                    {/* <h3>{ID? PreSelectMenuNinjaBox[mealType].filter((d)=>d.id===ID)[0].name:''}</h3> */}
+                                    <h3>{ID
+                                        ? PreSelectMenuNinjaBox[mealType].filter(
+                                            (d) => d.id === ID
+                                        )[0].name
+                                        : ""}</h3>
+                                    <h5>{starters?.length} Starters +{" "}
+                                        {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
+                                        Desserts</h5>
+                                    <div>
+                                        <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
+                                        <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
+                                    </div>
+                                    {/* <div>
+                  <h6>₹ {packagePrice }</h6>
+                </div> */}
+                                    {/* <div>
+                                    <h6>₹ {price}</h6>
+                                </div> */}
+                                </div>
+                                <div>
+                                    <img id={styles.pkgImg} src="/CustomizeImg/Group 1012.png" width="366px" height="200px" />
+                                </div>
                             </div>
                             {/* <div className={styles.pkgSliderContainerLG}>
                                 {
@@ -2613,7 +2667,7 @@ const NinjaBuffetCustomise = () => {
                             <div>
                                 <div className={styles.menuContainer}>
                                     <div className={styles.createYourMenuHead}>
-                                        <h3>Customize Your Package</h3>
+                                        <h3 ref={sectionRef}>Customize Your Package</h3>
                                         <hr
                                             style={{
                                                 border: "0.4px dashed #42484E",

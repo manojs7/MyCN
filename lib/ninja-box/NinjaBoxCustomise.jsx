@@ -113,6 +113,18 @@ const NinjaBoxCustomise = () => {
 
   const [checkedValues, setCheckedValues] = React.useState([]);
 
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const scrollToSection = () => {
+      if (sectionRef.current) {
+        sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    scrollToSection();
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -123,7 +135,7 @@ const NinjaBoxCustomise = () => {
     autoplay: true,
     autoplaySpeed: 2000,
   };
-  
+
   const placeOrderBtn = (e) => {
     e.preventDefault();
     setShowPopup(true);
@@ -131,7 +143,7 @@ const NinjaBoxCustomise = () => {
   const closePopup = () => {
     setShowPopup(false);
   }
-  
+
   useEffect(() => {
     let SessionData = JSON.parse(sessionStorage.getItem("dataSelected"));
     console.log("here", SessionData);
@@ -144,47 +156,47 @@ const NinjaBoxCustomise = () => {
       //   setImage(dataSelected.itemSelected["img"]);
       setId(SessionData.itemSelected["id"]);
       setStartTime(SessionData['startTime'])
-      setMealType(SessionData["mealType"]); 
+      setMealType(SessionData["mealType"]);
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
-    
+
     let dataSelected = JSON.parse(sessionStorage.getItem("dataSelected"));
-    let ID2=dataSelected.itemSelected["id"];
-    let mealType2=dataSelected["mealType"]
+    let ID2 = dataSelected.itemSelected["id"];
+    let mealType2 = dataSelected["mealType"]
     // setMealType(dataSelected["mealType"]) 
-    let itemData;  
+    let itemData;
     console.log('mtype', mealType2, ID2)
     if (ID2) {
-       let itemDataArray= PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items
-        itemDataArray.map(
-        (item, index) => {  
+      let itemDataArray = PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items
+      itemDataArray.map(
+        (item, index) => {
           itemData = allMenus.filter((d) => d.name === item);
           if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
               handleStatersAdd(item);
-            } 
+            }
             if (itemData[0].mealType === "Main course") {
               handleMainAdd(itemData[0].name);
-            } 
-             if (itemData[0].mealType === "Bread+Rice") {
+            }
+            if (itemData[0].mealType === "Bread+Rice") {
               handleBreadRiceAdd(itemData[0].name);
-            } 
-             if (itemData[0].mealType === "Dessert") {
+            }
+            if (itemData[0].mealType === "Dessert") {
               handleDesertsAdd(itemData[0].name);
             }
             else {
-              console.log("suspect", item); 
-            } 
-            let value=itemData[0];
+              console.log("suspect", item);
+            }
+            let value = itemData[0];
             value.checked = "checked";
-          setCheckedValues([...checkedValues, value]);
-          } 
-        }); 
+            setCheckedValues([...checkedValues, value]);
+          }
+        });
     } else {
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -259,7 +271,7 @@ const NinjaBoxCustomise = () => {
       city === "Mumbai" ||
       city === "Banglore" ||
       city === "Navi-Mumbai" ||
-      city === "Thane" || city==="Chennai" || city === "Pune"
+      city === "Thane" || city === "Chennai" || city === "Pune"
     ) {
       if (people <= 25) {
         setDeliveryCharge(0);
@@ -296,8 +308,8 @@ const NinjaBoxCustomise = () => {
     getDeliveryCharge(veg + nonVeg);
   };
 
-  const handleVegNonVegGuest = async(name, value) => {
-    
+  const handleVegNonVegGuest = async (name, value) => {
+
     if (value < 0 || !value) {
       name === "veg" ? setVeg(0) : setNonVeg(0);
     } else {
@@ -644,7 +656,7 @@ const NinjaBoxCustomise = () => {
     let tempDessert = [...desserts];
 
     tempDessert.map((data) => {
-      
+
       if (data.Qtype === "pcs") {
         if (data.cuisine === "Continental") {
           data.quantity = Math.round(veg + nonVeg);
@@ -654,8 +666,8 @@ const NinjaBoxCustomise = () => {
           } else {
             data.quantity = Math.round((veg + nonVeg) * 1.5);
           }
-      } 
-    }else {
+        }
+      } else {
         data.quantity = HandleCeilFloorValue((Math.round(veg + nonVeg) * 0.075).toFixed(1));
       }
     });
@@ -779,7 +791,8 @@ const NinjaBoxCustomise = () => {
         }
       }
     }
-    temp.push({
+    let temp2 = []
+    temp2.push({
       id: starter.id,
       city: starter.city,
       cuisine: starter.cuisine,
@@ -1055,6 +1068,53 @@ const NinjaBoxCustomise = () => {
     
     
 
+
+    // temp.forEach((item) => {
+    //   if (item.veg) {
+    //     if (
+    //       item.menu_label === "Mains-dry" ||
+    //       item.menu_label === "Mains-dal"
+    //     ) {
+    //       item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
+    //     } else if (item.menu_label === "Pasta") {
+    //       if (nonVegPastaMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Mains-gravy : same logic as above
+    //     else if (item.menu_label === "Mains-Gravy") {
+    //       if (nonVegMainsGravyMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //     //Main -Thai : same logic as above
+    //     else if (item.menu_label === "Mains-Thai") {
+    //       if (nonVegMainThaiMainCount > 0) {
+    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
+    //       } else {
+    //         item.quantity = HandleCeilFloorValue(
+    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
+    //         );
+    //       }
+    //     }
+    //   } else {
+    //     if (item.Qtype === "pcs") {
+    //       item.quantity = nonVeg * 1;
+    //     } else if (item.name === highestPrice.name) {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
+    //     } else {
+    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
+    //     }
+    //   }
+    // });
     temp.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
@@ -1656,7 +1716,7 @@ const handleBreadRiceAdd = (item_name, id) => {
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
-    
+
     if (dessert.Qtype === "pcs") {
       // expensive desserts should go 1 piece
       if (dessert.cuisine === "Continental") {
@@ -1671,7 +1731,7 @@ const handleBreadRiceAdd = (item_name, id) => {
     } else {
       quantity = Math.round((veg + nonVeg) * 0.05).toFixed(1);
     }
-    let temp2=[]
+    let temp2 = []
     temp2.push({
       // name: dessert.name,
       // quantity: quantity,
@@ -1819,29 +1879,29 @@ const handleBreadRiceAdd = (item_name, id) => {
       setBreadRice(newDesserts);
     }
   }
-  function uncheckAfterDelete(a,temp){
+  function uncheckAfterDelete(a, temp) {
     let removedIndexes = [];
-      a.forEach((item, index) => {
-        let innerData = temp.filter(
-          (innerItem) => innerItem?.name === item?.name
-        );
-        console.log("item", innerData);
-        if (!innerData?.length) {
-          removedIndexes.push(index);
-        }
-      });
-      for (let j = 0; j < a.length; j++) {
-        if (!removedIndexes.includes(j)) {
-          a[j].checked = "checked";
-        } else {
-          a[j].checked = "";
-          checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
-          setCheckedValues(
-            checkedValues
-          );
-        }
+    a.forEach((item, index) => {
+      let innerData = temp.filter(
+        (innerItem) => innerItem?.name === item?.name
+      );
+      console.log("item", innerData);
+      if (!innerData?.length) {
+        removedIndexes.push(index);
       }
-      return a
+    });
+    for (let j = 0; j < a.length; j++) {
+      if (!removedIndexes.includes(j)) {
+        a[j].checked = "checked";
+      } else {
+        a[j].checked = "";
+        checkedValues = checkedValues.filter((v) => v.id !== a[j].id)
+        setCheckedValues(
+          checkedValues
+        );
+      }
+    }
+    return a
   }
   function handleDelete(index, type) {
     setIsDelete(!isDelete);
@@ -1851,7 +1911,7 @@ const handleBreadRiceAdd = (item_name, id) => {
       temp = [...starters];
       temp.splice(index, 1);
       setStarters(temp);
-      updated=uncheckAfterDelete(filteredData,temp);
+      updated = uncheckAfterDelete(filteredData, temp);
       setStartersData(updated)
       // console.log("removed", filteredData, removedIndexes);
     } else if (type === "mains") {
@@ -1859,13 +1919,13 @@ const handleBreadRiceAdd = (item_name, id) => {
       temp.splice(index, 1);
       handleMainUpdate(temp);
       setMains(temp);
-      updated=uncheckAfterDelete(filteredMainsData,temp);
+      updated = uncheckAfterDelete(filteredMainsData, temp);
       setMainData(updated)
     } else if (type === "desserts") {
       temp = [...desserts];
       temp.splice(index, 1);
       setDesserts(temp);
-      updated=uncheckAfterDelete(filteredDessertData,temp);
+      updated = uncheckAfterDelete(filteredDessertData, temp);
       setDessertData(updated)
     } else if (type === "Bread+Rice") {
       temp = [...breadRice];
@@ -1896,7 +1956,7 @@ const handleBreadRiceAdd = (item_name, id) => {
         starterPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     mains.map((d) => {
       if (d.Qtype === "pcs") {
         mainPrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1904,7 +1964,7 @@ const handleBreadRiceAdd = (item_name, id) => {
         mainPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     desserts.map((d) => {
       if (d.Qtype === "pcs") {
         // expensive desserts should go 1 piece
@@ -1917,7 +1977,7 @@ const handleBreadRiceAdd = (item_name, id) => {
         dessertPrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     breadRice.map((d) => {
       if (d.Qtype === "pcs") {
         bredRicePrice += d.quantity * parseInt(d.selling_price / 12);
@@ -1925,7 +1985,7 @@ const handleBreadRiceAdd = (item_name, id) => {
         bredRicePrice += d.quantity * parseInt(d.selling_price);
       }
     });
-    
+
     people = veg + nonVeg;
     setPeople(people);
     setTotalPrice(
@@ -1943,7 +2003,7 @@ const handleBreadRiceAdd = (item_name, id) => {
       parseInt(getGst())
     );
     setShowPriceList(false);
-    
+
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
   useEffect(() => {
     setGST(getGst());
@@ -2042,7 +2102,7 @@ const handleBreadRiceAdd = (item_name, id) => {
       nonveg_c: nonVeg,
       people: people,
       date: startDate,
-      time : startTime,
+      time: startTime,
       url: refURL,
       meal: "meal",
       cuisine: cuisine,
@@ -2071,22 +2131,22 @@ const handleBreadRiceAdd = (item_name, id) => {
       console.log(e);
     }
     fetch("/api/forma", {
-        method: "POST",
-        body: data,
-        headers: { "Content-Type": "application/json; charset=UTF-8" },
+      method: "POST",
+      body: data,
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
     }).then((res) => {
-        console.log(res.message);
-        if (res.success) {
-            console.log("message sent");
-        } else {
-            console.log("Failed to send message");
-        }
+      console.log(res.message);
+      if (res.success) {
+        console.log("message sent");
+      } else {
+        console.log("Failed to send message");
+      }
     });
   };
   const handlePlaceOrder = () => {
     let msg = "Hey,! Please Help me to make my DIY menu order!";
 
-    if (city === "Bangalore" || city ==="Chennai" || city==="Pune") {
+    if (city === "Bangalore" || city === "Chennai" || city === "Pune") {
       window.location.href =
         "https://api.whatsapp.com/send?phone=917738096313&amp;text=" + { msg };
     }
@@ -2118,7 +2178,7 @@ const handleBreadRiceAdd = (item_name, id) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-    
+
   }, []);
 
   //Payment Section
@@ -2173,7 +2233,7 @@ const handleBreadRiceAdd = (item_name, id) => {
     } else {
       console.log("Failed to send message");
     }
-    
+
     // .then(async(res) => {
     //     if (res.success) {
     //         alert(
@@ -2209,7 +2269,7 @@ const handleBreadRiceAdd = (item_name, id) => {
           //Storing the payment details
           .then(async function (json) {
             json.datas = datas
-            json.createdAt=new Date()
+            json.createdAt = new Date()
             //API call for saving all the payment response whether it is success or failure
             fetch("/api/RawPaymentAllDetails", {
               method: "POST",
@@ -2225,7 +2285,7 @@ const handleBreadRiceAdd = (item_name, id) => {
             if (json.status.status === "success") {
               // let payData={
               (datas.txnid = json.status.txnid),
-              (datas.address = json.status.address),
+                (datas.address = json.status.address),
                 (datas.phone = json.status.phone),
                 (datas.productinfo = json.status.productinfo),
                 (datas.amount = json.status.amount),
@@ -2233,7 +2293,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                 (datas.email = json.status.email),
                 (datas.bank_ref_num = json.status.bank_ref_num),
                 (datas.OrderStatus = "");
-                datas.createdAt=new Date()
+              datas.createdAt = new Date()
               // datas.name=json.status.field4
 
               // }
@@ -2258,7 +2318,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                 // window.location.href='/'
 
               )
-              
+
             } else {
               alert("Payment Failed! Please try again.");
             }
@@ -2290,9 +2350,9 @@ const handleBreadRiceAdd = (item_name, id) => {
       alert("Order value must be greater than 3000");
       return;
     }
-    if(zipcodeError){
+    if (zipcodeError) {
       alert("ZipCode is not servicable by us!")
-      return; 
+      return;
     }
     if (!name || !mobileno || !email || !address || !zipcode) {
       alert('Please fill in all fields');
@@ -2343,71 +2403,71 @@ const handleBreadRiceAdd = (item_name, id) => {
       });
   };
 
-  
+
 
 
   return (
     <div className={styles.customizeMainContainer}>
-      {showPopup &&<div className={styles4.popupCnfrmPkg}>
-          <h4>Details</h4>
-          <div className={styles4.scrldetails}>
-            <div className={styles4.formDetails}>
-              <div className='d-flex justify-content-between'>
-                <p>Name:</p>
-                <input type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}></input>
+      {showPopup && <div className={styles4.popupCnfrmPkg}>
+        <h4>Details</h4>
+        <div className={styles4.scrldetails}>
+          <div className={styles4.formDetails}>
+            <div className='d-flex justify-content-between'>
+              <p>Name:</p>
+              <input type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Phone:</p>
+              <input type="text"
+                value={mobileno}
+                onChange={(e) => setPhone(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Email:</p>
+              <input type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>Address:</p>
+              <input type="text"
+                // value={address}
+                onChange={(e) => setAddress(e.target.value)}></input>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <p>ZipCode:</p>
+              <input type="number"
+                maxLength={6}
+                // value={zipcode}
+                onChange={(e) => setZipcode(e.target.value)}></input>
+            </div>
+            <p>{zipcodeError}</p>
+          </div>
+          <hr />
+          <div className={styles4.selectedDetails}>
+            <div className={styles4.data}>
+              <div>
+                <h6>City:</h6>
+                <h6>Date:</h6>
+                <h6>Time:</h6>
+                <h6>Veg Guest:</h6>
+                <h6>Non-veg Guest:</h6>
+                <h6>Occassion:</h6>
               </div>
-              <div className='d-flex justify-content-between'>
-                <p>Phone:</p>
-                <input type="text"
-                  value={mobileno}
-                  onChange={(e) => setPhone(e.target.value)}></input>
+              <div>
+                <h6>{city}</h6>
+                <h6>{startDate}</h6>
+                <h6>{startTime}</h6>
+                <h6>{veg}</h6>
+                <h6>{nonVeg}</h6>
+                <h6>{occasion}</h6>
               </div>
-              <div className='d-flex justify-content-between'>
-                <p>Email:</p>
-                <input type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}></input>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>Address:</p>
-                <input type="text"
-                  // value={address}
-                  onChange={(e) => setAddress(e.target.value)}></input>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>ZipCode:</p>
-                <input type="number"
-                  maxLength={6}
-                  // value={zipcode}
-                  onChange={(e) => setZipcode(e.target.value)}></input>
-              </div>
-              <p>{zipcodeError}</p>
             </div>
             <hr />
-            <div className={styles4.selectedDetails}>
-              <div className={styles4.data}>
-                <div>
-                  <h6>City:</h6>
-                  <h6>Date:</h6>
-                  <h6>Time:</h6>
-                  <h6>Veg Guest:</h6>
-                  <h6>Non-veg Guest:</h6>
-                  <h6>Occassion:</h6>
-                </div>
-                <div>
-                  <h6>{city}</h6>
-                  <h6>{startDate}</h6>
-                  <h6>{startTime}</h6>
-                  <h6>{veg}</h6>
-                  <h6>{nonVeg}</h6>
-                  <h6>{occasion}</h6>
-                </div>
-              </div>
-              <hr />
-              <div className={styles4.selectedItems}>
-                {/* <div>
+            <div className={styles4.selectedItems}>
+              {/* <div>
                   <h4>- Starters -</h4>
                   {starters.map((item, index) => (
                     <p className="col-10">{item.name} ({item.quantity} {item.Qtype})</p>
@@ -2432,21 +2492,21 @@ const handleBreadRiceAdd = (item_name, id) => {
                   ))
                   }
                 </div> */}
-              </div>
             </div>
           </div>
-          <div>
-            <hr />
-            <div className={styles4.priceing}>
-              <h6>GRAND TOTAL :</h6>
-              <h6>₹ {grandTotal}</h6>
-            </div>
-            <div className={styles4.cnfmBtn}>
-              <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
-              <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
-            </div>
+        </div>
+        <div>
+          <hr />
+          <div className={styles4.priceing}>
+            <h6>GRAND TOTAL :</h6>
+            <h6>₹ {grandTotal}</h6>
           </div>
-        </div>}
+          <div className={styles4.cnfmBtn}>
+            <button onClick={closePopup} id={styles4.cancelBtn}>Go Back</button>
+            <button onClick={payumoney} id={styles4.viewBtn}>Payment</button>
+          </div>
+        </div>
+      </div>}
       <div className={styles.customizeMainContainer}>
         <div className={styles.header}>
           <div className={styles.headerContent}>
@@ -2545,9 +2605,9 @@ const handleBreadRiceAdd = (item_name, id) => {
                       required
                     /> */}
                     <select id="dateSelect" onChange={(event) => setStartDate(event.target.value)} value={startDate} required>
-                    <option value="">Select a date</option>
-                    {generateDateOptions()}
-                  </select>
+                      <option value="">Select a date</option>
+                      {generateDateOptions()}
+                    </select>
                   </div>
                 </div>
               </div>
@@ -2614,28 +2674,28 @@ const handleBreadRiceAdd = (item_name, id) => {
                 <div>
                   <p>Delivery Time</p>
                   <div>
-                  <select className="mx-auto" onChange={(e)=>setStartTime(e.target.value)} value={startTime}>
-                    <option value="">Select Date</option>
-                    <option value="11:00 am">11:00 am</option>
-                    <option value="11:30 am">11:30 am</option>
-                    <option value="12:00 pm">12:00 pm</option>
-                    <option value="12:30 pm">12:30 pm</option>
-                    <option value="1:00 pm">1:00 pm</option>
-                    <option value="1:30 pm">1:30 pm</option>
-                    <option value="2:00 pm">2:00 pm</option>
-                    <option value="2:00 pm">2:00 pm</option>
-                    <option value="2:30 pm">2:30 pm</option>
-                    <option value="3:00 pm">3:00 pm</option>
-                    <option value="5:00 pm">5:00 pm</option>
-                    <option value="5:30 pm">5:30 pm</option>
-                    <option value="6:00 pm">6:00 pm</option>
-                    <option value="6:30 pm">6:30 pm</option>
-                    <option value="7:00 pm">7:00 pm</option>
-                    <option value="7:30 pm">7:30 pm</option>
-                    <option value="8:00 pm">8:00 pm</option>
-                    <option value="8:30 pm">8:30 pm</option>
-                    <option value="9:00 pm">9:30 pm</option>
-                  </select>
+                    <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)} value={startTime}>
+                      <option value="">Select Date</option>
+                      <option value="11:00 am">11:00 am</option>
+                      <option value="11:30 am">11:30 am</option>
+                      <option value="12:00 pm">12:00 pm</option>
+                      <option value="12:30 pm">12:30 pm</option>
+                      <option value="1:00 pm">1:00 pm</option>
+                      <option value="1:30 pm">1:30 pm</option>
+                      <option value="2:00 pm">2:00 pm</option>
+                      <option value="2:00 pm">2:00 pm</option>
+                      <option value="2:30 pm">2:30 pm</option>
+                      <option value="3:00 pm">3:00 pm</option>
+                      <option value="5:00 pm">5:00 pm</option>
+                      <option value="5:30 pm">5:30 pm</option>
+                      <option value="6:00 pm">6:00 pm</option>
+                      <option value="6:30 pm">6:30 pm</option>
+                      <option value="7:00 pm">7:00 pm</option>
+                      <option value="7:30 pm">7:30 pm</option>
+                      <option value="8:00 pm">8:00 pm</option>
+                      <option value="8:30 pm">8:30 pm</option>
+                      <option value="9:00 pm">9:30 pm</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -2647,7 +2707,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                                 <img src='555.png' height="150px" width="274.5px" />
                                 <h6>{starters?.length} Starters + {mains?.length} Mains + {desserts?.length} Desserts</h6>
                             </div> */}
-              <div className={styles3.packageName}>
+              {/* <div className={styles3.packageName}>
                 <h3>
                   {ID
                     ? PreSelectMenuNinjaBox[mealType].filter(
@@ -2661,6 +2721,48 @@ const handleBreadRiceAdd = (item_name, id) => {
                   {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
                   Desserts
                 </h6>
+              </div> */}
+              <div className={styles.packageName}>
+                <h3>{ID
+                    ? PreSelectMenuNinjaBox[mealType].filter(
+                      (d) => d.id === ID
+                    )[0].name
+                    : ""}</h3>
+                <img src="555.png" height="150px" width="274.5px" />
+                <h6>{starters?.length} Starters +{" "}
+                  {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
+                  Desserts</h6>
+                {/* <div>
+                                <p id={styles.vegGuest}>Veg Guests<span>: 10</span></p>
+                                <p id={styles.nonVeg}>Non Veg Guests<span>: 10</span></p>
+                            </div> */}
+                {/* <h5>₹ {price}</h5> */}
+              </div>
+              <div className={styles.pkgDetails}>
+                <div>
+                  {/* <h3>{ID? PreSelectMenuNinjaBox[mealType].filter((d)=>d.id===ID)[0].name:''}</h3> */}
+                  <h3>{ID
+                    ? PreSelectMenuNinjaBox[mealType].filter(
+                      (d) => d.id === ID
+                    )[0].name
+                    : ""}</h3>
+                  <h5>{starters?.length} Starters +{" "}
+                  {mains?.length + breadRice?.length} Mains + {desserts?.length}{" "}
+                  Desserts</h5>
+                  <div>
+                    <p id={styles.vegGuest}>Veg Guests<span>: {veg}</span></p>
+                    <p id={styles.nonVegGuest}>Non Veg Guests<span>: {nonVeg}</span></p>
+                  </div>
+                  {/* <div>
+                  <h6>₹ {packagePrice }</h6>
+                </div> */}
+                  {/* <div>
+                                    <h6>₹ {price}</h6>
+                                </div> */}
+                </div>
+                <div>
+                  <img id={styles.pkgImg} src="555.png" width="366px" height="200px" />
+                </div>
               </div>
               {/* <div className={styles.pkgSliderContainerLG}>
                                 {
@@ -2705,7 +2807,7 @@ const handleBreadRiceAdd = (item_name, id) => {
               <div>
                 <div className={styles.menuContainer}>
                   <div className={styles.createYourMenuHead}>
-                    <h3>Customize Your Package</h3>
+                    <h3 ref={sectionRef}>Customize Your Package</h3>
                     <hr
                       style={{
                         border: "0.4px dashed #42484E",
@@ -2829,69 +2931,69 @@ const handleBreadRiceAdd = (item_name, id) => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
 
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "starters"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "starters"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -3038,68 +3140,68 @@ const handleBreadRiceAdd = (item_name, id) => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredMainsData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "mains"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
-                                          />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "mains"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -3233,68 +3335,68 @@ const handleBreadRiceAdd = (item_name, id) => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredBreadData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "Bread+Rice"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
-                                          />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "Bread+Rice"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -3427,68 +3529,68 @@ const handleBreadRiceAdd = (item_name, id) => {
                             <div id={styles.starterList}>
                               <ul>
                                 {filteredDessertData
-                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                .map((item, index) => (
-                                  <li key={item.id}>
-                                    <div className="d-flex justify-content-between">
-                                      <div id={styles.insideDivLi}>
-                                        {item.Images ? (
-                                          <img
-                                            src={item.Images}
-                                            width="30.05px"
-                                            height="26.54px"
+                                  .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                  .map((item, index) => (
+                                    <li key={item.id}>
+                                      <div className="d-flex justify-content-between">
+                                        <div id={styles.insideDivLi}>
+                                          {item.Images ? (
+                                            <img
+                                              src={item.Images}
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
+                                              width="30.05px"
+                                              height="26.54px"
+                                            />
+                                          )}
+                                          {item.veg === true ? (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.vegLogoLg}
+                                              src="/diy images/vegLogo.png"
+                                            />
+                                          ) : (
+                                            <img
+                                              className={styles.vegLogo}
+                                              id={styles.nvegLogoLg}
+                                              src="/diy images/Group 962.png"
+                                            />
+                                          )}
+                                          <p
+                                            onClick={() =>
+                                              document
+                                                .getElementById(item.id)
+                                                .click()
+                                            }
+                                          >
+                                            {item.name}
+                                            <br />
+                                            <span>{item.description}</span>
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            value={item.id}
+                                            onChange={(e) =>
+                                              handleCheckboxChange(
+                                                e,
+                                                index,
+                                                item,
+                                                "desserts"
+                                              )
+                                            }
                                           />
-                                        ) : (
-                                          <img
-                                            src="https://ik.imagekit.io/ws3brr13khq/ninjabox_uqYIfAoGr.png?ik-sdk-version=javascript-1.4.3&updatedAt=1677930049169"
-                                            width="30.05px"
-                                            height="26.54px"
-                                          />
-                                        )}
-                                        {item.veg === true ? (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.vegLogoLg}
-                                            src="/diy images/vegLogo.png"
-                                          />
-                                        ) : (
-                                          <img
-                                            className={styles.vegLogo}
-                                            id={styles.nvegLogoLg}
-                                            src="/diy images/Group 962.png"
-                                          />
-                                        )}
-                                        <p
-                                          onClick={() =>
-                                            document
-                                              .getElementById(item.id)
-                                              .click()
-                                          }
-                                        >
-                                          {item.name}
-                                          <br />
-                                          <span>{item.description}</span>
-                                        </p>
+                                        </div>
                                       </div>
-                                      <div>
-                                        <input
-                                          id={item.id}
-                                          type="checkbox"
-                                          checked={item.checked}
-                                          value={item.id}
-                                          onChange={(e) =>
-                                            handleCheckboxChange(
-                                              e,
-                                              index,
-                                              item,
-                                              "desserts"
-                                            )
-                                          }
-                                        />
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                             <div id={styles.listInsideBtn}>
@@ -3529,8 +3631,8 @@ const handleBreadRiceAdd = (item_name, id) => {
                     {(city === "Mumbai" ||
                       city === "Navi-Mumbai" ||
                       city === "Thane" ||
-                      city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
-                    people < 26 ? (
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Delivery Only
@@ -3540,9 +3642,9 @@ const handleBreadRiceAdd = (item_name, id) => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3554,9 +3656,9 @@ const handleBreadRiceAdd = (item_name, id) => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3568,9 +3670,9 @@ const handleBreadRiceAdd = (item_name, id) => {
                         </option>
                       </>
                     ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" || city ==="Chennai" || city==="Pune") &&
+                      city === "Navi-Mumbai" ||
+                      city === "Thane" ||
+                      city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3589,7 +3691,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                       city === "Noida" ||
                       city === "Ghaziabad" ||
                       city === "Gurgaon") &&
-                    people < 26 ? (
+                      people < 26 ? (
                       <>
                         <option value="0" defaultValue>
                           Ninjabox - Bulk Food Delivery
@@ -3599,9 +3701,9 @@ const handleBreadRiceAdd = (item_name, id) => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 25 &&
                       people < 41 ? (
                       <>
@@ -3613,9 +3715,9 @@ const handleBreadRiceAdd = (item_name, id) => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 40 &&
                       people < 61 ? (
                       <>
@@ -3627,9 +3729,9 @@ const handleBreadRiceAdd = (item_name, id) => {
                         </option>
                       </>
                     ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
+                      city === "Noida" ||
+                      city === "Ghaziabad" ||
+                      city === "Gurgaon") &&
                       people > 60 &&
                       people < 100 ? (
                       <>
@@ -3764,8 +3866,8 @@ const handleBreadRiceAdd = (item_name, id) => {
                       <button>Get Booking Help</button>
                     </Link> */}
                     {/* <button onClick={placeOrderBtn}>Place Order</button> */}
-                    <button style={{backgroundColor: "green", color: "white"}} onClick={()=>window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
-                    
+                    <button style={{ backgroundColor: "green", color: "white" }} onClick={() => window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
+
 
                     {/* <button onClick={initiatePayment}></button> */}
                   </div>

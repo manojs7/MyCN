@@ -91,21 +91,21 @@ const Custom_Package = () => {
 
   const handleButtonClick = (item) => {
     setItemSelected(item)
-    if (!city) {
-      document.getElementById("cityId").focus();
-      Swal.fire({
-        text: "Please select your City",
-        icon: "warning",
-        confirmButtonText: "OK",
-      });
-    } else if (!occasion) {
-      document.getElementById("occasionId").focus();
-      Swal.fire({
-        text: "Please select your occasion",
-        icon: "warning",
-        confirmButtonText: "OK",
-      });
-    } else
+    // if (!city) {
+    //   document.getElementById("cityId").focus();
+    //   Swal.fire({
+    //     text: "Please select your City",
+    //     icon: "warning",
+    //     confirmButtonText: "OK",
+    //   });
+    // } else if (!occasion) {
+    //   document.getElementById("occasionId").focus();
+    //   Swal.fire({
+    //     text: "Please select your occasion",
+    //     icon: "warning",
+    //     confirmButtonText: "OK",
+    //   });
+    // } else
       setShowDiv(!showDiv);
   };
   const closePopup = () => {
@@ -302,7 +302,19 @@ const Custom_Package = () => {
   const navigateToOverview = () => {
     const totalCount = number + number2;
 
-    if (!selectedDate) {
+    if (!city) {
+      Swal.fire({
+        text: "Please select your City",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else if (!occasion) {
+      Swal.fire({
+        text: "Please select your occasion",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    } else if (!selectedDate) {
       Swal.fire({
         text: "please select date",
         icon: "warning",
@@ -346,58 +358,110 @@ const Custom_Package = () => {
   return (
     <div>
       {showDiv && (<div className={styles.popupguestcount}>
-        <h3>Additional <span>Info</span></h3>
-        <div className={styles.dateContainer}>
+        <div className="d-flex justify-content-evenly mt-3">
           <div>
             <img src="miniNinjaLeft.png" width="24.03" height="43.92" />
           </div>
           <div>
-            <h4>Date <span id={styles.urgentL} onMouseEnter={hoverLink}
-              onClick={hoverLink}><FontAwesomeIcon icon={faCircleInfo} size="sm" style={{ color: "#1245ba" }} /></span></h4>
-            {/* <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
-              value={selectedDate}
-              min={minDateISO} /></div> */}
-            <div className={styles.dateOptions}>
-              <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
-                <option value="">Select a date</option>
-                {generateDateOptions()}
-              </select>
-            </div>
+            <h3>Additional <span>Info</span></h3>
           </div>
-          {showUrgentLink && (<div id={styles.urgentLink}>
-            <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
-          </div>)}
           <div>
             <img src="miniNinjaRight.png" width={24.03} height={43.92} />
           </div>
         </div>
-        <div className={styles.deliveryTimeSecn}>
-          <h4>Delivery Time</h4>
-          <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)}>
-            <option value="">Select Time</option>
-            <option value="11:00 am">11:00 am</option>
-            <option value="11:30 am">11:30 am</option>
-            <option value="12:00 pm">12:00 pm</option>
-            <option value="12:30 pm">12:30 pm</option>
-            <option value="1:00 pm">1:00 pm</option>
-            <option value="1:30 pm">1:30 pm</option>
-            <option value="2:00 pm">2:00 pm</option>
-            <option value="2:00 pm">2:00 pm</option>
-            <option value="2:30 pm">2:30 pm</option>
-            <option value="3:00 pm">3:00 pm</option>
-            <option value="5:00 pm">5:00 pm</option>
-            <option value="5:30 pm">5:30 pm</option>
-            <option value="6:00 pm">6:00 pm</option>
-            <option value="6:30 pm">6:30 pm</option>
-            <option value="7:00 pm">7:00 pm</option>
-            <option value="7:30 pm">7:30 pm</option>
-            <option value="8:00 pm">8:00 pm</option>
-            <option value="8:30 pm">8:30 pm</option>
-            <option value="9:00 pm">9:30 pm</option>
-          </select>
+        <div className={styles.cityOccasionContnent}>
+          <div>
+            <h4>City</h4>
+            <select
+              style={{ fontFamily: "'Montserrat', SansSerif " }}
+              id="cityId"
+              name="city"
+              aria-label="Default select example"
+              value={city}
+              onChange={(e) => handleCity(e.target.value)}
+              required
+            >
+              <option value="" selected>
+                Select City
+              </option>
+              {cities.map((item, index) => {
+                return (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <h4>Occasion</h4>
+            <select
+              style={{ fontFamily: "'Montserrat', SansSerif " }}
+              id="occasionId"
+              name="occasion"
+              aria-label="Default select example"
+              value={occasion}
+              onChange={(e) => handleOccasion(e.target.value)}
+            >
+              <option value="" selected>
+                Select Occasion
+              </option>
+              {occasions.map((item, index) => {
+                return (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="d-flex justify-content-evenly">
+          <div className={styles.dateContainer}>
+            <div>
+              <h4>Date <span id={styles.urgentL} onMouseEnter={hoverLink}
+                onClick={hoverLink}><FontAwesomeIcon icon={faCircleInfo} size="sm" style={{ color: "#1245ba" }} /></span></h4>
+              {/* <div><input type="date" onChange={(event) => setSelectedDate(event.target.value)}
+              value={selectedDate}
+              min={minDateISO} /></div> */}
+              <div className={styles.dateOptions}>
+                <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
+                  <option value="">Select a date</option>
+                  {generateDateOptions()}
+                </select>
+              </div>
+            </div>
+            {showUrgentLink && (<div id={styles.urgentLink}>
+              <a href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20for%20urgent%20booking%20from%20NinjaBox%20Packages" target="_blank">Click here for urgent order!</a>
+            </div>)}
+          </div>
+          <div className={styles.deliveryTimeSecn}>
+            <h4>Delivery Time</h4>
+            <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)} value={startTime}>
+              <option value="">Select Time</option>
+              <option value="11:00 am">11:00 am</option>
+              <option value="11:30 am">11:30 am</option>
+              <option value="12:00 pm">12:00 pm</option>
+              <option value="12:30 pm">12:30 pm</option>
+              <option value="1:00 pm">1:00 pm</option>
+              <option value="1:30 pm">1:30 pm</option>
+              <option value="2:00 pm">2:00 pm</option>
+              <option value="2:00 pm">2:00 pm</option>
+              <option value="2:30 pm">2:30 pm</option>
+              <option value="3:00 pm">3:00 pm</option>
+              <option value="5:00 pm">5:00 pm</option>
+              <option value="5:30 pm">5:30 pm</option>
+              <option value="6:00 pm">6:00 pm</option>
+              <option value="6:30 pm">6:30 pm</option>
+              <option value="7:00 pm">7:00 pm</option>
+              <option value="7:30 pm">7:30 pm</option>
+              <option value="8:00 pm">8:00 pm</option>
+              <option value="8:30 pm">8:30 pm</option>
+              <option value="9:00 pm">9:30 pm</option>
+            </select>
+          </div>
         </div>
         <div className={styles.guestCountCn}>
-          <h3>Guest Count</h3>
           <div className={styles.guestcountCN}>
             <div>
               <p>Veg Guest</p>
@@ -428,9 +492,9 @@ const Custom_Package = () => {
             <h2>
               Ninja<span>Buffet</span> Packages
             </h2>
-            <h6 className="text-center" style={{ fontSize: "20px" }}>Select Your Ninja<span>Buffet</span> Package</h6>
+            <h6 className="text-center" style={{ fontSize: "20px", fontFamily:"'Montserrat', SansSerif" }}>Select Your Ninja<span>Buffet</span> Package</h6>
             <div className="selectCityOcLg mt-5">
-              <div>
+              <div style={{fontFamily:"'Montserrat', SansSerif"}}>
                 <p>City</p>
                 <select
                   id="cityId"
@@ -452,9 +516,10 @@ const Custom_Package = () => {
                   })}
                 </select>
               </div>
-              <div>
+              <div style={{fontFamily:"'Montserrat', SansSerif"}}>
                 <p>Occasion</p>
                 <select
+                style={{width: "180px"}}
                   id="occasionId"
                   name="occasion"
                   aria-label="Default select example"
@@ -475,7 +540,7 @@ const Custom_Package = () => {
               </div>
             </div>
           </div>
-          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center" }}>Sort By</h4>
+          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center",fontFamily:"'Montserrat', SansSerif" }}>Sort By</h4>
           <hr />
           <div className="d-flex" style={{ justifyContent: "space-between", marginInline: "100px" }}>
             <div className="d-flex">
@@ -629,7 +694,7 @@ const Custom_Package = () => {
           </div> */}
           {!showNonveg && (<div className="d-flex gap-4 mt-3">
             {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/vlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -639,14 +704,14 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}
           </div>)}
           {!showNonveg && (<div className="d-flex gap-4">
             {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/vegLogo.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/vlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -656,14 +721,14 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}
           </div>)}
           {showNonveg && (<div className="d-flex gap-4 mt-3">
             {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/nvlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -673,14 +738,14 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}
           </div>)}
           {showNonveg && (<div className="d-flex gap-4">
             {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
-              <h3><span><Image src="/diy images/Group 962.png" width="15px" height="15px" /></span> {item.name}</h3>
+              <h3><span><Image src="/ninja-box/nvlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
                 <img src={item.img} />
               </div>
@@ -690,7 +755,7 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}
@@ -866,7 +931,7 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}
@@ -883,7 +948,7 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}
@@ -904,7 +969,7 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}
@@ -921,7 +986,7 @@ const Custom_Package = () => {
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
-                <button type="button" className="btn btn-sm px-5" id="selectBtn">Select Package</button>
+                <button onClick={() => handleButtonClick(item)} type="button" className="btn btn-sm px-5" id="selectBtn">View Details</button>
                 {/* <button onClick={() => window.open('/checkprice', '_blank')} type="button" className="btn btn-sm px-5" id="customiseBtn">Customise & Book Now</button> */}
               </div>
             </div>))}

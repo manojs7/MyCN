@@ -58,13 +58,14 @@ const Header = () => {
       </div>
     </div>
   );
+  //380
 
   const mobileCenter = (
     <div className="banner-mobile-slide-container">
       <Slider {...settings} className="">
         {bannerImages.map((d, i) => (
           <div key={i} className="banner-mobile-image-container">
-            <Image priority src={d} width={380} height={436} alt="logo" />
+            <Image priority src={d} width={410} height={436} alt="logo" />
 
             {i !== 0 && (
               <button onClick={() => (window.location.href = "#ourservices")} className="see-more-below-btn">See More Below</button>
