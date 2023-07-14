@@ -545,9 +545,9 @@ const Custom_Package = () => {
             </div>
             <div>
               <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "250px" }}>
-              <option value="2000-3500">₹200 - ₹350 [per Person]</option>
-                <option value="3501-5000" selected>₹350 - ₹500 [per Person]</option>
-                <option value="5001+">₹500 + [per Person]</option>
+              <option value="2000-3500">₹600 - ₹750 [per Person]</option>
+                <option value="3501-5000" selected>₹750 - ₹900 [per Person]</option>
+                <option value="5001+">₹1000 + [per Person]</option>
               </select>
             </div>
           </div>
@@ -692,7 +692,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
@@ -709,7 +709,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
@@ -726,7 +726,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
@@ -743,7 +743,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
@@ -901,9 +901,9 @@ const Custom_Package = () => {
           </div>
             <div>
               <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "200px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
-              <option value="2000-3500">₹200 - ₹350 [per Person]</option>
-                <option value="3501-5000" selected>₹350 - ₹500 [per Person]</option>
-                <option value="5001+">₹500 + [per Person]</option>
+              <option value="2000-3500">₹600 - ₹750 [per Person]</option>
+                <option value="3501-5000" selected>₹750 - ₹900 [per Person]</option>
+                <option value="5001+">₹1000 + [per Person]</option>
               </select>
             </div>
           </div>
@@ -918,7 +918,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
@@ -935,7 +935,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
@@ -956,7 +956,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">
@@ -973,7 +973,7 @@ const Custom_Package = () => {
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
-                <h3>₹ {item.price}/-</h3>
+                <h3>₹ {item.price + 4000}/-</h3>
                 <p>(Min. Order 10 Guests)</p>
               </div>
               <div className="d-flex justify-content-evenly">

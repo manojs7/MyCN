@@ -1418,6 +1418,7 @@ const handleBreadRiceAdd = (item_name, id) => {
       temp = [...mains];
       temp.splice(index, 1);
       setMains(temp);
+      handleMainUpdate(temp);
       updated = uncheckAfterDelete(filteredMainsData, temp);
       setMainData(updated);
     } else if (type === "desserts") {
@@ -1429,8 +1430,10 @@ const handleBreadRiceAdd = (item_name, id) => {
     } else if (type === "Bread+Rice") {
       temp = [...breadRice];
       temp.splice(index, 1);
+      setBreadRice(temp)
       updated = uncheckAfterDelete(filteredBreadData, temp);
       setBreadRiceData(updated);
+      handleBreadRiceChange(temp)
       
     }
   }
@@ -1548,7 +1551,7 @@ const handleBreadRiceAdd = (item_name, id) => {
         parseInt(getGst())
     );
     setShowPriceList(false);
-  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
   useEffect(() => {
     setGST(getGst());
     setgrandTotal(
@@ -3502,7 +3505,52 @@ const handleBreadRiceAdd = (item_name, id) => {
                   Desserts
                 </h6>
               </div>
-              <div className={styles.finalPriceSection}>
+              
+              <div className="mt-5">
+                <div className={styles.userInput}>
+                  <h4>Details*</h4>
+                  <div className={styles.detailsInputLg}>
+                    <input
+                      placeholder="Name"
+                      onInput={(e) => setName(e.target.value)}
+                      required
+                    />
+                    <input
+                      placeholder="Phone No."
+                      name="mobileno"
+                      onInput={(e) => setPhone(e.target.value)}
+                      pattern="[789][0-9]{9}"
+                      maxLength="10"
+                      min="10"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      onInput={(e) => setEmail(e.target.value)}
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.chefNote}>
+                <p>Special Restriction? Chef Note?</p>
+                <input type="text" />
+              </div>
+              <div className={styles.instantQuoteBtn}>
+                <button onClick={formSubmit}>Check Price</button>
+              </div>
+              {/* <div className={styles.applyCoupon}>
+                <input type="text" placeholder='Enter Coupon Code' />
+                <button>Apply</button>
+              </div> */}
+              {showPriceList && (
+                <div className={styles.pricing}>
+                  <div style={{ marginTop: "10px" }}>
+                  <div className={styles.finalPriceSection}>
                 <div
                   id={styles.drdwnCnt}
                   className="d-flex justify-content-between"
@@ -3644,58 +3692,6 @@ const handleBreadRiceAdd = (item_name, id) => {
                 </div>
                 <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
               </div>
-              <div className="mt-5">
-                <div className={styles.userInput}>
-                  <h4>Details*</h4>
-                  <div className={styles.detailsInputLg}>
-                    <input
-                      placeholder="Name"
-                      onInput={(e) => setName(e.target.value)}
-                      required
-                    />
-                    <input
-                      placeholder="Phone No."
-                      name="mobileno"
-                      onInput={(e) => setPhone(e.target.value)}
-                      pattern="[789][0-9]{9}"
-                      maxLength="10"
-                      min="10"
-                      required
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      name="email"
-                      onInput={(e) => setEmail(e.target.value)}
-                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.chefNote}>
-                <p>Special Restriction? Chef Note?</p>
-                <input type="text" />
-              </div>
-              <div className={styles.instantQuoteBtn}>
-                <button onClick={formSubmit}>Check Price</button>
-              </div>
-              {/* <div className={styles.applyCoupon}>
-                <input type="text" placeholder='Enter Coupon Code' />
-                <button>Apply</button>
-              </div> */}
-              {showPriceList && (
-                <div className={styles.pricing}>
-                  <div style={{ marginTop: "10px" }}>
-                    <div className={styles.pricingTitle4}>
-                      <div>
-                        <h4>Buffet Service</h4>
-                      </div>
-                      <div>
-                        <p>₹{buffet}</p>
-                      </div>
-                    </div>
                     <div className={styles.pricingTitle1}>
                       <div>
                         <h4>Items Total</h4>
