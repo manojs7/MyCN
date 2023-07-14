@@ -153,19 +153,19 @@ const Custom_Package = () => {
 
   const filteredItems = packages.veg.filter((item) => {
     if (priceFilter === 'all') {
-      return true;
+      return item.price >= 3501 && item.price <= 5000;
     } else if (priceFilter === '2000-3500') {
       return item.price >= 2000 && item.price <= 3500;
     } else if (priceFilter === '3501-5000') {
       return item.price >= 3501 && item.price <= 5000;
     } else {
-      return item.price >= 5001;
+      return item.price >= 3501 && item.price <= 5000;
     }
   })
 
   const nonVegFilterdeItems = packages.nonVeg.filter((item) => {
     if (priceFilter === 'all') {
-      return true;
+      return item.price >= 3501 && item.price <= 5000;
     } else if (priceFilter === '2000-4000') {
       return item.price >= 2000 && item.price <= 4000;
     } else if (priceFilter === '4001-5000') {
@@ -685,7 +685,7 @@ const Custom_Package = () => {
               </div>
             ))}
           </div> */}
-          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center", fontFamily: "'Montserrat', SansSerif" }}>Sort By</h4>
+          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center", fontFamily: "'Montserrat', SansSerif" }}>Filter</h4>
           <hr />
           <div className="d-flex" style={{ justifyContent: "space-between", marginInline: "100px" }}>
             <div className="d-flex">
@@ -697,10 +697,9 @@ const Custom_Package = () => {
             </div>
             <div>
               <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "170px" }}>
-                <option value="all">By Price</option>
-                <option value="2000-3500">₹200 - ₹350</option>
-                <option value="3501-5000">₹350 - ₹500</option>
-                <option value="5001+">₹500 +</option>
+                <option value="2000-3500">₹200 - ₹350 [per Person]</option>
+                <option value="3501-5000" selected>₹350 - ₹500 [per Person]</option>
+                <option value="5001+">₹500 + [per Person]</option>
               </select>
             </div>
           </div>
@@ -934,7 +933,7 @@ const Custom_Package = () => {
               </div>
             </div>
             <div className="mt-4">
-          <h4 style={{ textAlign: "center", fontWeight: "bolder", fontFamily: "'Montserrat', sans-serif", fontSize: "20px", color: "#BE2D30" }}>Sort By</h4>
+          <h4 style={{ textAlign: "center", fontWeight: "bolder", fontFamily: "'Montserrat', sans-serif", fontSize: "20px", color: "#BE2D30" }}>Filter</h4>
           <div className="d-flex justify-content-between" style={{marginInline: "10px"}}> <div className="d-flex justify-content-center">
             <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
             <label className={styles.toggle}>
@@ -944,10 +943,9 @@ const Custom_Package = () => {
           </div>
             <div>
               <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "150px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
-                <option value="all">By Price</option>
-                <option value="2000-3500">₹200 - ₹350</option>
-                <option value="3501-5000">₹350 - ₹500</option>
-                <option value="5001+">₹500 +</option>
+                <option value="2000-3500">₹200 - ₹350 [per Person]</option>
+                <option value="3501-5000" selected>₹350 - ₹500 [per Person]</option>
+                <option value="5001+">₹500 + [per Person]</option>
               </select>
             </div>
           </div>

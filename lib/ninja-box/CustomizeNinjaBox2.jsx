@@ -106,7 +106,7 @@ const CustomizeNinjaBox = () => {
   const [buffet, setbuffet] = useState(0);
   const [GST, setGST] = useState(0);
   const [extraAdd, setExtraAdd] = useState(500);
-  const [discount, setDiscount] = useState(400);
+  const [discount, setDiscount] = useState(0);
 
 
   const [isStarterChange, setIsStarterChange] = useState(false);
@@ -2009,6 +2009,7 @@ const CustomizeNinjaBox = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     let url_value = sessionStorage.getItem("first_url2");
+    let discount=0;
     setRefURL(url_value);
     if (!checkFirstValidation()) {
       return false;
@@ -2072,6 +2073,10 @@ const CustomizeNinjaBox = () => {
       }
       return false;
     }
+    if(grandTotal<5000){
+      discount= Math.round(grandTotal*0.10)
+      setDiscount(discount)
+    }
     getDeliveryCharge(people);
     setGST(getGst());
     var final_gst = getGst();
@@ -2079,7 +2084,7 @@ const CustomizeNinjaBox = () => {
       parseInt(totalPrice) +
       parseInt(buffet) +
       // parseInt(deliveryCharge) +
-      getGst();
+      getGst() - parseInt(discount);
     setgrandTotal(
       parseInt(totalPrice) +
         parseInt(buffet) +
@@ -2129,19 +2134,19 @@ const CustomizeNinjaBox = () => {
     } catch (e) {
       console.log(e);
     }
-    fetch("/api/forma", {
-      method: "POST",
-      body: data,
-      headers: { "Content-Type": "application/json; charset=UTF-8" },
-    }).then((res) => {
-      console.log(res.message);
-      setEmailedToParser(true);
-      if (res.success) {
-        console.log("message sent");
-      } else {
-        console.log("Failed to send message");
-      }
-    });
+    // fetch("/api/forma", {
+    //   method: "POST",
+    //   body: data,
+    //   headers: { "Content-Type": "application/json; charset=UTF-8" },
+    // }).then((res) => {
+    //   console.log(res.message);
+    //   setEmailedToParser(true);
+    //   if (res.success) {
+    //     console.log("message sent");
+    //   } else {
+    //     console.log("Failed to send message");
+    //   }
+    // });
   };
 
   const handlePlaceOrder = () => {
@@ -2494,7 +2499,7 @@ const CustomizeNinjaBox = () => {
             <hr />
             <div className={styles4.priceing}>
               <h6>GRAND TOTAL :</h6>
-              <h6>₹ {grandTotal}</h6>
+              <h6>₹ {datas.grandTotal}</h6>
             </div>
             <div className={styles4.cnfmBtn}>
               <button onClick={closePopup} id={styles4.cancelBtn}>
@@ -4231,6 +4236,17 @@ const CustomizeNinjaBox = () => {
                     <div>
                       <p style={{ fontWeight: "600" }}>
                         ₹{discount.toLocaleString("en-US")}
+                      </p>
+                    </div>
+                    
+                  </div>
+                  <div className={styles.grandTotal}>
+                    <div>
+                      <h4>Final grandTotal</h4>
+                    </div>
+                    <div>
+                      <p style={{ fontWeight: "600" }}>
+                        ₹{datas.grandTotal.toLocaleString("en-US")}
                       </p>
                     </div>
                     

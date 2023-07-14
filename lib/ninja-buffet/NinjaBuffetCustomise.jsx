@@ -1883,7 +1883,7 @@ const NinjaBuffetCustomise = () => {
         );
         setShowPriceList(false);
 
-    }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
+    }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
     useEffect(() => {
         setGST(getGst());
         setgrandTotal(
@@ -3475,7 +3475,51 @@ const NinjaBuffetCustomise = () => {
                                 </h6>
 
                             </div> */}
-                            <div className={styles.finalPriceSection}>
+                            
+                            <div className="mt-5">
+                                <div className={styles.userInput}>
+                                    <h4>Details*</h4>
+                                    <div className={styles.detailsInputLg}>
+                                        <input
+                                            placeholder="Name"
+                                            onInput={(e) => setName(e.target.value)}
+                                            required
+                                        />
+                                        <input
+                                            placeholder="Phone No."
+                                            name="mobileno"
+                                            onInput={(e) => setPhone(e.target.value)}
+                                            maxLength="10"
+                                            required
+                                        />
+                                        <input
+                                            type="email"
+                                            placeholder="Email"
+                                            name="email"
+                                            onInput={(e) => setEmail(e.target.value)}
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={styles.chefNote}>
+                                <input
+                                    placeholder="Special Restriction? Chef Note?"
+                                    type="text"
+                                />
+                            </div>
+                            <div className={styles.instantQuoteBtn}>
+                                <button onClick={formSubmit}>Check Price</button>
+                            </div>
+                            {/* <div className={styles.applyCoupon}>
+                <input type="text" placeholder='Enter Coupon Code' />
+                <button>Apply</button>
+              </div> */}
+                            {showPriceList && (
+                                <div className={styles.pricing}>
+                                    <div style={{ marginTop: "10px" }}>
+                                    <div className={styles.finalPriceSection}>
                                 <div
                                     id={styles.drdwnCnt}
                                     className="d-flex justify-content-between"
@@ -3497,7 +3541,7 @@ const NinjaBuffetCustomise = () => {
                                                 <option value="0" defaultValue>
                                                     Ninjabox - Delivery Only
                                                 </option>
-                                                <option value="4000">
+                                                <option value="4000" selected>
                                                     Buffet setup + 1 waiter (+ ₹ 4,000.00)
                                                 </option>
                                             </>
@@ -3609,60 +3653,17 @@ const NinjaBuffetCustomise = () => {
                                 </div>
                                 <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
                             </div>
-                            <div className="mt-5">
-                                <div className={styles.userInput}>
-                                    <h4>Details*</h4>
-                                    <div className={styles.detailsInputLg}>
-                                        <input
-                                            placeholder="Name"
-                                            onInput={(e) => setName(e.target.value)}
-                                            required
-                                        />
-                                        <input
-                                            placeholder="Phone No."
-                                            name="mobileno"
-                                            onInput={(e) => setPhone(e.target.value)}
-                                            maxLength="10"
-                                            required
-                                        />
-                                        <input
-                                            type="email"
-                                            placeholder="Email"
-                                            name="email"
-                                            onInput={(e) => setEmail(e.target.value)}
-                                            required
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={styles.chefNote}>
-                                <input
-                                    placeholder="Special Restriction? Chef Note?"
-                                    type="text"
-                                />
-                            </div>
-                            <div className={styles.instantQuoteBtn}>
-                                <button onClick={formSubmit}>Check Price</button>
-                            </div>
-                            {/* <div className={styles.applyCoupon}>
-                <input type="text" placeholder='Enter Coupon Code' />
-                <button>Apply</button>
-              </div> */}
-                            {showPriceList && (
-                                <div className={styles.pricing}>
-                                    <div style={{ marginTop: "10px" }}>
-                                        <div className={styles.pricingTitle4}>
+                                        {/* <div className={styles.pricingTitle4}>
                                             <div>
-                                                <h4>Buffet Service</h4>
+                                                <h4>Service Cost</h4>
                                             </div>
                                             <div>
                                                 <p>₹{buffet}</p>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className={styles.pricingTitle1}>
                                             <div>
-                                                <h4>Items Total</h4>
+                                                <h4>Food Cost</h4>
                                             </div>
                                             <div>
                                                 <p style={{ fontWeight: "600" }}>
