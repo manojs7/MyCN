@@ -1079,8 +1079,9 @@ const NinjaBoxCustomise = () => {
       // description: main.description,
     });
     
-    handleMainUpdate(temp);
+    
     setMains(mains => ([...mains, ...temp2]));
+    handleMainUpdate(mains);
     // temp.push({
     //   // isRice: main.isRice,
     //   menu_label: main.menu_label,
@@ -1352,8 +1353,9 @@ const handleBreadRiceAdd = (item_name, id) => {
       selling_price: filterBreadRice?.selling_price,
       // description: main.description,
     });
-    handleBreadRiceChange(temp)
     setBreadRice(breadRice => ([...breadRice, ...temp2]));
+    handleBreadRiceChange(temp)
+
   
   // setBreadRice(temp);
   // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
@@ -1984,7 +1986,7 @@ const handleBreadRiceAdd = (item_name, id) => {
     );
     setShowPriceList(false);
 
-  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete, buffet]);
+  }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
   useEffect(() => {
     setGST(getGst());
     setgrandTotal(
@@ -3595,7 +3597,59 @@ const handleBreadRiceAdd = (item_name, id) => {
                                 </h6>
 
                             </div> */}
-              <div className={styles.finalPriceSection}>
+             
+              <div className="mt-5">
+                <div className={styles.userInput}>
+                  <h4>Details*</h4>
+                  <div className={styles.detailsInputLg}>
+                    <input
+                      placeholder="Name"
+                      onInput={(e) => setName(e.target.value)}
+                      required
+                    />
+                    <input
+                      placeholder="Phone No."
+                      name="mobileno"
+                      onInput={(e) => setPhone(e.target.value)}
+                      maxLength="10"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      onInput={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.chefNote}>
+                <input
+                  placeholder="Special Restriction? Chef Note?"
+                  type="text"
+                />
+              </div>
+              <div className={styles.instantQuoteBtn}>
+                <button onClick={formSubmit}>Check Price</button>
+              </div>
+              {/* <div className={styles.applyCoupon}>
+                <input type="text" placeholder='Enter Coupon Code' />
+                <button>Apply</button>
+              </div> */}
+              {showPriceList && (
+                <div className={styles.pricing}>
+                  <div style={{ marginTop: "10px" }}>
+                    {/* <div className={styles.pricingTitle4}>
+                      <div>
+                        <h4>Buffet Service</h4>
+                      </div>
+                      <div>
+                        <p>₹{buffet}</p>
+                      </div>
+                    </div> */}
+                     <div className={styles.finalPriceSection}>
                 <div
                   id={styles.drdwnCnt}
                   className="d-flex justify-content-between"
@@ -3729,57 +3783,6 @@ const handleBreadRiceAdd = (item_name, id) => {
                 </div>
                 <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
               </div>
-              <div className="mt-5">
-                <div className={styles.userInput}>
-                  <h4>Details*</h4>
-                  <div className={styles.detailsInputLg}>
-                    <input
-                      placeholder="Name"
-                      onInput={(e) => setName(e.target.value)}
-                      required
-                    />
-                    <input
-                      placeholder="Phone No."
-                      name="mobileno"
-                      onInput={(e) => setPhone(e.target.value)}
-                      maxLength="10"
-                      required
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      name="email"
-                      onInput={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.chefNote}>
-                <input
-                  placeholder="Special Restriction? Chef Note?"
-                  type="text"
-                />
-              </div>
-              <div className={styles.instantQuoteBtn}>
-                <button onClick={formSubmit}>Check Price</button>
-              </div>
-              {/* <div className={styles.applyCoupon}>
-                <input type="text" placeholder='Enter Coupon Code' />
-                <button>Apply</button>
-              </div> */}
-              {showPriceList && (
-                <div className={styles.pricing}>
-                  <div style={{ marginTop: "10px" }}>
-                    <div className={styles.pricingTitle4}>
-                      <div>
-                        <h4>Buffet Service</h4>
-                      </div>
-                      <div>
-                        <p>₹{buffet}</p>
-                      </div>
-                    </div>
                     <div className={styles.pricingTitle1}>
                       <div>
                         <h4>Items Total</h4>
