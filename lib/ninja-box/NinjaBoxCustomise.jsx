@@ -1079,8 +1079,7 @@ const NinjaBoxCustomise = () => {
       // description: main.description,
     });
     
-    // return setMains(mains => ([...mains, ...temp2]));
-    // handleMainUpdate(mains);
+    handleMainUpdate(temp);
     setMains(mains => ([...mains, ...temp2]));
     // temp.push({
     //   // isRice: main.isRice,
@@ -1171,7 +1170,8 @@ const NinjaBoxCustomise = () => {
   })
 
   
-  setMains(temp);
+  // setMains(temp);  
+
 
 
   }
@@ -1212,7 +1212,7 @@ const NinjaBoxCustomise = () => {
   });
 
   //the quantity logic
-  temp.map((item) => {
+  let newData=temp.map((item) => {
     if(item.veg){
       guests= veg+nonVeg;
     }
@@ -1262,8 +1262,7 @@ const NinjaBoxCustomise = () => {
   }
 })
 
-setBreadRice(temp)
-  
+// setBreadRice(newData);  
 }
 
 const handleBreadRiceAdd = (item_name, id) => {
@@ -1682,7 +1681,8 @@ const handleBreadRiceAdd = (item_name, id) => {
   //   // setBreadRice(temp);
   //   // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
   // };
- const handleDesertsAdd = async(item_name, id) => {
+ 
+  const handleDesertsAdd = async(item_name, id) => {
     // setIsDessertChange(!isDessertChange);
     let temp = [...desserts];
     if (veg === 0 && nonVeg === 0) return;
@@ -1908,6 +1908,8 @@ const handleBreadRiceAdd = (item_name, id) => {
     } else if (type === "Bread+Rice") {
       temp = [...breadRice];
       temp.splice(index, 1);
+      console.log("breadriceDelete",temp)
+      setBreadRice(temp)
       updated=uncheckAfterDelete(filteredBreadData,temp);
       handleBreadRiceChange(temp)
       setBreadRiceData(updated)
