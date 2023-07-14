@@ -145,7 +145,7 @@ const Custom_Package = () => {
   //price filter
   //200-350, 350-500, 500+
 
-  const [priceFilter, setPriceFilter] = useState('all');
+  const [priceFilter, setPriceFilter] = useState("3501-5000");
 
   const handlePriceFilterChange = (e) => {
     setPriceFilter(e.target.value);
@@ -158,7 +158,11 @@ const Custom_Package = () => {
       return item.price >= 2000 && item.price <= 3500;
     } else if (priceFilter === '3501-5000') {
       return item.price >= 3501 && item.price <= 5000;
-    } else {
+    } 
+    else if (priceFilter === '5001+') {
+      return item.price >= 5000 ;
+    } 
+    else {
       return item.price >= 3501 && item.price <= 5000;
     }
   })
@@ -166,14 +170,15 @@ const Custom_Package = () => {
   const nonVegFilterdeItems = packages.nonVeg.filter((item) => {
     if (priceFilter === 'all') {
       return item.price >= 3501 && item.price <= 5000;
-    } else if (priceFilter === '2000-4000') {
+    } else if (priceFilter === '2000-3500') {
       return item.price >= 2000 && item.price <= 4000;
-    } else if (priceFilter === '4001-5000') {
+    } else if (priceFilter === '3501-5000') {
       return item.price >= 4001 && item.price <= 5000;
-    } else if (priceFilter === '5001-6000') {
-      return item.price >= 5001 && item.price <= 6000;
-    } else {
-      return item.price >= 6001;
+    } else if (priceFilter === '5001+') {
+      return item.price >= 5001;
+    }
+    else {
+      return item.price >= 3501 && item.price <= 5000;
     }
   })
 

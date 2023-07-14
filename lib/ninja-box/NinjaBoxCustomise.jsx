@@ -189,14 +189,21 @@ const NinjaBoxCustomise = () => {
             else {
               console.log("suspect", item);
             }
+            
             let value = itemData[0];
             value.checked = "checked";
             setCheckedValues([...checkedValues, value]);
           }
         });
+        
     } else {
     }
   }, []);
+
+  useEffect(()=>{
+    handleMainUpdate(mains)
+        handleBreadRiceChange(breadRice)
+  })
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -809,191 +816,13 @@ const NinjaBoxCustomise = () => {
 
     console.log("starters", starters);
   };
-  //mains add
-  // const handleMainAdd = (item_name, id) => {
-  //   setIsMainChange(!isMainChange);
-  //   if (veg === 0 && nonVeg === 0) return;
-  //   let temp = [...mains];
-
-  //   const main = allMenus.find((item) => item.name === item_name);
-  //   let quantity;
-  //   if (temp.find((item) => item.name === item_name)) {
-  //     return;
-  //   }
-  //   let nonVegPastaMainCount = 0;
-  //   let nonVegMainsGravyMainCount = 0;
-  //   let nonVegMainThaiMainCount = 0;
-  //   if (
-  //     temp.find((item) => item.menu_label === "Pasta" && item.veg === false)
-  //   ) {
-  //     nonVegPastaMainCount += 1;
-  //   } else if (
-  //     temp.find(
-  //       (item) => item.menu_label === "Mains-Gravy" && item.veg === false
-  //     )
-  //   ) {
-  //     nonVegMainsGravyMainCount += 1;
-  //   } else if (
-  //     temp.find(
-  //       (item) => item.menu_label === "Mains-Thai" && item.veg === false
-  //     )
-  //   ) {
-  //     nonVegMainThaiMainCount += 1;
-  //   }
-
-  //   if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-  //     // if not rice , bred, noodles
-  //     console.log("not rice , bred, noodles1");
-  //     if (main.Qtype === "pcs") {
-  //       quantity = (veg > 0 ? veg : nonVeg) * 1;
-  //     } else if (main.name === highestPrice.name) {
-  //       quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.15).toFixed(1));
-  //     } else {
-  //       quantity = HandleCeilFloorValue(((veg > 0 ? veg : nonVeg) * 0.1).toFixed(1));
-  //     }
-  //   } else {
-  //     // if both are present
-  //     if (main.veg) {
-  //       //Heavy SNack
-  //       // alert(main.menu_label)
-  //       if (main.menu_label === "Heavy Snack") {
-  //         if (main.Qtype === "pcs") {
-  //           quantity = veg * 1;
-  //         } else {
-  //           quantity = HandleCeilFloorValue(
-  //             (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-  //           );
-  //         }
-  //       }
-  //       //Pasta mains handelling
-  //       //check whether non veg pasta is selected, if non veg pasta selected then veg pasta quantity =veg*100g only else veg*100+nonVeg*100g
-  //       else if (main.menu_label === "Pasta") {
-  //         if (nonVegPastaMainCount > 0) {
-  //           quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-  //         } else {
-  //           quantity = HandleCeilFloorValue(
-  //             (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-  //           );
-  //         }
-  //       }
-  //       //Mains-gravy : same logic as above
-  //       else if (main.menu_label === "Mains-Gravy") {
-  //         if (nonVegMainsGravyMainCount > 0) {
-  //           quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-  //         } 
-  //         else {
-  //           quantity = HandleCeilFloorValue(
-  //             (veg * 0.15 + nonVeg * 0.1).toFixed(1)
-  //           );
-  //         }
-  //       }
-  //       //Main -Thai : same logic as above
-  //       else if (main.menu_label === "Mains-Thai") {
-  //         if (nonVegMainThaiMainCount > 0) {
-  //           quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-  //         } else {
-  //           quantity = HandleCeilFloorValue(
-  //             (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-  //           );
-  //         }
-  //       }
-  //       //Mains-dry : veg quantity= veg*100+ nonveg*100  else non-veg quantity=non veg*100
-  //       else if (main.menu_label === "Mains-dry") {
-  //         quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-  //       } else {
-  //         //manins dal same as mains dry
-  //         //for daal and rest
-  //         if (main.Qtype === "pcs") {
-  //           quantity = veg * 1;
-  //         } else {
-  //           quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.1).toFixed(1));
-  //         }
-  //       }
-  //     }
-  //     //Non-Veg Mains Handelling
-  //     else {
-  //       if (main.Qtype === "pcs") {
-  //         quantity = nonVeg * 1;
-  //       } else if (main.name === highestPrice.name) {
-  //         quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-  //       } else {
-  //         quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-  //       }
-  //     }
-  //   }
-
-
-  //   // temp.forEach((item) => {
-  //   //   if (item.veg) {
-  //   //     if (
-  //   //       item.menu_label === "Mains-dry" ||
-  //   //       item.menu_label === "Mains-dal"
-  //   //     ) {
-  //   //       item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
-  //   //     } else if (item.menu_label === "Pasta") {
-  //   //       if (nonVegPastaMainCount > 0) {
-  //   //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-  //   //       } else {
-  //   //         item.quantity = HandleCeilFloorValue(
-  //   //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-  //   //         );
-  //   //       }
-  //   //     }
-  //   //     //Mains-gravy : same logic as above
-  //   //     else if (item.menu_label === "Mains-Gravy") {
-  //   //       if (nonVegMainsGravyMainCount > 0) {
-  //   //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-  //   //       } else {
-  //   //         item.quantity = HandleCeilFloorValue(
-  //   //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-  //   //         );
-  //   //       }
-  //   //     }
-  //   //     //Main -Thai : same logic as above
-  //   //     else if (item.menu_label === "Mains-Thai") {
-  //   //       if (nonVegMainThaiMainCount > 0) {
-  //   //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-  //   //       } else {
-  //   //         item.quantity = HandleCeilFloorValue(
-  //   //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-  //   //         );
-  //   //       }
-  //   //     }
-  //   //   } else {
-  //   //     if (item.Qtype === "pcs") {
-  //   //       item.quantity = nonVeg * 1;
-  //   //     } else if (item.name === highestPrice.name) {
-  //   //       item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-  //   //     } else {
-  //   //       item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-  //   //     }
-  //   //   }
-  //   // });
-  //   let temp2=[];
-  //   temp2.push({
-  //     // isRice: main.isRice,
-  //     menu_label: main.menu_label,
-  //     name: main.name,
-  //     quantity: quantity,
-  //     Qtype: main.Qtype, 
-  //     veg: main.veg,
-  //     Images: main.Images,
-  //     selling_price: main.selling_price,
-  //     // description: main.description,
-  //   });
-    
-  //   setMains(mains => ([...mains, ...temp2]));
-  //   // setMains(temp); 
-  //   // handleAfterItemSelection(temp);
-  //   // setMainData((prev) => prev.filter((d) => d.name !== item_name));
-  // };
   const handleMainAdd = async(item_name, id) => {
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
     let guests;
     let tempMain=temp.filter((item) => item.menu_label !== "Sides");
-    const main = allMenus.find((item) => item.name === item_name);
+    var main = allMenus.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
@@ -1081,7 +910,7 @@ const NinjaBoxCustomise = () => {
     
     
     setMains(mains => ([...mains, ...temp2]));
-    handleMainUpdate(mains);
+    handleMainUpdate([...mains, ...temp2]);
     // temp.push({
     //   // isRice: main.isRice,
     //   menu_label: main.menu_label,
@@ -1097,7 +926,14 @@ const NinjaBoxCustomise = () => {
   };
 
   const handleMainUpdate=(data)=>{
-    let temp=data;
+    let temp;
+
+    if(data.length>0){
+      temp=data;
+    }
+    else{
+      return;
+    }
     let guests;
     let tempMain=temp.filter((item) => item.menu_label !== "Sides");
 
@@ -1193,7 +1029,15 @@ const NinjaBoxCustomise = () => {
   }
   const handleBreadRiceChange=(data)=>{
 
-    let temp = data;
+    let temp;
+    if(data.length>0){
+      temp = data;
+    }
+    else{
+      return;
+    }
+    
+    console.log("bothData", data)
   let guests;
   let RN_Count=0;
   let bread=0;
@@ -1213,7 +1057,7 @@ const NinjaBoxCustomise = () => {
   });
 
   //the quantity logic
-  let newData=temp.map((item) => {
+  temp.map((item) => {
     if(item.veg){
       guests= veg+nonVeg;
     }
@@ -1354,7 +1198,9 @@ const handleBreadRiceAdd = (item_name, id) => {
       // description: main.description,
     });
     setBreadRice(breadRice => ([...breadRice, ...temp2]));
-    handleBreadRiceChange(temp)
+      handleBreadRiceChange([...temp, ...temp2])
+
+    
 
   
   // setBreadRice(temp);
