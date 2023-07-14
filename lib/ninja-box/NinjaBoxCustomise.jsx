@@ -171,19 +171,19 @@ const NinjaBoxCustomise = () => {
     if (ID2) {
       let itemDataArray = PreSelectMenuNinjaBox[mealType2].filter((d) => d.id === ID2)[0].items
       itemDataArray.map(
-        (item, index) => {
+        async (item, index) => {
           itemData = allMenus.filter((d) => d.name === item);
           if (itemData.length > 0) {
             if (itemData[0].mealType === "Starter") {
-              handleStatersAdd(item);
+              handleStatersAdd(itemData[0].name);
             }
-            if (itemData[0].mealType === "Main course") {
-              handleMainAdd(itemData[0].name);
+            else if (itemData[0].mealType === "Main course") {
+              await handleMainAdd(itemData[0].name);
             }
-            if (itemData[0].mealType === "Bread+Rice") {
+            else if (itemData[0].mealType === "Bread+Rice") {
               handleBreadRiceAdd(itemData[0].name);
             }
-            if (itemData[0].mealType === "Dessert") {
+            else if (itemData[0].mealType === "Dessert") {
               handleDesertsAdd(itemData[0].name);
             }
             else {
@@ -805,7 +805,7 @@ const NinjaBoxCustomise = () => {
       selling_price: starter.selling_price,
       // description: starter.description,
     });
-    setStarters(temp);
+    setStarters(starters => ([...starters, ...temp2]));
 
     console.log("starters", starters);
   };
@@ -987,13 +987,13 @@ const NinjaBoxCustomise = () => {
   //   // handleAfterItemSelection(temp);
   //   // setMainData((prev) => prev.filter((d) => d.name !== item_name));
   // };
-  const handleMainAdd = (item_name, id) => {
+  const handleMainAdd = async(item_name, id) => {
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
     let guests;
     let tempMain=temp.filter((item) => item.menu_label !== "Sides");
-    const main = mainData.find((item) => item.name === item_name);
+    const main = allMenus.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
@@ -1058,7 +1058,7 @@ const NinjaBoxCustomise = () => {
           }
         }
       }
-      else if (temp.length>=2){
+      else if (tempMain.length>=2){
         quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
       }
       else{
@@ -1066,71 +1066,34 @@ const NinjaBoxCustomise = () => {
       }
     }
     
-    
-
-
-    // temp.forEach((item) => {
-    //   if (item.veg) {
-    //     if (
-    //       item.menu_label === "Mains-dry" ||
-    //       item.menu_label === "Mains-dal"
-    //     ) {
-    //       item.quantity = HandleCeilFloorValue(veg * 0.1 + nonVeg * 0.1);
-    //     } else if (item.menu_label === "Pasta") {
-    //       if (nonVegPastaMainCount > 0) {
-    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-    //       } else {
-    //         item.quantity = HandleCeilFloorValue(
-    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-    //         );
-    //       }
-    //     }
-    //     //Mains-gravy : same logic as above
-    //     else if (item.menu_label === "Mains-Gravy") {
-    //       if (nonVegMainsGravyMainCount > 0) {
-    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-    //       } else {
-    //         item.quantity = HandleCeilFloorValue(
-    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-    //         );
-    //       }
-    //     }
-    //     //Main -Thai : same logic as above
-    //     else if (item.menu_label === "Mains-Thai") {
-    //       if (nonVegMainThaiMainCount > 0) {
-    //         item.quantity = HandleCeilFloorValue((veg * 0.1).toFixed(1));
-    //       } else {
-    //         item.quantity = HandleCeilFloorValue(
-    //           (veg * 0.1 + nonVeg * 0.1).toFixed(1)
-    //         );
-    //       }
-    //     }
-    //   } else {
-    //     if (item.Qtype === "pcs") {
-    //       item.quantity = nonVeg * 1;
-    //     } else if (item.name === highestPrice.name) {
-    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.15).toFixed(1));
-    //     } else {
-    //       item.quantity = HandleCeilFloorValue((nonVeg * 0.1).toFixed(1));
-    //     }
-    //   }
-    // });
-    temp.push({
+      let temp2=[];
+    temp2.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
       name: main.name,
       quantity: quantity,
-      Qtype: main.Qtype,
+      Qtype: main.Qtype, 
       veg: main.veg,
       Images: main.Images,
       selling_price: main.selling_price,
       // description: main.description,
     });
-    handleMainUpdate(temp);
-
-    setMains(temp);
-    // handleAfterItemSelection(temp);
-    // setMainData((prev) => prev.filter((d) => d.name !== item_name));
+    
+    // return setMains(mains => ([...mains, ...temp2]));
+    // handleMainUpdate(mains);
+    setMains(mains => ([...mains, ...temp2]));
+    // temp.push({
+    //   // isRice: main.isRice,
+    //   menu_label: main.menu_label,
+    //   name: main.name,
+    //   quantity: quantity,
+    //   Qtype: main.Qtype,
+    //   veg: main.veg,
+    //   Images: main.Images,
+    //   selling_price: main.selling_price,
+    //   // description: main.description,
+    // });
+       
   };
 
   const handleMainUpdate=(data)=>{
@@ -1212,7 +1175,21 @@ const NinjaBoxCustomise = () => {
 
 
   }
-
+  function comparePrices(tempMain, menuItem) {
+    
+    // Compare the price with other menu items
+    const selectedItemPrice = menuItem.selling_price;
+    // Compare the price with other menu items
+    for (let i = 0; i < tempMain.length; i++) {
+      if (tempMain[i].selling_price > selectedItemPrice) {
+        return false
+      } else if (tempMain[i].selling_price < selectedItemPrice) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
   const handleBreadRiceChange=(data)=>{
 
     let temp = data;
@@ -1293,7 +1270,6 @@ const handleBreadRiceAdd = (item_name, id) => {
   setIsBreadChange(!isBreadChange);
   if (veg === 0 && nonVeg === 0) return;
   let temp = [...breadRice];
-  let tempMain = [...mains];
   const filterBreadRice = allMenus.find((item) => item.name === item_name);
   let quantity;
   let guests;
@@ -1365,19 +1341,22 @@ const handleBreadRiceAdd = (item_name, id) => {
     }
   }
 
-  temp.push({
-    // isRice: main.isRice,
-    menu_label: filterBreadRice?.menu_label,
-    name: filterBreadRice?.name,
-    quantity: quantity,
-    Images: filterBreadRice?.Images,
-    Qtype: filterBreadRice?.Qtype,
-    veg: filterBreadRice?.veg,
-    selling_price: filterBreadRice.selling_price,
-    // description: main.description,
-  });
-  handleBreadRiceChange(temp)
-  setBreadRice(temp);
+  let temp2=[]
+    temp2.push({
+      // isRice: main.isRice,
+      menu_label: filterBreadRice?.menu_label,
+      name: filterBreadRice?.name,
+      quantity: quantity,
+      Images: filterBreadRice?.Images,
+      Qtype: filterBreadRice?.Qtype,
+      veg: filterBreadRice?.veg,
+      selling_price: filterBreadRice?.selling_price,
+      // description: main.description,
+    });
+    handleBreadRiceChange(temp)
+    setBreadRice(breadRice => ([...breadRice, ...temp2]));
+  
+  // setBreadRice(temp);
   // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
 };
 
@@ -1885,7 +1864,6 @@ const handleBreadRiceAdd = (item_name, id) => {
       let innerData = temp.filter(
         (innerItem) => innerItem?.name === item?.name
       );
-      console.log("item", innerData);
       if (!innerData?.length) {
         removedIndexes.push(index);
       }
