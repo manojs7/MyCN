@@ -77,7 +77,7 @@ const OurServices = () => {
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
-                <Image src="/home/ourServices/min10.png" width="112px" height="19.1px" />
+                <Image src="/home/ourServices/min10.png" width="150px" height="25.1px" />
               </div>
             </div>
 
@@ -135,7 +135,7 @@ const OurServices = () => {
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
-                <Image src="/home/ourServices/min10.png" width="112px" height="19.1px" />
+                <Image src="/home/ourServices/min10.png" width="150px" height="25.1px" />
               </div>
             </div>
 
@@ -303,7 +303,7 @@ const OurServices = () => {
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
-                <Image src="/home/ourServices/min15.png" width="112px" height="19.1px" />
+                <Image src="/home/ourServices/min15.png" width="150px" height="25.1px" />
               </div>
             </div>
             {/* card 6 */}
@@ -359,7 +359,7 @@ const OurServices = () => {
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
-                <Image src="/home/ourServices/min15.png" width="112px" height="19.1px" />
+                <Image src="/home/ourServices/min15.png" width="150px" height="25.1px" />
               </div>
             </div>
           </div>

@@ -688,7 +688,7 @@ const Custom_Package = () => {
             {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
               <h3><span><Image src="/ninja-box/vlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
@@ -705,7 +705,7 @@ const Custom_Package = () => {
             {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
               <h3><span><Image src="/ninja-box/vlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
@@ -722,7 +722,7 @@ const Custom_Package = () => {
             {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
               <h3><span><Image src="/ninja-box/nvlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
@@ -739,7 +739,7 @@ const Custom_Package = () => {
             {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center">
               <h3><span><Image src="/ninja-box/nvlogo.png" width="15px" height="15px" /></span> {item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
@@ -914,7 +914,7 @@ const Custom_Package = () => {
             {firstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
               <h3>{item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
@@ -931,7 +931,7 @@ const Custom_Package = () => {
             {secondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
               <h3>{item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
@@ -952,7 +952,7 @@ const Custom_Package = () => {
             {nvfirstRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
               <h3>{item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>
@@ -969,7 +969,7 @@ const Custom_Package = () => {
             {nvsecondRow.map((item, index) => (<div key={index} className="packageNameSection text-center ms-2 me-4">
               <h3>{item.name}</h3>
               <div className="packageImg">
-                <img src={item.img} />
+                <img src={item.img2} />
               </div>
               <div className="packagesName">
                 <h4>{item.details}</h4>

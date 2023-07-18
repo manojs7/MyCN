@@ -1921,7 +1921,7 @@ const NinjaBuffetCustomise = () => {
                                 onChange={(e) => setName(e.target.value)}></input>
                         </div>
                         <div className='d-flex justify-content-between'>
-                            <p>Phone:</p>
+                            <p style={{fontSize: "13px"}}>WhatsApp No:</p>
                             <input type="text"
                                 value={mobileno}
                                 onChange={(e) => setPhone(e.target.value)}></input>
@@ -3109,7 +3109,7 @@ const NinjaBuffetCustomise = () => {
                                             required
                                         />
                                         <input
-                                            placeholder="Phone No."
+                                            placeholder="WhatsApp No."
                                             name="mobileno"
                                             onInput={(e) => setPhone(e.target.value)}
                                             maxLength="10"

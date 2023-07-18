@@ -240,7 +240,7 @@ const CustomizeNinjaBox = () => {
     };
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     handleMainUpdate(mains)
     handleBreadRiceChange(breadRice)
   },[])
@@ -640,7 +640,7 @@ const CustomizeNinjaBox = () => {
               data.name.includes("Chicken Tikka") ||
               data.name.includes("Kebab")
             ) {
-              data.quantity = Math.round((veg*3 )+ (nonVeg * 1.5));
+              data.quantity = Math.round((veg * 3) + (nonVeg * 1.5));
             } else {
               data.quantity = Math.round(veg * 2 + nonVeg * 1);
             }
@@ -649,7 +649,7 @@ const CustomizeNinjaBox = () => {
             }
           } else {
             // data.quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
-            data.quantity = HandleCeilFloorValue((((veg*0.075 )+ (nonVeg * 0.025))).toFixed(1));
+            data.quantity = HandleCeilFloorValue((((veg * 0.075) + (nonVeg * 0.025))).toFixed(1));
           }
         } else {
           if (data.Qtype === "pcs") {
@@ -674,10 +674,10 @@ const CustomizeNinjaBox = () => {
     });
 
     // main value change after veg anf=d non-veg guest change
-     //Mains update
-     let tempMain=[...mains]
-     handleMainUpdate(tempMain);
-    
+    //Mains update
+    let tempMain = [...mains]
+    handleMainUpdate(tempMain);
+
     // setMains(tempMain);
 
 
@@ -720,8 +720,8 @@ const CustomizeNinjaBox = () => {
       x = Math.ceil(x);
     }
 
-    if(x<1){
-      x=1
+    if (x < 1) {
+      x = 1
     }
 
     return x;
@@ -798,9 +798,9 @@ const CustomizeNinjaBox = () => {
             starter.name.includes("Paneer Tikka") ||
             starter.name.includes("Kebab")
           ) {
-            quantity = Math.round((veg*3 )+ (nonVeg * 1.5));
+            quantity = Math.round((veg * 3) + (nonVeg * 1.5));
           } else {
-            quantity = Math.round((veg*2 )+ (nonVeg * 1));
+            quantity = Math.round((veg * 2) + (nonVeg * 1));
           }
           // quantity = Math.round((veg + nonVeg) * 1.5);
           if (quantity < 12) {
@@ -808,7 +808,7 @@ const CustomizeNinjaBox = () => {
           }
         } else {
           // quantity = HandleCeilFloorValue((veg * 0.1 + nonVeg * 0.05).toFixed(1));
-          quantity = HandleCeilFloorValue(((veg * 0.075 )+ (nonVeg * 0.025)).toFixed(1));
+          quantity = HandleCeilFloorValue(((veg * 0.075) + (nonVeg * 0.025)).toFixed(1));
         }
       } else {
         if (starter.Qtype === "pcs") {
@@ -847,99 +847,99 @@ const CustomizeNinjaBox = () => {
 
     console.log("starters", starters);
   };
-  const handleMainAdd = async(item_name, id) => {
+  const handleMainAdd = async (item_name, id) => {
     setIsMainChange(!isMainChange);
     if (veg === 0 && nonVeg === 0) return;
     let temp = [...mains];
     let guests;
-    let tempMain=temp.filter((item) => item.menu_label !== "Sides");
+    let tempMain = temp.filter((item) => item.menu_label !== "Sides");
     var main = allMenus.find((item) => item.name === item_name);
     let quantity;
     if (temp.find((item) => item.name === item_name)) {
       return;
     }
-    let VMC=0;
-    let NVMC=0;
+    let VMC = 0;
+    let NVMC = 0;
     tempMain.map((item) => {
       item.veg === true ? (VMC += 1) : VMC;
-      item.veg === false ? NVMC+=1 : NVMC;
+      item.veg === false ? NVMC += 1 : NVMC;
     });
-  
+
     //Guest count logic
 
     if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-      guests= veg>0 ? veg : nonVeg;
+      guests = veg > 0 ? veg : nonVeg;
     }
-    else{
-      if(main.veg){
-        guests= veg + nonVeg
+    else {
+      if (main.veg) {
+        guests = veg + nonVeg
       }
-      else{
-        guests= nonVeg;
+      else {
+        guests = nonVeg;
       }
     }
-    if(main.menu_label === "Heavy-Snack" || main.menu_label === "Pasta"){
-      if(main.Qtype ==="pcs"){
-        quantity=guests;
+    if (main.menu_label === "Heavy-Snack" || main.menu_label === "Pasta") {
+      if (main.Qtype === "pcs") {
+        quantity = guests;
       }
-      else{
-        quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
+      else {
+        quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
       }
-      
+
     }
-    else if (main.menu_label === "Sides"){
-      quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
+    else if (main.menu_label === "Sides") {
+      quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
     }
-    else{
-      if(tempMain.length<1){
-        quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
+    else {
+      if (tempMain.length < 1) {
+        quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
       }
-      else if(tempMain.length===1){
+      else if (tempMain.length === 1) {
         if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-          if(comparePrices(tempMain,main)){
-            quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
+          if (comparePrices(tempMain, main)) {
+            quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
           }
-          else{
-            quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
+          else {
+            quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
           }
-          
+
         }
-        else{
-          if(VMC>0 || NVMC >0 ){
-            if(comparePrices(tempMain,main)){
-              quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
+        else {
+          if (VMC > 0 || NVMC > 0) {
+            if (comparePrices(tempMain, main)) {
+              quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
             }
-            else{
-              quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
+            else {
+              quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
             }
           }
-          else{
-            quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
+          else {
+            quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
           }
         }
       }
-      else if (tempMain.length>=2){
-        quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
+      else if (tempMain.length >= 2) {
+        quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
       }
-      else{
-        quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
+      else {
+        quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
       }
     }
-    
-      let temp2=[];
+
+    let temp2 = [];
     temp2.push({
       // isRice: main.isRice,
       menu_label: main.menu_label,
       name: main.name,
       quantity: quantity,
-      Qtype: main.Qtype, 
+      Qtype: main.Qtype,
       veg: main.veg,
       Images: main.Images,
       selling_price: main.selling_price,
       // description: main.description,
     });
-    
-    
+
+
     setMains(mains => ([...mains, ...temp2]));
     handleMainUpdate([...mains, ...temp2]);
     // temp.push({
@@ -953,98 +953,98 @@ const CustomizeNinjaBox = () => {
     //   selling_price: main.selling_price,
     //   // description: main.description,
     // });
-       
+
   };
 
-  const handleMainUpdate=(data)=>{
+  const handleMainUpdate = (data) => {
     let temp;
 
-    if(data.length>0){
-      temp=data;
+    if (data.length > 0) {
+      temp = data;
     }
-    else{
+    else {
       return;
     }
     let guests;
-    let tempMain=temp.filter((item) => item.menu_label !== "Sides");
+    let tempMain = temp.filter((item) => item.menu_label !== "Sides");
 
-    let VMC=0;
-    let NVMC=0;
+    let VMC = 0;
+    let NVMC = 0;
     tempMain.map((item) => {
       item.veg === true ? (VMC += 1) : VMC;
-      item.veg === false ? NVMC+=1 : NVMC;
+      item.veg === false ? NVMC += 1 : NVMC;
     });
-  
+
     //Guest count logic
 
-    
-    temp.map((item)=>{
-      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-        guests= veg>0 ? veg : nonVeg;
-      }
-      else{
-        if(item.veg){
-          guests= veg + nonVeg
-        }
-        else{
-          guests= nonVeg;
-        }
-      }
-      if(item.menu_label === "Heavy-Snack" || item.menu_label === "Pasta"){
-        if(item.Qtype ==="pcs"){
-          item.quantity=guests;
-        }
-        else{
-          item.quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
-        }
-        
-      }
-      else if (item.menu_label === "Sides"){
-        item.quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
-      }
-      else{
-    
-          if(tempMain.length===1){
-            item.quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
-          }
-          else if(tempMain.length===2){
-            if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
-              if(comparePrices(tempMain,item)){
-                item.quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
-              }
-              else{
-                item.quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
-              }
-              
-            }
-            else{
-              if(VMC>0 || NVMC >0 ){
-                if(comparePrices(tempMain,item)){
-                  item.quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
-                }
-                else{
-                  item.quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
-                }
-              }
-              else{
-                item.quantity= HandleCeilFloorValue((guests*0.150).toFixed(1))
-              }
-            }
-          }
-          else if (tempMain.length>2){
-            item.quantity= HandleCeilFloorValue((guests*0.100).toFixed(1))
-          }
-        }
-  })
 
-  
-  // setMains(temp);  
+    temp.map((item) => {
+      if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+        guests = veg > 0 ? veg : nonVeg;
+      }
+      else {
+        if (item.veg) {
+          guests = veg + nonVeg
+        }
+        else {
+          guests = nonVeg;
+        }
+      }
+      if (item.menu_label === "Heavy-Snack" || item.menu_label === "Pasta") {
+        if (item.Qtype === "pcs") {
+          item.quantity = guests;
+        }
+        else {
+          item.quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
+        }
+
+      }
+      else if (item.menu_label === "Sides") {
+        item.quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
+      }
+      else {
+
+        if (tempMain.length === 1) {
+          item.quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
+        }
+        else if (tempMain.length === 2) {
+          if ((nonVeg === 0 && veg > 0) || (veg === 0 && nonVeg > 0)) {
+            if (comparePrices(tempMain, item)) {
+              item.quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
+            }
+            else {
+              item.quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
+            }
+
+          }
+          else {
+            if (VMC > 0 || NVMC > 0) {
+              if (comparePrices(tempMain, item)) {
+                item.quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
+              }
+              else {
+                item.quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
+              }
+            }
+            else {
+              item.quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1))
+            }
+          }
+        }
+        else if (tempMain.length > 2) {
+          item.quantity = HandleCeilFloorValue((guests * 0.100).toFixed(1))
+        }
+      }
+    })
+
+
+    // setMains(temp);  
 
 
 
   }
   function comparePrices(tempMain, menuItem) {
-    
+
     // Compare the price with other menu items
     const selectedItemPrice = menuItem.selling_price;
     // Compare the price with other menu items
@@ -1058,165 +1058,165 @@ const CustomizeNinjaBox = () => {
       }
     }
   }
-  const handleBreadRiceChange=(data)=>{
+  const handleBreadRiceChange = (data) => {
 
     let temp;
-    if(data.length>0){
+    if (data.length > 0) {
       temp = data;
     }
-    else{
+    else {
       return;
     }
-    
+
     console.log("bothData", data)
-  let guests;
-  let RN_Count=0;
-  let bread=0;
-  //Defining guest count here
-  if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+    let guests;
+    let RN_Count = 0;
+    let bread = 0;
+    //Defining guest count here
+    if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
       guests = veg > 0 ? veg : nonVeg;
-  }
-  else{
-      guests=veg + nonVeg;
-      
-  }
+    }
+    else {
+      guests = veg + nonVeg;
 
-  //already selected item's count logic
-  temp.map((item) => {
-        item.menu_label === "Breads" ? (bread += 1) : bread;
-        item.menu_label === "Rice" || item.menu_label === "Noodle" ? RN_Count+=1 : RN_Count;
-  });
+    }
 
-  //the quantity logic
-  temp.map((item) => {
-    if(item.veg){
-      guests= veg+nonVeg;
-    }
-    else{
-      guests= nonVeg;
-    }
-  if(temp.length===1){
-    
-    if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
-      item.quantity= HandleCeilFloorValue((guests*0.200).toFixed(1));
-    }
-    else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
-      item.quantity = guests * 3;
-    }
-    else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
-      item.quantity = guests *2;
-    }
-  }
-  else if(temp.length===2){
-    
-    if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
-        item.quantity= HandleCeilFloorValue((guests*0.150).toFixed(1));
-    }
-    else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
-      item.quantity = guests * 3;
-    }
-    else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
-      if(bread>1){
-        item.quantity = guests *1;
+    //already selected item's count logic
+    temp.map((item) => {
+      item.menu_label === "Breads" ? (bread += 1) : bread;
+      item.menu_label === "Rice" || item.menu_label === "Noodle" ? RN_Count += 1 : RN_Count;
+    });
+
+    //the quantity logic
+    temp.map((item) => {
+      if (item.veg) {
+        guests = veg + nonVeg;
       }
-      else{
-        item.quantity =  Math.round(guests *1.5);
+      else {
+        guests = nonVeg;
       }
-      
-    }
-  }
-  else if(temp.length>=3){
-    if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
-      item.quantity=RN_Count===1? HandleCeilFloorValue((guests*0.150).toFixed(1)): HandleCeilFloorValue((guests*0.100).toFixed(1));
-    }
-    else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
-      item.quantity = guests * 2;
-    }
-    else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
-      item.quantity = Math.round(guests *1.5);
-    }
-  }
-})
+      if (temp.length === 1) {
 
-// setBreadRice(newData);  
-}
+        if (item.menu_label === "Rice" || item.menu_label === "Noodle") {
+          item.quantity = HandleCeilFloorValue((guests * 0.200).toFixed(1));
+        }
+        else if (item.menu_label === "Breads" && item.name === "Poori - 4") {
+          item.quantity = guests * 3;
+        }
+        else if (item.menu_label === "Breads" && item.name !== "Poori - 4") {
+          item.quantity = guests * 2;
+        }
+      }
+      else if (temp.length === 2) {
 
-const handleBreadRiceAdd = (item_name, id) => {
-  setIsBreadChange(!isBreadChange);
-  if (veg === 0 && nonVeg === 0) return;
-  let temp = [...breadRice];
-  const filterBreadRice = allMenus.find((item) => item.name === item_name);
-  let quantity;
-  let guests;
-  let RN_Count=0;
-  let bread=0;
-  if (temp.find((item) => item.name === item_name)) {
-    return;
+        if (item.menu_label === "Rice" || item.menu_label === "Noodle") {
+          item.quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1));
+        }
+        else if (item.menu_label === "Breads" && item.name === "Poori - 4") {
+          item.quantity = guests * 3;
+        }
+        else if (item.menu_label === "Breads" && item.name !== "Poori - 4") {
+          if (bread > 1) {
+            item.quantity = guests * 1;
+          }
+          else {
+            item.quantity = Math.round(guests * 1.5);
+          }
+
+        }
+      }
+      else if (temp.length >= 3) {
+        if (item.menu_label === "Rice" || item.menu_label === "Noodle") {
+          item.quantity = RN_Count === 1 ? HandleCeilFloorValue((guests * 0.150).toFixed(1)) : HandleCeilFloorValue((guests * 0.100).toFixed(1));
+        }
+        else if (item.menu_label === "Breads" && item.name === "Poori - 4") {
+          item.quantity = guests * 2;
+        }
+        else if (item.menu_label === "Breads" && item.name !== "Poori - 4") {
+          item.quantity = Math.round(guests * 1.5);
+        }
+      }
+    })
+
+    // setBreadRice(newData);  
   }
 
-  //Defining guest count here
-  if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
+  const handleBreadRiceAdd = (item_name, id) => {
+    setIsBreadChange(!isBreadChange);
+    if (veg === 0 && nonVeg === 0) return;
+    let temp = [...breadRice];
+    const filterBreadRice = allMenus.find((item) => item.name === item_name);
+    let quantity;
+    let guests;
+    let RN_Count = 0;
+    let bread = 0;
+    if (temp.find((item) => item.name === item_name)) {
+      return;
+    }
+
+    //Defining guest count here
+    if ((veg === 0 && nonVeg > 0) || (veg > 0 && nonVeg === 0)) {
       guests = veg > 0 ? veg : nonVeg;
-  }
-  else{
-      if(filterBreadRice.veg){
-        guests= veg+nonVeg;
+    }
+    else {
+      if (filterBreadRice.veg) {
+        guests = veg + nonVeg;
       }
-      else{
-        guests= nonVeg;
+      else {
+        guests = nonVeg;
       }
-      
-  }
 
-  //already selected item's count logic
-  temp.map((item) => {
-        item.menu_label === "Breads" ? (bread += 1) : bread;
-        item.menu_label === "Rice" || item.menu_label === "Noodle" ? RN_Count+=1 : RN_Count;
-  });
+    }
 
-  //the quantity logic
-  if(temp.length<1){
-    if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
-      quantity= HandleCeilFloorValue((guests*0.200).toFixed(1));
-    }
-    else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
-      quantity = guests * 3;
-    }
-    else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
-      quantity = guests *2;
-    }
-  }
-  else if(temp.length===1){
-    
-    if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
-        quantity= HandleCeilFloorValue((guests*0.150).toFixed(1));
-    }
-    else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
-      quantity = guests * 3;
-    }
-    else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
-      if(bread>1){
-        quantity = guests *1;
-      }
-      else{
-        quantity =  Math.round(guests *1.5);
-      }
-      
-    }
-  }
-  else if(temp.length>=2){
-    if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
-      quantity=RN_Count===1? HandleCeilFloorValue((guests*0.150).toFixed(1)): HandleCeilFloorValue((guests*0.100).toFixed(1));
-    }
-    else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
-      quantity = guests * 2;
-    }
-    else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
-      quantity = Math.round(guests *1.5);
-    }
-  }
+    //already selected item's count logic
+    temp.map((item) => {
+      item.menu_label === "Breads" ? (bread += 1) : bread;
+      item.menu_label === "Rice" || item.menu_label === "Noodle" ? RN_Count += 1 : RN_Count;
+    });
 
-  let temp2=[]
+    //the quantity logic
+    if (temp.length < 1) {
+      if (filterBreadRice.menu_label === "Rice" || filterBreadRice.menu_label === "Noodle") {
+        quantity = HandleCeilFloorValue((guests * 0.200).toFixed(1));
+      }
+      else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4") {
+        quantity = guests * 3;
+      }
+      else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4") {
+        quantity = guests * 2;
+      }
+    }
+    else if (temp.length === 1) {
+
+      if (filterBreadRice.menu_label === "Rice" || filterBreadRice.menu_label === "Noodle") {
+        quantity = HandleCeilFloorValue((guests * 0.150).toFixed(1));
+      }
+      else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4") {
+        quantity = guests * 3;
+      }
+      else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4") {
+        if (bread > 1) {
+          quantity = guests * 1;
+        }
+        else {
+          quantity = Math.round(guests * 1.5);
+        }
+
+      }
+    }
+    else if (temp.length >= 2) {
+      if (filterBreadRice.menu_label === "Rice" || filterBreadRice.menu_label === "Noodle") {
+        quantity = RN_Count === 1 ? HandleCeilFloorValue((guests * 0.150).toFixed(1)) : HandleCeilFloorValue((guests * 0.100).toFixed(1));
+      }
+      else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4") {
+        quantity = guests * 2;
+      }
+      else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4") {
+        quantity = Math.round(guests * 1.5);
+      }
+    }
+
+    let temp2 = []
     temp2.push({
       // isRice: main.isRice,
       menu_label: filterBreadRice?.menu_label,
@@ -1229,14 +1229,14 @@ const handleBreadRiceAdd = (item_name, id) => {
       // description: main.description,
     });
     setBreadRice(breadRice => ([...breadRice, ...temp2]));
-      handleBreadRiceChange([...temp, ...temp2])
+    handleBreadRiceChange([...temp, ...temp2])
 
-    
 
-  
-  // setBreadRice(temp);
-  // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
-};
+
+
+    // setBreadRice(temp);
+    // setBreadRiceData((prev) => prev.filter((d) => d.name !== item_name));
+  };
 
 
   function increment(value, index, type, item) {
@@ -1434,10 +1434,10 @@ const handleBreadRiceAdd = (item_name, id) => {
       updated = uncheckAfterDelete(filteredBreadData, temp);
       setBreadRiceData(updated);
       handleBreadRiceChange(temp)
-      
+
     }
   }
- 
+
   const handleDesertsAdd = (item_name, id) => {
     setIsDessertChange(!isDessertChange);
     let temp = [...desserts];
@@ -1546,9 +1546,9 @@ const handleBreadRiceAdd = (item_name, id) => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
     setShowPriceList(false);
   }, [starters, mains, desserts, breadRice, veg, nonVeg, isDelete]);
@@ -1556,9 +1556,9 @@ const handleBreadRiceAdd = (item_name, id) => {
     setGST(getGst());
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        parseInt(getGst())
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      parseInt(getGst())
     );
   }, [buffet]);
 
@@ -1566,7 +1566,7 @@ const handleBreadRiceAdd = (item_name, id) => {
     return parseInt(
       ((parseInt(totalPrice) + parseInt(buffet) + parseInt(deliveryCharge)) *
         5) /
-        100
+      100
     );
   }
 
@@ -1580,7 +1580,7 @@ const handleBreadRiceAdd = (item_name, id) => {
 
     if (
       starters.length + mains.length + desserts.length + breadRice.length ==
-        "0" ||
+      "0" ||
       name.length == "" ||
       mobileno.length == "" ||
       !/^\d{10}$/.test(mobileno) ||
@@ -1646,9 +1646,9 @@ const handleBreadRiceAdd = (item_name, id) => {
       getGst();
     setgrandTotal(
       parseInt(totalPrice) +
-        parseInt(buffet) +
-        // parseInt(deliveryCharge) +
-        getGst()
+      parseInt(buffet) +
+      // parseInt(deliveryCharge) +
+      getGst()
     );
     setShowPriceList(!showPriceList);
     console.log("gst", final_gst, final_grandtotal);
@@ -2532,7 +2532,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                               </span>
                               Filter By
                             </h6> */}
-                            {showStarterFilter 
+                            {showStarterFilter
                               // <div className={styles.filterSectn}>
                               //   <div className={styles.insideFiilter}>
                               //     {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
@@ -2646,8 +2646,8 @@ const handleBreadRiceAdd = (item_name, id) => {
                                     a.checked === b.checked
                                       ? 0
                                       : a.checked
-                                      ? -1
-                                      : 1
+                                        ? -1
+                                        : 1
                                   )
                                   .map((item, index) => (
                                     <li key={item.id}>
@@ -2844,7 +2844,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                               </span>
                               Filter By
                             </h6> */}
-                            {showStarterFilter 
+                            {showStarterFilter
                               // <div className={styles.filterSectn}>
                               //   <div className={styles.insideFiilter}>
                               //     {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
@@ -2909,8 +2909,8 @@ const handleBreadRiceAdd = (item_name, id) => {
                                     a.checked === b.checked
                                       ? 0
                                       : a.checked
-                                      ? -1
-                                      : 1
+                                        ? -1
+                                        : 1
                                   )
                                   .map((item, index) => (
                                     <li key={item.id}>
@@ -3109,7 +3109,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                               </span>
                               Filter By
                             </h6> */}
-                            {showStarterFilter 
+                            {showStarterFilter
                               // <div className={styles.filterSectn}>
                               //   <div className={styles.insideFiilter}>
                               //     <div className={styles.filterName}>
@@ -3170,8 +3170,8 @@ const handleBreadRiceAdd = (item_name, id) => {
                                     a.checked === b.checked
                                       ? 0
                                       : a.checked
-                                      ? -1
-                                      : 1
+                                        ? -1
+                                        : 1
                                   )
                                   .map((item, index) => (
                                     <li key={item.id}>
@@ -3369,7 +3369,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                               </span>
                               Filter By
                             </h6> */}
-                            {showStarterFilter 
+                            {showStarterFilter
                               // <div className={styles.filterSectn}>
                               //   <div className={styles.insideFiilter}>
                               //     {/* <p><span><input type="radio" id="f1" name="starterFilter" /></span>Paneer Gravys</p>
@@ -3418,8 +3418,8 @@ const handleBreadRiceAdd = (item_name, id) => {
                                     a.checked === b.checked
                                       ? 0
                                       : a.checked
-                                      ? -1
-                                      : 1
+                                        ? -1
+                                        : 1
                                   )
                                   .map((item, index) => (
                                     <li key={item.id}>
@@ -3505,7 +3505,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                   Desserts
                 </h6>
               </div>
-              
+
               <div className="mt-5">
                 <div className={styles.userInput}>
                   <h4>Details*</h4>
@@ -3550,247 +3550,300 @@ const handleBreadRiceAdd = (item_name, id) => {
               {showPriceList && (
                 <div className={styles.pricing}>
                   <div style={{ marginTop: "10px" }}>
-                  <div className={styles.finalPriceSection}>
-                <div
-                  id={styles.drdwnCnt}
-                  className="d-flex justify-content-between"
-                >
-                  <select
-                    aria-label="Default select example"
-                    className="form-select"
-                    id="fontR"
-                    name="buffet"
-                    value={buffet}
-                    onChange={(e) => handleBuffet(e.target.value)}
-                  >
-                    {(city === "Mumbai" ||
-                      city === "Navi-Mumbai" ||
-                      city === "Thane" ||
-                      city === "Bangalore" ||
-                      city === "Chennai" ||
-                      city === "Pune") &&
-                    people < 26 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery Only
-                        </option>
-                        <option value="4000">
-                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" ||
-                        city === "Chennai" ||
-                        city === "Pune") &&
-                      people > 25 &&
-                      people < 41 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery Only
-                        </option>
-                        <option value="5000">
-                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" ||
-                        city === "Chennai" ||
-                        city === "Pune") &&
-                      people > 40 &&
-                      people < 61 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery Only
-                        </option>
-                        <option value="6000">
-                          Buffet setup + Service (+ ₹ 6,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Mumbai" ||
-                        city === "Navi-Mumbai" ||
-                        city === "Thane" ||
-                        city === "Bangalore" ||
-                        city === "Chennai" ||
-                        city === "Pune") &&
-                      people > 60 &&
-                      people < 100 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Delivery Only
-                        </option>
-                        <option value="7500">
-                          Buffet setup + Service (+ ₹ 7,500.00)
-                        </option>
-                      </>
-                    ) : null}
-
-                    {/* ------------------------------------- */}
-
-                    {(city === "Delhi" ||
-                      city === "Noida" ||
-                      city === "Ghaziabad" ||
-                      city === "Gurgaon") &&
-                    people < 26 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Bulk Food Delivery
-                        </option>
-                        <option value="4000">
-                          Buffet setup + 1 waiter (+ ₹ 4,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
-                      people > 25 &&
-                      people < 41 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox - Bulk Food Delivery
-                        </option>
-                        <option value="5000">
-                          Buffet setup + 2 waiter (+ ₹ 5,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
-                      people > 40 &&
-                      people < 61 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox -Bulk Food Delivery
-                        </option>
-                        <option value="6000">
-                          Buffet setup + Service (+ ₹ 6,000.00)
-                        </option>
-                      </>
-                    ) : (city === "Delhi" ||
-                        city === "Noida" ||
-                        city === "Ghaziabad" ||
-                        city === "Gurgaon") &&
-                      people > 60 &&
-                      people < 100 ? (
-                      <>
-                        <option value="0" defaultValue>
-                          Ninjabox -Bulk Food Delivery
-                        </option>
-                        <option value="7500">
-                          Buffet setup + Service (+ ₹ 7,500.00)
-                        </option>
-                      </>
-                    ) : null}
-                  </select>
-
-                  <p style={{ fontWeight: "600" }}>₹{buffet}</p>
-                </div>
-                <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
-              </div>
-                    <div className={styles.pricingTitle1}>
-                      <div>
-                        <h4>Items Total</h4>
-                      </div>
-                      <div>
-                        <p style={{ fontWeight: "600" }}>
-                          ₹{totalPrice.toLocaleString("en-US")}
-                        </p>
-                      </div>
-                    </div>
-                    {/* <div className={styles.pricingTitle11}>
-                    <div>
-                      <h4>NinjaBox Service</h4>
-                    </div>
-                    <div>
-                      <p>₹0000</p>
-                    </div>
-                  </div> */}
-                    {/* <div className={styles.pricingTitle2}>
-                      <div>
-                        <h4>
-                          Delivery Charges <span></span>
-                        </h4>
-                      </div>
-                      <div>
-                        <p>As Per Actual</p>
-                      </div>
-                    </div> */}
-                    <hr className={styles.hr1} />
-                    {/* <div className={styles.pricingTitle3}>
-                      <div className={styles.applyCoupon}>
-                        <input type="text" placeholder="Enter Coupon Code" />
-                        <button>Apply</button>
-                      </div>
-                      <div>
-                        <p>₹0</p>
-                      </div>
-                    </div> */}
-                    <div className={styles.pricingTitle4}>
-                      <div>
-                        <h4>GST</h4>
-                      </div>
-                      <div>
-                        <p>₹{GST}</p>
-                      </div>
-                    </div>
-                    <hr id={styles.hr2} />
-                  </div>
-                  <div className={styles.grandTotal}>
-                    <div>
-                      <h4>Grand Total</h4>
-                    </div>
-                    <div>
-                      <p style={{ fontWeight: "600" }}>
-                        ₹{grandTotal.toLocaleString("en-US")}
-                      </p>
-                    </div>
-                  </div>
-                  <div className={styles.dlvryChrg}>
-                    <p>*Delivery charges as per actual</p>
-                  </div>
-                  <div className={styles.orderBtn}>
-                    {/* <button onClick={placeOrderBtn}>Place Order</button> */}
-                    <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
-                      <button
-                        style={{ backgroundColor: "green", color: "white" }}
+                    <div className={styles.finalPriceSection}>
+                      <div
+                        id={styles.drdwnCnt}
+                        className="d-flex justify-content-between"
                       >
-                        Get Booking Help
-                      </button>
-                    </Link>
+                        <select
+                          aria-label="Default select example"
+                          className="form-select"
+                          id="fontR"
+                          name="buffet"
+                          value={buffet}
+                          onChange={(e) => handleBuffet(e.target.value)}
+                        >
+                          {(city === "Mumbai" ||
+                            city === "Navi-Mumbai" ||
+                            city === "Thane" ||
+                            city === "Bangalore" ||
+                            city === "Chennai" ||
+                            city === "Pune") &&
+                            people < 26 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox - Delivery Only
+                              </option>
+                              <option value="4000">
+                                Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                              </option>
+                            </>
+                          ) : (city === "Mumbai" ||
+                            city === "Navi-Mumbai" ||
+                            city === "Thane" ||
+                            city === "Bangalore" ||
+                            city === "Chennai" ||
+                            city === "Pune") &&
+                            people > 25 &&
+                            people < 41 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox - Delivery Only
+                              </option>
+                              <option value="5000">
+                                Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                              </option>
+                            </>
+                          ) : (city === "Mumbai" ||
+                            city === "Navi-Mumbai" ||
+                            city === "Thane" ||
+                            city === "Bangalore" ||
+                            city === "Chennai" ||
+                            city === "Pune") &&
+                            people > 40 &&
+                            people < 61 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox - Delivery Only
+                              </option>
+                              <option value="6000">
+                                Buffet setup + Service (+ ₹ 6,000.00)
+                              </option>
+                            </>
+                          ) : (city === "Mumbai" ||
+                            city === "Navi-Mumbai" ||
+                            city === "Thane" ||
+                            city === "Bangalore" ||
+                            city === "Chennai" ||
+                            city === "Pune") &&
+                            people > 60 &&
+                            people < 100 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox - Delivery Only
+                              </option>
+                              <option value="7500">
+                                Buffet setup + Service (+ ₹ 7,500.00)
+                              </option>
+                            </>
+                          ) : null}
+
+                          {/* ------------------------------------- */}
+
+                          {(city === "Delhi" ||
+                            city === "Noida" ||
+                            city === "Ghaziabad" ||
+                            city === "Gurgaon") &&
+                            people < 26 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox - Bulk Food Delivery
+                              </option>
+                              <option value="4000">
+                                Buffet setup + 1 waiter (+ ₹ 4,000.00)
+                              </option>
+                            </>
+                          ) : (city === "Delhi" ||
+                            city === "Noida" ||
+                            city === "Ghaziabad" ||
+                            city === "Gurgaon") &&
+                            people > 25 &&
+                            people < 41 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox - Bulk Food Delivery
+                              </option>
+                              <option value="5000">
+                                Buffet setup + 2 waiter (+ ₹ 5,000.00)
+                              </option>
+                            </>
+                          ) : (city === "Delhi" ||
+                            city === "Noida" ||
+                            city === "Ghaziabad" ||
+                            city === "Gurgaon") &&
+                            people > 40 &&
+                            people < 61 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox -Bulk Food Delivery
+                              </option>
+                              <option value="6000">
+                                Buffet setup + Service (+ ₹ 6,000.00)
+                              </option>
+                            </>
+                          ) : (city === "Delhi" ||
+                            city === "Noida" ||
+                            city === "Ghaziabad" ||
+                            city === "Gurgaon") &&
+                            people > 60 &&
+                            people < 100 ? (
+                            <>
+                              <option value="0" defaultValue>
+                                Ninjabox -Bulk Food Delivery
+                              </option>
+                              <option value="7500">
+                                Buffet setup + Service (+ ₹ 7,500.00)
+                              </option>
+                            </>
+                          ) : null}
+                        </select>
+
+                        <p style={{ fontWeight: "600" }}>₹{buffet}</p>
+                      </div>
+                      <p id={styles.dlvydscr}>(Select Delivery/Service Option)</p>
+                    </div>
+                    <div className="mt-5">
+                      <div className={styles.userInput}>
+                        <h4>Details*</h4>
+                        <div className={styles.detailsInputLg}>
+                          <input
+                            placeholder="Name"
+                            onInput={(e) => setName(e.target.value)}
+                            required
+                          />
+                          <input
+                            placeholder="Phone No."
+                            name="mobileno"
+                            onInput={(e) => setPhone(e.target.value)}
+                            pattern="[789][0-9]{9}"
+                            maxLength="10"
+                            min="10"
+                            required
+                          />
+                          <input
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            onInput={(e) => setEmail(e.target.value)}
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={styles.chefNote}>
+                      <p>Special Restriction? Chef Note?</p>
+                      <input type="text" />
+                    </div>
+                    <div className={styles.instantQuoteBtn}>
+                      <button onClick={formSubmit}>Check Price</button>
+                    </div>
+                    {/* <div className={styles.applyCoupon}>
+                    <input type="text" placeholder='Enter Coupon Code' />
+                    <button>Apply</button>
+                    </div> */}
+                    {showPriceList && (
+                      <div className={styles.pricing}>
+                        <div style={{ marginTop: "10px" }}>
+                          <div className={styles.pricingTitle4}>
+                            <div>
+                              <h4>Buffet Service</h4>
+                            </div>
+                            <div>
+                              <p>₹{buffet}</p>
+                            </div>
+                          </div>
+                          <div className={styles.pricingTitle1}>
+                            <div>
+                              <h4>Items Total</h4>
+                            </div>
+                            <div>
+                              <p style={{ fontWeight: "600" }}>
+                                ₹{totalPrice.toLocaleString("en-US")}
+                              </p>
+                            </div>
+                          </div>
+                          {/* <div className={styles.pricingTitle11}>
+                            <div>
+                              <h4>NinjaBox Service</h4>
+                            </div>
+                            <div>
+                              <p>₹0000</p>
+                            </div>
+                          </div> */}
+                          {/* <div className={styles.pricingTitle2}>
+                            <div>
+                              <h4>
+                                Delivery Charges <span></span>
+                              </h4>
+                            </div>
+                            <div>
+                              <p>As Per Actual</p>
+                            </div>
+                          </div> */}
+                          <hr className={styles.hr1} />
+                          {/* <div className={styles.pricingTitle3}>
+                            <div className={styles.applyCoupon}>
+                              <input type="text" placeholder="Enter Coupon Code" />
+                              <button>Apply</button>
+                            </div>
+                            <div>
+                              <p>₹0</p>
+                            </div>
+                          </div> */}
+                          <div className={styles.pricingTitle4}>
+                            <div>
+                              <h4>GST</h4>
+                            </div>
+                            <div>
+                              <p>₹{GST}</p>
+                            </div>
+                          </div>
+                          <hr id={styles.hr2} />
+                        </div>
+                        <div className={styles.grandTotal}>
+                          <div>
+                            <h4>Grand Total</h4>
+                          </div>
+                          <div>
+                            <p style={{ fontWeight: "600" }}>
+                              ₹{grandTotal.toLocaleString("en-US")}
+                            </p>
+                          </div>
+                        </div>
+                        <div className={styles.dlvryChrg}>
+                          <p>*Delivery charges as per actual</p>
+                        </div>
+                        <div className={styles.orderBtn}>
+                          {/* <button onClick={placeOrderBtn}>Place Order</button> */}
+                          <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
+                            <button
+                              style={{ backgroundColor: "green", color: "white" }}
+                            >
+                              Get Booking Help
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                      )}
                   </div>
-                </div>
-              )}
-            </div>
+                </div>)}
+              </div>
           </div>
         </form>
-
-        <div className={styles.createYourOwnPkg}>
-          <div>
-            <img src="Group 1097.png" />
-          </div>
-          <div className="text-center mt-3">
-            <p>Wanna try with the Packages?</p>
-            <h2>
-              Visit Our<span> Website</span>
-            </h2>
-            <h6>
-              Curate your own flavour of party
-              <br />
-              from variety of cuisines and services
-            </h6>
-            <a target="_blank" href="/">
-              <button>SEE ALL THE SERVICES</button>
-            </a>
-          </div>
-        </div>
       </div>
-    </div>
-  );
+            <div className={styles.createYourOwnPkg}>
+              <div>
+                <img src="Group 1097.png" />
+              </div>
+              <div className="text-center mt-3">
+                <p>Wanna try with the Packages?</p>
+                <h2>
+                  Visit Our<span> Website</span>
+                </h2>
+                <h6>
+                  Curate your own flavour of party
+                  <br />
+                  from variety of cuisines and services
+                </h6>
+                <a target="_blank" href="/">
+                  <button>SEE ALL THE SERVICES</button>
+                </a>
+              </div>
+            </div>
+        </div >
+      )
 };
 
 export default CustomizeNinjaBox;

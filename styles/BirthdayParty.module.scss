@@ -297,20 +297,21 @@
         justify-content: space-around;
 
         button {
-            padding-top: 2px;
             border: none;
-            width: 110px;
-            height: 18.61px;
-            background: #FFC31A;
-            box-shadow: 0px 2.05082px 2.05082px rgba(0, 0, 0, 0.25);
-            border-radius: 11.3342px;
+            width: 142px;
+            height: 22px;
+            flex-shrink: 0;
+            border-radius: 13.215px;
+            background: #E23D1C;
+            color: #FFF;
+            font-size: 9.139px;
+            font-style: normal;
             font-weight: 700;
-            font-size: 7.83878px;
-            color: #FFFFFF;
+            box-shadow: 0px 2.3910531997680664px 2.3910531997680664px 0px rgba(0, 0, 0, 0.25);
         }
 
         button:hover {
-            background: #E23D1C;
+            background: #FFC31A;
         }
     }
 
@@ -359,7 +360,7 @@
         }
 
         .btns {
-            margin-top: 13px;
+            margin-top: 18px;
             display: flex;
             justify-content: space-around;
 
@@ -386,6 +387,102 @@
                 }
             }
         }
+    }
+}
+
+.goldPkg {
+    width: 169.26px;
+    height: 121.52px;
+    border: 0.9px solid #4D7104;
+    border-radius: 10px;
+
+    .blackbg {
+        position: relative;
+        margin: auto;
+        margin-top: 5px;
+        width: 154.47px;
+        height: 107.97px;
+        background-color: #222221;
+        border-radius: 7px;
+        box-shadow: 0px 0.896924px 0.896924px rgba(0, 0, 0, 0.25);
+    }
+
+    #vector {
+        margin-left: 2px;
+        position: absolute;
+        text-align: center;
+        margin-top: -16px;
+        padding-inline: 20px;
+    }
+}
+
+.insideContent {
+    padding-top: 10px;
+
+    h4 {
+        text-align: center;
+        color: #FEEEDD;
+        font-size: 12.26px;
+        font-weight: 800;
+    }
+
+    p {
+        margin-top: -15px;
+        text-align: center;
+        color: #FEEEDD;
+        font-size: 7.34px;
+        font-weight: 500;
+    }
+
+    .btns {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-around;
+
+        h6 {
+            font-weight: 600;
+            font-size: 9.47506px;
+            color: #FEEEDD;
+        }
+
+        #greenBtn {
+            h6 {
+                padding-top: 1px;
+                // margin-block: 4px;
+                // padding-inline: 5px;
+                width: 43.29px;
+                height: 12.47px;
+                font-weight: 700;
+                font-size: 8.4643px;
+                text-align: center;
+                color: #F6F6F6;
+                background-color: #547A17;
+                box-shadow: 0.825115px 1.10015px 2.75038px rgba(0, 0, 0, 0.25);
+                border-radius: 7.29px;
+            }
+        }
+    }
+}
+
+.selectCustomPkg {
+    text-align: center;
+
+    button {
+        border: none;
+        width: 142px;
+        height: 22px;
+        flex-shrink: 0;
+        border-radius: 13.215px;
+        background: #E23D1C;
+        color: #FFF;
+        font-size: 9.139px;
+        font-style: normal;
+        font-weight: 700;
+        box-shadow: 0px 2.3910531997680664px 2.3910531997680664px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    button:hover{
+        background-color: #F3A400;
     }
 }
 
@@ -767,6 +864,46 @@
             }
         }
     }
+}
+
+.smselectItemSearchBox {
+    margin: auto;
+    width: 150px;
+    height: 14px;
+    background: #FFE9D9;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5.02177px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+
+    h6 {
+        margin-block: 4px;
+        font-weight: 700;
+        font-size: 6px;
+        line-height: normal;
+        color: rgba(44, 51, 56, 0.66);
+    }
+}
+
+.addMoreBtn {
+    button {
+        width: 55px;
+        height: 11px;
+        flex-shrink: 0;
+        border-radius: 6.327px;
+        border: 0.218px solid #BE2D30;
+        background: #FFDDB5;
+        color: #BE2D30;
+        text-align: center;
+        font-size: 6px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.245px;
+        text-transform: capitalize;
+    }
+
 }
 
 .addonsbtn {
@@ -1348,7 +1485,8 @@
         letter-spacing: 0.417px;
         width: 140px;
         height: 29px;
-        span{
+
+        span {
             font-weight: 600;
         }
     }
