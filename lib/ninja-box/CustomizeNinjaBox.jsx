@@ -243,7 +243,7 @@ const CustomizeNinjaBox = () => {
   useEffect(()=>{
     handleMainUpdate(mains)
     handleBreadRiceChange(breadRice)
-  })
+  },[])
   useEffect(() => {
     allMenus.sort(function (a, b) {
       const nameA = a.id // ignore upper and lowercase

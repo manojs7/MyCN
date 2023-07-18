@@ -203,7 +203,7 @@ const NinjaBoxCustomise = () => {
   useEffect(()=>{
     handleMainUpdate(mains)
     handleBreadRiceChange(breadRice)
-  })
+  },[])
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
@@ -1816,15 +1816,7 @@ const handleBreadRiceAdd = (item_name, id) => {
 
     people = veg + nonVeg;
     setPeople(people);
-    let totalpriceRough=parseInt(
-      starterPrice + mainPrice + dessertPrice + bredRicePrice
-    )
-    if(totalPriceRough<5000){
-      setExtraAdd(300)
-    }
-    else{
-      setExtraAdd(500)
-    }
+   
     setTotalPrice(
       parseInt(
         starterPrice + mainPrice + dessertPrice + bredRicePrice + extraAdd

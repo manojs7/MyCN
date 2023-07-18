@@ -545,9 +545,9 @@ const Custom_Package = () => {
             </div>
             <div>
               <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "250px" }}>
-              <option value="2000-3500">₹600 - ₹750 [per Person]</option>
-                <option value="3501-5000" selected>₹750 - ₹900 [per Person]</option>
-                <option value="5001+">₹1000 + [per Person]</option>
+              <option value="2000-3500">Silver</option>
+                <option value="3501-5000" selected>Gold</option>
+                <option value="5001+">Platinum</option>
               </select>
             </div>
           </div>
@@ -901,9 +901,9 @@ const Custom_Package = () => {
           </div>
             <div>
               <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "200px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
-              <option value="2000-3500">₹600 - ₹750 [per Person]</option>
-                <option value="3501-5000" selected>₹750 - ₹900 [per Person]</option>
-                <option value="5001+">₹1000 + [per Person]</option>
+              <option value="2000-3500">Silver</option>
+                <option value="3501-5000" selected>Gold</option>
+                <option value="5001+">Platinum</option>
               </select>
             </div>
           </div>
