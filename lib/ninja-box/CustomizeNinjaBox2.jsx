@@ -244,8 +244,8 @@ const CustomizeNinjaBox = () => {
 
   useEffect(() => {
     allMenus.sort(function (a, b) {
-      const nameA = a.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
-      const nameB = b.name.split(" ")[0].toUpperCase(); // ignore upper and lowercase
+      const nameA = a.id // ignore upper and lowercase
+      const nameB = b.id // ignore upper and lowercase
       if (nameA < nameB) {
         return -1;
       }
