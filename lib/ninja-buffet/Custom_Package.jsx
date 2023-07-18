@@ -173,7 +173,7 @@ const Custom_Package = () => {
   //price filter
   //200-350, 350-500, 500+
 
-  const [priceFilter, setPriceFilter] = useState('all');
+  const [priceFilter, setPriceFilter] = useState('3501-5000');
 
   const handlePriceFilterChange = (e) => {
     setPriceFilter(e.target.value);
@@ -240,11 +240,13 @@ const Custom_Package = () => {
 
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
-    // if (showNonveg) {
-    //   setNumber2(0)
-    // } else {
-    //   setNumber2(10)
-    // }
+    if (showNonveg) {
+      setNumber(10)
+      setNumber2(0)
+    } else {
+      setNumber(0)
+      setNumber2(10)
+    }
   };
 
   //veg non-veg check
