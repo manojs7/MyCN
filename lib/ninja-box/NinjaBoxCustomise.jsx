@@ -1816,10 +1816,8 @@ const handleBreadRiceAdd = (item_name, id) => {
 
     people = veg + nonVeg;
     setPeople(people);
-    let totalpriceRough=parseInt(
-      starterPrice + mainPrice + dessertPrice + bredRicePrice
-    )
-    if(totalPriceRough<5000){
+    let totalPriceRough = 0;
+    if(totalPriceRough < 5000){
       setExtraAdd(300)
     }
     else{
