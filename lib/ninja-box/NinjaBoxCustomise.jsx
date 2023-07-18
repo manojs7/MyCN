@@ -2247,7 +2247,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                 onChange={(e) => setName(e.target.value)}></input>
             </div>
             <div className='d-flex justify-content-between'>
-              <p>Phone:</p>
+              <p style={{fontSize: "13px"}}>WhatsApp No:</p>
               <input type="text"
                 value={mobileno}
                 onChange={(e) => setPhone(e.target.value)}></input>
@@ -3454,7 +3454,7 @@ const handleBreadRiceAdd = (item_name, id) => {
                       required
                     />
                     <input
-                      placeholder="Phone No."
+                      placeholder="Whatsapp No."
                       name="mobileno"
                       onInput={(e) => setPhone(e.target.value)}
                       maxLength="10"

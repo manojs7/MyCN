@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '/styles/BirthdayParty.module.scss';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightLong, faArrowLeftLong, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const Birthday_Packages = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -16,109 +18,109 @@ const Birthday_Packages = () => {
     const [nvCount, setNvCount] = useState();
 
     //packages
-        const vegPackages = {
-            goldPackage: {
-                name: "GOLD",
-                veg: true,
-                price: "550",
-                items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
-                quantity: ["Any 4", "Any 3", "Any 2"],
-                vegSnackQnty: 4,
-                vegHeavySnackQnty: 3,
-                dessertQnty: 2
-            },
-            silverPackage: {
-                name: "SILVER",
-                veg: true,
-                price: "550",
-                items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
-                quantity: ["Any 3", "Any 3", "Any 2"],
-                vegSnackQnty: 3,
-                vegHeavySnackQnty: 3,
-                dessertQnty: 2
-            },
-            nvGoldPackage: {
-                name: "GOLD NV",
-                veg: false,
-                price: "650",
-                items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
-                quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
-                vegSnackQnty: 2,
-                nonVegSnackQnty: 3,
-                vegHeavySnackQnty: 2,
-                nonVegHeavySnackQnty: 1,
-                dessertQnty: 2
-            },
-            nvSilverPackage: {
-                name: "SILVER NV",
-                veg: false,
-                price: "570",
-                items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
-                quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
-                vegSnackQnty: 2,
-                nonVegSnackQnty: 3,
-                vegHeavySnackQnty: 2,
-                nonVegHeavySnackQnty: 1,
-                dessertQnty: 2
-            }
+    const vegPackages = {
+        goldPackage: {
+            name: "GOLD",
+            veg: true,
+            price: "550",
+            items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
+            quantity: ["Any 4", "Any 3", "Any 2"],
+            vegSnackQnty: 4,
+            vegHeavySnackQnty: 3,
+            dessertQnty: 2
+        },
+        silverPackage: {
+            name: "SILVER",
+            veg: true,
+            price: "550",
+            items: ["Veg Snack", "Veg Heavy Snack", "Dessert"],
+            quantity: ["Any 3", "Any 3", "Any 2"],
+            vegSnackQnty: 3,
+            vegHeavySnackQnty: 3,
+            dessertQnty: 2
+        },
+        nvGoldPackage: {
+            name: "GOLD NV",
+            veg: false,
+            price: "650",
+            items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
+            quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
+            vegSnackQnty: 2,
+            nonVegSnackQnty: 3,
+            vegHeavySnackQnty: 2,
+            nonVegHeavySnackQnty: 1,
+            dessertQnty: 2
+        },
+        nvSilverPackage: {
+            name: "SILVER NV",
+            veg: false,
+            price: "570",
+            items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
+            quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
+            vegSnackQnty: 2,
+            nonVegSnackQnty: 3,
+            vegHeavySnackQnty: 2,
+            nonVegHeavySnackQnty: 1,
+            dessertQnty: 2
         }
-        
+    }
 
-        const selectPackageOne = () => {
-            // Save packageOne data in session storage
-            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.goldPackage));
-        
-            // Set the packageData state to trigger a re-render
-            setGoldPackage(vegPackages.goldPackage);
-        
-            // Open new page to show the data
-            window.open('/customiseBirthdayPkg', '_self');
-            // return () => {
-            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
-            //   };
-          };
 
-          const selectPackageTwo = () => {
-            // Save packageOne data in session storage
-            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.silverPackage));
-        
-            // Set the packageData state to trigger a re-render
-            setSilverPackage(vegPackages.silverPackage);
-        
-            // Open new page to show the data
-            window.open('/customiseBirthdayPkg', '_self');
-            // return () => {
-            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
-            //   };
-          };
+    const selectPackageOne = () => {
+        // Save packageOne data in session storage
+        sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.goldPackage));
 
-          const selectPackageThree = () => {
-            // Save packageOne data in session storage
-            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.nvGoldPackage));
-        
-            // Set the packageData state to trigger a re-render
-            setNvGoldPackage(vegPackages.nvGoldPackage);
-        
-            // Open new page to show the data
-            window.open('/customiseBirthdayPkg', '_self');
-            // return () => {
-            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
-            //   };
-          };
+        // Set the packageData state to trigger a re-render
+        setGoldPackage(vegPackages.goldPackage);
 
-          const selectPackageFour = () => {
-            // Save packageOne data in session storage
-            sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.nvSilverPackage));
-        
-            // Set the packageData state to trigger a re-render
-            setNvSilverPackage(vegPackages.nvSilverPackage);
-        
-            // Open new page to show the data
-            window.open('/customiseBirthdayPkg', '_self');
-            // return () => {
-            //     sessionStorage.removeItem('packageOne' && 'packageTwo');
-            //   };
-          };
+        // Open new page to show the data
+        window.open('/customiseBirthdayPkg', '_self');
+        // return () => {
+        //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+        //   };
+    };
+
+    const selectPackageTwo = () => {
+        // Save packageOne data in session storage
+        sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.silverPackage));
+
+        // Set the packageData state to trigger a re-render
+        setSilverPackage(vegPackages.silverPackage);
+
+        // Open new page to show the data
+        window.open('/customiseBirthdayPkg', '_self');
+        // return () => {
+        //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+        //   };
+    };
+
+    const selectPackageThree = () => {
+        // Save packageOne data in session storage
+        sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.nvGoldPackage));
+
+        // Set the packageData state to trigger a re-render
+        setNvGoldPackage(vegPackages.nvGoldPackage);
+
+        // Open new page to show the data
+        window.open('/customiseBirthdayPkg', '_self');
+        // return () => {
+        //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+        //   };
+    };
+
+    const selectPackageFour = () => {
+        // Save packageOne data in session storage
+        sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.nvSilverPackage));
+
+        // Set the packageData state to trigger a re-render
+        setNvSilverPackage(vegPackages.nvSilverPackage);
+
+        // Open new page to show the data
+        window.open('/customiseBirthdayPkg', '_self');
+        // return () => {
+        //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+        //   };
+    };
 
     //Starter selector
     const [showDiv, setShowDiv] = useState(false);
@@ -171,19 +173,19 @@ const Birthday_Packages = () => {
         console.log('selectedBirthdayPkg', selectedBirthdayPkg)
         // sessionStorage.removeItem("dataSelected")
         if (selectedBirthdayPkg) {
-          setCity(selectedBirthdayPkg["city"]);
-          setSelectedDate(selectedBirthdayPkg["selectedDate"]);
-          setVegCount(selectedBirthdayPkg["vegCount"]);
-          setNvCount(selectedBirthdayPkg["nvCount"]);
-    
+            setCity(selectedBirthdayPkg["city"]);
+            setSelectedDate(selectedBirthdayPkg["selectedDate"]);
+            setVegCount(selectedBirthdayPkg["vegCount"]);
+            setNvCount(selectedBirthdayPkg["nvCount"]);
+
         }
-      }, []);
+    }, []);
 
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
             <div className={styles.headerSectn}>
                 <div className={styles.logo}>
-                    <Image src="/birthdayParty/birthdayPartyLogo.png" width="91px" height="74px"/>
+                    <Image src="/birthdayParty/birthdayPartyLogo.png" width="91px" height="74px" />
                 </div>
                 <div className={styles.headerDetails}>
                     <div>
@@ -211,8 +213,8 @@ const Birthday_Packages = () => {
                                     <p>GOLD</p>
                                 </div>
                                 <div className={styles.insideContent}>
-                                    <h4>₹ 550/-</h4>
-                                    <p>Per Person</p>
+                                    {/* <h4>₹ 550/-</h4>
+                                    <p>Per Person</p> */}
                                     <div className={styles.btns}>
                                         <div id={styles.btnName}>
                                             <h6>Veg Snack</h6>
@@ -237,8 +239,8 @@ const Birthday_Packages = () => {
                                     <p style={{ marginLeft: "50px" }}>SILVER</p>
                                 </div>
                                 <div className={styles.insideContent}>
-                                    <h4>₹ 450/-</h4>
-                                    <p>Per Person</p>
+                                    {/* <h4>₹ 450/-</h4>
+                                    <p>Per Person</p> */}
                                     <div className={styles.btns}>
                                         <div id={styles.btnName}>
                                             <h6>Veg Snack</h6>
@@ -269,8 +271,8 @@ const Birthday_Packages = () => {
                                     <p style={{ marginLeft: "40px" }}>GOLD NV</p>
                                 </div>
                                 <div className={styles.insideContent}>
-                                    <h4>₹ 650/-</h4>
-                                    <p>Per Person</p>
+                                    {/* <h4>₹ 650/-</h4>
+                                    <p>Per Person</p> */}
                                     <div className={styles.btns}>
                                         <div id={styles.btnName}>
                                             <h6>Veg Snack</h6>
@@ -281,9 +283,9 @@ const Birthday_Packages = () => {
                                         </div>
                                         <div id={styles.greenBtn}>
                                             <h6>Any 2</h6>
-                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 3</h6>
+                                            <h6 style={{ backgroundColor: "#BC0A01" }}>Any 3</h6>
                                             <h6>Any 2</h6>
-                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 1</h6>
+                                            <h6 style={{ backgroundColor: "#BC0A01" }}>Any 1</h6>
                                             <h6>Any 2</h6>
                                         </div>
                                     </div>
@@ -299,8 +301,8 @@ const Birthday_Packages = () => {
                                     <p style={{ marginLeft: "33px" }}>SILVER NV</p>
                                 </div>
                                 <div className={styles.insideContent}>
-                                    <h4>₹ 570/-</h4>
-                                    <p>Per Person</p>
+                                    {/* <h4>₹ 570/-</h4>
+                                    <p>Per Person</p> */}
                                     <div className={styles.btns}>
                                         <div id={styles.btnName}>
                                             <h6>Veg Snack</h6>
@@ -311,9 +313,9 @@ const Birthday_Packages = () => {
                                         </div>
                                         <div id={styles.greenBtn}>
                                             <h6>Any 2</h6>
-                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 2</h6>
+                                            <h6 style={{ backgroundColor: "#BC0A01" }}>Any 2</h6>
                                             <h6>Any 1</h6>
-                                            <h6 style={{backgroundColor: "#BC0A01"}}>Any 1</h6>
+                                            <h6 style={{ backgroundColor: "#BC0A01" }}>Any 1</h6>
                                             <h6>Any 1</h6>
                                         </div>
                                     </div>
@@ -321,11 +323,63 @@ const Birthday_Packages = () => {
                             </div>
                         </div>
                     </div> : ""}
-                    {nvCount >= 1 ?<div className={styles.selectBtn}>
+                    {nvCount >= 1 ? <div className={styles.selectBtn}>
                         <button onClick={selectPackageThree}>Select This Package</button>
                         <button onClick={selectPackageFour}>Select This Package</button>
-                    </div> : "" }
+                    </div> : ""}
                 </div>
+            </div>
+            <div className='text-center'>
+                <div style={{position: "relative", zIndex: "1"}}>
+                    <div className={styles.smselectItemSearchBox} id="srchbr">
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Snack</h6>
+                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                    </div>
+                    <div className={styles.smselectItemSearchBox} id="srchbr">
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Heavy Snack</h6>
+                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                    </div>
+                    <div className={styles.smselectItemSearchBox} id="srchbr">
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Dessert</h6>
+                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                    </div>
+                    <div className={styles.addMoreBtn}>
+                        <button>+ Add More</button>
+                    </div>
+                </div>
+                <div style={{marginTop: "-120px"}}>
+                    <Image src="/birthdayParty/custom.png" width="179px" height="130px" />
+                </div>
+            </div>
+            {/* <div className={styles.goldPkg} style={{ margin: "auto" }}>
+                <div className={styles.blackbg}>
+                    <div>
+                        <div id={styles.vector}>
+                            <Image src="/birthdayParty/Vectorr.png" height="24.6px" width="108.53px" />
+                        </div>
+                        <p style={{ marginLeft: "42px", position: "absolute", fontSize: "15px", fontWeight: "800", marginTop: "-15px" }}>CUSTOM</p>
+                    </div>
+                    <div style={{ position: "relative", zIndex: "1", paddingTop: "20px" }}>
+                        <div className={styles.smselectItemSearchBox} id="srchbr">
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Snack</h6>
+                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                        </div>
+                        <div className={styles.smselectItemSearchBox} id="srchbr">
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Heavy Snack</h6>
+                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                        </div>
+                        <div className={styles.smselectItemSearchBox} id="srchbr">
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Dessert</h6>
+                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                        </div>
+                        <div className={styles.addMoreBtn}>
+                            <button>+ Add More</button>
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+            <div className={styles.selectCustomPkg}>
+                <button>Select This Package</button>
             </div>
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>

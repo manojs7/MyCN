@@ -34,7 +34,7 @@ export const categories_2 = [
     title:'Wedding Caterers'
   },
   {
-    link:"/birthdayPartyHome",
+    link:"/checkprice",
     image: "/home/categories/cate8.webp",
     title:'Birthday Party Caterers'
   },

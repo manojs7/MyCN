@@ -4029,7 +4029,7 @@ const CustomizeNinjaBox = () => {
                       required
                     />
                     <input
-                      placeholder="Phone No."
+                      placeholder="WhatsApp No."
                       name="mobileno"
                       onInput={(e) => setPhone(e.target.value)}
                       pattern="[789][0-9]{9}"
