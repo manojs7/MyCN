@@ -1068,10 +1068,10 @@ const NinjaBuffetCustomise = () => {
         if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
           item.quantity= HandleCeilFloorValue((guests*0.200).toFixed(1));
         }
-        else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name === "Poori"){
           item.quantity = guests * 3;
         }
-        else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name !== "Poori"){
           item.quantity = guests *2;
         }
       }
@@ -1080,10 +1080,10 @@ const NinjaBuffetCustomise = () => {
         if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
             item.quantity= HandleCeilFloorValue((guests*0.150).toFixed(1));
         }
-        else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name === "Poori"){
           item.quantity = guests * 3;
         }
-        else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name !== "Poori"){
           if(bread>1){
             item.quantity = guests *1;
           }
@@ -1097,10 +1097,10 @@ const NinjaBuffetCustomise = () => {
         if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
           item.quantity=RN_Count===1? HandleCeilFloorValue((guests*0.150).toFixed(1)): HandleCeilFloorValue((guests*0.100).toFixed(1));
         }
-        else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name === "Poori"){
           item.quantity = guests * 2;
         }
-        else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name !== "Poori"){
           item.quantity = Math.round(guests *1.5);
         }
       }
@@ -1147,10 +1147,10 @@ const NinjaBuffetCustomise = () => {
         if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
           quantity= HandleCeilFloorValue((guests*0.200).toFixed(1));
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori"){
           quantity = guests * 3;
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori"){
           quantity = guests *2;
         }
       }
@@ -1159,10 +1159,10 @@ const NinjaBuffetCustomise = () => {
         if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
             quantity= HandleCeilFloorValue((guests*0.150).toFixed(1));
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori"){
           quantity = guests * 3;
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori"){
           if(bread>1){
             quantity = guests *1;
           }
@@ -1176,10 +1176,10 @@ const NinjaBuffetCustomise = () => {
         if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
           quantity=RN_Count===1? HandleCeilFloorValue((guests*0.150).toFixed(1)): HandleCeilFloorValue((guests*0.100).toFixed(1));
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori"){
           quantity = guests * 2;
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori"){
           quantity = Math.round(guests *1.5);
         }
       }
