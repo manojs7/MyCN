@@ -937,6 +937,9 @@ const CustomBirthdayPkg = () => {
 
     //SAVE THE ALL SNACKS DATA
     const addAlldata = () => {
+        sessionStorage.removeItem('addedItems');
+        sessionStorage.removeItem('addedMainCourse');
+        sessionStorage.removeItem('addedFunEatables');
         const sum =
             checkedValues.length +
             checkedValues2.length +
