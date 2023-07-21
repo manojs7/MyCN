@@ -187,6 +187,7 @@ const BirthdayPartyCheckPrice = () => {
     //const vegSnackPrice = ((vegCount !== "" && vegCount !== 0) ? (checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * vegCount : checkedValues.reduce((sum, item) => sum + item.price, 0) + checkedValues2.reduce((sum, item) => sum + item.price, 0)) * nvCount;
     // Calculate the price for non-veg snacks based on the number of non-veg people
     console.log(vegSnackPrice)
+    
     const nvSnackPrice = (checkedValues3.reduce((sum, item) => sum + item.price, 0) + checkedValues4.reduce((sum, item) => sum + item.price, 0)) * nvCount;
     console.log(nvSnackPrice)
     // Calculate the dessert price based on the total number of people
@@ -248,6 +249,12 @@ const BirthdayPartyCheckPrice = () => {
         if (addedFunEatables) {
             setFunEatablesItems(addedFunEatables);
         }
+
+        return () => {
+            sessionStorage.removeItem('addedItems');
+            sessionStorage.removeItem('addedMainCourse');
+            sessionStorage.removeItem('addedFunEatables');
+          };
     }, []);
 
     React.useEffect(() => {
@@ -364,7 +371,7 @@ const BirthdayPartyCheckPrice = () => {
                     <h4>{item.name}</h4>
                 </div>
                 <div className="remove" onClick={() => removeLiveCounter(index)}>
-                    <Image src="/diy images/trash-alt.png" width="11px" height="11px" />
+                    <Image src="/birthdayParty/trash.png" width="11px" height="11px" />
                 </div>
             </div>))}
             {mainCourseItems.map((item, index) => (<div key={index} className={styles.addonsSelectedList}>
@@ -376,7 +383,7 @@ const BirthdayPartyCheckPrice = () => {
                     <h4>{item.name}</h4>
                 </div>
                 <div className="remove" onClick={() => removeMains(index)}>
-                    <Image src="/diy images/trash-alt.png" width="11px" height="11px" />
+                    <Image src="/birthdayParty/trash.png" width="11px" height="11px" />
                 </div>
             </div>))}
             {funEatablesItems.map((item, index) => (<div key={index} className={styles.addonsSelectedList}>
@@ -387,7 +394,7 @@ const BirthdayPartyCheckPrice = () => {
                     <h4>{item.name}</h4>
                 </div>
                 <div className="remove" onClick={() => removeFunEatable(index)}>
-                    <Image src="/diy images/trash-alt.png" width="11px" height="11px" />
+                    <Image src="/birthdayParty/trash.png" width="11px" height="11px" />
                 </div>
             </div>))}
             <div className="mt-4">

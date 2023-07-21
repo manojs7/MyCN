@@ -27,6 +27,15 @@ const BirthdayAddOns = () => {
 
     const [price, setPrice] = useState(0);
 
+    const [userData, setUserData] = useState('');
+
+    useEffect(()=>{
+        let userDetails = JSON.parse(sessionStorage.getItem("birthdayPartyUserDetails"));
+        if(userDetails){
+            setUserData(userDetails);
+        }
+    }, [])
+
     useEffect(() => {
         if (totalGuestCount <= 100) {
           setPrice("5,000");
@@ -86,7 +95,21 @@ const BirthdayAddOns = () => {
     ]
 
     const checkPriceBtn = () => {
-        setShowPopup(!showPopup);
+        if(userData){
+            sessionStorage.setItem('addedItems', JSON.stringify(addedItems));
+            sessionStorage.setItem('addedMainCourse', JSON.stringify(addedMainCourse));
+            sessionStorage.setItem('addedFunEatables', JSON.stringify(addedFunEatables));
+            //alert('Items saved successfully!');
+            Swal.fire({
+                title: "Items Added",
+                icon: "success",
+                confirmButtonText: "OK",
+            });
+
+            window.open("/birthdayPartyCheckPrice", '_self');
+        }else{
+            setShowPopup(!showPopup);
+        }
     }
     const goBackBtn = () => {
         setShowPopup(!showPopup);
@@ -308,7 +331,7 @@ const BirthdayAddOns = () => {
                 <div className={styles.inputfield}>
                     <h5>*<span>Details</span>*</h5>
                     <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
-                    <input type='number' placeholder='Number' value={number} onChange={(e) => setNumber(e.target.value)} required />
+                    <input type='number' placeholder='WhatsApp No.' value={number} onChange={(e) => setNumber(e.target.value)} required />
                     <input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div style={{ textAlign: "center", marginTop: "25px" }}>

@@ -18,9 +18,20 @@ const BirthdayPartyHome = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleCity = (city) => {
+        if(city !== 'Bangalore'){
+            alert('This service is not available in your city');
+        }
         setCity(city);
         checkFormValidity();
     }
+    // const handleCity = (event) => {
+    //     const selectedValue = event.target.value;
+    //     if (selectedValue !== 'Banglore') {
+    //         alert('This service is not available in your city');
+    //     }
+    //     setCity(selectedValue);
+    //     checkFormValidity();
+    // }
 
     //select date logic
     const handleDateChange = (event) => {
@@ -81,9 +92,9 @@ const BirthdayPartyHome = () => {
 
     const handleSubmit = () => {
         const totalGuestCount = Number(vegCount) + Number(nvCount);
-        if (!city) {
+        if (city !== 'Bangalore') {
             Swal.fire({
-                text: "please select your city",
+                text: "This Service is only available for Bangalore",
                 icon: "warning",
                 confirmButtonText: "OK",
             });
@@ -161,9 +172,7 @@ const BirthdayPartyHome = () => {
                             onChange={(e) => handleCity(e.target.value)}
                             required
                         >
-                            <option value="" selected>
-                                Select City
-                            </option>
+                            <option value="Bangalore">Banglore</option>
                             {cities.map((item, index) => {
                                 return (
                                     <option key={index} value={item}>
@@ -172,6 +181,18 @@ const BirthdayPartyHome = () => {
                                 );
                             })}
                         </select>
+                        {/* <select value={city} onChange={handleCity}>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Thane">Thane</option>
+                            <option value="Navi-Mumbai">Navi-Mumbai</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Gurgaon">Gurgaon</option>
+                            <option value="Noida">Noida</option>
+                            <option value="Ghaziabad">Ghaziabad</option>
+                        </select> */}
                     </div>
                     <div>
                         <h6>Veg Count</h6>

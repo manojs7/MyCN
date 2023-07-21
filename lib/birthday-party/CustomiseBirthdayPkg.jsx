@@ -45,10 +45,12 @@ const CustomiseBirthdayPkg = () => {
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');
 
+
+    const totalQnty = vegSnackQnty + nvegSnackQnty + vegHeavySnackQnty + nonVegHeavySnackQnty + dessertQnty ;
+
     const goBackBtn = () => {
         setShowPopup(!showPopup);
     }
-
     //submit user details
     const submitDetails = (event) => {
         event.preventDefault();
@@ -856,7 +858,7 @@ const CustomiseBirthdayPkg = () => {
             checkedValues3.length +
             checkedValues4.length +
             checkedValues5.length;
-        if (sum > 0) {
+        if (sum === totalQnty) {
             sessionStorage.setItem('checkedValues', JSON.stringify(checkedValues));
             sessionStorage.setItem('checkedValues2', JSON.stringify(checkedValues2));
             sessionStorage.setItem('checkedValues3', JSON.stringify(checkedValues3));
@@ -864,7 +866,7 @@ const CustomiseBirthdayPkg = () => {
             sessionStorage.setItem('checkedValues5', JSON.stringify(checkedValues5));
             window.open('/birthdayAddOns', '_self')
         } else {
-            alert('Please Selecty any Snack');
+            alert('Please Selecty More Snacks');
         }
     };
 
@@ -876,7 +878,7 @@ const CustomiseBirthdayPkg = () => {
             checkedValues3.length +
             checkedValues4.length +
             checkedValues5.length;
-        if (sum > 0) {
+        if (sum === totalQnty) {
             sessionStorage.setItem('checkedValues', JSON.stringify(checkedValues));
             sessionStorage.setItem('checkedValues2', JSON.stringify(checkedValues2));
             sessionStorage.setItem('checkedValues3', JSON.stringify(checkedValues3));
@@ -884,7 +886,7 @@ const CustomiseBirthdayPkg = () => {
             sessionStorage.setItem('checkedValues5', JSON.stringify(checkedValues5));
             setShowPopup(!showPopup);
         } else {
-            alert('Please Selecty any Snack');
+            alert('Please Selecty More Snacks');
         }
     };
 
@@ -1486,7 +1488,7 @@ const CustomiseBirthdayPkg = () => {
                 <div className={styles.inputfield}>
                     <h5>*<span>Details</span>*</h5>
                     <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
-                    <input type='number' placeholder='Number' value={number} onChange={(e) => setNumber(e.target.value)} required />
+                    <input type='number' placeholder='WhatsApp No.' value={number} onChange={(e) => setNumber(e.target.value)} required />
                     <input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div style={{ textAlign: "center", marginTop: "25px" }}>

@@ -57,9 +57,9 @@ const CustomBirthdayPkg = () => {
 
     const handleSubmit = () => {
         const totalGuestCount = Number(vegCount) + Number(nvCount);
-        if (!city) {
+        if (city !== 'Bangalore') {
             Swal.fire({
-                text: "please select your city",
+                text: "This Service is available only in Bangalore",
                 icon: "warning",
                 confirmButtonText: "OK",
             });
@@ -112,6 +112,9 @@ const CustomBirthdayPkg = () => {
     }
 
     const handleCity = (city) => {
+        if(city !== 'Bangalore'){
+            alert('This service is not available in your city');
+        }
         setCity(city);
         checkFormValidity();
     }
@@ -1027,8 +1030,8 @@ const CustomBirthdayPkg = () => {
                                 onChange={(e) => handleCity(e.target.value)}
                                 required
                             >
-                                <option value="" selected>
-                                    Select City
+                                <option value="Bangalore" selected>
+                                Bangalore
                                 </option>
                                 {cities.map((item, index) => {
                                     return (
@@ -1529,7 +1532,7 @@ const CustomBirthdayPkg = () => {
                 <div className={styles.inputfield}>
                     <h5>*<span>Details</span>*</h5>
                     <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
-                    <input type='number' placeholder='Number' value={number} onChange={(e) => setNumber(e.target.value)} required />
+                    <input type='number' placeholder='WhatsApp No.' value={number} onChange={(e) => setNumber(e.target.value)} required />
                     <input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div style={{ textAlign: "center", marginTop: "25px" }}>
