@@ -79,7 +79,7 @@ const BirthdayPartyHome = () => {
     };
 
     const checkFormValidity = () => {
-        if (city && selectedDate) {
+        if (city && selectedDate && vegCount || nvCount) {
             setIsFormValid(true);
         } else {
             setIsFormValid(false);
@@ -172,7 +172,7 @@ const BirthdayPartyHome = () => {
                             onChange={(e) => handleCity(e.target.value)}
                             required
                         >
-                            <option value="Bangalore">Banglore</option>
+                            <option value="" >Select City</option>
                             {cities.map((item, index) => {
                                 return (
                                     <option key={index} value={item}>

@@ -858,7 +858,7 @@ const CustomiseBirthdayPkg = () => {
             checkedValues3.length +
             checkedValues4.length +
             checkedValues5.length;
-        if (sum === totalQnty) {
+        if (sum > 0) {
             sessionStorage.setItem('checkedValues', JSON.stringify(checkedValues));
             sessionStorage.setItem('checkedValues2', JSON.stringify(checkedValues2));
             sessionStorage.setItem('checkedValues3', JSON.stringify(checkedValues3));
@@ -878,7 +878,7 @@ const CustomiseBirthdayPkg = () => {
             checkedValues3.length +
             checkedValues4.length +
             checkedValues5.length;
-        if (sum === totalQnty) {
+        if (sum > 0) {
             sessionStorage.setItem('checkedValues', JSON.stringify(checkedValues));
             sessionStorage.setItem('checkedValues2', JSON.stringify(checkedValues2));
             sessionStorage.setItem('checkedValues3', JSON.stringify(checkedValues3));
@@ -907,6 +907,10 @@ const CustomiseBirthdayPkg = () => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+
+            sessionStorage.removeItem('addedItems');
+            sessionStorage.removeItem('addedMainCourse');
+            sessionStorage.removeItem('addedFunEatables');
         };
     }, []);
 
