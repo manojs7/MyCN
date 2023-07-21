@@ -205,8 +205,8 @@ const BirthdayAddOns = () => {
                 <div className={styles.header} style={livecounterheader}>
                     <h4 >🔥 Live Counters 🔥</h4>
                 </div>
-                    <h6>Per <span>Counter</span> Prices</h6>
-                    <h5 className='mb-3'>₹{price}/-</h5>
+                    <h6>Per <span>Person</span> Prices</h6>
+                    {/* <h5 className='mb-3'>₹{price}/-</h5> */}
                 {liveCounterList.map((item, index) => (<div key={index} className={styles.itemsListContainer}>
                     <div className={styles.list}>
                         <h4>🔥 {item.name}</h4>
@@ -233,7 +233,7 @@ const BirthdayAddOns = () => {
                         >
                             {addedItems.some((cartItem) => cartItem.id === item.id)
                                 ? 'Added'
-                                : 'Add +'}
+                                : item.price}
                         </button>
                 </div>))}
             </div>
