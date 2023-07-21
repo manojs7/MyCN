@@ -13,6 +13,7 @@ const Birthday_Packages = () => {
     const [silverPackage, setSilverPackage] = useState([]);
     const [nvGoldPackage, setNvGoldPackage] = useState([]);
     const [nvSilverPackage, setNvSilverPackage] = useState([]);
+    const [customPackage, setCustomPackage] = useState([]);
 
     const [city, setCity] = useState();
     const [selectedDate, setSelectedDate] = useState();
@@ -297,6 +298,18 @@ const Birthday_Packages = () => {
             vegHeavySnackQnty: 2,
             nonVegHeavySnackQnty: 1,
             dessertQnty: 2
+        },
+        customPackage: {
+            name: "CUSTOM",
+            veg: false,
+            price: 0,
+            items: ["Veg Snack", "Non Veg Snack", "Veg Heavy Snack", "NV Heavy Snack", "Dessert"],
+            quantity: ["Any 2", "Any 3", "Any 2", "Any 1", "Any 2"],
+            vegSnackQnty: 2,
+            nonVegSnackQnty: 3,
+            vegHeavySnackQnty: 2,
+            nonVegHeavySnackQnty: 1,
+            dessertQnty: 2
         }
     }
 
@@ -352,6 +365,20 @@ const Birthday_Packages = () => {
 
         // Open new page to show the data
         window.open('/customiseBirthdayPkg', '_self');
+        // return () => {
+        //     sessionStorage.removeItem('packageOne' && 'packageTwo');
+        //   };
+    };
+
+    const selectCustomPkg = () => {
+        // Save packageOne data in session storage
+        sessionStorage.setItem('packageOne', JSON.stringify(vegPackages.customPackage));
+
+        // Set the packageData state to trigger a re-render
+        setCustomPackage(vegPackages.customPackage);
+
+        // Open new page to show the data
+        window.open('/customBirthdayPkg', '_self');
         // return () => {
         //     sessionStorage.removeItem('packageOne' && 'packageTwo');
         //   };
@@ -635,7 +662,7 @@ const Birthday_Packages = () => {
                 </div>
             </div>
             <div className={styles.selectCustomPkg}>
-                <Link href="/customBirthdayPkg"><button>Select This Package</button></Link>
+                <button onClick={selectCustomPkg}>Select This Package</button>
             </div>
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>

@@ -197,7 +197,7 @@ const BirthdayPartyCheckPrice = () => {
 
     const customprice = vegSnackPrice + nvSnackPrice + dessertPrice;
     let totalPackagePrice = 0
-    if (!packagePrice) {
+    if (packagePrice > 0) {
         totalPackagePrice = totalGuestCount * packagePrice;
     } else {
         totalPackagePrice = customprice;
