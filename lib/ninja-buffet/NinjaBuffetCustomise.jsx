@@ -92,7 +92,7 @@ const NinjaBuffetCustomise = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [deliveryCharge, setDeliveryCharge] = useState(0);
     const [grandTotal, setgrandTotal] = useState(0);
-    const [buffet, setbuffet] = useState(0);
+    const [buffet, setbuffet] = useState(4000);
     const [GST, setGST] = useState(0);
     const [extraAdd, setExtraAdd] = useState(500);
 
@@ -201,7 +201,7 @@ const NinjaBuffetCustomise = () => {
     useEffect(()=>{
         handleMainUpdate(mains)
         handleBreadRiceChange(breadRice)
-      })
+      },[])
 
     useEffect(() => {
         allMenus.sort(function (a, b) {
@@ -1068,10 +1068,10 @@ const NinjaBuffetCustomise = () => {
         if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
           item.quantity= HandleCeilFloorValue((guests*0.200).toFixed(1));
         }
-        else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name === "Poori"){
           item.quantity = guests * 3;
         }
-        else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name !== "Poori"){
           item.quantity = guests *2;
         }
       }
@@ -1080,10 +1080,10 @@ const NinjaBuffetCustomise = () => {
         if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
             item.quantity= HandleCeilFloorValue((guests*0.150).toFixed(1));
         }
-        else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name === "Poori"){
           item.quantity = guests * 3;
         }
-        else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name !== "Poori"){
           if(bread>1){
             item.quantity = guests *1;
           }
@@ -1097,10 +1097,10 @@ const NinjaBuffetCustomise = () => {
         if(item.menu_label==="Rice" || item.menu_label==="Noodle"){
           item.quantity=RN_Count===1? HandleCeilFloorValue((guests*0.150).toFixed(1)): HandleCeilFloorValue((guests*0.100).toFixed(1));
         }
-        else if (item.menu_label === "Breads" && item.name === "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name === "Poori"){
           item.quantity = guests * 2;
         }
-        else if (item.menu_label === "Breads" && item.name !== "Poori - 4"){
+        else if (item.menu_label === "Breads" && item.name !== "Poori"){
           item.quantity = Math.round(guests *1.5);
         }
       }
@@ -1147,10 +1147,10 @@ const NinjaBuffetCustomise = () => {
         if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
           quantity= HandleCeilFloorValue((guests*0.200).toFixed(1));
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori"){
           quantity = guests * 3;
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori"){
           quantity = guests *2;
         }
       }
@@ -1159,10 +1159,10 @@ const NinjaBuffetCustomise = () => {
         if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
             quantity= HandleCeilFloorValue((guests*0.150).toFixed(1));
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori"){
           quantity = guests * 3;
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori"){
           if(bread>1){
             quantity = guests *1;
           }
@@ -1176,10 +1176,10 @@ const NinjaBuffetCustomise = () => {
         if(filterBreadRice.menu_label==="Rice" || filterBreadRice.menu_label==="Noodle"){
           quantity=RN_Count===1? HandleCeilFloorValue((guests*0.150).toFixed(1)): HandleCeilFloorValue((guests*0.100).toFixed(1));
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name === "Poori"){
           quantity = guests * 2;
         }
-        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori - 4"){
+        else if (filterBreadRice?.menu_label === "Breads" && filterBreadRice.name !== "Poori"){
           quantity = Math.round(guests *1.5);
         }
       }
@@ -3161,7 +3161,7 @@ const NinjaBuffetCustomise = () => {
                                             city === "Bangalore" || city === "Chennai" || city === "Pune") &&
                                             people < 26 ? (
                                             <>
-                                                <option value="0" defaultValue>
+                                                <option value="0" >
                                                     Ninjabox - Delivery Only
                                                 </option>
                                                 <option value="4000" selected>
@@ -3189,10 +3189,10 @@ const NinjaBuffetCustomise = () => {
                                             people > 40 &&
                                             people < 61 ? (
                                             <>
-                                                <option value="0" defaultValue>
+                                                <option value="0" >
                                                     Ninjabox - Delivery Only
                                                 </option>
-                                                <option value="6000">
+                                                <option value="6000" >
                                                     Buffet setup + Service (+ ₹ 6,000.00)
                                                 </option>
                                             </>
@@ -3223,7 +3223,7 @@ const NinjaBuffetCustomise = () => {
                                                 <option value="0" defaultValue>
                                                     Ninjabox - Bulk Food Delivery
                                                 </option>
-                                                <option value="4000">
+                                                <option value="4000" selected>
                                                     Buffet setup + 1 waiter (+ ₹ 4,000.00)
                                                 </option>
                                             </>
@@ -3349,7 +3349,7 @@ const NinjaBuffetCustomise = () => {
                                         {/* <Link href="https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu">
                       <button>Get Booking Help</button>
                     </Link> */}
-                                        <button onClick={placeOrderBtn}>Place Order</button>
+                                        {/* <button onClick={placeOrderBtn}>Place Order</button> */}
                                         <button style={{ backgroundColor: "green", color: "white" }} onClick={() => window.open('https://api.whatsapp.com/send?phone=917738096313&text=Hey!%20Need%20help%20booking%20a%20DIY%20Menu', '_blank')}>Get Booking Help</button>
 
 

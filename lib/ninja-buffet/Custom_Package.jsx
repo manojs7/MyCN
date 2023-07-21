@@ -173,7 +173,7 @@ const Custom_Package = () => {
   //price filter
   //200-350, 350-500, 500+
 
-  const [priceFilter, setPriceFilter] = useState('all');
+  const [priceFilter, setPriceFilter] = useState('3501-5000');
 
   const handlePriceFilterChange = (e) => {
     setPriceFilter(e.target.value);
@@ -240,11 +240,13 @@ const Custom_Package = () => {
 
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
-    // if (showNonveg) {
-    //   setNumber2(0)
-    // } else {
-    //   setNumber2(10)
-    // }
+    if (showNonveg) {
+      setNumber(10)
+      setNumber2(0)
+    } else {
+      setNumber(0)
+      setNumber2(10)
+    }
   };
 
   //veg non-veg check
@@ -545,9 +547,9 @@ const Custom_Package = () => {
             </div>
             <div>
               <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "250px" }}>
-              <option value="2000-3500">₹600 - ₹750 [per Person]</option>
-                <option value="3501-5000" selected>₹750 - ₹900 [per Person]</option>
-                <option value="5001+">₹1000 + [per Person]</option>
+              <option value="2000-3500">Silver</option>
+                <option value="3501-5000" selected>Gold</option>
+                <option value="5001+">Platinum</option>
               </select>
             </div>
           </div>
@@ -901,9 +903,9 @@ const Custom_Package = () => {
           </div>
             <div>
               <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "200px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
-              <option value="2000-3500">₹600 - ₹750 [per Person]</option>
-                <option value="3501-5000" selected>₹750 - ₹900 [per Person]</option>
-                <option value="5001+">₹1000 + [per Person]</option>
+              <option value="2000-3500">Silver</option>
+                <option value="3501-5000" selected>Gold</option>
+                <option value="5001+">Platinum</option>
               </select>
             </div>
           </div>

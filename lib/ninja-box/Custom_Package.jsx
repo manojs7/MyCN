@@ -200,9 +200,10 @@ const Custom_Package = () => {
   const checkForNonveg = () => {
     setShowNonVeg(!showNonveg);
     if (showNonveg) {
+      setNumber(10)
       setNumber2(0)
     } else {
-      setNumber(5)
+      setNumber(0)
       setNumber2(10)
     }
   };

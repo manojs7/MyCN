@@ -69,11 +69,11 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <button onClick={() => window.open('/checkprice', '_blank')}
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
@@ -127,11 +127,11 @@ const OurServices = () => {
                 </div>
                 <div className="buttons">
                   <Link href="/ninjabuffet"><button className="view-details">View Details</button></Link>
-                  <button onClick={() => window.open('/checkprice', '_blank')}
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-490px", marginLeft: "-5px" }}>
@@ -418,11 +418,11 @@ const OurServices = () => {
                   >
                     View Details
                   </button></Link>
-                  <button onClick={() => window.open('/checkprice', '_blank')}
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-313px", marginLeft: "5px" }}>
@@ -481,11 +481,11 @@ const OurServices = () => {
                   <Link href="/ninjabuffet"><button className="view-details">
                     View Details
                   </button></Link>
-                  <button onClick={() => window.open('/checkprice', '_blank')}
+                  {/* <button onClick={() => window.open('/checkprice', '_blank')}
                     className="sample-pricing"
                   >
                     Sample Pricing
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div style={{ position: "relative", marginTop: "-313px", marginLeft: "5px" }}>
