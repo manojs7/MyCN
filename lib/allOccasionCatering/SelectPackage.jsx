@@ -55,7 +55,7 @@ const SelectPackage = () => {
             <div className={styles.mainBody} style={backgroundStyle}>
                 <div className={styles.headerSectn}>
                     <div className={styles.logo}>
-                        <Image src="/ODC/Group 84.png" width="129.07px" height="92.06px" />
+                        <Image src="/ODC/odctop.png" width="129.07px" height="92.06px" />
                     </div>
                     <div className={styles.headerDetails}>
                         <div>
