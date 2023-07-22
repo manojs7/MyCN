@@ -173,3 +173,256 @@
     }
 }
 
+.pkgHeader {
+    margin-top: -45px;
+    display: flex;
+    justify-content: space-evenly;
+
+    h6 {
+        padding: 2px 8px;
+        border-radius: 7.003px;
+        background-color: #222221;
+        color: #FEEEDD;
+        text-align: center;
+        font-size: 7.958px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+
+        span {
+            color: #F1A42B;
+        }
+    }
+}
+
+.card {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 155.378px;
+    height: 219.937px;
+    border: 1px solid #BC0A01;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 5px;
+
+    .blackCard {
+        padding-top: 15px;
+        margin: auto;
+        border-radius: 5px;
+        width: 141.518px;
+        height: 206.441px;
+        background-color: #222221;
+        filter: drop-shadow(0px 0.8502262234687805px 0.8502262234687805px rgba(0, 0, 0, 0.25));
+
+        h5 {
+            margin-left: 5px;
+            text-align: start;
+            color: #FEEEDD;
+            font-size: 10.363px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+
+            span {
+                font-size: 7.809px;
+                font-style: italic;
+            }
+        }
+    }
+
+    // .pkgtag{
+    //     position: absolute;
+    //     margin-top: -15px;
+    //     margin-left: 5px;
+    // }
+}
+
+.nvtag {
+    width: 132.596px;
+    height: 23.649px;
+    position: absolute;
+    margin-top: -18px;
+    margin-left: 5px;
+    z-index: 1;
+
+    h4 {
+        padding-top: 5px;
+        color: #000;
+        text-align: center;
+        font-size: 11.296px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+}
+
+.carousel {
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 20px;
+    //gap: 20px;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.selectPkgBtn {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    margin-inline: 25px;
+
+    button {
+        background: linear-gradient(180deg, #FF9927 50%, #A36300 120%);
+        box-shadow: 0px 5.754745960235596px 5.754745960235596px rgba(0, 0, 0, 0.25);
+        width: 94.066px;
+        height: 23.634px;
+        border-radius: 31.65px;
+        border: none;
+        color: #222221;
+        text-align: center;
+        font-size: 13.818px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}
+
+.selectNvPkgBtn {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    margin-inline: 25px;
+
+    button {
+        background: linear-gradient(180deg, #FFD03B 50%, #6B4200 120%);
+        box-shadow: 0px 5.754745960235596px 5.754745960235596px rgba(0, 0, 0, 0.25);
+        width: 94.066px;
+        height: 23.634px;
+        border-radius: 31.65px;
+        border: none;
+        color: #222221;
+        text-align: center;
+        font-size: 13.818px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}
+
+.customCard {
+    text-align: center;
+}
+
+.smselectItemSearchBox {
+    margin: auto;
+    width: 150px;
+    height: 14px;
+    background: #FFE9D9;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+
+    h6 {
+        margin-top: 3px;
+        font-weight: 700;
+        font-size: 6px;
+        color: rgba(44, 51, 56, 0.66);
+    }
+}
+
+.addMoreBtn {
+    button {
+        width: 55px;
+        height: 11px;
+        flex-shrink: 0;
+        border-radius: 6.327px;
+        border: 0.218px solid #BE2D30;
+        background: #FFDDB5;
+        color: #BE2D30;
+        text-align: center;
+        font-size: 6px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.245px;
+        text-transform: capitalize;
+    }
+}
+
+.createPkgBtn {
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+
+    button {
+        border: none;
+        width: 165.075px;
+        height: 25.575px;
+        flex-shrink: 0;
+        border-radius: 15.362px;
+        background: #E23D1C;
+        box-shadow: 0px 2.77959942817688px 2.77959942817688px 0px rgba(0, 0, 0, 0.25);
+        color: #FFF;
+        font-size: 10.624px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        /* 14.874px */
+    }
+}
+
+.bottomtag {
+    margin: auto;
+    width: 329px;
+    height: 27px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 7px;
+
+    h6 {
+        font-weight: 800;
+        font-size: 9.52997px;
+        color: #222221;
+    }
+
+    button {
+        width: 80.15px;
+        height: 14.387px;
+        border-radius: 10.789px;
+        font-weight: 600;
+        font-size: 8.3457px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        color: #FFFFFF;
+        background: rgba(255, 255, 255, 0.29);
+        border: 0.372043px solid #FFFFFF;
+
+        span {
+            color: #5B5B5B;
+        }
+    }
+}
+
+.vegCostomCard {
+    border-radius: 10px;
+    margin-top: 45px !important;
+    padding-top: 20px;
+    margin: auto;
+    width: 134px;
+    height: 120px;
+    background-color: #222221;
+    filter: drop-shadow(0px 0.7415895462036133px 0.7415895462036133px rgba(0, 0, 0, 0.25));
+
+    .smselectItemSearchBox {
+        width: 116.555px;
+        height: 11.05px;
+    }
+}
