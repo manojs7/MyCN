@@ -1970,7 +1970,7 @@ const CustomizeNinjaBox = () => {
                 ></input>
               </div>
               <div className="d-flex justify-content-between">
-                <p>Phone:</p>
+                <p>WhatsApp No.:</p>
                 <input
                   type="text"
                   value={mobileno}

@@ -3,10 +3,13 @@ import styles from '/styles/BirthdayParty.module.scss';
 import styles2 from '/styles/NewDiy.module.scss';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faPlus, faArrowLeft, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong, faArrowLeft, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import { useAppMenu } from "$lib/menuContext";
 
-const CustomiseBirthdayPkg = () => {
+const CustomBirthdayPkg = () => {
+
+    const { cities } = useAppMenu();
 
     const [selectedOptions, setSelectedOptions] = useState();
     const [isDisabled, setIsDisabled] = useState(true);
@@ -40,17 +43,51 @@ const CustomiseBirthdayPkg = () => {
     const [nonVegHeavySnackQnty, setNonVegHeavySnackQnty] = useState();
     const [dessertQnty, setDessertQnty] = useState();
 
+    const [isFormValid, setIsFormValid] = useState(false);
+
     const [showPopup, setShowPopup] = useState(false);
+
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');
 
-
-    const totalQnty = vegSnackQnty + nvegSnackQnty + vegHeavySnackQnty + nonVegHeavySnackQnty + dessertQnty;
-
     const goBackBtn = () => {
         setShowPopup(!showPopup);
     }
+
+    const handleSubmit = () => {
+        const totalGuestCount = Number(vegCount) + Number(nvCount);
+        if (city !== 'Bangalore') {
+            Swal.fire({
+                text: "This Service is available only in Bangalore",
+                icon: "warning",
+                confirmButtonText: "OK",
+            });
+        }
+        else if (!selectedDate) {
+            Swal.fire({
+                text: "please select date",
+                icon: "warning",
+                confirmButtonText: "OK",
+            });
+        }
+        else if (totalGuestCount < 50) {
+            alert("Please select minimu 50 guest count")
+            //setShowPopup(!showPopup);
+        } else if (isFormValid) {
+            const selectedBirthdayPkg = {
+                city,
+                selectedDate,
+                vegCount,
+                nvCount,
+                totalGuestCount
+            }
+            setIsFormValid(false);
+            // let selectedBirthdayPkg = { city: city, selectedDate: selectedDate, vegCount: vegCount, nvCount: nvCount }
+            sessionStorage.setItem("selectedBirthdayPkg", JSON.stringify(selectedBirthdayPkg))
+        }
+    }
+
     //submit user details
     const submitDetails = (event) => {
         event.preventDefault();
@@ -73,6 +110,88 @@ const CustomiseBirthdayPkg = () => {
             window.open("/birthdayPartyCheckPrice", '_self');
         }
     }
+
+    const handleCity = (city) => {
+        if(city !== 'Bangalore'){
+            alert('This service is not available in your city');
+        }
+        setCity(city);
+        checkFormValidity();
+    }
+
+    //select date logic
+    const handleDateChange = (event) => {
+        setSelectedDate(event.target.value);
+        checkFormValidity();
+    };
+
+    const generateDateOptions = () => {
+        const options = [];
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const twoDaysFromNow = new Date();
+        twoDaysFromNow.setDate(currentDate.getDate() + 2);
+
+        for (
+            let date = twoDaysFromNow;
+            date.getFullYear() === currentYear;
+            date.setDate(date.getDate() + 1)
+        ) {
+            const optionValue = date.toISOString().slice(0, 10);
+            const optionLabel = date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            });
+
+            options.push(
+                <option key={optionValue} value={optionValue}>
+                    {optionLabel}
+                </option>
+            );
+        }
+
+        return options;
+    };
+
+    const handleInput1Change = (event) => {
+        setVegCount(event.target.value);
+        checkFormValidity();
+    };
+
+    const handleInput2Change = (event) => {
+        setNvCount(event.target.value);
+        checkFormValidity();
+    };
+
+    const checkFormValidity = () => {
+        if (city && selectedDate) {
+            setIsFormValid(true);
+        } else {
+            setIsFormValid(false);
+        }
+    };
+
+    //checkprice
+    const checkprice = () => {
+        handleSubmit();
+        const sum =
+            checkedValues.length +
+            checkedValues2.length +
+            checkedValues3.length +
+            checkedValues4.length +
+            checkedValues5.length;
+        if (sum > 0) {
+            sessionStorage.setItem('checkedValues', JSON.stringify(checkedValues));
+            sessionStorage.setItem('checkedValues2', JSON.stringify(checkedValues2));
+            sessionStorage.setItem('checkedValues3', JSON.stringify(checkedValues3));
+            sessionStorage.setItem('checkedValues4', JSON.stringify(checkedValues4));
+            sessionStorage.setItem('checkedValues5', JSON.stringify(checkedValues5));
+            setShowPopup(!showPopup);
+        } else {
+            alert('Please Selecty any Snack');
+        }
+    };
 
     useEffect(() => {
         let selectedBirthdayPkg = JSON.parse(sessionStorage.getItem("selectedBirthdayPkg"));
@@ -759,11 +878,6 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues.length === vegSnackQnty) {
-                setReminder(true);
-                setReminderName("Veg Snack")
-                return; // Exit early if maximum selections reached
-            }
             value.checked = 'checked';
             setCheckedValues([...checkedValues, value]);
         } else {
@@ -775,11 +889,6 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange2 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues2.length === vegHeavySnackQnty) {
-                setReminder(true);
-                setReminderName("Veg Heavy Snack")
-                return;
-            }
             value.checked = 'checked';
             setCheckedValues2([...checkedValues2, value]);
         } else {
@@ -791,11 +900,6 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange3 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues3.length === nvegSnackQnty) {
-                setReminder(true);
-                setReminderName("Non-Veg Snack")
-                return;
-            }
             value.checked = 'checked';
             setCheckedValues3([...checkedValues3, value]);
         } else {
@@ -807,20 +911,6 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange4 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            // if (checkedValues4.length + 1 === nonVegHeavySnackQnty && !alertShown4) {
-            //     Swal.fire({
-            //         title: "Reminder",
-            //         text: "Respective Charges will be applied to extra selected items in final quote.",
-            //         icon: "warning",
-            //         confirmButtonText: "OK",
-            //     });
-            //     setAlertShown4(true);
-            // }
-            if (checkedValues4.length === nonVegHeavySnackQnty) {
-                setReminder(true);
-                setReminderName("Non-Veg Heavy Snack")
-                return;
-            }
             value.checked = 'checked';
             setCheckedValues4([...checkedValues4, value]);
         } else {
@@ -832,11 +922,6 @@ const CustomiseBirthdayPkg = () => {
     const handleCheckboxChange5 = (e, item) => {
         const value = item;
         if (e.target.checked) {
-            if (checkedValues5.length === dessertQnty) {
-                setReminder(true);
-                setReminderName("Dessert")
-                return;
-            }
             value.checked = 'checked';
             setCheckedValues5([...checkedValues5, value]);
         } else {
@@ -869,30 +954,7 @@ const CustomiseBirthdayPkg = () => {
             sessionStorage.setItem('checkedValues5', JSON.stringify(checkedValues5));
             window.open('/birthdayAddOns', '_self')
         } else {
-            alert('Please Selecty More Snacks');
-        }
-    };
-
-    //checkprice
-    const checkprice = () => {
-        sessionStorage.removeItem('addedItems');
-        sessionStorage.removeItem('addedMainCourse');
-        sessionStorage.removeItem('addedFunEatables');
-        const sum =
-            checkedValues.length +
-            checkedValues2.length +
-            checkedValues3.length +
-            checkedValues4.length +
-            checkedValues5.length;
-        if (sum > 0) {
-            sessionStorage.setItem('checkedValues', JSON.stringify(checkedValues));
-            sessionStorage.setItem('checkedValues2', JSON.stringify(checkedValues2));
-            sessionStorage.setItem('checkedValues3', JSON.stringify(checkedValues3));
-            sessionStorage.setItem('checkedValues4', JSON.stringify(checkedValues4));
-            sessionStorage.setItem('checkedValues5', JSON.stringify(checkedValues5));
-            setShowPopup(!showPopup);
-        } else {
-            alert('Please Selecty More Snacks');
+            alert('Please Selecty any Snack');
         }
     };
 
@@ -921,7 +983,8 @@ const CustomiseBirthdayPkg = () => {
     const backgroundStyle = {
         backgroundImage: 'url("/birthdayParty/birthdayBg.png")',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        paddingTop: "30px"
     };
 
     //small png bg
@@ -955,78 +1018,56 @@ const CustomiseBirthdayPkg = () => {
 
     return (
         <div style={backgroundStyle} className={styles.mainBody}>
-            {/* <div style={smallPng}>
-                <div className={styles.header}>
-                    <div className='pt-5 text-center'>
-                        <Image src="/caterNinja logo/caterninja.webp" height="22.03px" width="114.16px" />
-                    </div>
-                    <h2>BIRTHDAY <span>PARTY</span></h2>
-                    <div className={styles.btmContent}>
-                        <h6>Outdoor Catering</h6>
-                        <p>VEG <span> NON-VEG</span></p>
-                    </div>
-                </div>
-            </div> */}
-            <div className={styles.headerSectn}>
+            <div className={styles.customheader} >
                 <div className={styles.logo}>
                     <Image src="/birthdayParty/birthdayPartyLogo.png" width="91px" height="74px" />
                 </div>
-                <div className={styles.headerDetails}>
+                <div className={styles.customInput}>
                     <div>
-                        <h6>City: <span>{city}</span></h6>
-                        <h6>Veg Count: <span>{vegCount}</span></h6>
+                        <div>
+                            <h6>City</h6>
+                            <select
+                                name="city"
+                                aria-label="Default select example"
+                                value={city}
+                                onChange={(e) => handleCity(e.target.value)}
+                                required
+                            >
+                                <option value="Bangalore" selected>
+                                Bangalore
+                                </option>
+                                {cities.map((item, index) => {
+                                    return (
+                                        <option key={index} value={item}>
+                                            {item}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+                        <div>
+                            <h6>Veg Count</h6>
+                            <input type='number' value={vegCount} onChange={handleInput1Change}></input>
+                        </div>
                     </div>
                     <div>
-                        <h6>Date: <span>{selectedDate}</span></h6>
-                        <h6>NV Count: <span>{nvCount}</span></h6>
+                        <div>
+                            <h6>Date</h6>
+                            <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
+                                <option value="">Select a date</option>
+                                {generateDateOptions()}
+                            </select>
+                        </div>
+                        <div>
+                            <h6>N-Veg Count</h6>
+                            <input type='number' value={nvCount} onChange={handleInput2Change}></input>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className={styles.customisePkgContainer}>
                 <h3>Customise Your package</h3>
                 <hr />
-                {isVeg === true ? <div className={styles.pkgCard}  >
-                    <div className={styles.blackbg}>
-                        <div style={titlebg} id={styles.titlebg}>
-                            <h4>{packageName}</h4>
-                        </div>
-                        <div className={styles.cardinsideContent}>
-                            {/* <div className='text-center'>
-                                <h4>₹ {packagePrice}</h4>
-                                <p>Per Person</p>
-                            </div> */}
-                            <div className={styles.btns}>
-                                <div id={styles.btnName}>
-                                    {itemsTypeName.map((iname, index) => (<h6 key={index}>{iname}</h6>))}
-                                </div>
-                                <div id={styles.greenBtn}>
-                                    {itemQuantity.map((iqtnty, index) => (<h6 key={index}>{iqtnty}</h6>))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> :
-                    <div className={styles.pkgCard2}>
-                        <div className={styles.blackbg}>
-                            <div style={titlebg} id={styles.titlebg}>
-                                <h4>{packageName}</h4>
-                            </div>
-                            <div className={styles.cardinsideContent}>
-                                {/* <div className='text-center'>
-                            <h4>₹ {packagePrice}</h4>
-                            <p>Per Person</p>
-                        </div> */}
-                                <div className={styles.btns}>
-                                    <div id={styles.btnName}>
-                                        {itemsTypeName.map((iname, index) => (<h6 key={index}>{iname}</h6>))}
-                                    </div>
-                                    <div id={styles.greenBtn}>
-                                        {itemQuantity.map((iqtnty, index) => (<h6 key={index}>{iqtnty}</h6>))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>}
             </div>
 
             {/* VEG SNACKS SELECTION */}
@@ -1468,12 +1509,12 @@ const CustomiseBirthdayPkg = () => {
                 </div> : ""}
             </div>
             <div className='d-flex justify-content-around'>
-                <div className={styles.checkpriceBtn}>
-                    <button onClick={checkprice}>Check Price</button>
-                </div>
-                <div className={styles.addonsbtn}>
-                    <button onClick={addAlldata}>Add Ons</button>
-                </div>
+            <div className={styles.checkpriceBtn}>
+                <button onClick={checkprice}>Check Price</button>
+            </div>
+            <div className={styles.addonsbtn}>
+                <button onClick={addAlldata}>Add Ons</button>
+            </div>
             </div>
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>
@@ -1506,4 +1547,4 @@ const CustomiseBirthdayPkg = () => {
     )
 }
 
-export default CustomiseBirthdayPkg
+export default CustomBirthdayPkg
