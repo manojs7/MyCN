@@ -45,6 +45,8 @@ const CustomiseBirthdayPkg = () => {
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');
 
+    const [EmailedToParser, setEmailedToParser] = useState(false);
+    const [datas, setDatas] = useState();
 
     const totalQnty = vegSnackQnty + nvegSnackQnty + vegHeavySnackQnty + nonVegHeavySnackQnty + dessertQnty;
 
@@ -52,8 +54,10 @@ const CustomiseBirthdayPkg = () => {
         setShowPopup(!showPopup);
     }
     //submit user details
-    const submitDetails = (event) => {
+    const submitDetails = async(event) => {
         event.preventDefault();
+
+        let url_value = sessionStorage.getItem("first_url2");
 
         if (!name || !number || !email) {
             alert("Please fill the all field")
@@ -70,9 +74,69 @@ const CustomiseBirthdayPkg = () => {
                 confirmButtonText: "OK",
             });
             setShowPopup(!showPopup);
-            window.open("/birthdayPartyCheckPrice", '_self');
         }
+
+
+        //trigger email for lead generation
+
+
+        let datas = {
+            name: name,
+            email: email,
+            mobileno: number,
+            city: city,
+            occasion: "Birthday Party",
+            veg_c: vegCount,
+            nonveg_c: nvCount,
+            people: vegCount + nvCount,
+            date: selectedDate,
+            // time : startTime,
+            url: url_value,
+            meal: "meal",
+            cuisine: "cuisine",
+            preference: "preference",
+            mealtype: "mealtype",
+            boolean: true,
+            appetizer: "",
+            mainCourse: "",
+            dessert: "",
+            breadRice: "",
+            grandTotal: packagePrice+ Math.round(packagePrice*(0.18)),
+            buffet: "Birthday Party",
+            dessertClassname: "caterNinja_add_dessert_button",
+            totalPrice: packagePrice,
+            GST: packagePrice*Math.round(packagePrice*(0.18)),
+            showDessert: false,
+            emailedtoparser: EmailedToParser,
+          };
+      
+          setDatas(datas);
+      
+          let data = "";
+          try {
+            data = JSON.stringify(datas);
+          } catch (e) {
+            console.log(e);
+          }
+          await fetch("/api/forma", {
+            method: "POST",
+            body: data,
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+          }).then((res) => {
+            console.log(res.message);
+            setEmailedToParser(true);
+            if (res.success) {
+              console.log("message sent");
+            } else {
+              console.log("Failed to send message");
+            }
+          });
+
+          window.open("/birthdayPartyCheckPrice", '_self');
+
     }
+
+
 
     useEffect(() => {
         let selectedBirthdayPkg = JSON.parse(sessionStorage.getItem("selectedBirthdayPkg"));
@@ -892,7 +956,7 @@ const CustomiseBirthdayPkg = () => {
             sessionStorage.setItem('checkedValues5', JSON.stringify(checkedValues5));
             setShowPopup(!showPopup);
         } else {
-            alert('Please Selecty More Snacks');
+            alert('Please Select More Snacks');
         }
     };
 
