@@ -1,27 +1,52 @@
-import React, { useState } from 'react';
-import LoginForm from '../../src/components/LoginForm';
+// pages/admin/login.js
 
+import { useState } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import Router from 'next/router';
 
 const LoginPage = () => {
-  const [role, setRole] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleLogin = (selectedRole) => {
-    setRole(selectedRole);
-    sessionStorage.setItem("role", selectedRole)
-    window.location.href="/Admin";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      let result=await signIn('credentials', {
+        username,
+        password,
+        // Add other data as needed for the credentials provider
+        redirect: false, // Set this to true if you want to handle redirection manually
+      });
+
+      // Redirect to admin dashboard or other private page upon successful login
+      if(result){
+        // console.log(result)
+        Router.push('/Admin/Dashboard');
+      }
+      else{
+        Router.push('/Admin/login');
+      }
+     
+    } catch (error) {
+      console.error('Login failed:', error?.message || 'Unknown error');
+    }
   };
 
   return (
-    <div className='container mt-3 mb-3 '>
-      {role ? (
-        <div className='container mt-3 mb-3 '>
-          <h2>Welcome, {role}!</h2>
-          
-          {/* Place your admin dashboard content here */}
+    <div>
+      <h1>Admin Login</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
         </div>
-      ) : (
-        <LoginForm onLogin={handleLogin} />
-      )}
+        <div>
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 };

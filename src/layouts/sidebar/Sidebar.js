@@ -14,41 +14,44 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+
 import FeatherIcon from "feather-icons-react";
 import LogoIcon from "../logo/LogoIcon";
-import Menuitems from "./MenuItems";
-import Buynow from "./Buynow";
+import menuItems from "./MenuItems";
 import { useRouter } from "next/router";
 
-const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
-  const [open, setOpen] = React.useState(true);
 
+  
+// const { menuItems, role } = useAppMenu();
+
+const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
+
+  const [open, setOpen] = React.useState(true);
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
+  const location = useRouter().pathname;
 
   const handleClick = (index) => {
-    if (open === index) {
-      setOpen((prevopen) => !prevopen);
-    } else {
-      setOpen(index);
-    }
+    setOpen((prevOpen) => (prevOpen === index ? !prevOpen : index));
   };
-  let curl = useRouter();
-  const location = curl.pathname;
 
   const SidebarContent = (
-    <Box p={2} height="100%">
+    <Box p={2} height="100%" sx={{ display: "flex", flexDirection: "column" }}>
       <LogoIcon />
-      <Box mt={2}>
-        <List>
-          {Menuitems.map((item, index) => (
-            <List component="li" disablePadding key={item.title}>
+      <Box mt={2} sx={{ flexGrow: 1 }}>
+        <List sx={{ flexGrow: 1 }}>
+          {menuItems.map((item, index) => (
+            <List
+              component="li"
+              disablePadding
+              key={item.title}
+              sx={{ mb: 1 }}
+            >
               <NextLink href={item.href}>
                 <ListItem
                   onClick={() => handleClick(index)}
                   button
                   selected={location === item.href}
                   sx={{
-                    mb: 1,
                     ...(location === item.href && {
                       color: "white",
                       backgroundColor: (theme) =>
@@ -66,7 +69,6 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                       height="20"
                     />
                   </ListItemIcon>
-
                   <ListItemText onClick={onSidebarClose}>
                     {item.title}
                   </ListItemText>
@@ -76,40 +78,31 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
           ))}
         </List>
       </Box>
-
-      {/* <Buynow /> */}
     </Box>
   );
-  if (lgUp) {
-    return (
-      <Drawer
-        anchor="left"
-        open={isSidebarOpen}
-        variant="persistent"
-        PaperProps={{
-          sx: {
-            width: "265px",
-            border: "0 !important",
-            boxShadow: "0px 7px 30px 0px rgb(113 122 131 / 11%)",
-          },
-        }}
-      >
-        {SidebarContent}
-      </Drawer>
-    );
-  }
+
+  const drawerProps = {
+    anchor: "left",
+    variant: lgUp ? "persistent" : "temporary",
+    PaperProps: {
+      sx: {
+        width: "265px",
+        border: "0 !important",
+        ...(lgUp && {
+          boxShadow: "0px 7px 30px 0px rgb(113 122 131 / 11%)",
+        }),
+      },
+    },
+  };
+
+  const drawerOpen = lgUp ? isSidebarOpen : isMobileSidebarOpen;
+
   return (
     <Drawer
       anchor="left"
-      open={isMobileSidebarOpen}
+      open={drawerOpen}
       onClose={onSidebarClose}
-      PaperProps={{
-        sx: {
-          width: "265px",
-          border: "0 !important",
-        },
-      }}
-      variant="temporary"
+      {...drawerProps}
     >
       {SidebarContent}
     </Drawer>

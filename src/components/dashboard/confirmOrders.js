@@ -16,14 +16,46 @@ import { X } from "feather-icons-react/build/IconComponents";
 import { format } from "date-fns";
 import { paginate } from "../paginate";
 import { event } from "jquery";
+import OrderApprovalPopup from '../OrderApprovalPopup';
+
 
 const ConfirmOrder = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 5;
-  const paginatedPosts = paginate(products, currentPage, pageSize);
+  const paginatedPosts = paginate(products, currentPage, pageSize);  
 
-  
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  const handleApproveClick = (order) => {
+    setSelectedOrder(order);
+  };
+
+  const handlePopupClose = () => {
+    setSelectedOrder(null);
+  };
+
+  const handleOrderApproval = (approvedData) => {
+    // Call the API to save the approved data to the orders collection
+    // You can use axios, fetch, or any other library to make the POST request
+    fetch('/api/ordersApprove', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ orderData: approvedData }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response, show success message, etc.
+        console.log('Order approved and saved:', data);
+      })
+      .catch((error) => {
+        // Handle errors, show error message, etc.
+        console.error('Error approving order:', error);
+      });
+  };
+
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
@@ -264,8 +296,8 @@ const ConfirmOrder = () => {
                       {product.OrderStatus!=="Punched"?
                      
                       <Button variant="contained" color="success" 
-                      onClick={(event)=>PunchToClappia(product._id)}>
-                      Punch to Clappia
+                      onClick={() => handleApproveClick(product)}>
+                      Approve
                     </Button>
                       :<span><b>Punched </b></span>}
                     </Typography>
@@ -280,8 +312,20 @@ const ConfirmOrder = () => {
         currentPage={currentPage} // 1
         pageSize={pageSize} // 10
         onPageChange={onPageChange}
+
+        
       />
+      {/* Render the popup when selectedOrder is not null */}
+      <div>
+      {selectedOrder && (
+        <OrderApprovalPopup
+          orderDetails={selectedOrder}
+          onClose={handlePopupClose}
+          onApprove={handleOrderApproval}
+        />
+      )}</div>
     </BaseCard>
+    
   );
 };
 

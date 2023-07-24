@@ -12,7 +12,7 @@ import OrdersFromClappia from "src/components/dashboard/OrdersFromClappia";
 export default function Index() {
   return (
     <ThemeProvider theme={theme}>
-        <FullLayout>
+        {/* <FullLayout> */}
     <Grid container spacing={0}>
       
       
@@ -31,7 +31,7 @@ export default function Index() {
       
      
     </Grid>
-    </FullLayout>
+    {/* </FullLayout> */}
     </ThemeProvider>
   );
 }
