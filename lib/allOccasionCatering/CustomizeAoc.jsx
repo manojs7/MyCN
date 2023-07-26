@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react'
+import styles3 from '/styles/AllOccasionCatering.module.scss';
 import styles from '/styles/BirthdayParty.module.scss';
 import styles2 from '/styles/NewDiy.module.scss';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightLong, faArrowLeft, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faPlus, faArrowLeft, faMagnifyingGlass, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import { useAppMenu } from "$lib/menuContext";
 
-const CustomBirthdayPkg = () => {
+const CustomizeAoc = () => {
 
     const { cities } = useAppMenu();
 
@@ -112,7 +113,7 @@ const CustomBirthdayPkg = () => {
     }
 
     const handleCity = (city) => {
-        if(city !== 'Bangalore'){
+        if (city !== 'Bangalore') {
             alert('This service is not available in your city');
         }
         setCity(city);
@@ -428,12 +429,12 @@ const CustomBirthdayPkg = () => {
         // setCheckedValues(checkedValues.filter(v => v.id !== item.id));
     }
 
-    //veg snack data
-    const itemList = [
+    //veg Gravy data
+    const vegGravyList = [
         {
             id: 1,
             image: '/diy images/starter/image 23.png',
-            name: 'Cheese Balls',
+            name: 'Kadai Veg',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -442,7 +443,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 2,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/French+Fries.jpg',
-            name: 'French Fries',
+            name: 'Veg Kolhapuri',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -451,7 +452,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 3,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Honey+Chilli+Baby+Potato.jpg',
-            name: 'Honey Chilly Potato',
+            name: 'Dum Aloo Banarasi',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -460,7 +461,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 4,
             image: '/diy images/starter/image 23.png',
-            name: 'Spring Roll',
+            name: 'Nanhi Sabjiyo ka Meal',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -469,7 +470,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 5,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Veg+Manchurian+Dry.jpg',
-            name: 'Veg Ball Manchurian',
+            name: 'Veg Do Pyaza',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -478,7 +479,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 6,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Crispy+Corn.jpg',
-            name: 'Crispy Fried Corn',
+            name: 'Mutter Paneer',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -487,29 +488,20 @@ const CustomBirthdayPkg = () => {
         {
             id: 7,
             image: '/diy images/starter/image 23.png',
-            name: 'Cottage Cheese Finger',
+            name: 'Kadai Paneer',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
             price: 50,
-        },
-        {
-            id: 8,
-            image: '/diy images/starter/image 23.png',
-            name: 'Cocktail Samosa',
-            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
-            checked: '',
-            veg: true,
-            price: 50,
-        },
+        }
     ]
 
-    //veg heavy snack data
-    const vegHeavySnackDataList = [
+    //veg Starters data
+    const vegStartersList = [
         {
             id: 1,
             image: '/diy images/starter/image 23.png',
-            name: 'Veg Sandwich',
+            name: 'Gobi Manchurian',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -518,7 +510,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 2,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Heavy+Snacks/Pav+Bhaji.jpg',
-            name: 'Pav Bhaji / Vada Pav',
+            name: 'Paneer Manchurian',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -527,7 +519,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 3,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Noodles/Veg-Hakka-Noodles.jpg',
-            name: 'Noodles & Manchurian',
+            name: 'Chilly Paneer',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -536,7 +528,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 4,
             image: '/diy images/starter/image 23.png',
-            name: 'Mini Sliders / Veg Burger',
+            name: 'Dahi ke Kebab',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -545,7 +537,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 5,
             image: '/diy images/starter/image 23.png',
-            name: 'Hot Dog Paneer',
+            name: 'Marrakesh Roll',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -554,7 +546,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 6,
             image: '/diy images/starter/image 23.png',
-            name: 'Soya Kheema Pav',
+            name: 'Hara Bhara Kebab',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -563,7 +555,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 7,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Pasta/Pasta+Alfredo.jpg',
-            name: 'Pasta-White/Tomato Sauce',
+            name: 'Crispy Fried Corn',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -572,7 +564,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 8,
             image: '/diy images/starter/image 23.png',
-            name: 'Noodles',
+            name: 'Cajun Spice Baby Potato',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -581,7 +573,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 9,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Rice/Veg+Fried+Rice.jpg',
-            name: 'Fried Rice',
+            name: 'Paneer 65',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -589,164 +581,128 @@ const CustomBirthdayPkg = () => {
         },
     ]
 
-    //non veg snack data
-    const nonVegSnackDataList = [
+    //veg dry data
+    const vegDryList = [
         {
             id: 1,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Chicken+Tikka+_+Drumstick+Platter.jpg',
-            name: 'Chicken Tikka',
+            name: 'Carrot & Beans Palya',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 100,
         },
         {
             id: 2,
             image: '/diy images/starter/image 23.png',
-            name: 'Chicken Nuggets',
+            name: 'Mix Veg Dry',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 100,
         },
         {
             id: 3,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Mains-Gravy/Chicken+manchurian+Gravy.jpg',
-            name: 'Chicken Manchurian',
+            name: 'Aloo Mutter',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 100,
         },
         {
             id: 4,
             image: '/diy images/starter/image 23.png',
-            name: 'Crispy Fried Chicken',
+            name: 'Aloo Gobi Adraki',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 100,
         },
         {
             id: 5,
             image: '/diy images/starter/image 23.png',
-            name: 'Fish Finger',
+            name: 'Lasooni Aloo',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 100,
         },
         {
             id: 6,
             image: '/diy images/starter/image 23.png',
-            name: 'Fish 65',
+            name: 'Bhindi',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 100,
         },
         {
             id: 7,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Starters/Kalmi+Chicken+Tikka.jpg',
-            name: 'Chicken Tikka',
+            name: 'Pindi Chole',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
-            price: 100,
-        },
-        {
-            id: 8,
-            image: '/diy images/starter/image 23.png',
-            name: 'Chicken Spring Roll',
-            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
-            checked: '',
-            veg: false,
+            veg: true,
             price: 100,
         }
     ]
 
-    //non veg heavy snack data
-    const nonVegHeavySnackDataList = [
+    //dal data
+    const dalList = [
         {
             id: 1,
             image: '/diy images/starter/image 23.png',
-            name: 'Hot Dog Chicken',
+            name: 'Dal Tadka',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 150,
         },
         {
             id: 2,
             image: '/diy images/starter/image 23.png',
-            name: 'Chicken Sandwiches',
+            name: 'Dal-e-Dum',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 150,
         },
         {
             id: 3,
             image: '/diy images/starter/image 23.png',
-            name: 'Chicken Kheema Pav',
+            name: 'Dal Makhni',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 150,
         },
         {
             id: 4,
             image: '/diy images/starter/image 23.png',
-            name: 'Chicken Burger',
+            name: 'Dal Amritsari',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
+            veg: true,
             price: 150,
         },
         {
             id: 5,
             image: 'https://caterninjacdn.s3.amazonaws.com/DIY Image/DIY+Pasta/Pasta+Alfredo-+Chicken.jpg',
-            name: 'Chicken White Sauce Pasta',
+            name: 'Sambar With Rasam',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
-            veg: false,
-            price: 150,
-        },
-        {
-            id: 6,
-            image: '/diy images/starter/image 23.png',
-            name: 'Chicken Red Sauce Pasta',
-            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
-            checked: '',
-            veg: false,
-            price: 150,
-        },
-        {
-            id: 7,
-            image: '/diy images/starter/image 23.png',
-            name: 'Chicken Noodles',
-            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
-            checked: '',
-            veg: false,
-            price: 150,
-        },
-        {
-            id: 8,
-            image: '/diy images/starter/image 23.png',
-            name: 'Chicken Fried Rice',
-            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
-            checked: '',
-            veg: false,
+            veg: true,
             price: 150,
         }
     ]
 
-    //Dessert data
-    const dessertDataList = [
+    //Rice data
+    const riceList = [
         {
             id: 1,
             image: '/diy images/starter/image 23.png',
-            name: 'Angoori Gulab Jamun',
+            name: 'Veg Pulav',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -755,7 +711,7 @@ const CustomBirthdayPkg = () => {
         {
             id: 2,
             image: '/diy images/starter/image 23.png',
-            name: 'Rice Kheer',
+            name: 'Jeera Pulav',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -764,7 +720,158 @@ const CustomBirthdayPkg = () => {
         {
             id: 3,
             image: '/diy images/starter/image 23.png',
-            name: 'Fruit Custard',
+            name: 'Mutter Pulav',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 4,
+            image: '/diy images/starter/image 23.png',
+            name: 'Ghee Rice',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 5,
+            image: '/diy images/starter/image 23.png',
+            name: 'Plain Rice',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        }
+    ]
+
+    //Salad data
+    const saladList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Salad Kosambari',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Green Salad',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Russian Salad',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 4,
+            image: '/diy images/starter/image 23.png',
+            name: 'Corn Mutter Salad',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 5,
+            image: '/diy images/starter/image 23.png',
+            name: 'Bean Sprouts',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        }
+    ]
+
+    //Breads data
+    const breadsList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Tawa Paratha',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Laccha Paratha',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        }
+    ]
+
+    //Kofta data
+    const koftaList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Mix Veg Kofta Curry',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Banana Kofta Curry',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Paneer Kofta Curry',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        }
+    ]
+
+    //Dessert data
+    const dessertList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Semiya Payasam',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Sheer Korma',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: true,
+            price: 40,
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Rice Kheer',
             description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
             checked: '',
             veg: true,
@@ -782,22 +889,252 @@ const CustomBirthdayPkg = () => {
         {
             id: 5,
             image: '/diy images/starter/image 23.png',
-            name: 'Semiya Payasam',
+            name: 'Fresh Fruit Custard',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
             price: 40,
-        },
+        }
+        ,
         {
             id: 6,
             image: '/diy images/starter/image 23.png',
-            name: 'Sheer Korma',
+            name: 'Gulab Jammun',
             description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
             checked: '',
             veg: true,
             price: 40,
         }
     ]
+
+    //Chicken Starters data
+    const chickenStartersList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Papper Chicken',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chilly Chicken',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chicken Manchurian',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 4,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chicken Kebab',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 5,
+            image: '/diy images/starter/image 23.png',
+            name: 'Crispy Fried Chicken',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 6,
+            image: '/diy images/starter/image 23.png',
+            name: 'Peri Peri Chicken Wings',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+        ,
+        {
+            id: 7,
+            image: '/diy images/starter/image 23.png',
+            name: 'Ajwaini Chicken',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+        ,
+        {
+            id: 8,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chicken 65',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+    ]
+
+
+    //Fish Starters data
+    const fishStartersList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Amritsari Fish Fry',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Fish 65',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chilly Fish',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 4,
+            image: '/diy images/starter/image 23.png',
+            name: 'Fish Manchurian',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+    ]
+
+    //Chicken Gravy data
+    const chickenGravyList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Kadai Chicken',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Murgh Rogan Josh',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Murgh Makhni',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 4,
+            image: '/diy images/starter/image 23.png',
+            name: 'Dhaniya Murgh',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 5,
+            image: '/diy images/starter/image 23.png',
+            name: 'Murgh Patyala',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 6,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chilly Chicken',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+        ,
+        {
+            id: 7,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chicken Manchurian',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+        ,
+        {
+            id: 8,
+            image: '/diy images/starter/image 23.png',
+            name: 'Chicken Chatpata',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+    ]
+
+    //Fish Gravy data
+    const fishGravyList = [
+        {
+            id: 1,
+            image: '/diy images/starter/image 23.png',
+            name: 'Mangalorean style fish curry',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 2,
+            image: '/diy images/starter/image 23.png',
+            name: 'Fish Masala',
+            description: "Creamy, buttery Smooth chicken in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        },
+        {
+            id: 3,
+            image: '/diy images/starter/image 23.png',
+            name: 'Dhaba Style Fish Curry',
+            description: "Creamy, buttery Smooth paneer in a delicious thick gravy",
+            checked: '',
+            veg: false,
+            price: 40,
+        }
+    ]
+    
 
     const [searchValue, setSearchValue] = React.useState('');
     const [searchValue2, setSearchValue2] = React.useState('');
@@ -961,11 +1298,11 @@ const CustomBirthdayPkg = () => {
     const outerDivRef = useRef(null);
 
     useEffect(() => {
-        setData(itemList)
-        setData2(vegHeavySnackDataList)
-        setData3(nonVegSnackDataList)
-        setData4(nonVegHeavySnackDataList)
-        setData5(dessertDataList)
+        setData(vegGravyList)
+        setData2(vegStartersList)
+        setData3(vegDryList)
+        setData4(dalList)
+        setData5(riceList)
         function handleClickOutside(event) {
             if (outerDivRef.current && !outerDivRef.current.contains(event.target)) {
                 handleCancelClick();
@@ -978,123 +1315,56 @@ const CustomBirthdayPkg = () => {
         };
     }, []);
 
-
     //background image
     const backgroundStyle = {
-        backgroundImage: 'url("/birthdayParty/birthdayBg.png")',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        paddingTop: "30px"
-    };
-
-    //small png bg
-    const smallPng = {
-        backgroundImage: 'url("/birthdayParty/doodle 3.png")',
+        backgroundImage: 'url("/ODC/odcbg.png")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
-    };
-
-    //bottom png bg
-    const btmPng = {
-        backgroundImage: 'url("/birthdayParty/bottomPng.png")',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
-    };
-
-    //bottom png card bg
-    const btmPngCard = {
-        backgroundImage: 'url("/birthdayParty/Vector3.png")',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
-    };
-
-    //pkg card
-    const titlebg = {
-        backgroundImage: 'url("/birthdayParty/customisePkgnamecard.png")',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        height: "27px"
     };
 
     return (
-        <div style={backgroundStyle} className={styles.mainBody}>
-            <div className={styles.customheader} >
-                <div className={styles.logo}>
-                    <Image src="/birthdayParty/birthdayPartyLogo.png" width="91px" height="74px" />
-                </div>
-                <div className={styles.customInput}>
-                    <div>
-                        <div>
-                            <h6>City</h6>
-                            <select
-                                name="city"
-                                aria-label="Default select example"
-                                value={city}
-                                onChange={(e) => handleCity(e.target.value)}
-                                required
-                            >
-                                <option value="Bangalore" selected>
-                                Bangalore
-                                </option>
-                                {cities.map((item, index) => {
-                                    return (
-                                        <option key={index} value={item}>
-                                            {item}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                        </div>
-                        <div>
-                            <h6>Veg Count</h6>
-                            <input type='number' value={vegCount} onChange={handleInput1Change}></input>
-                        </div>
+        <div>
+            <div style={backgroundStyle} className={styles3.mainBody}>
+                <div className={styles3.headerSectn}>
+                    <div className={styles3.logo}>
+                        <Image src="/ODC/odctop.png" width="129.07px" height="92.06px" />
                     </div>
-                    <div>
+                    <div className={styles3.headerDetails}>
                         <div>
-                            <h6>Date</h6>
-                            <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
-                                <option value="">Select a date</option>
-                                {generateDateOptions()}
-                            </select>
+                            <h6>City: <span>{city}</span></h6>
+                            <h6>Veg Count: <span>{vegCount}</span></h6>
                         </div>
                         <div>
-                            <h6>N-Veg Count</h6>
-                            <input type='number' value={nvCount} onChange={handleInput2Change}></input>
+                            <h6>Date: <span>{selectedDate}</span></h6>
+                            <h6>NV Count: <span>{nvCount}</span></h6>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.customisePkgContainer}>
-                <h3>Customise Your package</h3>
-                <hr />
-            </div>
-
-            {/* VEG SNACKS SELECTION */}
-
-            <div className={styles.itemsSelectionContainer}>
-                <div className={styles.vegSnackContainer}>
-                    <h3>Veg Snack</h3>
-                    {showDropdown && (<div onClick={selectVegSnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegSnackQnty} Snack</h6>
-                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                    </div>)}
+                <div className={styles.customisePkgContainer}>
+                    <h3>Customise Your package</h3>
+                    <hr />
                 </div>
-                {/* {showDropdown && (<div onClick={selectVegSnack} className={styles2.starterSearchBtn} id="srchbr">
-                    <p><FontAwesomeIcon icon={faMagnifyingGlass} />  Select Starter</p>
-                    <span><FontAwesomeIcon icon={faAngleDown} />  Click here to select</span>
-                </div>
-                )} */}
-                <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
-                    {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                        <img className={styles2.itemImage} src={item.image}  />
-                        <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                            <div style={{ width: "238px" }}>
-                                <h4>{item.name}</h4>
-                                {/* <p>{item.description}</p> */}
-                            </div>
-                            {/* <div>
+
+                {/* VEG GRAVY SELECTION */}
+
+                <div className={styles.itemsSelectionContainer}>
+                    <div className={styles.vegSnackContainer}>
+                        <h3>Veg Gravy</h3>
+                        {showDropdown && (<div onClick={selectVegSnack} className={styles.selectItemSearchBox} id="srchbr">
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Gravy</h6>
+                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                        </div>)}
+                    </div>
+                    <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                        {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                            <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                            <div className={styles2.itemDetailsContainer}>
+                                {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
+                                <div style={{ width: "238px" }}>
+                                    <h4>{item.name}</h4>
+                                    {/* <p>{item.description}</p> */}
+                                </div>
+                                {/* <div>
                                 <div className={styles2.quantityBtn}>
                                     <button>-</button>
                                     <h6>00pcs</h6>
@@ -1104,22 +1374,22 @@ const CustomBirthdayPkg = () => {
                                     <p>Recommended Qt.</p>
                                 </div>
                             </div> */}
-                            <div>
-                                <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteMenu(e, item)} />
+                                <div>
+                                    <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteMenu(e, item)} />
+                                </div>
                             </div>
                         </div>
+                        ))}
                     </div>
-                    ))}
-                </div>
-                {showSelectedMenu && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                    <div id={styles2.starterSearchContent}>
-                        <div>
-                            <input type="text"
-                                value={searchValue}
-                                onChange={searchStarter}
-                                placeholder="Search Veg Snack" />
-                            <div id={styles2.starterList}>
-                                {/* OLD CODE <ul>
+                    {showSelectedMenu && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                        <div id={styles2.starterSearchContent}>
+                            <div>
+                                <input type="text"
+                                    value={searchValue}
+                                    onChange={searchStarter}
+                                    placeholder="Search Veg Gravy" />
+                                <div id={styles2.starterList}>
+                                    {/* OLD CODE <ul>
                                     {filteredData.map((item, index) => (
                                         <li key={item.id}>
                                             <div className='d-flex justify-content-between'>
@@ -1135,148 +1405,66 @@ const CustomBirthdayPkg = () => {
                                         </li>
                                     ))}
                                 </ul> */}
-                                <ul>
-                                    {filteredData
-                                        .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                        .map((item, index) => (
-                                            <li key={item.id}>
-                                                <div className='d-flex justify-content-between'>
-                                                    <div id={styles2.insideDivLi}>
-                                                        <img src={item.image} width="30.05px" height="26.54px" />
-                                                        {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
-                                                        ) : (
-                                                            <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
-                                                        )}
-                                                        <p onClick={() => document.getElementById(item.id).click()} >
-                                                            {item.name}
-                                                            < br />
-                                                            {/* <span>{item.description}</span> */}
-                                                        </p>
+                                    <ul>
+                                        {filteredData
+                                            .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                            .map((item, index) => (
+                                                <li key={item.id}>
+                                                    <div className='d-flex justify-content-between'>
+                                                        <div id={styles2.insideDivLi}>
+                                                            <img src={item.image} width="30.05px" height="26.54px" />
+                                                            {item.veg === true ? (
+                                                                <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
+                                                            ) : (
+                                                                <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
+                                                            )}
+                                                            <p onClick={() => document.getElementById(item.id).click()} >
+                                                                {item.name}
+                                                                < br />
+                                                                {/* <span>{item.description}</span> */}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <input
+                                                                id={item.id}
+                                                                type="checkbox"
+                                                                checked={item.checked}
+                                                                value={item.id}
+                                                                onChange={(e) => handleCheckboxChange(e, item)}
+                                                            />
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <input
-                                                            id={item.id}
-                                                            type="checkbox"
-                                                            checked={item.checked}
-                                                            value={item.id}
-                                                            onChange={(e) => handleCheckboxChange(e, item)}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        ))}
-                                </ul>
-                            </div>
-                            <div id={styles2.listInsideBtn}>
-                                <button onClick={handleCancelClick}>Done</button>
+                                                </li>
+                                            ))}
+                                    </ul>
+                                </div>
+                                <div id={styles2.listInsideBtn}>
+                                    <button onClick={handleCancelClick}>Done</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>)}
-                <div className={styles2.starterBtmLine}>
-                    <hr />
-                </div>
-                {checkedValues.length !== vegSnackQnty ? <div className={styles2.addMoreBtn}>
-                    <button onClick={selectVegSnack}>+ Add {checkedValues.length === 0 ? "snacks" : "More"}</button>
-                </div> : ""}
-            </div>
-
-            {/* VEG HEAVY SNACK */}
-
-            <div className={styles.itemsSelectionContainer}>
-                <div className={styles.vegSnackContainer}>
-                    <h3>Veg Heavy Snack</h3>
-                    {showDropdown2 && (<div onClick={selectVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegHeavySnackQnty} Snack</h6>
-                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
-                </div>
-                <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
-                    {!showSelectedMenu2 && checkedValues2.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                        <img className={styles2.itemImage} src={item.image}  />
-                        <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                            <div style={{ width: "238px" }}>
-                                <h4>{item.name}</h4>
-                                {/* <p>{item.description}</p> */}
-                            </div>
-                            <div>
-                                <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deletVegHeavySnack(e, item)} />
-                            </div>
-                        </div>
+                    <div className={styles2.starterBtmLine}>
+                        <hr />
                     </div>
-                    ))}
+                    {checkedValues.length !== vegSnackQnty ? <div className={styles2.addMoreBtn}>
+                        <button onClick={selectVegSnack}>+ Add {checkedValues.length === 0 ? "Gravy" : "More"}</button>
+                    </div> : ""}
                 </div>
-                {showSelectedMenu2 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                    <div id={styles2.starterSearchContent}>
-                        <div>
-                            <input type="text"
-                                value={searchValue2}
-                                onChange={searchStarter2}
-                                placeholder="Search Veg Heavy Snack" />
-                            <div id={styles2.starterList}>
-                                <ul>
-                                    {vegHeavySnackData
-                                        .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                        .map((item, index) => (
-                                            <li key={item.id}>
-                                                <div className='d-flex justify-content-between'>
-                                                    <div id={styles2.insideDivLi}>
-                                                        <img src={item.image} width="30.05px" height="26.54px" />
-                                                        {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
-                                                        ) : (
-                                                            <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
-                                                        )}
-                                                        <p onClick={() => document.getElementById(item.id).click()}>
-                                                            {item.name}
-                                                            <br />
-                                                            {/* <span>{item.description}</span> */}
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <input
-                                                            id={item.id}
-                                                            type="checkbox"
-                                                            checked={item.checked}
-                                                            value={item.id}
-                                                            onChange={(e) => handleCheckboxChange2(e, item)}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        ))}
-                                </ul>
-                            </div>
-                            <div id={styles2.listInsideBtn}>
-                                <button onClick={handleCancelClick}>Done</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>)}
-                <div className={styles2.starterBtmLine}>
-                    <hr />
-                </div>
-                {checkedValues2.length !== vegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
-                    <button onClick={selectVegHeavySnack}>+ Add {checkedValues2.length === 0 ? "snacks" : "More"}</button>
-                </div> : ""}
-            </div>
 
-            {/* NON VEG SNACK */}
+                {/* VEG STARTERS */}
 
-            {
-                isVeg === true ? "" : <div className={styles.itemsSelectionContainer}>
+                <div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
-                        <h3>Non Veg Snack</h3>
-                        {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {nvegSnackQnty} Snack</h6>
+                        <h3>Veg Starters</h3>
+                        {showDropdown2 && (<div onClick={selectVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Starter</h6>
                             <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                         </div>)}
                     </div>
                     <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
-                        {!showSelectedMenu3 && checkedValues3.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                            <img className={styles2.itemImage} src={item.image}  />
+                        {!showSelectedMenu2 && checkedValues2.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                            <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                             <div className={styles2.itemDetailsContainer}>
                                 {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                                 <div style={{ width: "238px" }}>
@@ -1284,22 +1472,22 @@ const CustomBirthdayPkg = () => {
                                     {/* <p>{item.description}</p> */}
                                 </div>
                                 <div>
-                                    <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegSnack(e, item)} />
+                                    <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deletVegHeavySnack(e, item)} />
                                 </div>
                             </div>
                         </div>
                         ))}
                     </div>
-                    {showSelectedMenu3 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                    {showSelectedMenu2 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
                         <div id={styles2.starterSearchContent}>
                             <div>
                                 <input type="text"
-                                    value={searchValue3}
-                                    onChange={searchStarter3}
-                                    placeholder="Search Non-Veg Snack" />
+                                    value={searchValue2}
+                                    onChange={searchStarter2}
+                                    placeholder="Search Veg Starter" />
                                 <div id={styles2.starterList}>
                                     <ul>
-                                        {nonVegSnackData
+                                        {vegHeavySnackData
                                             .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
                                             .map((item, index) => (
                                                 <li key={item.id}>
@@ -1323,7 +1511,7 @@ const CustomBirthdayPkg = () => {
                                                                 type="checkbox"
                                                                 checked={item.checked}
                                                                 value={item.id}
-                                                                onChange={(e) => handleCheckboxChange3(e, item)}
+                                                                onChange={(e) => handleCheckboxChange2(e, item)}
                                                             />
                                                         </div>
                                                     </div>
@@ -1340,25 +1528,189 @@ const CustomBirthdayPkg = () => {
                     <div className={styles2.starterBtmLine}>
                         <hr />
                     </div>
-                    {checkedValues3.length !== nvegSnackQnty ? <div className={styles2.addMoreBtn}>
-                        <button onClick={selectNonVegSnack}>+ Add {checkedValues3.length === 0 ? "snacks" : "More"}</button>
+                    {checkedValues2.length !== vegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
+                        <button onClick={selectVegHeavySnack}>+ Add {checkedValues2.length === 0 ? "Starter" : "More"}</button>
                     </div> : ""}
                 </div>
-            }
-            {/* NON VEG HEAVY SNACK */}
 
-            {
-                isVeg === true ? "" : <div className={styles.itemsSelectionContainer}>
+                {/* VEG DRY */}
+
+                {
+                    isVeg === true ? "" : <div className={styles.itemsSelectionContainer}>
+                        <div className={styles.vegSnackContainer}>
+                            <h3>Veg Dry</h3>
+                            {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
+                                <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Veg Dry</h6>
+                                <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                            </div>)}
+                        </div>
+                        <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                            {!showSelectedMenu3 && checkedValues3.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                                <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                                <div className={styles2.itemDetailsContainer}>
+                                    {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
+                                    <div style={{ width: "238px" }}>
+                                        <h4>{item.name}</h4>
+                                        {/* <p>{item.description}</p> */}
+                                    </div>
+                                    <div>
+                                        <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegSnack(e, item)} />
+                                    </div>
+                                </div>
+                            </div>
+                            ))}
+                        </div>
+                        {showSelectedMenu3 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                            <div id={styles2.starterSearchContent}>
+                                <div>
+                                    <input type="text"
+                                        value={searchValue3}
+                                        onChange={searchStarter3}
+                                        placeholder="Search Veg Dry" />
+                                    <div id={styles2.starterList}>
+                                        <ul>
+                                            {nonVegSnackData
+                                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                                .map((item, index) => (
+                                                    <li key={item.id}>
+                                                        <div className='d-flex justify-content-between'>
+                                                            <div id={styles2.insideDivLi}>
+                                                                <img src={item.image} width="30.05px" height="26.54px" />
+                                                                {item.veg === true ? (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
+                                                                ) : (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
+                                                                )}
+                                                                <p onClick={() => document.getElementById(item.id).click()}>
+                                                                    {item.name}
+                                                                    <br />
+                                                                    {/* <span>{item.description}</span> */}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <input
+                                                                    id={item.id}
+                                                                    type="checkbox"
+                                                                    checked={item.checked}
+                                                                    value={item.id}
+                                                                    onChange={(e) => handleCheckboxChange3(e, item)}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                        </ul>
+                                    </div>
+                                    <div id={styles2.listInsideBtn}>
+                                        <button onClick={handleCancelClick}>Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>)}
+                        <div className={styles2.starterBtmLine}>
+                            <hr />
+                        </div>
+                        {checkedValues3.length !== nvegSnackQnty ? <div className={styles2.addMoreBtn}>
+                            <button onClick={selectNonVegSnack}>+ Add {checkedValues3.length === 0 ? "veg Dry" : "More"}</button>
+                        </div> : ""}
+                    </div>
+                }
+                {/* DAL */}
+
+                {
+                    isVeg === true ? "" : <div className={styles.itemsSelectionContainer}>
+                        <div className={styles.vegSnackContainer}>
+                            <h3>Dal</h3>
+                            {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
+                                <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Dal</h6>
+                                <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                            </div>)}
+                        </div>
+                        <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                            {!showSelectedMenu4 && checkedValues4.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                                <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                                <div className={styles2.itemDetailsContainer}>
+                                    {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
+                                    <div style={{ width: "238px" }}>
+                                        <h4>{item.name}</h4>
+                                        {/* <p>{item.description}</p> */}
+                                    </div>
+                                    <div>
+                                        <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegHeavySnack(e, item)} />
+                                    </div>
+                                </div>
+                            </div>
+                            ))}
+                        </div>
+                        {showSelectedMenu4 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                            <div id={styles2.starterSearchContent}>
+                                <div>
+                                    <input type="text"
+                                        value={searchValue4}
+                                        onChange={searchStarter4}
+                                        placeholder="Search Dal" />
+                                    <div id={styles2.starterList}>
+                                        <ul>
+                                            {nonVegHeavySnackData
+                                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                                .map((item, index) => (
+                                                    <li key={item.id}>
+                                                        <div className='d-flex justify-content-between'>
+                                                            <div id={styles2.insideDivLi}>
+                                                                <img src={item.image} width="30.05px" height="26.54px" />
+                                                                {item.veg === true ? (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
+                                                                ) : (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
+                                                                )}
+                                                                <p onClick={() => document.getElementById(item.id).click()}>
+                                                                    {item.name}
+                                                                    <br />
+                                                                    {/* <span>{item.description}</span> */}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <input
+                                                                    id={item.id}
+                                                                    type="checkbox"
+                                                                    checked={item.checked}
+                                                                    value={item.id}
+                                                                    onChange={(e) => handleCheckboxChange4(e, item)}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                        </ul>
+                                    </div>
+                                    <div id={styles2.listInsideBtn}>
+                                        <button onClick={handleCancelClick}>Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>)}
+                        <div className={styles2.starterBtmLine}>
+                            <hr />
+                        </div>
+                        {checkedValues4.length !== nonVegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
+                            <button onClick={selectNonVegHeavySnack}>+ Add {checkedValues4.length === 0 ? "Dal" : "More"}</button>
+                        </div> : ""}
+                    </div>
+                }
+
+                {/* RICE */}
+
+                <div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
-                        <h3>Non Veg Heavy Snack</h3>
-                        {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {nonVegHeavySnackQnty} Snack</h6>
+                        <h3>Rice</h3>
+                        {showDropdown5 && (<div onClick={selectDessert} className={styles.selectItemSearchBox} id="srchbr">
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Rice</h6>
                             <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                         </div>)}
                     </div>
                     <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
-                        {!showSelectedMenu4 && checkedValues4.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                            <img className={styles2.itemImage} src={item.image}  />
+                        {!showSelectedMenu5 && checkedValues5.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                            <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
                             <div className={styles2.itemDetailsContainer}>
                                 {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                                 <div style={{ width: "238px" }}>
@@ -1366,22 +1718,22 @@ const CustomBirthdayPkg = () => {
                                     {/* <p>{item.description}</p> */}
                                 </div>
                                 <div>
-                                    <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegHeavySnack(e, item)} />
+                                    <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteDessert(e, item)} />
                                 </div>
                             </div>
                         </div>
                         ))}
                     </div>
-                    {showSelectedMenu4 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                    {showSelectedMenu5 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
                         <div id={styles2.starterSearchContent}>
                             <div>
                                 <input type="text"
-                                    value={searchValue4}
-                                    onChange={searchStarter4}
-                                    placeholder="Search Non-Veg Heavy Snack" />
+                                    value={searchValue5}
+                                    onChange={searchStarter5}
+                                    placeholder="Search Rice" />
                                 <div id={styles2.starterList}>
                                     <ul>
-                                        {nonVegHeavySnackData
+                                        {dessertData
                                             .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
                                             .map((item, index) => (
                                                 <li key={item.id}>
@@ -1405,7 +1757,7 @@ const CustomBirthdayPkg = () => {
                                                                 type="checkbox"
                                                                 checked={item.checked}
                                                                 value={item.id}
-                                                                onChange={(e) => handleCheckboxChange4(e, item)}
+                                                                onChange={(e) => handleCheckboxChange5(e, item)}
                                                             />
                                                         </div>
                                                     </div>
@@ -1422,129 +1774,33 @@ const CustomBirthdayPkg = () => {
                     <div className={styles2.starterBtmLine}>
                         <hr />
                     </div>
-                    {checkedValues4.length !== nonVegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
-                        <button onClick={selectNonVegHeavySnack}>+ Add {checkedValues4.length === 0 ? "snacks" : "More"}</button>
+                    {checkedValues5.length !== dessertQnty ? <div className={styles2.addMoreBtn}>
+                        <button onClick={selectDessert}>+ Add {checkedValues5.length === 0 ? "Rice" : "More"}</button>
                     </div> : ""}
                 </div>
-            }
-
-            {/* DESSERTS */}
-
-            <div className={styles.itemsSelectionContainer}>
-                <div className={styles.vegSnackContainer}>
-                    <h3>Dessert</h3>
-                    {showDropdown5 && (<div onClick={selectDessert} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {dessertQnty} Dessert</h6>
-                        <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                    </div>)}
-                </div>
-                <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
-                    {!showSelectedMenu5 && checkedValues5.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                        <img className={styles2.itemImage} src={item.image}  />
-                        <div className={styles2.itemDetailsContainer}>
-                            {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                            <div style={{ width: "238px" }}>
-                                <h4>{item.name}</h4>
-                                {/* <p>{item.description}</p> */}
-                            </div>
-                            <div>
-                                <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteDessert(e, item)} />
-                            </div>
-                        </div>
+                <div className='d-flex justify-content-around'>
+                    <div className={styles.checkpriceBtn}>
+                        <button onClick={checkprice}>Check Price</button>
                     </div>
-                    ))}
-                </div>
-                {showSelectedMenu5 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                    <div id={styles2.starterSearchContent}>
-                        <div>
-                            <input type="text"
-                                value={searchValue5}
-                                onChange={searchStarter5}
-                                placeholder="Search Dessert" />
-                            <div id={styles2.starterList}>
-                                <ul>
-                                    {dessertData
-                                        .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                        .map((item, index) => (
-                                            <li key={item.id}>
-                                                <div className='d-flex justify-content-between'>
-                                                    <div id={styles2.insideDivLi}>
-                                                        <img src={item.image} width="30.05px" height="26.54px" />
-                                                        {item.veg === true ? (
-                                                            <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
-                                                        ) : (
-                                                            <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
-                                                        )}
-                                                        <p onClick={() => document.getElementById(item.id).click()}>
-                                                            {item.name}
-                                                            <br />
-                                                            {/* <span>{item.description}</span> */}
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <input
-                                                            id={item.id}
-                                                            type="checkbox"
-                                                            checked={item.checked}
-                                                            value={item.id}
-                                                            onChange={(e) => handleCheckboxChange5(e, item)}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        ))}
-                                </ul>
-                            </div>
-                            <div id={styles2.listInsideBtn}>
-                                <button onClick={handleCancelClick}>Done</button>
-                            </div>
-                        </div>
+                    <div className={styles.addonsbtn}>
+                        <button onClick={addAlldata}>Add Ons</button>
                     </div>
-                </div>)}
-                <div className={styles2.starterBtmLine}>
-                    <hr />
                 </div>
-                {checkedValues5.length !== dessertQnty ? <div className={styles2.addMoreBtn}>
-                    <button onClick={selectDessert}>+ Add {checkedValues5.length === 0 ? "Dessert" : "More"}</button>
-                </div> : ""}
-            </div>
-            <div className='d-flex justify-content-around'>
-            <div className={styles.checkpriceBtn}>
-                <button onClick={checkprice}>Check Price</button>
-            </div>
-            <div className={styles.addonsbtn}>
-                <button onClick={addAlldata}>Add Ons</button>
-            </div>
-            </div>
-            <div className={styles.bottomSectn} style={btmPng}>
-                <div className={styles.top} style={btmPngCard}>
-                    <h6>Fun Eatables, Live Counters<br />Main Course Add On's</h6>
-                    <button>On <span>Next</span> Page</button>
-                </div>
-            </div>
-            {reminder && (<div className={styles.reminderPopup}>
-                <div className={styles.reminder}>
-                    <h3>Reminder</h3>
-                    <h5>You Have Reached Maximum Number Of Selections For<br /><span>{reminderName}</span></h5>
-                </div>
-                <div>
-                    <button onClick={closeReminder}>Got It!</button>
-                </div>
-            </div>)}
-            {showPopup && (<form className={styles.detailsPopup}>
-                <div className={styles.inputfield}>
-                    <h5>*<span>Details</span>*</h5>
-                    <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
-                    <input type='number' placeholder='WhatsApp No.' value={number} onChange={(e) => setNumber(e.target.value)} required />
-                    <input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} required />
-                </div>
-                <div style={{ textAlign: "center", marginTop: "25px" }}>
-                    <button onClick={submitDetails} type='submit' id={styles.instantQuoteBtn}>Get Instant Quote!</button>
-                    <button onClick={goBackBtn} id={styles.backBtn}><FontAwesomeIcon icon={faArrowLeft} />  Go Back To Menu</button>
-                </div>
-            </form>)}
-        </div >
+                {showPopup && (<form className={styles.detailsPopup}>
+                    <div className={styles.inputfield}>
+                        <h5>*<span>Details</span>*</h5>
+                        <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
+                        <input type='number' placeholder='WhatsApp No.' value={number} onChange={(e) => setNumber(e.target.value)} required />
+                        <input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    </div>
+                    <div style={{ textAlign: "center", marginTop: "25px" }}>
+                        <button onClick={submitDetails} type='submit' id={styles.instantQuoteBtn}>Get Instant Quote!</button>
+                        <button onClick={goBackBtn} id={styles.backBtn}><FontAwesomeIcon icon={faArrowLeft} />  Go Back To Menu</button>
+                    </div>
+                </form>)}
+            </div >
+        </div>
     )
 }
 
-export default CustomBirthdayPkg
+export default CustomizeAoc

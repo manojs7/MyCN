@@ -1046,7 +1046,7 @@ const CustomiseBirthdayPkg = () => {
                 )} */}
                 <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
                     {!showSelectedMenu && checkedValues.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                        <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                        <img className={styles2.itemImage} src={item.image} />
                         <div className={styles2.itemDetailsContainer}>
                             {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div style={{ width: "238px" }}>
@@ -1153,7 +1153,7 @@ const CustomiseBirthdayPkg = () => {
                 </div>
                 <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
                     {!showSelectedMenu2 && checkedValues2.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                        <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                        <img className={styles2.itemImage} src={item.image}  />
                         <div className={styles2.itemDetailsContainer}>
                             {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div style={{ width: "238px" }}>
@@ -1235,7 +1235,7 @@ const CustomiseBirthdayPkg = () => {
                     </div>
                     <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
                         {!showSelectedMenu3 && checkedValues3.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                            <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                            <img className={styles2.itemImage} src={item.image}  />
                             <div className={styles2.itemDetailsContainer}>
                                 {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                                 <div style={{ width: "238px" }}>
@@ -1317,7 +1317,7 @@ const CustomiseBirthdayPkg = () => {
                     </div>
                     <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
                         {!showSelectedMenu4 && checkedValues4.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                            <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                            <img className={styles2.itemImage} src={item.image}  />
                             <div className={styles2.itemDetailsContainer}>
                                 {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                                 <div style={{ width: "238px" }}>
@@ -1399,7 +1399,7 @@ const CustomiseBirthdayPkg = () => {
                 </div>
                 <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
                     {!showSelectedMenu5 && checkedValues5.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                        <img className={styles2.itemImage} src="/diy images/starter/image 23.png" />
+                        <img className={styles2.itemImage} src={item.image}  />
                         <div className={styles2.itemDetailsContainer}>
                             {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
                             <div style={{ width: "238px" }}>

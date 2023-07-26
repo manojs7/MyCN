@@ -4,6 +4,7 @@ import styles2 from '/styles/BirthdayParty.module.scss';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong, faArrowLeftLong, faMagnifyingGlass, faAngleDown, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import Link from 'next/link';
 
 const SelectPackage = () => {
 
@@ -384,7 +385,7 @@ const SelectPackage = () => {
                         </div>
                     </div>
                     <div className={styles.createPkgBtn}>
-                        <button>Create Your Own Package</button>
+                        <Link href="/customizeAoc"><button>Create Your Own Package</button></Link>
                     </div>
                 </div> : ""}
                 <div className={styles.bottomtag} style={btmPngCard}>
