@@ -19,6 +19,9 @@ const AllOccasionCatering = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleCity = (city) => {
+        if(city !== 'Bangalore'){
+            alert('This service is not available in your city');
+        }
         setCity(city);
         checkFormValidity();
     }

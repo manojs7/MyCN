@@ -9,7 +9,7 @@ import { faArrowRight, faPlus, faArrowLeft, faMagnifyingGlass, faAngleDown } fro
 import Swal from "sweetalert2";
 import { useAppMenu } from "$lib/menuContext";
 
-const CustomizeAoc = () => {
+const CustomizeAocPkg = () => {
 
     const { cities } = useAppMenu();
 
@@ -1947,66 +1947,29 @@ const CustomizeAoc = () => {
                     </div>
                 </div>
                 <div className={styles.customisePkgContainer}>
-                    <h3>Create Your Package</h3>
+                    <h3>Customize Your Package</h3>
                     <hr />
                 </div>
-                {isVeg !== true ? <div className={styles3.customCard}>
-                    <div style={{ marginTop: "80px", position: "relative", zIndex: "1" }}>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Starter</h6>
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                        </div>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Bread</h6>
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                        </div>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Gravy</h6>
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                        </div>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select A Dal</h6>
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                        </div>
-                        <div className={styles3.addMoreBtn}>
-                            <button>+ Add More</button>
-                        </div>
-                    </div>
-                    <div style={{ marginTop: "-140px" }}>
-                        <Image src="/ODC/customCard.png" width="208px" height="160px" />
-                    </div>
-                </div>: ""}
-
-                { isVeg === true ? <div className={styles3.card} style={{ margin: "auto", marginTop: "20px", border: "1px solid #F3A400", backgroundColor: 'rgba(255, 255, 255, 0.44)' }}>
+                {isVeg === true ? <div className={styles3.card} style={{ border: "1px solid green", margin: "auto", marginTop: "30px" }}>
                     <div style={vegtag} className={styles3.nvtag}>
-                        <h4>CUSTOM</h4>
+                        <h4>{packageName}</h4>
                     </div>
-                    <div className={styles3.vegCostomCard}>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Select A Starter</h6>
-                            {/* <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6> */}
-                        </div>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Select A Bread</h6>
-                            {/* <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6> */}
-                        </div>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Select A Gravy</h6>
-                            {/* <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6> */}
-                        </div>
-                        <div className={styles3.smselectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Select A Dal</h6>
-                            {/* <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6> */}
-                        </div>
-                        <div className={styles3.addMoreBtn}>
-                            <button>+ Add More</button>
-                        </div>
+                    <div className={styles3.blackCard}>
+                        {itemsData.map((item, index) => (<h5 key={index}>{item.name}<span>{item.desc}</span></h5>))}
                     </div>
-                </div>: ""}
+                </div>: "" }
+                {isVeg !== true ? <div className={styles3.card} style={{ margin: "auto", marginTop: "30px" }}>
+                    <div style={vegtag} className={styles3.nvtag}>
+                        <h4>{packageName}</h4>
+                    </div>
+                    <div className={styles3.blackCard}>
+                        {itemsData.map((item, index) => (<h5 style={{lineHeight: "85%"}} key={index}>{item.name}<span>{item.desc}</span></h5>))}
+                    </div>
+                </div> : ""}
 
                 {/* VEG STARTERS */}
 
-                <div className={styles.itemsSelectionContainer}>
+                { vegStarterQnty > 0 ? <div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
                         <h3>Veg Starters</h3>
                         {showDropdown2 && (<div onClick={selectVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
@@ -2083,11 +2046,11 @@ const CustomizeAoc = () => {
                     {checkedValues2.length !== vegStarterQnty ? <div className={styles2.addMoreBtn}>
                         <button onClick={selectVegHeavySnack}>+ Add {checkedValues2.length === 0 ? " Starter" : "More"}</button>
                     </div> : ""}
-                </div>
+                </div>: ""}
 
                 {/* CHICKEN STARTER */}
 
-                {isVeg !== true ? <div className={styles.itemsSelectionContainer}>
+                {isVeg !== true ?<div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
                         <h3>Chicken Starters</h3>
                         {showDropdown10 && (<div onClick={selectChickenStarter} className={styles.selectItemSearchBox} id="srchbr">
@@ -2164,11 +2127,11 @@ const CustomizeAoc = () => {
                     {checkedValues10.length + checkedValues11.length !== nvStarterQnty ? <div className={styles2.addMoreBtn}>
                         <button onClick={selectChickenStarter}>+ Add {checkedValues10.length === 0 ? "Starter" : "More"}</button>
                     </div> : ""}
-                </div> : ""}
+                </div>:""}
 
                 {/* FISH STARTER */}
 
-                {isVeg !== true ? <div className={styles.itemsSelectionContainer}>
+                {isVeg !== true ?<div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
                         <h3>Fish Starters</h3>
                         {showDropdown11 && (<div onClick={selectFishStarter} className={styles.selectItemSearchBox} id="srchbr">
@@ -2245,7 +2208,7 @@ const CustomizeAoc = () => {
                     {checkedValues10.length + checkedValues11.length !== nvStarterQnty ? <div className={styles2.addMoreBtn}>
                         <button onClick={selectFishStarter}>+ Add {checkedValues11.length === 0 ? "Starter" : "More"}</button>
                     </div> : ""}
-                </div> : ""}
+                </div>: ""}
 
                 {/* SALAD */}
 
@@ -2493,83 +2456,83 @@ const CustomizeAoc = () => {
                 {/* VEG DRY */}
 
                 <div className={styles.itemsSelectionContainer}>
-                    <div className={styles.vegSnackContainer}>
-                        <h3>Veg Dry</h3>
-                        {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegDryQnty} Veg Dry</h6>
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                        </div>)}
-                    </div>
-                    <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
-                        {!showSelectedMenu3 && checkedValues3.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                            <img className={styles2.itemImage} src={item.image} />
-                            <div className={styles2.itemDetailsContainer}>
-                                {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                                <div style={{ width: "238px" }}>
-                                    <h4>{item.name}</h4>
-                                    {/* <p>{item.description}</p> */}
+                        <div className={styles.vegSnackContainer}>
+                            <h3>Veg Dry</h3>
+                            {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
+                                <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegDryQnty} Veg Dry</h6>
+                                <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                            </div>)}
+                        </div>
+                        <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                            {!showSelectedMenu3 && checkedValues3.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                                <img className={styles2.itemImage} src={item.image} />
+                                <div className={styles2.itemDetailsContainer}>
+                                    {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
+                                    <div style={{ width: "238px" }}>
+                                        <h4>{item.name}</h4>
+                                        {/* <p>{item.description}</p> */}
+                                    </div>
+                                    <div>
+                                        <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegSnack(e, item)} />
+                                    </div>
                                 </div>
+                            </div>
+                            ))}
+                        </div>
+                        {showSelectedMenu3 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                            <div id={styles2.starterSearchContent}>
                                 <div>
-                                    <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegSnack(e, item)} />
+                                    <input type="text"
+                                        value={searchValue3}
+                                        onChange={searchStarter3}
+                                        placeholder="Search Veg Dry" />
+                                    <div id={styles2.starterList}>
+                                        <ul>
+                                            {nonVegSnackData
+                                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                                .map((item, index) => (
+                                                    <li key={item.id}>
+                                                        <div className='d-flex justify-content-between'>
+                                                            <div id={styles2.insideDivLi}>
+                                                                <img src={item.image} width="30.05px" height="26.54px" />
+                                                                {item.veg === true ? (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
+                                                                ) : (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
+                                                                )}
+                                                                <p onClick={() => document.getElementById(item.id).click()}>
+                                                                    {item.name}
+                                                                    <br />
+                                                                    {/* <span>{item.description}</span> */}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <input
+                                                                    id={item.id}
+                                                                    type="checkbox"
+                                                                    checked={item.checked}
+                                                                    value={item.id}
+                                                                    onChange={(e) => handleCheckboxChange3(e, item)}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                        </ul>
+                                    </div>
+                                    <div id={styles2.listInsideBtn}>
+                                        <button onClick={handleCancelClick}>Done</button>
+                                    </div>
                                 </div>
                             </div>
+                        </div>)}
+                        <div className={styles2.starterBtmLine}>
+                            <hr />
                         </div>
-                        ))}
+                        {checkedValues3.length + checkedValues.length !== vegDryQnty ? <div className={styles2.addMoreBtn}>
+                            <button onClick={selectNonVegSnack}>+ Add {checkedValues3.length === 0 ? "veg Dry" : "More"}</button>
+                        </div> : ""}
                     </div>
-                    {showSelectedMenu3 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                        <div id={styles2.starterSearchContent}>
-                            <div>
-                                <input type="text"
-                                    value={searchValue3}
-                                    onChange={searchStarter3}
-                                    placeholder="Search Veg Dry" />
-                                <div id={styles2.starterList}>
-                                    <ul>
-                                        {nonVegSnackData
-                                            .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                            .map((item, index) => (
-                                                <li key={item.id}>
-                                                    <div className='d-flex justify-content-between'>
-                                                        <div id={styles2.insideDivLi}>
-                                                            <img src={item.image} width="30.05px" height="26.54px" />
-                                                            {item.veg === true ? (
-                                                                <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
-                                                            ) : (
-                                                                <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
-                                                            )}
-                                                            <p onClick={() => document.getElementById(item.id).click()}>
-                                                                {item.name}
-                                                                <br />
-                                                                {/* <span>{item.description}</span> */}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <input
-                                                                id={item.id}
-                                                                type="checkbox"
-                                                                checked={item.checked}
-                                                                value={item.id}
-                                                                onChange={(e) => handleCheckboxChange3(e, item)}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            ))}
-                                    </ul>
-                                </div>
-                                <div id={styles2.listInsideBtn}>
-                                    <button onClick={handleCancelClick}>Done</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>)}
-                    <div className={styles2.starterBtmLine}>
-                        <hr />
-                    </div>
-                    {checkedValues3.length + checkedValues.length !== vegDryQnty ? <div className={styles2.addMoreBtn}>
-                        <button onClick={selectNonVegSnack}>+ Add {checkedValues3.length === 0 ? "veg Dry" : "More"}</button>
-                    </div> : ""}
-                </div>
 
                 {/* VEG GRAVY SELECTION */}
 
@@ -2681,87 +2644,87 @@ const CustomizeAoc = () => {
                 {/* DAL */}
 
                 <div className={styles.itemsSelectionContainer}>
-                    <div className={styles.vegSnackContainer}>
-                        <h3>Dal</h3>
-                        {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {dalQnty} Dal</h6>
-                            <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
-                        </div>)}
-                    </div>
-                    <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
-                        {!showSelectedMenu4 && checkedValues4.map((item, index) => (<div className={styles2.fstItem} key={index}>
-                            <img className={styles2.itemImage} src={item.image} />
-                            <div className={styles2.itemDetailsContainer}>
-                                {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
-                                <div style={{ width: "238px" }}>
-                                    <h4>{item.name}</h4>
-                                    {/* <p>{item.description}</p> */}
+                        <div className={styles.vegSnackContainer}>
+                            <h3>Dal</h3>
+                            {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
+                                <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {dalQnty} Dal</h6>
+                                <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
+                            </div>)}
+                        </div>
+                        <div className={styles2.selectedStarterContainer} style={{ marginTop: "10px" }}>
+                            {!showSelectedMenu4 && checkedValues4.map((item, index) => (<div className={styles2.fstItem} key={index}>
+                                <img className={styles2.itemImage} src={item.image} />
+                                <div className={styles2.itemDetailsContainer}>
+                                    {item.veg === true ? <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' /> : <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />}
+                                    <div style={{ width: "238px" }}>
+                                        <h4>{item.name}</h4>
+                                        {/* <p>{item.description}</p> */}
+                                    </div>
+                                    <div>
+                                        <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegHeavySnack(e, item)} />
+                                    </div>
                                 </div>
+                            </div>
+                            ))}
+                        </div>
+                        {showSelectedMenu4 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
+                            <div id={styles2.starterSearchContent}>
                                 <div>
-                                    <img className={styles2.trassLogo} src="/diy images/trash-alt.png" onClick={(e) => deleteNonVegHeavySnack(e, item)} />
+                                    <input type="text"
+                                        value={searchValue4}
+                                        onChange={searchStarter4}
+                                        placeholder="Search Dal" />
+                                    <div id={styles2.starterList}>
+                                        <ul>
+                                            {nonVegHeavySnackData
+                                                .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
+                                                .map((item, index) => (
+                                                    <li key={item.id}>
+                                                        <div className='d-flex justify-content-between'>
+                                                            <div id={styles2.insideDivLi}>
+                                                                <img src={item.image} width="30.05px" height="26.54px" />
+                                                                {item.veg === true ? (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
+                                                                ) : (
+                                                                    <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
+                                                                )}
+                                                                <p onClick={() => document.getElementById(item.id).click()}>
+                                                                    {item.name}
+                                                                    <br />
+                                                                    {/* <span>{item.description}</span> */}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <input
+                                                                    id={item.id}
+                                                                    type="checkbox"
+                                                                    checked={item.checked}
+                                                                    value={item.id}
+                                                                    onChange={(e) => handleCheckboxChange4(e, item)}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                        </ul>
+                                    </div>
+                                    <div id={styles2.listInsideBtn}>
+                                        <button onClick={handleCancelClick}>Done</button>
+                                    </div>
                                 </div>
                             </div>
+                        </div>)}
+                        <div className={styles2.starterBtmLine}>
+                            <hr />
                         </div>
-                        ))}
+                        {checkedValues4.length !== dalQnty ? <div className={styles2.addMoreBtn}>
+                            <button onClick={selectNonVegHeavySnack}>+ Add {checkedValues4.length === 0 ? "Dal" : "More"}</button>
+                        </div> : ""}
                     </div>
-                    {showSelectedMenu4 && (<div ref={outerDivRef} className={styles2.starterMenuContainer}>
-                        <div id={styles2.starterSearchContent}>
-                            <div>
-                                <input type="text"
-                                    value={searchValue4}
-                                    onChange={searchStarter4}
-                                    placeholder="Search Dal" />
-                                <div id={styles2.starterList}>
-                                    <ul>
-                                        {nonVegHeavySnackData
-                                            .sort((a, b) => (a.checked === b.checked ? 0 : a.checked ? -1 : 1))
-                                            .map((item, index) => (
-                                                <li key={item.id}>
-                                                    <div className='d-flex justify-content-between'>
-                                                        <div id={styles2.insideDivLi}>
-                                                            <img src={item.image} width="30.05px" height="26.54px" />
-                                                            {item.veg === true ? (
-                                                                <img className={styles2.vegLogo} src='/birthdayParty/vegLogo.png' />
-                                                            ) : (
-                                                                <img className={styles2.vegLogo} src='/birthdayParty/nvlogo.png' />
-                                                            )}
-                                                            <p onClick={() => document.getElementById(item.id).click()}>
-                                                                {item.name}
-                                                                <br />
-                                                                {/* <span>{item.description}</span> */}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <input
-                                                                id={item.id}
-                                                                type="checkbox"
-                                                                checked={item.checked}
-                                                                value={item.id}
-                                                                onChange={(e) => handleCheckboxChange4(e, item)}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            ))}
-                                    </ul>
-                                </div>
-                                <div id={styles2.listInsideBtn}>
-                                    <button onClick={handleCancelClick}>Done</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>)}
-                    <div className={styles2.starterBtmLine}>
-                        <hr />
-                    </div>
-                    {checkedValues4.length !== dalQnty ? <div className={styles2.addMoreBtn}>
-                        <button onClick={selectNonVegHeavySnack}>+ Add {checkedValues4.length === 0 ? "Dal" : "More"}</button>
-                    </div> : ""}
-                </div>
 
                 {/* KOFTA */}
 
-                <div className={styles.itemsSelectionContainer}>
+                {koftaQnty > 0 ? <div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
                         <h3>Kofta</h3>
                         {showDropdown8 && (<div onClick={selectKofta} className={styles.selectItemSearchBox} id="srchbr">
@@ -2838,11 +2801,11 @@ const CustomizeAoc = () => {
                     {checkedValues8.length !== koftaQnty ? <div className={styles2.addMoreBtn}>
                         <button onClick={selectKofta}>+ Add {checkedValues8.length === 0 ? "Kofta" : "More"}</button>
                     </div> : ""}
-                </div>
+                </div> : ""}
 
                 {/* CHICKEN GRAVY */}
 
-                {isVeg !== true ? <div className={styles.itemsSelectionContainer}>
+                {isVeg !== true ?<div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
                         <h3>Chicken Gravy</h3>
                         {showDropdown12 && (<div onClick={selectChickenGravy} className={styles.selectItemSearchBox} id="srchbr">
@@ -2918,11 +2881,11 @@ const CustomizeAoc = () => {
                     </div>
                     {checkedValues12.length + checkedValues13.length !== nvGravyQnty ? <div className={styles2.addMoreBtn}>
                         <button onClick={selectChickenGravy}>+ Add {checkedValues12.length === 0 ? "Gravy" : "More"}</button>
-                    </div> : ""}
-                </div> : ""}
+                    </div>:""}
+                </div>: ""}
                 {/* FISH GRAVY */}
 
-                {isVeg !== true ? <div className={styles.itemsSelectionContainer}>
+                {isVeg !== true ?<div className={styles.itemsSelectionContainer}>
                     <div className={styles.vegSnackContainer}>
                         <h3>Fish Gravy</h3>
                         {showDropdown13 && (<div onClick={selectFishGravy} className={styles.selectItemSearchBox} id="srchbr">
@@ -2998,8 +2961,8 @@ const CustomizeAoc = () => {
                     </div>
                     {checkedValues12.length + checkedValues13.length !== nvGravyQnty ? <div className={styles2.addMoreBtn}>
                         <button onClick={selectFishGravy}>+ Add {checkedValues13.length === 0 ? "Gravy" : "More"}</button>
-                    </div> : ""}
-                </div> : ""}
+                    </div>:""}
+                </div>: ""}
 
                 {/* DESSERT */}
 
@@ -3077,9 +3040,9 @@ const CustomizeAoc = () => {
                     <div className={styles2.starterBtmLine}>
                         <hr />
                     </div>
-                    {checkedValues9.length != dessertQnty ? <div className={styles2.addMoreBtn}>
+                    {checkedValues9.length != dessertQnty ?<div className={styles2.addMoreBtn}>
                         <button onClick={selectDessert}>+ Add {checkedValues9.length === 0 ? "Dessert" : "More"}</button>
-                    </div> : ""}
+                    </div>:""}
                 </div>
 
                 <div className='d-flex justify-content-around'>
@@ -3116,4 +3079,4 @@ const CustomizeAoc = () => {
     )
 }
 
-export default CustomizeAoc
+export default CustomizeAocPkg

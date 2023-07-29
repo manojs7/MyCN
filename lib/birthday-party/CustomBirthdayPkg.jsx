@@ -1076,7 +1076,7 @@ const CustomBirthdayPkg = () => {
                 <div className={styles.vegSnackContainer}>
                     <h3>Veg Snack</h3>
                     {showDropdown && (<div onClick={selectVegSnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegSnackQnty} Snack</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Snack</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1177,9 +1177,9 @@ const CustomBirthdayPkg = () => {
                 <div className={styles2.starterBtmLine}>
                     <hr />
                 </div>
-                {checkedValues.length !== vegSnackQnty ? <div className={styles2.addMoreBtn}>
+                <div className={styles2.addMoreBtn}>
                     <button onClick={selectVegSnack}>+ Add {checkedValues.length === 0 ? "snacks" : "More"}</button>
-                </div> : ""}
+                </div>
             </div>
 
             {/* VEG HEAVY SNACK */}
@@ -1188,7 +1188,7 @@ const CustomBirthdayPkg = () => {
                 <div className={styles.vegSnackContainer}>
                     <h3>Veg Heavy Snack</h3>
                     {showDropdown2 && (<div onClick={selectVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {vegHeavySnackQnty} Snack</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Snack</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1258,9 +1258,9 @@ const CustomBirthdayPkg = () => {
                 <div className={styles2.starterBtmLine}>
                     <hr />
                 </div>
-                {checkedValues2.length !== vegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
+                <div className={styles2.addMoreBtn}>
                     <button onClick={selectVegHeavySnack}>+ Add {checkedValues2.length === 0 ? "snacks" : "More"}</button>
-                </div> : ""}
+                </div>
             </div>
 
             {/* NON VEG SNACK */}
@@ -1270,7 +1270,7 @@ const CustomBirthdayPkg = () => {
                     <div className={styles.vegSnackContainer}>
                         <h3>Non Veg Snack</h3>
                         {showDropdown3 && (<div onClick={selectNonVegSnack} className={styles.selectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {nvegSnackQnty} Snack</h6>
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Snack</h6>
                             <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                         </div>)}
                     </div>
@@ -1340,9 +1340,9 @@ const CustomBirthdayPkg = () => {
                     <div className={styles2.starterBtmLine}>
                         <hr />
                     </div>
-                    {checkedValues3.length !== nvegSnackQnty ? <div className={styles2.addMoreBtn}>
+                    <div className={styles2.addMoreBtn}>
                         <button onClick={selectNonVegSnack}>+ Add {checkedValues3.length === 0 ? "snacks" : "More"}</button>
-                    </div> : ""}
+                    </div>
                 </div>
             }
             {/* NON VEG HEAVY SNACK */}
@@ -1352,7 +1352,7 @@ const CustomBirthdayPkg = () => {
                     <div className={styles.vegSnackContainer}>
                         <h3>Non Veg Heavy Snack</h3>
                         {showDropdown4 && (<div onClick={selectNonVegHeavySnack} className={styles.selectItemSearchBox} id="srchbr">
-                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {nonVegHeavySnackQnty} Snack</h6>
+                            <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Snack</h6>
                             <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                         </div>)}
                     </div>
@@ -1422,9 +1422,9 @@ const CustomBirthdayPkg = () => {
                     <div className={styles2.starterBtmLine}>
                         <hr />
                     </div>
-                    {checkedValues4.length !== nonVegHeavySnackQnty ? <div className={styles2.addMoreBtn}>
+                    <div className={styles2.addMoreBtn}>
                         <button onClick={selectNonVegHeavySnack}>+ Add {checkedValues4.length === 0 ? "snacks" : "More"}</button>
-                    </div> : ""}
+                    </div>
                 </div>
             }
 
@@ -1434,7 +1434,7 @@ const CustomBirthdayPkg = () => {
                 <div className={styles.vegSnackContainer}>
                     <h3>Dessert</h3>
                     {showDropdown5 && (<div onClick={selectDessert} className={styles.selectItemSearchBox} id="srchbr">
-                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select {dessertQnty} Dessert</h6>
+                        <h6><FontAwesomeIcon icon={faMagnifyingGlass} /> Select Dessert</h6>
                         <h6><FontAwesomeIcon icon={faAngleDown} /> Click here to select</h6>
                     </div>)}
                 </div>
@@ -1504,9 +1504,9 @@ const CustomBirthdayPkg = () => {
                 <div className={styles2.starterBtmLine}>
                     <hr />
                 </div>
-                {checkedValues5.length !== dessertQnty ? <div className={styles2.addMoreBtn}>
+                <div className={styles2.addMoreBtn}>
                     <button onClick={selectDessert}>+ Add {checkedValues5.length === 0 ? "Dessert" : "More"}</button>
-                </div> : ""}
+                </div>
             </div>
             <div className='d-flex justify-content-around'>
             <div className={styles.checkpriceBtn}>
