@@ -15,16 +15,6 @@ import {
 } from "@mui/material";
 const ProfileDD = () => {
   const [anchorEl4, setAnchorEl4] = React.useState(null);
-  const [role, setRole]=useState('')
-  useEffect(() => {
-    if (typeof sessionStorage !== 'undefined') {
-       setRole(sessionStorage.getItem('role'))
-
-    } else {
-      
-    }
-  }, []);
-  // const role= sessionStorage.getItem('role')
 
   const handleClick4 = (event) => {
     setAnchorEl4(event.currentTarget);
@@ -74,7 +64,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              {{role}}
+              Hey
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>

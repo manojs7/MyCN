@@ -1,30 +1,57 @@
-// import NextAuth from 'next-auth';
-// import providers from 'next-auth/providers';
+import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 
-// const options = {
-//   providers: [
-//     providers.Credentials({
-//       // The name to display on the sign-in form (e.g. "Sign in with...")
-//       name: 'Credentials',
-//       credentials: {
-//         username: { label: "Username", type: "text" },
-//         password: { label: "Password", type: "password" }
-//       },
-//       authorize: async (credentials) => {
-//         if (credentials.username === 'sales' && credentials.password === 'sales123') {
-//           return Promise.resolve({ name: 'Sales User' });
-//         } else if (credentials.username === 'admin' && credentials.password === 'admin123') {
-//           return Promise.resolve({ name: 'Admin' });
-//         } else if (credentials.username === 'superadmin' && credentials.password === 'superadmin123') {
-//           return Promise.resolve({ name: 'Super Admin' });
-//         } else if (credentials.username === 'operations' && credentials.password === 'operations123') {
-//           return Promise.resolve({ name: 'Operations User' });
-//         } else {
-//           return Promise.resolve(null);
-//         }
-//       }
-//     })
-//   ],
-// };
+const options = {
+  secret: process.env.AUTH_SECRET,
+  providers: [
+    Credentials({
+      // Your credentials provider configuration
+      credentials: {
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      /**
+       * Authorizes the user based on the provided credentials.
+       *
+       * @param {object} credentials - The user credentials.
+       * @param {string} credentials.username - The username.
+       * @param {string} credentials.password - The password.
+       *
+       * @returns {Promise<object|null>} - A promise that resolves with the user object if the credentials are valid,
+       *                                  or null otherwise.
+       */
+      authorize: async (credentials) => {
+        const authorizedUsers = {
+          admin: { username: "admin", password: "admin123", role: "Admin" },
+          sales: {
+            username: "sales",
+            password: "sales123",
+            role: "Super Admin",
+          },
+          operations: {
+            username: "operations",
+            password: "operations123",
+            role: "ops",
+          },
+        };
 
-// export default (req, res) => NextAuth(req, res, options);
+        const user = authorizedUsers[credentials.username];
+        if (user && user.password === credentials.password) {
+          return Promise.resolve(user);
+        } else {
+          return Promise.resolve(null);
+        }
+      },
+    }),
+    // Add other providers if needed
+  ],
+  callbacks: {
+    async session(session, user) {
+      session.user = user;
+      return Promise.resolve(session);
+    },
+  },
+  
+};
+
+export default NextAuth(options);

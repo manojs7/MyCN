@@ -8,7 +8,7 @@ const CreateForm = () => {
   const [formData, setFormData] = useState({
     ninja:"",
     dateOfEvent: '',
-    dispatchTime: '',
+    eventTime: '',
     kitchenName: '',
     orderID: '',
     clientName: '',
@@ -21,6 +21,25 @@ const CreateForm = () => {
     modifiedSection: '',
     city: '',
     kitchenCode: '',
+
+    // orderid: '',
+    //   user: {
+    //     name: '',
+    //     email: '',
+    //     mobile: '',
+    //     city: '',
+    //   },
+    //   event_time: '',
+    //   event_date: '',
+    //   instructions: '',
+    //   menu_selected: null, // or you can set an initial value here
+    //   guest_count: 0,
+    //   veg_c: 0,
+    //   nonveg_c: 0,
+    //   address: '',
+    //   pincode: '',
+    //   grandTotal: '',
+    //   location_url: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -59,25 +78,24 @@ const CreateForm = () => {
 
   return (
     <BaseCard>  
-    <form className={styles['form-group']} onSubmit={handleSubmit}>
-    <div className='container'>
-      <div className='row'>
-      <div className="col-md-4">
-        <label>Ninja:</label>
-        <Select
+    <form onSubmit={handleSubmit}>
+      
+      <label>
+        Ninja:
+        <select
         className='form-control'
           name="ninja"
           value={formData.ninja}
           onChange={handleChange}
         >
-          <option value={''}>Select Ninja</option>
-          <option value={'Anup'}>Anup</option>
-        </Select>
-
-      </div>
-
-      <div className="col-md-4">
-        <label>Date of Event:</label>
+          <option value="">Select Ninja</option>
+          <option value="diy">DIY</option>
+          <option value="Anup">Anup</option>
+        </select>
+      </label>
+      <br />
+      <label>
+        Date of Event:
         <input
         className='form-control'
           type="date"
@@ -85,11 +103,10 @@ const CreateForm = () => {
           value={formData.dateOfEvent}
           onChange={handleChange}
         />
-        {errors.dateOfEvent && <span className={styles.error}>{errors.dateOfEvent}</span>}
-      </div>
-
-      <div className="col-md-4">
-        <label>Dispatch Time (AM/PM format):</label>
+      </label>
+      <br />
+      <label>
+        Dispatch Time:
         <input
         className='form-control'
           type="time"
@@ -97,107 +114,144 @@ const CreateForm = () => {
           value={formData.dispatchTime}
           onChange={handleChange}
         />
-        {/* Add validation error span if needed */}
-      </div>
+      </label>
+      <br />
+      <label>
+        Kitchen Name:
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenName"
+          value={formData.kitchenName}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Order ID:
+        <input
+        className='form-control'
+          type="text"
+          name="orderID"
+          value={formData.orderID}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Client Name:
+        <input
+        className='form-control'
+          type="text"
+          name="clientName"
+          value={formData.clientName}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Product Name:
+        <input
+        className='form-control'
+          type="text"
+          name="productName"
+          value={formData.productName}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Menu Selected:
+        <input
+        className='form-control'
+          type="text"
+          name="menuSelected"
+          value={formData.menuSelected}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Special Instructions:
+        <input
+        className='form-control'
+          type="text"
+          name="specialInstructions"
+          value={formData.specialInstructions}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Delivery Agent:
+        <input
+        className='form-control'
+          type="text"
+          name="deliveryAgent"
+          value={formData.deliveryAgent}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Delivery Agent Contact:
+        <input
+        className='form-control'
+          type="text"
+          name="deliveryAgentContact"
+          value={formData.deliveryAgentContact}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Guest Count:
+        <input
+        className='form-control'
+          type="number"
+          name="guestCount"
+          value={formData.guestCount}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Modified Section:
+        <input
+        className='form-control'
+          type="text"
+          name="modifiedSection"
+          value={formData.modifiedSection}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        City:
+        <input
+        className='form-control'
+          type="text"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Kitchen Code:
+        <input
+        className='form-control'
+          type="text"
+          name="kitchenCode"
+          value={formData.kitchenCode}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
 
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-      <div className="col-md-4">
-        <label>Kitchen Name:</label>
-        <input
-        className='form-control'
-          type="text"
-          name="kitchenName"
-          value={formData.kitchenName}
-          onChange={handleChange}
-        />
-        {/* Add validation error span if needed */}
-      </div>
-
-      {/* Add other input fields here */}
-
-      </div>
-      <button type="submit" className='btn btn-primary col-md-4' maxLength={10} >Submit</button>
-
-    </div>
+      {/* Add the submit button */}
+      <button type="submit">Submit</button>
     </form>
-    
     </BaseCard>
   );
 };

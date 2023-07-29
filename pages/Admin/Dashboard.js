@@ -18,10 +18,9 @@ import { useCookies } from 'react-cookie';
 const Index = () => {
 
   return (
-    <SessionProvider>
     <PrivateRoute>
       <ThemeProvider theme={theme}>
-        {/* <FullLayout> */}
+        <FullLayout>
           <Grid container spacing={0}>
             <Grid item xs={12} lg={12}>
               <SalesOverview />
@@ -37,10 +36,9 @@ const Index = () => {
               <BlogCard />
             </Grid>
           </Grid>
-        {/* </FullLayout> */}
+        </FullLayout>
       </ThemeProvider>
       </PrivateRoute>
-      </SessionProvider>
   );
 };
 

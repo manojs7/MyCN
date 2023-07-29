@@ -1,8 +1,9 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { setCookie } from 'react-cookie';
+// import GoogleProvider from 'next-auth/providers/google';
 
 const options = {
+  secret: process.env.AUTH_SECRET,
   providers: [
     Credentials({
       // Your credentials provider configuration
@@ -36,6 +37,8 @@ const options = {
         };
 
         const user = authorizedUsers[credentials.username];
+        return Promise.resolve(user);
+        console.log(user)
         if (user && user.password === credentials.password) {
           return Promise.resolve(user);
         } else {
@@ -45,6 +48,12 @@ const options = {
     }),
     // Add other providers if needed
   ],
+  callbacks: {
+    async session(session, user) {
+      session.user = user;
+      return Promise.resolve(session);
+    },
+  },
 };
 
 export default NextAuth(options);

@@ -8,6 +8,7 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,7 +22,6 @@ const LoginPage = () => {
 
       // Redirect to admin dashboard or other private page upon successful login
       if(result){
-        // console.log(result)
         Router.push('/Admin/Dashboard');
       }
       else{

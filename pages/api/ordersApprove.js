@@ -1,6 +1,6 @@
 // pages/api/order.js
 import { connectDB } from '../../utils/db'; // Import the database connection function
-import { createOrder } from '../../models/orderModel'; // Import the Mongoose order model
+import { createOrder, getOrderById } from '../../models/orderModel'; // Import the Mongoose order model
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -17,8 +17,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'GET') {
     // Get all orders
     try {
-      await connectDB(); // Connect to the database
-      const orders = await Order.find({});
+      const orders = await getOrderById();
       res.status(200).json(orders);
     } catch (error) {
       console.error('Error fetching orders:', error);

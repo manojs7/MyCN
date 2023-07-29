@@ -182,6 +182,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossOrigin="anonymous"
       ></Script>
+      <SessionProvider>
       <AppMenuProvider>
         <Component {...pageProps} />
         <Google />
@@ -189,6 +190,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         {/* <Float /> */}
         {/* <FloatNav /> */}
       </AppMenuProvider>
+      </SessionProvider>
       
     </>
   );

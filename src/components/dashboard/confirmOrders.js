@@ -49,6 +49,7 @@ const ConfirmOrder = () => {
       .then((data) => {
         // Handle the response, show success message, etc.
         console.log('Order approved and saved:', data);
+        fetchData();
       })
       .catch((error) => {
         // Handle errors, show error message, etc.

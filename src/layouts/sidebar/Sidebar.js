@@ -17,15 +17,56 @@ import {
 
 import FeatherIcon from "feather-icons-react";
 import LogoIcon from "../logo/LogoIcon";
-import menuItems from "./MenuItems";
+// import menuItems from "./MenuItems";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useAppMenu } from "./MenuItems";
 
 
-  
-// const { menuItems, role } = useAppMenu();
+
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 
+  const { data: session } = useSession();
+
+  console.log("data", useSession())
+
+  const role = session?.user?.role;
+
+  const menuItems = [
+    {
+      title: "Dashboard",
+      icon: "home",
+      href: "/Admin/Dashboard",
+    },
+    {
+      title: "Orders",
+      icon: "disc",
+      href: "/Admin/orders",
+    },
+    {
+      title: "Create Order",
+      icon: "layout",
+      href: "/Admin/createOrder",
+    },
+    role === "operations"
+      ? {
+          title: "Menu Calculator",
+          icon: "layout",
+          href: "/Admin/calculator",
+        }
+      : null,
+    {
+      title: "Send Email",
+      icon: "info",
+      href: "sendEmail",
+    },
+    {
+      title: "Business",
+      icon: "star",
+      href: "rating",
+    }
+  ].filter(Boolean); // Filter out null values from the menuItems array
   const [open, setOpen] = React.useState(true);
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
   const location = useRouter().pathname;

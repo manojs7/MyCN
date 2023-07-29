@@ -1,5 +1,4 @@
 // components/PrivateRoute.js
-
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 
@@ -8,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   console.log("sess", useSession())
   if (status === 'loading') {
     // Optional: Show a loading spinner
-    return <div>Loading...</div>;
+    return <div > Loading...</div>;
   }
 
   if (!session) {
