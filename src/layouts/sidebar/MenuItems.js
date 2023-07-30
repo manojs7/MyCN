@@ -41,6 +41,11 @@ export function AppMenuProvider({ children }) {
       icon: "star",
       href: "rating",
     },
+    {
+      title: "Ops Orders",
+      icon: "star",
+      href: "OpsOrders",
+    },
   ].filter(Boolean); // Filter out null values from the menuItems array
 
   return (

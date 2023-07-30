@@ -18,7 +18,8 @@ export default async function handler(req, res) {
     // Get all orders
     try {
       const orders = await getOrderById();
-      res.status(200).json(orders);
+      return res.status(200).json({ status: 200, data: orders });
+
     } catch (error) {
       console.error('Error fetching orders:', error);
       res.status(500).json({ message: 'Failed to fetch orders' });

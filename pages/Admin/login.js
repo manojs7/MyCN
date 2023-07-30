@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import Router from 'next/router';
+import styles from '/styles/Admin/LoginForm.module.scss';
+
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -34,18 +36,18 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Admin Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+    <div className='container'>
+      <h1 className={styles.heading}> Admin Login</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.inputgroup}>
+          <label className={styles.label} htmlFor="username">Username</label>
+          <input className={styles.input} type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <label className={styles.label} htmlFor="password">Password</label>
+          <input className="input" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type="submit">Login</button>
+        <button className={styles.button} type="submit">Login</button>
       </form>
     </div>
   );

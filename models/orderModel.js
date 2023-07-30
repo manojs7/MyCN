@@ -31,7 +31,7 @@ const getOrderById = async (orderId) => {
     const collection = await getOrderCollection();
     let order;
     if (orderId) {
-      order = await collection.findOne({ _id: ObjectId(orderId) });
+      order = await collection.findOne({ _id: ObjectId(orderId) }).toArray();
     } else {
       order = await collection.find().toArray();
     }

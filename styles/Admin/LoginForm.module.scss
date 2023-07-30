@@ -39,7 +39,7 @@
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #4caf50;
+    background-color: #3bdbb3;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -47,6 +47,9 @@
   }
   
   .button:hover {
-    background-color: #45a049;
+    background-color:#4caf50 ;
+  }
+  .button:click {
+    background-color: #4546a0;
   }
   
