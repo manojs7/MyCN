@@ -506,7 +506,7 @@ const SelectPackage = () => {
                                     <h5>1 Veg dry/gravy</h5>
                                     <h5>1 Daal</h5>
                                     <h5>1 Non veg gravy - <span>Chicken</span></h5>
-                                    <h5>1 Rice 1 Dessert</h5>
+                                    <h5>1 Rice</h5>
                                     <h5>1 Dessert</h5>
                                     <h5>Curd, Pickle & Pappad</h5>
                                 </div>
