@@ -19,7 +19,7 @@ import { event } from "jquery";
 import OrderApprovalPopup from '../OrderApprovalPopup';
 
 
-const ConfirmOrder = () => {
+const ApprovedOrders = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 5;
@@ -86,7 +86,7 @@ const ConfirmOrder = () => {
   }
 
   const fetchData = async () => {
-    await fetch("/api/saveCompletedOrderDetails", {
+    await fetch("/api/ordersApprove", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -97,14 +97,14 @@ const ConfirmOrder = () => {
         return a.json();
       })
       .then(function (json) {
-        // console.log("prodcuts2",json.data)
+        console.log("prodcuts2",json.data)
         setProducts(json.data);
       });
   };
 
   return (
     <BaseCard
-      title="Orders Submitted"
+      title="Orders Approved By Sales"
       sx={{
         overflow: "auto",
       }}
@@ -330,4 +330,4 @@ const ConfirmOrder = () => {
   );
 };
 
-export default ConfirmOrder;
+export default ApprovedOrders;

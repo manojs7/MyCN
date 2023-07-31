@@ -181,17 +181,17 @@ const ProductPerfomance = () => {
                      <select style={{maxWidth:"120px"}}>
                             <option value="">Selected Menu</option>
                             {product.datas.appetizer.map((item,index)=>(
-                                <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
+                                <option value={item.name}>{item.name} [{item.quantity} {item.Qtype}]</option>    
                             ))}
 
                             {product.datas.mainCourse.map((item,index)=>(
-                                <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
+                                <option value={item.name}>{item.name} [{item.quantity} {item.Qtype}]</option>    
                             ))}
                             {product.datas.breadRice.map((item,index)=>(
-                                <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
+                                <option value={item.name}>{item.name} [{item.quantity} {item.Qtype}]</option>    
                             ))}
                             {product.datas.dessert.map((item,index)=>(
-                                <option value={item.name}>{item.name} [<b>{item.quantity} {item.Qtype}</b>]</option>    
+                                <option value={item.name}>{item.name} [{item.quantity} {item.Qtype}]</option>    
                             ))}
                             
                         </select>

@@ -9,6 +9,8 @@ import {ThemeProvider} from "@mui/material";
 import theme from "../../src/theme/theme";
 import ProductPerfomance from "src/components/dashboard/ProductPerfomance";
 import OrdersFromClappia from "src/components/dashboard/OrdersFromClappia";
+import ApprovedOrders from "src/components/dashboard/ApprovedOrders";
+
 export default function Index() {
   return (
     <ThemeProvider theme={theme}>
@@ -22,7 +24,7 @@ export default function Index() {
 
 
       <Grid item xs={12} lg={12}>
-      {/* <OrdersFromClappia/> */}
+      {/* <ApprovedOrders/> */}
       </Grid>
 
       <Grid item xs={12} lg={12}>

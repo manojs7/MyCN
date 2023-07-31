@@ -1,33 +1,54 @@
-import { Grid } from "@mui/material";
-import BlogCard from "../../src/components/dashboard/BlogCard";
-import SalesOverview from "../../src/components/dashboard/SalesOverview";
-import DailyActivity from "../../src/components/dashboard/DailyActivity";
-import ProductPerfomance from "../../src/components/dashboard/ProductPerfomance";
-import FullLayout from "../../src/layouts/FullLayout";
-import {ThemeProvider} from "@mui/material";
-// import "../../styles/style.css";
-import theme from "../../src/theme/theme";
+// pages/admin/login.js
 
-export default function Index() {
+import { useState } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import Router from 'next/router';
+
+const LoginPage = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      let result=await signIn('credentials', {
+        username,
+        password,
+        // Add other data as needed for the credentials provider
+        redirect: false, // Set this to true if you want to handle redirection manually
+      });
+
+      // Redirect to admin dashboard or other private page upon successful login
+      if(result){
+        // console.log(result)
+        Router.push('/Admin/Dashboard');
+      }
+      else{
+        Router.push('/Admin/login');
+      }
+     
+    } catch (error) {
+      console.error('Login failed:', error?.message || 'Unknown error');
+    }
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-        <FullLayout>
-    <Grid container spacing={0}>
-      <Grid item xs={12} lg={12}>
-        <SalesOverview />
-      </Grid>
-      {/* ------------------------- row 1 ------------------------- */}
-      <Grid item xs={12} lg={4}>
-        <DailyActivity />
-      </Grid>
-      <Grid item xs={12} lg={8}>
-        <ProductPerfomance />
-      </Grid>
-      <Grid item xs={12} lg={12}>
-        <BlogCard />
-      </Grid>
-    </Grid>
-    </FullLayout>
-    </ThemeProvider>
+    <div>
+      <h1>Admin Login</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
-}
+};
+
+export default LoginPage;
