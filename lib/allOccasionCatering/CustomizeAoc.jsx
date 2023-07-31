@@ -1931,18 +1931,50 @@ const CustomizeAoc = () => {
     return (
         <div>
             <div style={backgroundStyle} className={styles3.mainBody}>
-                <div className={styles3.headerSectn}>
-                    <div className={styles3.logo}>
-                        <Image src="/ODC/odctop.png" width="129.07px" height="92.06px" />
+                <div className={styles.customheader} style={{ backgroundColor: "#FFE8B8"}}>
+                    <div className={styles.logo}>
+                        <Image src="/ODC/odctop.png" width="91px" height="74px" />
                     </div>
-                    <div className={styles3.headerDetails}>
+                    <div className={styles.customInput}>
                         <div>
-                            <h6>City: <span>{city}</span></h6>
-                            <h6>Veg Count: <span>{vegCount}</span></h6>
+                            <div>
+                                <h6>City</h6>
+                                <select
+                                    name="city"
+                                    aria-label="Default select example"
+                                    value={city}
+                                    onChange={(e) => handleCity(e.target.value)}
+                                    required
+                                >
+                                    <option value="Bangalore" selected>
+                                        Bangalore
+                                    </option>
+                                    {cities.map((item, index) => {
+                                        return (
+                                            <option key={index} value={item}>
+                                                {item}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            </div>
+                            <div>
+                                <h6>Veg Count</h6>
+                                <input type='number' value={vegCount} onChange={handleInput1Change}></input>
+                            </div>
                         </div>
                         <div>
-                            <h6>Date: <span>{selectedDate}</span></h6>
-                            <h6>NV Count: <span>{nvCount}</span></h6>
+                            <div>
+                                <h6>Date</h6>
+                                <select id="dateSelect" value={selectedDate} onChange={handleDateChange}>
+                                    <option value="">Select a date</option>
+                                    {generateDateOptions()}
+                                </select>
+                            </div>
+                            <div>
+                                <h6>N-Veg Count</h6>
+                                <input type='number' value={nvCount} onChange={handleInput2Change}></input>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1975,9 +2007,9 @@ const CustomizeAoc = () => {
                     <div style={{ marginTop: "-140px" }}>
                         <Image src="/ODC/customCard.png" width="208px" height="160px" />
                     </div>
-                </div>: ""}
+                </div> : ""}
 
-                { isVeg === true ? <div className={styles3.card} style={{ margin: "auto", marginTop: "20px", border: "1px solid #F3A400", backgroundColor: 'rgba(255, 255, 255, 0.44)' }}>
+                {isVeg === true ? <div className={styles3.card} style={{ margin: "auto", marginTop: "20px", border: "1px solid #F3A400", backgroundColor: 'rgba(255, 255, 255, 0.44)' }}>
                     <div style={vegtag} className={styles3.nvtag}>
                         <h4>CUSTOM</h4>
                     </div>
@@ -2002,7 +2034,7 @@ const CustomizeAoc = () => {
                             <button>+ Add More</button>
                         </div>
                     </div>
-                </div>: ""}
+                </div> : ""}
 
                 {/* VEG STARTERS */}
 

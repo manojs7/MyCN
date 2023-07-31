@@ -243,6 +243,51 @@
     // }
 }
 
+.customInput {
+    margin-top: -8px;
+    margin-left: 20px;
+    display: flex;
+    //margin-bottom: 30px;
+    width: 188px;
+    justify-content: space-between;
+
+    h6 {
+        font-weight: 700;
+        font-size: 10.116px;
+        letter-spacing: 0.05em;
+        color: #363d42;
+        margin-bottom: 0%;
+    }
+
+    select {
+        margin-bottom: 10px;
+        width: 81.708px;
+        height: 14.785px;
+        background: #FAFAFA;
+        border: 0.389px solid #000000;
+        border-radius: 3.891px;
+        font-weight: 500;
+        font-size: 7.782px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        color: #534848;
+    }
+
+    input {
+        margin-top: 5px;
+        width: 81.708px;
+        height: 14.785px;
+        background: #FAFAFA;
+        border: 0.609278px solid #000000;
+        border-radius: 3.891px;
+        font-weight: 500;
+        font-size: 7.782px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        color: #534848;
+    }
+}
+
 .nvtag {
     width: 132.596px;
     height: 23.649px;
@@ -426,5 +471,22 @@
     .smselectItemSearchBox {
         width: 116.555px;
         height: 11.05px;
+    }
+}
+
+.detailspopup {
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 291.53px;
+    height: 260px;
+    filter: drop-shadow(1.11417px 5.57087px 27.8543px rgba(0, 0, 0, 0.7));
+    border-radius: 14.7739px;
+    background-color: #FFE8CA;
+    h6{
+        text-align: start;
+        font-size: 12px;
     }
 }

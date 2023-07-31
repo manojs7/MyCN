@@ -499,7 +499,7 @@ const SelectPackage = () => {
                                     <h4>VALUE NON-VEG 1</h4>
                                 </div>
                                 <div className={styles.blackCard}>
-                                    <h5>1 Veg Starter</h5>
+                                    <h5>1 Veg Starter <FontAwesomeIcon icon={faCircleInfo} size="sm"/></h5>
                                     <h5>1 Starter - <span>Chicken</span></h5>
                                     <h5>1 Salad</h5>
                                     <h5>1 Bread</h5>
@@ -706,6 +706,17 @@ const SelectPackage = () => {
                         <Image src="/ODC/rightbtm.png" width="163.91px" height="231px" />
                     </div>
                 </div>
+                {/* <div className={styles.detailspopup}>
+                    <h6>Veg-Starter(Manchurian, chilly Paneer etc.)</h6>
+                    <h6>NonVeg-Starter(Chilly Chicken, Chicken Kabab etc.)</h6>
+                    <h6>salad(Green Salad, Russian Salad etc.)</h6>
+                    <h6>Veg-dry(Aalo Mutter, Bhindi etc.)</h6>
+                    <h6>Veg-gravy(Kadai veg, veg Colapuri etc.)</h6>
+                    <h6>Dal(Dal Tadka, Dal Makhni)</h6>
+                    <h6>NonVeg-Starter()</h6>
+                    <h6>Rice(Veg Pulao, Jeera Pulao etc.)</h6>
+                    <h6>Dessert(Sheer Korma, Rice Khir etc.)</h6>
+                </div> */}
             </div>
         </div>
     )
