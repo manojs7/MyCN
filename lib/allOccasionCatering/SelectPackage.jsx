@@ -694,10 +694,10 @@ const SelectPackage = () => {
                         <button onClick={selectNonVegCustom}>Create Your Own Package</button>
                     </div>
                 </div> : ""}
-                <div className={styles.bottomtag} style={btmPngCard}>
+                {/* <div className={styles.bottomtag} style={btmPngCard}>
                     <h6>🔥Live Counters & Add On's🔥</h6>
                     <button>On <span>Next</span> Page</button>
-                </div>
+                </div> */}
                 <div className='d-flex justify-content-between' style={{ marginTop: "-120px" }}>
                     <div>
                         <Image src="/ODC/leftBtm.png" width="163.91px" height="231px" />
