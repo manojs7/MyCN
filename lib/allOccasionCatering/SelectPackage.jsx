@@ -312,7 +312,7 @@ const SelectPackage = () => {
     const backgroundStyle = {
         backgroundImage: 'url("/ODC/odcbg.png")',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
     };
     //nvtag bg
     const nvtag = {
@@ -698,13 +698,13 @@ const SelectPackage = () => {
                     <h6>🔥Live Counters & Add On's🔥</h6>
                     <button>On <span>Next</span> Page</button>
                 </div> */}
-                <div className='d-flex justify-content-between' style={{ marginTop: "-120px" }}>
-                    <div>
-                        <Image src="/ODC/leftBtm.png" width="163.91px" height="231px" />
+                <div className='d-flex justify-content-between' style={{ marginTop: "1px"}}>
+                    <div style={{border: "1px solid green"}}>
+                        <Image src="/ODC/image 30.png" width="99px" height="92px" />
                     </div>
-                    <div>
+                    {/* <div>
                         <Image src="/ODC/rightbtm.png" width="163.91px" height="231px" />
-                    </div>
+                    </div> */}
                 </div>
                 {/* <div className={styles.detailspopup}>
                     <h6>Veg-Starter(Manchurian, chilly Paneer etc.)</h6>

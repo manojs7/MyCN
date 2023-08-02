@@ -434,9 +434,6 @@ const Custom_Package = () => {
             <h4>Delivery Time</h4>
             <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)} value={startTime}>
               <option value="">Select Time</option>
-              <option value="11:00 am">11:00 am</option>
-              <option value="11:30 am">11:30 am</option>
-              <option value="12:00 pm">12:00 pm</option>
               <option value="12:30 pm">12:30 pm</option>
               <option value="1:00 pm">1:00 pm</option>
               <option value="1:30 pm">1:30 pm</option>
