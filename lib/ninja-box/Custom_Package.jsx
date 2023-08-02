@@ -896,7 +896,7 @@ const Custom_Package = () => {
             lineHeight: "125%"
           }}>Curate your own flavour of party<br />from variety of cuisines</h6>
           <div className="mt-5">
-            <button style={{
+            <button onClick={() => window.open('/checkprice', '_blank')} style={{
               width: "417.733px",
               height: "67.764px", borderRadius: "35.168px",
               marginLeft: "35px",
@@ -1121,7 +1121,7 @@ const Custom_Package = () => {
               <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-sm">Create Your Own Package</button>
             </div>
           </div> */}
-          <div className="ms-5">
+          <div style={{marginLeft: "40px"}}>
             <h3 style={{ paddingTop: "40px", color: "#FFF", textShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", fontFamily: "'Montserrat', sansSerif", fontSize: "14.56px", fontStyle: "italic", fontWeight: "500" }}>Not Happy with the Packages?</h3>
             <h2 className="ms-0" style={{
               color: "#2C3338",
@@ -1141,7 +1141,7 @@ const Custom_Package = () => {
               lineHeight: "125%"
             }}>Curate your own flavour of party<br />from variety of cuisines</h6>
             <div>
-              <button style={{
+              <button onClick={() => window.open('/checkprice', '_blank')} style={{
                 width: "165.905px",
                 marginTop: "5px",
                 height: "26.913px", borderRadius: "13.967px",

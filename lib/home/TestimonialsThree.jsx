@@ -1,8 +1,28 @@
-import React from "react";
+import YouTube from "react-youtube";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import CustomArrow from "./CustomArrow";
 
 export default function TestimonialsThree() {
+
+    const [isSmall, setIsSmall] = useState(false);
+
+    const opts = {
+        height: "358.1",
+        width: "195.86",
+        playerVars: {
+            autoplay: 0,
+        },
+    }
+
+    const optsm = {
+        height: "358.1",
+        width: "195.86",
+        playerVars: {
+          autoplay: 0,
+        },
+      }
+
     const settings = {
         className: "center",
         dots: true,
@@ -44,6 +64,13 @@ export default function TestimonialsThree() {
             },
         ],
     }
+
+    useEffect(() => {
+        setIsSmall(window.innerWidth <= 939);
+        window.addEventListener("resize", () =>
+          setIsSmall(window.innerWidth <= 939)
+        );
+      }, []);
     return (
         <div>
             <div className="testimonialsContainer mt-2">
@@ -151,7 +178,21 @@ export default function TestimonialsThree() {
                         </Slider>
                     </div>
                 </div>
-
+                <div>
+                    <div className="container text-center mt-5">
+                        {isSmall ? <div className="ninjaBoxVideoSm">
+                            <Slider><YouTube videoId="gbEfZyxc7zI" opts={optsm} />
+                            <YouTube videoId="IA5tOYx6vKo" opts={opts} />
+                            <YouTube videoId="EsFLaWCSz6c" opts={opts} />
+                            </Slider>
+                        </div> : ""}
+                        {!isSmall ? <div className="ninjaBoxVideoLg d-flex justify-content-around">
+                            <YouTube videoId="gbEfZyxc7zI" opts={opts} />
+                            <YouTube videoId="IA5tOYx6vKo" opts={opts} />
+                            <YouTube videoId="EsFLaWCSz6c" opts={opts} />
+                        </div> : ""}
+                    </div>
+                </div>
             </div>
         </div>
     );

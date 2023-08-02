@@ -52,6 +52,21 @@ const Custom_Package = () => {
   //   // clearTimeout(myTimeout);
   // }, [indexPhoto])
 
+  //footer bg
+  const footerbg = {
+    backgroundImage: 'url("/ninja-box/footerbg.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  };
+
+  //footer bg
+  const desktopfooter = {
+    backgroundImage: 'url("/ninja-box/desktopfooter.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: "588.228px"
+  };
+
   //select date logic
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -110,7 +125,7 @@ const Custom_Package = () => {
     //     confirmButtonText: "OK",
     //   });
     // } else
-      setShowDiv(!showDiv);
+    setShowDiv(!showDiv);
   };
   const closePopup = () => {
     setShowDiv(!showDiv);
@@ -168,7 +183,7 @@ const Custom_Package = () => {
   };
 
   //PACKAGES
-  const packages=PreSelectMenuNinjaBox;
+  const packages = PreSelectMenuNinjaBox;
 
   //price filter
   //200-350, 350-500, 500+
@@ -186,10 +201,10 @@ const Custom_Package = () => {
       return item.price >= 2000 && item.price <= 3500;
     } else if (priceFilter === '3501-5000') {
       return item.price >= 3501 && item.price <= 5000;
-    } 
+    }
     else if (priceFilter === '5001+') {
-      return item.price >= 5000 ;
-    } 
+      return item.price >= 5000;
+    }
     else {
       return item.price >= 3501 && item.price <= 5000;
     }
@@ -484,9 +499,9 @@ const Custom_Package = () => {
             <h2>
               Ninja<span>Buffet</span> Packages
             </h2>
-            <h6 className="text-center" style={{ fontSize: "20px", fontFamily:"'Montserrat', SansSerif" }}>Select Your Ninja<span>Buffet</span> Package</h6>
+            <h6 className="text-center" style={{ fontSize: "20px", fontFamily: "'Montserrat', SansSerif" }}>Select Your Ninja<span>Buffet</span> Package</h6>
             <div className="selectCityOcLg mt-5">
-              <div style={{fontFamily:"'Montserrat', SansSerif"}}>
+              <div style={{ fontFamily: "'Montserrat', SansSerif" }}>
                 <p>City</p>
                 <select
                   id="cityId"
@@ -508,10 +523,10 @@ const Custom_Package = () => {
                   })}
                 </select>
               </div>
-              <div style={{fontFamily:"'Montserrat', SansSerif"}}>
+              <div style={{ fontFamily: "'Montserrat', SansSerif" }}>
                 <p>Occasion</p>
                 <select
-                style={{width: "180px"}}
+                  style={{ width: "180px" }}
                   id="occasionId"
                   name="occasion"
                   aria-label="Default select example"
@@ -532,7 +547,7 @@ const Custom_Package = () => {
               </div>
             </div>
           </div>
-          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center",fontFamily:"'Montserrat', SansSerif" }}>Sort By</h4>
+          <h4 style={{ fontSize: "20px", fontWeight: "600", color: "#BE2D30", textAlign: "center", fontFamily: "'Montserrat', SansSerif" }}>Sort By</h4>
           <hr />
           <div className="d-flex" style={{ justifyContent: "space-between", marginInline: "100px" }}>
             <div className="d-flex">
@@ -544,7 +559,7 @@ const Custom_Package = () => {
             </div>
             <div>
               <select value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", fontWeight: "600", width: "250px" }}>
-              <option value="2000-3500">Silver</option>
+                <option value="2000-3500">Silver</option>
                 <option value="3501-5000" selected>Gold</option>
                 <option value="5001+">Platinum</option>
               </select>
@@ -785,7 +800,41 @@ const Custom_Package = () => {
         />
       </section> : ""} */}
       {!isSmall ? <secction>
-        <div className="create-your-own-package-lgd">
+        <div className="create-your-own-package-lgd pt-5 ps-5" backgroundColor="#FFC31A" style={desktopfooter}>
+          <h3 style={{ color: "#FFF", marginLeft: "35px", marginTop: "60px", textShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", fontFamily: "'Montserrat', sansSerif", fontSize: "36.661px", fontStyle: "italic", fontWeight: "500" }}>Not Happy with the Packages?</h3>
+          <h2 style={{
+            color: "#2C3338",
+            marginLeft: "35px",
+            fontFamily: "Montserrat",
+            fontSize: "64.915px",
+            fontStyle: "normal",
+            fontWeight: "800"
+          }}>Create Your <span style={{ color: "#BE2D30" }}>Own</span></h2>
+          <h6 style={{
+            color: "#42484E",
+            marginLeft: "35px",
+            fontFamily: "Montserrat",
+            fontSize: "34.62px",
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: "125%"
+          }}>Curate your own flavour of party<br />from variety of cuisines</h6>
+          <div className="mt-5">
+            <button onClick={() => window.open('/checkprice', '_blank')} style={{
+              width: "417.733px",
+              height: "67.764px", borderRadius: "35.168px",
+              marginLeft: "35px",
+              backgroundColor: "#BE2D30", border: "none",
+              boxShadow: "3.360179901123047px 4.480240345001221px 11.200600624084473px 0px #42484E",
+              color: "#FFF", fontFamily: "Montserrat",
+              fontSize: "26.842px", fontWeight: "700"
+            }}>Customize Your Package</button>
+          </div>
+          <div style={{ textAlign: "end", marginTop: "-360px" }}>
+            <Image src="/ninja-box/footerNinja.png" width="868px" height="500.59px" />
+          </div>
+        </div>
+        {/* <div className="create-your-own-package-lgd">
           <div className="row">
             <div className="col-6">
               <img src="ninjaboxPackage.png" />
@@ -797,7 +846,7 @@ const Custom_Package = () => {
               <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-danger">Create Your Own Package</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </secction> : ""}
       {isSmall ? <section>
         <div className="custom-package-smallD text-center mb-3">
@@ -900,7 +949,7 @@ const Custom_Package = () => {
           </div>
             <div>
               <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "200px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
-              <option value="2000-3500">Silver</option>
+                <option value="2000-3500">Silver</option>
                 <option value="3501-5000" selected>Gold</option>
                 <option value="5001+">Platinum</option>
               </select>
@@ -985,7 +1034,43 @@ const Custom_Package = () => {
       </div>}
 
       {isSmall ? <section>
-        <div className="create-your-own-package">
+        <div className="create-your-own-package" style={footerbg}>
+          <div style={{marginLeft: "40px"}}>
+            <h3 style={{ paddingTop: "40px", color: "#FFF", textShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", fontFamily: "'Montserrat', sansSerif", fontSize: "14.56px", fontStyle: "italic", fontWeight: "500" }}>Not Happy with the Packages?</h3>
+            <h2 className="ms-0" style={{
+              color: "#2C3338",
+              marginTop: "-10px",
+              fontFamily: "Montserrat",
+              fontSize: "25.782px",
+              fontStyle: "normal",
+              fontWeight: "800"
+            }}>Create Your <span style={{ color: "#BE2D30" }}>Own</span></h2>
+            <h6 style={{
+              color: "#42484E",
+              fontFamily: "Montserrat",
+              marginTop: "-5px",
+              fontSize: "12.559px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "125%"
+            }}>Curate your own flavour of party<br />from variety of cuisines</h6>
+            <div>
+              <button onClick={() => window.open('/checkprice', '_blank')} style={{
+                width: "165.905px",
+                marginTop: "5px",
+                height: "26.913px", borderRadius: "13.967px",
+                backgroundColor: "#BE2D30", border: "none",
+                boxShadow: "1.3345141410827637px 1.7793523073196411px 4.448380947113037px 0px #42484E",
+                color: "#FFF", fontFamily: "Montserrat",
+                fontSize: "10.66px", fontWeight: "700"
+              }}>Customize Your Package</button>
+            </div>
+            <div style={{marginLeft: "75px", marginTop: "-50px"}}>
+              <Image src="/ninja-box/footerNinjamb.png" width="234.93px" height="211.45px" />
+            </div>
+          </div>
+        </div>
+        {/* <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
               <img id="left-ninja-logo" src="/ninja-buffy/fontPic6.webp"></img>
@@ -1004,7 +1089,7 @@ const Custom_Package = () => {
               <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-sm">Create Your Own Package</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </section> : ""}
     </div>
   );
