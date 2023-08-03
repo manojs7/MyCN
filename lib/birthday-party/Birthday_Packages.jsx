@@ -662,7 +662,7 @@ const Birthday_Packages = () => {
                 </div>
             </div>
             <div className={styles.selectCustomPkg}>
-                <button onClick={selectCustomPkg}>Select This Package</button>
+                <button onClick={selectCustomPkg}>Customize Package</button>
             </div>
             <div className={styles.bottomSectn} style={btmPng}>
                 <div className={styles.top} style={btmPngCard}>

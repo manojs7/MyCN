@@ -1,8 +1,28 @@
-import React from "react";
+import YouTube from "react-youtube";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import CustomArrow from "./CustomArrow";
 
 export default function TestimonialsThree() {
+
+    const [isSmall, setIsSmall] = useState(false);
+
+    const opts = {
+        height: "434.46",
+        width: "237.62px",
+        playerVars: {
+            autoplay: 0,
+        },
+    }
+
+    const optsm = {
+        height: "434.46",
+        width: "237.62px",
+        playerVars: {
+            autoplay: 0,
+        },
+    }
+
     const settings = {
         className: "center",
         dots: true,
@@ -44,6 +64,30 @@ export default function TestimonialsThree() {
             },
         ],
     }
+
+    //background image
+    const backgroundStyle = {
+        backgroundImage: 'url("/home/phone.png")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        width: "294.75px",
+        height: "537px"
+    };
+    const backgroundStylesm = {
+        backgroundImage: 'url("/home/phone.png")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        width: "294.75px",
+        height: "537px",
+        paddingRight: "60px"
+    };
+
+    useEffect(() => {
+        setIsSmall(window.innerWidth <= 939);
+        window.addEventListener("resize", () =>
+            setIsSmall(window.innerWidth <= 939)
+        );
+    }, []);
     return (
         <div>
             <div className="testimonialsContainer mt-2">
@@ -151,7 +195,44 @@ export default function TestimonialsThree() {
                         </Slider>
                     </div>
                 </div>
-
+                <div>
+                    <div className="container text-center">
+                        {isSmall ? <div className="ninjaBoxVideoSm pb-3 d-flex" style={{overflowX: "scroll"}}>
+                                <div style={backgroundStylesm}>
+                                    <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
+                                        <YouTube videoId="gbEfZyxc7zI" opts={opts} />
+                                    </div>
+                                </div>
+                                <div style={backgroundStylesm}>
+                                    <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
+                                        <YouTube videoId="IA5tOYx6vKo" opts={opts} />
+                                    </div>
+                                </div>
+                                <div style={backgroundStylesm}>
+                                    <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
+                                        <YouTube videoId="EsFLaWCSz6c" opts={opts} />
+                                    </div>
+                                </div>
+                        </div> : ""}
+                        {!isSmall ? <div className="ninjaBoxVideoLg d-flex justify-content-around mt-5">
+                            <div style={backgroundStyle}>
+                                <div style={{ marginTop: "48px" }}>
+                                    <YouTube videoId="gbEfZyxc7zI" opts={opts} />
+                                </div>
+                            </div>
+                            <div style={backgroundStyle}>
+                                <div style={{ marginTop: "48px" }}>
+                                    <YouTube videoId="IA5tOYx6vKo" opts={opts} />
+                                </div>
+                            </div>
+                            <div style={backgroundStyle}>
+                                <div style={{ marginTop: "48px" }}>
+                                    <YouTube videoId="EsFLaWCSz6c" opts={opts} />
+                                </div>
+                            </div>
+                        </div> : ""}
+                    </div>
+                </div>
             </div>
         </div>
     );

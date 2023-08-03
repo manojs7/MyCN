@@ -189,12 +189,13 @@ const CustomizeNinjaBox = () => {
     // setSelectedDate(event.target.value);
   };
 
+  //NEW LOGIC
   const generateDateOptions = () => {
     const options = [];
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const twoDaysFromNow = new Date();
-    twoDaysFromNow.setDate(currentDate.getDate() + 2);
+    twoDaysFromNow.setDate(currentDate.getDate());
 
     for (
       let date = twoDaysFromNow;
@@ -2180,9 +2181,9 @@ const CustomizeNinjaBox = () => {
                 <div className={styles.eventDate}>
                   <p>
                     Event Date{" "}
-                    <span onMouseEnter={hoverLink} onClick={hoverLink}>
+                    {/* <span onMouseEnter={hoverLink} onClick={hoverLink}>
                       i
-                    </span>
+                    </span> */}
                   </p>
                   {showUrgentLink && (
                     <div id={styles.urgentLink}>
@@ -2266,9 +2267,6 @@ const CustomizeNinjaBox = () => {
                     onChange={(e) => setStartTime(e.target.value)}
                   >
                     <option value="">Select a Time</option>
-                    <option value="11:00 am">11:00 am</option>
-                    <option value="11:30 am">11:30 am</option>
-                    <option value="12:00 pm">12:00 pm</option>
                     <option value="12:30 pm">12:30 pm</option>
                     <option value="1:00 pm">1:00 pm</option>
                     <option value="1:30 pm">1:30 pm</option>

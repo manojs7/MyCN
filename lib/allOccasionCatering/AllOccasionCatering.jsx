@@ -19,6 +19,9 @@ const AllOccasionCatering = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleCity = (city) => {
+        if(city !== 'Bangalore'){
+            alert('This service is not available in your city');
+        }
         setCity(city);
         checkFormValidity();
     }
@@ -131,10 +134,10 @@ const AllOccasionCatering = () => {
                         <Image src="/ODC/leftninja.png" width="84.89px" height="92px" />
                     </div>
                     <div>
-                        <h3>Premium <span>Outdoor Buffet</span> Service</h3>
+                        <h3 className='mb-1'>Premium <span>Outdoor Buffet</span> Service</h3>
                         <h4><span>50</span> Guest Onwards</h4>
                         <div className='text-center mt-3'>
-                            <Image src="/ODC/servicebenefits.png" width="117px" height="14.18px" />
+                            <Image src="/ODC/Group 87.png" width="139.83px" height="16.95px" />
                         </div>
                         <div className={styles.servicebenefits}>
                             <dl>
@@ -198,13 +201,13 @@ const AllOccasionCatering = () => {
                     <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img src="/ODC/pic1.png" className="d-block mx-auto" alt="..." width="217px" height="147px"/>
+                                <img src="/ODC/1.png" className="d-block mx-auto" alt="..." width="261px" height="176.81px"/>
                             </div>
                             <div className="carousel-item">
-                                <img src="/ODC/pic1.png" className="d-block mx-auto" alt="..." width="217px" height="147px"/>
+                                <img src="/ODC/1.png" className="d-block mx-auto" alt="..." width="261px" height="176.81px"/>
                             </div>
                             <div className="carousel-item">
-                                <img src="/ODC/pic1.png" className="d-block mx-auto" alt="..." width="217px" height="147px"/>
+                                <img src="/ODC/1.png" className="d-block mx-auto" alt="..." width="261px" height="176.81px"/>
                             </div>
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -219,10 +222,10 @@ const AllOccasionCatering = () => {
                 </div>
                 <div className='d-flex justify-content-between' style={{marginTop: "-180px"}}>
                     <div>
-                        <Image src="/ODC/leftborder.png" width="163.91px" height="231px" />
+                        <Image src="/ODC/leftBtm.png" width="163.91px" height="231px" />
                     </div>
                     <div>
-                        <Image src="/ODC/rightborder.png" width="163.91px" height="231px" />
+                        <Image src="/ODC/rightbtm.png" width="163.91px" height="231px" />
                     </div>
                 </div>
             </div>

@@ -139,7 +139,7 @@ const Custom_Package = () => {
 
   //PACKAGES
 
-  const packages=PreSelectMenuNinjaBox;
+  const packages = PreSelectMenuNinjaBox;
 
 
   //price filter
@@ -158,10 +158,10 @@ const Custom_Package = () => {
       return item.price >= 2000 && item.price <= 3500;
     } else if (priceFilter === '3501-5000') {
       return item.price >= 3501 && item.price <= 5000;
-    } 
+    }
     else if (priceFilter === '5001+') {
-      return item.price >= 5000 ;
-    } 
+      return item.price >= 5000;
+    }
     else {
       return item.price >= 3501 && item.price <= 5000;
     }
@@ -229,6 +229,21 @@ const Custom_Package = () => {
   //   setIndexPhoto(index);
   //   setIsChanged(true);
   // };
+
+  //footer bg
+  const footerbg = {
+    backgroundImage: 'url("/ninja-box/footerbg.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  };
+
+  //footer bg
+  const desktopfooter = {
+    backgroundImage: 'url("/ninja-box/desktopfooter.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: "588.228px"
+  };
 
   function clearIndexPhoto() {
     setIndexPhoto(null)
@@ -428,9 +443,6 @@ const Custom_Package = () => {
             <h4>Delivery Time</h4>
             <select className="mx-auto" onChange={(e) => setStartTime(e.target.value)} value={startTime}>
               <option value="">Select Time</option>
-              <option value="11:00 am">11:00 am</option>
-              <option value="11:30 am">11:30 am</option>
-              <option value="12:00 pm">12:00 pm</option>
               <option value="12:30 pm">12:30 pm</option>
               <option value="1:00 pm">1:00 pm</option>
               <option value="1:30 pm">1:30 pm</option>
@@ -864,18 +876,39 @@ const Custom_Package = () => {
         />
       </section> : ""} */}
       {!isSmall ? <secction>
-        <div className="create-your-own-package-lgd">
-          <div className="row">
-            <div className="col-6">
-              <img src="ninjaboxPackage.png" />
-            </div>
-            <div className="col-6 textSection-lgd">
-              <p>Not Happy with the Packages?</p>
-              <h2>Create Your <span>Own</span></h2>
-              <h6>Curate your own flavour of party<br /><span>from variety of cuisines</span></h6>
-              <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-danger">Create Your Own Package</button>
-            </div>
+        <div className="create-your-own-package-lgd pt-5 ps-5" backgroundColor="#FFC31A" style={desktopfooter}>
+          <h3 style={{ color: "#FFF", marginLeft: "35px", marginTop: "60px", textShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", fontFamily: "'Montserrat', sansSerif", fontSize: "36.661px", fontStyle: "italic", fontWeight: "500" }}>Not Happy with the Packages?</h3>
+          <h2 style={{
+            color: "#2C3338",
+            marginLeft: "35px",
+            fontFamily: "Montserrat",
+            fontSize: "64.915px",
+            fontStyle: "normal",
+            fontWeight: "800"
+          }}>Create Your <span style={{ color: "#BE2D30" }}>Own</span></h2>
+          <h6 style={{
+            color: "#42484E",
+            marginLeft: "35px",
+            fontFamily: "Montserrat",
+            fontSize: "34.62px",
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: "125%"
+          }}>Curate your own flavour of party<br />from variety of cuisines</h6>
+          <div className="mt-5">
+            <button onClick={() => window.open('/checkprice', '_blank')} style={{
+              width: "417.733px",
+              height: "67.764px", borderRadius: "35.168px",
+              marginLeft: "35px",
+              backgroundColor: "#BE2D30", border: "none",
+              boxShadow: "3.360179901123047px 4.480240345001221px 11.200600624084473px 0px #42484E",
+              color: "#FFF", fontFamily: "Montserrat",
+              fontSize: "26.842px", fontWeight: "700"
+            }}>Customize Your Package</button>
           </div>
+          <div style={{textAlign: "end", marginTop: "-360px"}}>
+              <Image src="/ninja-box/deskFooter.png" width="791px" height="501px" />
+            </div>
         </div>
       </secction> : ""}
       {isSmall ?
@@ -939,23 +972,23 @@ const Custom_Package = () => {
               </div>
             </div>
             <div className="mt-4">
-          <h4 style={{ textAlign: "center", fontWeight: "bolder", fontFamily: "'Montserrat', sans-serif", fontSize: "20px", color: "#BE2D30" }}>Filter</h4>
-          <div className="d-flex justify-content-between" style={{marginInline: "10px"}}> <div className="d-flex justify-content-center">
-            <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
-            <label className={styles.toggle}>
-              <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
-              <span className={styles.slider}></span>
-            </label>
-          </div>
-            <div>
-              <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "200px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
-                <option value="2000-3500">₹200 - ₹350 [per Person]</option>
-                <option value="3501-5000" selected>₹350 - ₹500 [per Person]</option>
-                <option value="5001+">₹500 + [per Person]</option>
-              </select>
+              <h4 style={{ textAlign: "center", fontWeight: "bolder", fontFamily: "'Montserrat', sans-serif", fontSize: "20px", color: "#BE2D30" }}>Filter</h4>
+              <div className="d-flex justify-content-between" style={{ marginInline: "10px" }}> <div className="d-flex justify-content-center">
+                <p style={{ fontWeight: "600", fontFamily: "'Montserrat', sans-serif" }}>Veg Only</p>
+                <label className={styles.toggle}>
+                  <input type="checkbox" checked={!showNonveg} onChange={checkForNonveg} />
+                  <span className={styles.slider}></span>
+                </label>
+              </div>
+                <div>
+                  <select className="form-select" value={priceFilter} onChange={handlePriceFilterChange} aria-label="Default select example" style={{ fontFamily: "'montserrat', sansSerif", width: "200px", border: "1px solid black", fontWeight: "500", fontSize: "12px" }}>
+                    <option value="2000-3500">₹200 - ₹350 [per Person]</option>
+                    <option value="3501-5000" selected>₹350 - ₹500 [per Person]</option>
+                    <option value="5001+">₹500 + [per Person]</option>
+                  </select>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
           </div>
         </section> : ""}
       {!showNonveg && <div>
@@ -1069,8 +1102,8 @@ const Custom_Package = () => {
         </section> : ""}
       </div>}
       {isSmall ? <section>
-        <div className="create-your-own-package">
-          <div className="row container">
+        <div className="create-your-own-package" style={footerbg}>
+          {/* <div className="row container">
             <div className="col-4" id="leftside">
               <img id="left-ninja-logo" src="/ninja-box/header/Group 1065.png"></img>
             </div>
@@ -1079,13 +1112,47 @@ const Custom_Package = () => {
               <h2>Ninja<span>Box</span></h2>
               <p><span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10-40 Guests</span></p>
             </div>
-          </div>
-          <div className="btmSectnText">
+          </div> */}
+          {/* <div className="btmSectnText">
             <p>Not Happy with the Packages?</p>
             <h2>Create Your <span>Own</span></h2>
             <h6>Curate your own flavour of party<br />from variety of cusines</h6>
             <div>
               <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-sm">Create Your Own Package</button>
+            </div>
+          </div> */}
+          <div style={{marginLeft: "40px"}}>
+            <h3 style={{ paddingTop: "40px", color: "#FFF", textShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", fontFamily: "'Montserrat', sansSerif", fontSize: "14.56px", fontStyle: "italic", fontWeight: "500" }}>Not Happy with the Packages?</h3>
+            <h2 className="ms-0" style={{
+              color: "#2C3338",
+              marginTop: "-10px",
+              fontFamily: "Montserrat",
+              fontSize: "25.782px",
+              fontStyle: "normal",
+              fontWeight: "800"
+            }}>Create Your <span style={{ color: "#BE2D30" }}>Own</span></h2>
+            <h6 style={{
+              color: "#42484E",
+              fontFamily: "Montserrat",
+              marginTop: "-5px",
+              fontSize: "12.559px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "125%"
+            }}>Curate your own flavour of party<br />from variety of cuisines</h6>
+            <div>
+              <button onClick={() => window.open('/checkprice', '_blank')} style={{
+                width: "165.905px",
+                marginTop: "5px",
+                height: "26.913px", borderRadius: "13.967px",
+                backgroundColor: "#BE2D30", border: "none",
+                boxShadow: "1.3345141410827637px 1.7793523073196411px 4.448380947113037px 0px #42484E",
+                color: "#FFF", fontFamily: "Montserrat",
+                fontSize: "10.66px", fontWeight: "700"
+              }}>Customize Your Package</button>
+            </div>
+            <div style={{marginLeft: "75px", marginTop: "-50px"}}>
+              <Image src="/ninja-box/footerNinjamb.png" width="234.93px" height="211.45px" />
             </div>
           </div>
         </div>

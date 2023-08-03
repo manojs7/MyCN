@@ -5,6 +5,7 @@ import Ninja_Package_Data from "$lib/ninja-box/Ninja_Package_Data";
 import Router from "next/router";
 import BookThisPackageModal from "./BookThisPackageModal";
 import { Carousel } from "react-bootstrap";
+import Image from "next/image";
 
 const Custom_Package = () => {
   const images = [
@@ -27,6 +28,21 @@ const Custom_Package = () => {
   //   setIndexPhoto(index);
   //   setIsChanged(true);
   // };
+
+  //footer bg
+  const footerbg = {
+    backgroundImage: 'url("/ninja-box/footerbg.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  };
+
+  //footer bg
+  const desktopfooter = {
+    backgroundImage: 'url("/ninja-box/desktopfooter.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: "588.228px"
+  };
 
   function clearIndexPhoto() {
     setIndexPhoto(null)
@@ -367,7 +383,41 @@ const Custom_Package = () => {
         />
       </section> : ""} */}
       {!isSmall ? <secction>
-        <div className="create-your-own-package-lgd">
+        <div className="create-your-own-package-lgd pt-5 ps-5" backgroundColor="#FFC31A" style={desktopfooter}>
+          <h3 style={{ color: "#FFF", marginLeft: "35px", marginTop: "60px", textShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", fontFamily: "'Montserrat', sansSerif", fontSize: "36.661px", fontStyle: "italic", fontWeight: "500" }}>Not Happy with the Packages?</h3>
+          <h2 style={{
+            color: "#2C3338",
+            marginLeft: "35px",
+            fontFamily: "Montserrat",
+            fontSize: "64.915px",
+            fontStyle: "normal",
+            fontWeight: "800"
+          }}>Create Your <span style={{ color: "#BE2D30" }}>Own</span></h2>
+          <h6 style={{
+            color: "#42484E",
+            marginLeft: "35px",
+            fontFamily: "Montserrat",
+            fontSize: "34.62px",
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: "125%"
+          }}>Curate your own flavour of party<br />from variety of cuisines</h6>
+          <div className="mt-5">
+            <button onClick={() => window.open('/checkprice', '_blank')} style={{
+              width: "417.733px",
+              height: "67.764px", borderRadius: "35.168px",
+              marginLeft: "35px",
+              backgroundColor: "#BE2D30", border: "none",
+              boxShadow: "3.360179901123047px 4.480240345001221px 11.200600624084473px 0px #42484E",
+              color: "#FFF", fontFamily: "Montserrat",
+              fontSize: "26.842px", fontWeight: "700"
+            }}>Customize Your Package</button>
+          </div>
+          <div style={{textAlign: "end", marginTop: "-360px"}}>
+            <Image src="/ninja-box/deskFooter.png" width="791px" height="501px" />
+            </div>
+        </div>
+        {/* <div className="create-your-own-package-lgd">
           <div className="row">
             <div className="col-6">
               <img src="ninjaboxPackage.png" />
@@ -379,7 +429,7 @@ const Custom_Package = () => {
               <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-danger">Create Your Own Package</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </secction> : ""}
       {isSmall ?
         <section>
@@ -523,7 +573,61 @@ const Custom_Package = () => {
         </div>
       </section> : ""}
       {isSmall ? <section>
-        <div className="create-your-own-package">
+        <div className="create-your-own-package" style={footerbg}>
+          {/* <div className="row container">
+            <div className="col-4" id="leftside">
+              <img id="left-ninja-logo" src="/ninja-box/header/Group 1065.png"></img>
+            </div>
+            <div className="col-8" id="rightside">
+              <img id="right-ninja-logo" src="/CaterNinja logo/caterninja.webp"></img>
+              <h2>Ninja<span>Box</span></h2>
+              <p><span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10-40 Guests</span></p>
+            </div>
+          </div> */}
+          {/* <div className="btmSectnText">
+            <p>Not Happy with the Packages?</p>
+            <h2>Create Your <span>Own</span></h2>
+            <h6>Curate your own flavour of party<br />from variety of cusines</h6>
+            <div>
+              <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-sm">Create Your Own Package</button>
+            </div>
+          </div> */}
+          <div style={{marginLeft: "40px"}}>
+            <h3 style={{ paddingTop: "40px", color: "#FFF", textShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", fontFamily: "'Montserrat', sansSerif", fontSize: "14.56px", fontStyle: "italic", fontWeight: "500" }}>Not Happy with the Packages?</h3>
+            <h2 className="ms-0" style={{
+              color: "#2C3338",
+              marginTop: "-10px",
+              fontFamily: "Montserrat",
+              fontSize: "25.782px",
+              fontStyle: "normal",
+              fontWeight: "800"
+            }}>Create Your <span style={{ color: "#BE2D30" }}>Own</span></h2>
+            <h6 style={{
+              color: "#42484E",
+              fontFamily: "Montserrat",
+              marginTop: "-5px",
+              fontSize: "12.559px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "125%"
+            }}>Curate your own flavour of party<br />from variety of cuisines</h6>
+            <div>
+              <button onClick={() => window.open('/checkprice', '_blank')} style={{
+                width: "165.905px",
+                marginTop: "5px",
+                height: "26.913px", borderRadius: "13.967px",
+                backgroundColor: "#BE2D30", border: "none",
+                boxShadow: "1.3345141410827637px 1.7793523073196411px 4.448380947113037px 0px #42484E",
+                color: "#FFF", fontFamily: "Montserrat",
+                fontSize: "10.66px", fontWeight: "700"
+              }}>Customize Your Package</button>
+            </div>
+            <div style={{marginLeft: "75px", marginTop: "-50px"}}>
+              <Image src="/ninja-box/footerNinjamb.png" width="234.93px" height="211.45px" />
+            </div>
+          </div>
+        </div>
+        {/* <div className="create-your-own-package">
           <div className="row container">
             <div className="col-4" id="leftside">
               <img style={{ marginTop: "40px" }} id="left-ninja-logo" src="desktop ninja.png"></img>
@@ -542,7 +646,7 @@ const Custom_Package = () => {
               <button onClick={() => window.open('/checkprice', '_blank')} className="btn btn-sm">Create Your Own Package</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </section> : ""}
     </>
   );

@@ -73,7 +73,7 @@ const BirthdayAddOns = () => {
         { id: 4, name: 'Chole Bhatture', price: "₹70/-", veg: true },
         { id: 5, name: 'Chole Kulche', desc: '(Backed)', price: "₹70/-", veg: true },
         { id: 6, name: 'Veg Momos', price: "₹70/-", veg: true },
-        { id: 7, name: 'Chaat Station', desc: '(Paani Puri Papdi Chaat)', price: "₹70/-", veg: true },
+        { id: 7, name: 'Chaat Station', desc: '(Paani Puri, Papdi Chaat)', price: "₹70/-", veg: true },
         { id: 8, name: 'Appam With Stew', price: "₹70/-", veg: true },
         { id: 9, name: 'Dosa Station', desc: '(With Chutny)', price: "₹70/-", veg: true },
         { id: 10, name: 'Chicken Momos', price: "₹70/-", veg: false }
@@ -232,7 +232,7 @@ const BirthdayAddOns = () => {
                     {/* <h5 className='mb-3'>₹{price}/-</h5> */}
                 {liveCounterList.map((item, index) => (<div key={index} className={styles.itemsListContainer}>
                     <div className={styles.list}>
-                        <h4>🔥 {item.name}</h4>
+                        <h4>🔥 {item.name} <span>{item.desc}</span></h4>
                     </div>
                     {/* <button onClick={() => addLiveCounter(item.id)}>
                         {addedItems.some((cartItem) => cartItem.id === item.id)
