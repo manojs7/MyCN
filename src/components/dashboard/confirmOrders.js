@@ -104,7 +104,7 @@ const ConfirmOrder = () => {
 
   return (
     <BaseCard
-      title="Orders Submitted"
+      title="Orders Received"
       sx={{
         overflow: "auto",
       }}

@@ -10,26 +10,36 @@ import theme from "../../src/theme/theme";
 import ProductPerfomance from "src/components/dashboard/ProductPerfomance";
 import OrdersFromClappia from "src/components/dashboard/OrdersFromClappia";
 import ApprovedOrders from "src/components/dashboard/ApprovedOrders";
+import { useSession } from "next-auth/react";
 
 export default function Index() {
+  const { data: session } = useSession();
+
+  const role = session?.user?.role;
+
   return (
     <ThemeProvider theme={theme}>
         <FullLayout>
     <Grid container spacing={0}>
       
-      
+    {role === "Admin" || role === "sales" ?
       <Grid item xs={12} lg={12}>
         <ConfirmOrder />
       </Grid>
+    :null
+  }
+      
 
-
+      {role === "ops"?
       <Grid item xs={12} lg={12}>
-      {/* <ApprovedOrders/> */}
+      <ApprovedOrders/>
       </Grid>
+      :null
+    }
 
-      <Grid item xs={12} lg={12}>
+      {/* <Grid item xs={12} lg={12}>
         <ProductPerfomance />
-      </Grid>
+      </Grid> */}
       
      
     </Grid>

@@ -60,7 +60,6 @@ const DailyActivity = () => {
         return a.json();
       })
       .then(function (json) {
-        console.log("prodcutsMine",json.data.filter((d)=>d.date==="2023-06-12"))
         // setProducts(json.data);
         var event_date= moment().format("YYYY-MM-DD");
       setProducts( json.data.filter((d)=>d.date===event_date))

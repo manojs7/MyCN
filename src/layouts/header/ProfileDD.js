@@ -13,7 +13,11 @@ import {
   Button,
   Divider,
 } from "@mui/material";
+import { useSession } from "next-auth/react";
 const ProfileDD = () => {
+  const { data: session } = useSession();
+
+  const role = session?.user?.role;
   const [anchorEl4, setAnchorEl4] = React.useState(null);
 
   const handleClick4 = (event) => {
@@ -64,7 +68,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Hey
+              {role}
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>

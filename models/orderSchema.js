@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 
 const orderSchema = {
   orderid:{ type: "string", required: true },
+  ninja:{ type: "string", required: true, default:"DIY" },
   user: {
     name: { type: "string", required: true },
     email: { type: "string", required: true },
@@ -22,6 +23,7 @@ const orderSchema = {
   location_url: { type: "string" },
   kitchendetails: {
     ops_ninja: { type: "string" },
+    ops_ninjaEmail: { type: "string" },
     dispatchTimeFromKitchen: { type: "string" },
     kitchenName: { type: "string" },
     kitchenEmailId: { type: "string" },

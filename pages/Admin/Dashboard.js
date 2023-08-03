@@ -13,6 +13,7 @@ import PrivateRoute from "../../src/components/PrivateRoute";
 import { SessionProvider } from "next-auth/react";
 import { getSession } from 'next-auth/react';
 import { useCookies } from 'react-cookie';
+import ConfirmOrder from "src/components/dashboard/confirmOrders";
 
 
 const Index = () => {
@@ -30,7 +31,7 @@ const Index = () => {
               <DailyActivity />
             </Grid>
             <Grid item xs={12} lg={8}>
-              <ProductPerfomance />
+              <ConfirmOrder />
             </Grid>
             <Grid item xs={12} lg={12}>
               <BlogCard />

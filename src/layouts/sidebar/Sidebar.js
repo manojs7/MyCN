@@ -29,8 +29,6 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 
   const { data: session } = useSession();
 
-  console.log("data", useSession())
-
   const role = session?.user?.role;
 
   const menuItems = [
@@ -44,18 +42,20 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
       icon: "disc",
       href: "/Admin/orders",
     },
+    role === "sales"?
+    ({
+      title: "Menu Calculator",
+      icon: "layout",
+      href: "/Admin/calculator",
+    },
     {
       title: "Create Order",
       icon: "layout",
       href: "/Admin/createOrder",
-    },
-    role === "operations"
-      ? {
-          title: "Menu Calculator",
-          icon: "layout",
-          href: "/Admin/calculator",
-        }
-      : null,
+    }
+    ):null,
+    role === "Admin"
+      ? (
     {
       title: "Send Email",
       icon: "info",
@@ -65,7 +65,14 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
       title: "Business",
       icon: "star",
       href: "rating",
+    },
+    {
+      title: "Add Teammates",
+      icon: "star",
+      href:"/Admin/addUser"
     }
+    )
+    : null
   ].filter(Boolean); // Filter out null values from the menuItems array
   const [open, setOpen] = React.useState(true);
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));

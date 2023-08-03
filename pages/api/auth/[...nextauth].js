@@ -23,22 +23,26 @@ const options = {
        */
       authorize: async (credentials) => {
         const authorizedUsers = {
-          admin: { username: "admin", password: "admin123", role: "Admin" },
+          admin: { name: "admin", password: "admin123", role: "Admin" },
           sales: {
-            username: "sales",
+            name: "sales",
             password: "sales123",
             role: "Super Admin",
           },
+          sales: {
+            name: "sales",
+            password: "sales123",
+            role: "sales",
+          },
           operations: {
-            username: "operations",
+            name: "operations",
             password: "operations123",
             role: "ops",
           },
         };
 
         const user = authorizedUsers[credentials.username];
-        return Promise.resolve(user);
-        console.log(user)
+      
         if (user && user.password === credentials.password) {
           return Promise.resolve(user);
         } else {
@@ -49,9 +53,15 @@ const options = {
     // Add other providers if needed
   ],
   callbacks: {
-    async session(session, user) {
-      session.user = user;
-      return Promise.resolve(session);
+    async session({ session, token }) {
+      session.user = token.user;
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user;
+      }
+      return token;
     },
   },
 };
