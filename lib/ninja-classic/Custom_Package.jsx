@@ -361,7 +361,7 @@ const Custom_Package = () => {
             }}>Customize Your Package</button>
           </div>
           <div style={{textAlign: "end", marginTop: "-360px"}}>
-              <Image src="/ninja-box/footerNinja.png" width="868px" height="500.59px" />
+          <Image src="/ninja-box/deskFooter.png" width="791px" height="501px" />
             </div>
         </div>
         {/* <div className="create-your-own-package-lgd">
