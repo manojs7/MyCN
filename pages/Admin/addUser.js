@@ -7,7 +7,7 @@ import FullLayout from "../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material";
 // import "../../styles/style.css";
 import theme from "../../src/theme/theme";
-import UserForm from "src/userForm";
+import UserForm from "/src/components/UserForm";
 
 
 export default function Index() {
