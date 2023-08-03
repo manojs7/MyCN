@@ -75,6 +75,9 @@ const CustomiseBirthdayPkg = () => {
             });
             setShowPopup(!showPopup);
         }
+        let totalPrice= Math.round(packagePrice * (parseInt(vegCount) + parseInt(nvCount)))
+        let gst= Math.round(packagePrice * (parseInt(vegCount) + parseInt(nvCount))* 0.18)
+        let grandTotal= totalPrice + gst
 
 
         //trigger email for lead generation
@@ -88,7 +91,7 @@ const CustomiseBirthdayPkg = () => {
             occasion: "Birthday Party",
             veg_c: vegCount,
             nonveg_c: nvCount,
-            people: vegCount + nvCount,
+            people: parseInt(vegCount) + parseInt(nvCount),
             date: selectedDate,
             // time : startTime,
             url: url_value,
@@ -97,18 +100,19 @@ const CustomiseBirthdayPkg = () => {
             preference: "preference",
             mealtype: "mealtype",
             boolean: true,
-            appetizer: "",
-            mainCourse: "",
-            dessert: "",
-            breadRice: "",
-            grandTotal: packagePrice+ Math.round(packagePrice*(0.18)),
-            buffet: "Birthday Party",
+            vegSnack: checkedValues,
+            vegHeavySnack: checkedValues2,
+            nonVegSnack: checkedValues3,
+            nonVegHeavySnack: checkedValues4,
+            dessert: checkedValues5,
+            grandTotal: grandTotal,
+            buffet: "",
             dessertClassname: "caterNinja_add_dessert_button",
-            totalPrice: packagePrice,
-            GST: packagePrice*Math.round(packagePrice*(0.18)),
+            totalPrice: totalPrice,
+            GST: gst,
             showDessert: false,
             emailedtoparser: EmailedToParser,
-          };
+        };
       
           setDatas(datas);
       
@@ -118,7 +122,7 @@ const CustomiseBirthdayPkg = () => {
           } catch (e) {
             console.log(e);
           }
-          await fetch("/api/forma", {
+          await fetch("/api/BirthdayODCEmail", {
             method: "POST",
             body: data,
             headers: { "Content-Type": "application/json; charset=UTF-8" },
