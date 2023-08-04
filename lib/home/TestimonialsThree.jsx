@@ -92,7 +92,45 @@ export default function TestimonialsThree() {
         <div>
             <div className="testimonialsContainer mt-2">
                 <h2 className="text-center">Testimonials</h2>
-                <div className="">
+                <div>
+                    <div className="container text-center">
+                        {isSmall ? <div className="ninjaBoxVideoSm pb-3 d-flex" style={{ overflowX: "scroll" }}>
+                            <div style={backgroundStylesm}>
+                                <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
+                                    <YouTube videoId="gbEfZyxc7zI" opts={opts} />
+                                </div>
+                            </div>
+                            <div style={backgroundStylesm}>
+                                <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
+                                    <YouTube videoId="IA5tOYx6vKo" opts={opts} />
+                                </div>
+                            </div>
+                            <div style={backgroundStylesm}>
+                                <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
+                                    <YouTube videoId="EsFLaWCSz6c" opts={opts} />
+                                </div>
+                            </div>
+                        </div> : ""}
+                        {!isSmall ? <div className="ninjaBoxVideoLg d-flex justify-content-around mt-5">
+                            <div style={backgroundStyle}>
+                                <div style={{ marginTop: "48px" }}>
+                                    <YouTube videoId="gbEfZyxc7zI" opts={opts} />
+                                </div>
+                            </div>
+                            <div style={backgroundStyle}>
+                                <div style={{ marginTop: "48px" }}>
+                                    <YouTube videoId="IA5tOYx6vKo" opts={opts} />
+                                </div>
+                            </div>
+                            <div style={backgroundStyle}>
+                                <div style={{ marginTop: "48px" }}>
+                                    <YouTube videoId="EsFLaWCSz6c" opts={opts} />
+                                </div>
+                            </div>
+                        </div> : ""}
+                    </div>
+                </div>
+                <div className="mt-5">
                     <div className="pb-4">
                         <Slider {...settings}>
                             <div className="">
@@ -193,44 +231,6 @@ export default function TestimonialsThree() {
                                 </div>
                             </div>
                         </Slider>
-                    </div>
-                </div>
-                <div>
-                    <div className="container text-center">
-                        {isSmall ? <div className="ninjaBoxVideoSm pb-3 d-flex" style={{overflowX: "scroll"}}>
-                                <div style={backgroundStylesm}>
-                                    <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
-                                        <YouTube videoId="gbEfZyxc7zI" opts={opts} />
-                                    </div>
-                                </div>
-                                <div style={backgroundStylesm}>
-                                    <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
-                                        <YouTube videoId="IA5tOYx6vKo" opts={opts} />
-                                    </div>
-                                </div>
-                                <div style={backgroundStylesm}>
-                                    <div style={{ paddingTop: "48px", marginLeft: "28px" }}>
-                                        <YouTube videoId="EsFLaWCSz6c" opts={opts} />
-                                    </div>
-                                </div>
-                        </div> : ""}
-                        {!isSmall ? <div className="ninjaBoxVideoLg d-flex justify-content-around mt-5">
-                            <div style={backgroundStyle}>
-                                <div style={{ marginTop: "48px" }}>
-                                    <YouTube videoId="gbEfZyxc7zI" opts={opts} />
-                                </div>
-                            </div>
-                            <div style={backgroundStyle}>
-                                <div style={{ marginTop: "48px" }}>
-                                    <YouTube videoId="IA5tOYx6vKo" opts={opts} />
-                                </div>
-                            </div>
-                            <div style={backgroundStyle}>
-                                <div style={{ marginTop: "48px" }}>
-                                    <YouTube videoId="EsFLaWCSz6c" opts={opts} />
-                                </div>
-                            </div>
-                        </div> : ""}
                     </div>
                 </div>
             </div>

@@ -138,7 +138,6 @@ const BirthdayAddOns = () => {
                 icon: "success",
                 confirmButtonText: "OK",
             });
-
             window.open("/birthdayPartyCheckPrice", '_self');
         }
     }

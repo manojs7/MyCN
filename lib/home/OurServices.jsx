@@ -164,7 +164,7 @@ const OurServices = () => {
                     </div>
                   </div>
                 </div>
-                <div className="service-back ">
+                <div className="service-back">
                   <p>
                     {" "}
                     ✅ 1-2 Trained Captains <br />
@@ -172,10 +172,10 @@ const OurServices = () => {
                     ✅ Quick Setup - Clean up <br />✅ Hot and Delicious Food
                   </p>
                 </div>
-                <div className="service-back-pic">
+                <div className="service-back-pic" style={{paddingTop: "40px"}}>
                   <Image
-                    src="/home/ourServices/backpic6.webp"
-                    width={250} height={180}
+                    src="/home/ourServices/gourmetpc.png"
+                    width={262} height={185}
                     alt=""
                     className="img-fluid hoverZoom"
                   />
@@ -230,8 +230,8 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-pic">
                   <Image
-                    src="/home/ourServices/backpic3.webp"
-                    width={300} height={230}
+                    src="/home/ourServices/classicmb.png"
+                    width={261.99} height={185}
                     alt=""
                     className="img-fluid hoverZoom"
                   />
@@ -530,8 +530,8 @@ const OurServices = () => {
                 </div>
                 <div className="service-back-picmb">
                   <Image
-                    src="/home/ourServices/backpic6.webp"
-                    width={180} height={130}
+                    src="/home/ourServices/gourmetmb.png"
+                    width={164} height={115.8}
                     alt=""
                     className="img-fluid hoverZoom"
                   />
@@ -592,8 +592,8 @@ const OurServices = () => {
               </div>
               <div className="service-back-picmb">
                 <Image
-                  src="/home/ourServices/backpic3.webp"
-                  width={210} height={135}
+                  src="/home/ourServices/classicmb.png"
+                  width={164.4} height={115.8}
                   alt=""
                   className="img-fluid hoverZoom"
                 />
