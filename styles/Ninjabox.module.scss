@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet');
+
+.ninjaheader {
+    font-family: "Montserrat", sans-serif;
+    width: 425.559px;
+    height: 457px;
+    background-color: #FDC938;
+
+    h2 {
+        font-weight: 800;
+        font-size: 50px;
+        line-height: 112%;
+        color: #0A1622;
+
+        span {
+            color: #ffffff;
+        }
+    }
+
+    h6 {
+        margin: auto;
+        width: 344px;
+        height: 52px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17px;
+        //line-height: 24px;
+        color: #363D42;
+        margin-top: 10px;
+        text-align: center;
+
+        span {
+            font-weight: 700;
+        }
+    }
+
+    .selectPkgBtn {
+        text-align: center;
+        margin-top: 15px;
+
+        button {
+            border: none;
+            width: 239.912px;
+            height: 56.044px;
+            border-radius: 18.99px;
+            background: #FDC938;
+            box-shadow: 2.7790286540985107px 3.705371618270874px 9.263428688049316px 0px #BE2D30;
+            color: #363D42;
+            font-size: 22.2px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
+
+}

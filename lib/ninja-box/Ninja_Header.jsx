@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
+import YouTube from "react-youtube";
+import styles from '/styles/Ninjabox.module.scss';
 
 const Ninja_Header = () => {
   const images = [
@@ -8,14 +10,19 @@ const Ninja_Header = () => {
     "/ninja-box/header/Frame 761.png",
     "/ninja-box/header/Frame 762.png",
     "/ninja-box/header/Frame 763.png",
-
-
-
   ];
   const [isSmall, setIsSmall] = useState(false);
   const [photo, setPhoto] = useState(images[0]);
   const [indexPhoto, setIndexPhoto] = useState(null);
   const [isChanged, setIsChanged] = useState(false);
+
+  const optsm = {
+    height: "370",
+    width: "630",
+    playerVars: {
+      autoplay: 0,
+    },
+  }
 
 
 
@@ -120,6 +127,9 @@ const Ninja_Header = () => {
                 alt="Third slide"
               />
             </Carousel.Item>)}
+            {/* <div className="ninjaBoxVideoSm">
+              <YouTube videoId="o-s9E53Apq8" opts={optsm} />
+            </div> */}
           </Carousel>}
 
           {indexPhoto !== null && <Carousel activeIndex={indexPhoto} slide={true}>
@@ -134,7 +144,7 @@ const Ninja_Header = () => {
           </Carousel>}
         </div>
       </div>
-      <div className="ninja-header-right-container">
+      {/* <div className="ninja-header-right-container">
         <div className="description">
           <div className="lgd-ninja-box-header-logo">
             <img src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" alt="" />
@@ -153,6 +163,20 @@ const Ninja_Header = () => {
           <div className="ninja-box-header-button">
             <button onClick={() => (window.location.href = "#NBPkg")} className="bg-red">Select Package</button>
           </div>
+        </div>
+      </div> */}
+      <div className={styles.ninjaheader}>
+        <div className="text-center mt-5">
+          <Image src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" />
+        </div>
+        <h2>Ninja<span>Box</span></h2>
+        <h6><span>Door Step</span> Delivery in a Convenient <span>Ready-to-Serve</span> box for <span>10- 40
+          Guests</span></h6>
+        <div className="text-center mt-2">
+          <Image src='/ninja-box/header/ninja-box-ninja.png' width="155px" height="134px" />
+        </div>
+        <div className={styles.selectPkgBtn}>
+          <button onClick={() => (window.location.href = "#NBPkg")}>Select Package</button>
         </div>
       </div>
     </>
