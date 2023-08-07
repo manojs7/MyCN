@@ -4,6 +4,7 @@ import Image from "next/image";
 import ReactImageMagnify from "react-image-magnify";
 import { Carousel } from "react-bootstrap";
 import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
+import styles from '/styles/Ninjabox.module.scss';
 
 const Ninja_Header = () => {
   const images = [
@@ -163,7 +164,7 @@ const Ninja_Header = () => {
 
         </div>
       </div>
-      <div className="ninja-header-right-container">
+      {/* <div className="ninja-header-right-container">
         <div className="description">
           <div className="lgd-ninja-box-header-logo">
             <img src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" alt="" />
@@ -171,8 +172,8 @@ const Ninja_Header = () => {
           <div className="lgd-ninja-buffet-header-title">Ninja<span>Buffet</span>
           </div>
           <div className="lgd-ninja-buffet-header-content">
-            <span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
-              Guests</span>
+            <h6><span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
+              Guests</span></h6>
           </div>
 
           <div className="lgd-ninja-box-ninja-img">
@@ -181,6 +182,20 @@ const Ninja_Header = () => {
           <div className="ninja-box-header-button">
             <button onClick={() => (window.location.href = "#buffeyPkg")} className="bg-red">Select Package</button>
           </div>
+        </div>
+      </div> */}
+      <div className={styles.ninjaheader}>
+        <div className="text-center mt-5">
+          <Image src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" />
+        </div>
+        <h2>Ninja<span>Buffet</span></h2>
+        <h6><span>Door Step</span> Delivery with Hassle<br/>Free Service by our Swift Ninjas<br/>For <span>10- 40
+              Guests</span></h6>
+        <div className="text-center mt-4">
+          <Image src='/ninja-buffy/header/buffetNinjaLogo.png' width="121px" height="136.35px" />
+        </div>
+        <div className={styles.selectPkgBtn}>
+          <button onClick={() => (window.location.href = "#buffeyPkg")}>Select Package</button>
         </div>
       </div>
     </>

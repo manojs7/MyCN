@@ -4,6 +4,7 @@ import Image from "next/image";
 import ReactImageMagnify from "react-image-magnify";
 import { Carousel } from "react-bootstrap";
 import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
+import styles from '/styles/Ninjabox.module.scss';
 
 const Ninja_Header = () => {
   const images = [
@@ -163,7 +164,7 @@ const Ninja_Header = () => {
 
         </div>
       </div>
-      <div className="ninja-header-right-container">
+      {/* <div className="ninja-header-right-container">
         <div className="description">
           <div className="lgd-ninja-box-header-logo">
             <img src="caterninja.png" height="27px" width="134.46px" alt="" />
@@ -180,6 +181,19 @@ const Ninja_Header = () => {
           <div className="ninja-box-header-button">
             <button onClick={() => (window.location.href = "#NCPkg")} className="bg-red">Select Package</button>
           </div>
+        </div>
+      </div> */}
+      <div className={styles.ninjaheader}>
+        <div className="text-center mt-5">
+          <Image src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" />
+        </div>
+        <h2>Ninja<span>Classic</span></h2>
+        <h6><span>Premium</span> Dining Experience for <span>50+ Guests</span> with finger Licking Yummy Food and <span>Crockery</span></h6>
+        <div className="text-center mt-3">
+          <Image src='/ninjawithTable.png' width="154.13px" height="160px" />
+        </div>
+        <div className={styles.selectPkgBtn} style={{marginTop: "5px"}}>
+          <button onClick={() => (window.location.href = "#NCPkg")}>Select Package</button>
         </div>
       </div>
     </>

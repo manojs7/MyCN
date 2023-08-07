@@ -5,6 +5,7 @@ import ReactImageMagnify from "react-image-magnify";
 import { Carousel } from "react-bootstrap";
 import { Carousel as BootstrapCarousel } from 'react-responsive-carousel';
 import YouTube from "react-youtube";
+import styles from '/styles/Ninjabox.module.scss';
 
 const Ninja_Header = () => {
   const images = [
@@ -164,7 +165,7 @@ const Ninja_Header = () => {
 
         </div>
       </div>
-      <div className="ninja-header-right-container">
+      {/* <div className="ninja-header-right-container">
         <div className="description">
           <div className="lgd-ninja-box-header-logo">
             <img src="caterninja.png" height="27px" width="134.46px" alt="" />
@@ -182,6 +183,19 @@ const Ninja_Header = () => {
           <div className="ninja-box-header-button">
             <button onClick={() => (window.location.href = "#MealPkg")} className="bg-red">Select Package</button>
           </div>
+        </div>
+      </div> */}
+      <div className={styles.ninjaheader}>
+        <div className="text-center mt-5">
+          <Image src="/CaterNinja logo/caterninja.webp" height="27px" width="134.46px" />
+        </div>
+        <h2>Meal<span>Box</span></h2>
+        <h6>Your <span>Daily</span> Tasty and Nutritious Single-Person <span>Meal Box</span> AKA Best Office Buddy!</h6>
+        <div className="text-center mt-4">
+          <Image src='/desktop ninja.png' width="154.87px" height="133.99px" />
+        </div>
+        <div className={styles.selectPkgBtn}>
+          <button onClick={() => (window.location.href = "#MealPkg")}>Select Package</button>
         </div>
       </div>
     </>
