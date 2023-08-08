@@ -25,5 +25,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm config set legacy-peer-deps true
-    - run: npm ci
+    - run: npm i
     - run: npm run build
