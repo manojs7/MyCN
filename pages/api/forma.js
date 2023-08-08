@@ -7,13 +7,7 @@ export default function handler(req, res) {
     //   return res.status(400).send({ message: "Bad request" });
     // }
     let transporter = nodemailer.createTransport('smtps://caterninjadiy@gmail.com:wnetkdifdnuqytcm@smtp.gmail.com');
-    // let reciver;
-    // if(emailedtoparser){
-    //   reciver=data.email,
-    // }
-    // else{
-
-    // }
+    
     try 
       {
       let mailOptions = {
